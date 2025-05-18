@@ -1,0 +1,22 @@
+{
+    "name": "dragnext/dragnext",
+    "type": "wordpress-plugin",
+    "description": "Wordpress elementor addons plugin",
+    "keywords": [
+        "elementor",
+        "addons",
+        "builder",
+        "page"
+    ],
+    "homepage": "https://dragnext.com/",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "DragNext\\": "./inc",
+            "DragNext\\Admin\\": "./inc/admin"
+        }
+    }
+}
