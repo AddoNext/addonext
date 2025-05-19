@@ -10,6 +10,11 @@ class AdminController
         add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
     }
 
+    public function init(): void
+    {
+        new AdminAssets();
+    }
+
     public function register_admin_menu(): void
     {
         add_menu_page(
