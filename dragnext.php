@@ -50,7 +50,7 @@ class DragNext
 
     public function initialize_classes(): void
     {
-        $admin = new AdminController();
+        dgn_container(AdminController::class);
     }
 }
 

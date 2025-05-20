@@ -8,11 +8,12 @@ class AdminController
     public function __construct()
     {
         add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
+        add_action( 'admin_init', [ $this, 'init' ] );
     }
 
     public function init(): void
     {
-        new AdminAssets();
+        dgn_container(AdminAssets::class);
     }
 
     public function register_admin_menu(): void
