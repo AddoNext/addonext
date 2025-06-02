@@ -31,6 +31,6 @@ class AdminController
 
     public function render_admin_page(): void
     {
-        echo '<div id="dragnext-landing"></div>';
+        echo '<div id="dragnext-admin"></div>';
     }
 }

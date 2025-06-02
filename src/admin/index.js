@@ -1,3 +1,7 @@
-import React from 'react';
+import {createRoot, render } from '@wordpress/element';
 
-console.log(React)
+console.log(createRoot, render)
+render(
+    <div>Hello</div>,
+    document.getElementById('dragnext-admin')
+);

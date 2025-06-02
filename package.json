@@ -4,7 +4,7 @@
     "description": "Wordpress elementor addons plugin",
     "main": "index.js",
     "scripts": {
-        "start": "webpack --watch --progress --config webpack.dev.js",
+        "start": "wp-scripts start --config webpack.dev.js",
         "watch": "webpack --watch --progress --config webpack.dev.js",
         "build": "webpack --config webpack.prod.js"
     },

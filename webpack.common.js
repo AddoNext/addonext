@@ -1,9 +1,12 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const defaultConfig = require("@wordpress/scripts/config/webpack.config");
 const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 
+// console.log(defaultConfig.entry())
 module.exports = {
+    ...defaultConfig,
     entry: {
+        ...defaultConfig.entry(),
         admin: "./src/admin/index.js",
     },
     performance: {
@@ -11,6 +14,7 @@ module.exports = {
         maxAssetSize: 5120000,
     },
     plugins: [
+        ...defaultConfig.plugins,
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
@@ -31,7 +35,9 @@ module.exports = {
         }),
     ],
     module: {
+        ...defaultConfig.module,
         rules: [
+            ...defaultConfig.module.rules,
             {
                 test: /\.html$/,
                 use: "html-loader",
