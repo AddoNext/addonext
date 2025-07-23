@@ -61,6 +61,19 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.scss$/,
+                use: [
+                    'postcss-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: './src/scss/config/config.scss'
+                        }
+                    }
+                ]
+            }
         ],
     },
 };
