@@ -11,12 +11,17 @@
     "homepage": "https://dragnext.com/",
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "php-di/php-di": "^7.0"
     },
     "autoload": {
         "psr-4": {
             "DragNext\\": "./inc",
             "DragNext\\Admin\\": "./inc/admin"
-        }
+        },
+        "files": [
+            "Container.php",
+            "functions.php"
+        ]
     }
 }
