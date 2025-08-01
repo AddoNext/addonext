@@ -20,6 +20,11 @@ class AdminAssets
     public function enqueue(): void
     {
         wp_enqueue_style('dragnext-admin', DRAGNEXT_URL . 'dist/css/admin.min.css');
-        wp_enqueue_script('dragnext-admin', DRAGNEXT_URL . 'dist/js/admin.min.js', [], DRAGNEXT_VERSION, true);
+        wp_enqueue_script('dragnext-admin', DRAGNEXT_URL . 'dist/js/admin.min.js', [
+            'wp-element',
+            'wp-i18n',
+            'wp-api-fetch',
+            'wp-data'
+        ], DRAGNEXT_VERSION, true);
     }
 }

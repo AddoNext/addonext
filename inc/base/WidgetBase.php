@@ -1,12 +1,14 @@
 <?php
 namespace DragNext\Base;
 
+use Elementor\Widget_Base;
+
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
 /**
  * Base class for DragNext blocks
  */
-abstract class BlockBase
+abstract class DGN_Base extends Widget_Base
 {
     /**
      * Register block and controls
@@ -20,18 +22,11 @@ abstract class BlockBase
     }
 
     /**
-     * Get the block ID
-     *
-     * @return string
-     */
-    abstract protected function get_id(): string;
-
-    /**
      * Get the block title
      *
      * @return string
      */
-    abstract protected function get_title(): string;
+    abstract public function get_title(): string;
 
     /**
      * Get the block category
@@ -40,7 +35,7 @@ abstract class BlockBase
      */
     protected function get_category(): array
     {
-        return [ 'general' ];
+        return [ 'dragnext' ];
     }
 
     /**
@@ -50,7 +45,7 @@ abstract class BlockBase
      *
      * @return string
      */
-    protected function get_icon(): string
+    public function get_icon(): string
     {
         return '';
     }
@@ -70,18 +65,9 @@ abstract class BlockBase
      *
      * @return array
      */
-    protected function get_keywords(): array
+    public function get_keywords(): array
     {
-        return [  ];
-    }
-
-    /**
-     * Register block to controller
-     *
-     * @return void
-     */
-    public function register(): void
-    {
+        return [ $this->get_name(), $this->get_title()  ];
     }
 
     /**
@@ -108,5 +94,8 @@ abstract class BlockBase
      *
      * @return void
      */
-    abstract public function render(): void;
+    public function render(): void
+    {
+        
+    }
 }

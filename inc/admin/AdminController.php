@@ -14,6 +14,7 @@ class AdminController
     public function init(): void
     {
         dgn_container(AdminAssets::class);
+        dgn_container(WidgetController::class);
     }
 
     public function register_admin_menu(): void
