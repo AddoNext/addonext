@@ -1,7 +1,10 @@
-import {createRoot, render } from '@wordpress/element';
+import { App } from "./App";
+const { render } = wp.element
 
-console.log(createRoot, render)
-render(
-    <div>Hello</div>,
-    document.getElementById('dragnext-admin')
-);
+const container = document.getElementById('dragnext-admin');
+if (container) {
+    render(
+        <App />,
+        container
+    );
+}

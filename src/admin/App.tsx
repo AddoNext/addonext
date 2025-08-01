@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const App = () => {
     return (
@@ -6,4 +6,4 @@ export const App = () => {
             <h1>DragNext</h1>
         </div>
     );
-}
+};
