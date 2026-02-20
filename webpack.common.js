@@ -63,6 +63,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
+                exclude: /\.module\.scss$/,
                 use: [
                     'postcss-loader',
                     'sass-loader',
