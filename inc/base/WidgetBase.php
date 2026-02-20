@@ -26,7 +26,10 @@ abstract class WidgetBase extends Widget_Base
      *
      * @return string
      */
-    abstract public function get_title(): string;
+    public function get_title(): string
+    {
+        return '';
+    }
 
     /**
      * Get the block category

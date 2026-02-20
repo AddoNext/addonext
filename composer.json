@@ -17,10 +17,10 @@
     "autoload": {
         "psr-4": {
             "Elementrify\\": "./inc",
-            "Elementrify\\Admin\\": "./inc/admin"
+            "Elementrify\\Admin\\": "./inc/Admin"
         },
         "files": [
-            "Container.php",
+            "container.php",
             "functions.php"
         ]
     }

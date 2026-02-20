@@ -1,9 +1,10 @@
 <?php
 namespace Elementrify\Admin;
 
+use Elementrify\Common\WidgetManager;
+
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
-use Elementrify\Common\WidgetController;
 
 class AdminController
 {
@@ -16,7 +17,6 @@ class AdminController
     public function init(): void
     {
         emty_container(AdminAssets::class);
-        emty_container(WidgetController::class);
     }
 
     public function register_admin_menu(): void

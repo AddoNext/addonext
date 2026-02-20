@@ -15,7 +15,9 @@
  * Requires WP: 6.0
  */
 
+use Elementrify\Common\WidgetManager;
 use Elementrify\Admin\AdminController;
+use Elementrify\Admin\WidgetController;
 
 require_once 'vendor/autoload.php';
 
@@ -23,25 +25,25 @@ class Elementrify
 {
     public function __construct()
     {
-        add_action( 'init', [ $this, 'define_constants' ] );
-        add_action( 'plugins_loaded', [ $this, 'initialize_classes' ] );
+        add_action('init', [$this, 'define_constants']);
+        add_action('plugins_loaded', [$this, 'initialize_classes']);
     }
 
     public function define_constants(): void
     {
-        define( 'ELEMENTRIFY_VERSION', '1.0.0' );
-        define( 'ELEMENTRIFY_DIR', plugin_dir_path( __FILE__ ) );
-        define( 'ELEMENTRIFY_URL', plugin_dir_url( __FILE__ ) );
-        define( 'ELEMENTRIFY_FILE', __FILE__ );
-        define( 'ELEMENTRIFY_BASENAME', plugin_basename( __FILE__ ) );
-        define( 'ELEMENTRIFY', 'elementrify' );
+        define('ELEMENTRIFY_VERSION', '1.0.0');
+        define('ELEMENTRIFY_DIR', plugin_dir_path(__FILE__));
+        define('ELEMENTRIFY_URL', plugin_dir_url(__FILE__));
+        define('ELEMENTRIFY_FILE', __FILE__);
+        define('ELEMENTRIFY_BASENAME', plugin_basename(__FILE__));
+        define('ELEMENTRIFY', 'elementrify');
     }
 
     public static function init()
     {
         static $instance = null;
 
-        if ( null === $instance ) {
+        if (null === $instance) {
             $instance = new Elementrify();
         }
 
@@ -51,6 +53,8 @@ class Elementrify
     public function initialize_classes(): void
     {
         emty_container(AdminController::class);
+        emty_container(WidgetManager::class);
+        emty_container(WidgetController::class);
     }
 }
 

@@ -1,13 +1,14 @@
 <?php
-namespace Elementrify\Admin\Widgets;
+namespace Elementrify\Admin;
 
+use Elementrify\Common\WidgetManager;
 use WP_REST_Request;
 use WP_REST_Response;
 use Elementrify\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
-class WidgetManager
+class WidgetController
 {
     public function __construct()
     {
@@ -15,11 +16,25 @@ class WidgetManager
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
     }
 
-    public function rest_get_widgets(): array
+    public function rest_get_widgets(): WP_REST_Response
     {
-        return [
-            'success' => true
-        ];
+        $widgets = emty_container(WidgetManager::class)->get_widgets();
+        $data = [];
+
+        foreach ($widgets as $widget) {
+            $widget_instance = emty_container($widget);
+            $data[] = [
+                'id' => $widget_instance->get_name(),
+                'title' => $widget_instance->get_title(),
+                'icon' => $widget_instance->get_icon(),
+                'category' => $widget_instance->get_category(),
+            ];
+        }
+
+        return new WP_REST_Response([
+            'success' => true,
+            'widgets' => $data
+        ]);
     }
 
     /**
