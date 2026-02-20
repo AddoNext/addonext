@@ -1,6 +1,6 @@
 <?php
 
-namespace DragNext\Utils;
+namespace Elementrify\Utils;
 
 defined('ABSPATH') or exit;
 

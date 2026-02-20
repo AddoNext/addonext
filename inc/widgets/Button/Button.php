@@ -1,20 +1,20 @@
 <?php
-namespace DragNext\Widgets\Button;
+namespace Elementrify\Widgets\Button;
 
-use DragNext\Base\DGN_Base;
+use Elementrify\Base\WidgetBase;
 
 defined( 'ABSPATH' ) or exit;
 
-class Button extends DGN_Base
+class Button extends WidgetBase
 {
     public function get_category(): array
     {
-        return [ 'general' ];
+        return [ 'elementrify' ];
     }
 
     public function get_icon(): string
     {
-        return 'fa fa-bars';
+        return 'fa fa-button';
     }
 
     public function get_name(): string

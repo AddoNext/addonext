@@ -1,15 +1,15 @@
 <?php
-namespace DragNext\Widgets\Accordion;
+namespace Elementrify\Widgets\Accordion;
 
-use DragNext\Base\DGN_Base;
+use Elementrify\Base\WidgetBase;
 
 defined( 'ABSPATH' ) or exit;
 
-class Accordion extends DGN_Base
+class Accordion extends WidgetBase
 {
     public function get_category(): array
     {
-        return [ 'general' ];
+        return [ 'elementrify' ];
     }
 
     public function get_icon(): string

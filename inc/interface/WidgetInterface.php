@@ -1,12 +1,12 @@
 <?php
-namespace DragNext\Admin\Interfaces;
+namespace Elementrify\Admin\Interfaces;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
 /**
  * Widget Interface
  * 
- * @package DragNext
+ * @package Elementrify
  */
 interface WidgetInterface {
     public function get_slug(): string;

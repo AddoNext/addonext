@@ -38,7 +38,7 @@ function emty_container(mixed $class): object
 
     if (!$container) {
         $container = new ContainerBuilder();
-        $container->addDefinitions(dirname(__FILE__, 3) . '/container.php');
+        $container->addDefinitions( dirname(__FILE__)  . '/container.php');
         $container = $container->build();
     }
 

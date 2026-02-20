@@ -1,12 +1,12 @@
 <?php
 
-namespace DragNext\Utils;
+namespace Elementrify\Utils;
 
 defined('ABSPATH') or exit;
 
 class OptionsHelper
 {
-    const option_prefix = 'dgn_';
+    const option_prefix = 'emty_';
 
     public static function get_option(string $key, $default = null)
     {

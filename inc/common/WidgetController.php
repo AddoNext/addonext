@@ -1,10 +1,10 @@
 <?php
-namespace DragNext\Admin\Widgets;
+namespace Elementrify\Common;
 
 use Elementor\Widgets_Manager;
-use DragNext\Utils\OptionsHelper;
-use DragNext\Widgets\Button\Button;
-use DragNext\Widgets\Accordion\Accordion;
+use Elementrify\Utils\OptionsHelper;
+use Elementrify\Widgets\Button\Button;
+use Elementrify\Widgets\Accordion\Accordion;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -21,7 +21,7 @@ class WidgetController
 
     public static function get_active_widgets(): array
     {
-        $widgets = OptionsHelper::get_option( 'dragnext_active_widgets', [  ] );
+        $widgets = OptionsHelper::get_option( 'elementrify_active_widgets', [  ] );
 
         return array_filter( self::$widgets, function ( $widget ) use ( $widgets ) {
             return in_array( $widget, $widgets );

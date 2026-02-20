@@ -1,7 +1,7 @@
 import { App } from "./App";
 const { render } = wp.element
 
-const container = document.getElementById('dragnext-admin');
+const container = document.getElementById('elementrify-admin');
 if (container) {
     render(
         <App />,
