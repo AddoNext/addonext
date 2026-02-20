@@ -1,5 +1,7 @@
 <?php
 
+use DI\ContainerBuilder;
+
 defined('ABSPATH') or exit;
 
 /**
@@ -8,11 +10,10 @@ defined('ABSPATH') or exit;
  * @param string $filename
  * @return string
  */
-function dgn_get_img_url(string $filename = ''): string
+function emty_get_img_url(string $filename = ''): string
 {
-    return DRAGNEXT_URL . 'src/img/' . $filename;
+    return ELEMENTRIFY_URL . 'src/img/' . $filename;
 }
-
 
 /**
  * Get image path
@@ -20,7 +21,26 @@ function dgn_get_img_url(string $filename = ''): string
  * @param string $filename
  * @return string
  */
-function dgn_get_img_path(string $filename = ''): string
+function emty_get_img_path(string $filename = ''): string
 {
-    return DRAGNEXT_DIR . 'src/img/' . $filename;
+    return ELEMENTRIFY_DIR . 'src/img/' . $filename;
+}
+
+/**
+ * Get dependency injection container
+ *
+ * @param mixed $class
+ * @return object
+ */
+function emty_container(mixed $class): object
+{
+    static $container = false;
+
+    if (!$container) {
+        $container = new ContainerBuilder();
+        $container->addDefinitions(dirname(__FILE__, 3) . '/container.php');
+        $container = $container->build();
+    }
+
+    return $container->get($class);
 }

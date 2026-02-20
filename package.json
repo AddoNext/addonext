@@ -1,5 +1,5 @@
 {
-    "name": "dragnext",
+    "name": "elementrify",
     "version": "1.0.0",
     "description": "Wordpress elementor addons plugin",
     "main": "index.js",
@@ -14,7 +14,7 @@
         "builder",
         "page"
     ],
-    "author": "DragNext",
+    "author": "AddoNext",
     "license": "ISC",
     "devDependencies": {
         "@wordpress/api-fetch": "^7.23.0",

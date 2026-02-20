@@ -1,14 +1,14 @@
 <?php
-namespace DragNext\Base;
+namespace Elementrify\Base;
 
 use Elementor\Widget_Base;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
 /**
- * Base class for DragNext blocks
+ * Base class for Elementrify blocks
  */
-abstract class DGN_Base extends Widget_Base
+abstract class WidgetBase extends Widget_Base
 {
     /**
      * Register block and controls
@@ -35,7 +35,7 @@ abstract class DGN_Base extends Widget_Base
      */
     protected function get_category(): array
     {
-        return [ 'dragnext' ];
+        return [ 'elementrify' ];
     }
 
     /**

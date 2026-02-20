@@ -1,7 +1,9 @@
 <?php
-namespace DragNext\Admin;
+namespace Elementrify\Admin;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
+
+use Elementrify\Common\WidgetController;
 
 class AdminController
 {
@@ -13,17 +15,17 @@ class AdminController
 
     public function init(): void
     {
-        dgn_container(AdminAssets::class);
-        dgn_container(WidgetController::class);
+        emty_container(AdminAssets::class);
+        emty_container(WidgetController::class);
     }
 
     public function register_admin_menu(): void
     {
         add_menu_page(
-            'DragNext',
-            'DragNext',
+            'Elementrify',
+            'Elementrify',
             'manage_options',
-            'dragnext',
+            'elementrify',
             [ $this, 'render_admin_page' ],
             'dashicons-welcome-widgets-menus',
             100
@@ -32,6 +34,6 @@ class AdminController
 
     public function render_admin_page(): void
     {
-        echo '<div id="dragnext-admin"></div>';
+        echo '<div id="elementrify-admin"></div>';
     }
 }

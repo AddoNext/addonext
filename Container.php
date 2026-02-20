@@ -1,22 +1,22 @@
 <?php
 
-defined('ABSPATH') or exit;
+use function DI\create;
+use Elementrify\Base\WidgetBase;
+use Elementrify\Admin\AdminAssets;
+use Elementrify\Utils\OptionsHelper;
+use Elementrify\Admin\AdminController;
+use Elementrify\Widgets\Button\Button;
+use Elementrify\Common\WidgetController;
+use Elementrify\Admin\Widgets\WidgetManager;
+use Elementrify\Widgets\Accordion\Accordion;
 
-use DI\Container;
-
-/**
- * Get dependency injection container
- *
- * @param mixed $class
- * @return object
- */
-function dgn_container(mixed $class): object
-{
-    static $container = false;
-
-    if (!$container) {
-        $container = new Container;
-    }
-
-    return $container->get($class);
-}
+return [
+    AdminController::class  => create(AdminController::class),
+    AdminAssets::class      => create(AdminAssets::class),
+    WidgetController::class => create(WidgetController::class),
+    WidgetManager::class    => create(WidgetManager::class),
+    OptionsHelper::class    => create(OptionsHelper::class),
+    Button::class           => create(Button::class),
+    Accordion::class        => create(Accordion::class),
+    WidgetBase::class       => create(WidgetBase::class)
+];
