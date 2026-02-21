@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tab } from "../components/Tab/types";
+import type { Tab } from "../components/Tab/Tab";
 
 /**
  * useTab hook for navigating between tabs.

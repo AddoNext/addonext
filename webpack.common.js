@@ -66,11 +66,16 @@ module.exports = {
                 exclude: /\.module\.scss$/,
                 use: [
                     'postcss-loader',
-                    'sass-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [require('path').resolve(__dirname, 'src/scss/config')]
+                        }
+                    },
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                            resources: './src/scss/config/config.scss'
+                            resources: require('path').resolve(__dirname, 'src/scss/config/config.scss')
                         }
                     }
                 ]

@@ -1,0 +1,6 @@
+:root {
+  --gradient-primary: linear-gradient(to right, var(--color-brand-blue), var(--color-brand-purple));
+  --gradient-primary-hover: linear-gradient(to right, #2563eb, #7c3aed);
+  --gradient-orange: linear-gradient(to bottom right, var(--color-brand-orange), #ea580c);
+  --gradient-dark-surface: linear-gradient(to bottom right, var(--color-dark-800), var(--color-dark-900));
+}
