@@ -1,41 +1,55 @@
 .tabContainer {
   width: 100%;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background: #fff;
+  background: $color-bg;
+  border-bottom: 1px solid $color-border;
 }
 
 .tabHeader {
   display: flex;
-  border-bottom: 1px solid #e0e0e0;
-  background: #f8f9fa;
-  padding: 0.5rem 1rem 0 1rem;
+  gap: $space-4;
+  padding: 0 $space-4;
+  overflow-x: auto;
+  min-width: max-content;
+}
+
+@media (min-width: 768px) {
+  .tabHeader {
+    padding-left: $space-8;
+    padding-right: $space-8;
+    gap: $space-8;
+  }
 }
 
 .tabIndex {
-  padding: 0.5rem 1.5rem;
+  padding: $space-4 0;
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  color: #333;
-  font-size: 1rem;
-  font-weight: 500;
+  color: $color-text-muted;
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
   cursor: pointer;
-  transition: border-bottom 0.2s, color 0.2s;
-  margin-right: 1rem;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
 }
 
-.tabIndex:last-child {
-  margin-right: 0;
+.tabIndex:hover {
+  color: $color-text;
 }
 
 .active {
-  border-bottom: 2px solid #007bff;
-  color: #007bff;
-  font-weight: 700;
-  background: #fff;
+  border-bottom-color: $color-brand-blue;
+  color: $color-brand-blue;
 }
 
 .tabBody {
-  padding: 1.5rem;
+  padding: 0 $space-4 $space-6;
+}
+
+@media (min-width: 768px) {
+  .tabBody {
+    padding-left: $space-8;
+    padding-right: $space-8;
+  }
 }

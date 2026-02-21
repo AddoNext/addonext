@@ -1,11 +1,11 @@
 import React from "react";
 import useTab from "../../hooks/useTab";
-import { Tab } from "./types";
+import type { Tab as TabItem } from "./types";
 import styles from "./Tab.module.scss";
 import classNames from "classnames";
 
 interface TabProps {
-  tabs: Tab[];
+  tabs: TabItem[];
 }
 
 const Tab: React.FC<TabProps> = ({ tabs }) => {

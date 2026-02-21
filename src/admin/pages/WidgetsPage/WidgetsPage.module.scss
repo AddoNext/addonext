@@ -1,0 +1,20 @@
+.page {
+  padding: $space-6 0;
+}
+
+.toolbar {
+  margin-bottom: $space-6;
+}
+
+.searchRow {
+  max-width: 16rem;
+}
+
+.content {
+  min-height: 12rem;
+}
+
+.placeholder {
+  font-size: $text-sm;
+  color: $color-text-muted;
+}

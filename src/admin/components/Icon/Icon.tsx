@@ -33,6 +33,15 @@ const iconModules: Record<IconName, string> = {
   "fill-drip": fillDripIcon,
 };
 
+function normalizeIconSrc(src: string): string {
+  if (typeof window === 'undefined' || !src) return src;
+  try {
+    return new URL(src, window.location.href).href;
+  } catch {
+    return src;
+  }
+}
+
 const Icon: React.FC<IconProps> = ({
   name,
   size = 16,
@@ -43,7 +52,7 @@ const Icon: React.FC<IconProps> = ({
   if (!src) return null;
   return (
     <img
-      src={src}
+      src={normalizeIconSrc(src)}
       alt=""
       width={size}
       height={size}

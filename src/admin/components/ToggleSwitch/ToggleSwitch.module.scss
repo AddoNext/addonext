@@ -18,8 +18,8 @@
 .track {
   position: absolute;
   inset: 0;
-  background: var(--color-brand-blue);
-  border-radius: var(--radius-full);
+  background: $color-brand-blue;
+  border-radius: $radius-full;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
@@ -31,7 +31,7 @@
   width: 20px;
   height: 20px;
   background: #fff;
-  border-radius: var(--radius-full);
+  border-radius: $radius-full;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }

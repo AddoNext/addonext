@@ -26,6 +26,11 @@ module.exports = {
                     to: "img/[path]/[name][ext]",
                     noErrorOnMissing: true,
                 },
+                {
+                    from: "./src/img/icons/*.svg",
+                    to: "img/icons/[name][ext]",
+                    noErrorOnMissing: true,
+                },
             ],
         }),
         new webpack.ProvidePlugin({
@@ -37,7 +42,6 @@ module.exports = {
     module: {
         ...defaultConfig.module,
         rules: [
-            ...defaultConfig.module.rules,
             {
                 test: /\.html$/,
                 use: "html-loader",
@@ -47,12 +51,8 @@ module.exports = {
                 type: "asset/resource",
                 generator: {
                     filename: (name) => {
-                        /**
-                         * @description Remove first & last item from ${path} array.
-                         * @example
-                         *      Orginal Path: 'assets/images/avatar/image.jpg'
-                         *      Changed To: 'images/avatar'
-                         */
+                        const isIcon = name.filename.includes('/img/icons/');
+                        if (isIcon) return 'img/icons/[name][ext]';
                         const path = name.filename
                             .split("/")
                             .slice(1, -1)
@@ -61,16 +61,14 @@ module.exports = {
                     },
                 },
             },
+            ...defaultConfig.module.rules,
             {
                 test: /\.scss$/,
-                exclude: /\.module\.scss$/,
+                // exclude: /\.module\.scss$/,
                 use: [
                     'postcss-loader',
                     {
                         loader: 'sass-loader',
-                        options: {
-                            includePaths: [require('path').resolve(__dirname, 'src/scss/config')]
-                        }
                     },
                     {
                         loader: 'sass-resources-loader',
