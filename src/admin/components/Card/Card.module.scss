@@ -4,8 +4,8 @@
   border: 1px solid;
 
   &.light {
-    background: #fff;
-    border-color: $color-border;
+    background: var(--color-surface);
+    border-color: var(--color-border);
     box-shadow: $shadow-sm;
   }
 
@@ -39,7 +39,7 @@
 
   .dark & {
     background: $color-dark-700;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
   }
 }
 
@@ -50,7 +50,7 @@
   margin-bottom: $space-1;
 
   .light & {
-    color: $color-text;
+    color: var(--color-text);
   }
 
   .dark & {
@@ -60,7 +60,7 @@
 
 .description {
   font-size: $text-xs;
-  color: $color-text-muted;
+  color: var(--color-text-muted);
 }
 
 .body {

@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCube, faSun, faDownload, faSave } from "@fortawesome/free-solid-svg-icons";
+import { faCube, faSun, faMoon, faDownload, faSave } from "@fortawesome/free-solid-svg-icons";
 import { HeaderProps } from "./types";
 import styles from "./Header.module.scss";
 import Button from "../Button/Button";
@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 const Header: React.FC<HeaderProps> = ({
   title = "Elementrify",
   subtitle = "Premium Elementor Widgets Collection",
+  theme = "light",
   onThemeToggle,
   onExportSettings,
   onSaveChanges,
@@ -30,9 +31,9 @@ const Header: React.FC<HeaderProps> = ({
               type="button"
               className={styles.themeBtn}
               onClick={onThemeToggle}
-              aria-label="Toggle theme"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
-              <FontAwesomeIcon icon={faSun} size="lg" />
+              <FontAwesomeIcon icon={theme === "dark" ? faMoon : faSun} size="lg" />
             </button>
           )}
           <div className={styles.actionsGroup}>

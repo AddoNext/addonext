@@ -45,15 +45,15 @@
   }
 
   &.secondary {
-    background: $color-muted;
-    color: $color-text-button;
+    background: var(--color-muted);
+    color: var(--color-text-button);
 
     img {
       opacity: 0.9;
     }
 
     &:hover {
-      background: $color-border;
+      background: var(--color-border);
     }
   }
 

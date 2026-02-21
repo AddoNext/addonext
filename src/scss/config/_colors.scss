@@ -86,4 +86,9 @@ $color-scrollbar-thumb-hover: #9ca3af;
   --color-text: #ffffff;
   --color-text-muted: #9ca3af;
   --color-text-secondary: #d1d5db;
+  --color-text-button: #e5e7eb;
+  --color-tab-active: #60a5fa;
+  --color-scrollbar-track: #{$color-dark-800};
+  --color-scrollbar-thumb: #{$color-dark-600};
+  --color-scrollbar-thumb-hover: #{$color-dark-600};
 }

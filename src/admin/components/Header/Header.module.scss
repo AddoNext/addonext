@@ -1,6 +1,6 @@
 .header {
-  background: $color-bg;
-  border-bottom: 1px solid $color-border;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
   padding: $space-6 $space-4;
   width: 100%;
 }
@@ -51,7 +51,7 @@
   font-family: $font-sans;
   font-size: $text-xl;
   font-weight: $font-weight-bold;
-  color: $color-text;
+  color: var(--color-text);
   line-height: $line-height-tight;
 }
 
@@ -64,7 +64,7 @@
 .subtitle {
   font-family: $font-sans;
   font-size: $text-xs;
-  color: $color-text-muted;
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 
@@ -89,8 +89,8 @@
 
 .themeBtn {
   padding: $space-2 $space-3;
-  background: $color-muted;
-  color: $color-text-button;
+  background: var(--color-muted);
+  color: var(--color-text-button);
   border: none;
   border-radius: $radius-lg;
   cursor: pointer;
@@ -101,7 +101,7 @@
 }
 
 .themeBtn:hover {
-  background: $color-border;
+  background: var(--color-border);
 }
 
 .actionsGroup {
