@@ -1,8 +1,9 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCube, faSun, faDownload, faSave } from "@fortawesome/free-solid-svg-icons";
 import { HeaderProps } from "./types";
 import styles from "./Header.module.scss";
 import Button from "../Button/Button";
-import Icon from "../Icon/Icon";
 
 const Header: React.FC<HeaderProps> = ({
   title = "Elementrify",
@@ -16,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className={styles.inner}>
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <Icon name="cube" size={20} className={styles.logoIcon} />
+            <FontAwesomeIcon icon={faCube} className={styles.logoIcon} />
           </div>
           <div>
             <h1 className={styles.title}>{title}</h1>
@@ -31,17 +32,17 @@ const Header: React.FC<HeaderProps> = ({
               onClick={onThemeToggle}
               aria-label="Toggle theme"
             >
-              <Icon name="droplet" size={18} />
+              <FontAwesomeIcon icon={faSun} size="lg" />
             </button>
           )}
           <div className={styles.actionsGroup}>
             {onExportSettings && (
-              <Button variant="secondary" onClick={onExportSettings} icon={<Icon name="download" size={14} />}>
+              <Button variant="secondary" onClick={onExportSettings} icon={<FontAwesomeIcon icon={faDownload} />}>
                 Export Settings
               </Button>
             )}
             {onSaveChanges && (
-              <Button variant="primary" onClick={onSaveChanges} icon={<Icon name="save" size={14} />}>
+              <Button variant="primary" onClick={onSaveChanges} icon={<FontAwesomeIcon icon={faSave} />}>
                 Save Changes
               </Button>
             )}

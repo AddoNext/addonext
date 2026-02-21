@@ -5,6 +5,8 @@ $color-border: #e5e7eb;
 $color-text: #111827;
 $color-text-muted: #6b7280;
 $color-text-secondary: #4b5563;
+$color-text-button: #374151;
+$color-tab-active: #2563eb;
 
 $color-dark-900: #18181b;
 $color-dark-800: #202022;
@@ -46,6 +48,8 @@ $color-scrollbar-thumb-hover: #9ca3af;
   --color-text: #{$color-text};
   --color-text-muted: #{$color-text-muted};
   --color-text-secondary: #{$color-text-secondary};
+  --color-text-button: #{$color-text-button};
+  --color-tab-active: #{$color-tab-active};
   --color-dark-900: #{$color-dark-900};
   --color-dark-800: #{$color-dark-800};
   --color-dark-700: #{$color-dark-700};

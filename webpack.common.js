@@ -47,6 +47,13 @@ module.exports = {
                 use: "html-loader",
             },
             {
+                test: /\.(woff2?|ttf|eot)$/,
+                type: "asset/resource",
+                generator: {
+                    filename: "webfonts/[name][ext]",
+                },
+            },
+            {
                 test: /\.(svg|png|jpg|gif)$/,
                 type: "asset/resource",
                 generator: {

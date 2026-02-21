@@ -44,6 +44,7 @@
 
 .logoIcon {
   color: #fff;
+  font-size: 1.25rem;
 }
 
 .title {
@@ -54,10 +55,23 @@
   line-height: $line-height-tight;
 }
 
+@media (min-width: 768px) {
+  .title {
+    font-size: $text-2xl;
+  }
+}
+
 .subtitle {
+  font-family: $font-sans;
   font-size: $text-xs;
   color: $color-text-muted;
   margin-top: 2px;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: $text-sm;
+  }
 }
 
 .actions {
@@ -76,7 +90,7 @@
 .themeBtn {
   padding: $space-2 $space-3;
   background: $color-muted;
-  color: $color-text-secondary;
+  color: $color-text-button;
   border: none;
   border-radius: $radius-lg;
   cursor: pointer;
