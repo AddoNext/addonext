@@ -1,9 +1,10 @@
 import React from "react";
-import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ToggleSwitch from "../../../../components/ToggleSwitch/ToggleSwitch";
 import type { Widget } from "../../../../../store/types";
 import styles from "./WidgetCard.module.scss";
 import { hexToRgba } from "../../../../utils/colors";
+import { getWidgetIcon } from "../../../../utils/widgetIcons";
 
 interface WidgetCardProps {
   widget: Widget;
@@ -15,12 +16,14 @@ const WidgetCard: React.FC<WidgetCardProps> = ({ widget, categorySlug, onToggle 
   <div className={styles.card}>
     <div className={styles.header}>
       <div
-        className={classNames(
-          styles.iconWrap,
-        )}
+        className={styles.iconWrap}
         style={{ backgroundColor: hexToRgba(widget.brand_color, 0.2) }}
       >
-        <i className={widget.icon} aria-hidden style={{ color: widget.brand_color }} />
+        <FontAwesomeIcon
+          icon={getWidgetIcon(widget.icon)}
+          className={styles.widgetIcon}
+          style={{ color: widget.brand_color }}
+        />
       </div>
       <ToggleSwitch
         checked={widget.active}
