@@ -8,8 +8,10 @@ const Button: React.FC<ButtonProps> = ({
   size = "sm",
   icon,
   iconPosition = "left",
+  loading = false,
   children,
   className,
+  disabled,
   ...rest
 }) => {
   return (
@@ -21,11 +23,12 @@ const Button: React.FC<ButtonProps> = ({
         size === "sm" ? styles.sizeSm : styles.sizeMd,
         className
       )}
+      disabled={disabled ?? loading}
       {...rest}
     >
       {icon && (
         <span className={iconPosition === "left" ? styles.iconLeft : styles.iconRight}>
-          {icon}
+          {loading ? <span className={styles.spinner} aria-hidden /> : icon}
         </span>
       )}
       {children}

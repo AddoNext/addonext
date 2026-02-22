@@ -49,9 +49,10 @@ const Header: React.FC<HeaderProps> = ({
               variant="primary"
               onClick={saveState?.save ?? (() => Promise.resolve())}
               icon={<FontAwesomeIcon icon={faSave} />}
+              loading={saveState?.isSaving}
               disabled={!saveState || !saveState.isDirty || saveState.isSaving}
             >
-              {saveState?.isSaving ? "Saving…" : "Save Changes"}
+              Save Changes
             </Button>
           </div>
         </div>
