@@ -6,9 +6,12 @@ import ExtensionsPage from "./pages/ExtensionsPage/ExtensionsPage";
 import TemplatesPage from "./pages/TemplatesPage/TemplatesPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import LicensePage from "./pages/LicensePage/LicensePage";
+import { WidgetsStateProvider } from "./contexts/WidgetsStateContext/WidgetsStateContext";
+import { ScreenSaveProvider } from "./contexts/ScreenSaveContext/ScreenSaveContext";
 import styles from "./App.module.scss";
 
 const STORAGE_KEY = "elementrify-theme";
+const DEFAULT_TAB_SLUG = "widgets";
 
 export const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -34,17 +37,19 @@ export const App = () => {
 
   const handleThemeToggle = () => setTheme((prev) => (prev === "light" ? "dark" : "light"));
   const handleExportSettings = () => { };
-  const handleSaveChanges = () => { };
 
   return (
     <div className={styles.app} data-theme={theme}>
-      <Header
-        theme={theme}
-        onThemeToggle={handleThemeToggle}
-        onExportSettings={handleExportSettings}
-        onSaveChanges={handleSaveChanges}
-      />
-      <Tab tabs={tabs} />
+      <ScreenSaveProvider defaultSlug={DEFAULT_TAB_SLUG}>
+        <WidgetsStateProvider>
+          <Header
+            theme={theme}
+            onThemeToggle={handleThemeToggle}
+            onExportSettings={handleExportSettings}
+          />
+          <Tab tabs={tabs} />
+        </WidgetsStateProvider>
+      </ScreenSaveProvider>
     </div>
   );
 };

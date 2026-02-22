@@ -20,7 +20,7 @@ class WidgetController
     {
         $widgets        = emty_container(WidgetManager::class)->get_widgets();
         $data           = [];
-        $active_widgets = OptionsHelper::get_option('active_widgets', [array_keys($widgets)]);
+        $active_widgets = OptionsHelper::get_option('active_widgets', []);
 
         foreach ($widgets as $widget) {
             $widget_instance = emty_container($widget);
@@ -91,20 +91,21 @@ class WidgetController
         ]);
     }
 
-    public static function set_active_widgets(array $widgets): void
-    {
-        // $all_widgets = self::get_widgets();
-        foreach ($widgets as $widget_id) {
-        }
-
-        OptionsHelper::set_option('elementrify_active_widgets', $widgets);
-    }
-
     public function rest_update_widgets(WP_REST_Request $request): WP_REST_Response
     {
-        $params = $request->get_params();
+        $widgets = $request->get_param('widgets');
 
-        self::set_active_widgets($params['widgets']);
+        if(empty($widgets) || !is_array($widgets)) {
+            return new WP_REST_Response(
+                [
+                    'success' => false,
+                    'message' => __('Invalid widgets', 'elementrify')
+                ],
+                400
+            );
+        }
+
+        OptionsHelper::set_option('active_widgets', $widgets);
 
         return new WP_REST_Response(
             [

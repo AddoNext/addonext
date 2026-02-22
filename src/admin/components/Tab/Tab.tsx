@@ -1,5 +1,5 @@
 import React from "react";
-import useTab from "../../hooks/useTab";
+import { useScreenSaveContext } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
 import type { Tab as TabItem } from "./types";
 import styles from "./Tab.module.scss";
 import classNames from "classnames";
@@ -9,15 +9,16 @@ interface TabProps {
 }
 
 const Tab: React.FC<TabProps> = ({ tabs }) => {
-  const { currentTab, setTab } = useTab(tabs);
+  const { currentScreenSlug, setCurrentScreenSlug } = useScreenSaveContext();
+  const currentTab = tabs.find((t) => t.slug === currentScreenSlug) ?? tabs[0];
 
   return (
     <div className={styles.tabContainer}>
       <div className={styles.tabHeader}>
-        {tabs.map(tab => (
+        {tabs.map((tab) => (
           <button
             key={tab.slug}
-            onClick={() => setTab(tab.slug)}
+            onClick={() => setCurrentScreenSlug(tab.slug)}
             className={classNames(styles.tabIndex, {
               [styles.active]: currentTab.slug === tab.slug,
             })}

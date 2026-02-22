@@ -4,6 +4,7 @@ import { faCube, faSun, faMoon, faDownload, faSave } from "@fortawesome/free-sol
 import { HeaderProps } from "./types";
 import styles from "./Header.module.scss";
 import Button from "../Button/Button";
+import { useScreenSaveContext } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
 
 const Header: React.FC<HeaderProps> = ({
   title = "Elementrify",
@@ -11,8 +12,10 @@ const Header: React.FC<HeaderProps> = ({
   theme = "light",
   onThemeToggle,
   onExportSettings,
-  onSaveChanges,
 }) => {
+  const { currentScreenSlug, getSaveState } = useScreenSaveContext();
+  const saveState = getSaveState(currentScreenSlug);
+
   return (
     <header className={styles.header} id="plugin-header">
       <div className={styles.inner}>
@@ -42,11 +45,14 @@ const Header: React.FC<HeaderProps> = ({
                 Export Settings
               </Button>
             )}
-            {onSaveChanges && (
-              <Button variant="primary" onClick={onSaveChanges} icon={<FontAwesomeIcon icon={faSave} />}>
-                Save Changes
-              </Button>
-            )}
+            <Button
+              variant="primary"
+              onClick={saveState?.save ?? (() => Promise.resolve())}
+              icon={<FontAwesomeIcon icon={faSave} />}
+              disabled={!saveState || !saveState.isDirty || saveState.isSaving}
+            >
+              {saveState?.isSaving ? "Saving…" : "Save Changes"}
+            </Button>
           </div>
         </div>
       </div>

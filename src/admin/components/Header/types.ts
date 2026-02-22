@@ -4,5 +4,4 @@ export interface HeaderProps {
   theme?: "light" | "dark";
   onThemeToggle?: () => void;
   onExportSettings?: () => void;
-  onSaveChanges?: () => void;
 }

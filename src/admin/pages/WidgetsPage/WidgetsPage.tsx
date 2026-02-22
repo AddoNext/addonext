@@ -1,8 +1,10 @@
-import React, { useMemo, useState, useCallback } from "react";
-import { useSelect, useDispatch } from "@wordpress/data";
+import React, { useCallback, useMemo, useState } from "react";
+import { useSelect } from "@wordpress/data";
 import WidgetsToolbar from "./components/WidgetsToolbar/WidgetsToolbar";
 import WidgetsCategorySection from "./components/WidgetsCategorySection/WidgetsCategorySection";
 import { STORE_NAME } from "../../../store/admin";
+import { useWidgetsState } from "../../contexts/WidgetsStateContext/WidgetsStateContext";
+import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
 import type { Widget } from "../../../store/types";
 import type { WidgetFilter } from "./types";
 import styles from "./WidgetsPage.module.scss";
@@ -11,23 +13,44 @@ const WidgetsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState<WidgetFilter>("all");
 
-  const { widgets, categories } = useSelect((select) => {
-    const store = select(STORE_NAME) as {
-      getWidgets: () => Widget[];
-      getCategories: () => Record<string, { title: string; icon: string }>;
-    };
-    return {
-      widgets: store.getWidgets() ?? [],
-      categories: store.getCategories() ?? {},
-    };
-  }, []);
+  const widgetsState = useWidgetsState();
+  const getSaveHandler = useCallback(
+    () => ({
+      save: widgetsState.save,
+      isDirty: widgetsState.isDirty,
+      isSaving: widgetsState.isSaving,
+    }),
+    [widgetsState.save, widgetsState.isDirty, widgetsState.isSaving]
+  );
+  useScreenSave("widgets", getSaveHandler);
 
-  const { updateWidgets } = useDispatch(STORE_NAME) as {
-    updateWidgets: (ids: string[]) => void;
-  };
+  const { widgets, categories } = useSelect(
+    (select) => {
+      const store = select(STORE_NAME) as {
+        getWidgets: () => Widget[];
+        getCategories: () => Record<string, { title: string; icon: string }>;
+      };
+      return {
+        widgets: store.getWidgets() ?? [],
+        categories: store.getCategories() ?? {},
+      };
+    },
+    []
+  );
+
+  const { activeIds, toggleWidget, toggleCategory, enableAll } = widgetsState;
+
+  const effectiveWidgets = useMemo(
+    () =>
+      widgets.map((w) => ({
+        ...w,
+        active: activeIds.includes(w.id),
+      })),
+    [widgets, activeIds]
+  );
 
   const filteredWidgets = useMemo(() => {
-    let list = widgets;
+    let list = effectiveWidgets;
     const q = searchQuery.trim().toLowerCase();
     if (q) {
       list = list.filter((w) => w.title.toLowerCase().includes(q));
@@ -38,7 +61,7 @@ const WidgetsPage: React.FC = () => {
       list = list.filter((w) => !w.active);
     }
     return list;
-  }, [widgets, searchQuery, filter]);
+  }, [effectiveWidgets, searchQuery, filter]);
 
   const widgetsByCategory = useMemo(() => {
     const map: Record<string, Widget[]> = {};
@@ -48,33 +71,13 @@ const WidgetsPage: React.FC = () => {
     return map;
   }, [categories, filteredWidgets]);
 
-  const activeCount = widgets.filter((w) => w.active).length;
+  const activeCount = activeIds.length;
   const totalCount = widgets.length;
 
-  const toggleWidget = useCallback(
-    (id: string, checked: boolean) => {
-      const currentActive = widgets.filter((w) => w.active).map((w) => w.id);
-      const next = checked
-        ? [...currentActive, id].filter(Boolean)
-        : currentActive.filter((x) => x !== id);
-      updateWidgets(next);
-    },
-    [widgets, updateWidgets]
-  );
-
-  const toggleCategory = useCallback(
-    (slug: string, enable: boolean) => {
-      const inCategory = (widgetsByCategory[slug] ?? []).map((w) => w.id);
-      const rest = widgets.filter((w) => w.active && !inCategory.includes(w.id)).map((w) => w.id);
-      const next = enable ? [...new Set([...rest, ...inCategory])] : rest;
-      updateWidgets(next);
-    },
-    [widgetsByCategory, widgets, updateWidgets]
-  );
-
-  const enableAll = useCallback(() => {
-    updateWidgets(widgets.map((w) => w.id));
-  }, [widgets, updateWidgets]);
+  const handleToggleCategory = (slug: string, enable: boolean) => {
+    const categoryWidgetIds = (widgetsByCategory[slug] ?? []).map((w) => w.id);
+    toggleCategory(slug, enable, categoryWidgetIds);
+  };
 
   return (
     <div className={styles.page}>
@@ -85,7 +88,7 @@ const WidgetsPage: React.FC = () => {
         onFilterChange={setFilter}
         activeCount={activeCount}
         totalCount={totalCount}
-        onEnableAll={enableAll}
+        onEnableAll={() => enableAll(widgets.map((w) => w.id))}
       />
 
       <div className={styles.content}>
@@ -95,7 +98,7 @@ const WidgetsPage: React.FC = () => {
             category={{ slug, ...categories[slug] }}
             widgets={widgetsByCategory[slug] ?? []}
             onToggle={toggleWidget}
-            onToggleAll={toggleCategory}
+            onToggleAll={handleToggleCategory}
           />
         ))}
         {filteredWidgets.length === 0 && (
