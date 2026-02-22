@@ -3,7 +3,7 @@ namespace Elementrify\Base;
 
 use Elementor\Widget_Base;
 
-defined( 'ABSPATH' ) || die( 'No direct access allowed' );
+defined('ABSPATH') || die('No direct access allowed');
 
 /**
  * Base class for Elementrify blocks
@@ -17,8 +17,8 @@ abstract class WidgetBase extends Widget_Base
      */
     public function __construct()
     {
-        add_action( 'init', [ $this, 'register' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+        add_action('init', [$this, 'register']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
     /**
@@ -38,7 +38,17 @@ abstract class WidgetBase extends Widget_Base
      */
     protected function get_category(): array
     {
-        return [ 'elementrify' ];
+        return ['elementrify'];
+    }
+
+    /**
+     * Get the admin dashboard category slug for grouping
+     *
+     * @return string
+     */
+    public function get_admin_category(): string
+    {
+        return 'content';
     }
 
     /**
@@ -70,7 +80,7 @@ abstract class WidgetBase extends Widget_Base
      */
     public function get_keywords(): array
     {
-        return [ $this->get_name(), $this->get_title()  ];
+        return [$this->get_name(), $this->get_title()];
     }
 
     /**
@@ -99,6 +109,12 @@ abstract class WidgetBase extends Widget_Base
      */
     public function render(): void
     {
-        
     }
+
+    /**
+     * Get the brand color
+     *
+     * @return string
+     */
+    abstract public function get_brand_color(): string;
 }

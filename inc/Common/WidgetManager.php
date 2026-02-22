@@ -15,6 +15,25 @@ class WidgetManager
         Button::class
     ];
 
+    protected static $categories = [
+        'content'   => [
+            'title' => 'Content Widgets',
+            'icon'  => 'fa-layer-group'
+        ],
+        'creative'  => [
+            'title' => 'Creative Widgets',
+            'icon'  => 'fa-palette'
+        ],
+        'marketing' => [
+            'title' => 'Marketing Widgets',
+            'icon'  => 'fa-bullhorn'
+        ],
+        'data'      => [
+            'title' => 'Data & Chart Widgets',
+            'icon'  => 'fa-chart-pie'
+        ]
+    ];
+
     public function __construct()
     {
     }
@@ -31,6 +50,11 @@ class WidgetManager
     public function get_widgets(): array
     {
         return self::$widgets;
+    }
+
+    public function get_categories(): array
+    {
+        return self::$categories;
     }
 
     public function register(Widgets_Manager $widgets_manager): void

@@ -1,0 +1,75 @@
+.section {
+  margin-bottom: $space-8;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-4;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-family: $font-sans;
+  font-size: $text-base;
+  font-weight: $font-weight-bold;
+  color: var(--color-text);
+
+  @media (min-width: 768px) {
+    font-size: $text-lg;
+  }
+}
+
+.icon {
+  margin-right: $space-2;
+}
+
+.titleContent .icon {
+  color: $color-brand-blue;
+}
+
+.titleCreative .icon {
+  color: $color-brand-purple;
+}
+
+.titleMarketing .icon {
+  color: $color-success;
+}
+
+.titleData .icon {
+  color: $color-brand-orange;
+}
+
+.toggleAll {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

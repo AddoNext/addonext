@@ -3,13 +3,13 @@ namespace Elementrify\Widgets\Accordion;
 
 use Elementrify\Base\WidgetBase;
 
-defined( 'ABSPATH' ) or exit;
+defined('ABSPATH') or exit;
 
 class Accordion extends WidgetBase
 {
     public function get_category(): array
     {
-        return [ 'elementrify' ];
+        return ['elementrify'];
     }
 
     public function get_icon(): string
@@ -25,5 +25,15 @@ class Accordion extends WidgetBase
     public function get_title(): string
     {
         return 'Accordion';
+    }
+
+    public function get_description(): string
+    {
+        return __('Advanced accordion with multiple items', 'elementrify');
+    }
+
+    public function get_brand_color(): string
+    {
+        return '#2563eb';
     }
 }

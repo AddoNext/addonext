@@ -40,6 +40,8 @@ $color-scrollbar-track: #f9fafb;
 $color-scrollbar-thumb: #d1d5db;
 $color-scrollbar-thumb-hover: #9ca3af;
 
+$color-toggle-inactive: #d1d5db;
+
 :root {
   --color-bg: #{$color-bg};
   --color-surface: #{$color-surface};
@@ -76,6 +78,7 @@ $color-scrollbar-thumb-hover: #9ca3af;
   --color-scrollbar-track: #{$color-scrollbar-track};
   --color-scrollbar-thumb: #{$color-scrollbar-thumb};
   --color-scrollbar-thumb-hover: #{$color-scrollbar-thumb-hover};
+  --color-toggle-inactive: #{$color-toggle-inactive};
 }
 
 [data-theme="dark"] {
@@ -91,4 +94,5 @@ $color-scrollbar-thumb-hover: #9ca3af;
   --color-scrollbar-track: #{$color-dark-800};
   --color-scrollbar-thumb: #{$color-dark-600};
   --color-scrollbar-thumb-hover: #{$color-dark-600};
+  --color-toggle-inactive: #{$color-dark-600};
 }

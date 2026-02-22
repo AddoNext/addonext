@@ -1,12 +1,11 @@
 <?php
-
 namespace Elementrify\Utils;
 
 defined('ABSPATH') or exit;
 
 class OptionsHelper
 {
-    const option_prefix = 'emty_';
+    const option_prefix = 'elementrify_';
 
     public static function get_option(string $key, $default = null)
     {

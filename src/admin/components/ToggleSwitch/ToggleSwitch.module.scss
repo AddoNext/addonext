@@ -10,7 +10,7 @@
   width: 0;
   height: 0;
 
-  &:checked + .track .thumb {
+  &:checked+.track .thumb {
     transform: translateX(16px);
   }
 }
@@ -18,10 +18,14 @@
 .track {
   position: absolute;
   inset: 0;
-  background: $color-brand-blue;
+  background: var(--color-toggle-inactive);
   border-radius: $radius-full;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, box-shadow 0.2s;
+}
+
+.input:checked+.track {
+  background: $color-brand-blue;
 }
 
 .thumb {
