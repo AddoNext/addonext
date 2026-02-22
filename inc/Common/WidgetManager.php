@@ -36,6 +36,26 @@ class WidgetManager
 
     public function __construct()
     {
+        add_action('elementor/elements/categories_registered', [$this, 'register_category']);
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
+    }
+
+    /**
+     * Register the 'elementrify' Elementor widget category
+     *
+     * @param \Elementor\Elements_Manager $elements_manager
+     */
+    public function register_category($elements_manager)
+    {
+        foreach (self::$categories as $slug => $category) {
+            $elements_manager->add_category(
+                $slug,
+                [
+                    'title' => $category['title'],
+                    'icon'  => $category['icon']
+                ]
+            );
+        }
     }
 
     public static function get_active_widgets(): array
@@ -57,7 +77,7 @@ class WidgetManager
         return self::$categories;
     }
 
-    public function register(Widgets_Manager $widgets_manager): void
+    public function register_widgets(Widgets_Manager $widgets_manager): void
     {
         foreach (self::$widgets as $widget) {
             if (class_exists('\Elementor\Plugin') && method_exists(\Elementor\Plugin::instance()->widgets_manager, 'register_widget_type')) {
