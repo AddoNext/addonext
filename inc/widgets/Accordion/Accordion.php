@@ -9,7 +9,7 @@ class Accordion extends WidgetBase
 {
     public function get_category(): array
     {
-        return ['elementrify'];
+        return ['elementrify-content'];
     }
 
     public function get_icon(): string

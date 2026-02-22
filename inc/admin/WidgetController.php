@@ -5,6 +5,7 @@ use WP_REST_Request;
 use WP_REST_Response;
 use Elementrify\Utils\OptionsHelper;
 use Elementrify\Common\WidgetManager;
+use Elementrify\Utils\DataProcessor;
 
 defined('ABSPATH') or exit;
 
@@ -28,10 +29,7 @@ class WidgetController
                 'id'             => $widget_instance->get_name(),
                 'title'          => $widget_instance->get_title(),
                 'icon'           => $widget_instance->get_icon(),
-                'category'       => $widget_instance->get_category(),
-                'admin_category' => method_exists($widget_instance, 'get_admin_category')
-                    ? $widget_instance->get_admin_category()
-                    : 'content',
+                'category'       => DataProcessor::get_category_name($widget_instance->get_category()[0]),
                 'active'         => in_array($widget_instance->get_name(), $active_widgets),
                 'description'    => $widget_instance->get_description(),
                 'brand_color'    => $widget_instance->get_brand_color()

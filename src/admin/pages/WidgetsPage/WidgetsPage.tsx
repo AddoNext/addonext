@@ -66,7 +66,7 @@ const WidgetsPage: React.FC = () => {
   const widgetsByCategory = useMemo(() => {
     const map: Record<string, Widget[]> = {};
     for (const slug of Object.keys(categories)) {
-      map[slug] = filteredWidgets.filter((w) => w.admin_category === slug);
+      map[slug] = filteredWidgets.filter((w) => w.category === slug);
     }
     return map;
   }, [categories, filteredWidgets]);

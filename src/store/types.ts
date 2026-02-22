@@ -2,8 +2,7 @@ export interface Widget {
     id: string;
     title: string;
     icon: string;
-    category: string[];
-    admin_category: string;
+    category: string;
     active: boolean;
     description: string;
     brand_color: string;

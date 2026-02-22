@@ -9,6 +9,7 @@ use Elementrify\Admin\WidgetController;
 use Elementrify\Common\WidgetManager;
 use Elementrify\Widgets\Button\Button;
 use Elementrify\Widgets\Accordion\Accordion;
+use Elementrify\Utils\DataProcessor;
 
 return [
     AdminController::class  => create(AdminController::class),
@@ -16,6 +17,7 @@ return [
     WidgetManager::class => create(WidgetManager::class),
     WidgetController::class    => create(WidgetController::class),
     OptionsHelper::class    => create(OptionsHelper::class),
+    DataProcessor::class    => create(DataProcessor::class),
     Button::class           => create(Button::class),
     Accordion::class        => create(Accordion::class),
     WidgetBase::class       => create(WidgetBase::class)
