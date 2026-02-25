@@ -105,7 +105,7 @@ abstract class WidgetBase extends Widget_Base
      *
      * @return void
      */
-    protected function enqueue_assets(): void
+    public function enqueue_assets(): void
     {
     }
 
