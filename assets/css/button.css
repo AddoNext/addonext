@@ -1,0 +1,60 @@
+.elementrify-button-wrapper {
+  display: block;
+}
+
+.elementor-widget-elementrify-button[class*="align-left"] {
+  text-align: left;
+}
+
+.elementor-widget-elementrify-button[class*="align-center"] {
+  text-align: center;
+}
+
+.elementor-widget-elementrify-button[class*="align-right"] {
+  text-align: right;
+}
+
+.elementor-widget-elementrify-button[class*="align-justify"] .elementrify-button-wrapper {
+  display: flex;
+}
+
+.elementor-widget-elementrify-button[class*="align-justify"] .elementrify-button {
+  flex: 1;
+  width: 100%;
+}
+
+.elementrify-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition-property: color, background, background-color, border-color, box-shadow, transform;
+}
+
+.elementrify-button--primary {
+  border: none;
+}
+
+.elementrify-button--secondary {
+  background-color: transparent;
+}
+
+.elementrify-button__content {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.elementrify-button__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.elementrify-button__icon svg {
+  width: 1em;
+  height: 1em;
+}
