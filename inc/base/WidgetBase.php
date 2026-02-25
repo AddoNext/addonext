@@ -10,15 +10,22 @@ defined('ABSPATH') || die('No direct access allowed');
  */
 abstract class WidgetBase extends Widget_Base
 {
-    /**
-     * Register block and controls
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct($data = [], $args = null)
     {
+        if (is_array($data) && !empty($data) && (!isset($data['settings']) || !is_array($data['settings']))) {
+            $data['settings'] = [];
+        }
+        parent::__construct($data, $args);
         add_action('init', [$this, 'register']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+    }
+
+    protected function init($data): void
+    {
+        if (!isset($data['settings']) || !is_array($data['settings'])) {
+            $data['settings'] = [];
+        }
+        parent::init($data);
     }
 
     /**
