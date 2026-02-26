@@ -16,7 +16,8 @@
 }
 
 .select {
-  width: 100%;
+  width: 100% !important;
+  max-width: unset !important;
   font-family: $font-sans;
   font-size: $text-sm;
   padding: $space-2 $space-4;

@@ -18,6 +18,7 @@
 use Elementrify\Common\WidgetManager;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
+use Elementrify\Admin\SettingsController;
 
 require_once 'vendor/autoload.php';
 
@@ -55,6 +56,7 @@ class Elementrify
         emty_container(AdminController::class);
         emty_container(WidgetManager::class);
         emty_container(WidgetController::class);
+        emty_container(SettingsController::class);
     }
 }
 

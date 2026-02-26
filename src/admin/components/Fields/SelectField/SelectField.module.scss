@@ -1,0 +1,17 @@
+.row {
+  padding: 0;
+  border-bottom: 1px solid var(--color-border) !important;
+
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.label {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin: 0 0 $space-3 0 !important;
+  display: block;
+}

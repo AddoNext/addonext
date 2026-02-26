@@ -1,6 +1,15 @@
 import apiFetch from '@wordpress/api-fetch';
 import { createReduxStore, register } from '@wordpress/data';
-import type { AdminState, Widget, CategoryItem, WidgetsGetResponse, CategoriesGetResponse, WidgetsUpdateResponse } from './types';
+import type {
+    AdminState,
+    Widget,
+    CategoryItem,
+    WidgetsGetResponse,
+    CategoriesGetResponse,
+    WidgetsUpdateResponse,
+    SettingsGetResponse,
+    SettingsSection,
+} from './types';
 
 const STORE_NAME = 'elementrify/admin';
 
@@ -10,6 +19,12 @@ const DEFAULT_STATE: AdminState = {
     isResolving: false,
     categoriesResolving: false,
     error: null,
+    settingsSections: null,
+    settingsValues: {},
+    settingsInitialValues: {},
+    settingsResolving: false,
+    settingsSaving: false,
+    settingsError: null,
 };
 
 const GET_WIDGETS = 'GET_WIDGETS';
@@ -18,6 +33,11 @@ const MERGE_WIDGETS_ACTIVE = 'MERGE_WIDGETS_ACTIVE';
 const SET_RESOLVING = 'SET_RESOLVING';
 const SET_CATEGORIES_RESOLVING = 'SET_CATEGORIES_RESOLVING';
 const SET_ERROR = 'SET_ERROR';
+const SET_SETTINGS_DATA = 'SET_SETTINGS_DATA';
+const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
+const SET_SETTINGS_RESOLVING = 'SET_SETTINGS_RESOLVING';
+const SET_SETTINGS_SAVING = 'SET_SETTINGS_SAVING';
+const SET_SETTINGS_ERROR = 'SET_SETTINGS_ERROR';
 
 const store = createReduxStore(STORE_NAME, {
     initialState: DEFAULT_STATE,
@@ -50,6 +70,30 @@ const store = createReduxStore(STORE_NAME, {
                 return { ...state, categoriesResolving: action.payload as boolean };
             case SET_ERROR:
                 return { ...state, error: action.payload as string | null, isResolving: false };
+            case SET_SETTINGS_DATA: {
+                const { sections, values } = action.payload as { sections: SettingsSection[]; values: Record<string, unknown> };
+                return {
+                    ...state,
+                    settingsSections: sections ?? null,
+                    settingsValues: values ?? {},
+                    settingsInitialValues: values ?? {},
+                    settingsResolving: false,
+                    settingsError: null,
+                };
+            }
+            case SET_SETTINGS_VALUE: {
+                const { key, value } = action.payload as { key: string; value: unknown };
+                return {
+                    ...state,
+                    settingsValues: { ...state.settingsValues, [key]: value },
+                };
+            }
+            case SET_SETTINGS_RESOLVING:
+                return { ...state, settingsResolving: action.payload as boolean };
+            case SET_SETTINGS_SAVING:
+                return { ...state, settingsSaving: action.payload as boolean };
+            case SET_SETTINGS_ERROR:
+                return { ...state, settingsError: action.payload as string | null };
             default:
                 return state;
         }
@@ -70,6 +114,69 @@ const store = createReduxStore(STORE_NAME, {
         },
         setError(error: string | null) {
             return { type: SET_ERROR, payload: error };
+        },
+        setSettingsData(sections: SettingsSection[], values: Record<string, unknown>) {
+            return { type: SET_SETTINGS_DATA, payload: { sections, values } };
+        },
+        setSettingsValue(key: string, value: unknown) {
+            return { type: SET_SETTINGS_VALUE, payload: { key, value } };
+        },
+        setSettingsResolving(resolving: boolean) {
+            return { type: SET_SETTINGS_RESOLVING, payload: resolving };
+        },
+        setSettingsSaving(saving: boolean) {
+            return { type: SET_SETTINGS_SAVING, payload: saving };
+        },
+        setSettingsError(error: string | null) {
+            return { type: SET_SETTINGS_ERROR, payload: error };
+        },
+        fetchSettings() {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_SETTINGS_RESOLVING, payload: true });
+                try {
+                    const res = await apiFetch({ path: '/elementrify/v1/settings' }) as SettingsGetResponse;
+                    if (res?.success && res.sections && res.values) {
+                        dispatch({ type: SET_SETTINGS_DATA, payload: { sections: res.sections, values: res.values } });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_SETTINGS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to fetch settings',
+                    });
+                } finally {
+                    dispatch({ type: SET_SETTINGS_RESOLVING, payload: false });
+                }
+            };
+        },
+        saveSettings(payload: { values: Record<string, unknown>; sections: SettingsSection[] | null }) {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                const { values: settingsValues, sections: settingsSections } = payload;
+                dispatch({ type: SET_SETTINGS_SAVING, payload: true });
+                try {
+                    const res = await apiFetch({
+                        path: '/elementrify/v1/settings',
+                        method: 'POST',
+                        data: { values: settingsValues },
+                    }) as { success?: boolean };
+                    if (res?.success) {
+                        dispatch({
+                            type: SET_SETTINGS_DATA,
+                            payload: {
+                                sections: settingsSections ?? [],
+                                values: settingsValues,
+                            },
+                        });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_SETTINGS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to save settings',
+                    });
+                    throw err;
+                } finally {
+                    dispatch({ type: SET_SETTINGS_SAVING, payload: false });
+                }
+            };
         },
         updateWidgets(widgets: string[]) {
             return ({ dispatch }: { dispatch: (action: unknown) => void }) => {
@@ -114,6 +221,33 @@ const store = createReduxStore(STORE_NAME, {
         },
         getError(state: AdminState) {
             return state.error;
+        },
+        getSettingsSections(state: AdminState) {
+            return state.settingsSections;
+        },
+        getSettingsValues(state: AdminState) {
+            return state.settingsValues;
+        },
+        getSettingsInitialValues(state: AdminState) {
+            return state.settingsInitialValues;
+        },
+        getSettingsResolving(state: AdminState) {
+            return state.settingsResolving;
+        },
+        getSettingsSaving(state: AdminState) {
+            return state.settingsSaving;
+        },
+        getSettingsError(state: AdminState) {
+            return state.settingsError;
+        },
+        getSettingsIsDirty(state: AdminState) {
+            const a = state.settingsValues;
+            const b = state.settingsInitialValues;
+            const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+            for (const key of keys) {
+                if (JSON.stringify(a[key]) !== JSON.stringify(b[key])) return true;
+            }
+            return false;
         },
     },
 

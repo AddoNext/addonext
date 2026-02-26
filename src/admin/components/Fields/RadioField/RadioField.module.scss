@@ -1,0 +1,42 @@
+.row {
+  padding: 0;
+  border-bottom: 1px solid var(--color-border) !important;
+
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.label {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin: 0 0 $space-3 0 !important;
+  display: block;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: $text-sm;
+  color: var(--color-text-secondary);
+
+  input {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: $color-brand-blue;
+  }
+}
+
+.optionLabel {
+  margin-left: $space-3;
+}

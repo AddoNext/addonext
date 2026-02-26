@@ -1,8 +1,257 @@
 .page {
   padding: $space-6 0;
+  background: var(--color-surface);
+
+  h1, h2, h3, h4, h5, h6, p, label {
+    margin: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 3fr;
+    gap: $space-6;
+  }
+}
+
+.sidebar {
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: calc(var(--wp-admin-bar-height, 32px) + var(--header-height, 100px) + 3rem + 1.5rem);
+    align-self: start;
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+.sidebarCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.sidebarHeader {
+  padding: $space-4;
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.08), rgba(147, 51, 234, 0.08));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebarTitle {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.sidebarNav {
+  padding: $space-2;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: 10px $space-3;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  margin-bottom: $space-1;
+  transition: background 0.2s, color 0.2s;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    background: var(--color-muted);
+    color: var(--color-text);
+  }
+
+  &.active {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--color-tab-active);
+    border: none!important;
+  }
+
+  &:active{
+    border: none!important;
+    outline: none!important;
+    box-shadow: none!important;
+  }
+}
+
+.sectionCard {
+  scroll-margin-top: calc(var(--wp-admin-bar-height, 32px) + var(--header-height, 88px) + 3rem + 0.5rem);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $space-4;
+  margin-bottom: $space-6;
+
+  @media (min-width: 640px) {
+    padding: $space-6;
+    margin-bottom: $space-6;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sectionHeader {
+  margin-bottom: $space-6;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-family: $font-sans;
+  font-size: $text-lg;
+  font-weight: $font-weight-bold;
+  color: var(--color-text);
+  margin: 0 0 $space-2 0 !important;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  @media (min-width: 640px) {
+    font-size: $text-xl;
+  }
+}
+
+.sectionDescription {
+  font-size: $text-sm;
+  color: var(--color-text-muted);
+  margin: $space-2 0 0 0;
+}
+
+.fieldsList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  margin-top: 0;
+}
+
+.fieldItem {
+  :global([class*='row']) > :global(label),
+  :global([class*='row']) > :global(h3) {
+    display: block;
+    margin: 0 0 12px 0;
+    font-size: $text-sm;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text);
+  }
+
+  :global([class*='description']) {
+    margin: 12px 0 0 0;
+    font-size: $text-xs;
+    color: var(--color-text-muted);
+  }
+
+  :global([class*='selectWrapper']) {
+    width: 100%;
+  }
+
+  :global(input[type='text']),
+  :global(input[type='password']),
+  :global(select),
+  :global(textarea) {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: $text-sm;
+    font-family: $font-sans;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-lg;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: $color-brand-blue;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+  }
+
+  :global(textarea) {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  :global(select) {
+    appearance: none;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  :global(button[type='button']) {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    font-size: $text-sm;
+    font-family: $font-sans;
+    color: var(--color-text-secondary);
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-lg;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-border);
+    }
+  }
+}
+
+.loading {
+  padding: $space-12;
+  text-align: center;
+  font-size: $text-sm;
+  color: var(--color-text-muted);
 }
 
 .placeholder {
   font-size: $text-sm;
   color: var(--color-text-muted);
+  padding: $space-4;
+  margin: 0;
+}
+
+.sectionIcon {
+  color: $color-brand-blue;
+}
+
+.sectionIconPerformance {
+  color: #ca8a04;
+}
+
+.sectionIconIntegrations {
+  color: #9333ea;
+}
+
+.sectionIconApi {
+  color: #16a34a;
+}
+
+.sectionIconAdvanced {
+  color: #dc2626;
+}
+
+.sectionIconBackup {
+  color: #4f46e5;
 }

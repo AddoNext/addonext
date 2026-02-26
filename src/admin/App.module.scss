@@ -5,6 +5,7 @@
 }
 
 .app {
+    --wp-admin-bar-height: 32px;
     font-family: $font-sans;
     box-sizing: border-box;
     background: var(--color-bg);

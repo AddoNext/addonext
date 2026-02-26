@@ -32,10 +32,54 @@ export interface WidgetsUpdateResponse {
     message: string;
 }
 
+export type SettingsFieldType =
+    | 'toggle'
+    | 'text'
+    | 'select'
+    | 'radio'
+    | 'password'
+    | 'textarea';
+
+export interface SettingsFieldOption {
+    value: string;
+    label: string;
+}
+
+export interface SettingsField {
+    id: string;
+    type: SettingsFieldType;
+    optionKey: string;
+    label: string;
+    description?: string;
+    default?: unknown;
+    options?: SettingsFieldOption[];
+    placeholder?: string;
+}
+
+export interface SettingsSection {
+    id: string;
+    title: string;
+    description?: string;
+    icon: string;
+    fields: SettingsField[];
+}
+
+export interface SettingsGetResponse {
+    success: boolean;
+    sections: SettingsSection[];
+    values: Record<string, unknown>;
+}
+
 export interface AdminState {
     widgets: Widget[];
     categories: Record<string, CategoryItem>;
     isResolving: boolean;
     categoriesResolving: boolean;
     error: string | null;
+    settingsSections: SettingsSection[] | null;
+    settingsValues: Record<string, unknown>;
+    settingsInitialValues: Record<string, unknown>;
+    settingsResolving: boolean;
+    settingsSaving: boolean;
+    settingsError: string | null;
 }
