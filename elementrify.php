@@ -22,6 +22,56 @@ use Elementrify\Admin\SettingsController;
 
 require_once 'vendor/autoload.php';
 
+if ( ! function_exists( 'emt_fs' ) ) {
+    // Create a helper function for easy SDK access.
+    function emt_fs() {
+        global $emt_fs;
+
+        if ( ! isset( $emt_fs ) ) {
+            // Activate multisite network integration.
+            if ( ! defined( 'WP_FS__PRODUCT_19063_MULTISITE' ) ) {
+                define( 'WP_FS__PRODUCT_19063_MULTISITE', true );
+            }
+
+            // Include Freemius SDK.
+            // SDK is auto-loaded through Composer
+
+            $emt_fs = fs_dynamic_init( array(
+                'id'                  => '19063',
+                'slug'                => 'elementrify',
+                'premium_slug'        => 'dragnext-premium',
+                'type'                => 'plugin',
+                'public_key'          => 'pk_213c59173633a027d6e134676b4ba',
+                'is_premium'          => true,
+                'premium_suffix'      => 'Pro',
+                // If your plugin is a serviceware, set this option to false.
+                'has_premium_version' => true,
+                'has_addons'          => false,
+                'has_paid_plans'      => true,
+                'is_org_compliant'    => true,
+                // Automatically removed in the free version. If you're not using the
+                // auto-generated free version, delete this line before uploading to wp.org.
+                'wp_org_gatekeeper'   => 'OA7#BoRiBNqdf52FvzEf!!074aRLPs8fspif$7K1#4u4Csys1fQlCecVcUTOs2mcpeVHi#C2j9d09fOTvbC0HloPT7fFee5WdS3G',
+                'trial'               => array(
+                    'days'               => 3,
+                    'is_require_payment' => true,
+                ),
+                'menu'                => array(
+                    'slug'           => 'elementrify',
+                    'first-path'     => 'admin.php?page=elementrify&tab=setup-wizard',
+                ),
+            ) );
+        }
+
+        return $emt_fs;
+    }
+
+    // Init Freemius.
+    emt_fs();
+    // Signal that SDK was initiated.
+    do_action( 'emt_fs_loaded' );
+}
+
 class Elementrify
 {
     public function __construct()
