@@ -226,6 +226,247 @@ class SettingsController
             'callback'            => [$this, 'rest_save_settings'],
             'permission_callback' => [$this, 'check_permission']
         ]);
+
+        register_rest_route('elementrify/v1', '/backups', [
+            'methods'             => 'GET',
+            'callback'            => [$this, 'rest_backups_list'],
+            'permission_callback' => [$this, 'check_permission'],
+        ]);
+        register_rest_route('elementrify/v1', '/backups/export', [
+            'methods'             => 'POST',
+            'callback'            => [$this, 'rest_backups_export'],
+            'permission_callback' => [$this, 'check_permission'],
+        ]);
+        register_rest_route('elementrify/v1', '/backups/import', [
+            'methods'             => 'POST',
+            'callback'            => [$this, 'rest_backups_import'],
+            'permission_callback' => [$this, 'check_permission'],
+        ]);
+        register_rest_route('elementrify/v1', '/backups/download', [
+            'methods'             => 'GET',
+            'callback'            => [$this, 'rest_backups_download'],
+            'permission_callback' => [$this, 'check_permission'],
+            'args'                => [
+                'file' => [
+                    'required'          => true,
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_file_name',
+                ],
+            ],
+        ]);
+        register_rest_route('elementrify/v1', '/backups', [
+            'methods'             => 'DELETE',
+            'callback'            => [$this, 'rest_backups_delete'],
+            'permission_callback' => [$this, 'check_permission'],
+            'args'                => [
+                'file' => [
+                    'required'          => true,
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_file_name',
+                ],
+            ],
+        ]);
+    }
+
+    /**
+     * Get backup directory
+     *
+     * @return string
+     */
+    private static function get_backup_dir(): string
+    {
+        $dir = WP_CONTENT_DIR . '/elementrify-backups';
+        if (! is_dir($dir)) {
+            wp_mkdir_p($dir);
+        }
+        return $dir;
+    }
+
+    /**
+     * Ensure backup directory exists and is writable
+     *
+     * @return bool
+     */
+    private static function ensure_backup_dir(): bool
+    {
+        $dir = self::get_backup_dir();
+        if (! is_dir($dir) || ! is_writable($dir)) {
+            return false;
+        }
+        $index = $dir . '/index.php';
+        if (! file_exists($index)) {
+            file_put_contents($index, '<?php // Silence is golden.');
+        }
+        return true;
+    }
+
+    /**
+     * List backup files
+     *
+     * @return array
+     */
+    private static function list_backup_files(): array
+    {
+        $dir = self::get_backup_dir();
+        $list = [];
+        if (! is_dir($dir)) {
+            return $list;
+        }
+        $files = glob($dir . '/*.json');
+        if (! $files) {
+            return $list;
+        }
+        foreach ($files as $path) {
+            $name = basename($path);
+            $list[] = [
+                'name' => $name,
+                'date' => date('M j, Y \a\t g:i A', filemtime($path)),
+                'timestamp' => filemtime($path),
+            ];
+        }
+        usort($list, function ($a, $b) {
+            return ($b['timestamp'] ?? 0) - ($a['timestamp'] ?? 0);
+        });
+        return $list;
+    }
+
+    /**
+     * List backup files
+     *
+     * @return WP_REST_Response
+     */
+    public function rest_backups_list(): WP_REST_Response
+    {
+        $backups = self::list_backup_files();
+        return new WP_REST_Response(['success' => true, 'backups' => $backups]);
+    }
+
+    /**
+     * Export a backup file
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_backups_export(WP_REST_Request $request): WP_REST_Response
+    {
+        $body = $request->get_json_params() ?: [];
+        $values = isset($body['values']) && is_array($body['values']) ? $body['values'] : [];
+        $save_to_server = ! empty($body['save_to_server']);
+
+        if (empty($values)) {
+            foreach (self::get_option_keys() as $key) {
+                $default = null;
+                foreach (self::SECTIONS as $section) {
+                    foreach ($section['fields'] as $field) {
+                        if (isset($field['optionKey']) && $field['optionKey'] === $key) {
+                            $default = $field['default'] ?? null;
+                            break 2;
+                        }
+                    }
+                }
+                $values[$key] = OptionsHelper::get_option($key, $default);
+            }
+        }
+
+        $json = wp_json_encode(['elementrify_backup' => true, 'version' => 1, 'values' => $values], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $filename = 'elementrify-backup-' . date('Y-m-d-H-i-s') . '.json';
+
+        if ($save_to_server && self::ensure_backup_dir()) {
+            $dir = self::get_backup_dir();
+            $path = $dir . '/' . $filename;
+            file_put_contents($path, $json);
+        }
+
+        $backups = self::list_backup_files();
+        return new WP_REST_Response([
+            'success' => true,
+            'backup_name' => $filename,
+            'backups' => $backups,
+            'download' => $json,
+        ]);
+    }
+
+    /**
+     * Import a backup file
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_backups_import(WP_REST_Request $request): WP_REST_Response
+    {
+        $keys = self::get_option_keys();
+        $values = [];
+
+        if ($request->get_header('content-type') && strpos($request->get_header('content-type'), 'multipart/form-data') !== false) {
+            $files = $request->get_file_params();
+            if (empty($files['file']) || empty($files['file']['tmp_name'])) {
+                return new WP_REST_Response(['success' => false, 'message' => 'No file uploaded'], 400);
+            }
+            $content = file_get_contents($files['file']['tmp_name']);
+            $data = json_decode($content, true);
+            if (! is_array($data) || empty($data['values'])) {
+                return new WP_REST_Response(['success' => false, 'message' => 'Invalid backup file'], 400);
+            }
+            $values = $data['values'];
+        } else {
+            $body = $request->get_json_params() ?: [];
+            $values = isset($body['values']) && is_array($body['values']) ? $body['values'] : [];
+        }
+
+        foreach ($values as $key => $value) {
+            if (in_array($key, $keys, true)) {
+                OptionsHelper::set_option($key, $value);
+            }
+        }
+
+        return new WP_REST_Response([
+            'success' => true,
+            'values' => $values,
+        ]);
+    }
+
+    /**
+     * Download a backup file
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_backups_download(WP_REST_Request $request): WP_REST_Response
+    {
+        $file = $request->get_param('file');
+        if (! preg_match('/^elementrify-backup-\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.json$/', $file)) {
+            return new WP_REST_Response(['success' => false, 'message' => 'Invalid file name'], 400);
+        }
+        $path = self::get_backup_dir() . '/' . $file;
+        if (! is_file($path) || ! is_readable($path)) {
+            return new WP_REST_Response(['success' => false, 'message' => 'File not found'], 404);
+        }
+        $content = file_get_contents($path);
+        return new WP_REST_Response([
+            'success' => true,
+            'file' => $file,
+            'content' => $content,
+        ]);
+    }
+
+    /**
+     * Delete a backup file
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_backups_delete(WP_REST_Request $request): WP_REST_Response
+    {
+        $file = $request->get_param('file');
+        if (! preg_match('/^elementrify-backup-\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.json$/', $file)) {
+            return new WP_REST_Response(['success' => false, 'message' => 'Invalid file name'], 400);
+        }
+        $path = self::get_backup_dir() . '/' . $file;
+        if (is_file($path)) {
+            unlink($path);
+        }
+        $backups = self::list_backup_files();
+        return new WP_REST_Response(['success' => true, 'backups' => $backups]);
     }
 
     /**

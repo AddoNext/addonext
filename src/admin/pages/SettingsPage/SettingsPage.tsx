@@ -14,6 +14,7 @@ import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContex
 import { STORE_NAME } from "../../../store/admin";
 import type { SettingsSection } from "./fields";
 import { renderField } from "./utils";
+import BackupSection from "./components/BackupSection/BackupSection";
 import styles from "./SettingsPage.module.scss";
 
 type SettingsStoreSelect = {
@@ -160,7 +161,9 @@ const SettingsPage: React.FC = () => {
                   <p className={styles.sectionDescription}>{section.description}</p>
                 )}
               </div>
-              {section.fields.length > 0 ? (
+              {section.id === "backup" ? (
+                <BackupSection />
+              ) : section.fields.length > 0 ? (
                 <div className={styles.fieldsList}>
                   {section.fields.map((field) => (
                     <div key={field.id} className={styles.fieldItem}>

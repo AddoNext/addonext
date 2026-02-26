@@ -1,0 +1,243 @@
+.root {
+  margin: 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-6;
+  margin-bottom: $space-6;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $space-6;
+  text-align: center;
+}
+
+.cardIconExport,
+.cardIconImport {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $space-4;
+}
+
+.cardIconExport {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.cardIconImport {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.cardIconSvg {
+  font-size: 1.5rem;
+}
+
+.cardIconExport .cardIconSvg {
+  color: #2563eb;
+}
+
+.cardIconImport .cardIconSvg {
+  color: #16a34a;
+}
+
+.cardTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin: 0 0 $space-2 0!important;
+}
+
+.cardDesc {
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  margin: 0 0 $space-4 0!important;
+}
+
+.fileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btnExport,
+.btnImport {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: 10px $space-6;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  border: none;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btnExport {
+  background: #2563eb;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: #1d4ed8;
+  }
+}
+
+.btnImport {
+  background: #16a34a;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: #15803d;
+  }
+}
+
+.btnIcon {
+  font-size: $text-sm;
+}
+
+.error {
+  color: var(--color-error, #ef4444);
+  font-size: $text-sm;
+  margin: 0 0 $space-4 0;
+}
+
+.recent {
+  background: var(--color-muted);
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.recentTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin: 0 0 $space-3 0!important;
+}
+
+.recentEmpty {
+  font-size: $text-sm;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.recentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.recentItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-2 $space-3;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-md;
+}
+
+.recentItemInfo {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  min-width: 0;
+}
+
+.recentItemIcon {
+  color: var(--color-text-muted);
+  font-size: $text-base;
+  flex-shrink: 0;
+}
+
+.recentItemName {
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.recentItemDate {
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.recentItemActions {
+  display: flex;
+  gap: $space-2;
+  flex-shrink: 0;
+}
+
+.recentBtnRestore,
+.recentBtnDownload,
+.recentBtnDelete {
+  padding: $space-1 $space-2;
+  font-size: $text-xs;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: $radius-sm;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.recentBtnRestore {
+  color: #16a34a;
+
+  &:hover:not(:disabled) {
+    color: #15803d;
+  }
+}
+
+.recentBtnDownload {
+  color: #2563eb;
+}
+
+.recentBtnDelete {
+  color: #dc2626;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: backupSpin 0.6s linear infinite;
+}
+
+@keyframes backupSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

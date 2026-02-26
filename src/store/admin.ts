@@ -9,6 +9,11 @@ import type {
     WidgetsUpdateResponse,
     SettingsGetResponse,
     SettingsSection,
+    BackupItem,
+    BackupsListResponse,
+    BackupsExportResponse,
+    BackupsImportResponse,
+    BackupsDownloadResponse,
 } from './types';
 
 const STORE_NAME = 'elementrify/admin';
@@ -25,6 +30,12 @@ const DEFAULT_STATE: AdminState = {
     settingsResolving: false,
     settingsSaving: false,
     settingsError: null,
+    backups: [],
+    backupsResolving: false,
+    backupsExporting: false,
+    backupsImporting: false,
+    backupsError: null,
+    restoringBackupFile: null,
 };
 
 const GET_WIDGETS = 'GET_WIDGETS';
@@ -34,10 +45,17 @@ const SET_RESOLVING = 'SET_RESOLVING';
 const SET_CATEGORIES_RESOLVING = 'SET_CATEGORIES_RESOLVING';
 const SET_ERROR = 'SET_ERROR';
 const SET_SETTINGS_DATA = 'SET_SETTINGS_DATA';
+const SET_SETTINGS_VALUES = 'SET_SETTINGS_VALUES';
 const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
 const SET_SETTINGS_RESOLVING = 'SET_SETTINGS_RESOLVING';
 const SET_SETTINGS_SAVING = 'SET_SETTINGS_SAVING';
 const SET_SETTINGS_ERROR = 'SET_SETTINGS_ERROR';
+const SET_BACKUPS = 'SET_BACKUPS';
+const SET_BACKUPS_RESOLVING = 'SET_BACKUPS_RESOLVING';
+const SET_BACKUPS_EXPORTING = 'SET_BACKUPS_EXPORTING';
+const SET_BACKUPS_IMPORTING = 'SET_BACKUPS_IMPORTING';
+const SET_BACKUPS_ERROR = 'SET_BACKUPS_ERROR';
+const SET_RESTORING_BACKUP_FILE = 'SET_RESTORING_BACKUP_FILE';
 
 const store = createReduxStore(STORE_NAME, {
     initialState: DEFAULT_STATE,
@@ -81,6 +99,14 @@ const store = createReduxStore(STORE_NAME, {
                     settingsError: null,
                 };
             }
+            case SET_SETTINGS_VALUES: {
+                const values = action.payload as Record<string, unknown>;
+                return {
+                    ...state,
+                    settingsValues: values ?? {},
+                    settingsInitialValues: values ?? {},
+                };
+            }
             case SET_SETTINGS_VALUE: {
                 const { key, value } = action.payload as { key: string; value: unknown };
                 return {
@@ -94,6 +120,18 @@ const store = createReduxStore(STORE_NAME, {
                 return { ...state, settingsSaving: action.payload as boolean };
             case SET_SETTINGS_ERROR:
                 return { ...state, settingsError: action.payload as string | null };
+            case SET_BACKUPS:
+                return { ...state, backups: (action.payload as BackupItem[]) ?? [], backupsError: null };
+            case SET_BACKUPS_RESOLVING:
+                return { ...state, backupsResolving: action.payload as boolean };
+            case SET_BACKUPS_EXPORTING:
+                return { ...state, backupsExporting: action.payload as boolean };
+            case SET_BACKUPS_IMPORTING:
+                return { ...state, backupsImporting: action.payload as boolean };
+            case SET_BACKUPS_ERROR:
+                return { ...state, backupsError: action.payload as string | null };
+            case SET_RESTORING_BACKUP_FILE:
+                return { ...state, restoringBackupFile: action.payload as string | null };
             default:
                 return state;
         }
@@ -178,6 +216,175 @@ const store = createReduxStore(STORE_NAME, {
                 }
             };
         },
+        setBackups(backups: BackupItem[]) {
+            return { type: SET_BACKUPS, payload: backups };
+        },
+        setBackupsResolving(resolving: boolean) {
+            return { type: SET_BACKUPS_RESOLVING, payload: resolving };
+        },
+        setBackupsExporting(exporting: boolean) {
+            return { type: SET_BACKUPS_EXPORTING, payload: exporting };
+        },
+        setBackupsImporting(importing: boolean) {
+            return { type: SET_BACKUPS_IMPORTING, payload: importing };
+        },
+        setBackupsError(error: string | null) {
+            return { type: SET_BACKUPS_ERROR, payload: error };
+        },
+        fetchBackups() {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_BACKUPS_RESOLVING, payload: true });
+                try {
+                    const res = await apiFetch({ path: '/elementrify/v1/backups' }) as BackupsListResponse;
+                    if (res?.success && res.backups) {
+                        dispatch({ type: SET_BACKUPS, payload: res.backups });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_BACKUPS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to fetch backups',
+                    });
+                } finally {
+                    dispatch({ type: SET_BACKUPS_RESOLVING, payload: false });
+                }
+            };
+        },
+        exportBackup(payload: { values: Record<string, unknown>; saveToServer: boolean }) {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_BACKUPS_EXPORTING, payload: true });
+                try {
+                    const res = await apiFetch({
+                        path: '/elementrify/v1/backups/export',
+                        method: 'POST',
+                        data: { values: payload.values, save_to_server: payload.saveToServer },
+                    }) as BackupsExportResponse;
+                    if (res?.success) {
+                        dispatch({ type: SET_BACKUPS, payload: res.backups ?? [] });
+                        return { success: true as const, download: res.download, backup_name: res.backup_name };
+                    }
+                    return { success: false as const };
+                } catch (err) {
+                    dispatch({
+                        type: SET_BACKUPS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to export',
+                    });
+                    throw err;
+                } finally {
+                    dispatch({ type: SET_BACKUPS_EXPORTING, payload: false });
+                }
+            };
+        },
+        importBackup(payload: { values: Record<string, unknown> } | { file: File }) {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_BACKUPS_IMPORTING, payload: true });
+                try {
+                    if ('file' in payload) {
+                        const formData = new FormData();
+                        formData.append('file', payload.file);
+                        const res = await apiFetch({
+                            path: '/elementrify/v1/backups/import',
+                            method: 'POST',
+                            body: formData,
+                        }) as BackupsImportResponse;
+                        if (res?.success && res.values) {
+                            dispatch({ type: SET_SETTINGS_VALUES, payload: res.values });
+                            return { success: true as const, values: res.values };
+                        }
+                    } else {
+                        const res = await apiFetch({
+                            path: '/elementrify/v1/backups/import',
+                            method: 'POST',
+                            data: { values: payload.values },
+                        }) as BackupsImportResponse;
+                        if (res?.success && res.values) {
+                            dispatch({ type: SET_SETTINGS_VALUES, payload: res.values });
+                            return { success: true as const, values: res.values };
+                        }
+                    }
+                    return { success: false as const };
+                } catch (err) {
+                    dispatch({
+                        type: SET_BACKUPS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to import',
+                    });
+                    throw err;
+                } finally {
+                    dispatch({ type: SET_BACKUPS_IMPORTING, payload: false });
+                }
+            };
+        },
+        deleteBackup(file: string) {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                try {
+                    const res = await apiFetch({
+                        path: `/elementrify/v1/backups?file=${encodeURIComponent(file)}`,
+                        method: 'DELETE',
+                    }) as BackupsListResponse;
+                    if (res?.success && res.backups) {
+                        dispatch({ type: SET_BACKUPS, payload: res.backups });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_BACKUPS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to delete backup',
+                    });
+                    throw err;
+                }
+            };
+        },
+        downloadBackup(file: string) {
+            return async () => {
+                const res = await apiFetch({
+                    path: `/elementrify/v1/backups/download?file=${encodeURIComponent(file)}`,
+                }) as BackupsDownloadResponse;
+                if (res?.success && res.content) {
+                    const blob = new Blob([res.content], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = res.file;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    return { success: true as const };
+                }
+                return { success: false as const };
+            };
+        },
+        restoreBackup(file: string) {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_RESTORING_BACKUP_FILE, payload: file });
+                dispatch({ type: SET_BACKUPS_ERROR, payload: null });
+                try {
+                    const downloadRes = await apiFetch({
+                        path: `/elementrify/v1/backups/download?file=${encodeURIComponent(file)}`,
+                    }) as BackupsDownloadResponse;
+                    if (!downloadRes?.success || !downloadRes.content) {
+                        dispatch({
+                            type: SET_BACKUPS_ERROR,
+                            payload: 'Failed to load backup file',
+                        });
+                        return;
+                    }
+                    const data = JSON.parse(downloadRes.content) as { values?: Record<string, unknown> };
+                    const values = data?.values && typeof data.values === 'object' ? data.values : {};
+                    const importRes = await apiFetch({
+                        path: '/elementrify/v1/backups/import',
+                        method: 'POST',
+                        data: { values },
+                    }) as BackupsImportResponse;
+                    if (importRes?.success && importRes.values) {
+                        dispatch({ type: SET_SETTINGS_VALUES, payload: importRes.values });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_BACKUPS_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to restore backup',
+                    });
+                } finally {
+                    dispatch({ type: SET_RESTORING_BACKUP_FILE, payload: null });
+                }
+            };
+        },
         updateWidgets(widgets: string[]) {
             return ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_RESOLVING, payload: true });
@@ -248,6 +455,24 @@ const store = createReduxStore(STORE_NAME, {
                 if (JSON.stringify(a[key]) !== JSON.stringify(b[key])) return true;
             }
             return false;
+        },
+        getBackups(state: AdminState) {
+            return state.backups;
+        },
+        getBackupsResolving(state: AdminState) {
+            return state.backupsResolving;
+        },
+        getBackupsExporting(state: AdminState) {
+            return state.backupsExporting;
+        },
+        getBackupsImporting(state: AdminState) {
+            return state.backupsImporting;
+        },
+        getBackupsError(state: AdminState) {
+            return state.backupsError;
+        },
+        getRestoringBackupFile(state: AdminState) {
+            return state.restoringBackupFile;
         },
     },
 

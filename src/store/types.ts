@@ -70,6 +70,35 @@ export interface SettingsGetResponse {
     values: Record<string, unknown>;
 }
 
+export interface BackupItem {
+    name: string;
+    date: string;
+    timestamp: number;
+}
+
+export interface BackupsListResponse {
+    success: boolean;
+    backups: BackupItem[];
+}
+
+export interface BackupsExportResponse {
+    success: boolean;
+    backup_name: string;
+    backups: BackupItem[];
+    download: string;
+}
+
+export interface BackupsImportResponse {
+    success: boolean;
+    values: Record<string, unknown>;
+}
+
+export interface BackupsDownloadResponse {
+    success: boolean;
+    file: string;
+    content: string;
+}
+
 export interface AdminState {
     widgets: Widget[];
     categories: Record<string, CategoryItem>;
@@ -82,4 +111,10 @@ export interface AdminState {
     settingsResolving: boolean;
     settingsSaving: boolean;
     settingsError: string | null;
+    backups: BackupItem[];
+    backupsResolving: boolean;
+    backupsExporting: boolean;
+    backupsImporting: boolean;
+    backupsError: string | null;
+    restoringBackupFile: string | null;
 }
