@@ -12,7 +12,8 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "php": ">=7.4",
-        "php-di/php-di": "^7.0"
+        "php-di/php-di": "^7.0",
+        "freemius/wordpress-sdk": "^2.13"
     },
     "autoload": {
         "psr-4": {
