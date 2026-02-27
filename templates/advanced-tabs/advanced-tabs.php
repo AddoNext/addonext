@@ -8,12 +8,24 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-advanced-tabs');
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <div class="elementrify-advanced-tabs__headers">
         <?php foreach ($tabs as $index => $tab) : ?>
-            <div class="elementrify-advanced-tabs__header<?php echo $index === 0 ? ' is-active' : ''; ?>" data-tab="<?php echo esc_attr($index); ?>"><?php echo esc_html($tab['tab_title'] ?? ''); ?></div>
+            <?php
+            $header_class = 'elementrify-advanced-tabs__header' . ($index === 0 ? ' is-active' : '');
+            $this->add_render_attribute('tabs.' . $index . '.tab_title', 'class', $header_class);
+            $this->add_render_attribute('tabs.' . $index . '.tab_title', 'data-tab', $index);
+            $this->add_inline_editing_attributes('tabs.' . $index . '.tab_title', 'none');
+            ?>
+            <div <?php $this->print_render_attribute_string('tabs.' . $index . '.tab_title'); ?>><?php echo esc_html($tab['tab_title'] ?? ''); ?></div>
         <?php endforeach; ?>
     </div>
     <div class="elementrify-advanced-tabs__panels">
         <?php foreach ($tabs as $index => $tab) : ?>
-            <div class="elementrify-advanced-tabs__panel<?php echo $index === 0 ? ' is-active' : ''; ?>" data-tab="<?php echo esc_attr($index); ?>"><?php echo wp_kses_post($tab['tab_content'] ?? ''); ?></div>
+            <?php
+            $panel_class = 'elementrify-advanced-tabs__panel' . ($index === 0 ? ' is-active' : '');
+            $this->add_render_attribute('tabs.' . $index . '.tab_content', 'class', $panel_class);
+            $this->add_render_attribute('tabs.' . $index . '.tab_content', 'data-tab', $index);
+            $this->add_inline_editing_attributes('tabs.' . $index . '.tab_content', 'advanced');
+            ?>
+            <div <?php $this->print_render_attribute_string('tabs.' . $index . '.tab_content'); ?>><?php echo wp_kses_post($tab['tab_content'] ?? ''); ?></div>
         <?php endforeach; ?>
     </div>
 </div>
