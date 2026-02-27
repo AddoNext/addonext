@@ -41,6 +41,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-text-editor',
             'file'   => 'assets/css/text-editor.css'
+        ],
+        [
+            'handle' => 'elementrify-video-player',
+            'file'   => 'assets/css/video-player.css'
         ]
     ];
 
@@ -58,6 +62,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-advanced-google-map',
             'file'   => 'assets/js/advanced-google-map.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-video-player',
+            'file'   => 'assets/js/video-player.js',
             'footer' => true
         ]
     ];
