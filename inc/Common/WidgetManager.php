@@ -74,10 +74,10 @@ class WidgetManager
 
     public static function get_active_widgets(): array
     {
-        $widgets = OptionsHelper::get_option('elementrify_active_widgets', []);
+        $widgets = OptionsHelper::get_option('active_widgets', []);
 
         return array_filter(self::$widgets, function ($widget) use ($widgets) {
-            return in_array($widget, $widgets);
+            return in_array(emty_container($widget)->get_name(), $widgets);
         });
     }
 
@@ -93,7 +93,8 @@ class WidgetManager
 
     public function register_widgets(Widgets_Manager $widgets_manager): void
     {
-        foreach (self::$widgets as $widget) {
+        $widgets = self::get_active_widgets();
+        foreach ($widgets as $widget) {
             if (class_exists('\Elementor\Plugin') && method_exists(\Elementor\Plugin::instance()->widgets_manager, 'register_widget_type')) {
                 $widgets_manager->register(new $widget());
             }
