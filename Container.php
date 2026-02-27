@@ -8,6 +8,7 @@ use Elementrify\Utils\OptionsHelper;
 use Elementrify\Common\WidgetManager;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
+use Elementrify\Admin\WidgetsAssetController;
 use Elementrify\Admin\SettingsController;
 use Elementrify\Widgets\Accordion\Accordion;
 use Elementrify\Widgets\AddToCart\AddToCart;
@@ -90,11 +91,12 @@ use Elementrify\Widgets\TwitterFeed\TwitterFeed;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
 
 return [
-    AdminController::class    => create(AdminController::class),
-    AdminAssets::class        => create(AdminAssets::class),
-    WidgetManager::class      => create(WidgetManager::class),
-    WidgetController::class   => create(WidgetController::class),
-    SettingsController::class => create(SettingsController::class),
+    AdminController::class         => create(AdminController::class),
+    AdminAssets::class             => create(AdminAssets::class),
+    WidgetManager::class           => create(WidgetManager::class),
+    WidgetController::class        => create(WidgetController::class),
+    WidgetsAssetController::class  => create(WidgetsAssetController::class),
+    SettingsController::class      => create(SettingsController::class),
     OptionsHelper::class      => create(OptionsHelper::class),
     DataProcessor::class      => create(DataProcessor::class),
     WidgetBase::class         => create(WidgetBase::class),
