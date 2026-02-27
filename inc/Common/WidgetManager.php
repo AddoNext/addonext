@@ -8,13 +8,29 @@ use Elementrify\Widgets\Accordion\Accordion;
 
 defined('ABSPATH') or exit;
 
+/**
+ * WidgetManager class
+ *
+ * @package Elementrify
+ * @since 1.0.0
+ */
 class WidgetManager
 {
+    /**
+     * The list of widgets to register
+     *
+     * @var array
+     */
     protected static $widgets = [
         Accordion::class,
         Button::class
     ];
 
+    /**
+     * The list of categories to register
+     *
+     * @var array
+     */
     protected static $categories = [
         'content'   => [
             'title' => 'Content Widgets',
@@ -34,6 +50,9 @@ class WidgetManager
         ]
     ];
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
@@ -72,6 +91,11 @@ class WidgetManager
         );
     }
 
+    /**
+     * Get the active widgets
+     *
+     * @return array
+     */
     public static function get_active_widgets(): array
     {
         $widgets = OptionsHelper::get_option('active_widgets', []);
@@ -81,16 +105,31 @@ class WidgetManager
         });
     }
 
+    /**
+     * Get the widgets
+     *
+     * @return array
+     */
     public function get_widgets(): array
     {
         return self::$widgets;
     }
 
+    /**
+     * Get the categories
+     *
+     * @return array
+     */
     public function get_categories(): array
     {
         return self::$categories;
     }
 
+    /**
+     * Register the widgets
+     *
+     * @param \Elementor\Widgets_Manager $widgets_manager
+     */
     public function register_widgets(Widgets_Manager $widgets_manager): void
     {
         $widgets = self::get_active_widgets();
