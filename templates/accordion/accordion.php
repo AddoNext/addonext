@@ -50,32 +50,3 @@ $this->add_render_attribute('wrapper', 'data-allow-multiple', $allow_multiple ? 
     </div>
     <?php endforeach; ?>
 </div>
-<script>
-(function () {
-  var root = document.getElementById('<?php echo esc_js($accordion_id); ?>');
-  if (!root) return;
-  function handleClick(e) {
-    var header = e.target.closest('.elementrify-accordion__header');
-    if (!header) return;
-    e.preventDefault();
-    e.stopPropagation();
-    var item = header.closest('.elementrify-accordion__item');
-    if (!item) return;
-    var allowMultiple = root.getAttribute('data-allow-multiple') === '1';
-    var isOpen = item.classList.contains('is-open');
-    if (!allowMultiple) {
-      var items = root.querySelectorAll('.elementrify-accordion__item');
-      for (var i = 0; i < items.length; i++) items[i].classList.remove('is-open');
-    }
-    if (isOpen) item.classList.remove('is-open');
-    else item.classList.add('is-open');
-  }
-  root.addEventListener('click', handleClick);
-  root.addEventListener('keydown', function (e) {
-    if (e.target.closest('.elementrify-accordion__header') && (e.key === 'Enter' || e.key === ' ')) {
-      e.preventDefault();
-      e.target.closest('.elementrify-accordion__header').click();
-    }
-  });
-})();
-</script>

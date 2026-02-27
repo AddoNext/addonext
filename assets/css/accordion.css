@@ -2,14 +2,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .elementrify-accordion__item {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -22,20 +22,27 @@
   align-items: center;
   width: 100%;
   margin: 0;
-  padding: 20px 24px;
+  padding: 24px;
   cursor: pointer;
   border: none;
   outline: none;
   background-color: #ffffff;
   text-align: left;
   font: inherit;
-  color: #1a202c;
+  color: #111827;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  transition: padding-bottom 0.3s ease-in-out;
 }
 
 .elementrify-accordion__header:focus {
   outline: none;
+}
+
+.elementrify-accordion__item.is-open .elementrify-accordion__header {
+  padding-bottom: 8px!important;
 }
 
 .elementrify-accordion--icon-right .elementrify-accordion__header {
@@ -49,8 +56,10 @@
 .elementrify-accordion__title {
   flex: 1;
   font-size: 18px;
-  font-weight: 700;
-  color: #1a202c;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  color: #111827;
 }
 
 .elementrify-accordion__icon {
@@ -58,12 +67,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #a0aec0;
+  color: #6b7280;
 }
 
 .elementrify-accordion__icon svg {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .elementrify-accordion__icon--open {
@@ -83,14 +92,17 @@
 }
 
 .elementrify-accordion__content {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
   padding: 0 24px 24px;
   border: none;
   background-color: #ffffff;
-  color: #4a5568;
-  font-size: 15px;
+  color: #4b5563;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
 }
 
 .elementrify-accordion__content p:first-child {
@@ -102,10 +114,15 @@
 }
 
 .elementrify-accordion__item.is-open .elementrify-accordion__content {
-  display: block;
+  max-height: 2000px;
   padding-top: 8px;
 }
 
 .elementrify-accordion__item:not(.is-open) .elementrify-accordion__content {
-  display: none;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
 }

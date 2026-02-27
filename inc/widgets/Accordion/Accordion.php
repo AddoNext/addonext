@@ -238,7 +238,7 @@ class Accordion extends WidgetBase
             [
                 'label'     => __('Border color', 'elementrify'),
                 'type'      => Controls_Manager::COLOR,
-                'default'   => '#e2e8f0',
+                'default'   => '#e5e7eb',
                 'selectors' => [
                     '{{WRAPPER}} .elementrify-accordion__item' => 'border-color: {{VALUE}};',
                 ],
@@ -316,7 +316,7 @@ class Accordion extends WidgetBase
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default'    => [
-                    'top' => '14', 'right' => '16', 'bottom' => '14', 'left' => '16',
+                    'top' => '24', 'right' => '24', 'bottom' => '24', 'left' => '24',
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
@@ -406,7 +406,7 @@ class Accordion extends WidgetBase
             [
                 'label'     => __('Text color', 'elementrify'),
                 'type'      => Controls_Manager::COLOR,
-                'default'   => '#374151',
+                'default'   => '#4b5563',
                 'selectors' => [
                     '{{WRAPPER}} .elementrify-accordion__content' => 'color: {{VALUE}};',
                 ],
@@ -430,7 +430,7 @@ class Accordion extends WidgetBase
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default'    => [
-                    'top' => '4', 'right' => '16', 'bottom' => '16', 'left' => '16',
+                    'top' => '0', 'right' => '24', 'bottom' => '24', 'left' => '24',
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
