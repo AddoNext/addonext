@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faUpload, faFileArchive, faTrash, faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import { useConfirm } from "../../../../contexts/ConfirmContext/ConfirmContext";
 import { STORE_NAME } from "../../../../../store/admin";
 import styles from "./BackupSection.module.scss";
 
@@ -26,6 +27,7 @@ const BackupSection: React.FC = () => {
   const restoringFile = useSelect((select) => (select(STORE_NAME) as StoreSelect).getRestoringBackupFile(), []);
   const values = useSelect((select) => (select(STORE_NAME) as StoreSelect).getSettingsValues(), []);
 
+  const { confirm } = useConfirm();
   const {
     fetchBackups,
     exportBackup,
@@ -164,7 +166,15 @@ const BackupSection: React.FC = () => {
                   <button
                     type="button"
                     className={styles.recentBtnDelete}
-                    onClick={() => deleteBackup(b.name)}
+                    onClick={() =>
+                      confirm({
+                        title: "Delete Backup?",
+                        message:
+                          "This action will permanently delete the selected backup. This cannot be undone.",
+                        confirmLabel: "Delete",
+                        onConfirm: () => deleteBackup(b.name),
+                      })
+                    }
                     aria-label="Delete"
                   >
                     <FontAwesomeIcon icon={faTrash} />

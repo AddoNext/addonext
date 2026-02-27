@@ -10,6 +10,7 @@ import LicensePage from "./pages/LicensePage/LicensePage";
 import { WidgetsStateProvider } from "./contexts/WidgetsStateContext/WidgetsStateContext";
 import { ScreenSaveProvider } from "./contexts/ScreenSaveContext/ScreenSaveContext";
 import { ToastProvider } from "./contexts/ToastContext/ToastContext";
+import { ConfirmProvider } from "./contexts/ConfirmContext/ConfirmContext";
 import { STORE_NAME } from "../store/admin";
 import styles from "./App.module.scss";
 
@@ -64,16 +65,18 @@ export const App = () => {
   return (
     <div className={styles.app} data-theme={theme}>
       <ToastProvider>
-        <ScreenSaveProvider defaultSlug={DEFAULT_TAB_SLUG}>
-          <WidgetsStateProvider>
-            <Header
-              theme={theme}
-              onThemeToggle={handleThemeToggle}
-              onExportSettings={handleExportSettings}
-            />
-            <Tab tabs={tabs} />
-          </WidgetsStateProvider>
-        </ScreenSaveProvider>
+        <ConfirmProvider>
+          <ScreenSaveProvider defaultSlug={DEFAULT_TAB_SLUG}>
+            <WidgetsStateProvider>
+              <Header
+                theme={theme}
+                onThemeToggle={handleThemeToggle}
+                onExportSettings={handleExportSettings}
+              />
+              <Tab tabs={tabs} />
+            </WidgetsStateProvider>
+          </ScreenSaveProvider>
+        </ConfirmProvider>
       </ToastProvider>
     </div>
   );
