@@ -99,6 +99,50 @@ export interface BackupsDownloadResponse {
     content: string;
 }
 
+export interface LicenseData {
+    is_active: boolean;
+    status_label: string;
+    plan_name: string;
+    plan_title: string;
+    sites_label: string;
+    expires_at: string | null;
+    expires_label: string;
+    time_left_label: string;
+    support_label: string;
+    support_sublabel: string;
+    license_key_masked: string;
+    license_id: string;
+    activation_date: string;
+    sites_used: number;
+    sites_quota: number | null;
+    version: string;
+    email: string;
+    customer_id: string;
+    purchase_date: string;
+    auto_renewal: boolean;
+    upgrade_url: string;
+    account_url: string;
+    support_url: string;
+    docs_url: string;
+}
+
+export interface LicenseGetResponse {
+    success: boolean;
+    data?: LicenseData;
+}
+
+export interface LicenseActivateResponse {
+    success: boolean;
+    message?: string;
+    data?: LicenseData;
+}
+
+export interface LicenseDeactivateResponse {
+    success: boolean;
+    message?: string;
+    data?: LicenseData;
+}
+
 export interface AdminState {
     widgets: Widget[];
     categories: Record<string, CategoryItem>;
@@ -117,4 +161,10 @@ export interface AdminState {
     backupsImporting: boolean;
     backupsError: string | null;
     restoringBackupFile: string | null;
+    licenseData: LicenseData | null;
+    licenseResolving: boolean;
+    licenseError: string | null;
+    licenseActivating: boolean;
+    licenseDeactivating: boolean;
+    licenseChecking: boolean;
 }

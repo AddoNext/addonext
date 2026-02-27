@@ -14,6 +14,10 @@ import type {
     BackupsExportResponse,
     BackupsImportResponse,
     BackupsDownloadResponse,
+    LicenseData,
+    LicenseGetResponse,
+    LicenseActivateResponse,
+    LicenseDeactivateResponse,
 } from './types';
 
 const STORE_NAME = 'elementrify/admin';
@@ -36,6 +40,12 @@ const DEFAULT_STATE: AdminState = {
     backupsImporting: false,
     backupsError: null,
     restoringBackupFile: null,
+    licenseData: null,
+    licenseResolving: false,
+    licenseError: null,
+    licenseActivating: false,
+    licenseDeactivating: false,
+    licenseChecking: false,
 };
 
 const GET_WIDGETS = 'GET_WIDGETS';
@@ -56,6 +66,12 @@ const SET_BACKUPS_EXPORTING = 'SET_BACKUPS_EXPORTING';
 const SET_BACKUPS_IMPORTING = 'SET_BACKUPS_IMPORTING';
 const SET_BACKUPS_ERROR = 'SET_BACKUPS_ERROR';
 const SET_RESTORING_BACKUP_FILE = 'SET_RESTORING_BACKUP_FILE';
+const SET_LICENSE_DATA = 'SET_LICENSE_DATA';
+const SET_LICENSE_RESOLVING = 'SET_LICENSE_RESOLVING';
+const SET_LICENSE_ERROR = 'SET_LICENSE_ERROR';
+const SET_LICENSE_ACTIVATING = 'SET_LICENSE_ACTIVATING';
+const SET_LICENSE_DEACTIVATING = 'SET_LICENSE_DEACTIVATING';
+const SET_LICENSE_CHECKING = 'SET_LICENSE_CHECKING';
 
 const store = createReduxStore(STORE_NAME, {
     initialState: DEFAULT_STATE,
@@ -132,6 +148,23 @@ const store = createReduxStore(STORE_NAME, {
                 return { ...state, backupsError: action.payload as string | null };
             case SET_RESTORING_BACKUP_FILE:
                 return { ...state, restoringBackupFile: action.payload as string | null };
+            case SET_LICENSE_DATA:
+                return {
+                    ...state,
+                    licenseData: action.payload as LicenseData | null,
+                    licenseResolving: false,
+                    licenseError: null,
+                };
+            case SET_LICENSE_RESOLVING:
+                return { ...state, licenseResolving: action.payload as boolean };
+            case SET_LICENSE_ERROR:
+                return { ...state, licenseError: action.payload as string | null };
+            case SET_LICENSE_ACTIVATING:
+                return { ...state, licenseActivating: action.payload as boolean };
+            case SET_LICENSE_DEACTIVATING:
+                return { ...state, licenseDeactivating: action.payload as boolean };
+            case SET_LICENSE_CHECKING:
+                return { ...state, licenseChecking: action.payload as boolean };
             default:
                 return state;
         }
@@ -385,6 +418,96 @@ const store = createReduxStore(STORE_NAME, {
                 }
             };
         },
+        fetchLicense() {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_LICENSE_RESOLVING, payload: true });
+                try {
+                    const res = await apiFetch({ path: '/elementrify/v1/license' }) as LicenseGetResponse;
+                    if (res?.success && res.data) {
+                        dispatch({ type: SET_LICENSE_DATA, payload: res.data });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_LICENSE_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to fetch license',
+                    });
+                } finally {
+                    dispatch({ type: SET_LICENSE_RESOLVING, payload: false });
+                }
+            };
+        },
+        activateLicense(licenseKey: string) {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_LICENSE_ACTIVATING, payload: true });
+                dispatch({ type: SET_LICENSE_ERROR, payload: null });
+                try {
+                    const res = await apiFetch({
+                        path: '/elementrify/v1/license/activate',
+                        method: 'POST',
+                        data: { license_key: licenseKey },
+                    }) as LicenseActivateResponse;
+                    if (res?.success && res.data) {
+                        dispatch({ type: SET_LICENSE_DATA, payload: res.data });
+                        return { success: true as const };
+                    }
+                    const message = res?.message ?? 'Activation failed';
+                    dispatch({ type: SET_LICENSE_ERROR, payload: message });
+                    return { success: false as const, message };
+                } catch (err) {
+                    const message = (err as { message?: string })?.message ?? 'Failed to activate license';
+                    dispatch({ type: SET_LICENSE_ERROR, payload: message });
+                    throw err;
+                } finally {
+                    dispatch({ type: SET_LICENSE_ACTIVATING, payload: false });
+                }
+            };
+        },
+        deactivateLicense() {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_LICENSE_DEACTIVATING, payload: true });
+                dispatch({ type: SET_LICENSE_ERROR, payload: null });
+                try {
+                    const res = await apiFetch({
+                        path: '/elementrify/v1/license/deactivate',
+                        method: 'POST',
+                    }) as LicenseDeactivateResponse;
+                    if (res?.success && res.data) {
+                        dispatch({ type: SET_LICENSE_DATA, payload: res.data });
+                        return { success: true as const };
+                    }
+                    const message = res?.message ?? 'Deactivation failed';
+                    dispatch({ type: SET_LICENSE_ERROR, payload: message });
+                    return { success: false as const, message };
+                } catch (err) {
+                    const message = (err as { message?: string })?.message ?? 'Failed to deactivate license';
+                    dispatch({ type: SET_LICENSE_ERROR, payload: message });
+                    throw err;
+                } finally {
+                    dispatch({ type: SET_LICENSE_DEACTIVATING, payload: false });
+                }
+            };
+        },
+        checkLicenseStatus() {
+            return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
+                dispatch({ type: SET_LICENSE_CHECKING, payload: true });
+                try {
+                    const res = await apiFetch({
+                        path: '/elementrify/v1/license/check',
+                        method: 'POST',
+                    }) as LicenseGetResponse;
+                    if (res?.success && res.data) {
+                        dispatch({ type: SET_LICENSE_DATA, payload: res.data });
+                    }
+                } catch (err) {
+                    dispatch({
+                        type: SET_LICENSE_ERROR,
+                        payload: (err as { message?: string })?.message ?? 'Failed to check license',
+                    });
+                } finally {
+                    dispatch({ type: SET_LICENSE_CHECKING, payload: false });
+                }
+            };
+        },
         updateWidgets(widgets: string[]) {
             return ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_RESOLVING, payload: true });
@@ -473,6 +596,24 @@ const store = createReduxStore(STORE_NAME, {
         },
         getRestoringBackupFile(state: AdminState) {
             return state.restoringBackupFile;
+        },
+        getLicenseData(state: AdminState) {
+            return state.licenseData;
+        },
+        getLicenseResolving(state: AdminState) {
+            return state.licenseResolving;
+        },
+        getLicenseError(state: AdminState) {
+            return state.licenseError;
+        },
+        getLicenseActivating(state: AdminState) {
+            return state.licenseActivating;
+        },
+        getLicenseDeactivating(state: AdminState) {
+            return state.licenseDeactivating;
+        },
+        getLicenseChecking(state: AdminState) {
+            return state.licenseChecking;
         },
     },
 

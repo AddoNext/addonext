@@ -14,9 +14,15 @@
     * {
         box-sizing: border-box;
     }
+}
 
-    h1, h2, h3, h4, h5, h6, p {
-        margin: 0;
-        padding: 0;
-    }
+:where(.app) h1,
+:where(.app) h2,
+:where(.app) h3,
+:where(.app) h4,
+:where(.app) h5,
+:where(.app) h6,
+:where(.app) p {
+    margin: 0;
+    padding: 0;
 }

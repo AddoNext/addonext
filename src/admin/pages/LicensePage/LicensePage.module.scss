@@ -1,8 +1,642 @@
 .page {
-  padding: $space-6 0;
+  padding: $space-4;
+  background: var(--color-surface);
+  max-width: 896px;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    padding-left: $space-6;
+    padding-right: $space-6;
+  }
+
+  @media (min-width: 1024px) {
+    padding: $space-6 $space-8;
+  }
 }
 
-.placeholder {
+.section {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $space-4;
+  margin-bottom: $space-4;
+
+  @media (min-width: 640px) {
+    padding: $space-6;
+    margin-bottom: $space-6;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-bottom: $space-6;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.sectionTitleRow {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.sectionTitleBlock {
+  margin-bottom: $space-6;
+}
+
+.sectionTitle {
+  font-size: $text-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text);
+}
+
+.sectionTitleLarge {
+  font-size: $text-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text);
+
+  @media (min-width: 640px) {
+    font-size: $text-2xl;
+  }
+}
+
+.sectionSubtitle {
   font-size: $text-sm;
   color: var(--color-text-muted);
+  margin-top: $space-1;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-lg;
+  background: #ecfdf5;
+  color: #047857;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+}
+
+.statusPillExpired {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.statusPillInactive {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.statusDot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-full;
+  background: #10b981;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+  margin-bottom: $space-6;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-6;
+  }
+}
+
+.cardGreen {
+  background: linear-gradient(to bottom right, #ecfdf5, #d1fae5);
+  border: 1px solid #a7f3d0;
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.cardBlue {
+  background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+  border: 1px solid #bfdbfe;
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.cardPurple {
+  background: linear-gradient(to bottom right, #faf5ff, #fce7f3);
+  border: 1px solid #e9d5ff;
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-3;
+}
+
+.cardTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: #065f46;
+}
+
+.cardTitleBlue {
+  color: #1e3a8a;
+}
+
+.cardTitlePurple {
+  color: #581c87;
+}
+
+.cardValue {
+  font-size: $text-lg;
+  font-weight: $font-weight-bold;
+  color: #047857;
+}
+
+.cardValueBlue {
+  color: #1d4ed8;
+}
+
+.cardValuePurple {
+  color: #7e22ce;
+}
+
+.cardSublabel {
+  font-size: $text-xs;
+  color: #059669;
+  margin-top: $space-1;
+}
+
+.cardSublabelBlue {
+  color: #2563eb;
+  margin-top: $space-1;
+}
+
+.cardSublabelPurple {
+  color: #a855f7;
+  margin-top: $space-1;
+}
+
+.licenseKeyBlock {
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.licenseKeyRow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $space-4;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.licenseKeyLabel {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin-bottom: $space-1;
+}
+
+.licenseKeyInputGroup {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  flex: 1;
+  min-width: 0;
+}
+
+.licenseKeyCode {
+  background: var(--color-bg);
+  padding: $space-2 $space-3;
+  border: 1px solid var(--color-border);
+  border-radius: $radius-md;
+  font-size: $text-xs;
+  font-family: ui-monospace, monospace;
+  color: var(--color-text);
+  flex: 1;
+  max-width: 28rem;
+}
+
+.licenseKeyActions {
+  display: flex;
+  gap: $space-2;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: auto;
+  }
+}
+
+.btnCopy {
+  padding: $space-2 $space-3;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $text-xs;
+  cursor: pointer;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+}
+
+.btnSecondary {
+  padding: $space-2 $space-4;
+  background: var(--color-muted);
+  color: var(--color-text);
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-border);
+  }
+}
+
+.btnDanger {
+  padding: $space-2 $space-4;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+
+  &:hover {
+    background: #fecaca;
+  }
+}
+
+.activationSection .sectionTitleRow :global(.fa-key),
+.activationIcon {
+  color: #2563eb;
+  font-size: $text-xl;
+}
+
+.activationForm {
+  margin-top: 0;
+}
+
+.activationLabel {
+  display: block;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin-bottom: $space-2;
+}
+
+.activationRow {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+.activationInput {
+  flex: 1;
+  min-width: 200px!important;
+  padding: $space-3 $space-4!important;
+  border: 1px solid var(--color-border)!important;
+  border-radius: $radius-lg!important;
+  font-size: $text-sm!important;
+  font-family: ui-monospace, monospace!important;
+
+  &:focus {
+    outline: none!important;
+    box-shadow: 0 0 0 2px #2563eb!important;
+  }
+}
+
+.btnActivate {
+  padding: $space-3 $space-6;
+  background: linear-gradient(to right, #059669, #10b981);
+  color: #fff;
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: linear-gradient(to right, #047857, #0d9668);
+  }
+}
+
+.activationHint {
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  margin-top: $space-2;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.featureCard {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-4;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: $radius-lg;
+}
+
+.featureCheck {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-full;
+  background: #10b981;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+.featureTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: #065f46;
+}
+
+.featureDesc {
+  font-size: $text-xs;
+  color: #047857;
+  margin-top: $space-1;
+}
+
+.upgradeSection {
+  background: linear-gradient(to right, #9333ea, #ec4899);
+  border: none;
+  color: #fff;
+  padding: $space-4;
+
+  @media (min-width: 640px) {
+    padding: $space-6;
+  }
+}
+
+.upgradeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-4;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.upgradeContent {
+  flex: 1;
+}
+
+.upgradeTitle {
+  font-size: $text-xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $space-2;
+  color: #fff;
+}
+
+.upgradeSubtitle {
+  font-size: $text-sm;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: $space-4;
+}
+
+.upgradePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.upgradePill {
+  padding: $space-1 $space-3;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  color: #fff;
+}
+
+.upgradeActions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    width: auto;
+  }
+
+  @media (min-width: 768px) {
+    flex-shrink: 0;
+  }
+}
+
+.btnUpgradeWhite {
+  padding: $space-3 $space-6;
+  background: #fff;
+  color: #9333ea;
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: #f3f4f6;
+  }
+}
+
+.btnUpgradeYellow {
+  padding: $space-3 $space-6;
+  background: #eab308;
+  color: #581c87;
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: #facc15;
+  }
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+  margin-bottom: $space-6;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.infoColumnTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: $space-2;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $text-sm;
+  gap: $space-2;
+}
+
+.infoLabel {
+  color: var(--color-text-muted);
+}
+
+.infoValue {
+  font-weight: $font-weight-medium;
+  color: var(--color-text);
+  text-align: right;
+}
+
+.infoValueSuccess {
+  color: #059669;
+}
+
+.needHelpBlock {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.needHelpInner {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.needHelpTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: #1e3a8a;
+  margin-bottom: $space-1;
+}
+
+.needHelpText {
+  font-size: $text-xs;
+  color: #1d4ed8;
+  margin-bottom: $space-3;
+}
+
+.needHelpActions {
+  display: flex;
+  gap: $space-2;
+}
+
+.btnSupport {
+  padding: $space-2 $space-3;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: #1d4ed8;
+    color: #fff;
+  }
+}
+
+.btnDocs {
+  padding: $space-2 $space-3;
+  background: var(--color-bg);
+  border: 1px solid #93c5fd;
+  color: #1d4ed8;
+  border-radius: $radius-md;
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: #eff6ff;
+  }
+}
+
+.iconGreen {
+  color: #059669;
+}
+
+.iconBlue {
+  color: #2563eb;
+}
+
+.iconPurple {
+  color: #9333ea;
+}
+
+.iconYellow {
+  color: #eab308;
+}
+
+.errorBanner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: $radius-lg;
+  padding: $space-3 $space-4;
+  margin-bottom: $space-4;
+  font-size: $text-sm;
+  color: #b91c1c;
 }
