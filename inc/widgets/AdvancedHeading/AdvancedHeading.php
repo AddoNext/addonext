@@ -4,6 +4,7 @@ namespace Elementrify\Widgets\AdvancedHeading;
 use Elementrify\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 defined('ABSPATH') or exit;
 
@@ -67,10 +68,41 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Title', 'elementrify'),
-                'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Add your heading here', 'elementrify'),
+                'label'   => __('Regular text', 'elementrify'),
+                'type'    => Controls_Manager::TEXT,
+                'default' => __('Frequently Asked', 'elementrify'),
                 'dynamic' => ['active' => true],
+            ]
+        );
+
+        $this->add_control(
+            'title_gradient',
+            [
+                'label'   => __('Gradient text', 'elementrify'),
+                'type'    => Controls_Manager::TEXT,
+                'default' => __('Questions', 'elementrify'),
+                'dynamic' => ['active' => true],
+            ]
+        );
+
+        $this->add_control(
+            'show_subtitle',
+            [
+                'label'        => __('Show subtitle', 'elementrify'),
+                'type'         => Controls_Manager::SWITCHER,
+                'default'      => '',
+                'return_value' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'subtitle',
+            [
+                'label'     => __('Subtitle', 'elementrify'),
+                'type'      => Controls_Manager::TEXTAREA,
+                'default'   => __('Everything you need to know about Elementrify', 'elementrify'),
+                'condition' => ['show_subtitle' => 'yes'],
+                'dynamic'   => ['active' => true],
             ]
         );
 
@@ -103,7 +135,7 @@ class AdvancedHeading extends WidgetBase
                     'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-h-align-center'],
                     'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-h-align-right'],
                 ],
-                'default'      => 'left',
+                'default'      => 'center',
                 'prefix_class' => 'elementrify-advanced-heading--align-',
             ]
         );
@@ -123,17 +155,102 @@ class AdvancedHeading extends WidgetBase
             [
                 'name'     => 'typography',
                 'selector' => '{{WRAPPER}} .elementrify-advanced-heading__title',
+                'global'   => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
             ]
         );
 
         $this->add_control(
             'color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Text color', 'elementrify'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
                     '{{WRAPPER}} .elementrify-advanced-heading__title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_gradient',
+            [
+                'label' => __('Gradient text', 'elementrify'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'gradient_color_start',
+            [
+                'label'     => __('Gradient start', 'elementrify'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#2563eb',
+                'selectors' => [
+                    '{{WRAPPER}} .elementrify-advanced-heading__gradient' => '--elementrify-gradient-start: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'gradient_color_end',
+            [
+                'label'     => __('Gradient end', 'elementrify'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#7c3aed',
+                'selectors' => [
+                    '{{WRAPPER}} .elementrify-advanced-heading__gradient' => '--elementrify-gradient-end: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_subtitle',
+            [
+                'label'     => __('Subtitle', 'elementrify'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => ['show_subtitle' => 'yes'],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'typography_subtitle',
+                'selector' => '{{WRAPPER}} .elementrify-advanced-heading__subtitle',
+            ]
+        );
+
+        $this->add_control(
+            'subtitle_color',
+            [
+                'label'     => __('Color', 'elementrify'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#6b7280',
+                'selectors' => [
+                    '{{WRAPPER}} .elementrify-advanced-heading__subtitle' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'subtitle_spacing',
+            [
+                'label'     => __('Spacing', 'elementrify'),
+                'type'      => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'     => [
+                    'px' => ['min' => 0, 'max' => 60],
+                    'em' => ['min' => 0, 'max' => 3],
+                ],
+                'default'   => ['unit' => 'px', 'size' => 12],
+                'selectors' => [
+                    '{{WRAPPER}} .elementrify-advanced-heading__subtitle' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -154,11 +271,21 @@ class AdvancedHeading extends WidgetBase
         ?>
         <#
         var tag = elementor.helpers.validateHTMLTag(settings.html_tag) || 'h2';
-        view.addRenderAttribute('title', 'class', 'elementrify-advanced-heading__title');
+        view.addRenderAttribute('wrapper', 'class', 'elementrify-advanced-heading');
+        view.addRenderAttribute('title_wrapper', 'class', 'elementrify-advanced-heading__title');
+        view.addRenderAttribute('title', 'class', 'elementrify-advanced-heading__text');
+        view.addRenderAttribute('title_gradient', 'class', 'elementrify-advanced-heading__gradient');
         view.addInlineEditingAttributes('title', 'none');
+        view.addInlineEditingAttributes('title_gradient', 'none');
+        view.addInlineEditingAttributes('subtitle', 'none');
         #>
-        <div class="elementrify-advanced-heading">
-            <{{{ tag }}} {{{ view.getRenderAttributeString('title') }}}>{{{ settings.title }}}</{{{ tag }}}>
+        <div {{{ view.getRenderAttributeString('wrapper') }}}>
+            <{{{ tag }}} {{{ view.getRenderAttributeString('title_wrapper') }}}>
+                <span {{{ view.getRenderAttributeString('title') }}}>{{{ settings.title }}}</span><# if (settings.title_gradient) { #> <span {{{ view.getRenderAttributeString('title_gradient') }}}>{{{ settings.title_gradient }}}</span><# } #>
+            </{{{ tag }}}>
+            <# if (settings.show_subtitle && settings.subtitle) { #>
+            <p class="elementrify-advanced-heading__subtitle">{{{ settings.subtitle }}}</p>
+            <# } #>
         </div>
         <?php
     }
