@@ -38,6 +38,22 @@ class WidgetManager
     {
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/register', [$this, 'register_widgets']);
+        add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_editor_badge_assets']);
+    }
+
+    /**
+     * Enqueue the editor badge assets
+     *
+     * @return void
+     */
+    public function enqueue_editor_badge_assets(): void
+    {
+        wp_enqueue_style(
+            'elementrify-editor-badge',
+            ELEMENTRIFY_URL . 'assets/css/editor-badge.css',
+            [],
+            ELEMENTRIFY_VERSION
+        );
     }
 
     /**

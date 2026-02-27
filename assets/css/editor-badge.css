@@ -1,0 +1,18 @@
+.elementor-panel .elementrify-icon::after {
+  content: "EL";
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.2;
+  color: #fff;
+  background: #283f66;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0.02em;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+}

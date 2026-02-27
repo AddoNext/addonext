@@ -40,7 +40,7 @@ class Button extends WidgetBase
 
     public function get_icon(): string
     {
-        return 'eicon-button';
+        return 'eicon-button elementrify-icon';
     }
 
     public function get_name(): string
