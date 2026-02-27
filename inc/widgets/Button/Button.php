@@ -33,11 +33,6 @@ class Button extends WidgetBase
         ];
     }
 
-    public function get_category(): array
-    {
-        return ['elementrify-content'];
-    }
-
     public function get_icon(): string
     {
         return 'eicon-button elementrify-icon';
@@ -46,6 +41,11 @@ class Button extends WidgetBase
     public function get_name(): string
     {
         return 'elementrify-button';
+    }
+
+    public function get_admin_category(): string
+    {
+        return 'content';
     }
 
     public function get_title(): string

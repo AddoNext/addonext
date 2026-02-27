@@ -3,7 +3,6 @@ namespace Elementrify\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use Elementrify\Utils\DataProcessor;
 use Elementrify\Utils\OptionsHelper;
 use Elementrify\Common\WidgetManager;
 
@@ -28,7 +27,7 @@ class WidgetController
                 'id'          => $widget_instance->get_name(),
                 'title'       => $widget_instance->get_title(),
                 'icon'        => $widget_instance->get_icon(),
-                'category'    => DataProcessor::get_category_name($widget_instance->get_category()[0]),
+                'category'    => $widget_instance->get_admin_category(),
                 'active'      => in_array($widget_instance->get_name(), $active_widgets),
                 'description' => $widget_instance->get_description(),
                 'brand_color' => $widget_instance->get_brand_color()

@@ -7,9 +7,9 @@ defined('ABSPATH') or exit;
 
 class Accordion extends WidgetBase
 {
-    public function get_category(): array
+    public function get_admin_category(): string
     {
-        return ['elementrify-content'];
+        return 'content';
     }
 
     public function get_icon(): string

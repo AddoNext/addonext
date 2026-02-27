@@ -63,15 +63,13 @@ class WidgetManager
      */
     public function register_category($elements_manager)
     {
-        foreach (self::$categories as $slug => $category) {
-            $elements_manager->add_category(
-                $slug,
-                [
-                    'title' => $category['title'],
-                    'icon'  => $category['icon']
-                ]
-            );
-        }
+        $elements_manager->add_category(
+            'elementrify',
+            [
+                'title' => 'Elementrify',
+                'icon'  => 'fa-layer-group'
+            ]
+        );
     }
 
     public static function get_active_widgets(): array
