@@ -45,6 +45,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-video-player',
             'file'   => 'assets/css/video-player.css'
+        ],
+        [
+            'handle' => 'elementrify-image-box',
+            'file'   => 'assets/css/image-box.css'
         ]
     ];
 
@@ -67,6 +71,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-video-player',
             'file'   => 'assets/js/video-player.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-image-box',
+            'file'   => 'assets/js/image-box.js',
             'footer' => true
         ]
     ];
