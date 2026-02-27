@@ -1,0 +1,132 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 $space-5;
+  border-radius: $radius-lg;
+  min-width: 320px;
+  max-width: 420px;
+  box-shadow: $shadow-md;
+}
+
+.success {
+  background: $color-success;
+  color: #fff;
+
+  .iconInner {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+.error {
+  background: $color-error;
+  color: #fff;
+
+  .iconInner {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+.iconWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconInner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSvg {
+  font-size: 0.875rem;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  margin: 0 0 $space-1;
+  color: inherit;
+}
+
+.message {
+  font-size: $text-xs;
+  margin: 0;
+  opacity: 0.95;
+  color: inherit;
+}
+
+.progressWrap {
+  flex-shrink: 0;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.progressTrack {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 2;
+}
+
+.progressFill {
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: toastCountdown var(--toast-duration, 5000ms) linear forwards;
+}
+
+@keyframes toastCountdown {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 87.96;
+  }
+}
+
+.close {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+
+  &:hover {
+    opacity: 1;
+  }
+}

@@ -11,6 +11,7 @@ import {
   faDatabase,
 } from "@fortawesome/free-solid-svg-icons";
 import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
+import { useToast } from "../../contexts/ToastContext/ToastContext";
 import { STORE_NAME } from "../../../store/admin";
 import type { SettingsSection } from "./fields";
 import { renderField } from "./utils";
@@ -52,6 +53,7 @@ const SettingsPage: React.FC = () => {
     []
   );
 
+  const { addToast } = useToast();
   const { fetchSettings, setSettingsValue, saveSettings } = useDispatch(STORE_NAME);
 
   useEffect(() => {
@@ -68,10 +70,22 @@ const SettingsPage: React.FC = () => {
   );
 
   const save = useCallback(async () => {
-    if (sections) {
+    if (!sections) return;
+    try {
       await saveSettings({ values, sections });
+      addToast({
+        type: "success",
+        title: "Settings Saved Successfully!",
+        message: "Your changes have been applied.",
+      });
+    } catch {
+      addToast({
+        type: "error",
+        title: "Error Saving Settings",
+        message: "Please check your configuration.",
+      });
     }
-  }, [saveSettings, values, sections]);
+  }, [saveSettings, values, sections, addToast]);
 
   const getSaveHandler = useCallback(
     () => ({

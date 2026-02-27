@@ -9,6 +9,7 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import LicensePage from "./pages/LicensePage/LicensePage";
 import { WidgetsStateProvider } from "./contexts/WidgetsStateContext/WidgetsStateContext";
 import { ScreenSaveProvider } from "./contexts/ScreenSaveContext/ScreenSaveContext";
+import { ToastProvider } from "./contexts/ToastContext/ToastContext";
 import { STORE_NAME } from "../store/admin";
 import styles from "./App.module.scss";
 
@@ -62,16 +63,18 @@ export const App = () => {
 
   return (
     <div className={styles.app} data-theme={theme}>
-      <ScreenSaveProvider defaultSlug={DEFAULT_TAB_SLUG}>
-        <WidgetsStateProvider>
-          <Header
-            theme={theme}
-            onThemeToggle={handleThemeToggle}
-            onExportSettings={handleExportSettings}
-          />
-          <Tab tabs={tabs} />
-        </WidgetsStateProvider>
-      </ScreenSaveProvider>
+      <ToastProvider>
+        <ScreenSaveProvider defaultSlug={DEFAULT_TAB_SLUG}>
+          <WidgetsStateProvider>
+            <Header
+              theme={theme}
+              onThemeToggle={handleThemeToggle}
+              onExportSettings={handleExportSettings}
+            />
+            <Tab tabs={tabs} />
+          </WidgetsStateProvider>
+        </ScreenSaveProvider>
+      </ToastProvider>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useRef, useSt
 import { useSelect, useDispatch } from "@wordpress/data";
 import { STORE_NAME } from "../../../store/admin";
 import type { Widget } from "../../../store/types";
+import { useToast } from "../ToastContext/ToastContext";
 import type { WidgetsStateContextValue } from "./types";
 
 const WidgetsStateContext = createContext<WidgetsStateContextValue | null>(null);
@@ -21,6 +22,7 @@ export function WidgetsStateProvider({ children }: { children: React.ReactNode }
     []
   );
 
+  const { addToast } = useToast();
   const { updateWidgets } = useDispatch(STORE_NAME) as {
     updateWidgets: (ids: string[]) => Promise<unknown>;
   };
@@ -66,8 +68,21 @@ export function WidgetsStateProvider({ children }: { children: React.ReactNode }
   }, []);
 
   const save = useCallback(async () => {
-    await updateWidgets(activeIds);
-  }, [activeIds, updateWidgets]);
+    try {
+      await updateWidgets(activeIds);
+      addToast({
+        type: "success",
+        title: "Widgets Saved Successfully!",
+        message: "Your widget settings have been applied.",
+      });
+    } catch {
+      addToast({
+        type: "error",
+        title: "Error Saving Widgets",
+        message: "Please try again.",
+      });
+    }
+  }, [activeIds, updateWidgets, addToast]);
 
   const value: WidgetsStateContextValue = {
     activeIds,
