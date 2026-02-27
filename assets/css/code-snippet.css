@@ -1,0 +1,15 @@
+.elementrify-code-snippet {
+    margin: 0;
+    padding: 1em;
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.elementrify-code-snippet code {
+    margin: 0;
+    padding: 0;
+}

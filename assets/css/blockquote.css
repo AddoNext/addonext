@@ -1,0 +1,16 @@
+.elementrify-blockquote {
+    margin: 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid;
+}
+
+.elementrify-blockquote__text {
+    margin: 0 0 0.5em;
+}
+
+.elementrify-blockquote__author {
+    display: block;
+    font-style: normal;
+    font-size: 0.9em;
+    opacity: 0.85;
+}

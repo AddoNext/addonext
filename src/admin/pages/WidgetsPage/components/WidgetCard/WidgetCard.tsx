@@ -20,7 +20,7 @@ const WidgetCard: React.FC<WidgetCardProps> = ({ widget, categorySlug, onToggle 
         style={{ backgroundColor: hexToRgba(widget.brand_color, 0.2) }}
       >
         <FontAwesomeIcon
-          icon={getWidgetIcon(widget.icon)}
+          icon={getWidgetIcon(widget.id, widget.icon)}
           className={styles.widgetIcon}
           style={{ color: widget.brand_color }}
         />

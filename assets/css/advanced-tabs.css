@@ -1,0 +1,28 @@
+.elementrify-advanced-tabs__headers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1em;
+}
+
+.elementrify-advanced-tabs__header {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.elementrify-advanced-tabs__header.is-active {
+    opacity: 1;
+    font-weight: 600;
+    border-bottom: 2px solid currentColor;
+    margin-bottom: -1px;
+}
+
+.elementrify-advanced-tabs__panel {
+    display: none;
+}
+
+.elementrify-advanced-tabs__panel.is-active {
+    display: block;
+}

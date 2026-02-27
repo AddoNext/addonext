@@ -1,0 +1,11 @@
+.elementrify-animated-gradient {
+    padding: 2em;
+    background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+    background-size: 200% 200%;
+    animation: elementrify-gradient-shift 5s ease infinite;
+}
+
+@keyframes elementrify-gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}

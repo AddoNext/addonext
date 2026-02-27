@@ -1,0 +1,34 @@
+.elementrify-divider-wrapper {
+    width: 100%;
+}
+
+.elementrify-divider {
+    margin: 0;
+    border: none;
+    border-top-style: solid;
+}
+
+.elementrify-divider--double {
+    border-top-style: double;
+}
+
+.elementrify-divider--dotted {
+    border-top-style: dotted;
+}
+
+.elementrify-divider--dashed {
+    border-top-style: dashed;
+}
+
+.elementrify-divider-wrapper--align-left .elementrify-divider {
+    margin-right: auto;
+}
+
+.elementrify-divider-wrapper--align-center .elementrify-divider {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.elementrify-divider-wrapper--align-right .elementrify-divider {
+    margin-left: auto;
+}

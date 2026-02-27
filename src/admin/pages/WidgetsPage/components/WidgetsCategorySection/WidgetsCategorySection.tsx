@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLayerGroup, faPalette, faBullhorn, faChartPie } from "@fortawesome/free-solid-svg-icons";
+import { faLayerGroup, faPalette, faBullhorn, faChartPie, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import WidgetCard from "../WidgetCard/WidgetCard";
 import type { Widget, Category } from "../../../../../store/types";
@@ -11,6 +11,7 @@ const CATEGORY_ICONS: Record<string, typeof faLayerGroup> = {
   creative: faPalette,
   marketing: faBullhorn,
   data: faChartPie,
+  woocommerce: faCartShopping,
 };
 
 interface WidgetsCategorySectionProps {
@@ -40,7 +41,8 @@ const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
             category.slug === "content" && styles.titleContent,
             category.slug === "creative" && styles.titleCreative,
             category.slug === "marketing" && styles.titleMarketing,
-            category.slug === "data" && styles.titleData
+            category.slug === "data" && styles.titleData,
+            category.slug === "woocommerce" && styles.titleWooCommerce
           )}
         >
           {icon && <FontAwesomeIcon icon={icon} className={styles.icon} />}
