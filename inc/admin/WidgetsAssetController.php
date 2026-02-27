@@ -33,6 +33,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-advanced-google-map',
             'file'   => 'assets/css/advanced-google-map.css'
+        ],
+        [
+            'handle' => 'elementrify-smart-post-list',
+            'file'   => 'assets/css/smart-post-list.css'
         ]
     ];
 

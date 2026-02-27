@@ -1,0 +1,238 @@
+.elementrify-smart-post-list {
+    background: transparent;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.elementrify-smart-post-list__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.elementrify-smart-post-list__title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.elementrify-smart-post-list__sort-select {
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 0.9375rem;
+    color: #374151;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    appearance: auto;
+}
+
+.elementrify-smart-post-list__grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.elementrify-smart-post-list__card {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s;
+}
+
+.elementrify-smart-post-list__card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.elementrify-smart-post-list__card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.elementrify-smart-post-list__image-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #e5e7eb;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.elementrify-smart-post-list__image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.elementrify-smart-post-list__image-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+}
+
+.elementrify-smart-post-list__card-body {
+    padding: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.elementrify-smart-post-list__meta-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.elementrify-smart-post-list__category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #2563eb;
+    border-radius: 50px;
+}
+
+.elementrify-smart-post-list__card:nth-child(3n+1) .elementrify-smart-post-list__category { background: #2563eb; }
+.elementrify-smart-post-list__card:nth-child(3n+2) .elementrify-smart-post-list__category { background: #7c3aed; }
+.elementrify-smart-post-list__card:nth-child(3n+3) .elementrify-smart-post-list__category { background: #059669; }
+.elementrify-smart-post-list__card:nth-child(6n+4) .elementrify-smart-post-list__category { background: #ea580c; }
+.elementrify-smart-post-list__card:nth-child(6n+5) .elementrify-smart-post-list__category { background: #db2777; }
+.elementrify-smart-post-list__card:nth-child(6n+6) .elementrify-smart-post-list__category { background: #0891b2; }
+
+.elementrify-smart-post-list__meta-date {
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.elementrify-smart-post-list__card-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.elementrify-smart-post-list__card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.elementrify-smart-post-list__card-title a:hover {
+    text-decoration: underline;
+}
+
+.elementrify-smart-post-list__excerpt {
+    margin: 0 0 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #6b7280;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.elementrify-smart-post-list__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.elementrify-smart-post-list__author {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.elementrify-smart-post-list__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.elementrify-smart-post-list__author-name {
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.elementrify-smart-post-list__read-time {
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.elementrify-smart-post-list__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #6b7280;
+    padding: 2rem;
+}
+
+.elementrify-smart-post-list__pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.elementrify-smart-post-list__page-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.elementrify-smart-post-list__page-link,
+.elementrify-smart-post-list__page-prev a,
+.elementrify-smart-post-list__page-next a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.5rem;
+    font-size: 0.9375rem;
+    color: #374151;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.elementrify-smart-post-list__page-link:hover,
+.elementrify-smart-post-list__page-prev a:hover,
+.elementrify-smart-post-list__page-next a:hover {
+    background: #f3f4f6;
+}
+
+.elementrify-smart-post-list__page-link.is-active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+}
+
+.elementrify-smart-post-list__page-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.9375rem;
+    color: #9ca3af;
+}
