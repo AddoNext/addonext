@@ -1,0 +1,85 @@
+.elementrify-text-editor {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #555555;
+}
+
+.elementrify-text-editor p {
+    margin: 0 0 1em;
+}
+
+.elementrify-text-editor p:last-child {
+    margin-bottom: 0;
+}
+
+.elementrify-text-editor--align-left .elementrify-text-editor {
+    text-align: left;
+}
+
+.elementrify-text-editor--align-center .elementrify-text-editor {
+    text-align: center;
+}
+
+.elementrify-text-editor--align-right .elementrify-text-editor {
+    text-align: right;
+}
+
+.elementrify-text-editor--drop-cap .elementrify-text-editor > p:first-child::first-letter {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.85;
+    margin: 0.1em 0.15em 0 0;
+    font-weight: 700;
+}
+
+.elementrify-text-editor.elementrify-text-editor--gradient {
+    background: linear-gradient(
+        var(--elementrify-te-gradient-angle, 90deg),
+        var(--elementrify-te-gradient-start, #2563eb),
+        var(--elementrify-te-gradient-end, #7c3aed)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+
+.elementrify-text-editor.elementrify-text-editor--gradient a {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.elementrify-text-editor.elementrify-text-editor--3d {
+    --te-d: var(--elementrify-te-3d-depth, 4px);
+    --te-c: var(--elementrify-te-3d-color, rgba(0,0,0,0.3));
+    text-shadow:
+        var(--te-d) 0 0 var(--te-c),
+        calc(var(--te-d) * 0.94) calc(var(--te-d) * 0.34) 0 var(--te-c),
+        calc(var(--te-d) * 0.73) calc(var(--te-d) * 0.68) 0 var(--te-c),
+        calc(var(--te-d) * 0.34) var(--te-d) 0 var(--te-c),
+        0 calc(var(--te-d) * 0.94) 0 var(--te-c),
+        calc(var(--te-d) * -0.34) var(--te-d) 0 var(--te-c),
+        calc(var(--te-d) * -0.73) calc(var(--te-d) * 0.68) 0 var(--te-c),
+        calc(var(--te-d) * -0.94) calc(var(--te-d) * 0.34) 0 var(--te-c),
+        calc(var(--te-d) * -1) 0 0 var(--te-c);
+}
+
+.elementrify-text-editor.elementrify-text-editor--3d.elementrify-text-editor--gradient {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+
+.elementor-invisible[data-animation-duration="slow"] {
+    animation-duration: 1.2s;
+}
+
+.elementor-invisible[data-animation-duration="normal"] {
+    animation-duration: 0.8s;
+}
+
+.elementor-invisible[data-animation-duration="fast"] {
+    animation-duration: 0.4s;
+}

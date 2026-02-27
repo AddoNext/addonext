@@ -37,6 +37,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-smart-post-list',
             'file'   => 'assets/css/smart-post-list.css'
+        ],
+        [
+            'handle' => 'elementrify-text-editor',
+            'file'   => 'assets/css/text-editor.css'
         ]
     ];
 
