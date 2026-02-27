@@ -25,6 +25,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-advanced-tabs',
             'file'   => 'assets/css/advanced-tabs.css'
+        ],
+        [
+            'handle' => 'elementrify-content-toggle',
+            'file'   => 'assets/css/content-toggle.css'
         ]
     ];
 
@@ -32,6 +36,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-advanced-tabs',
             'file'   => 'assets/js/advanced-tabs.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-content-toggle',
+            'file'   => 'assets/js/content-toggle.js',
             'footer' => true
         ]
     ];
