@@ -29,6 +29,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-content-toggle',
             'file'   => 'assets/css/content-toggle.css'
+        ],
+        [
+            'handle' => 'elementrify-advanced-google-map',
+            'file'   => 'assets/css/advanced-google-map.css'
         ]
     ];
 
@@ -41,6 +45,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-content-toggle',
             'file'   => 'assets/js/content-toggle.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-advanced-google-map',
+            'file'   => 'assets/js/advanced-google-map.js',
             'footer' => true
         ]
     ];

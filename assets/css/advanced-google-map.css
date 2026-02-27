@@ -1,0 +1,41 @@
+.elementrify-advanced-google-map {
+    position: relative;
+    width: 100%;
+}
+
+.elementrify-advanced-google-map__frame {
+    display: block;
+    width: 100%;
+    border: 0;
+}
+
+.elementrify-advanced-google-map__placeholder {
+    padding: 2rem;
+    text-align: center;
+    color: #6b7280;
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.elementrify-advanced-google-map__address {
+    width: 100%;
+}
+
+.elementrify-advanced-google-map__address-title {
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.elementrify-advanced-google-map__address-desc {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.elementrify-advanced-google-map__address.is-bottom {
+    margin-top: 1rem;
+}
+
+.elementrify-advanced-google-map__address.is-top {
+    margin-bottom: 1rem;
+}
