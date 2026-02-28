@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./WidgetsSearch.module.scss";
 
 interface WidgetsSearchProps {
@@ -23,6 +23,16 @@ const WidgetsSearch: React.FC<WidgetsSearchProps> = ({
       onChange={(e) => onChange(e.target.value)}
       className={styles.input}
     />
+    {value.length > 0 && (
+      <button
+        type="button"
+        className={styles.clear}
+        onClick={() => onChange("")}
+        aria-label="Clear search"
+      >
+        <FontAwesomeIcon icon={faCircleXmark} className={styles.clearIcon} />
+      </button>
+    )}
   </div>
 );
 
