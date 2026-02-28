@@ -38,6 +38,21 @@ class Spacer extends WidgetBase
         return '#9ca3af';
     }
 
+    public function get_style_depends(): array
+    {
+        return ['elementrify-spacer'];
+    }
+
+    public function enqueue_assets(): void
+    {
+        wp_register_style(
+            'elementrify-spacer',
+            ELEMENTRIFY_URL . 'assets/css/spacer.css',
+            [],
+            ELEMENTRIFY_VERSION
+        );
+    }
+
     public function register_controls(): void
     {
         $this->start_controls_section(

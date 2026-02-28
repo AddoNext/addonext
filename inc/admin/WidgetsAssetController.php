@@ -65,6 +65,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-divider',
             'file'   => 'assets/css/divider.css'
+        ],
+        [
+            'handle' => 'elementrify-spacer',
+            'file'   => 'assets/css/spacer.css'
         ]
     ];
 
