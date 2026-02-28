@@ -3,6 +3,8 @@ namespace Elementrify\Widgets\Divider;
 
 use Elementrify\Base\WidgetBase;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Background;
+use Elementor\Icons_Manager;
 
 defined('ABSPATH') or exit;
 
@@ -64,9 +66,22 @@ class Divider extends WidgetBase
         );
 
         $this->add_control(
+            'variant',
+            [
+                'label'   => __('Variant', 'elementrify'),
+                'type'    => Controls_Manager::SELECT,
+                'default' => 'line',
+                'options' => [
+                    'line'      => __('Simple line', 'elementrify'),
+                    'line_icon' => __('Line with icon', 'elementrify'),
+                ],
+            ]
+        );
+
+        $this->add_control(
             'style',
             [
-                'label'   => __('Style', 'elementrify'),
+                'label'   => __('Line style', 'elementrify'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'solid',
                 'options' => [
@@ -78,12 +93,25 @@ class Divider extends WidgetBase
             ]
         );
 
+        $this->add_control(
+            'selected_icon',
+            [
+                'label'     => __('Icon', 'elementrify'),
+                'type'      => Controls_Manager::ICONS,
+                'default'   => [
+                    'value'   => 'eicon-star',
+                    'library' => 'eicons',
+                ],
+                'condition' => ['variant' => 'line_icon'],
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'section_style',
+            'section_style_line',
             [
-                'label' => __('Style', 'elementrify'),
+                'label' => __('Line', 'elementrify'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -95,7 +123,7 @@ class Divider extends WidgetBase
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e5e7eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-divider' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementrify-divider__line' => 'border-top-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -109,7 +137,7 @@ class Divider extends WidgetBase
                 'range'      => ['px' => ['max' => 20], 'em' => ['max' => 2]],
                 'default'    => ['size' => 1, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-divider' => 'border-top-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementrify-divider__line' => 'border-top-width: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -130,6 +158,90 @@ class Divider extends WidgetBase
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_icon',
+            [
+                'label'     => __('Icon', 'elementrify'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => ['variant' => 'line_icon'],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label'      => __('Icon size', 'elementrify'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'      => ['px' => ['min' => 8, 'max' => 64], 'em' => ['min' => 0.5, 'max' => 4]],
+                'default'    => ['size' => 16, 'unit' => 'px'],
+                'selectors'  => [
+                    '{{WRAPPER}} .elementrify-divider__icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementrify-divider__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementrify-divider__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_color',
+            [
+                'label'     => __('Icon color', 'elementrify'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .elementrify-divider__icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'     => 'icon_background',
+                'types'    => ['classic', 'gradient'],
+                'exclude'  => ['image'],
+                'selector' => '{{WRAPPER}} .elementrify-divider__icon',
+                'fields_options' => [
+                    'background' => ['default' => 'gradient'],
+                    'color'      => ['default' => '#5E42DA'],
+                    'color_b'    => ['default' => '#A542DA'],
+                    'gradient_type' => ['default' => 'linear'],
+                    'gradient_angle' => ['default' => ['unit' => 'deg', 'size' => 90]],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_padding',
+            [
+                'label'      => __('Padding', 'elementrify'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'      => ['px' => ['min' => 0, 'max' => 40], 'em' => ['min' => 0, 'max' => 2.5]],
+                'default'    => ['size' => 12, 'unit' => 'px'],
+                'selectors'  => [
+                    '{{WRAPPER}} .elementrify-divider__icon' => 'padding: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_border_radius',
+            [
+                'label'      => __('Border radius', 'elementrify'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em'],
+                'range'      => ['px' => ['max' => 200], '%' => ['max' => 50], 'em' => ['max' => 10]],
+                'default'    => ['size' => 50, 'unit' => '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .elementrify-divider__icon' => 'border-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     public function render(): void
@@ -144,12 +256,33 @@ class Divider extends WidgetBase
     {
         ?>
         <#
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-divider-wrapper');
-        view.addRenderAttribute('divider', 'class', 'elementrify-divider');
-        view.addRenderAttribute('divider', 'class', 'elementrify-divider--' + settings.style);
+        var variant = settings.variant || 'line';
+        var wrapperClass = 'elementrify-divider-wrapper';
+        if (variant === 'line_icon') wrapperClass += ' elementrify-divider-wrapper--line-icon';
+        view.addRenderAttribute('wrapper', 'class', wrapperClass);
+        var lineStyle = settings.style || 'solid';
+        var lineColor = settings.color || '#e5e7eb';
+        var thick = settings.thickness && settings.thickness.size != null ? settings.thickness.size : 1;
+        var thickUnit = settings.thickness && settings.thickness.unit ? settings.thickness.unit : 'px';
+        var lineStyleAttr = 'border:none;border-top-width:' + thick + thickUnit + ';border-top-style:' + lineStyle + ';border-top-color:' + lineColor + ';height:0;min-height:0;';
+        view.addRenderAttribute('line_left', 'class', 'elementrify-divider__line elementrify-divider__line--left elementrify-divider__line--' + lineStyle);
+        view.addRenderAttribute('line_left', 'style', lineStyleAttr);
+        view.addRenderAttribute('line_right', 'class', 'elementrify-divider__line elementrify-divider__line--right elementrify-divider__line--' + lineStyle);
+        view.addRenderAttribute('line_right', 'style', lineStyleAttr);
+        view.addRenderAttribute('line_standalone', 'class', 'elementrify-divider__line elementrify-divider__line--standalone');
+        view.addRenderAttribute('line_standalone', 'style', lineStyleAttr);
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}>
-            <hr {{{ view.getRenderAttributeString('divider') }}}>
+            <# if (variant === 'line_icon') { #>
+                <span {{{ view.getRenderAttributeString('line_left') }}}></span>
+                <span class="elementrify-divider__icon" aria-hidden="true">
+                    <# var iconData = (settings.selected_icon && settings.selected_icon.value) ? settings.selected_icon : { value: 'eicon-star', library: 'eicons' }; #>
+                    {{{ elementor.helpers.renderIcon(view, iconData, {}, 'i', 'object').value }}}
+                </span>
+                <span {{{ view.getRenderAttributeString('line_right') }}}></span>
+            <# } else { #>
+                <span {{{ view.getRenderAttributeString('line_standalone') }}}></span>
+            <# } #>
         </div>
         <?php
     }

@@ -61,6 +61,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-modal-popup',
             'file'   => 'assets/css/modal-popup.css'
+        ],
+        [
+            'handle' => 'elementrify-divider',
+            'file'   => 'assets/css/divider.css'
         ]
     ];
 
