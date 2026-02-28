@@ -49,6 +49,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-box',
             'file'   => 'assets/css/image-box.css'
+        ],
+        [
+            'handle' => 'elementrify-icon-box',
+            'file'   => 'assets/css/icon-box.css'
         ]
     ];
 

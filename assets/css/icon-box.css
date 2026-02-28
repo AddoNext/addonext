@@ -1,17 +1,82 @@
-.elementrify-icon-box__icon {
-    margin-bottom: 0.75em;
-    font-size: 2em;
+.elementrify-icon-box {
+    width: 100%;
+    --elementrify-ib-gap: 8px;
+    --elementrify-ib-align: center;
+    --elementrify-ib-wrap: wrap;
+    --elementrify-ib-direction: row;
+    --elementrify-ib-box-size: 30px;
+    --elementrify-ib-padding: 7px;
+    --elementrify-ib-radius: 50%;
+    --elementrify-ib-icon-size: 15px;
 }
 
-.elementrify-icon-box__icon svg {
+.elementrify-icon-box__list {
+    display: flex;
+    flex-direction: var(--elementrify-ib-direction);
+    flex-wrap: var(--elementrify-ib-wrap);
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--elementrify-ib-gap);
+    justify-content: var(--elementrify-ib-align);
+}
+
+.elementrify-icon-box__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: var(--elementrify-ib-box-size);
+    height: var(--elementrify-ib-box-size);
+    padding: var(--elementrify-ib-padding);
+    border-radius: var(--elementrify-ib-radius);
+    color: #fff;
+    text-decoration: none;
+    border: 0 solid transparent;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.elementrify-icon-box__link:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.elementrify-icon-box__icon-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+.elementrify-icon-box__link i,
+.elementrify-icon-box__link svg {
+    font-size: var(--elementrify-ib-icon-size, 15px);
     width: 1em;
     height: 1em;
+    flex-shrink: 0;
 }
 
-.elementrify-icon-box__title {
-    margin: 0 0 0.5em;
+.elementrify-icon-box__link svg {
+    fill: currentColor;
 }
 
-.elementrify-icon-box__description {
-    margin: 0;
+.elementrify-icon-box-hover-scale .elementrify-icon-box__link:hover {
+    transform: scale(1.12);
+}
+
+.elementrify-icon-box-hover-lift .elementrify-icon-box__link:hover {
+    transform: translateY(-4px);
+}
+
+.elementrify-icon-box-hover-shrink .elementrify-icon-box__link:hover {
+    transform: scale(0.92);
+}
+
+.elementrify-icon-box-hover-opacity .elementrify-icon-box__link:hover {
+    opacity: 0.85;
 }
