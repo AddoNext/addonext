@@ -1,0 +1,160 @@
+.elementrify-modal {
+    position: relative;
+}
+
+.elementrify-modal .elementrify-button-wrapper {
+    display: inline-block;
+}
+
+.elementrify-modal .elementrify-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: color 0.2s ease, background 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.elementrify-modal .elementrify-button__content {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.elementrify-modal .elementrify-button--primary {
+    color: #ffffff;
+    background: linear-gradient(90deg, #7B4397 0%, #B054BD 100%);
+    border-radius: 4px;
+}
+
+.elementrify-modal .elementrify-button--primary:hover,
+.elementrify-modal .elementrify-button--primary:focus {
+    opacity: 0.92;
+}
+
+.elementrify-modal .elementrify-button--secondary {
+    color: #5E42DA;
+    background-color: transparent;
+    border: 2px solid #5E42DA;
+    border-radius: 4px;
+}
+
+.elementrify-modal .elementrify-button--secondary:hover,
+.elementrify-modal .elementrify-button--secondary:focus {
+    background-color: rgba(94, 66, 218, 0.08);
+}
+
+.elementrify-modal .elementrify-button--xs {
+    padding: 6px 14px;
+}
+
+.elementrify-modal .elementrify-button--sm {
+    padding: 8px 18px;
+}
+
+.elementrify-modal .elementrify-button--md {
+    padding: 10px 24px;
+}
+
+.elementrify-modal .elementrify-button--lg {
+    padding: 12px 28px;
+}
+
+.elementrify-modal .elementrify-button--xl {
+    padding: 14px 32px;
+}
+
+.elementrify-modal__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.elementrify-modal__overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.elementrify-modal__content {
+    position: relative;
+    width: 100%;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+
+.elementrify-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.elementrify-modal__close:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.elementrify-modal__close-icon {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.elementrify-modal__title {
+    margin: 0 0 12px;
+    padding-right: 48px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.elementrify-modal__title:last-child {
+    margin-bottom: 0;
+}
+
+.elementrify-modal__image {
+    margin-bottom: 16px;
+    line-height: 0;
+}
+
+.elementrify-modal__image img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.elementrify-modal__body {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.elementrify-modal__body p:first-child {
+    margin-top: 0;
+}
+
+.elementrify-modal__body p:last-child {
+    margin-bottom: 0;
+}

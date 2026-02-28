@@ -57,6 +57,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-icon-list',
             'file'   => 'assets/css/icon-list.css'
+        ],
+        [
+            'handle' => 'elementrify-modal-popup',
+            'file'   => 'assets/css/modal-popup.css'
         ]
     ];
 
@@ -84,6 +88,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-box',
             'file'   => 'assets/js/image-box.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-modal-popup',
+            'file'   => 'assets/js/modal-popup.js',
             'footer' => true
         ]
     ];
