@@ -69,6 +69,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-spacer',
             'file'   => 'assets/css/spacer.css'
+        ],
+        [
+            'handle' => 'elementrify-blockquote',
+            'file'   => 'assets/css/blockquote.css'
         ]
     ];
 

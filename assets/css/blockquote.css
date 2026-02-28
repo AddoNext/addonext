@@ -1,16 +1,85 @@
 .elementrify-blockquote {
     margin: 0;
-    padding: 1em 1.5em;
-    border-left: 4px solid;
+    border: none;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #59B1F2;
+    box-sizing: border-box;
+    background-color: #F0F7FC;
+    border-radius: 10px;
+    padding: 32px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.elementrify-blockquote__body {
+    position: relative;
+}
+
+.elementrify-blockquote__icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 4.5em;
+    line-height: 1;
+    font-family: Georgia, serif;
+    color: #59B1F2;
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .elementrify-blockquote__text {
-    margin: 0 0 0.5em;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333333;
 }
 
-.elementrify-blockquote__author {
+.elementrify-blockquote__footer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+    padding-top: 0;
+}
+
+.elementrify-blockquote__avatar {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.elementrify-blockquote__avatar img {
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.elementrify-blockquote__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.elementrify-blockquote__author-name {
     font-style: normal;
-    font-size: 0.9em;
-    opacity: 0.85;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.3;
+    color: #333333;
+}
+
+.elementrify-blockquote__author-title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #777777;
 }
