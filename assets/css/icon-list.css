@@ -6,16 +6,65 @@
 
 .elementrify-icon-list__item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5em;
-    margin-bottom: 0.5em;
+}
+
+.elementrify-icon-list__item:last-child {
+    margin-bottom: 0;
+}
+
+[class*="elementrify-icon-list--align-left"] .elementrify-icon-list__item {
+    justify-content: flex-start;
+}
+
+[class*="elementrify-icon-list--align-center"] .elementrify-icon-list__item {
+    justify-content: center;
+}
+
+[class*="elementrify-icon-list--align-right"] .elementrify-icon-list__item {
+    justify-content: flex-end;
 }
 
 .elementrify-icon-list__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    align-self: center;
+    box-sizing: border-box;
+    line-height: 0;
+    isolation: isolate;
+}
+
+.elementrify-icon-list__icon i,
+.elementrify-icon-list__icon svg {
+    display: block;
+    width: 50%;
+    height: 50%;
+}
+
+.elementrify-icon-list__icon i {
+    font-size: 50%;
 }
 
 .elementrify-icon-list__icon svg {
-    width: 1em;
-    height: 1em;
+    width: 50%;
+    height: 50%;
+}
+
+.elementrify-icon-list__link {
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+    flex: 1;
+    min-width: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.elementrify-icon-list__text {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
 }

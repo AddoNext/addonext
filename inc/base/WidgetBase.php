@@ -20,6 +20,10 @@ abstract class WidgetBase extends Widget_Base
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
+    public function register(): void
+    {
+    }
+
     protected function init($data): void
     {
         if (!isset($data['settings']) || !is_array($data['settings'])) {
