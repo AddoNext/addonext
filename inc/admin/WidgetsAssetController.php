@@ -73,6 +73,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-blockquote',
             'file'   => 'assets/css/blockquote.css'
+        ],
+        [
+            'handle' => 'elementrify-animated-counter',
+            'file'   => 'assets/css/animated-counter.css'
         ]
     ];
 
@@ -105,6 +109,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-modal-popup',
             'file'   => 'assets/js/modal-popup.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-animated-counter',
+            'file'   => 'assets/js/animated-counter.js',
             'footer' => true
         ]
     ];
