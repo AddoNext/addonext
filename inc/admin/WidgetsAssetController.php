@@ -77,6 +77,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-animated-counter',
             'file'   => 'assets/css/animated-counter.css'
+        ],
+        [
+            'handle' => 'elementrify-timeline',
+            'file'   => 'assets/css/timeline.css'
         ]
     ];
 
