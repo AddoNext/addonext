@@ -81,6 +81,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-timeline',
             'file'   => 'assets/css/timeline.css'
+        ],
+        [
+            'handle' => 'elementrify-star-rating',
+            'file'   => 'assets/css/star-rating.css'
         ]
     ];
 

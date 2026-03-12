@@ -1,0 +1,68 @@
+.elementrify-star-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.elementrify-star-rating__stars {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+}
+
+.elementrify-star-rating__star {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
+
+.elementrify-star-rating__star-empty {
+    display: block;
+    color: #e5e7eb;
+    font-size: 18px;
+}
+
+.elementrify-star-rating__star-empty i,
+.elementrify-star-rating__star-empty svg,
+.elementrify-star-rating__star-empty .e-icon {
+    color: inherit;
+    display: block;
+}
+
+.elementrify-star-rating__star-empty svg,
+.elementrify-star-rating__star-filled svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: top;
+}
+
+.elementrify-star-rating__star-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.elementrify-star-rating__star-filled {
+    display: block;
+    color: #eab308;
+    font-size: 18px;
+}
+
+.elementrify-star-rating__star-filled i,
+.elementrify-star-rating__star-filled svg,
+.elementrify-star-rating__star-filled .e-icon {
+    color: inherit;
+    display: block;
+}
+
+.elementrify-star-rating__title {
+    margin-left: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #374151;
+}
