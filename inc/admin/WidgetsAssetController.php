@@ -89,6 +89,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-carousel',
             'file'   => 'assets/css/image-carousel.css'
+        ],
+        [
+            'handle' => 'elementrify-testimonials',
+            'file'   => 'assets/css/testimonials.css'
         ]
     ];
 
@@ -131,6 +135,12 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-carousel',
             'file'   => 'assets/js/image-carousel.js',
+            'footer' => true,
+            'deps'   => ['swiper'],
+        ],
+        [
+            'handle' => 'elementrify-testimonials',
+            'file'   => 'assets/js/testimonials.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ]
