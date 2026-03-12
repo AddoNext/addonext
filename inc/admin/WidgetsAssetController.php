@@ -85,6 +85,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-star-rating',
             'file'   => 'assets/css/star-rating.css'
+        ],
+        [
+            'handle' => 'elementrify-image-carousel',
+            'file'   => 'assets/css/image-carousel.css'
         ]
     ];
 
@@ -123,6 +127,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-animated-counter',
             'file'   => 'assets/js/animated-counter.js',
             'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-image-carousel',
+            'file'   => 'assets/js/image-carousel.js',
+            'footer' => true,
+            'deps'   => ['swiper'],
         ]
     ];
 
@@ -167,7 +177,7 @@ class WidgetsAssetController
             wp_register_script(
                 $asset['handle'],
                 ELEMENTRIFY_URL . $asset['file'],
-                [],
+                $asset['deps'] ?? [],
                 ELEMENTRIFY_VERSION,
                 $asset['footer'] ?? true
             );
