@@ -97,6 +97,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-tooltip',
             'file'   => 'assets/css/tooltip.css'
+        ],
+        [
+            'handle' => 'elementrify-countdown-timer',
+            'file'   => 'assets/css/countdown-timer.css'
         ]
     ];
 
@@ -151,6 +155,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-tooltip',
             'file'   => 'assets/js/tooltip.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-countdown-timer',
+            'file'   => 'assets/js/countdown-timer.js',
             'footer' => true,
         ]
     ];
