@@ -1,0 +1,47 @@
+.elementrify-line-chart {
+    max-width: 100%;
+}
+
+.elementrify-line-chart__title {
+    margin: 0 0 70px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #111827;
+}
+
+.elementrify-line-chart__canvas {
+    display: block;
+    width: 100%;
+    min-height: 320px;
+}
+
+.elementrify-line-chart__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.elementrify-line-chart__grid line {
+    stroke: #e5e7eb;
+    stroke-width: 1;
+}
+
+.elementrify-line-chart__line {
+    stroke: #2563eb;
+    stroke-width: 2;
+}
+
+.elementrify-line-chart__point {
+    fill: #2563eb;
+    stroke: #fff;
+    stroke-width: 2;
+}
+
+.elementrify-line-chart__axis-label {
+    font-size: 12px;
+    fill: #6b7280;
+    font-family: inherit;
+}

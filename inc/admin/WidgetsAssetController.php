@@ -105,6 +105,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-hotspot',
             'file'   => 'assets/css/image-hotspot.css'
+        ],
+        [
+            'handle' => 'elementrify-line-chart',
+            'file'   => 'assets/css/line-chart.css'
         ]
     ];
 
@@ -169,6 +173,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-hotspot',
             'file'   => 'assets/js/image-hotspot.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-line-chart',
+            'file'   => 'assets/js/line-chart.js',
             'footer' => true,
         ]
     ];
