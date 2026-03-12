@@ -101,6 +101,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-countdown-timer',
             'file'   => 'assets/css/countdown-timer.css'
+        ],
+        [
+            'handle' => 'elementrify-image-hotspot',
+            'file'   => 'assets/css/image-hotspot.css'
         ]
     ];
 
@@ -160,6 +164,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-countdown-timer',
             'file'   => 'assets/js/countdown-timer.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-image-hotspot',
+            'file'   => 'assets/js/image-hotspot.js',
             'footer' => true,
         ]
     ];
