@@ -1,0 +1,85 @@
+.elementrify-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.elementrify-tooltip__trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.2s, box-shadow 0.2s;
+}
+
+.elementrify-tooltip__trigger:hover,
+.elementrify-tooltip__trigger:focus {
+    opacity: 0.92;
+    outline: none;
+}
+
+.elementrify-tooltip__trigger:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.elementrify-tooltip__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.elementrify-tooltip__icon i,
+.elementrify-tooltip__icon svg {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+}
+
+.elementrify-tooltip__content {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(calc(-50% + var(--tooltip-adjust-x, 0px)));
+    margin-bottom: 10px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.2s;
+    z-index: 1000;
+    pointer-events: none;
+    font-size: 14px;
+}
+
+.elementrify-tooltip__content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border: 6px solid transparent;
+    border-top-color: #212529;
+}
+
+.elementrify-tooltip--below .elementrify-tooltip__content {
+    bottom: auto;
+    top: 100%;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.elementrify-tooltip--below .elementrify-tooltip__content::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: #212529;
+}
+
+.elementrify-tooltip:hover .elementrify-tooltip__content,
+.elementrify-tooltip__trigger:focus + .elementrify-tooltip__content {
+    visibility: visible;
+    opacity: 1;
+}

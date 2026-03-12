@@ -93,6 +93,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-testimonials',
             'file'   => 'assets/css/testimonials.css'
+        ],
+        [
+            'handle' => 'elementrify-tooltip',
+            'file'   => 'assets/css/tooltip.css'
         ]
     ];
 
@@ -143,6 +147,11 @@ class WidgetsAssetController
             'file'   => 'assets/js/testimonials.js',
             'footer' => true,
             'deps'   => ['swiper'],
+        ],
+        [
+            'handle' => 'elementrify-tooltip',
+            'file'   => 'assets/js/tooltip.js',
+            'footer' => true,
         ]
     ];
 
