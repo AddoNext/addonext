@@ -156,6 +156,14 @@ class SettingsController
                     'label'       => 'reCAPTCHA Site Key',
                     'default'     => '',
                     'placeholder' => 'Enter your reCAPTCHA site key'
+                ],
+                [
+                    'id'          => 'recaptcha_secret_key',
+                    'type'        => 'password',
+                    'optionKey'   => 'recaptcha_secret_key',
+                    'label'       => 'reCAPTCHA Secret Key',
+                    'default'     => '',
+                    'placeholder' => 'Enter your reCAPTCHA secret key'
                 ]
             ]
         ],

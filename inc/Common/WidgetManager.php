@@ -215,6 +215,7 @@ class WidgetManager
      */
     public function __construct()
     {
+        add_action('init', [ContactForm::class, 'register_ajax_handlers'], 5);
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/register', [$this, 'register_widgets']);
         add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_editor_badge_assets']);

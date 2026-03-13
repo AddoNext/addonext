@@ -117,6 +117,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-pie-chart',
             'file'   => 'assets/css/pie-chart.css'
+        ],
+        [
+            'handle' => 'elementrify-contact-form',
+            'file'   => 'assets/css/contact-form.css'
         ]
     ];
 
@@ -196,6 +200,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-pie-chart',
             'file'   => 'assets/js/pie-chart.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-contact-form',
+            'file'   => 'assets/js/contact-form.js',
             'footer' => true,
         ]
     ];
