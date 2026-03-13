@@ -109,6 +109,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-line-chart',
             'file'   => 'assets/css/line-chart.css'
+        ],
+        [
+            'handle' => 'elementrify-bar-chart',
+            'file'   => 'assets/css/bar-chart.css'
         ]
     ];
 
@@ -178,6 +182,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-line-chart',
             'file'   => 'assets/js/line-chart.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-bar-chart',
+            'file'   => 'assets/js/bar-chart.js',
             'footer' => true,
         ]
     ];

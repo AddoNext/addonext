@@ -1,0 +1,34 @@
+.elementrify-bar-chart {
+    max-width: 100%;
+}
+
+.elementrify-bar-chart__title {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #374151;
+}
+
+.elementrify-bar-chart__canvas {
+    display: block;
+    width: 100%;
+    min-height: 320px;
+}
+
+.elementrify-bar-chart__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.elementrify-bar-chart__grid line {
+    stroke: #e5e7eb;
+    stroke-width: 1;
+}
+
+.elementrify-bar-chart__axis-label {
+    font-size: 12px;
+    fill: #6b7280;
+    font-family: inherit;
+}
