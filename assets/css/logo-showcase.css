@@ -1,0 +1,181 @@
+.elementrify-logo-showcase {
+    width: 100%;
+}
+
+.elementrify-logo-showcase__title {
+    margin: 0 0 32px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6D6D7C;
+    line-height: 1.4;
+}
+
+.elementrify-logo-showcase__grid {
+    display: grid;
+    gap: var(--elementrify-logo-showcase-gap, 24px);
+    width: 100%;
+}
+
+.elementrify-logo-showcase__grid--auto {
+    grid-template-columns: repeat(auto-fill, minmax(var(--elementrify-logo-showcase-min-cell, 90px), 1fr));
+}
+
+.elementrify-logo-showcase__grid:not(.elementrify-logo-showcase__grid--auto) {
+    grid-template-columns: repeat(var(--elementrify-logo-showcase-columns, 4), 1fr);
+}
+
+.elementrify-logo-showcase__card {
+    background: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    min-height: 72px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.elementrify-logo-showcase__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.elementrify-logo-showcase__img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 48px;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.2s;
+}
+
+.elementrify-logo-showcase__link:hover .elementrify-logo-showcase__img {
+    opacity: 0.85;
+}
+
+.elementrify-logo-showcase--slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.elementrify-logo-showcase--slider .swiper-wrapper {
+    align-items: stretch;
+}
+
+.elementrify-logo-showcase--slider .swiper-slide {
+    height: auto;
+    box-sizing: border-box;
+}
+
+.elementrify-logo-showcase--slider .swiper-slide .elementrify-logo-showcase__card {
+    height: 100%;
+}
+
+.elementrify-logo-showcase__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.2s, box-shadow 0.2s;
+}
+
+.elementrify-logo-showcase__arrow::after {
+    content: none !important;
+}
+
+.elementrify-logo-showcase__arrow:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.elementrify-logo-showcase__arrow--prev {
+    left: 12px;
+}
+
+.elementrify-logo-showcase__arrow--next {
+    right: 12px;
+}
+
+.elementrify-logo-showcase__arrow svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.elementrify-logo-showcase--slider .swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.elementrify-logo-showcase--slider .swiper-pagination,
+.elementrify-logo-showcase--slider .swiper-pagination-bullets,
+.elementrify-logo-showcase--slider .swiper-pagination-horizontal {
+    position: static;
+    margin-top: 24px;
+    left: auto;
+    right: auto;
+    z-index: 10;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: var(--elementrify-dots-gap, 8px);
+    opacity: 1 !important;
+    pointer-events: auto;
+}
+
+.elementrify-logo-showcase--slider .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s, background 0.2s;
+    cursor: pointer;
+}
+
+.elementrify-logo-showcase--slider .swiper-pagination-bullet:hover {
+    opacity: 0.9;
+}
+
+.elementrify-logo-showcase--slider .swiper-pagination-bullet-active {
+    background: rgba(0, 0, 0, 0.85);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.elementrify-logo-showcase--slider.elementrify-pagination-square .swiper-pagination-bullet {
+    border-radius: 0;
+}
+
+.elementrify-logo-showcase--slider.elementrify-pagination-bar .swiper-pagination-bullet {
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+    transform: none;
+}
+
+.elementrify-logo-showcase--slider.elementrify-pagination-bar .swiper-pagination-bullet-active {
+    width: 39px;
+    transform: none;
+}

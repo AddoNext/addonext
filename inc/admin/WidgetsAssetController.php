@@ -129,6 +129,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-team-members',
             'file'   => 'assets/css/team-members.css'
+        ],
+        [
+            'handle' => 'elementrify-logo-showcase',
+            'file'   => 'assets/css/logo-showcase.css'
         ]
     ];
 
@@ -223,6 +227,12 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-team-members',
             'file'   => 'assets/js/team-members.js',
+            'footer' => true,
+            'deps'   => ['swiper'],
+        ],
+        [
+            'handle' => 'elementrify-logo-showcase',
+            'file'   => 'assets/js/logo-showcase.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ]
