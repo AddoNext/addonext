@@ -121,6 +121,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-contact-form',
             'file'   => 'assets/css/contact-form.css'
+        ],
+        [
+            'handle' => 'elementrify-subscribe-form',
+            'file'   => 'assets/css/subscribe-form.css'
         ]
     ];
 
@@ -205,6 +209,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-contact-form',
             'file'   => 'assets/js/contact-form.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-subscribe-form',
+            'file'   => 'assets/js/subscribe-form.js',
             'footer' => true,
         ]
     ];
