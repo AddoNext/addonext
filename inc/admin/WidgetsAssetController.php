@@ -145,6 +145,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-pricing-table',
             'file'   => 'assets/css/pricing-table.css'
+        ],
+        [
+            'handle' => 'elementrify-data-table',
+            'file'   => 'assets/css/data-table.css'
         ]
     ];
 
