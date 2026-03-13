@@ -113,6 +113,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-bar-chart',
             'file'   => 'assets/css/bar-chart.css'
+        ],
+        [
+            'handle' => 'elementrify-pie-chart',
+            'file'   => 'assets/css/pie-chart.css'
         ]
     ];
 
@@ -187,6 +191,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-bar-chart',
             'file'   => 'assets/js/bar-chart.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-pie-chart',
+            'file'   => 'assets/js/pie-chart.js',
             'footer' => true,
         ]
     ];
