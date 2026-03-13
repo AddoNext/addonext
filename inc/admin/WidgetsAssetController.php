@@ -153,6 +153,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-comparison-table',
             'file'   => 'assets/css/comparison-table.css'
+        ],
+        [
+            'handle' => 'elementrify-call-to-action',
+            'file'   => 'assets/css/call-to-action.css'
         ]
     ];
 
