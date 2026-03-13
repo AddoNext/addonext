@@ -141,6 +141,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-circular-progress',
             'file'   => 'assets/css/circular-progress.css'
+        ],
+        [
+            'handle' => 'elementrify-pricing-table',
+            'file'   => 'assets/css/pricing-table.css'
         ]
     ];
 

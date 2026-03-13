@@ -1,0 +1,226 @@
+.elementrify-pricing-table {
+    width: 100%;
+}
+
+.elementrify-pricing-table__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.elementrify-pricing-table__card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+.elementrify-pricing-table__card--featured {
+    background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__inner {
+    padding: 44px 24px 48px;
+}
+
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__title,
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__desc,
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__price,
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__period,
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__feature-text {
+    color: #ffffff !important;
+}
+
+.elementrify-pricing-table__badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 6px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: center;
+    background-color: #F5C75A;
+    color: #333333;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 2;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.elementrify-pricing-table__inner {
+    padding: 28px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.elementrify-pricing-table__icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.elementrify-pricing-table__card:not(.elementrify-pricing-table__card--featured):not(.elementrify-pricing-table__card--primary-btn) .elementrify-pricing-table__icon-wrap {
+    color: #4b5563;
+}
+
+.elementrify-pricing-table__icon-wrap i,
+.elementrify-pricing-table__icon-wrap svg {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+}
+
+.elementrify-pricing-table__icon-wrap svg,
+.elementrify-pricing-table__icon-wrap svg path {
+    fill: currentColor !important;
+}
+
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__icon-wrap {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.elementrify-pricing-table__card--primary-btn .elementrify-pricing-table__icon-wrap {
+    color: #7c3aed;
+}
+
+.elementrify-pricing-table__title {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.3;
+}
+
+.elementrify-pricing-table__desc {
+    margin: 0 0 16px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.elementrify-pricing-table__price-wrap {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.elementrify-pricing-table__price {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.2;
+}
+
+.elementrify-pricing-table__period {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: #6b7280;
+}
+
+.elementrify-pricing-table__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    transition: opacity 0.2s;
+    margin-bottom: 24px;
+}
+
+.elementrify-pricing-table__button:hover {
+    opacity: 0.9;
+}
+
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__button {
+    background-color: #ffffff;
+    color: #6366f1 !important;
+}
+
+.elementrify-pricing-table__button--primary {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #ffffff !important;
+}
+
+.elementrify-pricing-table__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.elementrify-pricing-table__feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.elementrify-pricing-table__feature-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elementrify-pricing-table__feature-icon .elementrify-pricing-table__check,
+.elementrify-pricing-table__feature-icon .elementrify-pricing-table__cross {
+    width: 20px;
+    height: 20px;
+}
+
+.elementrify-pricing-table__feature--included .elementrify-pricing-table__feature-icon {
+    color: #22c55e;
+}
+
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__feature--included .elementrify-pricing-table__feature-icon {
+    color: #ffffff;
+}
+
+.elementrify-pricing-table__feature--excluded .elementrify-pricing-table__feature-icon {
+    color: #d1d5db;
+}
+
+.elementrify-pricing-table__feature-text {
+    color: #1f2937;
+}
+
+.elementrify-pricing-table__feature--excluded .elementrify-pricing-table__feature-text {
+    color: #9ca3af;
+}
+
+.elementrify-pricing-table__card--featured .elementrify-pricing-table__inner {
+    padding-top: 36px;
+}
