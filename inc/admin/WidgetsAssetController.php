@@ -149,6 +149,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-data-table',
             'file'   => 'assets/css/data-table.css'
+        ],
+        [
+            'handle' => 'elementrify-comparison-table',
+            'file'   => 'assets/css/comparison-table.css'
         ]
     ];
 

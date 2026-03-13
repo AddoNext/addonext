@@ -1,0 +1,113 @@
+.elementrify-comparison-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.elementrify-comparison-table__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.elementrify-comparison-table__table thead tr:first-child th:first-child {
+    border-top-left-radius: 7px;
+}
+
+.elementrify-comparison-table__table thead tr:first-child th:last-child {
+    border-top-right-radius: 7px;
+}
+
+.elementrify-comparison-table__table tbody tr:last-child .elementrify-comparison-table__td {
+    border-bottom: none;
+}
+
+.elementrify-comparison-table__table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 7px;
+}
+
+.elementrify-comparison-table__table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 7px;
+}
+
+.elementrify-comparison-table__th,
+.elementrify-comparison-table__td {
+    border-bottom: 1px solid #e9ecef;
+    border-right: 1px solid #e9ecef;
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #343a40;
+}
+
+.elementrify-comparison-table__th:last-child,
+.elementrify-comparison-table__td:last-child {
+    border-right: none;
+}
+
+.elementrify-comparison-table__table thead .elementrify-comparison-table__th {
+    background-color: #f8fafc;
+}
+
+.elementrify-comparison-table__th {
+    font-weight: 700;
+    text-align: center;
+}
+
+.elementrify-comparison-table__th.elementrify-comparison-table__cell--feature {
+    text-align: left;
+    background-color: #f8fafc;
+}
+
+.elementrify-comparison-table__th.elementrify-comparison-table__cell--default {
+    background-color: #f8fafc;
+}
+
+.elementrify-comparison-table__th.elementrify-comparison-table__cell--highlighted {
+    background-color: #f6f7ff;
+}
+
+.elementrify-comparison-table__td.elementrify-comparison-table__cell--feature {
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.elementrify-comparison-table__td.elementrify-comparison-table__cell--default {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.elementrify-comparison-table__td.elementrify-comparison-table__cell--highlighted {
+    text-align: center;
+    background-color: #f6f7ff;
+}
+
+.elementrify-comparison-table__cell-text {
+    display: inline-block;
+}
+
+.elementrify-comparison-table__cell-text--bold {
+    font-weight: 700;
+}
+
+.elementrify-comparison-table__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elementrify-comparison-table__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.elementrify-comparison-table__icon--check {
+    color: #28a745;
+}
+
+.elementrify-comparison-table__icon--cross {
+    color: #adb5bd;
+}
