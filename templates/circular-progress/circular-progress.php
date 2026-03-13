@@ -1,5 +1,36 @@
 <?php
 defined('ABSPATH') || exit;
-$s = $this->get_settings_for_display();
-$percent = isset($s['percent']['size']) ? (int) $s['percent']['size'] : 0;
-?><div class="elementrify-circular-progress"><svg viewBox="0 0 36 36"><circle class="elementrify-circular-progress__bg" cx="18" cy="18" r="16"/><circle class="elementrify-circular-progress__fill" cx="18" cy="18" r="16" stroke-dasharray="<?php echo esc_attr($percent); ?>, 100"/></svg><span class="elementrify-circular-progress__value"><?php echo esc_html($percent); ?>%</span><?php if (!empty($s['title'])) : ?><span class="elementrify-circular-progress__title"><?php echo esc_html($s['title']); ?></span><?php endif; ?></div>
+
+$settings = $this->get_settings_for_display();
+$items = isset($settings['items']) && is_array($settings['items']) ? $settings['items'] : [];
+
+if (empty($items)) {
+    return;
+}
+
+$radius = 16;
+$circumference = 2 * M_PI * $radius;
+?>
+<div class="elementrify-circular-progress">
+    <div class="elementrify-circular-progress__list">
+        <?php foreach ($items as $item) :
+            $percent = isset($item['percent']['size']) ? max(0, min(100, (int) $item['percent']['size'])) : 0;
+            $bar_color = !empty($item['bar_color']) ? $item['bar_color'] : '#4285F4';
+            $title = isset($item['title']) ? $item['title'] : '';
+            $subtitle = isset($item['subtitle']) ? $item['subtitle'] : '';
+            $dash = ($percent / 100) * $circumference;
+        ?>
+            <div class="elementrify-circular-progress__item">
+                <div class="elementrify-circular-progress__circle-wrap">
+                    <svg class="elementrify-circular-progress__svg" viewBox="0 0 36 36">
+                        <circle class="elementrify-circular-progress__bg" cx="18" cy="18" r="<?php echo (int) $radius; ?>" fill="none"/>
+                        <circle class="elementrify-circular-progress__fill" cx="18" cy="18" r="<?php echo (int) $radius; ?>" fill="none" stroke-dasharray="<?php echo esc_attr($dash . ', ' . $circumference); ?>" transform="rotate(-90 18 18)" style="stroke: <?php echo esc_attr($bar_color); ?>;"/>
+                    </svg>
+                    <span class="elementrify-circular-progress__value"><?php echo (int) $percent; ?>%</span>
+                </div>
+                <?php if ($title !== '') : ?><span class="elementrify-circular-progress__title"><?php echo esc_html($title); ?></span><?php endif; ?>
+                <?php if ($subtitle !== '') : ?><span class="elementrify-circular-progress__subtitle"><?php echo esc_html($subtitle); ?></span><?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

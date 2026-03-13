@@ -1,0 +1,71 @@
+.elementrify-circular-progress {
+    width: 100%;
+}
+
+.elementrify-circular-progress__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 32px;
+}
+
+.elementrify-circular-progress__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.elementrify-circular-progress__circle-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.elementrify-circular-progress__svg {
+    width: 130px;
+    height: 130px;
+    display: block;
+    vertical-align: middle;
+}
+
+.elementrify-circular-progress__bg {
+    stroke: #E0E0E0;
+    stroke-width: 3;
+}
+
+.elementrify-circular-progress__fill {
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s ease;
+}
+
+.elementrify-circular-progress__value {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.elementrify-circular-progress__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.elementrify-circular-progress__subtitle {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.4;
+}

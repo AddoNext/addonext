@@ -137,6 +137,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-progress-bar',
             'file'   => 'assets/css/progress-bar.css'
+        ],
+        [
+            'handle' => 'elementrify-circular-progress',
+            'file'   => 'assets/css/circular-progress.css'
         ]
     ];
 
