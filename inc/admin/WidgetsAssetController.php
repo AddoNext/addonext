@@ -133,6 +133,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-logo-showcase',
             'file'   => 'assets/css/logo-showcase.css'
+        ],
+        [
+            'handle' => 'elementrify-progress-bar',
+            'file'   => 'assets/css/progress-bar.css'
         ]
     ];
 
