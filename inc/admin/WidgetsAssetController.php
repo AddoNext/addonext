@@ -125,6 +125,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-subscribe-form',
             'file'   => 'assets/css/subscribe-form.css'
+        ],
+        [
+            'handle' => 'elementrify-team-members',
+            'file'   => 'assets/css/team-members.css'
         ]
     ];
 
@@ -215,6 +219,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-subscribe-form',
             'file'   => 'assets/js/subscribe-form.js',
             'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-team-members',
+            'file'   => 'assets/js/team-members.js',
+            'footer' => true,
+            'deps'   => ['swiper'],
         ]
     ];
 

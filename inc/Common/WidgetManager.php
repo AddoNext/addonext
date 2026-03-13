@@ -65,7 +65,7 @@ use Elementrify\Widgets\PricingTable\PricingTable;
 use Elementrify\Widgets\PromoBox\PromoBox;
 use Elementrify\Widgets\SocialShare\SocialShare;
 use Elementrify\Widgets\SubscribeForm\SubscribeForm;
-use Elementrify\Widgets\TeamMember\TeamMember;
+use Elementrify\Widgets\TeamMembers\TeamMembers;
 use Elementrify\Widgets\Testimonials\Testimonials;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
 use Elementrify\Widgets\AdvancedAnalytics\AdvancedAnalytics;
@@ -162,7 +162,7 @@ class WidgetManager
         PromoBox::class,
         SocialShare::class,
         SubscribeForm::class,
-        TeamMember::class,
+        TeamMembers::class,
         Testimonials::class,
         TwitterFeed::class,
         AdvancedAnalytics::class,

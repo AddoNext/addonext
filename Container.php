@@ -80,7 +80,7 @@ use Elementrify\Widgets\Spacer\Spacer;
 use Elementrify\Widgets\StarRating\StarRating;
 use Elementrify\Widgets\SubscribeForm\SubscribeForm;
 use Elementrify\Widgets\TableOfContents\TableOfContents;
-use Elementrify\Widgets\TeamMember\TeamMember;
+use Elementrify\Widgets\TeamMembers\TeamMembers;
 use Elementrify\Widgets\Testimonials\Testimonials;
 use Elementrify\Widgets\TextEditor\TextEditor;
 use Elementrify\Widgets\Timeline\Timeline;
@@ -170,7 +170,7 @@ return [
     StarRating::class         => create(StarRating::class),
     SubscribeForm::class      => create(SubscribeForm::class),
     TableOfContents::class    => create(TableOfContents::class),
-    TeamMember::class         => create(TeamMember::class),
+    TeamMembers::class       => create(TeamMembers::class),
     Testimonials::class       => create(Testimonials::class),
     TextEditor::class        => create(TextEditor::class),
     Timeline::class           => create(Timeline::class),

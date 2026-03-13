@@ -1,0 +1,182 @@
+.elementrify-team-members--grid {
+    display: grid;
+    grid-template-columns: repeat(var(--elementrify-team-members-columns, 3), 1fr);
+    gap: var(--elementrify-team-members-gap, 24px);
+    width: 100%;
+}
+
+.elementrify-team-members-card {
+    padding: 1.25rem;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.elementrify-team-members-card__image {
+    border-radius: 50%!important;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.elementrify-team-members-card__name {
+    margin: 0 0 2px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.elementrify-team-members-card__role {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.4;
+}
+
+.elementrify-team-members-card__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.elementrify-team-members-card__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: #374151;
+    transition: opacity 0.2s;
+}
+
+.elementrify-team-members-card__social a:hover {
+    opacity: 0.8;
+}
+
+.elementrify-team-members-card__social svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.elementrify-team-members--slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.elementrify-team-members--slider .swiper-wrapper {
+    align-items: stretch;
+}
+
+.elementrify-team-members--slider .swiper-slide {
+    height: auto;
+    box-sizing: border-box;
+}
+
+.elementrify-team-members__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.2s, box-shadow 0.2s;
+}
+
+.elementrify-team-members__arrow::after {
+    content: none !important;
+}
+
+.elementrify-team-members__arrow:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.elementrify-team-members__arrow--prev {
+    left: 12px;
+}
+
+.elementrify-team-members__arrow--next {
+    right: 12px;
+}
+
+.elementrify-team-members__arrow svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.elementrify-team-members--slider .swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.elementrify-team-members--slider .swiper-pagination,
+.elementrify-team-members--slider .swiper-pagination-bullets,
+.elementrify-team-members--slider .swiper-pagination-horizontal {
+    position: static;
+    margin-top: 24px;
+    left: auto;
+    right: auto;
+    z-index: 10;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: var(--elementrify-dots-gap, 8px);
+    opacity: 1 !important;
+    pointer-events: auto;
+}
+
+.elementrify-team-members--slider .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s, background 0.2s;
+    cursor: pointer;
+}
+
+.elementrify-team-members--slider .swiper-pagination-bullet:hover {
+    opacity: 0.9;
+}
+
+.elementrify-team-members--slider .swiper-pagination-bullet-active {
+    background: rgba(0, 0, 0, 0.85);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.elementrify-team-members--slider.elementrify-pagination-square .swiper-pagination-bullet {
+    border-radius: 0;
+}
+
+.elementrify-team-members--slider.elementrify-pagination-bar .swiper-pagination-bullet {
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+    transform: none;
+}
+
+.elementrify-team-members--slider.elementrify-pagination-bar .swiper-pagination-bullet-active {
+    width: 39px;
+    transform: none;
+}

@@ -133,7 +133,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-star-rating": faStar,
   "elementrify-subscribe-form": faEnvelope,
   "elementrify-table-of-contents": faBookOpen,
-  "elementrify-team-member": faUser,
+  "elementrify-team-members": faUser,
   "elementrify-testimonials": faQuoteLeft,
   "elementrify-text-editor": faAlignLeft,
   "elementrify-timeline": faClock,
