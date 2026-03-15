@@ -1,0 +1,296 @@
+.elementrify-flip-box {
+    width: 100%;
+    height: 220px;
+    perspective: 1000px;
+}
+
+.elementrify-flip-box--trigger-click {
+    cursor: pointer;
+}
+
+.elementrify-flip-box__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.elementrify-flip-box__front,
+.elementrify-flip-box__back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.elementrify-flip-box__front {
+    background: linear-gradient(to right, #4a8efb, #8e52f7);
+    z-index: 2;
+}
+
+.elementrify-flip-box__back {
+    background-color: #1e293b;
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.elementrify-flip-box__front-content,
+.elementrify-flip-box__back-content {
+    text-align: center;
+    max-width: 100%;
+}
+
+.elementrify-flip-box__front-icon {
+    color: #ffffff;
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.elementrify-flip-box__front-icon i,
+.elementrify-flip-box__front-icon svg {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+}
+
+.elementrify-flip-box__front-title {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.elementrify-flip-box__front-desc {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ffffff;
+    opacity: 0.95;
+}
+
+.elementrify-flip-box__back-title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.elementrify-flip-box__back-desc {
+    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+
+.elementrify-flip-box__back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4a8efb;
+    border-radius: 6px;
+    transition: opacity 0.2s ease;
+}
+
+.elementrify-flip-box__back-button:hover {
+    opacity: 0.9;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--flip-horizontal:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--flip-horizontal.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: rotateY(180deg);
+}
+
+.elementrify-flip-box--flip-vertical .elementrify-flip-box__back {
+    transform: rotateX(180deg);
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--flip-vertical:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--flip-vertical.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: rotateX(180deg);
+}
+
+.elementrify-flip-box--flip-3d {
+    perspective: 1200px;
+}
+
+.elementrify-flip-box--flip-3d .elementrify-flip-box__inner {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--flip-3d:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--flip-3d.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: rotateY(180deg);
+}
+
+.elementrify-flip-box--tilt-3d .elementrify-flip-box__inner {
+    transition: transform 0.5s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--tilt-3d:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--tilt-3d.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: rotateY(180deg) rotateZ(2deg);
+}
+
+.elementrify-flip-box--tilt-3d .elementrify-flip-box__back {
+    transform: rotateY(180deg);
+}
+
+.elementrify-flip-box--lift .elementrify-flip-box__inner {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.elementrify-flip-box--lift .elementrify-flip-box__front {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--lift:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--lift.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.elementrify-flip-box--lift .elementrify-flip-box__back {
+    transform: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--lift:hover .elementrify-flip-box__front,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--lift.elementrify-flip-box--active .elementrify-flip-box__front {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--lift:hover .elementrify-flip-box__back,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--lift.elementrify-flip-box--active .elementrify-flip-box__back {
+    z-index: 2;
+    opacity: 1;
+}
+
+.elementrify-flip-box--lift .elementrify-flip-box__front {
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--zoom .elementrify-flip-box__inner {
+    transition: transform 0.4s ease;
+}
+
+.elementrify-flip-box--zoom .elementrify-flip-box__back {
+    transform: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--zoom:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--zoom.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: scale(1.05);
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--zoom:hover .elementrify-flip-box__front,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--zoom.elementrify-flip-box--active .elementrify-flip-box__front {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.elementrify-flip-box--zoom .elementrify-flip-box__front {
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--zoom:hover .elementrify-flip-box__back,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--zoom.elementrify-flip-box--active .elementrify-flip-box__back {
+    z-index: 2;
+    opacity: 1;
+}
+
+.elementrify-flip-box--zoom-out .elementrify-flip-box__inner {
+    transition: transform 0.4s ease;
+}
+
+.elementrify-flip-box--zoom-out .elementrify-flip-box__back {
+    transform: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--zoom-out:hover .elementrify-flip-box__inner,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--zoom-out.elementrify-flip-box--active .elementrify-flip-box__inner {
+    transform: scale(0.92);
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--zoom-out:hover .elementrify-flip-box__front,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--zoom-out.elementrify-flip-box--active .elementrify-flip-box__front {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.elementrify-flip-box--zoom-out .elementrify-flip-box__front {
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--zoom-out:hover .elementrify-flip-box__back,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--zoom-out.elementrify-flip-box--active .elementrify-flip-box__back {
+    z-index: 2;
+    opacity: 1;
+}
+
+.elementrify-flip-box--fade-in .elementrify-flip-box__back {
+    transform: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--fade-in .elementrify-flip-box__front {
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--fade-in:hover .elementrify-flip-box__front,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--fade-in.elementrify-flip-box--active .elementrify-flip-box__front {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--fade-in:hover .elementrify-flip-box__back,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--fade-in.elementrify-flip-box--active .elementrify-flip-box__back {
+    z-index: 2;
+    opacity: 1;
+}
+
+.elementrify-flip-box--fade-out .elementrify-flip-box__back {
+    transform: none;
+    z-index: 0;
+    opacity: 1;
+}
+
+.elementrify-flip-box--fade-out .elementrify-flip-box__front {
+    transition: opacity 0.4s ease;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--fade-out:hover .elementrify-flip-box__front,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--fade-out.elementrify-flip-box--active .elementrify-flip-box__front {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.elementrify-flip-box--trigger-hover.elementrify-flip-box--fade-out:hover .elementrify-flip-box__back,
+.elementrify-flip-box--trigger-click.elementrify-flip-box--fade-out.elementrify-flip-box--active .elementrify-flip-box__back {
+    z-index: 2;
+}
+

@@ -165,6 +165,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-instagram-feed',
             'file'   => 'assets/css/instagram-feed.css'
+        ],
+        [
+            'handle' => 'elementrify-flip-box',
+            'file'   => 'assets/css/flip-box.css'
         ]
     ];
 
@@ -273,6 +277,11 @@ class WidgetsAssetController
             'file'   => 'assets/js/instagram-feed.js',
             'footer' => true,
             'deps'   => ['swiper'],
+        ],
+        [
+            'handle' => 'elementrify-flip-box',
+            'file'   => 'assets/js/flip-box.js',
+            'footer' => true,
         ]
     ];
 
