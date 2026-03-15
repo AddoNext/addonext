@@ -15,12 +15,10 @@ use Elementrify\Widgets\CodeSnippet\CodeSnippet;
 use Elementrify\Widgets\ContentToggle\ContentToggle;
 use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\Dropcap\Dropcap;
-use Elementrify\Widgets\FAQ\FAQ;
 use Elementrify\Widgets\Highlight\Highlight;
 use Elementrify\Widgets\IconBox\IconBox;
 use Elementrify\Widgets\IconList\IconList;
 use Elementrify\Widgets\ImageBox\ImageBox;
-use Elementrify\Widgets\ListWidget\ListWidget;
 use Elementrify\Widgets\ModalPopup\ModalPopup;
 use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
 use Elementrify\Widgets\SmartPostList\SmartPostList;
@@ -37,7 +35,6 @@ use Elementrify\Widgets\CircularProgress\CircularProgress;
 use Elementrify\Widgets\CountdownTimer\CountdownTimer;
 use Elementrify\Widgets\DualHeading\DualHeading;
 use Elementrify\Widgets\FlipBox\FlipBox;
-use Elementrify\Widgets\HoverBox\HoverBox;
 use Elementrify\Widgets\ImageCarousel\ImageCarousel;
 use Elementrify\Widgets\ImageGallery\ImageGallery;
 use Elementrify\Widgets\ImageHotspot\ImageHotspot;
@@ -49,7 +46,6 @@ use Elementrify\Widgets\ProgressBar\ProgressBar;
 use Elementrify\Widgets\ScrollAnimation\ScrollAnimation;
 use Elementrify\Widgets\StarRating\StarRating;
 use Elementrify\Widgets\Timeline\Timeline;
-use Elementrify\Widgets\TiltEffect\TiltEffect;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Widgets\AuthorBox\AuthorBox;
 use Elementrify\Widgets\Banner\Banner;
@@ -58,7 +54,6 @@ use Elementrify\Widgets\ComparisonTable\ComparisonTable;
 use Elementrify\Widgets\ContactForm\ContactForm;
 use Elementrify\Widgets\InstagramFeed\InstagramFeed;
 use Elementrify\Widgets\LogoShowcase\LogoShowcase;
-use Elementrify\Widgets\Newsletter\Newsletter;
 use Elementrify\Widgets\NotificationBar\NotificationBar;
 use Elementrify\Widgets\PriceList\PriceList;
 use Elementrify\Widgets\PricingTable\PricingTable;
@@ -112,12 +107,10 @@ class WidgetManager
         ContentToggle::class,
         Divider::class,
         Dropcap::class,
-        FAQ::class,
         Highlight::class,
         IconBox::class,
         IconList::class,
         ImageBox::class,
-        ListWidget::class,
         ModalPopup::class,
         OffCanvasContent::class,
         SmartPostList::class,
@@ -134,7 +127,6 @@ class WidgetManager
         CountdownTimer::class,
         DualHeading::class,
         FlipBox::class,
-        HoverBox::class,
         ImageCarousel::class,
         ImageGallery::class,
         ImageHotspot::class,
@@ -146,7 +138,6 @@ class WidgetManager
         ScrollAnimation::class,
         StarRating::class,
         Timeline::class,
-        TiltEffect::class,
         Tooltip::class,
         AuthorBox::class,
         Banner::class,
@@ -155,7 +146,6 @@ class WidgetManager
         ContactForm::class,
         InstagramFeed::class,
         LogoShowcase::class,
-        Newsletter::class,
         NotificationBar::class,
         PriceList::class,
         PricingTable::class,

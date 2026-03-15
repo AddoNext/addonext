@@ -40,10 +40,8 @@ use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\DonutChart\DonutChart;
 use Elementrify\Widgets\Dropcap\Dropcap;
 use Elementrify\Widgets\DualHeading\DualHeading;
-use Elementrify\Widgets\FAQ\FAQ;
 use Elementrify\Widgets\FlipBox\FlipBox;
 use Elementrify\Widgets\Highlight\Highlight;
-use Elementrify\Widgets\HoverBox\HoverBox;
 use Elementrify\Widgets\IconBox\IconBox;
 use Elementrify\Widgets\IconList\IconList;
 use Elementrify\Widgets\ImageBox\ImageBox;
@@ -51,13 +49,11 @@ use Elementrify\Widgets\ImageCarousel\ImageCarousel;
 use Elementrify\Widgets\ImageGallery\ImageGallery;
 use Elementrify\Widgets\ImageHotspot\ImageHotspot;
 use Elementrify\Widgets\LineChart\LineChart;
-use Elementrify\Widgets\ListWidget\ListWidget;
 use Elementrify\Widgets\LogoShowcase\LogoShowcase;
 use Elementrify\Widgets\LottieAnimation\LottieAnimation;
 use Elementrify\Widgets\Marquee\Marquee;
 use Elementrify\Widgets\MiniCart\MiniCart;
 use Elementrify\Widgets\ModalPopup\ModalPopup;
-use Elementrify\Widgets\Newsletter\Newsletter;
 use Elementrify\Widgets\NotificationBar\NotificationBar;
 use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
 use Elementrify\Widgets\Parallax\Parallax;
@@ -84,7 +80,6 @@ use Elementrify\Widgets\TeamMembers\TeamMembers;
 use Elementrify\Widgets\Testimonials\Testimonials;
 use Elementrify\Widgets\TextEditor\TextEditor;
 use Elementrify\Widgets\Timeline\Timeline;
-use Elementrify\Widgets\TiltEffect\TiltEffect;
 use Elementrify\Widgets\Toggle\Toggle;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
@@ -130,10 +125,8 @@ return [
     DonutChart::class         => create(DonutChart::class),
     Dropcap::class            => create(Dropcap::class),
     DualHeading::class        => create(DualHeading::class),
-    FAQ::class                => create(FAQ::class),
     FlipBox::class            => create(FlipBox::class),
     Highlight::class          => create(Highlight::class),
-    HoverBox::class           => create(HoverBox::class),
     IconBox::class            => create(IconBox::class),
     IconList::class           => create(IconList::class),
     ImageBox::class           => create(ImageBox::class),
@@ -141,13 +134,11 @@ return [
     ImageGallery::class       => create(ImageGallery::class),
     ImageHotspot::class       => create(ImageHotspot::class),
     LineChart::class          => create(LineChart::class),
-    ListWidget::class         => create(ListWidget::class),
     LogoShowcase::class       => create(LogoShowcase::class),
     LottieAnimation::class    => create(LottieAnimation::class),
     Marquee::class            => create(Marquee::class),
     MiniCart::class           => create(MiniCart::class),
     ModalPopup::class         => create(ModalPopup::class),
-    Newsletter::class         => create(Newsletter::class),
     NotificationBar::class    => create(NotificationBar::class),
     OffCanvasContent::class   => create(OffCanvasContent::class),
     Parallax::class           => create(Parallax::class),
@@ -174,7 +165,6 @@ return [
     Testimonials::class       => create(Testimonials::class),
     TextEditor::class        => create(TextEditor::class),
     Timeline::class           => create(Timeline::class),
-    TiltEffect::class         => create(TiltEffect::class),
     Toggle::class             => create(Toggle::class),
     Tooltip::class            => create(Tooltip::class),
     TwitterFeed::class        => create(TwitterFeed::class),
