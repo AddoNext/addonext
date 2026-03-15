@@ -157,6 +157,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-call-to-action',
             'file'   => 'assets/css/call-to-action.css'
+        ],
+        [
+            'handle' => 'elementrify-social-share',
+            'file'   => 'assets/css/social-share.css'
         ]
     ];
 
