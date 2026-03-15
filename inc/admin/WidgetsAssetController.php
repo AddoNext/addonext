@@ -161,6 +161,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-social-share',
             'file'   => 'assets/css/social-share.css'
+        ],
+        [
+            'handle' => 'elementrify-instagram-feed',
+            'file'   => 'assets/css/instagram-feed.css'
         ]
     ];
 
@@ -261,6 +265,12 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-logo-showcase',
             'file'   => 'assets/js/logo-showcase.js',
+            'footer' => true,
+            'deps'   => ['swiper'],
+        ],
+        [
+            'handle' => 'elementrify-instagram-feed',
+            'file'   => 'assets/js/instagram-feed.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ]

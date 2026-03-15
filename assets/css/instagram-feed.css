@@ -1,0 +1,204 @@
+.elementrify-instagram-feed {
+    width: 100%;
+}
+
+.elementrify-instagram-feed--empty .elementrify-instagram-feed__notice {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    margin: 0;
+}
+
+.elementrify-instagram-feed__follow-wrap {
+    margin-bottom: 16px;
+}
+
+.elementrify-instagram-feed__follow {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.elementrify-instagram-feed__grid {
+    display: grid;
+    gap: 10px;
+}
+
+.elementrify-instagram-feed__figure {
+    margin: 0;
+    position: relative;
+}
+
+.elementrify-instagram-feed__media-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.elementrify-instagram-feed__media-wrap--square {
+    aspect-ratio: 1;
+}
+
+.elementrify-instagram-feed__media-wrap--square .elementrify-instagram-feed__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.elementrify-instagram-feed__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.elementrify-instagram-feed__media-wrap--zoom-in:hover .elementrify-instagram-feed__img {
+    transform: scale(1.08);
+}
+
+.elementrify-instagram-feed__media-wrap--zoom-out .elementrify-instagram-feed__img {
+    transform: scale(1.1);
+}
+
+.elementrify-instagram-feed__media-wrap--zoom-out:hover .elementrify-instagram-feed__img {
+    transform: scale(1);
+}
+
+.elementrify-instagram-feed__media-wrap--grayscale .elementrify-instagram-feed__img {
+    filter: grayscale(100%);
+}
+
+.elementrify-instagram-feed__media-wrap--grayscale:hover .elementrify-instagram-feed__img {
+    filter: grayscale(0%);
+}
+
+.elementrify-instagram-feed__overlay-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.elementrify-instagram-feed__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    pointer-events: none;
+}
+
+.elementrify-instagram-feed__overlay-link + .elementrify-instagram-feed__overlay {
+    pointer-events: none;
+}
+
+.elementrify-instagram-feed__overlay .elementrify-instagram-feed__el {
+    pointer-events: auto;
+}
+
+.elementrify-instagram-feed__el {
+    margin: 4px;
+}
+
+.elementrify-instagram-feed__el--left {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.elementrify-instagram-feed__el--right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.elementrify-instagram-feed__el--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.elementrify-instagram-feed__username {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.elementrify-instagram-feed__caption,
+.elementrify-instagram-feed__date {
+    margin: 0;
+    font-size: 13px;
+}
+
+.elementrify-instagram-feed__icon a,
+.elementrify-instagram-feed__lightbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+.elementrify-instagram-feed__icon a:hover,
+.elementrify-instagram-feed__lightbox:hover {
+    transform: scale(1.1);
+}
+
+.elementrify-instagram-feed__below {
+    margin: 0;
+    padding: 10px 0 0;
+}
+
+.elementrify-instagram-feed--list .elementrify-instagram-feed__figure {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.elementrify-instagram-feed--list .elementrify-instagram-feed__media-wrap {
+    flex-shrink: 0;
+}
+
+.elementrify-instagram-feed--list .elementrify-instagram-feed__below {
+    flex: 1;
+    min-width: 0;
+}
+
+.elementrify-instagram-feed__carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+.elementrify-instagram-feed__carousel .swiper-wrapper {
+    align-items: stretch;
+}
+
+.elementrify-instagram-feed__carousel .swiper-slide {
+    height: auto;
+}
+
+.elementrify-instagram-feed__carousel .swiper-slide .elementrify-instagram-feed__figure {
+    height: 100%;
+}
+
+.elementrify-instagram-feed__carousel .swiper-button-prev,
+.elementrify-instagram-feed__carousel .swiper-button-next {
+    color: #333;
+}
+
+.elementrify-instagram-feed__carousel .swiper-pagination-bullet {
+    opacity: 0.5;
+}
+
+.elementrify-instagram-feed__carousel .swiper-pagination-bullet-active {
+    opacity: 1;
+}
