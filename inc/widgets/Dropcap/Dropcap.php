@@ -9,23 +9,193 @@ defined('ABSPATH') or exit;
 
 class Dropcap extends WidgetBase
 {
-    public function get_icon(): string { return 'eicon-paragraph elementrify-icon'; }
-    public function get_name(): string { return 'elementrify-dropcap'; }
-    public function get_admin_category(): string { return 'content'; }
-    public function get_title(): string { return __('Dropcap', 'elementrify'); }
-    public function get_description(): string { return __('Styled first letter', 'elementrify'); }
-    public function get_brand_color(): string { return '#b45309'; }
+    public function get_icon(): string
+    {
+        return 'eicon-paragraph elementrify-icon';
+    }
 
-    public function get_style_depends(): array { return ['elementrify-dropcap']; }
-    public function enqueue_assets(): void { wp_register_style('elementrify-dropcap', ELEMENTRIFY_URL . 'assets/css/dropcap.css', [], ELEMENTRIFY_VERSION); }
+    public function get_name(): string
+    {
+        return 'elementrify-dropcap';
+    }
+
+    public function get_admin_category(): string
+    {
+        return 'content';
+    }
+
+    public function get_title(): string
+    {
+        return __('Dropcap', 'elementrify');
+    }
+
+    public function get_description(): string
+    {
+        return __('Large first letter styled as a dropcap.', 'elementrify');
+    }
+
+    public function get_brand_color(): string
+    {
+        return '#2563eb';
+    }
+
+    public function get_style_depends(): array
+    {
+        return ['elementrify-dropcap'];
+    }
+
+    public function enqueue_assets(): void
+    {
+        wp_register_style(
+            'elementrify-dropcap',
+            ELEMENTRIFY_URL . 'assets/css/dropcap.css',
+            [],
+            ELEMENTRIFY_VERSION
+        );
+    }
 
     public function register_controls(): void
     {
-        $this->start_controls_section('section_content', ['label' => __('Content', 'elementrify'), 'tab' => Controls_Manager::TAB_CONTENT]);
-        $this->add_control('text', ['label' => __('Paragraph', 'elementrify'), 'type' => Controls_Manager::TEXTAREA, 'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'elementrify')]);
+        $this->start_controls_section('section_content', [
+            'label' => __('Content', 'elementrify'),
+            'tab'   => Controls_Manager::TAB_CONTENT,
+        ]);
+
+        $this->add_control('text', [
+            'label'   => __('Paragraph', 'elementrify'),
+            'type'    => Controls_Manager::TEXTAREA,
+            'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'elementrify'),
+            'rows'    => 4,
+        ]);
+
         $this->end_controls_section();
-        $this->start_controls_section('section_style', ['label' => __('Style', 'elementrify'), 'tab' => Controls_Manager::TAB_STYLE]);
-        $this->add_control('dropcap_color', ['label' => __('Dropcap color', 'elementrify'), 'type' => Controls_Manager::COLOR, 'default' => '#b45309', 'selectors' => ['{{WRAPPER}} .elementrify-dropcap__letter' => 'color: {{VALUE}};']]);
+
+        $this->start_controls_section('section_style_paragraph', [
+            'label' => __('Paragraph', 'elementrify'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+        $this->add_responsive_control('paragraph_font_size', [
+            'label'      => __('Font size', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', 'em'],
+            'range'      => ['px' => ['min' => 10, 'max' => 72]],
+            'default'    => ['unit' => 'px', 'size' => 16],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-dropcap' => 'font-size: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'paragraph_typography',
+                'selector' => '{{WRAPPER}} .elementrify-dropcap',
+                'exclude'  => ['font_size'],
+            ]
+        );
+
+        $this->add_control('paragraph_color', [
+            'label'     => __('Text color', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#111827',
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-dropcap' => 'color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->end_controls_section();
+
+        $this->start_controls_section('section_style_dropcap', [
+            'label' => __('Dropcap', 'elementrify'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+        $this->add_control('dropcap_fill', [
+            'label'   => __('Fill type', 'elementrify'),
+            'type'    => Controls_Manager::SELECT,
+            'default' => 'solid',
+            'options' => [
+                'solid'    => __('Solid color', 'elementrify'),
+                'gradient' => __('Gradient', 'elementrify'),
+            ],
+        ]);
+
+        $this->add_control('dropcap_color', [
+            'label'     => __('Solid color', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#2563eb',
+            'condition' => ['dropcap_fill' => 'solid'],
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => 'color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_control('dropcap_gradient_start', [
+            'label'     => __('Gradient start', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#2563eb',
+            'condition' => ['dropcap_fill' => 'gradient'],
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => '--elementrify-dropcap-gradient-start: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_control('dropcap_gradient_end', [
+            'label'     => __('Gradient end', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#7c3aed',
+            'condition' => ['dropcap_fill' => 'gradient'],
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => '--elementrify-dropcap-gradient-end: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_control('dropcap_gradient_angle', [
+            'label'      => __('Gradient angle', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['deg'],
+            'range'      => ['deg' => ['min' => 0, 'max' => 360]],
+            'default'    => ['unit' => 'deg', 'size' => 90],
+            'condition'  => ['dropcap_fill' => 'gradient'],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => '--elementrify-dropcap-gradient-angle: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('dropcap_size', [
+            'label'      => __('Size', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', 'em'],
+            'range'      => ['px' => ['min' => 24, 'max' => 160]],
+            'default'    => ['unit' => 'px', 'size' => 52],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => 'font-size: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('dropcap_offset_top', [
+            'label'      => __('Top offset', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', 'em'],
+            'range'      => ['px' => ['min' => -40, 'max' => 80]],
+            'default'    => ['unit' => 'px', 'size' => 4],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => 'margin-top: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('dropcap_gap', [
+            'label'      => __('Gap to text', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', 'em'],
+            'range'      => ['px' => ['min' => 0, 'max' => 60]],
+            'default'    => ['unit' => 'px', 'size' => 10],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-dropcap__letter' => 'margin-right: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
         $this->end_controls_section();
     }
 
@@ -37,6 +207,18 @@ class Dropcap extends WidgetBase
 
     protected function content_template(): void
     {
-        ?><p class="elementrify-dropcap"><# var t = settings.text || ''; var first = t.charAt(0); var rest = t.slice(1); #><span class="elementrify-dropcap__letter">{{{ first }}}</span>{{{ rest }}}</p><?php
+        ?>
+        <#
+        var t = settings.text || '';
+        var first = t.charAt(0);
+        var rest = t.slice(1);
+        var fill = settings.dropcap_fill || 'solid';
+        var cls = 'elementrify-dropcap';
+        if (fill === 'gradient') {
+            cls += ' elementrify-dropcap--gradient';
+        }
+        #>
+        <p class="{{ cls }}"><span class="elementrify-dropcap__letter">{{{ first }}}</span><span class="elementrify-dropcap__text">{{{ rest }}}</span></p>
+        <?php
     }
 }

@@ -177,6 +177,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-highlight',
             'file'   => 'assets/css/highlight.css'
+        ],
+        [
+            'handle' => 'elementrify-dropcap',
+            'file'   => 'assets/css/dropcap.css'
         ]
     ];
 
