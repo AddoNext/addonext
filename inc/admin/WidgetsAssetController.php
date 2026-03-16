@@ -173,6 +173,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-code-snippet',
             'file'   => 'assets/css/code-snippet.css'
+        ],
+        [
+            'handle' => 'elementrify-highlight',
+            'file'   => 'assets/css/highlight.css'
         ]
     ];
 
