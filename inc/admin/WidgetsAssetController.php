@@ -169,6 +169,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-flip-box',
             'file'   => 'assets/css/flip-box.css'
+        ],
+        [
+            'handle' => 'elementrify-code-snippet',
+            'file'   => 'assets/css/code-snippet.css'
         ]
     ];
 
@@ -281,6 +285,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-flip-box',
             'file'   => 'assets/js/flip-box.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-code-snippet',
+            'file'   => 'assets/js/code-snippet.js',
             'footer' => true,
         ]
     ];

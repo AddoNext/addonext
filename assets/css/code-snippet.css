@@ -1,15 +1,201 @@
 .elementrify-code-snippet {
-    margin: 0;
-    padding: 1em;
-    background: #1e293b;
-    color: #e2e8f0;
-    border-radius: 4px;
-    overflow-x: auto;
-    font-family: monospace;
-    font-size: 0.9em;
+    background: #282c34;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    color: #abb2bf;
 }
 
-.elementrify-code-snippet code {
+.elementrify-code-snippet--theme-dark .elementrify-code-snippet__header {
+    background: #31363f;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.elementrify-code-snippet__header {
+    background: #31363f;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.elementrify-code-snippet__dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.elementrify-code-snippet__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.elementrify-code-snippet__dot--red {
+    background: #ff5f56;
+}
+
+.elementrify-code-snippet__dot--yellow {
+    background: #ffbd2e;
+}
+
+.elementrify-code-snippet__dot--green {
+    background: #27c93f;
+}
+
+.elementrify-code-snippet__header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.elementrify-code-snippet__copy {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 28px;
+    padding: 0;
+    color: #abb2bf;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.elementrify-code-snippet__copy:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.elementrify-code-snippet__copy-icon,
+.elementrify-code-snippet__check-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.elementrify-code-snippet__check-icon {
+    opacity: 0;
+    color: #98c379;
+}
+
+.elementrify-code-snippet__copy.copied .elementrify-code-snippet__copy-icon {
+    opacity: 0;
+}
+
+.elementrify-code-snippet__copy.copied .elementrify-code-snippet__check-icon {
+    opacity: 1;
+}
+
+.elementrify-code-snippet__copy.copied {
+    color: #98c379;
+    border-color: rgba(152, 195, 121, 0.4);
+}
+
+.elementrify-code-snippet__copy-icon svg,
+.elementrify-code-snippet__check-icon svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+.elementrify-code-snippet__filename {
+    background: rgba(255, 255, 255, 0.06);
+    color: #abb2bf;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+.elementrify-code-snippet__pre {
+    position: relative;
+    margin: 0;
+    padding: 14px 24px;
+    background: #282c34;
+    overflow-x: auto;
+    min-height: 60px;
+    line-height: 5px;
+}
+
+.elementrify-code-snippet__code {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: pre;
+    border: none;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.elementrify-code-snippet__display {
+    margin: 0;
+    padding: 0;
+    color: #abb2bf;
+    background: none;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    font-family: inherit;
+}
+
+.elementrify-cs_keyword {
+    color: #c678dd;
+}
+
+.elementrify-cs_funct {
+    color: #61afef;
+}
+
+.elementrify-cs_identifier {
+    color: #d4d4d4;
+}
+
+.elementrify-cs_builtin {
+    color: #d4d4d4;
+}
+
+.elementrify-cs_number {
+    color: #d19a66;
+}
+
+.elementrify-cs_string {
+    color: #98c379;
+}
+
+.elementrify-cs_comment {
+    color: #5c6370;
+    font-style: italic;
+}
+
+.elementrify-cs_punctuation,
+.elementrify-cs_plain {
+    color: #abb2bf;
+}
+
+.elementrify-cs_selector {
+    color: #e06c75;
+}
+
+.elementrify-cs_tag {
+    color: #e06c75;
 }
