@@ -181,6 +181,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-dropcap',
             'file'   => 'assets/css/dropcap.css'
+        ],
+        [
+            'handle' => 'elementrify-off-canvas-content',
+            'file'   => 'assets/css/off-canvas-content.css'
         ]
     ];
 
@@ -298,6 +302,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-code-snippet',
             'file'   => 'assets/js/code-snippet.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-off-canvas-content',
+            'file'   => 'assets/js/off-canvas-content.js',
             'footer' => true,
         ]
     ];

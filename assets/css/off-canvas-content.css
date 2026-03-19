@@ -1,0 +1,343 @@
+.elementrify-off-canvas {
+    position: relative;
+    display: inline-block;
+}
+
+.elementrify-off-canvas__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #f3f4f6;
+    color: #111827;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.elementrify-off-canvas__trigger-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elementrify-off-canvas__trigger-icon svg,
+.elementrify-off-canvas__trigger-icon i {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+}
+
+.elementrify-off-canvas__trigger:hover {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+}
+
+.elementrify-off-canvas__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    z-index: 1000;
+}
+
+.elementrify-off-canvas__panel {
+    position: fixed;
+    z-index: 1001;
+    background: transparent;
+    transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    width: 360px;
+    max-width: 100%;
+    transform: translateX(100%);
+}
+
+.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 360px;
+    max-width: 100%;
+    transform: translateX(-100%);
+}
+
+.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: 60vh;
+    transform: translateY(-100%);
+}
+
+.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: 60vh;
+    transform: translateY(100%);
+}
+
+.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    width: calc(100% - 32px);
+    max-width: 560px;
+    height: auto;
+    max-height: 85vh;
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.elementrify-off-canvas__panel-inner {
+    height: 100%;
+    max-height: inherit;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.elementrify-off-canvas--right .elementrify-off-canvas__panel-inner {
+    box-shadow: -18px 0 40px rgba(15, 23, 42, 0.35);
+}
+
+.elementrify-off-canvas--left .elementrify-off-canvas__panel-inner {
+    box-shadow: 18px 0 40px rgba(15, 23, 42, 0.35);
+}
+
+.elementrify-off-canvas--top .elementrify-off-canvas__panel-inner {
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
+}
+
+.elementrify-off-canvas--bottom .elementrify-off-canvas__panel-inner {
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.25);
+}
+
+.elementrify-off-canvas--center .elementrify-off-canvas__panel-inner {
+    border-radius: 12px;
+    box-shadow: 0 24px 64px rgba(15, 23, 42, 0.35);
+    max-height: 85vh;
+}
+
+.elementrify-off-canvas__panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+}
+
+.elementrify-off-canvas__panel-inner--close-only .elementrify-off-canvas__panel-header--close-only {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    border-bottom: none;
+    background: transparent;
+}
+
+.elementrify-off-canvas__panel-inner--close-only {
+    position: relative;
+}
+
+.elementrify-off-canvas__panel-inner--close-only .elementrify-off-canvas__panel-body {
+    padding-top: 48px;
+}
+
+.elementrify-off-canvas__panel-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.elementrify-off-canvas__close {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.elementrify-off-canvas__close:hover {
+    color: #111827;
+}
+
+.elementrify-off-canvas__panel-body {
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    flex: 1;
+    min-height: 0;
+}
+
+.elementrify-off-canvas.is-open .elementrify-off-canvas__overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+    transform: translateX(0);
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+    transform: translateX(0);
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+    transform: translateY(0);
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    transform: translateY(0);
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.elementrify-off-canvas__panel-inner *:last-child {
+    margin-bottom: 0;
+}
+
+.elementrify-off-canvas--anim-slide.elementrify-off-canvas--right .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-slide.elementrify-off-canvas--left .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-slide.elementrify-off-canvas--top .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-slide.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-slide.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(0.96);
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
+.elementrify-off-canvas--anim-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-fade.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+    transform: translateX(100%) scale(0.94);
+    transform-origin: center right;
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+    transform: translateX(-100%) scale(0.94);
+    transform-origin: center left;
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+    transform: translateY(-100%) scale(0.94);
+    transform-origin: top center;
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    transform: translateY(100%) scale(0.94);
+    transform-origin: bottom center;
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(0.82);
+    opacity: 0;
+}
+
+.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
