@@ -189,6 +189,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-image-gallery',
             'file'   => 'assets/css/image-gallery.css'
+        ],
+        [
+            'handle' => 'elementrify-animated-text',
+            'file'   => 'assets/css/animated-text.css'
         ]
     ];
 
@@ -317,6 +321,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-image-gallery',
             'file'   => 'assets/js/image-gallery.js',
             'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-animated-text',
+            'file'   => 'assets/js/animated-text.js',
+            'footer' => true,
+            'deps'   => ['jquery'],
         ]
     ];
 
