@@ -185,6 +185,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-off-canvas-content',
             'file'   => 'assets/css/off-canvas-content.css'
+        ],
+        [
+            'handle' => 'elementrify-image-gallery',
+            'file'   => 'assets/css/image-gallery.css'
         ]
     ];
 
@@ -307,6 +311,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-off-canvas-content',
             'file'   => 'assets/js/off-canvas-content.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-image-gallery',
+            'file'   => 'assets/js/image-gallery.js',
             'footer' => true,
         ]
     ];
