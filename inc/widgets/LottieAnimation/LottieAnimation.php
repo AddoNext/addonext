@@ -3,34 +3,423 @@ namespace Elementrify\Widgets\LottieAnimation;
 
 use Elementrify\Base\WidgetBase;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Css_Filter;
 
 defined('ABSPATH') or exit;
 
+/**
+ * Lottie JSON animation (lottie-web), modeled on Royal Addons Lottie widget behavior.
+ */
 class LottieAnimation extends WidgetBase
 {
-    public function get_icon(): string { return 'eicon-lottie elementrify-icon'; }
-    public function get_name(): string { return 'elementrify-lottie-animation'; }
-    public function get_admin_category(): string { return 'creative'; }
-    public function get_title(): string { return __('Lottie Animation', 'elementrify'); }
-    public function get_description(): string { return __('JSON-based animations', 'elementrify'); }
-    public function get_brand_color(): string { return '#06b6d4'; }
+    public const DEFAULT_JSON_URL = 'https://assets3.lottiefiles.com/packages/lf20_ghs9bkkc.json';
+
+    public function __construct($data = [], $args = null)
+    {
+        parent::__construct($data, $args);
+        add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_preview_assets']);
+    }
+
+    public function enqueue_preview_assets(): void
+    {
+        $this->enqueue_assets();
+        wp_enqueue_style('elementrify-lottie-animation');
+        wp_enqueue_script('elementrify-lottie-animation');
+    }
+
+    public function get_icon(): string
+    {
+        return 'eicon-lottie elementrify-icon';
+    }
+
+    public function get_name(): string
+    {
+        return 'elementrify-lottie-animation';
+    }
+
+    public function get_admin_category(): string
+    {
+        return 'creative';
+    }
+
+    public function get_title(): string
+    {
+        return __('Lottie Animation', 'elementrify');
+    }
+
+    public function get_description(): string
+    {
+        return __('Lottie JSON animations with triggers, speed, and SVG or canvas render.', 'elementrify');
+    }
+
+    public function get_brand_color(): string
+    {
+        return '#06b6d4';
+    }
+
+    public function get_keywords(): array
+    {
+        return ['elementrify', 'lottie', 'animation', 'json', 'svg', 'canvas', 'motion'];
+    }
+
+    public function get_style_depends(): array
+    {
+        return ['elementrify-lottie-animation'];
+    }
+
+    public function get_script_depends(): array
+    {
+        return ['elementrify-lottie-animation'];
+    }
+
+    public function enqueue_assets(): void
+    {
+        wp_register_style(
+            'elementrify-lottie-animation',
+            ELEMENTRIFY_URL . 'assets/css/lottie-animation.css',
+            [],
+            ELEMENTRIFY_VERSION
+        );
+        wp_register_script(
+            'elementrify-lottie-web',
+            ELEMENTRIFY_URL . 'assets/js/lib/lottie/lottie.min.js',
+            [],
+            ELEMENTRIFY_VERSION,
+            true
+        );
+        wp_register_script(
+            'elementrify-lottie-animation',
+            ELEMENTRIFY_URL . 'assets/js/lottie-animation.js',
+            ['elementrify-lottie-web'],
+            ELEMENTRIFY_VERSION,
+            true
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $settings
+     */
+    public function build_lottie_settings_json(array $settings): string
+    {
+        $animate = $settings['animate_view'] ?? [];
+        $sizes   = is_array($animate) && isset($animate['sizes']) && is_array($animate['sizes']) ? $animate['sizes'] : [];
+
+        $payload = [
+            'loop'            => $settings['loop'] ?? 'yes',
+            'autoplay'        => $settings['autoplay'] ?? 'yes',
+            'speed'           => isset($settings['speed']) ? (float) $settings['speed'] : 1.0,
+            'trigger'         => $settings['trigger'] ?? 'none',
+            'reverse'         => $settings['reverse'] ?? '',
+            'scroll_start'    => isset($sizes['start']) ? (float) $sizes['start'] : 0.0,
+            'scroll_end'      => isset($sizes['end']) ? (float) $sizes['end'] : 100.0,
+            'lottie_renderer' => $settings['lottie_renderer'] ?? 'svg',
+        ];
+
+        return wp_json_encode($payload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    }
 
     public function register_controls(): void
     {
-        $this->start_controls_section('section_content', ['label' => __('Content', 'elementrify'), 'tab' => Controls_Manager::TAB_CONTENT]);
-        $this->add_control('source', ['label' => __('JSON URL', 'elementrify'), 'type' => Controls_Manager::URL, 'placeholder' => 'https://...']);
-        $this->add_control('loop', ['label' => __('Loop', 'elementrify'), 'type' => Controls_Manager::SWITCHER, 'default' => 'yes']);
+        $this->start_controls_section('section_settings', [
+            'label' => __('Settings', 'elementrify'),
+            'tab'   => Controls_Manager::TAB_CONTENT,
+        ]);
+
+        $this->add_control('source', [
+            'label'   => __('File source', 'elementrify'),
+            'type'    => Controls_Manager::SELECT,
+            'options' => [
+                'url'  => __('External URL', 'elementrify'),
+                'file' => __('Media file', 'elementrify'),
+            ],
+            'default' => 'url',
+        ]);
+
+        $this->add_control('json_url', [
+            'label'       => __('Animation JSON URL', 'elementrify'),
+            'type'        => Controls_Manager::TEXT,
+            'dynamic'     => ['active' => true],
+            'default'     => self::DEFAULT_JSON_URL,
+            /* translators: %s: LottieFiles URL */
+            'description' => sprintf(
+                wp_kses(
+                    __('Paste a .json URL from %s.', 'elementrify'),
+                    ['a' => ['href' => [], 'target' => []]]
+                ),
+                '<a href="https://lottiefiles.com/" target="_blank" rel="noopener noreferrer">LottieFiles</a>'
+            ),
+            'label_block' => true,
+            'condition'   => [
+                'source' => 'url',
+            ],
+        ]);
+
+        $this->add_control('json_file', [
+            'label'              => __('Upload JSON file', 'elementrify'),
+            'type'               => Controls_Manager::MEDIA,
+            'media_type'         => 'application/json',
+            'frontend_available' => true,
+            'condition'          => [
+                'source' => 'file',
+            ],
+        ]);
+
+        $this->add_control('autoplay', [
+            'label'        => __('Autoplay', 'elementrify'),
+            'type'         => Controls_Manager::SWITCHER,
+            'default'      => 'yes',
+            'return_value' => 'yes',
+            'separator'    => 'before',
+        ]);
+
+        $this->add_control('loop', [
+            'label'        => __('Loop', 'elementrify'),
+            'type'         => Controls_Manager::SWITCHER,
+            'default'      => 'yes',
+            'return_value' => 'yes',
+        ]);
+
+        $this->add_control('reverse', [
+            'label'        => __('Reverse', 'elementrify'),
+            'type'         => Controls_Manager::SWITCHER,
+            'return_value' => 'yes',
+            'condition'    => [
+                'trigger!' => 'scroll',
+            ],
+        ]);
+
+        $this->add_control('speed', [
+            'label'   => __('Animation speed', 'elementrify'),
+            'type'    => Controls_Manager::NUMBER,
+            'default' => 1,
+            'min'     => 0.1,
+            'max'     => 3,
+            'step'    => 0.1,
+        ]);
+
+        $this->add_control('trigger', [
+            'label'              => __('Trigger', 'elementrify'),
+            'type'               => Controls_Manager::SELECT,
+            'default'            => 'none',
+            'options'            => [
+                'none'     => __('None', 'elementrify'),
+                'viewport' => __('Viewport', 'elementrify'),
+                'hover'    => __('Hover', 'elementrify'),
+                'scroll'   => __('Scroll', 'elementrify'),
+            ],
+            'frontend_available' => true,
+        ]);
+
+        $this->add_control('animate_view', [
+            'label'     => __('Viewport range', 'elementrify'),
+            'type'      => Controls_Manager::SLIDER,
+            'default'   => [
+                'sizes' => [
+                    'start' => 0,
+                    'end'   => 100,
+                ],
+                'unit'  => '%',
+            ],
+            'labels'    => [
+                __('Bottom', 'elementrify'),
+                __('Top', 'elementrify'),
+            ],
+            'scales'    => 1,
+            'handles'   => 'range',
+            'condition' => [
+                'trigger' => ['scroll', 'viewport'],
+            ],
+        ]);
+
+        $this->add_responsive_control('animation_size', [
+            'label'       => __('Size', 'elementrify'),
+            'type'        => Controls_Manager::SLIDER,
+            'size_units'  => ['px', '%'],
+            'default'     => [
+                'unit' => '%',
+                'size' => 50,
+            ],
+            'range'       => [
+                'px' => [
+                    'min' => 1,
+                    'max' => 800,
+                ],
+                '%'  => [
+                    'min' => 1,
+                    'max' => 100,
+                ],
+            ],
+            'render_type' => 'template',
+            'separator'   => 'before',
+            'selectors'   => [
+                '{{WRAPPER}} .elementrify-lottie-animation svg' => 'width: 100% !important; height: 100% !important;',
+                '{{WRAPPER}} .elementrify-lottie-animation' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+            ],
+        ]);
+
+        $this->add_responsive_control('rotate', [
+            'label'       => __('Rotate (degrees)', 'elementrify'),
+            'type'        => Controls_Manager::SLIDER,
+            'description' => __('Rotation in degrees.', 'elementrify'),
+            'range'       => [
+                'px' => [
+                    'min' => -180,
+                    'max' => 180,
+                ],
+            ],
+            'default'     => [
+                'size' => 0,
+            ],
+            'selectors'   => [
+                '{{WRAPPER}} .elementrify-lottie-animation' => 'transform: rotate({{SIZE}}deg);',
+            ],
+        ]);
+
+        $this->add_responsive_control('animation_align', [
+            'label'     => __('Alignment', 'elementrify'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'flex-start' => [
+                    'title' => __('Left', 'elementrify'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center'     => [
+                    'title' => __('Center', 'elementrify'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'flex-end'   => [
+                    'title' => __('Right', 'elementrify'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'center',
+            'toggle'    => false,
+            'separator' => 'before',
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-lottie-animation__wrapper' => 'justify-content: {{VALUE}}; align-items: center;',
+            ],
+        ]);
+
+        $this->add_control('lottie_renderer', [
+            'label'        => __('Render as', 'elementrify'),
+            'type'         => Controls_Manager::SELECT,
+            'options'      => [
+                'svg'    => __('SVG', 'elementrify'),
+                'canvas' => __('Canvas', 'elementrify'),
+            ],
+            'default'      => 'svg',
+            'render_type'  => 'template',
+            'separator'    => 'before',
+        ]);
+
+        $this->add_control('render_notice', [
+            'type'            => Controls_Manager::RAW_HTML,
+            'raw'             => __('Use canvas if the page feels slow with many Lottie instances.', 'elementrify'),
+            'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+        ]);
+
+        $this->add_control('link_switcher', [
+            'label' => __('Wrapper link', 'elementrify'),
+            'type'  => Controls_Manager::SWITCHER,
+        ]);
+
+        $this->add_control('link', [
+            'label'       => __('Link', 'elementrify'),
+            'type'        => Controls_Manager::URL,
+            'dynamic'     => ['active' => true],
+            'default'     => [
+                'url' => '',
+            ],
+            'placeholder' => 'https://',
+            'label_block' => true,
+            'condition'   => [
+                'link_switcher' => 'yes',
+            ],
+        ]);
+
+        $this->end_controls_section();
+
+        $this->start_controls_section('section_style', [
+            'label' => __('Animation', 'elementrify'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+        $this->start_controls_tabs('tabs_lottie');
+
+        $this->start_controls_tab('tab_lottie_normal', [
+            'label' => __('Normal', 'elementrify'),
+        ]);
+
+        $this->add_control('opacity', [
+            'label'     => __('Opacity', 'elementrify'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'max'  => 1,
+                    'min'  => 0.1,
+                    'step' => 0.01,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-lottie-animation' => 'opacity: {{SIZE}};',
+            ],
+        ]);
+
+        $this->add_control('hover_transition', [
+            'label'     => __('Transition duration', 'elementrify'),
+            'type'      => Controls_Manager::NUMBER,
+            'default'   => 0.3,
+            'min'       => 0,
+            'max'       => 5,
+            'step'      => 0.1,
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-lottie-animation' => 'transition-duration: {{VALUE}}s;',
+            ],
+        ]);
+
+        $this->add_group_control(Group_Control_Css_Filter::get_type(), [
+            'name'     => 'css_filters',
+            'selector' => '{{WRAPPER}} .elementrify-lottie-animation',
+        ]);
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab('tab_lottie_hover', [
+            'label' => __('Hover', 'elementrify'),
+        ]);
+
+        $this->add_control('hover_opacity', [
+            'label'     => __('Opacity', 'elementrify'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'max'  => 1,
+                    'min'  => 0.1,
+                    'step' => 0.01,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-lottie-animation:hover' => 'opacity: {{SIZE}};',
+            ],
+        ]);
+
+        $this->add_group_control(Group_Control_Css_Filter::get_type(), [
+            'name'     => 'hover_css_filters',
+            'selector' => '{{WRAPPER}} .elementrify-lottie-animation:hover',
+        ]);
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
         $this->end_controls_section();
     }
 
     public function render(): void
     {
         $path = ELEMENTRIFY_DIR . 'templates/lottie-animation/lottie-animation.php';
-        if (is_readable($path)) include $path;
-    }
-
-    protected function content_template(): void
-    {
-        ?><div class="elementrify-lottie" data-src="{{ settings.source.url }}" data-loop="{{ settings.loop }}"><?php echo esc_html__('Lottie placeholder', 'elementrify'); ?></div><?php
+        if (is_readable($path)) {
+            include $path;
+        }
     }
 }

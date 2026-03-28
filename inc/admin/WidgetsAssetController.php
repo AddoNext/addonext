@@ -139,6 +139,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/logo-showcase.css'
         ],
         [
+            'handle' => 'elementrify-lottie-animation',
+            'file'   => 'assets/css/lottie-animation.css'
+        ],
+        [
             'handle' => 'elementrify-progress-bar',
             'file'   => 'assets/css/progress-bar.css'
         ],
@@ -308,6 +312,17 @@ class WidgetsAssetController
             'file'   => 'assets/js/logo-showcase.js',
             'footer' => true,
             'deps'   => ['swiper'],
+        ],
+        [
+            'handle' => 'elementrify-lottie-web',
+            'file'   => 'assets/js/lib/lottie/lottie.min.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-lottie-animation',
+            'file'   => 'assets/js/lottie-animation.js',
+            'footer' => true,
+            'deps'   => ['elementrify-lottie-web'],
         ],
         [
             'handle' => 'elementrify-instagram-feed',
