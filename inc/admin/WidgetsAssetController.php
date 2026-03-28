@@ -127,6 +127,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/subscribe-form.css'
         ],
         [
+            'handle' => 'elementrify-table-of-contents',
+            'file'   => 'assets/css/table-of-contents.css'
+        ],
+        [
             'handle' => 'elementrify-team-members',
             'file'   => 'assets/css/team-members.css'
         ],
@@ -282,6 +286,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-subscribe-form',
             'file'   => 'assets/js/subscribe-form.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-table-of-contents',
+            'file'   => 'assets/js/table-of-contents.js',
             'footer' => true,
         ],
         [
