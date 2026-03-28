@@ -197,6 +197,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-animated-text',
             'file'   => 'assets/css/animated-text.css'
+        ],
+        [
+            'handle' => 'elementrify-before-after-slider',
+            'file'   => 'assets/css/before-after-slider.css'
         ]
     ];
 
@@ -336,6 +340,11 @@ class WidgetsAssetController
             'file'   => 'assets/js/animated-text.js',
             'footer' => true,
             'deps'   => ['jquery'],
+        ],
+        [
+            'handle' => 'elementrify-before-after-slider',
+            'file'   => 'assets/js/before-after-slider.js',
+            'footer' => true,
         ]
     ];
 
