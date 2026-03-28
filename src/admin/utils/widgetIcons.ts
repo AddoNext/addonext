@@ -133,7 +133,6 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-testimonials": faQuoteLeft,
   "elementrify-text-editor": faAlignLeft,
   "elementrify-timeline": faClock,
-  "elementrify-toggle": faChevronDown,
   "elementrify-tooltip": faCircleInfo,
   "elementrify-twitter-feed": faHashtag,
   "elementrify-video-player": faVideo,

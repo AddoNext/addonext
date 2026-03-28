@@ -80,7 +80,6 @@ use Elementrify\Widgets\TeamMembers\TeamMembers;
 use Elementrify\Widgets\Testimonials\Testimonials;
 use Elementrify\Widgets\TextEditor\TextEditor;
 use Elementrify\Widgets\Timeline\Timeline;
-use Elementrify\Widgets\Toggle\Toggle;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
@@ -165,7 +164,6 @@ return [
     Testimonials::class       => create(Testimonials::class),
     TextEditor::class        => create(TextEditor::class),
     Timeline::class           => create(Timeline::class),
-    Toggle::class             => create(Toggle::class),
     Tooltip::class            => create(Tooltip::class),
     TwitterFeed::class        => create(TwitterFeed::class),
     VideoPlayer::class        => create(VideoPlayer::class),

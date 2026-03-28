@@ -25,7 +25,6 @@ use Elementrify\Widgets\SmartPostList\SmartPostList;
 use Elementrify\Widgets\Spacer\Spacer;
 use Elementrify\Widgets\TableOfContents\TableOfContents;
 use Elementrify\Widgets\TextEditor\TextEditor;
-use Elementrify\Widgets\Toggle\Toggle;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
 use Elementrify\Widgets\AnimatedCounter\AnimatedCounter;
 use Elementrify\Widgets\AnimatedGradient\AnimatedGradient;
@@ -117,7 +116,6 @@ class WidgetManager
         Spacer::class,
         TableOfContents::class,
         TextEditor::class,
-        Toggle::class,
         VideoPlayer::class,
         AnimatedCounter::class,
         AnimatedGradient::class,
