@@ -187,6 +187,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/highlight.css'
         ],
         [
+            'handle' => 'elementrify-dual-heading',
+            'file'   => 'assets/css/dual-heading.css'
+        ],
+        [
             'handle' => 'elementrify-dropcap',
             'file'   => 'assets/css/dropcap.css'
         ],
@@ -323,6 +327,12 @@ class WidgetsAssetController
             'file'   => 'assets/js/lottie-animation.js',
             'footer' => true,
             'deps'   => ['elementrify-lottie-web'],
+        ],
+        [
+            'handle' => 'elementrify-dual-heading-editor',
+            'file'   => 'assets/js/dual-heading-editor.js',
+            'footer' => true,
+            'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-instagram-feed',
