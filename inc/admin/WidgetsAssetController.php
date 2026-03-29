@@ -191,6 +191,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/dual-heading.css'
         ],
         [
+            'handle' => 'elementrify-animated-gradient',
+            'file'   => 'assets/css/animated-gradient.css'
+        ],
+        [
             'handle' => 'elementrify-dropcap',
             'file'   => 'assets/css/dropcap.css'
         ],
