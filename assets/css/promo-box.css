@@ -1,0 +1,315 @@
+.elementrify-promo-box {
+    --elementrify-promo-start: #1f7bff;
+    --elementrify-promo-end: #7a3cff;
+    --elementrify-promo-angle: 112deg;
+    --elementrify-promo-gradient-duration: 9s;
+    --elementrify-promo-circles-duration: 7s;
+    --elementrify-promo-circle-one: rgba(175, 120, 255, 0.35);
+    --elementrify-promo-circle-two: rgba(130, 90, 255, 0.35);
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 28px 30px;
+    background-color: #3157f8;
+    background-image: linear-gradient(var(--elementrify-promo-angle), var(--elementrify-promo-start), var(--elementrify-promo-end));
+    background-size: 220% 220%;
+    color: #fff;
+}
+
+.elementrify-promo-box--bg-gradient,
+.elementor-element.elementrify-promo-box--bg-gradient .elementrify-promo-box {
+    background-image: linear-gradient(var(--elementrify-promo-angle), var(--elementrify-promo-start), var(--elementrify-promo-end));
+}
+
+.elementrify-promo-box--bg-solid,
+.elementor-element.elementrify-promo-box--bg-solid .elementrify-promo-box {
+    background-image: none;
+}
+
+.elementrify-promo-box__content {
+    position: relative;
+    z-index: 3;
+    max-width: 76%;
+}
+
+.elementrify-promo-box__badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.elementrify-promo-box__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 8px 16px;
+    background-color: #f6d34b;
+    color: #1f2937;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.elementrify-promo-box__badge-secondary {
+    color: #f9fafb;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.elementrify-promo-box__title {
+    margin: 0;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.18;
+    font-weight: 700;
+}
+
+.elementrify-promo-box__description {
+    margin: 16px 0 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 96%;
+}
+
+.elementrify-promo-box__footer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    row-gap: 14px;
+    flex-wrap: wrap;
+}
+
+.elementrify-promo-box__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+    color: #2f6ef8;
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 14px 34px;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.elementrify-promo-box__button:hover {
+    color: #fff;
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.elementrify-promo-box__counter {
+    display: inline-flex;
+    align-items: flex-start;
+}
+
+.elementrify-promo-box__counter-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 112px;
+    padding-right: 16px;
+    margin-right: 16px;
+}
+
+.elementrify-promo-box__counter-item--separator::after {
+    content: ':';
+    position: absolute;
+    right: -2px;
+    top: 2px;
+    color: #89a2ff;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.elementrify-promo-box__counter-item:last-child {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.elementrify-promo-box__counter-value {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.elementrify-promo-box__counter-label {
+    margin-top: 8px;
+    color: #dbeafe;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.elementrify-promo-box__circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.elementrify-promo-box__circle--one {
+    width: 210px;
+    height: 210px;
+    top: -84px;
+    right: -58px;
+    background: var(--elementrify-promo-circle-one);
+}
+
+.elementrify-promo-box__circle--two {
+    width: 92px;
+    height: 92px;
+    bottom: -28px;
+    right: 102px;
+    background: var(--elementrify-promo-circle-two);
+}
+
+.elementor-element.elementrify-promo-box--anim-yes .elementrify-promo-box {
+    animation: elementrify-promo-gradient-shift var(--elementrify-promo-gradient-duration) ease-in-out infinite;
+}
+
+.elementor-element.elementrify-promo-box--anim-yes .elementrify-promo-box__circle--one {
+    animation: elementrify-promo-circle-drift var(--elementrify-promo-circles-duration) ease-in-out infinite;
+}
+
+.elementor-element.elementrify-promo-box--anim-yes .elementrify-promo-box__circle--two {
+    animation: elementrify-promo-circle-drift-reverse calc(var(--elementrify-promo-circles-duration) * 1.2) ease-in-out infinite;
+}
+
+@keyframes elementrify-promo-gradient-shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes elementrify-promo-circle-drift {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(-20px, 14px, 0);
+    }
+}
+
+@keyframes elementrify-promo-circle-drift-reverse {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(14px, -10px, 0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .elementrify-promo-box__content {
+        max-width: 100%;
+    }
+
+    .elementrify-promo-box__badge-secondary {
+        font-size: 19px;
+    }
+
+    .elementrify-promo-box__title {
+        font-size: 22px;
+    }
+
+    .elementrify-promo-box__description {
+        font-size: 15px;
+    }
+
+    .elementrify-promo-box__button {
+        font-size: 14px;
+    }
+
+    .elementrify-promo-box__counter-value {
+        font-size: 18px;
+    }
+
+    .elementrify-promo-box__counter-item {
+        min-width: 84px;
+    }
+}
+
+@media (max-width: 767px) {
+    .elementrify-promo-box {
+        padding: 20px;
+    }
+
+    .elementrify-promo-box__badge-row {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .elementrify-promo-box__badge-pill {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+
+    .elementrify-promo-box__badge-secondary {
+        font-size: 18px;
+    }
+
+    .elementrify-promo-box__title {
+        font-size: 28px;
+    }
+
+    .elementrify-promo-box__description {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .elementrify-promo-box__button {
+        font-size: 16px;
+        padding: 11px 22px;
+    }
+
+    .elementrify-promo-box__footer {
+        margin-top: 18px;
+        column-gap: 14px;
+    }
+
+    .elementrify-promo-box__counter {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .elementrify-promo-box__counter-item {
+        min-width: 60px;
+        margin-right: 10px;
+        padding-right: 10px;
+    }
+
+    .elementrify-promo-box__counter-item--separator::after {
+        font-size: 22px;
+        top: 0;
+        right: -1px;
+    }
+
+    .elementrify-promo-box__counter-value {
+        font-size: 22px;
+    }
+
+    .elementrify-promo-box__counter-label {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+}

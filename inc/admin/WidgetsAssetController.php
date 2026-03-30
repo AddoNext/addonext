@@ -217,6 +217,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-before-after-slider',
             'file'   => 'assets/css/before-after-slider.css'
+        ],
+        [
+            'handle' => 'elementrify-promo-box',
+            'file'   => 'assets/css/promo-box.css'
         ]
     ];
 
@@ -276,6 +280,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-countdown-timer',
             'file'   => 'assets/js/countdown-timer.js',
+            'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-promo-box',
+            'file'   => 'assets/js/promo-box.js',
             'footer' => true,
         ],
         [
