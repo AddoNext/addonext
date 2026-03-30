@@ -1,0 +1,143 @@
+.elementrify-price-list {
+  width: 100%;
+}
+
+.elementrify-price-list__box {
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: var(--er-pl-box-padding, 2rem 2.25rem 1.75rem);
+  background-color: var(--er-pl-box-bg, #faf6ef);
+  border-width: var(--er-pl-border-w, 1px);
+  border-style: solid;
+  border-color: var(--er-pl-border, #d4a84b);
+  border-radius: var(--er-pl-radius, 12px);
+}
+
+.elementrify-price-list__header {
+  text-align: center;
+  margin-bottom: var(--er-pl-header-after, 1rem);
+}
+
+.elementrify-price-list__main-title {
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1f1f1f;
+}
+
+.elementrify-price-list__subtitle {
+  margin: 0 0 1rem;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.9375rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.elementrify-price-list__header-rule {
+  display: block;
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: var(--er-pl-header-rule-h, 1px) solid var(--er-pl-header-rule, #d4a84b);
+}
+
+.elementrify-price-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.elementrify-price-list__item {
+  margin: 0;
+  padding: var(--er-pl-item-pad, 1rem 0);
+}
+
+.elementrify-price-list__line {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.elementrify-price-list__item-title {
+  flex: 1 1 auto;
+  margin: 0;
+  min-width: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1f2937;
+  text-align: left;
+}
+
+.elementrify-price-list__item-price {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #b45309;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.elementrify-price-list__item-desc {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6b7280;
+  text-align: left;
+}
+
+.elementrify-price-list__separator {
+  display: block;
+  width: 100%;
+  height: 0;
+  margin: var(--er-pl-sep-margin, 1rem) 0 0;
+  border: 0;
+  border-top: var(--er-pl-sep-w, 1px) solid var(--er-pl-sep, #e8d5a3);
+}
+
+.elementrify-price-list__footer {
+  margin-top: var(--er-pl-footer-mt, 0.25rem);
+  text-align: center;
+}
+
+.elementrify-price-list__footer-note {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.8125rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+@media (max-width: 767px) {
+  .elementrify-price-list__box {
+    padding: var(--er-pl-box-padding-t, 1.5rem 1.25rem 1.25rem);
+  }
+
+  .elementrify-price-list__main-title {
+    font-size: 1.5rem;
+  }
+
+  .elementrify-price-list__line {
+    gap: 0.75rem;
+  }
+}

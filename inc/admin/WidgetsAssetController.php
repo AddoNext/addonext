@@ -221,6 +221,10 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-promo-box',
             'file'   => 'assets/css/promo-box.css'
+        ],
+        [
+            'handle' => 'elementrify-price-list',
+            'file'   => 'assets/css/price-list.css'
         ]
     ];
 
