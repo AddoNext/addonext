@@ -195,6 +195,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/animated-gradient.css'
         ],
         [
+            'handle' => 'elementrify-bento-grid',
+            'file'   => 'assets/css/bento-grid.css'
+        ],
+        [
             'handle' => 'elementrify-dropcap',
             'file'   => 'assets/css/dropcap.css'
         ],

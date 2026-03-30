@@ -1,0 +1,68 @@
+.elementrify-bento-grid {
+    --elementrify-bento-row-gap: 14px;
+    --elementrify-bento-column-gap: 14px;
+    display: grid;
+    row-gap: var(--elementrify-bento-row-gap);
+}
+
+.elementrify-bento-grid__row {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--elementrify-bento-column-gap);
+    row-gap: var(--elementrify-bento-column-gap);
+}
+
+.elementrify-bento-grid__tile {
+    grid-column: span var(--er-bento-span-d, 6);
+    min-height: 160px;
+    border-radius: 12px;
+    padding: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.elementrify-bento-grid__icon {
+    color: var(--er-bento-icon-color, #2563eb);
+    line-height: 1;
+}
+
+.elementrify-bento-grid__icon i {
+    font-size: 28px;
+}
+
+.elementrify-bento-grid__icon svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+.elementrify-bento-grid__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #111827;
+}
+
+.elementrify-bento-grid__subtitle {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+@media (max-width: 1024px) {
+    .elementrify-bento-grid__tile {
+        grid-column: span var(--er-bento-span-t, 6);
+    }
+}
+
+@media (max-width: 767px) {
+    .elementrify-bento-grid__tile {
+        grid-column: span var(--er-bento-span-m, 12);
+    }
+}
