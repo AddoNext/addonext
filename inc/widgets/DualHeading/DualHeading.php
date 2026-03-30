@@ -248,7 +248,7 @@ class DualHeading extends WidgetBase
             'default'   => '#ffffff',
             'selectors' => [
                 '{{WRAPPER}}' => '--elementrify-dual-highlight-text: {{VALUE}};',
-                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight-inner' => 'color: {{VALUE}};',
+                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight-inner' => 'color: {{VALUE}} !important; -webkit-text-fill-color: currentColor !important;',
             ],
             'condition' => [
                 'highlight_appearance' => 'box',
@@ -292,7 +292,7 @@ class DualHeading extends WidgetBase
                 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-dual-heading__highlight' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
             'condition'  => [
                 'highlight_appearance' => 'box',
@@ -311,7 +311,7 @@ class DualHeading extends WidgetBase
                 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-dual-heading__highlight' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
             'condition'  => [
                 'highlight_appearance' => 'box',
@@ -377,6 +377,18 @@ class DualHeading extends WidgetBase
             'selectors'  => [
                 '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'background-color: transparent; background-image: linear-gradient({{VALUE}}deg, var(--elementrify-dual-gradient-start, #d65db1), var(--elementrify-dual-gradient-end, #845ef7));',
                 '{{WRAPPER}}.elementrify-dual-heading--hl-text .elementrify-dual-heading__highlight-inner' => 'background-color: transparent; background-image: linear-gradient({{VALUE}}deg, var(--elementrify-dual-gradient-start, #d65db1), var(--elementrify-dual-gradient-end, #845ef7));',
+            ],
+        ]);
+
+        $this->add_control('highlight_text_mode_pad_reset', [
+            'type'      => Controls_Manager::HIDDEN,
+            'default'   => '1',
+            'condition' => [
+                'highlight_appearance' => 'text',
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-dual-heading__highlight' => 'padding: 0 !important;',
+                '{{WRAPPER}} .elementrify-dual-heading__highlight-inner' => 'padding: 0 !important;',
             ],
         ]);
 
