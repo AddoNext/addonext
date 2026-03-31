@@ -103,6 +103,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/product-grid.css'
         ],
         [
+            'handle' => 'elementrify-add-to-cart',
+            'file'   => 'assets/css/add-to-cart.css'
+        ],
+        [
             'handle' => 'elementrify-testimonials',
             'file'   => 'assets/css/testimonials.css'
         ],
@@ -309,6 +313,12 @@ class WidgetsAssetController
             'file'   => 'assets/js/product-grid.js',
             'footer' => true,
             'deps'   => ['elementor-frontend', 'jquery', 'wc-add-to-cart'],
+        ],
+        [
+            'handle' => 'elementrify-add-to-cart',
+            'file'   => 'assets/js/add-to-cart.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend', 'jquery'],
         ],
         [
             'handle' => 'elementrify-testimonials',
