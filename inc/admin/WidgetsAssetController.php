@@ -127,6 +127,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/pie-chart.css'
         ],
         [
+            'handle' => 'elementrify-radar-chart',
+            'file'   => 'assets/css/radar-chart.css'
+        ],
+        [
             'handle' => 'elementrify-donut-chart',
             'file'   => 'assets/css/donut-chart.css'
         ],
@@ -328,6 +332,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-pie-chart',
             'file'   => 'assets/js/pie-chart.js',
             'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-radar-chart',
+            'file'   => 'assets/js/radar-chart.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-donut-chart',
