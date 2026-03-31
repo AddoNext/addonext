@@ -135,6 +135,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/donut-chart.css'
         ],
         [
+            'handle' => 'elementrify-advanced-analytics',
+            'file'   => 'assets/css/advanced-analytics.css'
+        ],
+        [
             'handle' => 'elementrify-contact-form',
             'file'   => 'assets/css/contact-form.css'
         ],
@@ -342,6 +346,12 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-donut-chart',
             'file'   => 'assets/js/donut-chart.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend'],
+        ],
+        [
+            'handle' => 'elementrify-advanced-analytics',
+            'file'   => 'assets/js/advanced-analytics.js',
             'footer' => true,
             'deps'   => ['elementor-frontend'],
         ],

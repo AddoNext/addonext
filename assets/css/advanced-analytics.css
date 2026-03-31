@@ -1,0 +1,91 @@
+.elementrify-advanced-analytics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.elementrify-advanced-analytics__card {
+  background: var(--aa-card-bg, #dbeafe);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-sizing: border-box;
+}
+
+.elementrify-advanced-analytics__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+.elementrify-advanced-analytics__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--aa-icon-bg, #2563eb);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+}
+
+.elementrify-advanced-analytics__icon i {
+  font-size: 16px;
+}
+
+.elementrify-advanced-analytics__icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.elementrify-advanced-analytics__trend {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.elementrify-advanced-analytics__trend--positive {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.elementrify-advanced-analytics__trend--negative {
+  color: #be123c;
+  background: #ffe4e6;
+}
+
+.elementrify-advanced-analytics__value {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #111827;
+}
+
+.elementrify-advanced-analytics__label {
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #4b5563;
+}
+
+@media (max-width: 1024px) {
+  .elementrify-advanced-analytics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .elementrify-advanced-analytics {
+    grid-template-columns: 1fr;
+  }
+}
