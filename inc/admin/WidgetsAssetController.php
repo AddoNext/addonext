@@ -127,6 +127,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/pie-chart.css'
         ],
         [
+            'handle' => 'elementrify-donut-chart',
+            'file'   => 'assets/css/donut-chart.css'
+        ],
+        [
             'handle' => 'elementrify-contact-form',
             'file'   => 'assets/css/contact-form.css'
         ],
@@ -324,6 +328,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-pie-chart',
             'file'   => 'assets/js/pie-chart.js',
             'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-donut-chart',
+            'file'   => 'assets/js/donut-chart.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-contact-form',
