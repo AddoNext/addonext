@@ -115,6 +115,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/line-chart.css'
         ],
         [
+            'handle' => 'elementrify-area-chart',
+            'file'   => 'assets/css/area-chart.css'
+        ],
+        [
             'handle' => 'elementrify-bar-chart',
             'file'   => 'assets/css/bar-chart.css'
         ],
@@ -304,6 +308,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-line-chart',
             'file'   => 'assets/js/line-chart.js',
             'footer' => true,
+        ],
+        [
+            'handle' => 'elementrify-area-chart',
+            'file'   => 'assets/js/area-chart.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-bar-chart',
