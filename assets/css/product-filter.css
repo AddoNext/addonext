@@ -1,0 +1,397 @@
+.elementrify-product-filter {
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #f8fafc;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.elementrify-product-filter__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.elementrify-product-filter__title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.elementrify-product-filter__clear {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.elementrify-product-filter__clear:hover {
+  text-decoration: underline;
+}
+
+.elementrify-product-filter__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.elementrify-product-filter__section-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.elementrify-product-filter__section--search .elementrify-product-filter__search-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.elementrify-product-filter__search-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.elementrify-product-filter__search-input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.elementrify-product-filter__search-input::placeholder {
+  color: #9ca3af;
+}
+
+.elementrify-product-filter__search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.elementrify-product-filter__dual-range {
+  position: relative;
+  height: 32px;
+  margin: 4px 0 8px;
+}
+
+.elementrify-product-filter__range-rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  z-index: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.elementrify-product-filter__range-fill {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  border-radius: 3px;
+  background: #2563eb;
+  z-index: 1;
+  left: 0%;
+  width: 0%;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  accent-color: transparent;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range--min {
+  z-index: 3;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range--max {
+  z-index: 4;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range::-webkit-slider-runnable-track {
+  height: 6px;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range:focus {
+  outline: none;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range::-moz-range-track {
+  height: 6px;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.elementrify-product-filter__dual-range .elementrify-product-filter__range:focus-visible::-moz-range-thumb {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.elementrify-product-filter__price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.elementrify-product-filter__price-inputs input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.elementrify-product-filter__dash {
+  color: #4b5563;
+  font-size: 18px;
+}
+
+.elementrify-product-filter__option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #374151;
+  font-size: 14px;
+  margin-bottom: 0!important;
+}
+
+.elementrify-product-filter__option input[type='checkbox'] {
+  width: 22px;
+  height: 22px;
+  accent-color: #2563eb;
+}
+
+.elementrify-product-filter__rating-stars-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.elementrify-product-filter__rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.elementrify-product-filter__star-pair {
+  position: relative;
+  display: inline-block;
+  width: 1.35em;
+  height: 1.25em;
+  font-size: 22px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.elementrify-product-filter__star-skin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.elementrify-product-filter__star-bg,
+.elementrify-product-filter__star-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+}
+
+.elementrify-product-filter__star-bg {
+  color: #e5e7eb;
+}
+
+.elementrify-product-filter__star-fill {
+  color: #f59e0b;
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+}
+
+.elementrify-product-filter__star-pair.is-full .elementrify-product-filter__star-fill {
+  width: 100%;
+}
+
+.elementrify-product-filter__star-pair.is-half .elementrify-product-filter__star-fill {
+  width: 50%;
+}
+
+.elementrify-product-filter__star-half {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 0;
+}
+
+.elementrify-product-filter__star-half--left {
+  left: 0;
+}
+
+.elementrify-product-filter__star-half--right {
+  left: 50%;
+}
+
+.elementrify-product-filter__star-half:focus {
+  outline: none;
+}
+
+.elementrify-product-filter__star-half:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.elementrify-product-filter__rating-caption {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.25;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.elementrify-product-filter__colors {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.elementrify-product-filter__color-option {
+  position: relative;
+}
+
+.elementrify-product-filter__color-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.elementrify-product-filter__color-option span {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 2px solid #d1d5db;
+  background: #e5e7eb;
+}
+
+.elementrify-product-filter__color-option input:checked + span {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.elementrify-product-filter__apply {
+  border: 0;
+  border-radius: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 16px 20px;
+  cursor: pointer;
+}
+
+.elementrify-product-filter__apply:hover {
+  background: #1d4ed8;
+}
+
+.elementrify-product-filter__placeholder {
+  margin: 0;
+}
+
+.elementrify-product-filter__empty-note {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+@media (max-width: 767px) {
+  .elementrify-product-filter {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .elementrify-product-filter__title { font-size: 16px; }
+  .elementrify-product-filter__clear { font-size: 14px; }
+  .elementrify-product-filter__section-title { font-size: 14px; }
+  .elementrify-product-filter__option { font-size: 14px; }
+  .elementrify-product-filter__apply { font-size: 14px; }
+  .elementrify-product-filter__price-inputs input { font-size: 14px; }
+}
