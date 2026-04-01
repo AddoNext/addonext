@@ -1,0 +1,84 @@
+.elementrify-mini-cart {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.elementrify-mini-cart__inner {
+  display: flex;
+  width: 100%;
+}
+
+.elementrify-mini-cart__trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 1.2;
+  text-align: start;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.elementrify-mini-cart__trigger:hover {
+  opacity: 0.8;
+}
+
+.elementrify-mini-cart__trigger:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.elementrify-mini-cart__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.elementrify-mini-cart__icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.elementrify-mini-cart__label {
+  font-weight: 600;
+}
+
+.elementrify-mini-cart__subtotal {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.elementrify-mini-cart__count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 1.125rem;
+  height: 1.125rem;
+  padding: 0 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.elementrify-mini-cart__count--empty {
+  opacity: 0.65;
+}
+
+.elementrify-mini-cart__placeholder {
+  margin: 0;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}

@@ -67,6 +67,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/modal-popup.css'
         ],
         [
+            'handle' => 'elementrify-mini-cart',
+            'file'   => 'assets/css/mini-cart.css'
+        ],
+        [
             'handle' => 'elementrify-divider',
             'file'   => 'assets/css/divider.css'
         ],
@@ -317,6 +321,12 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-add-to-cart',
             'file'   => 'assets/js/add-to-cart.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend', 'jquery'],
+        ],
+        [
+            'handle' => 'elementrify-mini-cart',
+            'file'   => 'assets/js/mini-cart.js',
             'footer' => true,
             'deps'   => ['elementor-frontend', 'jquery'],
         ],
