@@ -1,0 +1,247 @@
+.elementrify-pc {
+  width: 100%;
+}
+
+.elementrify-pc__empty-note {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.elementrify-pc__grid {
+  display: grid;
+  gap: var(--elementrify-pc-gap, 20px);
+  grid-template-columns: repeat(var(--elementrify-pc-cols, 4), minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .elementrify-pc__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .elementrify-pc__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .elementrify-pc__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.elementrify-pc-card {
+  margin: 0;
+  min-height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.elementrify-pc-card__link {
+  display: block;
+  height: 100%;
+  min-height: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+.elementrify-pc-card__media {
+  position: relative;
+  min-height: inherit;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.elementrify-pc-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: inherit;
+  transform-origin: center center;
+  transition: transform 0.45s ease;
+}
+
+.elementrify-pc-card__media--effect-none .elementrify-pc-card__bg {
+  transition: none;
+}
+
+.elementrify-pc-card__media--effect-zoom-in:hover .elementrify-pc-card__bg {
+  transform: scale(1.08);
+}
+
+.elementrify-pc-card__media--effect-zoom-out .elementrify-pc-card__bg {
+  transform: scale(1.08);
+}
+
+.elementrify-pc-card__media--effect-zoom-out:hover .elementrify-pc-card__bg {
+  transform: scale(1);
+}
+
+.elementrify-pc-card__media--effect-jump:hover .elementrify-pc-card__bg {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.elementrify-pc-card__media--effect-tilt:hover .elementrify-pc-card__bg {
+  transform: rotate(-3deg) scale(1.04);
+}
+
+.elementrify-pc-card__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 38%,
+    rgba(0, 0, 0, 0.2) 62%,
+    transparent 100%
+  );
+}
+
+.elementrify-pc-card__icon-wrap {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+}
+
+.elementrify-pc-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--elementrify-pc-icon, #2563eb);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.elementrify-pc-card__icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.elementrify-pc-card__icon i {
+  color: inherit;
+}
+
+.elementrify-pc-card__body {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.elementrify-pc-card__title {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.elementrify-pc-card__count {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.elementrify-pc__slider-shell {
+  position: relative;
+  width: 100%;
+}
+
+.elementrify-pc__swiper {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.elementrify-pc__swiper .swiper-slide {
+  height: auto;
+  box-sizing: border-box;
+}
+
+.elementrify-pc__swiper .swiper-slide .elementrify-pc-card {
+  height: 100%;
+}
+
+.elementrify-pc__pagination {
+  position: relative;
+  margin-top: 16px;
+}
+
+.elementrify-pc__pagination.swiper-pagination-bullets {
+  bottom: auto;
+}
+
+.elementrify-pc__pagination .swiper-pagination-bullet {
+  background: #94a3b8;
+  opacity: 1;
+}
+
+.elementrify-pc__pagination .swiper-pagination-bullet-active {
+  background: #2563eb;
+}
+
+.elementrify-pc__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.elementrify-pc__nav:hover {
+  background: #f1f5f9;
+}
+
+.elementrify-pc__nav--prev {
+  left: 4px;
+}
+
+.elementrify-pc__nav--next {
+  right: 4px;
+}
+
+@media (max-width: 767px) {
+  .elementrify-pc__nav {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
