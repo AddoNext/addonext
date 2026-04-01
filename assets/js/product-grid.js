@@ -1,48 +1,6 @@
 (function () {
   'use strict';
 
-  var SELECTOR = '.elementrify-product-grid-shell';
-
-  function applyGridLayout(shell) {
-    if (!shell) return;
-    var grid = shell.querySelector('.elementrify-product-grid');
-    if (!grid) return;
-
-    var desktop = parseInt(shell.getAttribute('data-columns-desktop') || '4', 10);
-    var tablet = parseInt(shell.getAttribute('data-columns-tablet') || '2', 10);
-    var mobile = parseInt(shell.getAttribute('data-columns-mobile') || '1', 10);
-    var columnGap = parseInt(shell.getAttribute('data-column-gap') || '16', 10);
-    var rowGap = parseInt(shell.getAttribute('data-row-gap') || '16', 10);
-
-    grid.style.gridTemplateColumns = 'repeat(' + (desktop > 0 ? desktop : 4) + ', minmax(0, 1fr))';
-    grid.style.columnGap = (isNaN(columnGap) ? 16 : columnGap) + 'px';
-    grid.style.rowGap = (isNaN(rowGap) ? 16 : rowGap) + 'px';
-
-    shell.setAttribute('data-grid-columns-tablet', String(tablet > 0 ? tablet : 2));
-    shell.setAttribute('data-grid-columns-mobile', String(mobile > 0 ? mobile : 1));
-  }
-
-  function updateResponsiveLayouts() {
-    var shells = document.querySelectorAll(SELECTOR);
-    var width = window.innerWidth || document.documentElement.clientWidth || 0;
-    shells.forEach(function (shell) {
-      var grid = shell.querySelector('.elementrify-product-grid');
-      if (!grid) return;
-
-      var desktop = parseInt(shell.getAttribute('data-columns-desktop') || '4', 10);
-      var tablet = parseInt(shell.getAttribute('data-grid-columns-tablet') || shell.getAttribute('data-columns-tablet') || '2', 10);
-      var mobile = parseInt(shell.getAttribute('data-grid-columns-mobile') || shell.getAttribute('data-columns-mobile') || '1', 10);
-
-      if (width <= 767) {
-        grid.style.gridTemplateColumns = 'repeat(' + (mobile > 0 ? mobile : 1) + ', minmax(0, 1fr))';
-      } else if (width <= 1024) {
-        grid.style.gridTemplateColumns = 'repeat(' + (tablet > 0 ? tablet : 2) + ', minmax(0, 1fr))';
-      } else {
-        grid.style.gridTemplateColumns = 'repeat(' + (desktop > 0 ? desktop : 4) + ', minmax(0, 1fr))';
-      }
-    });
-  }
-
   function isLikelyVisible(el) {
     if (!el || typeof el.getBoundingClientRect !== 'function') return false;
     var rect = el.getBoundingClientRect();
@@ -151,13 +109,7 @@
   }
 
   function scan(root) {
-    var scope = root || document;
-    var shells = scope.querySelectorAll(SELECTOR);
-    shells.forEach(function (shell) {
-      applyGridLayout(shell);
-    });
-    bindCartTooltipOpeners(scope);
-    updateResponsiveLayouts();
+    bindCartTooltipOpeners(root || document);
   }
 
   if (typeof jQuery !== 'undefined') {
@@ -191,8 +143,6 @@
   } else {
     scan(document);
   }
-
-  window.addEventListener('resize', updateResponsiveLayouts);
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
     elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-grid.default', function ($scope) {

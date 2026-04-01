@@ -152,14 +152,19 @@ $cartBase = $cartUrl !== '' ? untrailingslashit($cartUrl) : '';
 if ($cartBase === '' || $cartBase === $homeBase) {
     $cartUrl = '';
 }
+
+$gridShellStyle = sprintf(
+    '--epg-cols-desktop:%d;--epg-cols-tablet:%d;--epg-cols-mobile:%d;--epg-col-gap:%dpx;--epg-row-gap:%dpx;',
+    $columns,
+    $columnsTablet,
+    $columnsMobile,
+    $columnGap,
+    $rowGap
+);
 ?>
 <div
     class="elementrify-product-grid-shell"
-    data-columns-desktop="<?php echo esc_attr((string) $columns); ?>"
-    data-columns-tablet="<?php echo esc_attr((string) $columnsTablet); ?>"
-    data-columns-mobile="<?php echo esc_attr((string) $columnsMobile); ?>"
-    data-column-gap="<?php echo esc_attr((string) $columnGap); ?>"
-    data-row-gap="<?php echo esc_attr((string) $rowGap); ?>"
+    style="<?php echo esc_attr($gridShellStyle); ?>"
     <?php echo $cartUrl !== '' ? 'data-cart-url="' . esc_url($cartUrl) . '"' : ''; ?>>
     <?php if ($productQuery->have_posts()) : ?>
         <div class="elementrify-product-grid">
