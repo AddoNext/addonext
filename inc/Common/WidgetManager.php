@@ -77,6 +77,7 @@ use Elementrify\Widgets\ProductCategories\ProductCategories;
 use Elementrify\Widgets\ProductFilter\ProductFilter;
 use Elementrify\Widgets\ProductGrid\ProductGrid;
 use Elementrify\Widgets\ProductTabs\ProductTabs;
+use Elementrify\Widgets\WooDashboard\WooDashboard;
 
 defined('ABSPATH') or exit;
 
@@ -168,6 +169,7 @@ class WidgetManager
         ProductFilter::class,
         ProductGrid::class,
         ProductTabs::class,
+        WooDashboard::class,
     ];
 
     /**
@@ -205,6 +207,7 @@ class WidgetManager
     {
         add_action('init', [ContactForm::class, 'register_ajax_handlers'], 5);
         add_action('init', [SubscribeForm::class, 'register_ajax_handlers'], 5);
+        add_action('init', [WooDashboard::class, 'register_ajax_handlers'], 5);
         add_action('init', [MiniCart::class, 'init_fragment_hooks'], 5);
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/register', [$this, 'register_widgets']);

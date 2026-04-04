@@ -111,6 +111,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/product-tabs.css'
         ],
         [
+            'handle' => 'elementrify-woo-dashboard',
+            'file'   => 'assets/css/woo-dashboard.css'
+        ],
+        [
             'handle' => 'elementrify-product-categories',
             'file'   => 'assets/css/product-categories.css'
         ],
@@ -331,6 +335,12 @@ class WidgetsAssetController
             'file'   => 'assets/js/product-tabs.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend', 'wc-add-to-cart'],
+        ],
+        [
+            'handle' => 'elementrify-woo-dashboard',
+            'file'   => 'assets/js/woo-dashboard.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend', 'jquery', 'wc-country-select', 'wc-address-i18n'],
         ],
         [
             'handle' => 'elementrify-product-categories',
