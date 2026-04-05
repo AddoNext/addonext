@@ -1,0 +1,8 @@
+parameters:
+    paths:
+        - .
+    bootstrapFiles:
+        - wordpress/wp-load.php
+    scanDirectories:
+        - wordpress/wp-includes
+        - wordpress/wp-admin

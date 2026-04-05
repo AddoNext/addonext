@@ -15,6 +15,11 @@
         "php-di/php-di": "^7.0",
         "freemius/wordpress-sdk": "^2.13"
     },
+    "require-dev": {
+        "johnpbloch/wordpress": "*",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "phpstan/phpstan": "^2.1"
+    },
     "autoload": {
         "psr-4": {
             "Elementrify\\": "./inc",
@@ -24,5 +29,13 @@
             "container.php",
             "functions.php"
         ]
+    },
+    "extra": {
+        "wordpress-install-dir": "wordpress"
+    },
+    "config": {
+        "allow-plugins": {
+            "johnpbloch/wordpress-core-installer": true
+        }
     }
 }
