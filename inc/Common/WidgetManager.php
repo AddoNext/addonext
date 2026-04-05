@@ -77,6 +77,7 @@ use Elementrify\Widgets\ProductCategories\ProductCategories;
 use Elementrify\Widgets\ProductFilter\ProductFilter;
 use Elementrify\Widgets\ProductGrid\ProductGrid;
 use Elementrify\Widgets\ProductTabs\ProductTabs;
+use Elementrify\Widgets\WooCheckout\WooCheckout;
 use Elementrify\Widgets\WooDashboard\WooDashboard;
 
 defined('ABSPATH') or exit;
@@ -169,6 +170,7 @@ class WidgetManager
         ProductFilter::class,
         ProductGrid::class,
         ProductTabs::class,
+        WooCheckout::class,
         WooDashboard::class,
     ];
 
