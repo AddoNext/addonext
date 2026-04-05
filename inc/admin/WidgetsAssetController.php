@@ -119,6 +119,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/woo-dashboard.css'
         ],
         [
+            'handle' => 'elementrify-woo-thank-you',
+            'file'   => 'assets/css/woo-thank-you.css'
+        ],
+        [
             'handle' => 'elementrify-product-categories',
             'file'   => 'assets/css/product-categories.css'
         ],

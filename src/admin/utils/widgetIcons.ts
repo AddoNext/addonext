@@ -51,6 +51,7 @@ import {
   faQuoteLeft,
   faEnvelope,
   faPhone,
+  faCircleCheck,
   faCircleDot,
   faClock,
   faLayerGroup,
@@ -136,6 +137,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-tooltip": faCircleInfo,
   "elementrify-twitter-feed": faHashtag,
   "elementrify-video-player": faVideo,
+  "elementrify-woo-thank-you": faCircleCheck,
 };
 
 export function getWidgetIcon(widgetId: string, iconClass?: string): IconDefinition {

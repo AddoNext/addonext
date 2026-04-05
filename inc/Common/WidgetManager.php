@@ -79,6 +79,7 @@ use Elementrify\Widgets\ProductGrid\ProductGrid;
 use Elementrify\Widgets\ProductTabs\ProductTabs;
 use Elementrify\Widgets\WooCheckout\WooCheckout;
 use Elementrify\Widgets\WooDashboard\WooDashboard;
+use Elementrify\Widgets\WooThankYou\WooThankYou;
 
 defined('ABSPATH') or exit;
 
@@ -172,6 +173,7 @@ class WidgetManager
         ProductTabs::class,
         WooCheckout::class,
         WooDashboard::class,
+        WooThankYou::class,
     ];
 
     /**
