@@ -111,6 +111,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/product-tabs.css'
         ],
         [
+            'handle' => 'elementrify-product-image',
+            'file'   => 'assets/css/product-image.css'
+        ],
+        [
             'handle' => 'elementrify-woo-checkout',
             'file'   => 'assets/css/woo-checkout.css'
         ],
@@ -343,6 +347,12 @@ class WidgetsAssetController
             'file'   => 'assets/js/product-tabs.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend', 'wc-add-to-cart'],
+        ],
+        [
+            'handle' => 'elementrify-product-image',
+            'file'   => 'assets/js/product-image.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-woo-checkout',

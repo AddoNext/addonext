@@ -119,6 +119,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-product-categories": faFolder,
   "elementrify-product-filter": faFilter,
   "elementrify-product-grid": faGrip,
+  "elementrify-product-image": faImages,
   "elementrify-product-tabs": faTableColumns,
   "elementrify-progress-bar": faChartBar,
   "elementrify-promo-box": faGift,

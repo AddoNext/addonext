@@ -76,6 +76,7 @@ use Elementrify\Widgets\ProductCarousel\ProductCarousel;
 use Elementrify\Widgets\ProductCategories\ProductCategories;
 use Elementrify\Widgets\ProductFilter\ProductFilter;
 use Elementrify\Widgets\ProductGrid\ProductGrid;
+use Elementrify\Widgets\ProductImage\ProductImage;
 use Elementrify\Widgets\ProductTabs\ProductTabs;
 use Elementrify\Widgets\WooCheckout\WooCheckout;
 use Elementrify\Widgets\WooDashboard\WooDashboard;
@@ -170,6 +171,7 @@ class WidgetManager
         ProductCategories::class,
         ProductFilter::class,
         ProductGrid::class,
+        ProductImage::class,
         ProductTabs::class,
         WooCheckout::class,
         WooDashboard::class,
