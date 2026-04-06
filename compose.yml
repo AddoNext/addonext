@@ -15,8 +15,8 @@ services:
         restart: always
         volumes:
             - wordpress:/var/www/html
-            - ./wordpress:/var/www/html
             - ./:/var/www/html/wp-content/plugins/elementrify
+            - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins
             - ./configs/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
             - ./configs/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
         labels:
