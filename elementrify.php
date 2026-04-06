@@ -18,27 +18,28 @@
 use Elementrify\Common\WidgetManager;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
-use Elementrify\Admin\WidgetsAssetController;
-use Elementrify\Admin\SettingsController;
 use Elementrify\Admin\LicenseController;
+use Elementrify\Admin\SettingsController;
+use Elementrify\Admin\WidgetsAssetController;
 
 require_once 'vendor/autoload.php';
 
-if ( ! function_exists( 'emt_fs' ) ) {
+if (!function_exists('emt_fs')) {
     // Create a helper function for easy SDK access.
-    function emt_fs() {
+    function emt_fs()
+    {
         global $emt_fs;
 
-        if ( ! isset( $emt_fs ) ) {
+        if (!isset($emt_fs)) {
             // Activate multisite network integration.
-            if ( ! defined( 'WP_FS__PRODUCT_19063_MULTISITE' ) ) {
-                define( 'WP_FS__PRODUCT_19063_MULTISITE', true );
+            if (!defined('WP_FS__PRODUCT_19063_MULTISITE')) {
+                define('WP_FS__PRODUCT_19063_MULTISITE', true);
             }
 
             // Include Freemius SDK.
             // SDK is auto-loaded through Composer
 
-            $emt_fs = fs_dynamic_init( array(
+            $emt_fs = fs_dynamic_init([
                 'id'                  => '19063',
                 'slug'                => 'elementrify',
                 'premium_slug'        => 'dragnext-premium',
@@ -54,15 +55,15 @@ if ( ! function_exists( 'emt_fs' ) ) {
                 // Automatically removed in the free version. If you're not using the
                 // auto-generated free version, delete this line before uploading to wp.org.
                 'wp_org_gatekeeper'   => 'OA7#BoRiBNqdf52FvzEf!!074aRLPs8fspif$7K1#4u4Csys1fQlCecVcUTOs2mcpeVHi#C2j9d09fOTvbC0HloPT7fFee5WdS3G',
-                'trial'               => array(
+                'trial'               => [
                     'days'               => 3,
-                    'is_require_payment' => true,
-                ),
-                'menu'                => array(
-                    'slug'           => 'elementrify',
-                    'first-path'     => 'admin.php?page=elementrify&tab=setup-wizard',
-                ),
-            ) );
+                    'is_require_payment' => true
+                ],
+                'menu'                => [
+                    'slug'       => 'elementrify',
+                    'first-path' => 'admin.php?page=elementrify&tab=setup-wizard'
+                ]
+            ]);
         }
 
         return $emt_fs;
@@ -71,7 +72,7 @@ if ( ! function_exists( 'emt_fs' ) ) {
     // Init Freemius.
     emt_fs();
     // Signal that SDK was initiated.
-    do_action( 'emt_fs_loaded' );
+    do_action('emt_fs_loaded');
 }
 
 class Elementrify
@@ -106,9 +107,13 @@ class Elementrify
     public function initialize_classes(): void
     {
         emty_container(AdminController::class);
-        emty_container(WidgetManager::class);
-        emty_container(WidgetController::class);
-        emty_container(WidgetsAssetController::class);
+
+        if (class_exists('\Elementor\Plugin')) {
+            emty_container(WidgetManager::class);
+            emty_container(WidgetController::class);
+            emty_container(WidgetsAssetController::class);
+        }
+
         emty_container(SettingsController::class);
         emty_container(LicenseController::class);
     }
