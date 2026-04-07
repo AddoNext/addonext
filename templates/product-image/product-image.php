@@ -18,7 +18,7 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
 ?>
 <div
     id="<?php echo esc_attr($uid); ?>"
-    class="elementrify-product-image"
+    class="elementrify-product-image elementor-clickable"
     data-zoom="<?php echo esc_attr($zoom_mode); ?>"
     data-pan-scale="<?php echo esc_attr((string) $pan_scale); ?>"
     data-images="<?php echo esc_attr($images_json); ?>"
@@ -26,7 +26,7 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
     <?php if ($zoom_mode === 'lightbox') : ?>
         <button
             type="button"
-            class="elementrify-pi__main elementrify-pi__main--clickable"
+            class="elementrify-pi__main elementrify-pi__main--clickable elementor-clickable"
             aria-label="<?php echo esc_attr__('Open image in lightbox', 'elementrify'); ?>"
         >
             <span class="elementrify-pi__visual">
@@ -47,7 +47,7 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
         <div class="elementrify-pi__main elementrify-pi__main--pan-zoom">
             <div class="elementrify-pi__visual">
                 <div
-                    class="elementrify-pi__stage"
+                    class="elementrify-pi__stage elementor-clickable"
                     role="button"
                     tabindex="0"
                     aria-label="<?php echo esc_attr__('Click to zoom. When zoomed, drag to move.', 'elementrify'); ?>"
@@ -78,7 +78,7 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
                 ?>
                 <button
                     type="button"
-                    class="elementrify-pi__thumb<?php echo $index === 0 ? ' is-active' : ''; ?>"
+                    class="elementrify-pi__thumb elementor-clickable<?php echo $index === 0 ? ' is-active' : ''; ?>"
                     aria-pressed="<?php echo $index === 0 ? 'true' : 'false'; ?>"
                     aria-label="<?php echo esc_attr($thumb_alt); ?>"
                     data-index="<?php echo esc_attr((string) $index); ?>"

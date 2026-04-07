@@ -352,7 +352,7 @@ class WidgetsAssetController
             'handle' => 'elementrify-product-image',
             'file'   => 'assets/js/product-image.js',
             'footer' => true,
-            'deps'   => ['elementor-frontend'],
+            'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-woo-checkout',

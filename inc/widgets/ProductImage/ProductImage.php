@@ -14,7 +14,7 @@ class ProductImage extends WidgetBase
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-        add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_preview_assets']);
+        add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_preview_assets'], 5);
     }
 
     /**
@@ -63,7 +63,7 @@ class ProductImage extends WidgetBase
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'elementrify-product-image'];
+        return ['jquery', 'elementor-frontend', 'elementrify-product-image'];
     }
 
     public function enqueue_assets(): void
@@ -78,7 +78,7 @@ class ProductImage extends WidgetBase
         wp_register_script(
             'elementrify-product-image',
             ELEMENTRIFY_URL . 'assets/js/product-image.js',
-            ['elementor-frontend'],
+            ['jquery', 'elementor-frontend'],
             ELEMENTRIFY_VERSION,
             true
         );
@@ -279,7 +279,7 @@ class ProductImage extends WidgetBase
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'default'    => [
-                'top' => '16', 'right' => '16', 'bottom' => '16', 'left' => '16', 'unit' => 'px',
+                'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'unit' => 'px',
             ],
             'selectors'  => [
                 '{{WRAPPER}} .elementrify-pi__main' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

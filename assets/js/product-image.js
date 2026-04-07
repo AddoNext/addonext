@@ -433,20 +433,76 @@
         }
     }
 
-    if (typeof window.elementorFrontend !== 'undefined' && window.elementorFrontend.hooks) {
-        window.elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-image.default', function ($scope) {
-            var el = $scope && $scope[0];
-            if (el) {
-                scan(el);
+    function bindUnboundProductImages() {
+        var nodes = document.querySelectorAll('.elementrify-product-image');
+        for (var i = 0; i < nodes.length; i += 1) {
+            if (nodes[i].getAttribute('data-elementrify-pi-bound') !== '1') {
+                bindRoot(nodes[i]);
             }
-        });
+        }
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () {
-            scan(document);
-        });
-    } else {
-        scan(document);
+    var elementorHooksDone = false;
+
+    /**
+     * Registers Elementor element_ready hooks (default + legacy skin) and binds the widget scope.
+     * Matches the pattern used in woo-dashboard.js so the editor preview iframe always attaches.
+     */
+    function registerElementReadyHooks() {
+        if (elementorHooksDone) {
+            return;
+        }
+        if (typeof window.elementorFrontend === 'undefined' || !window.elementorFrontend.hooks) {
+            return;
+        }
+        elementorHooksDone = true;
+
+        function onWidgetReady($scope) {
+            var el = $scope && $scope[0] ? $scope[0] : $scope;
+            if (!el || !el.querySelector) {
+                return;
+            }
+            scan(el);
+        }
+
+        window.elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-image.default', onWidgetReady);
+        window.elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-image', onWidgetReady);
     }
+
+    var mutationDebounceTimer;
+
+    function onDocumentMutations() {
+        clearTimeout(mutationDebounceTimer);
+        mutationDebounceTimer = setTimeout(bindUnboundProductImages, 80);
+    }
+
+    if (typeof window.MutationObserver !== 'undefined' && document.documentElement) {
+        try {
+            var piObserver = new MutationObserver(onDocumentMutations);
+            piObserver.observe(document.documentElement, { childList: true, subtree: true });
+        } catch (e) {
+            /* ignore */
+        }
+    }
+
+    function bootstrap() {
+        registerElementReadyHooks();
+        bindUnboundProductImages();
+    }
+
+    if (typeof jQuery !== 'undefined') {
+        jQuery(document).on('elementor/frontend/init', registerElementReadyHooks);
+        jQuery(window).on('elementor/frontend/init', registerElementReadyHooks);
+    }
+
+    registerElementReadyHooks();
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootstrap);
+    } else {
+        bootstrap();
+    }
+
+    setTimeout(bindUnboundProductImages, 200);
+    setTimeout(bindUnboundProductImages, 800);
 })();
