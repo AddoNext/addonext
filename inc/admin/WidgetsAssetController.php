@@ -259,6 +259,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/highlight.css'
         ],
         [
+            'handle' => 'elementrify-hero-banner',
+            'file'   => 'assets/css/hero-banner.css'
+        ],
+        [
             'handle' => 'elementrify-dual-heading',
             'file'   => 'assets/css/dual-heading.css'
         ],
@@ -330,6 +334,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-modal-popup',
             'file'   => 'assets/js/modal-popup.js',
             'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-hero-banner',
+            'file'   => 'assets/js/hero-banner.js',
+            'footer' => true,
+            'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-notice-board',

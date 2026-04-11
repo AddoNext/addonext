@@ -95,6 +95,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-dual-heading": faHeading,
   "elementrify-flip-box": faCube,
   "elementrify-highlight": faHighlighter,
+  "elementrify-hero-banner": faImage,
   "elementrify-icon-box": faSquare,
   "elementrify-icon-list": faListUl,
   "elementrify-image-box": faImage,

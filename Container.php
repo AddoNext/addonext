@@ -41,6 +41,7 @@ use Elementrify\Widgets\DonutChart\DonutChart;
 use Elementrify\Widgets\Dropcap\Dropcap;
 use Elementrify\Widgets\DualHeading\DualHeading;
 use Elementrify\Widgets\FlipBox\FlipBox;
+use Elementrify\Widgets\HeroBanner\HeroBanner;
 use Elementrify\Widgets\Highlight\Highlight;
 use Elementrify\Widgets\IconBox\IconBox;
 use Elementrify\Widgets\IconList\IconList;
@@ -125,6 +126,7 @@ return [
     Dropcap::class            => create(Dropcap::class),
     DualHeading::class        => create(DualHeading::class),
     FlipBox::class            => create(FlipBox::class),
+    HeroBanner::class         => create(HeroBanner::class),
     Highlight::class          => create(Highlight::class),
     IconBox::class            => create(IconBox::class),
     IconList::class           => create(IconList::class),

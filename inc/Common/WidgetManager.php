@@ -15,6 +15,7 @@ use Elementrify\Widgets\CodeSnippet\CodeSnippet;
 use Elementrify\Widgets\ContentToggle\ContentToggle;
 use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\Dropcap\Dropcap;
+use Elementrify\Widgets\HeroBanner\HeroBanner;
 use Elementrify\Widgets\Highlight\Highlight;
 use Elementrify\Widgets\IconBox\IconBox;
 use Elementrify\Widgets\IconList\IconList;
@@ -110,6 +111,7 @@ class WidgetManager
         ContentToggle::class,
         Divider::class,
         Dropcap::class,
+        HeroBanner::class,
         Highlight::class,
         IconBox::class,
         IconList::class,

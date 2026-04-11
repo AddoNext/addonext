@@ -1,0 +1,251 @@
+.elementrify-hero-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.elementrify-hero-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.elementrify-hero-banner__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.elementrify-hero-banner__video--youtube,
+.elementrify-hero-banner__video--vimeo {
+    overflow: hidden;
+}
+
+.elementrify-hero-banner__video--youtube iframe,
+.elementrify-hero-banner__video--vimeo iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    max-width: none;
+    border: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.elementrify-hero-banner__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.elementrify-hero-banner__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 auto;
+    align-self: stretch;
+    width: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.elementrify-hero-banner__content {
+    width: 100%;
+    text-align: left;
+}
+
+.elementrify-hero-banner__tagline {
+    margin: 0;
+}
+
+.elementrify-hero-banner__tagline-accent-text {
+    background-image: linear-gradient(90deg, #5e42da 0%, #a542da 55%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.elementrify-hero-banner__title {
+    margin: 0;
+    max-width: 100%;
+}
+
+.elementrify-hero-banner__title-static {
+    display: inline;
+}
+
+.elementrify-hero-banner__title-typing-wrap {
+    display: inline;
+    white-space: normal;
+}
+
+.elementrify-hero-banner__title-typing {
+    display: inline;
+    background-image: linear-gradient(90deg, #5e42da 0%, #a542da 55%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+
+.elementrify-hero-banner__title-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.9em;
+    margin-left: 2px;
+    vertical-align: -0.12em;
+    background: linear-gradient(180deg, #5e42da, #3b82f6);
+    border-radius: 1px;
+    animation: elementrify-hero-banner-cursor 0.9s steps(1, end) infinite;
+}
+
+.elementrify-hero-banner__title-typing-wrap.is-done .elementrify-hero-banner__title-cursor {
+    animation: none;
+    opacity: 0.35;
+}
+
+@keyframes elementrify-hero-banner-cursor {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.elementrify-hero-banner__subrow-wrap {
+    width: 100%;
+}
+
+.elementrify-hero-banner__subrow {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.elementrify-hero-banner__accent-line {
+    flex-shrink: 0;
+    align-self: stretch;
+    width: 4px;
+    min-height: 4rem;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #5e42da 0%, #3b82f6 100%);
+}
+
+.elementrify-hero-banner__subtitle {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    font-style: normal;
+    font-weight: 400;
+    background: none;
+    quotes: none;
+    border: 0 !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    padding: 0 !important;
+    padding-inline: 0 !important;
+    padding-block: 0 !important;
+    box-shadow: none !important;
+}
+
+.elementrify-hero-banner__subtitle::before,
+.elementrify-hero-banner__subtitle::after {
+    content: none !important;
+    display: none !important;
+}
+
+.elementrify-hero-banner__actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.elementrify-hero-banner__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.elementrify-hero-banner__btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.96;
+}
+
+.elementrify-hero-banner__btn--solid {
+    border: none;
+}
+
+.elementrify-hero-banner__btn--solid:hover {
+    box-shadow: 0 8px 24px rgba(30, 27, 75, 0.35);
+}
+
+.elementrify-hero-banner__btn--outlined:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.elementrify-hero-banner__btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+.elementrify-hero-banner__btn-inner {
+    display: inline-flex;
+    align-items: center;
+}
+
+.elementrify-hero-banner__btn-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.elementrify-hero-banner__btn-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .elementrify-hero-banner__btn {
+        transition-duration: 0.01ms;
+    }
+
+    .elementrify-hero-banner__btn:hover {
+        transform: none;
+    }
+
+    .elementrify-hero-banner__title-cursor {
+        animation: none;
+        opacity: 0.5;
+    }
+}
