@@ -251,6 +251,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/twitter-feed.css'
         ],
         [
+            'handle' => 'elementrify-usp-items',
+            'file'   => 'assets/css/usp-items.css'
+        ],
+        [
             'handle' => 'elementrify-flip-box',
             'file'   => 'assets/css/flip-box.css'
         ],

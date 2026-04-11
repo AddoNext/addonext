@@ -85,6 +85,7 @@ use Elementrify\Widgets\TextEditor\TextEditor;
 use Elementrify\Widgets\Timeline\Timeline;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
+use Elementrify\Widgets\UspItems\UspItems;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
 
 return [
@@ -168,6 +169,7 @@ return [
     TableOfContents::class    => create(TableOfContents::class),
     TeamMembers::class       => create(TeamMembers::class),
     Testimonials::class       => create(Testimonials::class),
+    UspItems::class           => create(UspItems::class),
     TextEditor::class        => create(TextEditor::class),
     Timeline::class           => create(Timeline::class),
     Tooltip::class            => create(Tooltip::class),

@@ -140,6 +140,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-timeline": faClock,
   "elementrify-tooltip": faCircleInfo,
   "elementrify-twitter-feed": faHashtag,
+  "elementrify-usp-items": faStar,
   "elementrify-video-player": faVideo,
   "elementrify-woo-thank-you": faCircleCheck,
 };

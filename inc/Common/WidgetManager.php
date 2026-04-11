@@ -65,6 +65,7 @@ use Elementrify\Widgets\SubscribeForm\SubscribeForm;
 use Elementrify\Widgets\TeamMembers\TeamMembers;
 use Elementrify\Widgets\Testimonials\Testimonials;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
+use Elementrify\Widgets\UspItems\UspItems;
 use Elementrify\Widgets\AdvancedAnalytics\AdvancedAnalytics;
 use Elementrify\Widgets\AreaChart\AreaChart;
 use Elementrify\Widgets\BarChart\BarChart;
@@ -162,6 +163,7 @@ class WidgetManager
         SubscribeForm::class,
         TeamMembers::class,
         Testimonials::class,
+        UspItems::class,
         TwitterFeed::class,
         AdvancedAnalytics::class,
         AreaChart::class,
