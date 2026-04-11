@@ -235,6 +235,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/instagram-feed.css'
         ],
         [
+            'handle' => 'elementrify-twitter-feed',
+            'file'   => 'assets/css/twitter-feed.css'
+        ],
+        [
             'handle' => 'elementrify-flip-box',
             'file'   => 'assets/css/flip-box.css'
         ],

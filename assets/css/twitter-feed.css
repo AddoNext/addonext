@@ -1,0 +1,89 @@
+.elementrify-twitter-feed {
+    width: 100%;
+}
+
+.elementrify-twitter-feed--empty .elementrify-twitter-feed__notice {
+    margin: 0;
+    padding: 16px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.elementrify-twitter-feed__preview-user {
+    margin: 8px 0 0;
+    text-align: center;
+    font-weight: 600;
+    color: #0f1419;
+}
+
+.elementrify-twitter-feed__header {
+    margin-bottom: 12px;
+}
+
+.elementrify-twitter-feed__profile {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.elementrify-twitter-feed__profile:hover {
+    text-decoration: underline;
+}
+
+.elementrify-twitter-feed__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.elementrify-twitter-feed__item {
+    margin: 0;
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.elementrify-twitter-feed__text {
+    margin: 0 0 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #0f1419;
+    line-height: 1.5;
+}
+
+.elementrify-twitter-feed__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    font-size: 13px;
+    color: #536471;
+}
+
+.elementrify-twitter-feed__date {
+    color: inherit;
+}
+
+.elementrify-twitter-feed__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+}
+
+.elementrify-twitter-feed__metric {
+    white-space: nowrap;
+}
+
+.elementrify-twitter-feed__permalink {
+    margin-left: auto;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.elementrify-twitter-feed__permalink:hover {
+    text-decoration: underline;
+}
