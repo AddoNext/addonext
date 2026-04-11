@@ -263,6 +263,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/hero-banner.css'
         ],
         [
+            'handle' => 'elementrify-hero-slider',
+            'file'   => 'assets/css/hero-slider.css'
+        ],
+        [
             'handle' => 'elementrify-dual-heading',
             'file'   => 'assets/css/dual-heading.css'
         ],
@@ -340,6 +344,12 @@ class WidgetsAssetController
             'file'   => 'assets/js/hero-banner.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend'],
+        ],
+        [
+            'handle' => 'elementrify-hero-slider',
+            'file'   => 'assets/js/hero-slider.js',
+            'footer' => true,
+            'deps'   => ['jquery', 'elementor-frontend', 'swiper'],
         ],
         [
             'handle' => 'elementrify-notice-board',
