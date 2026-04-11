@@ -55,6 +55,7 @@ use Elementrify\Widgets\Banner\Banner;
 use Elementrify\Widgets\CallToAction\CallToAction;
 use Elementrify\Widgets\ComparisonTable\ComparisonTable;
 use Elementrify\Widgets\ContactForm\ContactForm;
+use Elementrify\Widgets\ContactForm7Styler\ContactForm7Styler;
 use Elementrify\Widgets\InstagramFeed\InstagramFeed;
 use Elementrify\Widgets\LogoShowcase\LogoShowcase;
 use Elementrify\Widgets\NoticeBoard\NoticeBoard;
@@ -155,6 +156,7 @@ class WidgetManager
         CallToAction::class,
         ComparisonTable::class,
         ContactForm::class,
+        ContactForm7Styler::class,
         InstagramFeed::class,
         LogoShowcase::class,
         NoticeBoard::class,

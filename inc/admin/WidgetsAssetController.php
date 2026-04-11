@@ -199,6 +199,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/contact-form.css'
         ],
         [
+            'handle' => 'elementrify-contact-form-7-styler',
+            'file'   => 'assets/css/contact-form-7-styler.css'
+        ],
+        [
             'handle' => 'elementrify-subscribe-form',
             'file'   => 'assets/css/subscribe-form.css'
         ],

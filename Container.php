@@ -33,6 +33,7 @@ use Elementrify\Widgets\CircularProgress\CircularProgress;
 use Elementrify\Widgets\CodeSnippet\CodeSnippet;
 use Elementrify\Widgets\ComparisonTable\ComparisonTable;
 use Elementrify\Widgets\ContactForm\ContactForm;
+use Elementrify\Widgets\ContactForm7Styler\ContactForm7Styler;
 use Elementrify\Widgets\ContentToggle\ContentToggle;
 use Elementrify\Widgets\CountdownTimer\CountdownTimer;
 use Elementrify\Widgets\DataTable\DataTable;
@@ -122,6 +123,7 @@ return [
     CodeSnippet::class        => create(CodeSnippet::class),
     ComparisonTable::class    => create(ComparisonTable::class),
     ContactForm::class        => create(ContactForm::class),
+    ContactForm7Styler::class => create(ContactForm7Styler::class),
     ContentToggle::class      => create(ContentToggle::class),
     CountdownTimer::class     => create(CountdownTimer::class),
     DataTable::class          => create(DataTable::class),

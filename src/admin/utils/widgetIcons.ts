@@ -86,6 +86,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-code-snippet": faCode,
   "elementrify-comparison-table": faTable,
   "elementrify-contact-form": faTableList,
+  "elementrify-contact-form-7-styler": faSliders,
   "elementrify-content-toggle": faToggleOn,
   "elementrify-countdown-timer": faClock,
   "elementrify-data-table": faTable,
