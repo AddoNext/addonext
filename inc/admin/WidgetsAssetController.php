@@ -55,6 +55,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/author-box.css'
         ],
         [
+            'handle' => 'elementrify-banner',
+            'file'   => 'assets/css/banner.css'
+        ],
+        [
             'handle' => 'elementrify-icon-box',
             'file'   => 'assets/css/icon-box.css'
         ],
