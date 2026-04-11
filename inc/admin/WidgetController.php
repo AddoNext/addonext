@@ -47,17 +47,20 @@ class WidgetController
     {
         register_rest_route('elementrify/v1', '/widgets', [
             'methods'  => 'GET',
-            'callback' => [$this, 'rest_get_widgets']
+            'callback' => [$this, 'rest_get_widgets'],
+            'permission_callback' => '__return_true'
         ]);
 
         register_rest_route('elementrify/v1', '/categories', [
             'methods'  => 'GET',
-            'callback' => [$this, 'rest_get_categories']
+            'callback' => [$this, 'rest_get_categories'],
+            'permission_callback' => '__return_true'
         ]);
 
         register_rest_route('elementrify/v1', '/update-widgets', [
             'methods'  => 'POST',
-            'callback' => [$this, 'rest_update_widgets']
+            'callback' => [$this, 'rest_update_widgets'],
+            'permission_callback' => '__return_true'
         ]);
     }
 
