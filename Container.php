@@ -86,6 +86,7 @@ use Elementrify\Widgets\Timeline\Timeline;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
 use Elementrify\Widgets\UspItems\UspItems;
+use Elementrify\Widgets\VideoGallery\VideoGallery;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
 
 return [
@@ -174,5 +175,6 @@ return [
     Timeline::class           => create(Timeline::class),
     Tooltip::class            => create(Tooltip::class),
     TwitterFeed::class        => create(TwitterFeed::class),
+    VideoGallery::class       => create(VideoGallery::class),
     VideoPlayer::class        => create(VideoPlayer::class),
 ];
