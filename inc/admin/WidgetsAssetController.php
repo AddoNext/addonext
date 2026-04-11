@@ -67,6 +67,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/modal-popup.css'
         ],
         [
+            'handle' => 'elementrify-notice-board',
+            'file'   => 'assets/css/notice-board.css'
+        ],
+        [
             'handle' => 'elementrify-mini-cart',
             'file'   => 'assets/css/mini-cart.css'
         ],
@@ -321,6 +325,11 @@ class WidgetsAssetController
         [
             'handle' => 'elementrify-modal-popup',
             'file'   => 'assets/js/modal-popup.js',
+            'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-notice-board',
+            'file'   => 'assets/js/notice-board.js',
             'footer' => true
         ],
         [

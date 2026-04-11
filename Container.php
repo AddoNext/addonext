@@ -54,7 +54,7 @@ use Elementrify\Widgets\LottieAnimation\LottieAnimation;
 use Elementrify\Widgets\Marquee\Marquee;
 use Elementrify\Widgets\MiniCart\MiniCart;
 use Elementrify\Widgets\ModalPopup\ModalPopup;
-use Elementrify\Widgets\NotificationBar\NotificationBar;
+use Elementrify\Widgets\NoticeBoard\NoticeBoard;
 use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
 use Elementrify\Widgets\Parallax\Parallax;
 use Elementrify\Widgets\ParticleEffects\ParticleEffects;
@@ -138,7 +138,7 @@ return [
     Marquee::class            => create(Marquee::class),
     MiniCart::class           => create(MiniCart::class),
     ModalPopup::class         => create(ModalPopup::class),
-    NotificationBar::class    => create(NotificationBar::class),
+    NoticeBoard::class        => create(NoticeBoard::class),
     OffCanvasContent::class   => create(OffCanvasContent::class),
     Parallax::class           => create(Parallax::class),
     ParticleEffects::class   => create(ParticleEffects::class),

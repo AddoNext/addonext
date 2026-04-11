@@ -1,0 +1,176 @@
+.elementrify-notice-board {
+    width: 100%;
+}
+
+.elementrify-notice-board__frame {
+    border: 4px solid #78350f;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 8px 24px rgba(28, 25, 23, 0.15);
+    overflow: hidden;
+    background: linear-gradient(145deg, #57534e 0%, #44403c 100%);
+}
+
+.elementrify-notice-board__header-bar {
+    height: 10px;
+    background: repeating-linear-gradient(
+        90deg,
+        #44403c,
+        #44403c 12px,
+        #57534e 12px,
+        #57534e 24px
+    );
+    border-bottom: 2px solid #292524;
+}
+
+.elementrify-notice-board__surface {
+    background-color: #d4b896;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(0, 0, 0, 0.06) 0%, transparent 40%);
+    min-height: 80px;
+}
+
+.elementrify-notice-board__empty {
+    margin: 0;
+    padding: 16px;
+    text-align: center;
+    color: #57534e;
+    font-size: 14px;
+}
+
+.elementrify-notice-board__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.elementrify-notice-board__item {
+    position: relative;
+}
+
+.elementrify-notice-board__item-inner {
+    position: relative;
+    border-radius: 4px;
+    background-color: #fffbeb;
+    box-shadow: 2px 4px 12px rgba(28, 25, 23, 0.18), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+    transform: rotate(-0.3deg);
+}
+
+.elementrify-notice-board__item:nth-child(even) .elementrify-notice-board__item-inner {
+    transform: rotate(0.35deg);
+}
+
+.elementrify-notice-board__pin {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    margin-left: -9px;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.elementrify-notice-board__pin::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #fca5a5, #dc2626 45%, #7f1d1d 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.elementrify-notice-board__trigger,
+.elementrify-notice-board__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    width: 100%;
+    margin: 0;
+    padding: 14px 16px 10px;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+}
+
+.elementrify-notice-board__trigger {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.elementrify-notice-board__trigger:hover {
+    background: rgba(254, 243, 199, 0.35);
+}
+
+.elementrify-notice-board__trigger:focus {
+    outline: 2px solid #b45309;
+    outline-offset: 2px;
+}
+
+.elementrify-notice-board--expand-all .elementrify-notice-board__heading {
+    padding-bottom: 4px;
+}
+
+.elementrify-notice-board__date {
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.elementrify-notice-board__title {
+    flex: 1 1 auto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.elementrify-notice-board__chevron {
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -4px;
+    opacity: 0.65;
+    transition: transform 0.2s ease, margin 0.2s ease;
+}
+
+.elementrify-notice-board__item.is-open .elementrify-notice-board__chevron {
+    transform: rotate(225deg);
+    margin-top: 2px;
+}
+
+.elementrify-notice-board__panel {
+    padding: 0 16px 14px;
+}
+
+.elementrify-notice-board__panel[hidden] {
+    display: none;
+}
+
+.elementrify-notice-board--expand-all .elementrify-notice-board__panel {
+    display: block;
+}
+
+.elementrify-notice-board__description {
+    font-size: 14px;
+    line-height: 1.55;
+    border-top: 1px dashed rgba(120, 53, 15, 0.25);
+    padding-top: 10px;
+}
+
+.elementrify-notice-board__description > :first-child {
+    margin-top: 0;
+}
+
+.elementrify-notice-board__description > :last-child {
+    margin-bottom: 0;
+}

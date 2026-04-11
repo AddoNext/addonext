@@ -53,7 +53,7 @@ use Elementrify\Widgets\ComparisonTable\ComparisonTable;
 use Elementrify\Widgets\ContactForm\ContactForm;
 use Elementrify\Widgets\InstagramFeed\InstagramFeed;
 use Elementrify\Widgets\LogoShowcase\LogoShowcase;
-use Elementrify\Widgets\NotificationBar\NotificationBar;
+use Elementrify\Widgets\NoticeBoard\NoticeBoard;
 use Elementrify\Widgets\PriceList\PriceList;
 use Elementrify\Widgets\PricingTable\PricingTable;
 use Elementrify\Widgets\PromoBox\PromoBox;
@@ -148,7 +148,7 @@ class WidgetManager
         ContactForm::class,
         InstagramFeed::class,
         LogoShowcase::class,
-        NotificationBar::class,
+        NoticeBoard::class,
         PriceList::class,
         PricingTable::class,
         PromoBox::class,
