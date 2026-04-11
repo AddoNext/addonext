@@ -71,6 +71,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/modal-popup.css'
         ],
         [
+            'handle' => 'elementrify-navigation-menu',
+            'file'   => 'assets/css/navigation-menu.css'
+        ],
+        [
             'handle' => 'elementrify-notice-board',
             'file'   => 'assets/css/notice-board.css'
         ],
@@ -338,6 +342,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-modal-popup',
             'file'   => 'assets/js/modal-popup.js',
             'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-navigation-menu',
+            'file'   => 'assets/js/navigation-menu.js',
+            'footer' => true,
+            'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-hero-banner',

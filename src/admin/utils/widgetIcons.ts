@@ -110,6 +110,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-marquee": faBarsStaggered,
   "elementrify-mini-cart": faCartShopping,
   "elementrify-modal-popup": faWindowMaximize,
+  "elementrify-navigation-menu": faBars,
   "elementrify-notice-board": faClipboardList,
   "elementrify-off-canvas-content": faBars,
   "elementrify-parallax": faMountainSun,

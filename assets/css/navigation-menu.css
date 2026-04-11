@@ -1,0 +1,235 @@
+.elementrify-nav-menu {
+    --nm-line-h: 3px;
+    --nm-grad-a: #6366f1;
+    --nm-grad-b: #a855f7;
+    --nm-solid-line: #4f46e5;
+    --nm-pill-bg: #eef2ff;
+    --nm-lift-shadow: rgba(79, 70, 229, 0.18);
+    --nm-glow: rgba(99, 102, 241, 0.55);
+    width: 100%;
+}
+
+.elementrify-nav-menu__inner {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.elementrify-nav-menu__root {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.elementrify-nav-menu .menu-item {
+    position: relative;
+    margin: 0;
+}
+
+.elementrify-nav-menu__root > .menu-item > a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, text-shadow 0.2s ease;
+}
+
+.elementrify-nav-menu__root > .menu-item.current-menu-item > a,
+.elementrify-nav-menu__root > .menu-item.current-menu-ancestor > a {
+    font-weight: 600;
+}
+
+.elementrify-nav-menu__root > .menu-item > a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+.elementrify-nav-menu__root > .menu-item-has-children > a {
+    padding-right: 1.15em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23374151' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 8px 5px;
+}
+
+.elementrify-nav-menu__root > .menu-item-has-children.current-menu-item > a,
+.elementrify-nav-menu__root > .menu-item-has-children.current-menu-ancestor > a {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%234f46e5' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+}
+
+.elementrify-nav-menu--hover-gradient_border .elementrify-nav-menu__root > .menu-item > a::after,
+.elementrify-nav-menu--hover-solid_underline .elementrify-nav-menu__root > .menu-item > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--nm-line-h, 3px);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center bottom;
+    transition: transform 0.25s ease;
+    pointer-events: none;
+}
+
+.elementrify-nav-menu--hover-gradient_border .elementrify-nav-menu__root > .menu-item > a::after {
+    background: linear-gradient(90deg, var(--nm-grad-a), var(--nm-grad-b));
+}
+
+.elementrify-nav-menu--hover-solid_underline .elementrify-nav-menu__root > .menu-item > a::after {
+    background: var(--nm-solid-line, #4f46e5);
+}
+
+.elementrify-nav-menu--hover-gradient_border .elementrify-nav-menu__root > .menu-item > a:hover::after,
+.elementrify-nav-menu--hover-gradient_border .elementrify-nav-menu__root > .menu-item > a:focus-visible::after,
+.elementrify-nav-menu--hover-solid_underline .elementrify-nav-menu__root > .menu-item > a:hover::after,
+.elementrify-nav-menu--hover-solid_underline .elementrify-nav-menu__root > .menu-item > a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.elementrify-nav-menu--hover-pill_background .elementrify-nav-menu__root > .menu-item > a {
+    border-radius: 999px;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+}
+
+.elementrify-nav-menu--hover-pill_background .elementrify-nav-menu__root > .menu-item-has-children > a {
+    padding-right: 1.35em;
+    background-position: right 0.55em center;
+}
+
+.elementrify-nav-menu--hover-pill_background .elementrify-nav-menu__root > .menu-item > a:hover,
+.elementrify-nav-menu--hover-pill_background .elementrify-nav-menu__root > .menu-item > a:focus-visible {
+    background-color: var(--nm-pill-bg, #eef2ff);
+}
+
+.elementrify-nav-menu--hover-lift .elementrify-nav-menu__root > .menu-item > a:hover,
+.elementrify-nav-menu--hover-lift .elementrify-nav-menu__root > .menu-item > a:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px var(--nm-lift-shadow, rgba(79, 70, 229, 0.18));
+}
+
+.elementrify-nav-menu--hover-glow_text .elementrify-nav-menu__root > .menu-item > a:hover,
+.elementrify-nav-menu--hover-glow_text .elementrify-nav-menu__root > .menu-item > a:focus-visible {
+    text-shadow: 0 0 14px var(--nm-glow, rgba(99, 102, 241, 0.55));
+}
+
+.elementrify-nav-menu--hover-none .elementrify-nav-menu__root > .menu-item > a::after {
+    display: none;
+}
+
+.elementrify-nav-menu--hover-pill_background .elementrify-nav-menu__root > .menu-item > a::after,
+.elementrify-nav-menu--hover-lift .elementrify-nav-menu__root > .menu-item > a::after,
+.elementrify-nav-menu--hover-glow_text .elementrify-nav-menu__root > .menu-item > a::after {
+    display: none;
+}
+
+.elementrify-nav-menu__sub {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 200;
+    list-style: none;
+    margin: 0;
+    min-width: 200px;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.elementrify-nav-menu:not(.elementrify-nav-menu--layout-mobile) .menu-item > .elementrify-nav-menu__sub::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    height: 10px;
+}
+
+.elementrify-nav-menu__sub .menu-item {
+    width: 100%;
+}
+
+.elementrify-nav-menu__sub .menu-item > a {
+    display: block;
+    padding: 0.5rem 1.1rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.elementrify-nav-menu__sub .menu-item > a:hover,
+.elementrify-nav-menu__sub .menu-item > a:focus-visible {
+    background-color: rgba(79, 70, 229, 0.06);
+}
+
+.elementrify-nav-menu__sub--nested {
+    left: 100%;
+    top: 0;
+    margin-left: 2px;
+}
+
+.elementrify-nav-menu:not(.elementrify-nav-menu--layout-mobile):not(.elementrify-nav-menu--sub-click) .menu-item:hover > .elementrify-nav-menu__sub,
+.elementrify-nav-menu:not(.elementrify-nav-menu--layout-mobile):not(.elementrify-nav-menu--sub-click) .menu-item:focus-within > .elementrify-nav-menu__sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.elementrify-nav-menu--sub-click:not(.elementrify-nav-menu--layout-mobile) .menu-item.is-open > .elementrify-nav-menu__sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.elementrify-nav-menu__sub .menu-item-has-children > a {
+    padding-right: 1.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10'%3E%3Cpath fill='%23374151' d='M0 0l6 5-6 5V0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.65rem center;
+    background-size: 5px 8px;
+}
+
+.elementrify-nav-menu__placeholder {
+    margin: 0;
+    padding: 0.75rem 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.elementrify-nav-menu--layout-mobile .elementrify-nav-menu__root {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.elementrify-nav-menu--layout-mobile .elementrify-nav-menu__root > .menu-item > a {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.elementrify-nav-menu--layout-mobile .elementrify-nav-menu__sub {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+    min-width: 0;
+    box-shadow: none;
+    padding-left: 0.75rem;
+    border-radius: 0;
+}
+
+.elementrify-nav-menu--layout-mobile .menu-item.is-open > .elementrify-nav-menu__sub {
+    display: block;
+}
+
+.elementrify-nav-menu--layout-mobile:not(.elementrify-nav-menu--hover-none) .elementrify-nav-menu__root > .menu-item > a::after {
+    display: none;
+}
