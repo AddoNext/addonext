@@ -113,6 +113,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-mini-cart": faCartShopping,
   "elementrify-modal-popup": faWindowMaximize,
   "elementrify-navigation-menu": faBars,
+  "elementrify-news-ticker": faNewspaper,
   "elementrify-notice-board": faClipboardList,
   "elementrify-off-canvas-content": faBars,
   "elementrify-parallax": faMountainSun,

@@ -83,6 +83,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/notice-board.css'
         ],
         [
+            'handle' => 'elementrify-news-ticker',
+            'file'   => 'assets/css/news-ticker.css'
+        ],
+        [
             'handle' => 'elementrify-mini-cart',
             'file'   => 'assets/css/mini-cart.css'
         ],

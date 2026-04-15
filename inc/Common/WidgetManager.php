@@ -23,6 +23,7 @@ use Elementrify\Widgets\IconList\IconList;
 use Elementrify\Widgets\ImageBox\ImageBox;
 use Elementrify\Widgets\ModalPopup\ModalPopup;
 use Elementrify\Widgets\NavigationMenu\NavigationMenu;
+use Elementrify\Widgets\NewsTicker\NewsTicker;
 use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
 use Elementrify\Widgets\SmartPostList\SmartPostList;
 use Elementrify\Widgets\Spacer\Spacer;
@@ -125,6 +126,7 @@ class WidgetManager
         ImageBox::class,
         ModalPopup::class,
         NavigationMenu::class,
+        NewsTicker::class,
         OffCanvasContent::class,
         SmartPostList::class,
         Spacer::class,
