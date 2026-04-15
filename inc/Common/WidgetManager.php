@@ -32,6 +32,7 @@ use Elementrify\Widgets\VideoGallery\VideoGallery;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
 use Elementrify\Widgets\AnimatedCounter\AnimatedCounter;
 use Elementrify\Widgets\AnimatedGradient\AnimatedGradient;
+use Elementrify\Widgets\AnimatedSvg\AnimatedSvg;
 use Elementrify\Widgets\BeforeAfterSlider\BeforeAfterSlider;
 use Elementrify\Widgets\BentoGrid\BentoGrid;
 use Elementrify\Widgets\CircularProgress\CircularProgress;
@@ -133,6 +134,7 @@ class WidgetManager
         VideoPlayer::class,
         AnimatedCounter::class,
         AnimatedGradient::class,
+        AnimatedSvg::class,
         BeforeAfterSlider::class,
         BentoGrid::class,
         CircularProgress::class,

@@ -71,6 +71,7 @@ const WIDGET_ICON_MAP: Record<string, IconDefinition> = {
   "elementrify-advanced-tabs": faTableColumns,
   "elementrify-animated-counter": faChartSimple,
   "elementrify-animated-gradient": faLayerGroup,
+  "elementrify-animated-svg": faWandMagicSparkles,
   "elementrify-animated-text": faWandMagicSparkles,
   "elementrify-area-chart": faChartLine,
   "elementrify-author-box": faUser,

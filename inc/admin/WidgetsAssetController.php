@@ -291,6 +291,10 @@ class WidgetsAssetController
             'file'   => 'assets/css/animated-gradient.css'
         ],
         [
+            'handle' => 'elementrify-animated-svg',
+            'file'   => 'assets/css/animated-svg.css'
+        ],
+        [
             'handle' => 'elementrify-bento-grid',
             'file'   => 'assets/css/bento-grid.css'
         ],
@@ -388,6 +392,12 @@ class WidgetsAssetController
             'handle' => 'elementrify-animated-counter',
             'file'   => 'assets/js/animated-counter.js',
             'footer' => true
+        ],
+        [
+            'handle' => 'elementrify-animated-svg',
+            'file'   => 'assets/js/animated-svg.js',
+            'footer' => true,
+            'deps'   => ['elementor-frontend'],
         ],
         [
             'handle' => 'elementrify-image-carousel',

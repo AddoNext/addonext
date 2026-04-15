@@ -18,6 +18,7 @@ use Elementrify\Widgets\AdvancedHeading\AdvancedHeading;
 use Elementrify\Widgets\AdvancedTabs\AdvancedTabs;
 use Elementrify\Widgets\AnimatedCounter\AnimatedCounter;
 use Elementrify\Widgets\AnimatedGradient\AnimatedGradient;
+use Elementrify\Widgets\AnimatedSvg\AnimatedSvg;
 use Elementrify\Widgets\AnimatedText\AnimatedText;
 use Elementrify\Widgets\AreaChart\AreaChart;
 use Elementrify\Widgets\AuthorBox\AuthorBox;
@@ -108,6 +109,7 @@ return [
     AdvancedTabs::class       => create(AdvancedTabs::class),
     AnimatedCounter::class    => create(AnimatedCounter::class),
     AnimatedGradient::class   => create(AnimatedGradient::class),
+    AnimatedSvg::class        => create(AnimatedSvg::class),
     AnimatedText::class       => create(AnimatedText::class),
     AreaChart::class          => create(AreaChart::class),
     AuthorBox::class          => create(AuthorBox::class),

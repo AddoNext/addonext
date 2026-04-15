@@ -1,0 +1,191 @@
+.elementrify-asvg {
+  display: flex;
+  width: 100%;
+}
+
+.elementrify-asvg__link {
+  display: inline-flex;
+  max-width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.elementrify-asvg__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  max-width: 100%;
+}
+
+.elementrify-asvg__inner svg {
+  display: block;
+  width: 96px;
+  height: auto;
+  max-width: 100%;
+  fill: currentColor;
+}
+
+.elementrify-asvg__inner svg[fill="none"] {
+  fill: none;
+  stroke: currentColor;
+}
+
+.elementrify-asvg__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.elementrify-asvg__placeholder {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.elementrify-asvg--anim-pulse .elementrify-asvg__inner {
+  animation: elementrify-asvg-pulse var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-bounce .elementrify-asvg__inner {
+  animation: elementrify-asvg-bounce var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-rotate .elementrify-asvg__inner {
+  animation: elementrify-asvg-rotate var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-shake .elementrify-asvg__inner {
+  animation: elementrify-asvg-shake var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-float .elementrify-asvg__inner {
+  animation: elementrify-asvg-float var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-heartbeat .elementrify-asvg__inner {
+  animation: elementrify-asvg-heartbeat var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-spin .elementrify-asvg__inner {
+  animation: elementrify-asvg-spin var(--e-asvg-dur) linear var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-wiggle .elementrify-asvg__inner {
+  animation: elementrify-asvg-wiggle var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+}
+
+.elementrify-asvg--anim-draw .elementrify-asvg__inner {
+  animation: none;
+}
+
+@keyframes elementrify-asvg-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+@keyframes elementrify-asvg-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes elementrify-asvg-rotate {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes elementrify-asvg-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes elementrify-asvg-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes elementrify-asvg-heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.12);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes elementrify-asvg-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes elementrify-asvg-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elementrify-asvg[class*="elementrify-asvg--anim-"]:not(.elementrify-asvg--anim-draw) .elementrify-asvg__inner {
+    animation: none;
+  }
+
+  .elementrify-asvg--anim-draw [data-elementrify-draw='1'] {
+    stroke-dashoffset: 0 !important;
+    fill-opacity: 1 !important;
+  }
+}
