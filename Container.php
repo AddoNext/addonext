@@ -55,15 +55,12 @@ use Elementrify\Widgets\ImageHotspot\ImageHotspot;
 use Elementrify\Widgets\LineChart\LineChart;
 use Elementrify\Widgets\LogoShowcase\LogoShowcase;
 use Elementrify\Widgets\LottieAnimation\LottieAnimation;
-use Elementrify\Widgets\Marquee\Marquee;
 use Elementrify\Widgets\MiniCart\MiniCart;
 use Elementrify\Widgets\ModalPopup\ModalPopup;
 use Elementrify\Widgets\NavigationMenu\NavigationMenu;
 use Elementrify\Widgets\NewsTicker\NewsTicker;
 use Elementrify\Widgets\NoticeBoard\NoticeBoard;
 use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
-use Elementrify\Widgets\Parallax\Parallax;
-use Elementrify\Widgets\ParticleEffects\ParticleEffects;
 use Elementrify\Widgets\PieChart\PieChart;
 use Elementrify\Widgets\PriceList\PriceList;
 use Elementrify\Widgets\PricingTable\PricingTable;
@@ -75,7 +72,6 @@ use Elementrify\Widgets\ProductTabs\ProductTabs;
 use Elementrify\Widgets\ProgressBar\ProgressBar;
 use Elementrify\Widgets\PromoBox\PromoBox;
 use Elementrify\Widgets\RadarChart\RadarChart;
-use Elementrify\Widgets\ScrollAnimation\ScrollAnimation;
 use Elementrify\Widgets\SmartPostList\SmartPostList;
 use Elementrify\Widgets\SocialShare\SocialShare;
 use Elementrify\Widgets\Spacer\Spacer;
@@ -147,15 +143,12 @@ return [
     LineChart::class          => create(LineChart::class),
     LogoShowcase::class       => create(LogoShowcase::class),
     LottieAnimation::class    => create(LottieAnimation::class),
-    Marquee::class            => create(Marquee::class),
     MiniCart::class           => create(MiniCart::class),
     ModalPopup::class         => create(ModalPopup::class),
     NavigationMenu::class     => create(NavigationMenu::class),
     NewsTicker::class         => create(NewsTicker::class),
     NoticeBoard::class        => create(NoticeBoard::class),
     OffCanvasContent::class   => create(OffCanvasContent::class),
-    Parallax::class           => create(Parallax::class),
-    ParticleEffects::class   => create(ParticleEffects::class),
     PieChart::class           => create(PieChart::class),
     PriceList::class          => create(PriceList::class),
     PricingTable::class       => create(PricingTable::class),
@@ -167,7 +160,6 @@ return [
     ProgressBar::class        => create(ProgressBar::class),
     PromoBox::class           => create(PromoBox::class),
     RadarChart::class         => create(RadarChart::class),
-    ScrollAnimation::class    => create(ScrollAnimation::class),
     SmartPostList::class      => create(SmartPostList::class),
     SocialShare::class        => create(SocialShare::class),
     Spacer::class             => create(Spacer::class),

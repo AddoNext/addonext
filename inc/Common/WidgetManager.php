@@ -44,11 +44,7 @@ use Elementrify\Widgets\ImageCarousel\ImageCarousel;
 use Elementrify\Widgets\ImageGallery\ImageGallery;
 use Elementrify\Widgets\ImageHotspot\ImageHotspot;
 use Elementrify\Widgets\LottieAnimation\LottieAnimation;
-use Elementrify\Widgets\Marquee\Marquee;
-use Elementrify\Widgets\Parallax\Parallax;
-use Elementrify\Widgets\ParticleEffects\ParticleEffects;
 use Elementrify\Widgets\ProgressBar\ProgressBar;
-use Elementrify\Widgets\ScrollAnimation\ScrollAnimation;
 use Elementrify\Widgets\StarRating\StarRating;
 use Elementrify\Widgets\Timeline\Timeline;
 use Elementrify\Widgets\Tooltip\Tooltip;
@@ -147,11 +143,7 @@ class WidgetManager
         ImageGallery::class,
         ImageHotspot::class,
         LottieAnimation::class,
-        Marquee::class,
-        Parallax::class,
-        ParticleEffects::class,
         ProgressBar::class,
-        ScrollAnimation::class,
         StarRating::class,
         Timeline::class,
         Tooltip::class,
