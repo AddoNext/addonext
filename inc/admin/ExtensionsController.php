@@ -45,13 +45,23 @@ class ExtensionsController
     }
 
     /**
+     * Whether the current user may manage extensions
+     *
+     * @return bool
+     */
+    public function check_permission(): bool
+    {
+        return current_user_can('manage_options');
+    }
+
+    /**
      * Get all available extensions
      *
      * @return WP_REST_Response
      */
     public function rest_get_extensions(): WP_REST_Response
     {
-        $extensions = emty_container(ExtensionManager::class)->get_extensions();
+        $extensions = emty_container(ExtensionManager::class)->get_extensions_catalog();
 
         return new WP_REST_Response([
             'success'    => true,
@@ -69,7 +79,7 @@ class ExtensionsController
     {
         $extensions = $request->get_param('extensions');
 
-        if (empty($extensions) || !is_array($extensions)) {
+        if (!is_array($extensions)) {
             return new WP_REST_Response(
                 [
                     'success' => false,
@@ -79,11 +89,15 @@ class ExtensionsController
             );
         }
 
-        OptionsHelper::set_option('active_extensions', $extensions);
+        $manager = emty_container(ExtensionManager::class);
+        $clean   = $manager->sanitize_active_extension_ids($extensions);
+
+        OptionsHelper::set_option('active_extensions', $clean);
 
         return new WP_REST_Response([
-            'success' => true,
-            'message' => __('Extensions updated successfully', 'elementrify')
+            'success'    => true,
+            'message'    => __('Extensions updated successfully', 'elementrify'),
+            'extensions' => $manager->get_extensions_catalog()
         ]);
     }
 }

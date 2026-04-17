@@ -109,6 +109,36 @@ abstract class ExtensionBase
     }
 
     /**
+     * Documentation URL for this extension
+     *
+     * @return string
+     */
+    public function get_doc_url(): string
+    {
+        return '';
+    }
+
+    /**
+     * Demo or external showcase URL
+     *
+     * @return string
+     */
+    public function get_demo_url(): string
+    {
+        return '';
+    }
+
+    /**
+     * Whether the extension exposes configurable settings
+     *
+     * @return bool
+     */
+    public function has_settings(): bool
+    {
+        return !empty($this->get_fields());
+    }
+
+    /**
      * Check if the extension is popular
      *
      * @return bool
@@ -137,5 +167,8 @@ abstract class ExtensionBase
      *
      * @return string
      */
-    abstract public function required_plan(): string;
+    public function required_plan(): string
+    {
+        return 'free';
+    }
 }

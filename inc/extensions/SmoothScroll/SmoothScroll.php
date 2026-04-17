@@ -31,4 +31,14 @@ class SmoothScroll extends ExtensionBase
     {
         return 'content';
     }
+
+    public function get_date_launched(): string
+    {
+        return '2026-04-18';
+    }
+
+    public function get_date_updated(): string
+    {
+        return '2026-04-18';
+    }
 }

@@ -1,0 +1,122 @@
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $space-5 $space-6;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    border-color: var(--color-border);
+  }
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-bottom: $space-5;
+}
+
+.title {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  flex-shrink: 0;
+}
+
+.lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lockIcon {
+  font-size: 14px;
+  color: #d4a017;
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.badges {
+  min-height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.badgePlaceholder {
+  display: inline-block;
+  min-width: 1px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: $space-1 $space-2;
+  border-radius: $radius-full;
+  line-height: 1.2;
+}
+
+.badge_popular {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badge_updated {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.badge_new {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-md;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover:not(:disabled) {
+    color: var(--color-text-secondary);
+    background: var(--color-muted);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.45;
+  }
+}

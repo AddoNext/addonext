@@ -6,6 +6,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   checked = false,
   onCheckedChange,
   onChange,
+  accent = false,
   ...rest
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +14,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
     onChange?.(e);
   };
   return (
-    <label className={styles.switch}>
+    <label className={`${styles.switch} ${accent ? styles.accent : ""}`}>
       <input
         type="checkbox"
         className={styles.input}

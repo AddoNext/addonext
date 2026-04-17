@@ -3,6 +3,10 @@
   display: inline-block;
   width: 40px;
   height: 24px;
+
+  &.accent .input:checked + .track {
+    background: $color-accent-indigo;
+  }
 }
 
 .input {
