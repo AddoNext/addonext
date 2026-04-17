@@ -4,6 +4,7 @@ namespace Elementrify\Common;
 use Elementrify\Base\ExtensionBase;
 use Elementrify\Utils\OptionsHelper;
 use Elementrify\Extensions\Duplicator\Duplicator;
+use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 
 defined('ABSPATH') or exit;
@@ -22,8 +23,9 @@ class ExtensionManager
      * @var array<string, class-string<ExtensionBase>>
      */
     protected static $extensions = [
-        'smooth-scroll' => SmoothScroll::class,
-        'duplicator'      => Duplicator::class,
+        'smooth-scroll'  => SmoothScroll::class,
+        'duplicator'       => Duplicator::class,
+        'scroll-to-top'  => ScrollToTop::class,
     ];
 
     /**

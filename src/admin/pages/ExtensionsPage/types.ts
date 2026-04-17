@@ -10,14 +10,21 @@ export interface ExtensionFieldShowWhen {
   value: unknown;
 }
 
+export interface ExtensionFieldShowWhenIn {
+  field: string;
+  values: unknown[];
+}
+
 export interface ExtensionField {
   id: string;
-  type: "toggle" | "select" | "checkbox_group";
+  type: "toggle" | "select" | "checkbox_group" | "text";
   label: string;
   description?: string;
   default?: unknown;
   options?: ExtensionFieldOption[];
+  placeholder?: string;
   show_when?: ExtensionFieldShowWhen;
+  show_when_in?: ExtensionFieldShowWhenIn;
 }
 
 export interface ExtensionItem {

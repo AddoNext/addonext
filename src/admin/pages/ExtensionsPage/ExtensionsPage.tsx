@@ -29,7 +29,10 @@ function normalizeField(raw: unknown): ExtensionField | null {
   const row = raw as Record<string, unknown>;
   const id = typeof row.id === "string" ? row.id : "";
   const type = row.type;
-  if (id === "" || (type !== "toggle" && type !== "select" && type !== "checkbox_group")) {
+  if (
+    id === "" ||
+    (type !== "toggle" && type !== "select" && type !== "checkbox_group" && type !== "text")
+  ) {
     return null;
   }
   const optionsRaw = row.options;
@@ -57,6 +60,16 @@ function normalizeField(raw: unknown): ExtensionField | null {
     show_when = { field: o.field as string, value: o.value };
   }
 
+  const swi = row.show_when_in;
+  let show_when_in: ExtensionField["show_when_in"];
+  if (swi && typeof swi === "object" && typeof (swi as Record<string, unknown>).field === "string") {
+    const o = swi as Record<string, unknown>;
+    const vals = o.values;
+    if (Array.isArray(vals)) {
+      show_when_in = { field: o.field as string, values: vals };
+    }
+  }
+
   return {
     id,
     type: type as ExtensionField["type"],
@@ -64,7 +77,9 @@ function normalizeField(raw: unknown): ExtensionField | null {
     description: typeof row.description === "string" ? row.description : undefined,
     default: row.default,
     options: options && options.length > 0 ? options : undefined,
+    placeholder: typeof row.placeholder === "string" ? row.placeholder : undefined,
     show_when,
+    show_when_in,
   };
 }
 

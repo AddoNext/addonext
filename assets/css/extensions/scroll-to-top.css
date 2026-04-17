@@ -1,0 +1,59 @@
+#elementrify-scroll-top {
+  position: fixed;
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+  cursor: pointer;
+  color: #ffffff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+#elementrify-scroll-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.22);
+}
+
+#elementrify-scroll-top:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+#elementrify-scroll-top[data-position="bottom-right"] {
+  bottom: 1.25rem;
+  right: 1.25rem;
+  top: auto;
+  left: auto;
+}
+
+#elementrify-scroll-top[data-position="bottom-left"] {
+  bottom: 1.25rem;
+  left: 1.25rem;
+  top: auto;
+  right: auto;
+}
+
+#elementrify-scroll-top[data-position="top-right"] {
+  top: 1.25rem;
+  right: 1.25rem;
+  bottom: auto;
+  left: auto;
+}
+
+#elementrify-scroll-top[data-position="top-left"] {
+  top: 1.25rem;
+  left: 1.25rem;
+  bottom: auto;
+  right: auto;
+}
+
+#elementrify-scroll-top svg {
+  width: 55%;
+  height: 55%;
+  display: block;
+}

@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import ToggleField from "../../../components/Fields/ToggleField/ToggleField";
 import SelectField from "../../../components/Fields/SelectField/SelectField";
+import TextField from "../../../components/Fields/TextField/TextField";
 import type { ExtensionField } from "../types";
 import styles from "./ExtensionSettingsFields.module.scss";
 
@@ -11,11 +12,15 @@ interface ExtensionSettingsFieldsProps {
 }
 
 function isFieldVisible(field: ExtensionField, values: Record<string, unknown>): boolean {
-  if (!field.show_when) {
-    return true;
+  if (field.show_when_in) {
+    const { field: dep, values: allowed } = field.show_when_in;
+    return allowed.includes(values[dep]);
   }
-  const { field: dep, value: expected } = field.show_when;
-  return values[dep] === expected;
+  if (field.show_when) {
+    const { field: dep, value: expected } = field.show_when;
+    return values[dep] === expected;
+  }
+  return true;
 }
 
 const ExtensionSettingsFields: React.FC<ExtensionSettingsFieldsProps> = ({ fields, values, onChange }) => {
@@ -61,6 +66,24 @@ const ExtensionSettingsFields: React.FC<ExtensionSettingsFieldsProps> = ({ field
             <div key={field.id} hidden={!visible}>
               {visible ? (
                 <SelectField label={field.label} value={v} options={options} onChange={(next) => onChange(field.id, next)} />
+              ) : null}
+            </div>
+          );
+        }
+
+        if (field.type === "text") {
+          const raw = values[field.id];
+          const v = typeof raw === "string" ? raw : raw != null ? String(raw) : "";
+          return (
+            <div key={field.id} hidden={!visible}>
+              {visible ? (
+                <TextField
+                  label={field.label}
+                  description={field.description}
+                  value={v}
+                  placeholder={field.placeholder}
+                  onChange={(next) => onChange(field.id, next)}
+                />
               ) : null}
             </div>
           );
