@@ -4,23 +4,15 @@ namespace Elementrify\Base;
 defined('ABSPATH') or exit;
 
 /**
- * Base class for Elementrify extensions
+ * Base class for Elementrify extensions.
+ *
+ * Active extensions have {@see enqueue_assets()} wired on `wp_enqueue_scripts` by ExtensionManager only.
  *
  * @since 1.0.0
  * @package Elementrify
  */
 abstract class ExtensionBase
 {
-    /**
-     * Constructor
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
-    }
-
     /**
      * Get the extension unique ID
      *

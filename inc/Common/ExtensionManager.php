@@ -15,12 +15,38 @@ defined('ABSPATH') or exit;
  */
 class ExtensionManager
 {
+    /**
+     * Extension id => class name (avoid instantiating inactive extensions to read ids).
+     *
+     * @var array<string, class-string<ExtensionBase>>
+     */
     protected static $extensions = [
-        SmoothScroll::class
+        'smooth-scroll' => SmoothScroll::class,
     ];
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
+        add_action('init', [$this, 'bootstrap_active_extension_instances'], 25);
+    }
+
+    /**
+     * Instantiate enabled extensions on the front so they can register assets.
+     *
+     * @return void
+     */
+    public function bootstrap_active_extension_instances(): void
+    {
+        if (is_admin() && !wp_doing_ajax()) {
+            return;
+        }
+
+        foreach ($this->get_active_extensions() as $class) {
+            $instance = emty_container($class);
+            add_action('wp_enqueue_scripts', [$instance, 'enqueue_assets'], 10);
+        }
     }
 
     /**
@@ -30,7 +56,7 @@ class ExtensionManager
      */
     public function get_extensions(): array
     {
-        return self::$extensions;
+        return array_values(self::$extensions);
     }
 
     /**
@@ -44,7 +70,7 @@ class ExtensionManager
         $active = is_array($active) ? $active : [];
         $items  = [];
 
-        foreach (self::$extensions as $class) {
+        foreach (self::$extensions as $slug => $class) {
             $instance = emty_container($class);
             $items[]  = $this->serialize_extension($instance, $active);
         }
@@ -73,10 +99,10 @@ class ExtensionManager
 
         $allowed = [];
 
-        foreach (self::$extensions as $class) {
+        foreach (self::$extensions as $slug => $class) {
             $instance = emty_container($class);
             if ($this->user_may_enable_extension($instance)) {
-                $allowed[] = $instance->get_id();
+                $allowed[] = $slug;
             }
         }
 
@@ -184,10 +210,20 @@ class ExtensionManager
      */
     public function get_active_extensions(): array
     {
-        $extensions = OptionsHelper::get_option('active_extensions', []);
+        $active_ids = OptionsHelper::get_option('active_extensions', []);
 
-        return array_filter(self::$extensions, function (string $extension) use ($extensions) {
-            return in_array(emty_container($extension)->get_id(), $extensions);
-        });
+        if (!is_array($active_ids)) {
+            $active_ids = [];
+        }
+
+        $classes = [];
+
+        foreach (self::$extensions as $slug => $class) {
+            if (in_array($slug, $active_ids, true)) {
+                $classes[] = $class;
+            }
+        }
+
+        return $classes;
     }
 }

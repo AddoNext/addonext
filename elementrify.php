@@ -16,6 +16,7 @@
  */
 
 use Elementrify\Common\WidgetManager;
+use Elementrify\Common\ExtensionManager;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Admin\LicenseController;
@@ -113,6 +114,7 @@ class Elementrify
             emty_container(WidgetManager::class);
             emty_container(WidgetController::class);
             emty_container(WidgetsAssetController::class);
+            emty_container(ExtensionManager::class);
             emty_container(ExtensionsController::class);
         }
 
