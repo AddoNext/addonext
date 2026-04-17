@@ -3,6 +3,7 @@ namespace Elementrify\Common;
 
 use Elementrify\Base\ExtensionBase;
 use Elementrify\Utils\OptionsHelper;
+use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 
 defined('ABSPATH') or exit;
@@ -22,6 +23,7 @@ class ExtensionManager
      */
     protected static $extensions = [
         'smooth-scroll' => SmoothScroll::class,
+        'duplicator'      => Duplicator::class,
     ];
 
     /**
@@ -39,14 +41,81 @@ class ExtensionManager
      */
     public function bootstrap_active_extension_instances(): void
     {
-        if (is_admin() && !wp_doing_ajax()) {
-            return;
-        }
-
         foreach ($this->get_active_extensions() as $class) {
             $instance = emty_container($class);
+            $instance->register_hooks();
+
+            if (!$instance->should_enqueue_frontend_assets()) {
+                continue;
+            }
+
+            if (is_admin()) {
+                continue;
+            }
+
             add_action('wp_enqueue_scripts', [$instance, 'enqueue_assets'], 10);
         }
+    }
+
+    /**
+     * Resolve extension class name by id slug
+     *
+     * @param string $id
+     * @return class-string<ExtensionBase>|null
+     */
+    public function get_extension_class_for_id(string $id): ?string
+    {
+        return self::$extensions[$id] ?? null;
+    }
+
+    /**
+     * Stored settings for one extension merged with defaults
+     *
+     * @param string $id
+     * @return array<string, mixed>
+     */
+    public function get_extension_settings_payload(string $id): array
+    {
+        $class = $this->get_extension_class_for_id($id);
+
+        if ($class === null) {
+            return [];
+        }
+
+        $instance = emty_container($class);
+        $saved    = $this->get_raw_extension_settings($id);
+
+        return $instance->merge_settings_defaults($saved);
+    }
+
+    /**
+     * @param string $id
+     * @return array<string, mixed>
+     */
+    private function get_raw_extension_settings(string $id): array
+    {
+        $all = OptionsHelper::get_option('extension_settings', []);
+
+        if (!is_array($all) || !isset($all[$id]) || !is_array($all[$id])) {
+            return [];
+        }
+
+        return $all[$id];
+    }
+
+    /**
+     * Persist sanitized settings for an extension
+     *
+     * @param string $id
+     * @param array<string, mixed> $settings
+     * @return void
+     */
+    public function save_extension_settings(string $id, array $settings): void
+    {
+        $all       = OptionsHelper::get_option('extension_settings', []);
+        $all       = is_array($all) ? $all : [];
+        $all[$id] = $settings;
+        OptionsHelper::set_option('extension_settings', $all);
     }
 
     /**
@@ -155,6 +224,10 @@ class ExtensionManager
         $id        = $extension->get_id();
         $is_locked = $this->extension_is_locked($extension);
 
+        $has_st = $extension->has_settings() && !$is_locked;
+        $fields = $has_st ? $extension->get_fields() : [];
+        $settings = $has_st ? $this->get_extension_settings_payload($extension->get_id()) : [];
+
         return [
             'id'          => $id,
             'title'       => $extension->get_title(),
@@ -165,6 +238,8 @@ class ExtensionManager
             'docUrl'      => $extension->get_doc_url(),
             'demoUrl'     => $extension->get_demo_url(),
             'hasSettings' => $extension->has_settings() && !$is_locked,
+            'fields'      => $fields,
+            'settings'    => $settings,
         ];
     }
 

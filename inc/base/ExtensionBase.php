@@ -91,6 +91,62 @@ abstract class ExtensionBase
     }
 
     /**
+     * Whether this extension registers front-end scripts/styles via enqueue_assets
+     *
+     * @return bool
+     */
+    public function should_enqueue_frontend_assets(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Run hooks when the extension is active (admin and front).
+     *
+     * @return void
+     */
+    public function register_hooks(): void
+    {
+    }
+
+    /**
+     * Merge saved settings with defaults from get_fields()
+     *
+     * @param array<string, mixed> $saved
+     * @return array<string, mixed>
+     */
+    public function merge_settings_defaults(array $saved): array
+    {
+        $merged = [];
+
+        foreach ($this->get_fields() as $field) {
+            if (!is_array($field)) {
+                continue;
+            }
+            $id = isset($field['id']) ? (string) $field['id'] : '';
+
+            if ($id === '') {
+                continue;
+            }
+            $default = $field['default'] ?? null;
+            $merged[$id] = array_key_exists($id, $saved) ? $saved[$id] : $default;
+        }
+
+        return $merged;
+    }
+
+    /**
+     * Sanitize settings payload from the REST API
+     *
+     * @param array<string, mixed> $input
+     * @return array<string, mixed>
+     */
+    public function sanitize_settings(array $input): array
+    {
+        return [];
+    }
+
+    /**
      * Get the extension fields
      *
      * @return array

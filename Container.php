@@ -73,6 +73,7 @@ use Elementrify\Widgets\ImageCarousel\ImageCarousel;
 use Elementrify\Widgets\ProductFilter\ProductFilter;
 use Elementrify\Widgets\SmartPostList\SmartPostList;
 use Elementrify\Widgets\SubscribeForm\SubscribeForm;
+use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 use Elementrify\Widgets\CountdownTimer\CountdownTimer;
 use Elementrify\Widgets\NavigationMenu\NavigationMenu;
@@ -179,6 +180,7 @@ return [
     VideoGallery::class           => create(VideoGallery::class),
     VideoPlayer::class            => create(VideoPlayer::class),
     SmoothScroll::class           => create(SmoothScroll::class),
+    Duplicator::class             => create(Duplicator::class),
     ExtensionManager::class       => create(ExtensionManager::class),
     ExtensionsController::class   => create(ExtensionsController::class)
 ];

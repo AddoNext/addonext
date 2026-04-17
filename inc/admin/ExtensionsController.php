@@ -42,6 +42,31 @@ class ExtensionsController
             'callback'            => [$this, 'rest_update_extensions'],
             'permission_callback' => [$this, 'check_permission']
         ]);
+
+        register_rest_route(
+            'elementrify/v1',
+            '/extensions/(?P<id>[a-z0-9\\-]+)/settings',
+            [
+                'methods'             => ['GET', 'POST'],
+                'callback'            => [$this, 'rest_extension_settings_dispatch'],
+                'permission_callback' => [$this, 'check_permission'],
+            ]
+        );
+    }
+
+    /**
+     * Route GET vs POST for extension settings
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_extension_settings_dispatch(WP_REST_Request $request): WP_REST_Response
+    {
+        if (strtoupper($request->get_method()) === 'GET') {
+            return $this->rest_get_extension_settings($request);
+        }
+
+        return $this->rest_update_extension_settings($request);
     }
 
     /**
@@ -98,6 +123,78 @@ class ExtensionsController
             'success'    => true,
             'message'    => __('Extensions updated successfully', 'elementrify'),
             'extensions' => $manager->get_extensions_catalog()
+        ]);
+    }
+
+    /**
+     * Get one extension's settings (merged with defaults)
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_get_extension_settings(WP_REST_Request $request): WP_REST_Response
+    {
+        $id      = (string) $request->get_param('id');
+        $manager = emty_container(ExtensionManager::class);
+        $class   = $manager->get_extension_class_for_id($id);
+
+        if ($class === null) {
+            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'elementrify')], 404);
+        }
+
+        $instance = emty_container($class);
+
+        if (!$instance->has_settings()) {
+            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'elementrify')], 400);
+        }
+
+        return new WP_REST_Response([
+            'success'  => true,
+            'id'       => $id,
+            'fields'   => $instance->get_fields(),
+            'settings' => $manager->get_extension_settings_payload($id),
+        ]);
+    }
+
+    /**
+     * Save settings for one extension
+     *
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function rest_update_extension_settings(WP_REST_Request $request): WP_REST_Response
+    {
+        $id      = (string) $request->get_param('id');
+        $manager = emty_container(ExtensionManager::class);
+        $class   = $manager->get_extension_class_for_id($id);
+
+        if ($class === null) {
+            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'elementrify')], 404);
+        }
+
+        $instance = emty_container($class);
+
+        if (!$instance->has_settings()) {
+            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'elementrify')], 400);
+        }
+
+        $raw = $request->get_param('settings');
+
+        if (!is_array($raw)) {
+            return new WP_REST_Response(
+                ['success' => false, 'message' => __('Invalid settings', 'elementrify')],
+                400
+            );
+        }
+
+        $clean = $instance->sanitize_settings($raw);
+        $manager->save_extension_settings($id, $clean);
+
+        return new WP_REST_Response([
+            'success'  => true,
+            'message'  => __('Settings saved', 'elementrify'),
+            'id'       => $id,
+            'settings' => $manager->get_extension_settings_payload($id),
         ]);
     }
 }

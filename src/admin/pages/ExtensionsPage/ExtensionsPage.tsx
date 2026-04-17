@@ -1,23 +1,90 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
-import ToggleSwitch from "../../components/ToggleSwitch/ToggleSwitch";
 import { useToast } from "../../contexts/ToastContext/ToastContext";
-import { useScreenSave, useScreenSaveContext } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
-import ExtensionCard from "./ExtensionCard/ExtensionCard";
-import type { ExtensionItem, ExtensionsGetResponse, ExtensionsUpdateResponse } from "./types";
-import styles from "./ExtensionsPage.module.scss";
+import { ExtensionSettingsProvider } from "../../contexts/ExtensionSettingsContext/ExtensionSettingsContext";
+import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
+import ExtensionsPageContent from "./ExtensionsPageContent";
+import type {
+  ExtensionField,
+  ExtensionItem,
+  ExtensionsGetResponse,
+  ExtensionsUpdateResponse,
+} from "./types";
 
 function isExtensionBadge(value: unknown): value is ExtensionItem["badge"] {
   return value === "popular" || value === "updated" || value === "new" || value === null;
 }
 
+function normalizeSettings(raw: unknown): Record<string, unknown> {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return {};
+  }
+  return { ...(raw as Record<string, unknown>) };
+}
+
+function normalizeField(raw: unknown): ExtensionField | null {
+  if (!raw || typeof raw !== "object") {
+    return null;
+  }
+  const row = raw as Record<string, unknown>;
+  const id = typeof row.id === "string" ? row.id : "";
+  const type = row.type;
+  if (id === "" || (type !== "toggle" && type !== "select" && type !== "checkbox_group")) {
+    return null;
+  }
+  const optionsRaw = row.options;
+  const options = Array.isArray(optionsRaw)
+    ? optionsRaw
+        .map((o) => {
+          if (!o || typeof o !== "object") {
+            return null;
+          }
+          const opt = o as Record<string, unknown>;
+          const value = typeof opt.value === "string" ? opt.value : "";
+          const label = typeof opt.label === "string" ? opt.label : "";
+          if (!value || !label) {
+            return null;
+          }
+          return { value, label };
+        })
+        .filter((x): x is { value: string; label: string } => x !== null)
+    : undefined;
+
+  const sw = row.show_when;
+  let show_when: ExtensionField["show_when"];
+  if (sw && typeof sw === "object" && typeof (sw as Record<string, unknown>).field === "string") {
+    const o = sw as Record<string, unknown>;
+    show_when = { field: o.field as string, value: o.value };
+  }
+
+  return {
+    id,
+    type: type as ExtensionField["type"],
+    label: typeof row.label === "string" ? row.label : id,
+    description: typeof row.description === "string" ? row.description : undefined,
+    default: row.default,
+    options: options && options.length > 0 ? options : undefined,
+    show_when,
+  };
+}
+
 function normalizeExtension(raw: unknown): ExtensionItem | null {
-  if (!raw || typeof raw !== "object") return null;
+  if (!raw || typeof raw !== "object") {
+    return null;
+  }
   const row = raw as Record<string, unknown>;
   const id = typeof row.id === "string" ? row.id : "";
   const title = typeof row.title === "string" ? row.title : "";
-  if (!id || !title) return null;
+  if (!id || !title) {
+    return null;
+  }
   const badge = isExtensionBadge(row.badge) ? row.badge : null;
+  const fieldsRaw = row.fields;
+  const fields = Array.isArray(fieldsRaw)
+    ? fieldsRaw.map(normalizeField).filter((x): x is ExtensionField => x !== null)
+    : [];
+  const settings = normalizeSettings(row.settings);
+
   return {
     id,
     title,
@@ -28,12 +95,13 @@ function normalizeExtension(raw: unknown): ExtensionItem | null {
     docUrl: typeof row.docUrl === "string" ? row.docUrl : "",
     demoUrl: typeof row.demoUrl === "string" ? row.demoUrl : "",
     hasSettings: Boolean(row.hasSettings),
+    fields,
+    settings,
   };
 }
 
 const ExtensionsPage: React.FC = () => {
   const { addToast } = useToast();
-  const { setCurrentScreenSlug } = useScreenSaveContext();
   const [extensions, setExtensions] = useState<ExtensionItem[]>([]);
   const [draftActiveIds, setDraftActiveIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -164,48 +232,25 @@ const ExtensionsPage: React.FC = () => {
     [unlocked]
   );
 
-  const handleExtensionSettings = useCallback(
-    (_id: string) => {
-      setCurrentScreenSlug("settings");
-    },
-    [setCurrentScreenSlug]
-  );
+  const patchExtensionSettings = useCallback((extensionId: string, settings: Record<string, unknown>) => {
+    setExtensions((prev) =>
+      prev.map((e) => (e.id === extensionId ? { ...e, settings: { ...settings } } : e))
+    );
+  }, []);
 
   return (
-    <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.headerText}>
-          <h1 className={styles.title}>Features</h1>
-          <p className={styles.subtitle}>Enable powerful features to improve your Elementor workflow.</p>
-        </div>
-        <div className={styles.enableAll}>
-          <span className={styles.enableAllLabel}>Enable All</span>
-          <ToggleSwitch
-            accent
-            checked={allUnlockedEnabled}
-            disabled={unlocked.length === 0 || saving || loading}
-            onCheckedChange={handleEnableAll}
-          />
-        </div>
-      </header>
-
-      {loading ? (
-        <p className={styles.stateMessage}>Loading…</p>
-      ) : extensions.length === 0 ? (
-        <p className={styles.stateMessage}>No extensions are available yet.</p>
-      ) : (
-        <div className={styles.grid}>
-          {effectiveExtensions.map((ext) => (
-            <ExtensionCard
-              key={ext.id}
-              extension={ext}
-              onToggle={handleToggle}
-              onSettingsClick={handleExtensionSettings}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+    <ExtensionSettingsProvider extensions={extensions} onSettingsSaved={patchExtensionSettings}>
+      <ExtensionsPageContent
+        loading={loading}
+        saving={saving}
+        extensionsCount={extensions.length}
+        effectiveExtensions={effectiveExtensions}
+        allUnlockedEnabled={allUnlockedEnabled}
+        unlockedLength={unlocked.length}
+        onToggle={handleToggle}
+        onEnableAll={handleEnableAll}
+      />
+    </ExtensionSettingsProvider>
   );
 };
 

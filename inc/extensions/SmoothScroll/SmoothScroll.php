@@ -75,6 +75,11 @@ class SmoothScroll extends ExtensionBase
         return '2026-04-18';
     }
 
+    public function is_popular(): bool
+    {
+        return true;
+    }
+
     /**
      * Register and enqueue Lenis plus the bootstrap script on the front end only.
      *

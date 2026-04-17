@@ -2,8 +2,11 @@
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: $radius-lg;
-  padding: $space-5 $space-6;
+  padding: $space-4;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  min-height: 130px;
+  display: flex;
+  flex-flow: column;
 
   &:hover {
     box-shadow: $shadow-md;
@@ -50,6 +53,7 @@
   align-items: center;
   justify-content: space-between;
   gap: $space-3;
+  margin-top: auto;
 }
 
 .badges {

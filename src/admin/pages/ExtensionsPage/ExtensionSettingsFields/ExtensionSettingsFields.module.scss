@@ -1,0 +1,42 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.groupLabel {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.groupDescription {
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  margin: (-$space-2) 0 0;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: $color-accent-indigo;
+}
+
+.checkboxLabel {
+  font-size: $text-sm;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
