@@ -587,11 +587,14 @@ class UspItems extends WidgetBase
         #>
         <div class="elementrify-usp-items elementrify-usp-items--hover-{{ effect }}">
             <div class="elementrify-usp-items__grid">
-                <# _.each( settings.items, function( item ) { #>
+                <# _.each( settings.items, function( item ) {
+                    var circleBg = String( item.circle_bg || '#e0e7ff' ).replace( /"/g, '' );
+                    var iconColor = String( item.icon_color || '#2563eb' ).replace( /"/g, '' );
+                #>
                     <article class="elementrify-usp-item elementor-repeater-item-{{ item._id }}">
                         <div class="elementrify-usp-item__surface">
-                            <span class="elementrify-usp-item__icon-ring" style="background-color: {{ item.circle_bg }};">
-                                <span class="elementrify-usp-item__icon" style="color: {{ item.icon_color }};">
+                            <# print( '<span class="elementrify-usp-item__icon-ring" style="background-color:' + circleBg + ';">' ); #>
+                                <# print( '<span class="elementrify-usp-item__icon" style="color:' + iconColor + ';">' ); #>
                                     <# if ( item.item_icon && item.item_icon.value ) { #>
                                         {{{ elementor.helpers.renderIcon( view, item.item_icon, { 'aria-hidden': 'true' }, 'i', 'object' ).value }}}
                                     <# } #>
