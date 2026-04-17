@@ -20,6 +20,7 @@ use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Admin\LicenseController;
 use Elementrify\Admin\SettingsController;
+use Elementrify\Admin\ExtensionsController;
 use Elementrify\Admin\WidgetsAssetController;
 
 require_once 'vendor/autoload.php';
@@ -112,6 +113,7 @@ class Elementrify
             emty_container(WidgetManager::class);
             emty_container(WidgetController::class);
             emty_container(WidgetsAssetController::class);
+            emty_container(ExtensionsController::class);
         }
 
         emty_container(SettingsController::class);
