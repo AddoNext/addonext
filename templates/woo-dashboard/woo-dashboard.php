@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $showSidebar = ($settings['show_sidebar'] ?? 'yes') === 'yes';
 $showStats = ($settings['show_stats'] ?? 'yes') === 'yes';
@@ -406,3 +409,7 @@ $isWooActive = class_exists('WooCommerce');
         </div>
     <?php endif; ?>
 </div>
+
+<?php
+    }
+}

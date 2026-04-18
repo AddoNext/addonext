@@ -1,5 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
+
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $rows = isset($settings['rows']) && is_array($settings['rows']) ? $settings['rows'] : [];
 ?>
@@ -52,3 +56,7 @@ $rows = isset($settings['rows']) && is_array($settings['rows']) ? $settings['row
         </div>
     <?php endforeach; ?>
 </div>
+
+<?php
+    }
+}

@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $raw      = isset($settings['text']) && $settings['text'] !== ''
     ? (string) $settings['text']
@@ -27,3 +30,7 @@ $this->add_render_attribute('text', 'class', 'elementrify-animated-gradient__tex
 <div <?php $this->print_render_attribute_string('inner'); ?>>
     <<?php echo esc_attr($tag); ?> <?php $this->print_render_attribute_string('text'); ?>><?php echo esc_html($raw); ?></<?php echo esc_attr($tag); ?>>
 </div>
+
+<?php
+    }
+}

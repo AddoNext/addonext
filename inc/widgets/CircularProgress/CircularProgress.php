@@ -40,6 +40,12 @@ class CircularProgress extends WidgetBase
         return '#2563eb';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-circular-progress'];
@@ -52,6 +58,9 @@ class CircularProgress extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -278,18 +287,28 @@ class CircularProgress extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/circular-progress/circular-progress.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var items = settings.items || [];
@@ -318,5 +337,7 @@ class CircularProgress extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

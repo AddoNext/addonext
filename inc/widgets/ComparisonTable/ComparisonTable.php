@@ -40,6 +40,12 @@ class ComparisonTable extends WidgetBase
         return '#4f46e5';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-comparison-table'];
@@ -52,6 +58,9 @@ class ComparisonTable extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -445,18 +454,28 @@ class ComparisonTable extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/comparison-table/comparison-table.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var firstHeader = settings.first_column_header || 'Features';
@@ -502,5 +521,7 @@ class ComparisonTable extends WidgetBase
             </table>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

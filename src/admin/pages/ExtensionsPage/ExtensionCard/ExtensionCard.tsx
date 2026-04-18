@@ -14,22 +14,55 @@ interface ExtensionCardProps {
   extension: ExtensionItem;
   onToggle: (id: string, enabled: boolean) => void;
   onSettingsClick?: (id: string) => void;
+  onLockedUpgrade?: () => void;
 }
 
-const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSettingsClick }) => {
+const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSettingsClick, onLockedUpgrade }) => {
   const { id, title, isEnabled, isLocked, badge, docUrl, demoUrl, hasSettings } = extension;
   const docHref = docUrl?.trim() ?? "";
   const demoHref = demoUrl?.trim() ?? "";
 
+  const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (!isLocked || !onLockedUpgrade) {
+      return;
+    }
+    const target = e.target as HTMLElement;
+    if (target.closest("a") || target.closest("button") || target.closest("label")) {
+      return;
+    }
+    onLockedUpgrade();
+  };
+
   return (
-    <article className={styles.card}>
+    <article
+      className={`${styles.card}${isLocked ? ` ${styles.cardLocked}` : ""}`}
+      onClick={handleCardClick}
+      role={isLocked ? "button" : undefined}
+      tabIndex={isLocked ? 0 : undefined}
+      onKeyDown={
+        isLocked && onLockedUpgrade
+          ? (ev) => {
+              if (ev.key === "Enter" || ev.key === " ") {
+                ev.preventDefault();
+                onLockedUpgrade();
+              }
+            }
+          : undefined
+      }
+    >
       <div className={styles.topRow}>
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.controls}>
           {isLocked && (
-            <span className={styles.lock} title="Premium" aria-label="Premium">
+            <button
+              type="button"
+              className={styles.lock}
+              title="Pro plan required"
+              aria-label="Pro plan required"
+              onClick={() => onLockedUpgrade?.()}
+            >
               <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
-            </span>
+            </button>
           )}
           <ToggleSwitch
             accent

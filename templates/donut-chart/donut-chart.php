@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $title = isset($settings['title']) ? (string) $settings['title'] : '';
 $data = isset($settings['data']) && is_array($settings['data']) ? $settings['data'] : [];
@@ -40,3 +43,7 @@ $this->add_render_attribute('wrapper', 'data-inner-cutout', (string) $innerCutou
         <div class="elementrify-donut-chart__legend"></div>
     </div>
 </div>
+
+<?php
+    }
+}

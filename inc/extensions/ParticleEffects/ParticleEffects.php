@@ -75,12 +75,24 @@ class ParticleEffects extends ExtensionBase
     }
 
     /**
+     * @return string
+     */
+    public function required_plan(): string
+    {
+        return 'pro';
+    }
+
+    /**
      * @return void
      */
     public function register_hooks(): void
     {
-        add_action('elementor/element/after_section_end', [$this, 'register_style_tab_section'], 15, 3);
-        add_action('elementor/frontend/before_render', [$this, 'prepare_particle_wrapper'], 10, 1);
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+                add_action('elementor/element/after_section_end', [$this, 'register_style_tab_section'], 15, 3);
+                add_action('elementor/frontend/before_render', [$this, 'prepare_particle_wrapper'], 10, 1);
+            }
+        }
     }
 
     /**
@@ -88,9 +100,13 @@ class ParticleEffects extends ExtensionBase
      */
     public function enqueue_assets(): void
     {
-        $this->register_particle_handles();
-        wp_enqueue_style('particle-effects');
-        wp_enqueue_script('particle-effects');
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+                $this->register_particle_handles();
+                wp_enqueue_style('particle-effects');
+                wp_enqueue_script('particle-effects');
+            }
+        }
     }
 
     /**
@@ -100,9 +116,13 @@ class ParticleEffects extends ExtensionBase
      */
     public function enqueue_for_elementor_preview(): void
     {
-        $this->register_particle_handles();
-        wp_enqueue_style('particle-effects');
-        wp_enqueue_script('particle-effects');
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+                $this->register_particle_handles();
+                wp_enqueue_style('particle-effects');
+                wp_enqueue_script('particle-effects');
+            }
+        }
     }
 
     /**
@@ -149,27 +169,29 @@ class ParticleEffects extends ExtensionBase
      */
     public function register_style_tab_section($element, string $section_id, array $args = []): void
     {
-        if (!$this->is_supported_element($element)) {
-            return;
-        }
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+                if (!$this->is_supported_element($element)) {
+                    return;
+                }
 
-        $tab = isset($args['tab']) ? $args['tab'] : '';
+                $tab = isset($args['tab']) ? $args['tab'] : '';
 
-        if ($tab !== \Elementor\Controls_Manager::TAB_STYLE) {
-            return;
-        }
+                if ($tab !== \Elementor\Controls_Manager::TAB_STYLE) {
+                    return;
+                }
 
-        static $registered = [];
+                static $registered = [];
 
-        $stack_name = $element->get_name();
+                $stack_name = $element->get_name();
 
-        if (isset($registered[$stack_name])) {
-            return;
-        }
+                if (isset($registered[$stack_name])) {
+                    return;
+                }
 
-        $registered[$stack_name] = true;
+                $registered[$stack_name] = true;
 
-        $element->start_controls_section(
+                $element->start_controls_section(
             'section_elementrify_particles',
             [
                 'label' => __('Particle effects', 'elementrify'),
@@ -286,7 +308,9 @@ class ParticleEffects extends ExtensionBase
             ]
         );
 
-        $element->end_controls_section();
+                $element->end_controls_section();
+            }
+        }
     }
 
     /**
@@ -295,60 +319,64 @@ class ParticleEffects extends ExtensionBase
      */
     public function prepare_particle_wrapper($element): void
     {
-        if (!$this->is_supported_element($element)) {
-            return;
-        }
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+                if (!$this->is_supported_element($element)) {
+                    return;
+                }
 
-        $settings = $element->get_settings_for_display();
+                $settings = $element->get_settings_for_display();
 
-        if (empty($settings['elementrify_particles_enable']) || $settings['elementrify_particles_enable'] !== 'yes') {
-            return;
-        }
+                if (empty($settings['elementrify_particles_enable']) || $settings['elementrify_particles_enable'] !== 'yes') {
+                    return;
+                }
 
-        $preset = isset($settings['elementrify_particles_preset']) ? (string) $settings['elementrify_particles_preset'] : 'default';
-        $allowed = ['default', 'snow', 'bubbles', 'stardust', 'polygons', 'links', 'nyan'];
+                $preset = isset($settings['elementrify_particles_preset']) ? (string) $settings['elementrify_particles_preset'] : 'default';
+                $allowed = ['default', 'snow', 'bubbles', 'stardust', 'polygons', 'links', 'nyan'];
 
-        if (!in_array($preset, $allowed, true)) {
-            $preset = 'default';
-        }
+                if (!in_array($preset, $allowed, true)) {
+                    $preset = 'default';
+                }
 
-        $density = 80;
+                $density = 80;
 
-        if (isset($settings['elementrify_particles_density']) && is_array($settings['elementrify_particles_density'])) {
-            $density = isset($settings['elementrify_particles_density']['size'])
-                ? (int) $settings['elementrify_particles_density']['size']
-                : 80;
-        }
+                if (isset($settings['elementrify_particles_density']) && is_array($settings['elementrify_particles_density'])) {
+                    $density = isset($settings['elementrify_particles_density']['size'])
+                        ? (int) $settings['elementrify_particles_density']['size']
+                        : 80;
+                }
 
-        $density = max(20, min(200, $density));
+                $density = max(20, min(200, $density));
 
-        $speedPercent = 100;
+                $speedPercent = 100;
 
-        if (isset($settings['elementrify_particles_speed']) && is_array($settings['elementrify_particles_speed'])) {
-            $speedPercent = isset($settings['elementrify_particles_speed']['size'])
-                ? (int) $settings['elementrify_particles_speed']['size']
-                : 100;
-        }
+                if (isset($settings['elementrify_particles_speed']) && is_array($settings['elementrify_particles_speed'])) {
+                    $speedPercent = isset($settings['elementrify_particles_speed']['size'])
+                        ? (int) $settings['elementrify_particles_speed']['size']
+                        : 100;
+                }
 
-        $speedPercent = max(10, min(300, $speedPercent));
+                $speedPercent = max(10, min(300, $speedPercent));
 
-        $nodeRaw = $this->extract_color_input($settings, 'elementrify_particles_node_color', 'elementrify_particles_color');
+                $nodeRaw = $this->extract_color_input($settings, 'elementrify_particles_node_color', 'elementrify_particles_color');
 
-        $nodeColor = $this->sanitize_color_value($nodeRaw, '#ffffff');
+                $nodeColor = $this->sanitize_color_value($nodeRaw, '#ffffff');
 
-        $lineRaw = $this->extract_color_input($settings, 'elementrify_particles_line_color', null);
-        $lineColor = $lineRaw !== '' ? $this->sanitize_color_value($lineRaw, '') : '';
+                $lineRaw = $this->extract_color_input($settings, 'elementrify_particles_line_color', null);
+                $lineColor = $lineRaw !== '' ? $this->sanitize_color_value($lineRaw, '') : '';
 
-        $element->add_render_attribute('_wrapper', 'class', 'elementrify-particles');
-        $element->add_render_attribute('_wrapper', 'data-elementrify-particles-host-id', esc_attr($element->get_id()));
-        $element->add_render_attribute('_wrapper', 'data-elementrify-particles', 'yes');
-        $element->add_render_attribute('_wrapper', 'data-elementrify-particles-preset', $preset);
-        $element->add_render_attribute('_wrapper', 'data-elementrify-particles-density', (string) $density);
-        $element->add_render_attribute('_wrapper', 'data-elementrify-particles-speed', (string) $speedPercent);
-        $element->add_render_attribute('_wrapper', 'data-elementrify-particles-node', esc_attr($nodeColor));
+                $element->add_render_attribute('_wrapper', 'class', 'elementrify-particles');
+                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-host-id', esc_attr($element->get_id()));
+                $element->add_render_attribute('_wrapper', 'data-elementrify-particles', 'yes');
+                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-preset', $preset);
+                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-density', (string) $density);
+                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-speed', (string) $speedPercent);
+                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-node', esc_attr($nodeColor));
 
-        if ($lineColor !== '') {
-            $element->add_render_attribute('_wrapper', 'data-elementrify-particles-line', esc_attr($lineColor));
+                if ($lineColor !== '') {
+                    $element->add_render_attribute('_wrapper', 'data-elementrify-particles-line', esc_attr($lineColor));
+                }
+            }
         }
     }
 

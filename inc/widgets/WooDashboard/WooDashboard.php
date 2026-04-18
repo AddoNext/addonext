@@ -62,6 +62,12 @@ class WooDashboard extends WidgetBase
         return '#7f54b3';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-woo-dashboard'];
@@ -74,6 +80,9 @@ class WooDashboard extends WidgetBase
 
     public function enqueue_assets(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         wp_register_style(
             'elementrify-woo-dashboard',
             ELEMENTRIFY_URL . 'assets/css/woo-dashboard.css',
@@ -104,7 +113,9 @@ class WooDashboard extends WidgetBase
                 ],
             ]
         );
-    }
+                }
+        }
+}
 
     /**
      * Registers AJAX handlers.
@@ -610,6 +621,9 @@ class WooDashboard extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $downloadsDefault = function_exists('wc_get_account_endpoint_url')
             ? wc_get_account_endpoint_url('downloads')
             : '';
@@ -879,7 +893,9 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->register_style_controls();
-    }
+                }
+        }
+}
 
     /**
      * Style tab: summary cards, quick actions, layout helpers.
@@ -1231,6 +1247,9 @@ class WooDashboard extends WidgetBase
      */
     public function render_dashboard_icon(array $icon, string $fallbackClass = 'fas fa-circle'): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $icon = self::normalize_elementor_icon($icon);
         $value = isset($icon['value']) ? trim((string) $icon['value']) : '';
         $library = isset($icon['library']) ? trim((string) $icon['library']) : '';
@@ -1253,7 +1272,9 @@ class WooDashboard extends WidgetBase
         }
 
         echo '<i class="' . esc_attr(trim($class)) . '" aria-hidden="true"></i>';
-    }
+                }
+        }
+}
 
     /**
      * Human-readable label for the user's primary role.

@@ -1,18 +1,26 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { useSelect } from "@wordpress/data";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelect } from "@wordpress/data";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import WidgetsToolbar from "./components/WidgetsToolbar/WidgetsToolbar";
 import WidgetsCategorySection from "./components/WidgetsCategorySection/WidgetsCategorySection";
+import UpgradeToProModal from "../../components/UpgradeToProModal/UpgradeToProModal";
 import { STORE_NAME } from "../../../store/admin";
 import { useWidgetsState } from "../../contexts/WidgetsStateContext/WidgetsStateContext";
 import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
-import type { Widget } from "../../../store/types";
+import type { LicenseData, Widget } from "../../../store/types";
 import type { WidgetFilter } from "./types";
 import styles from "./WidgetsPage.module.scss";
 
 const WidgetsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState<WidgetFilter>("all");
+  const [upgradeOpen, setUpgradeOpen] = useState(false);
+
+  const { fetchLicense } = useDispatch(STORE_NAME) as { fetchLicense: () => Promise<void> };
+
+  useEffect(() => {
+    void fetchLicense();
+  }, [fetchLicense]);
 
   const widgetsState = useWidgetsState();
   const getSaveHandler = useCallback(
@@ -25,19 +33,21 @@ const WidgetsPage: React.FC = () => {
   );
   useScreenSave("widgets", getSaveHandler);
 
-  const { widgets, categories, widgetsResolving, categoriesResolving } = useSelect(
+  const { widgets, categories, widgetsResolving, categoriesResolving, licenseData } = useSelect(
     (select) => {
       const store = select(STORE_NAME) as {
         getWidgets: () => Widget[];
         getCategories: () => Record<string, { title: string; icon: string }>;
         getIsResolving: () => boolean;
         getCategoriesResolving: () => boolean;
+        getLicenseData: () => LicenseData | null;
       };
       return {
         widgets: store.getWidgets() ?? [],
         categories: store.getCategories() ?? {},
         widgetsResolving: store.getIsResolving(),
         categoriesResolving: store.getCategoriesResolving(),
+        licenseData: store.getLicenseData(),
       };
     },
     []
@@ -84,7 +94,8 @@ const WidgetsPage: React.FC = () => {
   const totalCount = widgets.length;
 
   const handleToggleCategory = (slug: string, enable: boolean) => {
-    const categoryWidgetIds = (widgetsByCategory[slug] ?? []).map((w) => w.id);
+    const list = widgetsByCategory[slug] ?? [];
+    const categoryWidgetIds = enable ? list.filter((w) => !w.is_locked).map((w) => w.id) : list.map((w) => w.id);
     toggleCategory(slug, enable, categoryWidgetIds);
   };
 
@@ -107,7 +118,7 @@ const WidgetsPage: React.FC = () => {
         onFilterChange={setFilter}
         activeCount={activeCount}
         totalCount={totalCount}
-        onEnableAll={() => enableAll(widgets.map((w) => w.id))}
+        onEnableAll={() => enableAll(widgets.filter((w) => !w.is_locked).map((w) => w.id))}
       />
 
       <div className={styles.content}>
@@ -118,6 +129,7 @@ const WidgetsPage: React.FC = () => {
             widgets={widgetsByCategory[slug] ?? []}
             onToggle={toggleWidget}
             onToggleAll={handleToggleCategory}
+            onLockedUpgrade={() => setUpgradeOpen(true)}
           />
         ))}
         {filteredWidgets.length === 0 && (
@@ -126,6 +138,12 @@ const WidgetsPage: React.FC = () => {
           </p>
         )}
       </div>
+
+      <UpgradeToProModal
+        open={upgradeOpen}
+        onClose={() => setUpgradeOpen(false)}
+        upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
+      />
     </div>
   );
 };

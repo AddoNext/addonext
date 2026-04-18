@@ -52,6 +52,12 @@ class AnimatedCounter extends WidgetBase
         return '#059669';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-animated-counter'];
@@ -64,6 +70,9 @@ class AnimatedCounter extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -354,18 +363,28 @@ class AnimatedCounter extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/animated-counter/animated-counter.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var columns = settings.columns ? Math.max(1, parseInt(settings.columns, 10)) : 4;
@@ -389,5 +408,7 @@ class AnimatedCounter extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

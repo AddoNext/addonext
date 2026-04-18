@@ -4,6 +4,9 @@ defined('ABSPATH') || exit;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $s        = $this->get_settings_for_display();
 $split    = isset($s['initial_position']['size']) ? (float) $s['initial_position']['size'] : 50.0;
 $split    = max(0.0, min(100.0, $split));
@@ -95,3 +98,7 @@ $dividerStyle = $vertical
         </div>
     </div>
 </div>
+
+<?php
+    }
+}

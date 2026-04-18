@@ -49,10 +49,15 @@ class HeroBanner extends WidgetBase
 
     public function enqueue_assets_in_preview(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->enqueue_assets();
         wp_enqueue_style('elementrify-hero-banner');
         wp_enqueue_script('elementrify-hero-banner');
-    }
+                }
+        }
+}
 
     public function get_icon(): string
     {
@@ -84,6 +89,12 @@ class HeroBanner extends WidgetBase
         return '#5E42DA';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-hero-banner'];
@@ -113,6 +124,9 @@ class HeroBanner extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section('section_layout', [
             'label' => __('Layout', 'elementrify'),
             'tab'   => Controls_Manager::TAB_CONTENT,
@@ -745,18 +759,28 @@ class HeroBanner extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/hero-banner/hero-banner.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var titleTag = elementor.helpers.validateHTMLTag(settings.title_tag) || 'h1';
@@ -826,5 +850,7 @@ class HeroBanner extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

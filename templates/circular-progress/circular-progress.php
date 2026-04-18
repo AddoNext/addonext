@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $items = isset($settings['items']) && is_array($settings['items']) ? $settings['items'] : [];
 
@@ -34,3 +37,7 @@ $circumference = 2 * M_PI * $radius;
         <?php endforeach; ?>
     </div>
 </div>
+
+<?php
+    }
+}

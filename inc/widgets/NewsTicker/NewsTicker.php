@@ -170,6 +170,12 @@ class NewsTicker extends WidgetBase
         return '#dc2626';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     /**
      * Returns widget search keywords.
      *
@@ -195,6 +201,9 @@ class NewsTicker extends WidgetBase
      */
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section('section_content', [
             'label' => __('Content', 'elementrify'),
             'tab'   => Controls_Manager::TAB_CONTENT,
@@ -399,13 +408,18 @@ class NewsTicker extends WidgetBase
         ]);
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     /**
      * Renders widget output.
      */
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $settings = $this->get_settings_for_display();
         $pause_on_hover = isset($settings['pause_on_hover']) && $settings['pause_on_hover'] === 'yes';
         $source_type = isset($settings['source_type']) ? (string) $settings['source_type'] : 'custom';
@@ -423,13 +437,18 @@ class NewsTicker extends WidgetBase
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     /**
      * Renders live editor preview.
      */
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var sourceType = settings.source_type || 'custom';
@@ -487,5 +506,7 @@ class NewsTicker extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

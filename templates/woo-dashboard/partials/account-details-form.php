@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 if (!isset($user) || !$user instanceof \WP_User) {
     return;
 }
@@ -140,3 +143,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 
     <div class="elementrify-wd-account__message" role="status" aria-live="polite" hidden></div>
 </form>
+
+<?php
+    }
+}

@@ -56,6 +56,12 @@ class TableOfContents extends WidgetBase
         return '#2563eb';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-table-of-contents'];
@@ -95,6 +101,9 @@ class TableOfContents extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section('section_content', [
             'label' => __('Content', 'elementrify'),
             'tab'   => Controls_Manager::TAB_CONTENT,
@@ -439,18 +448,28 @@ class TableOfContents extends WidgetBase
         ]);
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/table-of-contents/table-of-contents.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var tocClass = 'elementrify-toc';
@@ -488,5 +507,7 @@ class TableOfContents extends WidgetBase
             </ol>
         </nav>
         <?php
-    }
+                }
+        }
+}
 }

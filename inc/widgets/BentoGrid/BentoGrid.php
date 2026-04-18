@@ -41,6 +41,12 @@ class BentoGrid extends WidgetBase
         return '#6366f1';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-bento-grid'];
@@ -58,6 +64,9 @@ class BentoGrid extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $spanOptions = [];
         for ($i = 1; $i <= 12; $i++) {
             $spanOptions[(string) $i] = (string) $i;
@@ -376,18 +385,28 @@ class BentoGrid extends WidgetBase
         ]);
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/bento-grid/bento-grid.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var rows = settings.rows || [];
@@ -425,5 +444,7 @@ class BentoGrid extends WidgetBase
             <# }); #>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

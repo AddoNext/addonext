@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $items = isset($settings['notice_items']) && is_array($settings['notice_items']) ? $settings['notice_items'] : [];
 $expand_all = !empty($settings['expand_all_initial']) && $settings['expand_all_initial'] === 'yes';
@@ -69,3 +72,7 @@ $root_class = 'elementrify-notice-board' . ($expand_all ? ' elementrify-notice-b
         </div>
     </div>
 </div>
+
+<?php
+    }
+}

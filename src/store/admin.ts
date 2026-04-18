@@ -78,13 +78,20 @@ const store = createReduxStore(STORE_NAME, {
 
     reducer(state: AdminState = DEFAULT_STATE, action: { type: string; payload?: unknown }) {
         switch (action.type) {
-            case GET_WIDGETS:
+            case GET_WIDGETS: {
+                const raw = (action.payload as Widget[]) ?? [];
+                const widgets = raw.map((w) => ({
+                    ...w,
+                    required_plan: typeof w.required_plan === 'string' ? w.required_plan : 'free',
+                    is_locked: Boolean(w.is_locked),
+                }));
                 return {
                     ...state,
-                    widgets: (action.payload as Widget[]) ?? [],
+                    widgets,
                     isResolving: false,
                     error: null,
                 };
+            }
             case GET_CATEGORIES:
                 return {
                     ...state,
@@ -95,7 +102,10 @@ const store = createReduxStore(STORE_NAME, {
                 const ids = (action.payload as string[]) ?? [];
                 return {
                     ...state,
-                    widgets: state.widgets.map((w) => ({ ...w, active: ids.includes(w.id) })),
+                    widgets: state.widgets.map((w) => ({
+                        ...w,
+                        active: ids.includes(w.id),
+                    })),
                 };
             }
             case SET_RESOLVING:

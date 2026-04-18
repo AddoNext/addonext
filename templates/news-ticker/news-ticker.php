@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $ticker_title = isset($settings['ticker_title']) ? trim((string) $settings['ticker_title']) : '';
 $separator_text = isset($settings['separator_text']) ? (string) $settings['separator_text'] : '•';
@@ -54,3 +57,7 @@ $render_news_ticker_group = static function (array $ticker_entries, string $sepa
         </div>
     </div>
 </div>
+
+<?php
+    }
+}

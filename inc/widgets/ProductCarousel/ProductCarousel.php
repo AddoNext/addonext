@@ -51,6 +51,12 @@ class ProductCarousel extends WidgetBase
         return '#7f54b3';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-product-carousel'];
@@ -63,6 +69,9 @@ class ProductCarousel extends WidgetBase
 
     public function enqueue_assets(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         wp_register_style(
             'elementrify-product-carousel',
             ELEMENTRIFY_URL . 'assets/css/product-carousel.css',
@@ -77,7 +86,9 @@ class ProductCarousel extends WidgetBase
             ELEMENTRIFY_VERSION,
             true
         );
-    }
+                }
+        }
+}
 
     private function get_product_category_options(): array
     {
@@ -104,6 +115,9 @@ class ProductCarousel extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section('section_query', [
             'label' => __('Query', 'elementrify'),
             'tab'   => Controls_Manager::TAB_CONTENT,
@@ -359,12 +373,19 @@ class ProductCarousel extends WidgetBase
         ]);
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/product-carousel/product-carousel.php';
         if (is_readable($path)) include $path;
-    }
+                }
+        }
+}
 
 }

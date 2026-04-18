@@ -57,6 +57,12 @@ class BeforeAfterSlider extends WidgetBase
         return '#0d9488';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-before-after-slider'];
@@ -86,6 +92,9 @@ class BeforeAfterSlider extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section('section_content', [
             'label' => __('Content', 'elementrify'),
             'tab'   => Controls_Manager::TAB_CONTENT,
@@ -319,18 +328,28 @@ class BeforeAfterSlider extends WidgetBase
         ]);
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/before-after-slider/before-after-slider.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var split = 50;
@@ -371,5 +390,7 @@ class BeforeAfterSlider extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

@@ -3,6 +3,7 @@ namespace Elementrify\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
+use Elementrify\Utils\LicenseCapabilities;
 
 defined('ABSPATH') or exit;
 
@@ -185,6 +186,7 @@ class LicenseController
 
         return [
             'is_active'          => $is_active,
+            'has_pro_plan'       => LicenseCapabilities::site_has_active_pro_plan(),
             'status_label'       => $status_label,
             'plan_name'          => $plan_name,
             'plan_title'         => $plan_title,
@@ -233,6 +235,7 @@ class LicenseController
 
         return [
             'is_active'          => $is_active,
+            'has_pro_plan'       => LicenseCapabilities::site_has_active_pro_plan(),
             'status_label'       => $status_label,
             'plan_name'          => '',
             'plan_title'         => '',

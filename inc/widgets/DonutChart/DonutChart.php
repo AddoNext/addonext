@@ -52,6 +52,12 @@ class DonutChart extends WidgetBase
         return '#8b5cf6';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-donut-chart'];
@@ -82,6 +88,9 @@ class DonutChart extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -334,18 +343,28 @@ class DonutChart extends WidgetBase
             ]
         );
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/donut-chart/donut-chart.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var title = settings.title || '';
@@ -382,5 +401,7 @@ class DonutChart extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

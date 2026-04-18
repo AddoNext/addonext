@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $first_header = isset($settings['first_column_header']) ? $settings['first_column_header'] : __('Features', 'elementrify');
 $columns     = isset($settings['columns']) && is_array($settings['columns']) ? $settings['columns'] : [];
@@ -56,3 +59,7 @@ if (empty($columns)) {
         </tbody>
     </table>
 </div>
+
+<?php
+    }
+}

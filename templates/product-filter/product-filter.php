@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 if (!class_exists('WooCommerce')) {
     echo '<div class="elementrify-product-filter"><p class="elementrify-product-filter__placeholder">' . esc_html__('WooCommerce is required for this widget.', 'elementrify') . '</p></div>';
     return;
@@ -375,3 +378,7 @@ if ($initial_rating_ui > 0) {
     ?>
     <button class="elementrify-product-filter__apply" type="submit"><?php echo esc_html($apply_text); ?></button>
 </form>
+
+<?php
+    }
+}

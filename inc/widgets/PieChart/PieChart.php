@@ -52,6 +52,12 @@ class PieChart extends WidgetBase
         return '#7c3aed';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-pie-chart'];
@@ -64,6 +70,9 @@ class PieChart extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -205,18 +214,28 @@ class PieChart extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/pie-chart/pie-chart.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var title = settings.title || '';
@@ -238,5 +257,7 @@ class PieChart extends WidgetBase
             </div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

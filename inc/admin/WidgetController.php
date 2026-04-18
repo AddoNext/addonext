@@ -4,12 +4,57 @@ namespace Elementrify\Admin;
 use WP_REST_Request;
 use WP_REST_Response;
 use Elementrify\Utils\OptionsHelper;
+use Elementrify\Utils\LicenseCapabilities;
 use Elementrify\Common\WidgetManager;
 
 defined('ABSPATH') or exit;
 
 class WidgetController
 {
+    /**
+     * Drops pro-only widget ids when the site does not have an active pro license.
+     *
+     * @param array<int, mixed> $widget_ids
+     * @return array<int, string>
+     */
+    public static function sanitize_active_widget_ids(array $widget_ids): array
+    {
+        $pro_access = LicenseCapabilities::site_has_active_pro_plan();
+        if ($pro_access) {
+            return array_values(
+                array_unique(
+                    array_map(
+                        static function ($id): string {
+                            return sanitize_text_field((string) $id);
+                        },
+                        $widget_ids
+                    )
+                )
+            );
+        }
+
+        $manager  = emty_container(WidgetManager::class);
+        $allowed  = [];
+        foreach ($manager->get_widgets() as $widget_class) {
+            $instance = emty_container($widget_class);
+            if ($instance->get_required_plan() !== 'pro') {
+                $allowed[] = $instance->get_name();
+            }
+        }
+
+        $allowed_set = array_fill_keys($allowed, true);
+        $out         = [];
+
+        foreach ($widget_ids as $id) {
+            $clean = sanitize_text_field((string) $id);
+            if ($clean !== '' && isset($allowed_set[$clean])) {
+                $out[] = $clean;
+            }
+        }
+
+        return array_values(array_unique($out));
+    }
+
     public function __construct()
     {
         add_action('rest_api_init', [$this, 'register_endpoints']);
@@ -20,17 +65,32 @@ class WidgetController
         $widgets        = emty_container(WidgetManager::class)->get_widgets();
         $data           = [];
         $active_widgets = OptionsHelper::get_option('active_widgets', []);
+        $active_widgets = is_array($active_widgets) ? $active_widgets : [];
+        $sanitized      = self::sanitize_active_widget_ids($active_widgets);
+
+        if ($sanitized !== $active_widgets) {
+            OptionsHelper::set_option('active_widgets', $sanitized);
+            $active_widgets = $sanitized;
+        }
+
+        $pro_access = LicenseCapabilities::site_has_active_pro_plan();
 
         foreach ($widgets as $widget) {
             $widget_instance = emty_container($widget);
+            $required_plan   = $widget_instance->get_required_plan();
+            $is_locked       = ($required_plan === 'pro') && !$pro_access;
+            $name            = $widget_instance->get_name();
+            $stored_active   = in_array($name, $active_widgets, true);
             $data[]          = [
-                'id'          => $widget_instance->get_name(),
-                'title'       => $widget_instance->get_title(),
-                'icon'        => $widget_instance->get_icon(),
-                'category'    => $widget_instance->get_admin_category(),
-                'active'      => in_array($widget_instance->get_name(), $active_widgets),
-                'description' => $widget_instance->get_description(),
-                'brand_color' => $widget_instance->get_brand_color()
+                'id'             => $name,
+                'title'          => $widget_instance->get_title(),
+                'icon'           => $widget_instance->get_icon(),
+                'category'       => $widget_instance->get_admin_category(),
+                'active'         => $stored_active && !$is_locked,
+                'description'    => $widget_instance->get_description(),
+                'brand_color'    => $widget_instance->get_brand_color(),
+                'required_plan'  => $required_plan,
+                'is_locked'      => $is_locked,
             ];
         }
 
@@ -88,7 +148,8 @@ class WidgetController
             );
         }
 
-        OptionsHelper::set_option('active_widgets', $widgets);
+        $sanitized = self::sanitize_active_widget_ids($widgets);
+        OptionsHelper::set_option('active_widgets', $sanitized);
 
         return new WP_REST_Response(
             [

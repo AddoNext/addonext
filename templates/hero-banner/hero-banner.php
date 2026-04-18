@@ -5,6 +5,9 @@ use Elementor\Icons_Manager;
 use Elementor\Utils;
 use Elementrify\Widgets\HeroBanner\HeroBanner;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 
 $tag_prefix = isset($settings['tagline_prefix']) ? (string) $settings['tagline_prefix'] : '';
@@ -153,3 +156,7 @@ if ($is_file_video) {
         </div>
     </div>
 </div>
+
+<?php
+    }
+}

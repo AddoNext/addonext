@@ -6,6 +6,8 @@ export interface Widget {
     active: boolean;
     description: string;
     brand_color: string;
+    required_plan: string;
+    is_locked: boolean;
 }
 
 export interface CategoryItem {
@@ -101,6 +103,7 @@ export interface BackupsDownloadResponse {
 
 export interface LicenseData {
     is_active: boolean;
+    has_pro_plan: boolean;
     status_label: string;
     plan_name: string;
     plan_title: string;

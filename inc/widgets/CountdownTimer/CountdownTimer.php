@@ -52,6 +52,12 @@ class CountdownTimer extends WidgetBase
         return '#dc2626';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-countdown-timer'];
@@ -64,6 +70,9 @@ class CountdownTimer extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -345,18 +354,28 @@ class CountdownTimer extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/countdown-timer/countdown-timer.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $days    = esc_js(__('Days', 'elementrify'));
         $hours   = esc_js(__('Hours', 'elementrify'));
         $minutes = esc_js(__('Minutes', 'elementrify'));
@@ -386,5 +405,7 @@ class CountdownTimer extends WidgetBase
             <# } #>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

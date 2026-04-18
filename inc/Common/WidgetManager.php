@@ -3,6 +3,7 @@ namespace Elementrify\Common;
 
 use Elementor\Widgets_Manager;
 use Elementrify\Utils\OptionsHelper;
+use Elementrify\Utils\LicenseCapabilities;
 use Elementrify\Widgets\Accordion\Accordion;
 use Elementrify\Widgets\AdvancedGoogleMap\AdvancedGoogleMap;
 use Elementrify\Widgets\AdvancedHeading\AdvancedHeading;
@@ -335,7 +336,15 @@ class WidgetManager
         $widgets = OptionsHelper::get_option('active_widgets', []);
 
         return array_filter(self::$widgets, function ($widget) use ($widgets) {
-            return in_array(emty_container($widget)->get_name(), $widgets);
+            $instance = emty_container($widget);
+            if (!in_array($instance->get_name(), $widgets, true)) {
+                return false;
+            }
+            if ($instance->get_required_plan() === 'pro' && !LicenseCapabilities::site_has_active_pro_plan()) {
+                return false;
+            }
+
+            return true;
         });
     }
 

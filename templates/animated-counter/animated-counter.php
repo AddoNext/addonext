@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $items   = isset($settings['items']) ? $settings['items'] : [];
 $columns = isset($settings['columns']) ? max(1, (int) $settings['columns']) : 4;
@@ -36,3 +39,7 @@ $this->add_render_attribute('grid', 'style', $grid_style);
         </div>
     </div>
 </div>
+
+<?php
+    }
+}

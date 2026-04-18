@@ -3,6 +3,9 @@ defined('ABSPATH') || exit;
 
 use Elementrify\Widgets\WooDashboard\WooDashboard;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $customerId = get_current_user_id();
 
 if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
@@ -103,3 +106,7 @@ if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
         <?php endforeach; ?>
     </div>
 </div>
+
+<?php
+    }
+}

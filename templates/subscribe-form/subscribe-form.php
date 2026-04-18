@@ -1,5 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
+
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $title = isset($settings['title']) ? $settings['title'] : __('Subscribe to Newsletter', 'elementrify');
 $subtitle = isset($settings['subtitle']) ? $settings['subtitle'] : '';
@@ -46,3 +50,7 @@ if (!empty($settings['icon']['value'])) {
     </form>
     <div class="elementrify-subscribe-form__message" aria-live="polite"></div>
 </div>
+
+<?php
+    }
+}

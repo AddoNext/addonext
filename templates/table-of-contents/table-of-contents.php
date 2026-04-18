@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $s = $this->get_settings_for_display();
 
 $showTitle = isset($s['show_title']) && $s['show_title'] === 'yes';
@@ -163,3 +166,7 @@ foreach ($sections as $section) {
 ?>
     </ol>
 </nav>
+
+<?php
+    }
+}

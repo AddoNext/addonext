@@ -17,11 +17,20 @@ class ProductFilter extends WidgetBase
     public function get_title(): string { return __('Product Filter', 'elementrify'); }
     public function get_description(): string { return __('WooCommerce filter panel with price, taxonomies, and rating.', 'elementrify'); }
     public function get_brand_color(): string { return '#7f54b3'; }
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array { return ['elementrify-product-filter']; }
     public function get_script_depends(): array { return ['elementrify-product-filter']; }
 
     public function enqueue_assets(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         wp_register_style(
             'elementrify-product-filter',
             ELEMENTRIFY_URL . 'assets/css/product-filter.css',
@@ -36,7 +45,9 @@ class ProductFilter extends WidgetBase
             ELEMENTRIFY_VERSION,
             true
         );
-    }
+                }
+        }
+}
 
     public function register(): void
     {
@@ -182,6 +193,9 @@ class ProductFilter extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $taxonomy_options = self::get_product_taxonomy_select_options();
 
         $this->start_controls_section('section_general', [
@@ -503,11 +517,18 @@ class ProductFilter extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/product-filter/product-filter.php';
         if (is_readable($path)) include $path;
-    }
+                }
+        }
+}
 }

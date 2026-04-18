@@ -3,6 +3,7 @@ namespace Elementrify\Common;
 
 use Elementrify\Base\ExtensionBase;
 use Elementrify\Utils\OptionsHelper;
+use Elementrify\Utils\LicenseCapabilities;
 use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
@@ -247,7 +248,7 @@ class ExtensionManager
      */
     private function user_may_enable_extension(ExtensionBase $extension): bool
     {
-        return $extension->required_plan() === 'free' || $this->user_has_valid_license();
+        return $extension->required_plan() === 'free' || LicenseCapabilities::site_has_active_pro_plan();
     }
 
     /**
@@ -258,21 +259,7 @@ class ExtensionManager
      */
     private function extension_is_locked(ExtensionBase $extension): bool
     {
-        return $extension->required_plan() !== 'free' && !$this->user_has_valid_license();
-    }
-
-    /**
-     * @return bool
-     */
-    private function user_has_valid_license(): bool
-    {
-        if (!function_exists('emt_fs')) {
-            return false;
-        }
-
-        $fs = emt_fs();
-
-        return $fs->is_registered() && $fs->has_active_valid_license();
+        return $extension->required_plan() !== 'free' && !LicenseCapabilities::site_has_active_pro_plan();
     }
 
     /**
@@ -293,7 +280,7 @@ class ExtensionManager
             'id'          => $id,
             'title'       => $extension->get_title(),
             'description' => $extension->get_description(),
-            'isEnabled'   => in_array($id, $active_ids, true),
+            'isEnabled'   => in_array($id, $active_ids, true) && !$is_locked,
             'isLocked'    => $is_locked,
             'badge'       => $this->resolve_badge($extension),
             'docUrl'      => $extension->get_doc_url(),

@@ -43,6 +43,12 @@ class AnimatedGradient extends WidgetBase
         return '#ec4899';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_keywords(): array
     {
         return ['elementrify', 'gradient', 'animated', 'text', 'background', 'color'];
@@ -65,6 +71,9 @@ class AnimatedGradient extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section('section_content', [
             'label' => __('Content', 'elementrify'),
             'tab'   => Controls_Manager::TAB_CONTENT,
@@ -286,18 +295,28 @@ class AnimatedGradient extends WidgetBase
         ]);
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/animated-gradient/animated-gradient.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var raw = settings.text || settings.content || '';
@@ -315,5 +334,7 @@ class AnimatedGradient extends WidgetBase
             <{{ tag }} class="elementrify-animated-gradient__text">{{{ raw }}}</{{ tag }}>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

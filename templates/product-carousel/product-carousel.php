@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 if (!class_exists('WooCommerce')) {
     echo '<div class="elementrify-product-carousel__placeholder">' . esc_html__('WooCommerce is required for Product Carousel.', 'elementrify') . '</div>';
     return;
@@ -273,3 +276,6 @@ if ($cartBase === '' || $cartBase === $homeBase) {
 </div>
 <?php
 wp_reset_postdata();
+
+    }
+}

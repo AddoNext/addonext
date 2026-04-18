@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelect } from "@wordpress/data";
 import apiFetch from "@wordpress/api-fetch";
+import { STORE_NAME } from "../../../store/admin";
+import type { LicenseData } from "../../../store/types";
+import UpgradeToProModal from "../../components/UpgradeToProModal/UpgradeToProModal";
 import { useToast } from "../../contexts/ToastContext/ToastContext";
 import { ExtensionSettingsProvider } from "../../contexts/ExtensionSettingsContext/ExtensionSettingsContext";
 import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
@@ -130,6 +134,17 @@ const ExtensionsPage: React.FC = () => {
   const [draftActiveIds, setDraftActiveIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [upgradeOpen, setUpgradeOpen] = useState(false);
+
+  const { fetchLicense } = useDispatch(STORE_NAME) as { fetchLicense: () => Promise<void> };
+  const licenseData = useSelect(
+    (select) => (select(STORE_NAME) as { getLicenseData: () => LicenseData | null }).getLicenseData(),
+    []
+  );
+
+  useEffect(() => {
+    void fetchLicense();
+  }, [fetchLicense]);
 
   const applyExtensionsFromServer = useCallback((list: ExtensionItem[]) => {
     setExtensions(list);
@@ -273,6 +288,12 @@ const ExtensionsPage: React.FC = () => {
         unlockedLength={unlocked.length}
         onToggle={handleToggle}
         onEnableAll={handleEnableAll}
+        onLockedUpgrade={() => setUpgradeOpen(true)}
+      />
+      <UpgradeToProModal
+        open={upgradeOpen}
+        onClose={() => setUpgradeOpen(false)}
+        upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
       />
     </ExtensionSettingsProvider>
   );

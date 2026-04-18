@@ -42,6 +42,12 @@ class SubscribeForm extends WidgetBase
         return '#E43775';
     }
 
+    
+    public function get_required_plan(): string
+    {
+        return 'pro';
+    }
+
     public function get_style_depends(): array
     {
         return ['elementrify-subscribe-form'];
@@ -54,6 +60,9 @@ class SubscribeForm extends WidgetBase
 
     public function register_controls(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $this->start_controls_section(
             'section_content',
             [
@@ -408,7 +417,9 @@ class SubscribeForm extends WidgetBase
         );
 
         $this->end_controls_section();
-    }
+                }
+        }
+}
 
     public static function register_ajax_handlers(): void
     {
@@ -488,14 +499,22 @@ class SubscribeForm extends WidgetBase
 
     public function render(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         $path = ELEMENTRIFY_DIR . 'templates/subscribe-form/subscribe-form.php';
         if (is_readable($path)) {
             include $path;
         }
-    }
+                }
+        }
+}
 
     protected function content_template(): void
     {
+        if (emt_fs()->can_use_premium_code__premium_only()) {
+            if (emt_fs()->is_plan('pro')) {
+
         ?>
         <#
         var title = settings.title || '<?php echo esc_js(__('Subscribe to Newsletter', 'elementrify')); ?>';
@@ -518,5 +537,7 @@ class SubscribeForm extends WidgetBase
             <div class="elementrify-subscribe-form__message" aria-live="polite"></div>
         </div>
         <?php
-    }
+                }
+        }
+}
 }

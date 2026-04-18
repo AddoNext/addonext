@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (emt_fs()->can_use_premium_code__premium_only()) {
+    if (emt_fs()->is_plan('pro')) {
+
 $settings = $this->get_settings_for_display();
 $variant  = isset($settings['variant']) ? $settings['variant'] : 'blocks';
 $due_date = isset($settings['due_date']) ? $settings['due_date'] : '';
@@ -34,3 +37,7 @@ if ($shutter_flip) {
     </span>
     <?php endforeach; ?>
 </div>
+
+<?php
+    }
+}

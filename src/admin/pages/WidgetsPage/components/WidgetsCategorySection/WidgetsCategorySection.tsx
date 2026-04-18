@@ -19,6 +19,7 @@ interface WidgetsCategorySectionProps {
   widgets: Widget[];
   onToggle: (id: string, checked: boolean) => void;
   onToggleAll: (slug: string, enable: boolean) => void;
+  onLockedUpgrade?: () => void;
 }
 
 const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
@@ -26,11 +27,13 @@ const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
   widgets,
   onToggle,
   onToggleAll,
+  onLockedUpgrade,
 }) => {
   if (widgets.length === 0) return null;
 
   const icon = CATEGORY_ICONS[category.slug];
-  const allActive = widgets.every((w) => w.active);
+  const unlocked = widgets.filter((w) => !w.is_locked);
+  const allActive = unlocked.length > 0 && unlocked.every((w) => w.active);
 
   return (
     <section className={styles.section}>
@@ -61,8 +64,8 @@ const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
           <WidgetCard
             key={widget.id}
             widget={widget}
-            categorySlug={category.slug}
             onToggle={onToggle}
+            onLockedUpgrade={onLockedUpgrade}
           />
         ))}
       </div>
