@@ -7,6 +7,7 @@ use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
+use Elementrify\Extensions\ParticleEffects\ParticleEffects;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 
@@ -32,6 +33,7 @@ class ExtensionManager
         'custom-styles'  => CustomStyles::class,
         'reading-progress-bar' => ReadingProgressBar::class,
         'scroll-to-top'  => ScrollToTop::class,
+        'particle-effects' => ParticleEffects::class,
     ];
 
     /**
@@ -40,6 +42,47 @@ class ExtensionManager
     public function __construct()
     {
         add_action('init', [$this, 'bootstrap_active_extension_instances'], 25);
+        add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_particle_effects_preview_assets'], 5);
+        add_action('elementor/preview/enqueue_styles', [$this, 'enqueue_particle_effects_preview_assets'], 5);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_particle_effects_after_elementor_preview'], 22);
+    }
+
+    /**
+     * Loads particle assets in the preview iframe after Elementor registers preview scripts (priority 20).
+     *
+     * @return void
+     */
+    public function enqueue_particle_effects_preview_assets(): void
+    {
+        if (!in_array(ParticleEffects::class, $this->get_active_extensions(), true)) {
+            return;
+        }
+
+        emty_container(ParticleEffects::class)->enqueue_for_elementor_preview();
+    }
+
+    /**
+     * Reliable preview enqueue: runs on wp_enqueue_scripts after Elementor's preview callback (priority 20).
+     *
+     * @return void
+     */
+    public function enqueue_particle_effects_after_elementor_preview(): void
+    {
+        if (!in_array(ParticleEffects::class, $this->get_active_extensions(), true)) {
+            return;
+        }
+
+        if (!class_exists('\Elementor\Plugin')) {
+            return;
+        }
+
+        $preview = \Elementor\Plugin::$instance->preview;
+
+        if (!is_object($preview) || !method_exists($preview, 'is_preview_mode') || !$preview->is_preview_mode()) {
+            return;
+        }
+
+        emty_container(ParticleEffects::class)->enqueue_for_elementor_preview();
     }
 
     /**

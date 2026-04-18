@@ -227,6 +227,7 @@ class WidgetManager
         add_action('elementor/widgets/register', [$this, 'register_widgets']);
         add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_editor_badge_assets']);
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_custom_code_preview']);
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_particle_effects_preview']);
     }
 
     /**
@@ -275,6 +276,29 @@ class WidgetManager
                 'stylesActive'  => $stylesActive,
                 'scriptsActive' => $scriptsActive,
             ]
+        );
+    }
+
+    /**
+     * Refreshes particle overlays in the preview iframe when Style controls change.
+     *
+     * @return void
+     */
+    public function enqueue_editor_particle_effects_preview(): void
+    {
+        $active = OptionsHelper::get_option('active_extensions', []);
+        $active = is_array($active) ? $active : [];
+
+        if (!in_array('particle-effects', $active, true)) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'elementrify-editor-particle-preview',
+            ELEMENTRIFY_URL . 'assets/js/editor/elementrify-particle-effects-preview.js',
+            ['jquery', 'elementor-editor'],
+            ELEMENTRIFY_VERSION,
+            true
         );
     }
 
