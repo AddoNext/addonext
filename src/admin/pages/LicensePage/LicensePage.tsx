@@ -315,90 +315,92 @@ const LicensePage: React.FC = () => {
         </>
       )}
 
-      <section className={styles.section}>
-        <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
-          <FontAwesomeIcon icon={faCircleInfo} className={styles.iconBlue} />
-          <div>
-            <h2 className={styles.sectionTitle}>License Information</h2>
-            <p className={styles.sectionSubtitle}>Important details about your license</p>
-          </div>
-        </div>
-        <div className={styles.infoGrid}>
-          <div className={styles.infoColumn}>
-            <h3 className={styles.infoColumnTitle}>License Details</h3>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>License ID:</span>
-              <span className={styles.infoValue}>{data.license_id || "—"}</span>
-            </div>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Activation Date:</span>
-              <span className={styles.infoValue}>{data.activation_date || "—"}</span>
-            </div>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Sites Used:</span>
-              <span className={styles.infoValue}>{data.sites_label || "—"}</span>
-            </div>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Version:</span>
-              <span className={styles.infoValue}>{data.version || "—"}</span>
-            </div>
-          </div>
-          <div className={styles.infoColumn}>
-            <h3 className={styles.infoColumnTitle}>Account Information</h3>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Email:</span>
-              <span className={styles.infoValue}>{data.email || "—"}</span>
-            </div>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Customer ID:</span>
-              <span className={styles.infoValue}>{data.customer_id || "—"}</span>
-            </div>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Purchase Date:</span>
-              <span className={styles.infoValue}>{data.purchase_date || "—"}</span>
-            </div>
-            <div className={styles.infoRow}>
-              <span className={styles.infoLabel}>Auto Renewal:</span>
-              <span className={data.auto_renewal ? styles.infoValueSuccess : styles.infoValue}>
-                {data.auto_renewal ? "Enabled" : "Disabled"}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.needHelpBlock}>
-          <div className={styles.needHelpInner}>
-            <FontAwesomeIcon icon={faLightbulb} className={styles.iconBlue} />
+      {data.is_active && (
+        <section className={styles.section}>
+          <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
+            <FontAwesomeIcon icon={faCircleInfo} className={styles.iconBlue} />
             <div>
-              <h4 className={styles.needHelpTitle}>Need Help?</h4>
-              <p className={styles.needHelpText}>
-                If you&apos;re experiencing issues with your license or need assistance, our support team is here to
-                help.
-              </p>
-              <div className={styles.needHelpActions}>
-                {data.support_url && (
-                  <a
-                    href={data.support_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.btnSupport}
-                  >
-                    <FontAwesomeIcon icon={faHeadset} /> Contact Support
-                  </a>
-                )}
-                {data.docs_url ? (
-                  <a href={data.docs_url} target="_blank" rel="noopener noreferrer" className={styles.btnDocs}>
-                    <FontAwesomeIcon icon={faBook} /> Documentation
-                  </a>
-                ) : (
-                  <span className={styles.btnDocs}>
-                    <FontAwesomeIcon icon={faBook} /> Documentation
-                  </span>
-                )}
+              <h2 className={styles.sectionTitle}>License Information</h2>
+              <p className={styles.sectionSubtitle}>Important details about your license</p>
+            </div>
+          </div>
+          <div className={styles.infoGrid}>
+            <div className={styles.infoColumn}>
+              <h3 className={styles.infoColumnTitle}>License Details</h3>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>License ID:</span>
+                <span className={styles.infoValue}>{data.license_id || "—"}</span>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Activation Date:</span>
+                <span className={styles.infoValue}>{data.activation_date || "—"}</span>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Sites Used:</span>
+                <span className={styles.infoValue}>{data.sites_label || "—"}</span>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Version:</span>
+                <span className={styles.infoValue}>{data.version || "—"}</span>
+              </div>
+            </div>
+            <div className={styles.infoColumn}>
+              <h3 className={styles.infoColumnTitle}>Account Information</h3>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Email:</span>
+                <span className={styles.infoValue}>{data.email || "—"}</span>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Customer ID:</span>
+                <span className={styles.infoValue}>{data.customer_id || "—"}</span>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Purchase Date:</span>
+                <span className={styles.infoValue}>{data.purchase_date || "—"}</span>
+              </div>
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Auto Renewal:</span>
+                <span className={data.auto_renewal ? styles.infoValueSuccess : styles.infoValue}>
+                  {data.auto_renewal ? "Enabled" : "Disabled"}
+                </span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+          <div className={styles.needHelpBlock}>
+            <div className={styles.needHelpInner}>
+              <FontAwesomeIcon icon={faLightbulb} className={styles.iconBlue} />
+              <div>
+                <h4 className={styles.needHelpTitle}>Need Help?</h4>
+                <p className={styles.needHelpText}>
+                  If you&apos;re experiencing issues with your license or need assistance, our support team is here to
+                  help.
+                </p>
+                <div className={styles.needHelpActions}>
+                  {data.support_url && (
+                    <a
+                      href={data.support_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.btnSupport}
+                    >
+                      <FontAwesomeIcon icon={faHeadset} /> Contact Support
+                    </a>
+                  )}
+                  {data.docs_url ? (
+                    <a href={data.docs_url} target="_blank" rel="noopener noreferrer" className={styles.btnDocs}>
+                      <FontAwesomeIcon icon={faBook} /> Documentation
+                    </a>
+                  ) : (
+                    <span className={styles.btnDocs}>
+                      <FontAwesomeIcon icon={faBook} /> Documentation
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };
