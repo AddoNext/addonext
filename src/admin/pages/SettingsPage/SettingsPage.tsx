@@ -15,6 +15,7 @@ import { useToast } from "../../contexts/ToastContext/ToastContext";
 import { STORE_NAME } from "../../../store/admin";
 import type { SettingsSection } from "./fields";
 import { renderField } from "./utils";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import BackupSection from "./components/BackupSection/BackupSection";
 import styles from "./SettingsPage.module.scss";
 
@@ -112,7 +113,9 @@ const SettingsPage: React.FC = () => {
   if (isLoading) {
     return (
       <div className={styles.page}>
-        <p className={styles.loading}>Loading settings…</p>
+        <div className={styles.loading}>
+          <LoadingSpinner screenReaderLabel="Loading settings" />
+        </div>
       </div>
     );
   }
@@ -120,7 +123,7 @@ const SettingsPage: React.FC = () => {
   if (!sections || sections.length === 0) {
     return (
       <div className={styles.page}>
-        <p className={styles.loading}>No settings sections.</p>
+        <p className={styles.loadingMessage}>No settings sections.</p>
       </div>
     );
   }

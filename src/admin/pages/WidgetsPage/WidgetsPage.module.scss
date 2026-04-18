@@ -2,6 +2,13 @@
   padding: $space-6 0;
 }
 
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
 .content {
   min-height: 12rem;
 }

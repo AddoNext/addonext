@@ -77,3 +77,10 @@
   color: var(--color-text-muted);
   margin: 0;
 }
+
+.loadingRegion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}

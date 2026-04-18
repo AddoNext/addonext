@@ -128,4 +128,14 @@ abstract class WidgetBase extends Widget_Base
      * @return string
      */
     abstract public function get_brand_color(): string;
+
+    /**
+     * Get the required plan for the widget
+     *
+     * @return string
+     */
+    public function get_required_plan(): string
+    {
+        return 'free';
+    }
 }

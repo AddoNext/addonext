@@ -1,4 +1,5 @@
 import React from "react";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import ToggleSwitch from "../../components/ToggleSwitch/ToggleSwitch";
 import { useExtensionSettings } from "../../contexts/ExtensionSettingsContext/ExtensionSettingsContext";
 import ExtensionCard from "./ExtensionCard/ExtensionCard";
@@ -48,7 +49,9 @@ const ExtensionsPageContent: React.FC<ExtensionsPageContentProps> = ({
       </header>
 
       {loading ? (
-        <p className={styles.stateMessage}>Loading…</p>
+        <div className={styles.loadingRegion}>
+          <LoadingSpinner screenReaderLabel="Loading extensions" />
+        </div>
       ) : extensionsCount === 0 ? (
         <p className={styles.stateMessage}>No extensions are available yet.</p>
       ) : (

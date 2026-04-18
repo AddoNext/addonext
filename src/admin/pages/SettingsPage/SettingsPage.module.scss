@@ -215,6 +215,14 @@
 }
 
 .loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: $space-12;
+}
+
+.loadingMessage {
   padding: $space-12;
   text-align: center;
   font-size: $text-sm;

@@ -139,6 +139,13 @@
   margin: 0;
 }
 
+.recentLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-6 0;
+}
+
 .recentList {
   list-style: none;
   margin: 0;

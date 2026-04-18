@@ -20,6 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { STORE_NAME } from "../../../store/admin";
 import type { LicenseData } from "../../../store/types";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import styles from "./LicensePage.module.scss";
 
 const PREMIUM_FEATURES = [
@@ -102,7 +103,9 @@ const LicensePage: React.FC = () => {
   if (licenseResolving && licenseData === null) {
     return (
       <div className={styles.page}>
-        <p className={styles.sectionSubtitle}>Loading license…</p>
+        <div className={styles.loadingWrap}>
+          <LoadingSpinner screenReaderLabel="Loading license" />
+        </div>
       </div>
     );
   }

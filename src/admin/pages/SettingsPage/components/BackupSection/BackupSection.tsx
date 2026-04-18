@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faUpload, faFileArchive, faTrash, faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import LoadingSpinner from "../../../../components/LoadingSpinner/LoadingSpinner";
 import { useConfirm } from "../../../../contexts/ConfirmContext/ConfirmContext";
 import { STORE_NAME } from "../../../../../store/admin";
 import styles from "./BackupSection.module.scss";
@@ -126,7 +127,9 @@ const BackupSection: React.FC = () => {
       <div className={styles.recent}>
         <h4 className={styles.recentTitle}>Recent Backups</h4>
         {resolving && backups.length === 0 ? (
-          <p className={styles.recentEmpty}>Loading…</p>
+          <div className={styles.recentLoading}>
+            <LoadingSpinner size="sm" screenReaderLabel="Loading backups" />
+          </div>
         ) : backups.length === 0 ? (
           <p className={styles.recentEmpty}>No backups yet. Export settings to create one.</p>
         ) : (
