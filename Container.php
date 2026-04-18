@@ -77,6 +77,7 @@ use Elementrify\Widgets\SubscribeForm\SubscribeForm;
 use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
+use Elementrify\Extensions\MovingCircles\MovingCircles;
 use Elementrify\Extensions\ParticleEffects\ParticleEffects;
 use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
@@ -192,6 +193,7 @@ return [
     ReadingProgressBar::class     => create(ReadingProgressBar::class),
     ScrollToTop::class            => create(ScrollToTop::class),
     ParticleEffects::class        => create(ParticleEffects::class),
+    MovingCircles::class          => create(MovingCircles::class),
     ExtensionManager::class       => create(ExtensionManager::class),
     GlobalCustomAssets::class     => create(GlobalCustomAssets::class),
     ExtensionsController::class   => create(ExtensionsController::class)

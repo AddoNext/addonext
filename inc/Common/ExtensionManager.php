@@ -7,6 +7,7 @@ use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
+use Elementrify\Extensions\MovingCircles\MovingCircles;
 use Elementrify\Extensions\ParticleEffects\ParticleEffects;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
@@ -34,6 +35,7 @@ class ExtensionManager
         'reading-progress-bar' => ReadingProgressBar::class,
         'scroll-to-top'  => ScrollToTop::class,
         'particle-effects' => ParticleEffects::class,
+        'moving-circles'   => MovingCircles::class,
     ];
 
     /**
@@ -42,36 +44,36 @@ class ExtensionManager
     public function __construct()
     {
         add_action('init', [$this, 'bootstrap_active_extension_instances'], 25);
-        add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_particle_effects_preview_assets'], 5);
-        add_action('elementor/preview/enqueue_styles', [$this, 'enqueue_particle_effects_preview_assets'], 5);
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_particle_effects_after_elementor_preview'], 22);
+        add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_preview_capable_extension_assets'], 5);
+        add_action('elementor/preview/enqueue_styles', [$this, 'enqueue_preview_capable_extension_assets'], 5);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_preview_capable_extensions_after_elementor'], 22);
     }
 
     /**
-     * Loads particle assets in the preview iframe after Elementor registers preview scripts (priority 20).
+     * Loads extension assets in the preview iframe when the active class defines enqueue_for_elementor_preview().
      *
      * @return void
      */
-    public function enqueue_particle_effects_preview_assets(): void
+    public function enqueue_preview_capable_extension_assets(): void
     {
-        if (!in_array(ParticleEffects::class, $this->get_active_extensions(), true)) {
-            return;
-        }
+        foreach ($this->get_active_extensions() as $class) {
+            $instance = emty_container($class);
 
-        emty_container(ParticleEffects::class)->enqueue_for_elementor_preview();
+            if (!method_exists($instance, 'enqueue_for_elementor_preview')) {
+                continue;
+            }
+
+            $instance->enqueue_for_elementor_preview();
+        }
     }
 
     /**
-     * Reliable preview enqueue: runs on wp_enqueue_scripts after Elementor's preview callback (priority 20).
+     * Runs after Elementor preview scripts so optional extension scripts still enqueue.
      *
      * @return void
      */
-    public function enqueue_particle_effects_after_elementor_preview(): void
+    public function enqueue_preview_capable_extensions_after_elementor(): void
     {
-        if (!in_array(ParticleEffects::class, $this->get_active_extensions(), true)) {
-            return;
-        }
-
         if (!class_exists('\Elementor\Plugin')) {
             return;
         }
@@ -82,7 +84,15 @@ class ExtensionManager
             return;
         }
 
-        emty_container(ParticleEffects::class)->enqueue_for_elementor_preview();
+        foreach ($this->get_active_extensions() as $class) {
+            $instance = emty_container($class);
+
+            if (!method_exists($instance, 'enqueue_for_elementor_preview')) {
+                continue;
+            }
+
+            $instance->enqueue_for_elementor_preview();
+        }
     }
 
     /**

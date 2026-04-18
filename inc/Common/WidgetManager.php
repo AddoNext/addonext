@@ -227,7 +227,7 @@ class WidgetManager
         add_action('elementor/widgets/register', [$this, 'register_widgets']);
         add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_editor_badge_assets']);
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_custom_code_preview']);
-        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_particle_effects_preview']);
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_extension_visual_previews']);
     }
 
     /**
@@ -280,26 +280,33 @@ class WidgetManager
     }
 
     /**
-     * Refreshes particle overlays in the preview iframe when Style controls change.
+     * Editor scripts that sync Style-tab overlay data into the preview iframe (particles, moving circles, etc.).
      *
      * @return void
      */
-    public function enqueue_editor_particle_effects_preview(): void
+    public function enqueue_editor_extension_visual_previews(): void
     {
         $active = OptionsHelper::get_option('active_extensions', []);
         $active = is_array($active) ? $active : [];
 
-        if (!in_array('particle-effects', $active, true)) {
-            return;
-        }
+        $scripts = [
+            'particle-effects' => ELEMENTRIFY_URL . 'assets/js/editor/elementrify-particle-effects-preview.js',
+            'moving-circles'   => ELEMENTRIFY_URL . 'assets/js/editor/elementrify-moving-circles-preview.js',
+        ];
 
-        wp_enqueue_script(
-            'elementrify-editor-particle-preview',
-            ELEMENTRIFY_URL . 'assets/js/editor/elementrify-particle-effects-preview.js',
-            ['jquery', 'elementor-editor'],
-            ELEMENTRIFY_VERSION,
-            true
-        );
+        foreach ($scripts as $slug => $src) {
+            if (!in_array($slug, $active, true)) {
+                continue;
+            }
+
+            wp_enqueue_script(
+                'elementrify-editor-ext-' . str_replace('-', '_', $slug),
+                $src,
+                ['jquery', 'elementor-editor'],
+                ELEMENTRIFY_VERSION,
+                true
+            );
+        }
     }
 
     /**
