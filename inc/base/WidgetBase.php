@@ -43,11 +43,11 @@ abstract class WidgetBase extends Widget_Base
     }
 
     /**
-     * Get the block category
+     * Elementor panel category (must match slug registered in WidgetManager).
      *
-     * @return array
+     * @return array<int, string>
      */
-    protected function get_category(): array
+    public function get_categories(): array
     {
         return ['elementrify'];
     }
