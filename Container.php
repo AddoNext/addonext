@@ -73,6 +73,8 @@ use Elementrify\Widgets\ImageCarousel\ImageCarousel;
 use Elementrify\Widgets\ProductFilter\ProductFilter;
 use Elementrify\Widgets\SmartPostList\SmartPostList;
 use Elementrify\Widgets\SubscribeForm\SubscribeForm;
+use Elementrify\Extensions\CustomScripts\CustomScripts;
+use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
@@ -182,6 +184,8 @@ return [
     VideoPlayer::class            => create(VideoPlayer::class),
     SmoothScroll::class           => create(SmoothScroll::class),
     Duplicator::class             => create(Duplicator::class),
+    CustomScripts::class          => create(CustomScripts::class),
+    CustomStyles::class           => create(CustomStyles::class),
     ScrollToTop::class            => create(ScrollToTop::class),
     ExtensionManager::class       => create(ExtensionManager::class),
     ExtensionsController::class   => create(ExtensionsController::class)

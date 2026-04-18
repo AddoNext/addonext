@@ -179,7 +179,8 @@ class SettingsController
                     'optionKey'   => 'custom_css',
                     'label'       => 'Custom CSS',
                     'default'     => '',
-                    'placeholder' => '/* Add your custom CSS here */'
+                    'placeholder' => '/* Add your custom CSS here */',
+                    'required_extension' => 'custom-styles'
                 ],
                 [
                     'id'          => 'custom_js',
@@ -187,7 +188,8 @@ class SettingsController
                     'optionKey'   => 'custom_js',
                     'label'       => 'Custom JavaScript',
                     'default'     => '',
-                    'placeholder' => '// Add your custom JavaScript here'
+                    'placeholder' => '// Add your custom JavaScript here',
+                    'required_extension' => 'custom-scripts'
                 ],
                 [
                     'id'          => 'developer_mode',
@@ -505,16 +507,62 @@ class SettingsController
     }
 
     /**
+     * Build settings sections visible for the current extension state.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function get_visible_sections(): array
+    {
+        $sections = self::SECTIONS;
+        $active_extensions = OptionsHelper::get_option('active_extensions', []);
+        $active_extensions = is_array($active_extensions) ? $active_extensions : [];
+
+        foreach ($sections as &$section) {
+            if (empty($section['fields']) || !is_array($section['fields'])) {
+                continue;
+            }
+
+            $section['fields'] = array_values(
+                array_filter(
+                    $section['fields'],
+                    static function ($field) use ($active_extensions): bool {
+                        if (!isset($field['required_extension'])) {
+                            return true;
+                        }
+                        $required = (string) $field['required_extension'];
+
+                        return in_array($required, $active_extensions, true);
+                    }
+                )
+            );
+        }
+        unset($section);
+
+        return $sections;
+    }
+
+    /**
      * Get the settings for the settings page
      *
      * @return WP_REST_Response
      */
     public function rest_get_settings(): WP_REST_Response
     {
+        $sections = $this->get_visible_sections();
         $values = [];
-        foreach (self::get_option_keys() as $key) {
+        $keys = [];
+
+        foreach ($sections as $section) {
+            foreach (($section['fields'] ?? []) as $field) {
+                if (isset($field['optionKey'])) {
+                    $keys[] = (string) $field['optionKey'];
+                }
+            }
+        }
+
+        foreach (array_values(array_unique($keys)) as $key) {
             $default = null;
-            foreach (self::SECTIONS as $section) {
+            foreach ($sections as $section) {
                 foreach ($section['fields'] as $field) {
                     if ($field['optionKey'] === $key) {
                         $default = $field['default'] ?? null;
@@ -527,7 +575,7 @@ class SettingsController
 
         return new WP_REST_Response([
             'success'  => true,
-            'sections' => self::SECTIONS,
+            'sections' => $sections,
             'values'   => $values
         ]);
     }

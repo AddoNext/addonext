@@ -3,6 +3,8 @@ namespace Elementrify\Common;
 
 use Elementrify\Base\ExtensionBase;
 use Elementrify\Utils\OptionsHelper;
+use Elementrify\Extensions\CustomScripts\CustomScripts;
+use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
@@ -24,7 +26,9 @@ class ExtensionManager
      */
     protected static $extensions = [
         'smooth-scroll'  => SmoothScroll::class,
-        'duplicator'       => Duplicator::class,
+        'duplicator'     => Duplicator::class,
+        'custom-scripts' => CustomScripts::class,
+        'custom-styles'  => CustomStyles::class,
         'scroll-to-top'  => ScrollToTop::class,
     ];
 
