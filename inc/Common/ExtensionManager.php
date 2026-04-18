@@ -6,6 +6,7 @@ use Elementrify\Utils\OptionsHelper;
 use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
+use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 
@@ -29,6 +30,7 @@ class ExtensionManager
         'duplicator'     => Duplicator::class,
         'custom-scripts' => CustomScripts::class,
         'custom-styles'  => CustomStyles::class,
+        'reading-progress-bar' => ReadingProgressBar::class,
         'scroll-to-top'  => ScrollToTop::class,
     ];
 

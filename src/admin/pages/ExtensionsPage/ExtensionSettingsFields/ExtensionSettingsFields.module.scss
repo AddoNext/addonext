@@ -40,3 +40,50 @@
   color: var(--color-text-secondary);
   cursor: pointer;
 }
+
+.colorGroup,
+.rangeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.colorControl {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.colorPicker {
+  width: 52px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  background: var(--color-surface);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.colorValue {
+  font-size: $text-sm;
+  color: var(--color-text-secondary);
+  font-family: monospace;
+}
+
+.rangeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rangeValue {
+  font-size: $text-sm;
+  color: var(--color-text-secondary);
+  font-weight: $font-weight-medium;
+}
+
+.rangeInput {
+  width: 100%;
+  accent-color: $color-accent-indigo;
+  cursor: pointer;
+}

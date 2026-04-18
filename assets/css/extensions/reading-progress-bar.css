@@ -1,0 +1,17 @@
+#elementrify-reading-progress {
+  position: fixed;
+  top: var(--elementrify-rpb-top, 0);
+  left: 0;
+  width: 100%;
+  height: var(--elementrify-rpb-height, 4px);
+  background: var(--elementrify-rpb-track, #e5e7eb);
+  z-index: 99999;
+  pointer-events: none;
+}
+
+#elementrify-reading-progress .elementrify-reading-progress__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--elementrify-rpb-color, #4f46e5);
+  transition: width 0.1s linear;
+}

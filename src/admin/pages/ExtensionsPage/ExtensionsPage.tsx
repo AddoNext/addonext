@@ -31,7 +31,12 @@ function normalizeField(raw: unknown): ExtensionField | null {
   const type = row.type;
   if (
     id === "" ||
-    (type !== "toggle" && type !== "select" && type !== "checkbox_group" && type !== "text")
+    (type !== "toggle" &&
+      type !== "select" &&
+      type !== "checkbox_group" &&
+      type !== "text" &&
+      type !== "color" &&
+      type !== "range")
   ) {
     return null;
   }
@@ -78,6 +83,10 @@ function normalizeField(raw: unknown): ExtensionField | null {
     default: row.default,
     options: options && options.length > 0 ? options : undefined,
     placeholder: typeof row.placeholder === "string" ? row.placeholder : undefined,
+    min: typeof row.min === "number" ? row.min : undefined,
+    max: typeof row.max === "number" ? row.max : undefined,
+    step: typeof row.step === "number" ? row.step : undefined,
+    unit: typeof row.unit === "string" ? row.unit : undefined,
     show_when,
     show_when_in,
   };

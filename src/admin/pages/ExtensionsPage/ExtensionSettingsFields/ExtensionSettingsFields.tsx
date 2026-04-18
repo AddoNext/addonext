@@ -89,6 +89,65 @@ const ExtensionSettingsFields: React.FC<ExtensionSettingsFieldsProps> = ({ field
           );
         }
 
+        if (field.type === "color") {
+          const raw = values[field.id];
+          const current = typeof raw === "string" && raw.trim() ? raw : "#4f46e5";
+          return (
+            <div key={field.id} hidden={!visible}>
+              {visible ? (
+                <div className={styles.colorGroup}>
+                  <label className={styles.groupLabel}>{field.label}</label>
+                  <div className={styles.colorControl}>
+                    <input
+                      type="color"
+                      className={styles.colorPicker}
+                      value={current}
+                      onChange={(e) => onChange(field.id, e.target.value)}
+                    />
+                    <span className={styles.colorValue}>{current}</span>
+                  </div>
+                  {field.description ? <p className={styles.groupDescription}>{field.description}</p> : null}
+                </div>
+              ) : null}
+            </div>
+          );
+        }
+
+        if (field.type === "range") {
+          const raw = values[field.id];
+          const num = Number(raw);
+          const min = typeof field.min === "number" ? field.min : 0;
+          const max = typeof field.max === "number" ? field.max : 100;
+          const step = typeof field.step === "number" ? field.step : 1;
+          const unit = field.unit ?? "";
+          const current = Number.isFinite(num) ? num : Number(field.default ?? min);
+          return (
+            <div key={field.id} hidden={!visible}>
+              {visible ? (
+                <div className={styles.rangeGroup}>
+                  <div className={styles.rangeHeader}>
+                    <label className={styles.groupLabel}>{field.label}</label>
+                    <span className={styles.rangeValue}>
+                      {current}
+                      {unit}
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    className={styles.rangeInput}
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={current}
+                    onChange={(e) => onChange(field.id, Number(e.target.value))}
+                  />
+                  {field.description ? <p className={styles.groupDescription}>{field.description}</p> : null}
+                </div>
+              ) : null}
+            </div>
+          );
+        }
+
         if (field.type === "checkbox_group") {
           const raw = values[field.id];
           const list = Array.isArray(raw) ? raw.filter((x): x is string => typeof x === "string") : [];

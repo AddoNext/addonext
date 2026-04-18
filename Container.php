@@ -76,6 +76,7 @@ use Elementrify\Widgets\SubscribeForm\SubscribeForm;
 use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
 use Elementrify\Extensions\Duplicator\Duplicator;
+use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
 use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 use Elementrify\Widgets\CountdownTimer\CountdownTimer;
@@ -186,6 +187,7 @@ return [
     Duplicator::class             => create(Duplicator::class),
     CustomScripts::class          => create(CustomScripts::class),
     CustomStyles::class           => create(CustomStyles::class),
+    ReadingProgressBar::class     => create(ReadingProgressBar::class),
     ScrollToTop::class            => create(ScrollToTop::class),
     ExtensionManager::class       => create(ExtensionManager::class),
     ExtensionsController::class   => create(ExtensionsController::class)

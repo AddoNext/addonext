@@ -17,12 +17,16 @@ export interface ExtensionFieldShowWhenIn {
 
 export interface ExtensionField {
   id: string;
-  type: "toggle" | "select" | "checkbox_group" | "text";
+  type: "toggle" | "select" | "checkbox_group" | "text" | "color" | "range";
   label: string;
   description?: string;
   default?: unknown;
   options?: ExtensionFieldOption[];
   placeholder?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  unit?: string;
   show_when?: ExtensionFieldShowWhen;
   show_when_in?: ExtensionFieldShowWhenIn;
 }
