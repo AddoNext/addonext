@@ -180,7 +180,6 @@ class SettingsController
                     'label'       => 'Custom CSS',
                     'default'     => '',
                     'placeholder' => '/* Add your custom CSS here */',
-                    'required_extension' => 'custom-styles'
                 ],
                 [
                     'id'          => 'custom_js',
@@ -189,7 +188,6 @@ class SettingsController
                     'label'       => 'Custom JavaScript',
                     'default'     => '',
                     'placeholder' => '// Add your custom JavaScript here',
-                    'required_extension' => 'custom-scripts'
                 ],
                 [
                     'id'          => 'developer_mode',

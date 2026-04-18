@@ -17,6 +17,7 @@
 
 use Elementrify\Common\WidgetManager;
 use Elementrify\Common\ExtensionManager;
+use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Admin\LicenseController;
@@ -109,6 +110,7 @@ class Elementrify
     public function initialize_classes(): void
     {
         emty_container(AdminController::class);
+        emty_container(GlobalCustomAssets::class);
 
         if (class_exists('\Elementor\Plugin')) {
             emty_container(WidgetManager::class);

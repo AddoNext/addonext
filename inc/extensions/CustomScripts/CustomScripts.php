@@ -2,13 +2,11 @@
 namespace Elementrify\Extensions\CustomScripts;
 
 use Elementrify\Base\ExtensionBase;
-use Elementrify\Common\ExtensionManager;
-use Elementrify\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
- * Outputs Custom JavaScript entered in plugin settings.
+ * Registers per-element custom JavaScript in Elementor and extension settings for global script placement.
  *
  * @package Elementrify
  * @since 1.0.0
@@ -27,7 +25,7 @@ class CustomScripts extends ExtensionBase
 
     public function get_description(): string
     {
-        return __('Enable custom JavaScript from Elementrify settings.', 'elementrify');
+        return __('Add a Custom JavaScript section under Advanced for widgets, sections, columns, and containers.', 'elementrify');
     }
 
     public function get_icon(): string
@@ -93,28 +91,104 @@ class CustomScripts extends ExtensionBase
 
     public function register_hooks(): void
     {
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_inline_custom_js'], 30);
+        add_action('elementor/element/after_section_end', [$this, 'register_widget_section'], 26, 2);
+        foreach (['widget', 'section', 'column', 'container'] as $type) {
+            add_action('elementor/frontend/' . $type . '/after_render', [$this, 'print_element_custom_js'], 10, 1);
+        }
     }
 
-    public function enqueue_inline_custom_js(): void
+    /**
+     * @param \Elementor\Controls_Stack $element
+     * @param string $section_id
+     * @return void
+     */
+    public function register_widget_section($element, string $section_id): void
     {
-        if (is_admin()) {
+        if (!$this->is_supported_element($element)) {
             return;
         }
 
-        $custom_js = (string) OptionsHelper::get_option('custom_js', '');
-        $custom_js = trim($custom_js);
+        if (!in_array($section_id, ['section_custom_css_pro', 'section_custom_css'], true)) {
+            return;
+        }
+
+        static $registered = [];
+
+        $stack_name = $element->get_name();
+
+        if (isset($registered[$stack_name])) {
+            return;
+        }
+
+        $registered[$stack_name] = true;
+
+        $element->start_controls_section(
+            'section_elementrify_custom_scripts',
+            [
+                'label' => __('Custom JavaScript - Elementrify', 'elementrify'),
+                'tab'   => \Elementor\Controls_Manager::TAB_ADVANCED,
+            ]
+        );
+
+        $element->add_control(
+            'elementrify_custom_js',
+            [
+                'label'               => __('Custom JavaScript', 'elementrify'),
+                'type'                => \Elementor\Controls_Manager::CODE,
+                'language'            => 'javascript',
+                'render_type'         => 'ui',
+                'frontend_available'  => true,
+            ]
+        );
+
+        $element->add_control(
+            'elementrify_custom_js_hint',
+            [
+                'type'            => \Elementor\Controls_Manager::RAW_HTML,
+                'raw'             => '<p class="elementor-descriptor"><em>' . esc_html__(
+                    'Runs on the front end after this element is rendered. Avoid conflicting with other scripts.',
+                    'elementrify'
+                ) . '</em></p>',
+                'content_classes' => 'elementor-descriptor',
+            ]
+        );
+
+        $element->end_controls_section();
+    }
+
+    /**
+     * @param mixed $element
+     * @return void
+     */
+    public function print_element_custom_js($element): void
+    {
+        if (!$this->is_supported_element($element)) {
+            return;
+        }
+
+        $settings = $element->get_settings_for_display();
+        $custom_js = isset($settings['elementrify_custom_js']) ? trim((string) $settings['elementrify_custom_js']) : '';
 
         if ($custom_js === '') {
             return;
         }
 
-        $settings = emty_container(ExtensionManager::class)->get_extension_settings_payload($this->get_id());
-        $position = isset($settings['load_position']) ? (string) $settings['load_position'] : 'footer';
-        $in_footer = $position !== 'header';
+        printf(
+            '<script id="elementrify-element-js-%s">' . "\n%s\n</script>\n",
+            esc_attr((string) $element->get_id()),
+            $custom_js // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted builder input
+        );
+    }
 
-        wp_register_script('elementrify-custom-scripts-inline', '', [], ELEMENTRIFY_VERSION, $in_footer);
-        wp_enqueue_script('elementrify-custom-scripts-inline');
-        wp_add_inline_script('elementrify-custom-scripts-inline', $custom_js);
+    /**
+     * @param mixed $element
+     */
+    private function is_supported_element($element): bool
+    {
+        if (!$element instanceof \Elementor\Element_Base) {
+            return false;
+        }
+
+        return in_array($element->get_type(), ['widget', 'section', 'column', 'container'], true);
     }
 }

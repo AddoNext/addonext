@@ -13,6 +13,7 @@ use Elementrify\Widgets\Button\Button;
 use Elementrify\Widgets\Spacer\Spacer;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Common\ExtensionManager;
+use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\Dropcap\Dropcap;
 use Elementrify\Widgets\FlipBox\FlipBox;
@@ -190,5 +191,6 @@ return [
     ReadingProgressBar::class     => create(ReadingProgressBar::class),
     ScrollToTop::class            => create(ScrollToTop::class),
     ExtensionManager::class       => create(ExtensionManager::class),
+    GlobalCustomAssets::class     => create(GlobalCustomAssets::class),
     ExtensionsController::class   => create(ExtensionsController::class)
 ];

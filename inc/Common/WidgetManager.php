@@ -226,6 +226,7 @@ class WidgetManager
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/register', [$this, 'register_widgets']);
         add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_editor_badge_assets']);
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_custom_code_preview']);
     }
 
     /**
@@ -240,6 +241,40 @@ class WidgetManager
             ELEMENTRIFY_URL . 'assets/css/editor-badge.css',
             [],
             ELEMENTRIFY_VERSION
+        );
+    }
+
+    /**
+     * Loads editor JS so Custom CSS / Custom JS from extensions update the preview iframe while editing.
+     *
+     * @return void
+     */
+    public function enqueue_editor_custom_code_preview(): void
+    {
+        $active = OptionsHelper::get_option('active_extensions', []);
+        $active = is_array($active) ? $active : [];
+        $stylesActive = in_array('custom-styles', $active, true);
+        $scriptsActive = in_array('custom-scripts', $active, true);
+
+        if (!$stylesActive && !$scriptsActive) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'elementrify-editor-custom-code',
+            ELEMENTRIFY_URL . 'assets/js/editor/elementrify-custom-code-preview.js',
+            ['jquery', 'elementor-editor'],
+            ELEMENTRIFY_VERSION,
+            true
+        );
+
+        wp_localize_script(
+            'elementrify-editor-custom-code',
+            'elementrifyEditorCustomCode',
+            [
+                'stylesActive'  => $stylesActive,
+                'scriptsActive' => $scriptsActive,
+            ]
         );
     }
 
