@@ -45,7 +45,7 @@ if ($image_url === '') {
         $color = isset($h['hotspot_color']) ? esc_attr($h['hotspot_color']) : '#605BE5';
         $point_style = sprintf('left:%s%%; top:%s%%; background-color:%s; --hotspot-color:%s;', $x, $y, $color, $color);
     ?>
-    <span class="elementrify-image-hotspot__point elementor-repeater-item-<?php echo esc_attr($h['_id'] ?? $index); ?>" style="<?php echo $point_style; ?>" data-index="<?php echo esc_attr($index); ?>">
+    <span class="elementrify-image-hotspot__point elementor-repeater-item-<?php echo esc_attr($h['_id'] ?? $index); ?>" style="<?php echo esc_attr($point_style); ?>" data-index="<?php echo esc_attr($index); ?>">
         <?php if ($pulse) : ?>
         <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
         <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>

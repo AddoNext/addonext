@@ -9,14 +9,6 @@ $btn_url  = isset($settings['button_url']['url']) ? $settings['button_url']['url
 $btn_external = !empty($settings['button_url']['is_external']);
 $btn_nofollow = !empty($settings['button_url']['nofollow']);
 
-$button_attrs = [];
-if ($btn_external) {
-    $button_attrs[] = 'target="_blank"';
-}
-if ($btn_nofollow) {
-    $button_attrs[] = 'rel="nofollow"';
-}
-$button_attrs_str = implode(' ', $button_attrs);
 ?>
 <div class="elementrify-cta">
     <div class="elementrify-cta__inner">
@@ -27,7 +19,14 @@ $button_attrs_str = implode(' ', $button_attrs);
             <p class="elementrify-cta__description"><?php echo esc_html($desc); ?></p>
         <?php endif; ?>
         <?php if ($btn_text !== '') : ?>
-            <a href="<?php echo esc_url($btn_url); ?>"<?php echo $button_attrs_str ? ' ' . $button_attrs_str : ''; ?> class="elementrify-cta__button"><?php echo esc_html($btn_text); ?></a>
+            <a href="<?php echo esc_url($btn_url); ?>"<?php
+            if ($btn_external) {
+                echo ' target="_blank"';
+            }
+            if ($btn_nofollow) {
+                echo ' rel="nofollow"';
+            }
+            ?> class="elementrify-cta__button"><?php echo esc_html($btn_text); ?></a>
         <?php endif; ?>
     </div>
 </div>

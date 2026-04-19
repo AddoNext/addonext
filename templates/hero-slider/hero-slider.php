@@ -48,7 +48,12 @@ $render_bg_inner = static function (array $row, string $prefix, string $inner_cl
         $extra_attr = ' style="background-image:url(' . esc_url($fallback_photo_url) . ');background-size:cover;background-position:center;background-repeat:no-repeat;"';
     }
     ?>
-    <div class="<?php echo esc_attr($inner_class); ?>"<?php echo $extra_attr; ?>>
+    <div class="<?php echo esc_attr($inner_class); ?>"<?php
+    if ($extra_attr !== '') {
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Inline style; background URL uses esc_url().
+        echo $extra_attr;
+    }
+    ?>>
         <?php if ($v['bg_mode'] === 'video' && $v['is_file_video']) : ?>
             <video class="elementrify-hero-slider__video" autoplay muted playsinline loop preload="metadata">
                 <source src="<?php echo esc_url($v['video_link']); ?>" type="<?php echo esc_attr($v['video_mime']); ?>" />
@@ -104,6 +109,7 @@ $render_buttons = static function (array $buttons, string $id_prefix) use ($widg
             $widget->add_render_attribute($key, 'class', 'elementrify-hero-slider__btn elementrify-hero-slider__btn--' . $type);
             $widget->add_link_attributes($key, $link);
             ?>
+            <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor link attribute string. ?>
             <a <?php echo $widget->get_render_attribute_string($key); ?>>
                 <span class="elementrify-hero-slider__btn-inner">
                     <span class="elementrify-hero-slider__btn-text"><?php echo esc_html($text); ?></span>

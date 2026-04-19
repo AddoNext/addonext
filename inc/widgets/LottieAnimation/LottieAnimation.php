@@ -140,9 +140,9 @@ class LottieAnimation extends WidgetBase
             'type'        => Controls_Manager::TEXT,
             'dynamic'     => ['active' => true],
             'default'     => self::DEFAULT_JSON_URL,
-            /* translators: %s: LottieFiles URL */
             'description' => sprintf(
                 wp_kses(
+                    /* translators: %s: HTML link to LottieFiles. */
                     __('Paste a .json URL from %s.', 'elementrify'),
                     ['a' => ['href' => [], 'target' => []]]
                 ),

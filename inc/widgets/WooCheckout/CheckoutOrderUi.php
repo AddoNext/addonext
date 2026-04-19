@@ -35,7 +35,15 @@ class CheckoutOrderUi
 	<div class="elementrify-co-line__thumb"><?php echo $thumb; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 	<div class="elementrify-co-line__mid">
 		<span class="elementrify-co-line__title"><?php echo wp_kses_post($name); ?></span>
-		<span class="elementrify-co-line__qty"><?php echo esc_html(sprintf(__('Qty: %s', 'elementrify'), $cart_item['quantity'])); ?></span>
+		<span class="elementrify-co-line__qty"><?php
+			echo esc_html(
+				sprintf(
+					/* translators: %s: cart line quantity. */
+					__('Qty: %s', 'elementrify'),
+					$cart_item['quantity']
+				)
+			);
+			?></span>
 			<?php echo wc_get_formatted_cart_item_data($cart_item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div>
 	<div class="elementrify-co-line__price"><?php echo $subtotal; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
@@ -49,7 +57,7 @@ class CheckoutOrderUi
         echo '<div class="elementrify-co-totals">';
         echo '<table class="elementrify-co-totals__table"><tbody>';
 
-        echo '<tr class="cart-subtotal"><th>' . esc_html__('Subtotal', 'woocommerce') . '</th><td>';
+        echo '<tr class="cart-subtotal"><th>' . esc_html__('Subtotal', 'elementrify') . '</th><td>';
         wc_cart_totals_subtotal_html();
         echo '</td></tr>';
 
@@ -87,7 +95,7 @@ class CheckoutOrderUi
 
         do_action('woocommerce_review_order_before_order_total');
 
-        echo '<tr class="order-total"><th>' . esc_html__('Total', 'woocommerce') . '</th><td>';
+        echo '<tr class="order-total"><th>' . esc_html__('Total', 'elementrify') . '</th><td>';
         wc_cart_totals_order_total_html();
         echo '</td></tr>';
 

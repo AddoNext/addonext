@@ -45,7 +45,10 @@ if (empty($plans)) {
                     <div class="elementrify-pricing-table__badge"><?php echo esc_html($badge_text); ?></div>
                 <?php endif; ?>
                 <div class="elementrify-pricing-table__inner">
-                    <div class="elementrify-pricing-table__icon-wrap"><?php echo $icon_html; ?></div>
+                    <div class="elementrify-pricing-table__icon-wrap"><?php
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Icons_Manager::render_icon output.
+                    echo $icon_html;
+                    ?></div>
                     <h3 class="elementrify-pricing-table__title"><?php echo esc_html($plan['title'] ?? ''); ?></h3>
                     <?php if (!empty($plan['description'])) : ?>
                         <p class="elementrify-pricing-table__desc"><?php echo esc_html($plan['description']); ?></p>

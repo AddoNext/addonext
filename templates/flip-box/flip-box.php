@@ -7,14 +7,6 @@ $trigger = isset($settings['trigger']) ? $settings['trigger'] : 'hover';
 $back_url = isset($settings['back_button_url']['url']) ? $settings['back_button_url']['url'] : '#';
 $back_external = !empty($settings['back_button_url']['is_external']);
 $back_nofollow = !empty($settings['back_button_url']['nofollow']);
-$back_attrs = [];
-if ($back_external) {
-    $back_attrs[] = 'target="_blank"';
-}
-if ($back_nofollow) {
-    $back_attrs[] = 'rel="nofollow"';
-}
-$back_attrs_str = implode(' ', $back_attrs);
 ?>
 <div class="elementrify-flip-box elementrify-flip-box--<?php echo esc_attr($effect); ?> elementrify-flip-box--trigger-<?php echo esc_attr($trigger); ?>">
     <div class="elementrify-flip-box__inner">
@@ -33,8 +25,10 @@ $back_attrs_str = implode(' ', $back_attrs);
                         $icon_html = ob_get_clean();
                     }
                     if ($icon_html !== '' && trim($icon_html) !== '') {
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Icons_Manager::render_icon output.
                         echo $icon_html;
                     } else {
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG from plugin.
                         echo \Elementrify\Widgets\FlipBox\FlipBox::get_cube_icon_svg();
                     }
                     ?>
@@ -56,7 +50,14 @@ $back_attrs_str = implode(' ', $back_attrs);
                     <p class="elementrify-flip-box__back-desc"><?php echo esc_html($settings['back_description']); ?></p>
                 <?php endif; ?>
                 <?php if (isset($settings['back_button_text']) && $settings['back_button_text'] !== '') : ?>
-                    <a href="<?php echo esc_url($back_url); ?>" <?php echo $back_attrs_str ? $back_attrs_str : ''; ?> class="elementrify-flip-box__back-button"><?php echo esc_html($settings['back_button_text']); ?></a>
+                    <a href="<?php echo esc_url($back_url); ?>"<?php
+                    if ($back_external) {
+                        echo ' target="_blank"';
+                    }
+                    if ($back_nofollow) {
+                        echo ' rel="nofollow"';
+                    }
+                    ?> class="elementrify-flip-box__back-button"><?php echo esc_html($settings['back_button_text']); ?></a>
                 <?php endif; ?>
             </div>
         </div>

@@ -69,7 +69,26 @@ if ($view === 'grid') :
             <img class="elementrify-team-members-card__image" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?>">
             <h3 class="elementrify-team-members-card__name"><?php echo esc_html($name); ?></h3>
             <p class="elementrify-team-members-card__role"><?php echo esc_html($role); ?></p>
-            <div class="elementrify-team-members-card__social"><?php echo elementrify_team_members_card_social($item); ?></div>
+            <div class="elementrify-team-members-card__social"><?php
+            echo wp_kses(
+                elementrify_team_members_card_social($item),
+                [
+                    'a'    => [
+                        'href'       => true,
+                        'aria-label' => true,
+                        'target'     => true,
+                        'rel'        => true,
+                    ],
+                    'svg'  => [
+                        'xmlns'       => true,
+                        'viewBox'     => true,
+                        'fill'        => true,
+                        'aria-hidden' => true,
+                    ],
+                    'path' => ['d' => true],
+                ]
+            );
+            ?></div>
         </div>
     <?php endforeach; ?>
 </div>
@@ -104,7 +123,26 @@ else :
                     <img class="elementrify-team-members-card__image" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?>">
                     <h3 class="elementrify-team-members-card__name"><?php echo esc_html($name); ?></h3>
                     <p class="elementrify-team-members-card__role"><?php echo esc_html($role); ?></p>
-                    <div class="elementrify-team-members-card__social"><?php echo elementrify_team_members_card_social($item); ?></div>
+                    <div class="elementrify-team-members-card__social"><?php
+            echo wp_kses(
+                elementrify_team_members_card_social($item),
+                [
+                    'a'    => [
+                        'href'       => true,
+                        'aria-label' => true,
+                        'target'     => true,
+                        'rel'        => true,
+                    ],
+                    'svg'  => [
+                        'xmlns'       => true,
+                        'viewBox'     => true,
+                        'fill'        => true,
+                        'aria-hidden' => true,
+                    ],
+                    'path' => ['d' => true],
+                ]
+            );
+            ?></div>
                 </div>
             </div>
         <?php endforeach; ?>

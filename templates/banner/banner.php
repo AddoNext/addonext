@@ -27,7 +27,7 @@ if ($video_link !== '' && preg_match('#vimeo\.com/(?:video/)?(\d+)#', $video_lin
 $is_file_video = $video_link !== '' && preg_match('#\.(mp4|webm|ogg)(\?|#|$)#i', $video_link);
 $video_mime = 'video/mp4';
 if ($is_file_video) {
-    $path = (string) parse_url($video_link, PHP_URL_PATH);
+    $path = (string) wp_parse_url($video_link, PHP_URL_PATH);
     $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
     $map = ['mp4' => 'video/mp4', 'webm' => 'video/webm', 'ogg' => 'video/ogg'];
     if (isset($map[$ext])) {
@@ -90,6 +90,7 @@ if ($is_file_video) {
                     $this->add_render_attribute($key, 'class', 'elementrify-banner__btn elementrify-banner__btn--' . $type);
                     $this->add_link_attributes($key, $link);
                     ?>
+                    <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor link attribute string. ?>
                     <a <?php echo $this->get_render_attribute_string($key); ?>><?php echo esc_html($text); ?></a>
                 <?php endforeach; ?>
             </div>

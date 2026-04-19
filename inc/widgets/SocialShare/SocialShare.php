@@ -266,7 +266,10 @@ class SocialShare extends WidgetBase
             #>
                 <a href="<# print(shareUrl); #>" target="_blank" rel="noopener noreferrer" class="elementrify-social-share__link elementrify-social-share__link--{{{ n.network }}}" aria-label="<# print(tooltipText); #>"{{{ colorStyle }}}>
                     <span class="elementrify-social-share__tooltip" role="tooltip"><# print(tooltipText); #></span>
-                    <?php echo $this->get_icons_svg_markup(); ?>
+                    <?php
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Editor template; SVG markup from get_icon_svg() uses esc_attr on classes.
+                    echo $this->get_icons_svg_markup();
+                    ?>
                 </a>
             <# }); #>
         </div>

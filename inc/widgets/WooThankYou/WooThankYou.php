@@ -665,7 +665,7 @@ class WooThankYou extends WidgetBase
             $order_total = wp_kses_post($order->get_formatted_order_total());
             $payment_label = $order->get_payment_method_title();
             if ($payment_label === '') {
-                $payment_label = __('N/A', 'woocommerce');
+                $payment_label = __('N/A', 'elementrify');
             }
         } else {
             $order_number = '';

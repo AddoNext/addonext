@@ -13,7 +13,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 <form class="elementrify-wd-account__form" method="post" autocomplete="off" novalidate>
     <div class="elementrify-wd-account__row">
         <label class="elementrify-wd-account__label" for="elementrify-wd-account-first-<?php echo esc_attr($wd_uid); ?>">
-            <?php echo esc_html__('First name', 'woocommerce'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
+            <?php echo esc_html__('First name', 'elementrify'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
         </label>
         <div class="elementrify-wd-account__field">
             <input
@@ -30,7 +30,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 
     <div class="elementrify-wd-account__row">
         <label class="elementrify-wd-account__label" for="elementrify-wd-account-last-<?php echo esc_attr($wd_uid); ?>">
-            <?php echo esc_html__('Last name', 'woocommerce'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
+            <?php echo esc_html__('Last name', 'elementrify'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
         </label>
         <div class="elementrify-wd-account__field">
             <input
@@ -47,7 +47,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 
     <div class="elementrify-wd-account__row elementrify-wd-account__row--wide">
         <label class="elementrify-wd-account__label" for="elementrify-wd-account-display-<?php echo esc_attr($wd_uid); ?>">
-            <?php echo esc_html__('Display name', 'woocommerce'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
+            <?php echo esc_html__('Display name', 'elementrify'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
         </label>
         <div class="elementrify-wd-account__field">
             <input
@@ -61,14 +61,14 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
                 aria-describedby="elementrify-wd-account-display-hint-<?php echo esc_attr($wd_uid); ?>"
             >
             <p class="elementrify-wd-account__hint" id="elementrify-wd-account-display-hint-<?php echo esc_attr($wd_uid); ?>">
-                <?php echo esc_html__('This will be how your name will be displayed in the account section and in reviews', 'woocommerce'); ?>
+                <?php echo esc_html__('This will be how your name will be displayed in the account section and in reviews', 'elementrify'); ?>
             </p>
         </div>
     </div>
 
     <div class="elementrify-wd-account__row">
         <label class="elementrify-wd-account__label" for="elementrify-wd-account-email-<?php echo esc_attr($wd_uid); ?>">
-            <?php echo esc_html__('Email address', 'woocommerce'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
+            <?php echo esc_html__('Email address', 'elementrify'); ?><span class="elementrify-wd-account__required" aria-hidden="true">*</span>
         </label>
         <div class="elementrify-wd-account__field">
             <input
@@ -84,11 +84,11 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
     </div>
 
     <fieldset class="elementrify-wd-account__fieldset">
-        <legend class="elementrify-wd-account__legend"><?php echo esc_html__('Password change', 'woocommerce'); ?></legend>
+        <legend class="elementrify-wd-account__legend"><?php echo esc_html__('Password change', 'elementrify'); ?></legend>
 
         <div class="elementrify-wd-account__row">
             <label class="elementrify-wd-account__label" for="elementrify-wd-account-pass-cur-<?php echo esc_attr($wd_uid); ?>">
-                <?php echo esc_html__('Current password (leave blank to leave unchanged)', 'woocommerce'); ?>
+                <?php echo esc_html__('Current password (leave blank to leave unchanged)', 'elementrify'); ?>
             </label>
             <div class="elementrify-wd-account__field">
                 <input
@@ -104,7 +104,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 
         <div class="elementrify-wd-account__row">
             <label class="elementrify-wd-account__label" for="elementrify-wd-account-pass-1-<?php echo esc_attr($wd_uid); ?>">
-                <?php echo esc_html__('New password (leave blank to leave unchanged)', 'woocommerce'); ?>
+                <?php echo esc_html__('New password (leave blank to leave unchanged)', 'elementrify'); ?>
             </label>
             <div class="elementrify-wd-account__field">
                 <input
@@ -120,7 +120,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 
         <div class="elementrify-wd-account__row">
             <label class="elementrify-wd-account__label" for="elementrify-wd-account-pass-2-<?php echo esc_attr($wd_uid); ?>">
-                <?php echo esc_html__('Confirm new password', 'woocommerce'); ?>
+                <?php echo esc_html__('Confirm new password', 'elementrify'); ?>
             </label>
             <div class="elementrify-wd-account__field">
                 <input
@@ -137,7 +137,7 @@ $wd_uid = isset($wd_uid) ? (string) $wd_uid : '';
 
     <div class="elementrify-wd-account__actions">
         <button type="submit" class="elementrify-wd-account__submit">
-            <?php echo esc_html__('Save changes', 'woocommerce'); ?>
+            <?php echo esc_html__('Save changes', 'elementrify'); ?>
         </button>
     </div>
 

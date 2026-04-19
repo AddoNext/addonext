@@ -23,13 +23,15 @@ if ( empty( $networks ) ) {
         $custom_url = isset( $n['custom_url']['url'] ) ? $n['custom_url']['url'] : '';
         $href = \Elementrify\Widgets\SocialShare\SocialShare::get_share_url( $network, $page_url, $custom_url );
         $custom_color = isset( $n['custom_color'] ) ? $n['custom_color'] : '';
-        $style = $custom_color !== '' ? ' style="background-color: ' . esc_attr( $custom_color ) . '"' : '';
         $platform_label = \Elementrify\Widgets\SocialShare\SocialShare::get_network_label( $network );
         $tooltip_text = sprintf( /* translators: %s: platform name */ __( 'Share on %s', 'elementrify' ), $platform_label );
     ?>
-        <a href="<?php echo esc_url( $href ); ?>" target="_blank" rel="noopener noreferrer" class="elementrify-social-share__link elementrify-social-share__link--<?php echo esc_attr( $network ); ?>" aria-label="<?php echo esc_attr( $tooltip_text ); ?>"<?php echo $style; ?>>
+        <a href="<?php echo esc_url( $href ); ?>" target="_blank" rel="noopener noreferrer" class="elementrify-social-share__link elementrify-social-share__link--<?php echo esc_attr( $network ); ?>" aria-label="<?php echo esc_attr( $tooltip_text ); ?>"<?php echo $custom_color !== '' ? ' style="' . esc_attr( 'background-color:' . $custom_color ) . '"' : ''; ?>>
             <span class="elementrify-social-share__tooltip" role="tooltip"><?php echo esc_html( $tooltip_text ); ?></span>
-            <?php echo $this->get_icon_svg( $network ); ?>
+            <?php
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG from get_icon_svg(); classes use esc_attr.
+            echo $this->get_icon_svg( $network );
+            ?>
         </a>
     <?php endforeach; ?>
 </div>

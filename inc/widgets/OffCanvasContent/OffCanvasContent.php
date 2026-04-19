@@ -22,7 +22,11 @@ class OffCanvasContent extends WidgetBase
         ]);
         if (!empty($posts)) {
             foreach ($posts as $post) {
-                $options[(string) $post->ID] = $post->post_title !== '' ? $post->post_title : sprintf(__('Template #%d', 'elementrify'), $post->ID);
+                $options[(string) $post->ID] = $post->post_title !== '' ? $post->post_title : sprintf(
+                    /* translators: %d: Elementor template post ID */
+                    __('Template #%d', 'elementrify'),
+                    $post->ID
+                );
             }
         }
         return $options;

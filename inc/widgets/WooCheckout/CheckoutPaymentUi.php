@@ -33,8 +33,8 @@ class CheckoutPaymentUi
             $msg = apply_filters(
                 'woocommerce_no_available_payment_methods_message',
                 WC()->customer->get_billing_country()
-                    ? esc_html__('Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce')
-                    : esc_html__('Please fill in your details above to see available payment methods.', 'woocommerce')
+                    ? esc_html__('Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'elementrify')
+                    : esc_html__('Please fill in your details above to see available payment methods.', 'elementrify')
             );
             echo '<li class="elementrify-co-payment-item elementrify-co-tpl-payment-empty"><p class="elementrify-co-tpl-payment-msg">' . wp_kses_post($msg) . '</p></li>';
         }

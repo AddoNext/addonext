@@ -1,6 +1,8 @@
 <?php
 namespace Elementrify\Common;
 
+defined('ABSPATH') || exit;
+
 use Elementor\Widgets_Manager;
 use Elementrify\Utils\OptionsHelper;
 use Elementrify\Utils\LicenseCapabilities;
@@ -86,8 +88,6 @@ use Elementrify\Widgets\ProductTabs\ProductTabs;
 use Elementrify\Widgets\WooCheckout\WooCheckout;
 use Elementrify\Widgets\WooDashboard\WooDashboard;
 use Elementrify\Widgets\WooThankYou\WooThankYou;
-
-defined('ABSPATH') or exit;
 
 /**
  * WidgetManager class

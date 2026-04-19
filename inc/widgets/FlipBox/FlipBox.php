@@ -464,12 +464,11 @@ class FlipBox extends WidgetBase
 
     protected function content_template(): void
     {
-        $svg_fallback = str_replace("'", "\\'", self::get_cube_icon_svg());
         ?>
         <#
         var effect = settings.hover_effect || 'flip-horizontal';
         var trigger = settings.trigger || 'hover';
-        var frontIconHtml = '<?php echo $svg_fallback; ?>';
+        var frontIconHtml = <?php echo wp_json_encode(self::get_cube_icon_svg()); ?>;
         var isDefaultCube = settings.front_icon && settings.front_icon.value === 'eicon-cube' && settings.front_icon.library === 'eicons';
         if (settings.front_icon && settings.front_icon.value && !isDefaultCube) {
             var iconResult = elementor.helpers.renderIcon(view, settings.front_icon, { 'aria-hidden': 'true' }, 'i', 'object');

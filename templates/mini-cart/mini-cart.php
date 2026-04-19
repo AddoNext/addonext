@@ -28,7 +28,7 @@ $cart_url = wc_get_cart_url();
                 <span class="elementrify-mini-cart__label"><?php echo esc_html($cart_label); ?></span>
             <?php endif; ?>
             <?php if ($show_subtotal) : ?>
-                <span class="elementrify-mini-cart__subtotal"><?php echo WC()->cart->get_cart_subtotal(); ?></span>
+                <span class="elementrify-mini-cart__subtotal"><?php echo wp_kses_post(WC()->cart->get_cart_subtotal()); ?></span>
             <?php endif; ?>
             <?php if ($show_count) : ?>
                 <span class="elementrify-mini-cart__count<?php echo $cart_count === 0 ? ' elementrify-mini-cart__count--empty' : ''; ?>"><?php echo esc_html((string) $cart_count); ?></span>

@@ -17,9 +17,15 @@ $star_svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="c
             $fill_percent = (int) round($fill * 100);
         ?>
             <span class="elementrify-star-rating__star">
-                <span class="elementrify-star-rating__star-empty"><?php echo $star_svg; ?></span>
+                <span class="elementrify-star-rating__star-empty"><?php
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline SVG markup.
+                echo $star_svg;
+                ?></span>
                 <span class="elementrify-star-rating__star-fill" style="width: <?php echo esc_attr($fill_percent); ?>%">
-                    <span class="elementrify-star-rating__star-filled"><?php echo $star_svg; ?></span>
+                    <span class="elementrify-star-rating__star-filled"><?php
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline SVG markup.
+                    echo $star_svg;
+                    ?></span>
                 </span>
             </span>
         <?php endfor; ?>

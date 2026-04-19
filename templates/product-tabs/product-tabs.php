@@ -103,7 +103,6 @@ $tabs_grid_vars = sprintf(
             $footer_text = isset($tab_row['footer_button_text']) ? trim((string) $tab_row['footer_button_text']) : '';
             $footer_link = isset($tab_row['footer_button_link']) && is_array($tab_row['footer_button_link']) ? $tab_row['footer_button_link'] : [];
             $footer_url = isset($footer_link['url']) ? trim((string) $footer_link['url']) : '';
-            $footer_target = !empty($footer_link['is_external']) ? ' target="_blank"' : '';
             $rel_parts = [];
             if (!empty($footer_link['nofollow'])) {
                 $rel_parts[] = 'nofollow';
@@ -112,7 +111,6 @@ $tabs_grid_vars = sprintf(
                 $rel_parts[] = 'noopener';
                 $rel_parts[] = 'noreferrer';
             }
-            $footer_rel = $rel_parts !== [] ? ' rel="' . esc_attr(implode(' ', $rel_parts)) . '"' : '';
             ?>
             <div
                 class="elementrify-product-tabs__panel<?php echo $is_first ? ' is-active' : ''; ?>"
@@ -226,7 +224,14 @@ $tabs_grid_vars = sprintf(
                 <?php if ($footer_text !== '') : ?>
                     <div class="elementrify-product-tabs__footer">
                         <?php if ($footer_url !== '') : ?>
-                            <a class="elementrify-product-tabs__cta" href="<?php echo esc_url($footer_url); ?>"<?php echo $footer_target . $footer_rel; ?>>
+                            <a class="elementrify-product-tabs__cta" href="<?php echo esc_url($footer_url); ?>"<?php
+                            if (!empty($footer_link['is_external'])) {
+                                echo ' target="_blank"';
+                            }
+                            if ($rel_parts !== []) {
+                                echo ' rel="' . esc_attr(implode(' ', $rel_parts)) . '"';
+                            }
+                            ?>>
                                 <?php echo esc_html($footer_text); ?>
                             </a>
                         <?php else : ?>

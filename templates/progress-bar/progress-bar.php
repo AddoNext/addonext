@@ -27,10 +27,10 @@ if (empty($items)) {
             <div class="elementrify-progress-bar__row">
                 <div class="elementrify-progress-bar__header">
                     <span class="elementrify-progress-bar__title"><?php echo esc_html($title); ?></span>
-                    <span class="elementrify-progress-bar__percent" style="<?php echo $percent_style; ?>"><?php echo (int) $percent; ?>%</span>
+                    <span class="elementrify-progress-bar__percent" style="<?php echo esc_attr(trim($percent_style)); ?>"><?php echo (int) $percent; ?>%</span>
                 </div>
                 <div class="elementrify-progress-bar__track">
-                    <div class="elementrify-progress-bar__fill" style="<?php echo $fill_style; ?>"></div>
+                    <div class="elementrify-progress-bar__fill" style="<?php echo esc_attr($fill_style); ?>"></div>
                 </div>
             </div>
         <?php endforeach; ?>

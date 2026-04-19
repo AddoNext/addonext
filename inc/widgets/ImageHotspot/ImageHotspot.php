@@ -404,7 +404,7 @@ class ImageHotspot extends WidgetBase
         $placeholder = esc_url(\Elementor\Utils::get_placeholder_image_src());
         ?>
         <#
-        var imageUrl = (settings.image && settings.image.url) ? settings.image.url : '<?php echo $placeholder; ?>';
+        var imageUrl = (settings.image && settings.image.url) ? settings.image.url : '<?php echo esc_url($placeholder); ?>';
         var hotspots = settings.hotspots || [];
         var trigger = settings.tooltip_trigger || 'hover';
         var tooltipPos = settings.tooltip_position || 'bottom';

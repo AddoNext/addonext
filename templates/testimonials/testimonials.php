@@ -94,9 +94,15 @@ if ($view === 'grid') :
                     $fill_pct = (int) round($fill * 100);
                 ?>
                     <span class="elementrify-testimonial__star">
-                        <span class="elementrify-testimonial__star-empty"><?php echo $star_svg; ?></span>
+                        <span class="elementrify-testimonial__star-empty"><?php
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline SVG markup.
+                        echo $star_svg;
+                        ?></span>
                         <span class="elementrify-testimonial__star-fill" style="width:<?php echo esc_attr($fill_pct); ?>%">
-                            <span class="elementrify-testimonial__star-filled"><?php echo $star_svg; ?></span>
+                            <span class="elementrify-testimonial__star-filled"><?php
+                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline SVG markup.
+                            echo $star_svg;
+                            ?></span>
                         </span>
                     </span>
                 <?php endfor; ?>
@@ -142,9 +148,15 @@ else :
                             $fill_pct = (int) round($fill * 100);
                         ?>
                             <span class="elementrify-testimonial__star">
-                                <span class="elementrify-testimonial__star-empty"><?php echo $star_svg; ?></span>
+                                <span class="elementrify-testimonial__star-empty"><?php
+                                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline SVG markup.
+                                echo $star_svg;
+                                ?></span>
                                 <span class="elementrify-testimonial__star-fill" style="width:<?php echo esc_attr($fill_pct); ?>%">
-                                    <span class="elementrify-testimonial__star-filled"><?php echo $star_svg; ?></span>
+                                    <span class="elementrify-testimonial__star-filled"><?php
+                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline SVG markup.
+                                    echo $star_svg;
+                                    ?></span>
                                 </span>
                             </span>
                         <?php endfor; ?>

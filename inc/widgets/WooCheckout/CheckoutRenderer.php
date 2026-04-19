@@ -68,7 +68,7 @@ class CheckoutRenderer
 
         $billingTitle = isset($settings['billing_section_title']) && $settings['billing_section_title'] !== ''
             ? (string) $settings['billing_section_title']
-            : __('Billing details', 'woocommerce');
+            : __('Billing details', 'elementrify');
         $summaryTitle = isset($settings['order_summary_title']) && $settings['order_summary_title'] !== ''
             ? (string) $settings['order_summary_title']
             : __('Order summary', 'elementrify');
@@ -80,7 +80,7 @@ class CheckoutRenderer
 
         $gatewayMarkup = CheckoutPaymentUi::render_gateway_list();
 
-        echo '<form name="checkout" method="post" class="checkout woocommerce-checkout" action="' . esc_url(wc_get_checkout_url()) . '" enctype="multipart/form-data" aria-label="' . esc_attr__('Checkout', 'woocommerce') . '">';
+        echo '<form name="checkout" method="post" class="checkout woocommerce-checkout" action="' . esc_url(wc_get_checkout_url()) . '" enctype="multipart/form-data" aria-label="' . esc_attr__('Checkout', 'elementrify') . '">';
         echo '<input type="hidden" name="elementrify_checkout" value="1" />';
         $showPaymentDescriptions = !empty($settings['show_payment_descriptions']) && $settings['show_payment_descriptions'] === 'yes';
         echo '<input type="hidden" name="elementrify_show_payment_descriptions" value="' . esc_attr($showPaymentDescriptions ? '1' : '0') . '" />';
@@ -162,7 +162,7 @@ class CheckoutRenderer
             echo '<p class="form-row form-row-wide create-account">';
             echo '<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">';
             echo '<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1" ' . checked((true === $checkout->get_value('createaccount') || (true === apply_filters('woocommerce_create_account_default_checked', false))), true, false) . ' /> ';
-            echo '<span>' . esc_html__('Create an account?', 'woocommerce') . '</span>';
+            echo '<span>' . esc_html__('Create an account?', 'elementrify') . '</span>';
             echo '</label></p>';
         }
 
@@ -216,7 +216,7 @@ class CheckoutRenderer
         echo '<h3 id="ship-to-different-address">';
         echo '<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">';
         echo '<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" type="checkbox" name="ship_to_different_address" value="1" ' . checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1, false) . ' /> ';
-        echo '<span>' . esc_html__('Ship to a different address?', 'woocommerce') . '</span>';
+        echo '<span>' . esc_html__('Ship to a different address?', 'elementrify') . '</span>';
         echo '</label></h3>';
 
         echo '<div class="shipping_address">';

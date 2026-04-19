@@ -298,7 +298,7 @@ class SettingsController
     private static function ensure_backup_dir(): bool
     {
         $dir = self::get_backup_dir();
-        if (! is_dir($dir) || ! is_writable($dir)) {
+        if (! is_dir($dir) || ! wp_is_writable($dir)) {
             return false;
         }
         $index = $dir . '/index.php';
@@ -328,7 +328,7 @@ class SettingsController
             $name = basename($path);
             $list[] = [
                 'name' => $name,
-                'date' => date('M j, Y \a\t g:i A', filemtime($path)),
+                'date' => wp_date('M j, Y \a\t g:i A', (int) filemtime($path)),
                 'timestamp' => filemtime($path),
             ];
         }
@@ -377,7 +377,7 @@ class SettingsController
         }
 
         $json = wp_json_encode(['elementrify_backup' => true, 'version' => 1, 'values' => $values], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        $filename = 'elementrify-backup-' . date('Y-m-d-H-i-s') . '.json';
+        $filename = 'elementrify-backup-' . gmdate('Y-m-d-H-i-s') . '.json';
 
         if ($save_to_server && self::ensure_backup_dir()) {
             $dir = self::get_backup_dir();
@@ -471,7 +471,7 @@ class SettingsController
         }
         $path = self::get_backup_dir() . '/' . $file;
         if (is_file($path)) {
-            unlink($path);
+            wp_delete_file($path);
         }
         $backups = self::list_backup_files();
         return new WP_REST_Response(['success' => true, 'backups' => $backups]);

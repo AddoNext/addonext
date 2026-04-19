@@ -274,7 +274,7 @@ class WooCheckout extends WidgetBase
         $this->add_control('billing_section_title', [
             'label'   => __('Billing section title', 'elementrify'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Billing details', 'woocommerce'),
+            'default' => __('Billing details', 'elementrify'),
         ]);
 
         $this->add_control('order_summary_title', [
@@ -745,8 +745,8 @@ class WooCheckout extends WidgetBase
 
             if (WC()->cart->is_empty() && !is_customize_preview() && apply_filters('woocommerce_checkout_redirect_empty_cart', true)) {
                 echo '<div class="elementrify-wc-checkout">';
-                wc_print_notice(__('Your cart is currently empty.', 'woocommerce'), 'notice');
-                echo '<p><a class="button wc-forward" href="' . esc_url(wc_get_page_permalink('shop')) . '">' . esc_html__('Return to shop', 'woocommerce') . '</a></p>';
+                wc_print_notice(__('Your cart is currently empty.', 'elementrify'), 'notice');
+                echo '<p><a class="button wc-forward" href="' . esc_url(wc_get_page_permalink('shop')) . '">' . esc_html__('Return to shop', 'elementrify') . '</a></p>';
                 echo '</div>';
 
                 return;
@@ -754,7 +754,7 @@ class WooCheckout extends WidgetBase
 
             if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) {
                 echo '<div class="elementrify-wc-checkout">';
-                echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'woocommerce')));
+                echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'elementrify')));
                 echo '</div>';
 
                 return;
@@ -770,7 +770,7 @@ class WooCheckout extends WidgetBase
             }
 
             if (wc_notice_count('error') === 0 && !empty($_POST['woocommerce_checkout_update_totals'])) {
-                wc_add_notice(__('The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'woocommerce'));
+                wc_add_notice(__('The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'elementrify'));
             }
 
             $showCoupon = isset($settings['show_coupon_sidebar']) && $settings['show_coupon_sidebar'] === 'yes';

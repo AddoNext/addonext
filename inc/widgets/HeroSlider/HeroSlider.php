@@ -140,7 +140,7 @@ class HeroSlider extends WidgetBase
         $is_file_video = $video_link !== '' && preg_match('#\.(mp4|webm|ogg)(\?|#|$)#i', $video_link);
         $video_mime = 'video/mp4';
         if ($is_file_video) {
-            $path = (string) parse_url($video_link, PHP_URL_PATH);
+            $path = (string) wp_parse_url($video_link, PHP_URL_PATH);
             $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
             $map = ['mp4' => 'video/mp4', 'webm' => 'video/webm', 'ogg' => 'video/ogg'];
             if (isset($map[$ext])) {

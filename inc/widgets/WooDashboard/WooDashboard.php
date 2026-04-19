@@ -106,10 +106,10 @@ class WooDashboard extends WidgetBase
                 'nonce'   => wp_create_nonce('elementrify_woo_dashboard_account'),
                 'nonceAddress' => wp_create_nonce('elementrify_woo_dashboard_address'),
                 'i18n'    => [
-                    'editAddress'  => __('Edit %s', 'woocommerce'),
-                    'addAddress'   => __('Add %s', 'woocommerce'),
+                    'editAddress'  => __('Edit %s', 'elementrify'),
+                    'addAddress'   => __('Add %s', 'elementrify'),
                     'addressSaved' => __('Address saved.', 'elementrify'),
-                    'addressEmpty' => __('You have not set up this type of address yet.', 'woocommerce'),
+                    'addressEmpty' => __('You have not set up this type of address yet.', 'elementrify'),
                 ],
             ]
         );
@@ -357,7 +357,7 @@ class WooDashboard extends WidgetBase
             if (!empty($field['required']) && empty($value)) {
                 $messages[] = sprintf(
                     /* translators: %s: Field name. */
-                    __('%s is a required field.', 'woocommerce'),
+                    __('%s is a required field.', 'elementrify'),
                     wp_strip_all_tags((string) $field['label'])
                 );
                 $field_invalid = true;
@@ -371,8 +371,8 @@ class WooDashboard extends WidgetBase
                             $value = wc_format_postcode($value, $postcode_country);
                             if ($value !== '' && !\WC_Validation::is_postcode($value, $postcode_country)) {
                                 $postcode_notice = ('IE' === $postcode_country)
-                                    ? __('Please enter a valid Eircode.', 'woocommerce')
-                                    : __('Please enter a valid postcode / ZIP.', 'woocommerce');
+                                    ? __('Please enter a valid Eircode.', 'elementrify')
+                                    : __('Please enter a valid postcode / ZIP.', 'elementrify');
                                 $messages[] = $postcode_notice;
                                 $field_invalid = true;
                             }
@@ -381,7 +381,7 @@ class WooDashboard extends WidgetBase
                             if ($value !== '' && !\WC_Validation::is_phone($value)) {
                                 $messages[] = sprintf(
                                     /* translators: %s: Field name. */
-                                    __('%s is not a valid phone number.', 'woocommerce'),
+                                    __('%s is not a valid phone number.', 'elementrify'),
                                     wp_strip_all_tags((string) $field['label'])
                                 );
                                 $field_invalid = true;
@@ -392,7 +392,7 @@ class WooDashboard extends WidgetBase
                             if (!is_email($value)) {
                                 $messages[] = sprintf(
                                     /* translators: %s: Field name. */
-                                    __('%s is not a valid email address.', 'woocommerce'),
+                                    __('%s is not a valid email address.', 'elementrify'),
                                     wp_strip_all_tags((string) $field['label'])
                                 );
                                 $field_invalid = true;
@@ -441,7 +441,7 @@ class WooDashboard extends WidgetBase
         return [
             'success'      => true,
             'messages'     => [],
-            'message'      => __('Address changed successfully.', 'woocommerce'),
+            'message'      => __('Address changed successfully.', 'elementrify'),
             'formatted'    => $formatted,
             'has_address'  => $has_address,
             'address_type' => $address_type,
@@ -496,16 +496,16 @@ class WooDashboard extends WidgetBase
         $messages = [];
 
         if (is_email($accountDisplayName)) {
-            $messages[] = __('Display name cannot be changed to email address due to privacy concern.', 'woocommerce');
+            $messages[] = __('Display name cannot be changed to email address due to privacy concern.', 'elementrify');
         }
 
         $requiredFields = apply_filters(
             'woocommerce_save_account_details_required_fields',
             [
-                'account_first_name'   => __('First name', 'woocommerce'),
-                'account_last_name'    => __('Last name', 'woocommerce'),
-                'account_display_name' => __('Display name', 'woocommerce'),
-                'account_email'        => __('Email address', 'woocommerce'),
+                'account_first_name'   => __('First name', 'elementrify'),
+                'account_last_name'    => __('Last name', 'elementrify'),
+                'account_display_name' => __('Display name', 'elementrify'),
+                'account_email'        => __('Email address', 'elementrify'),
             ]
         );
 
@@ -513,7 +513,7 @@ class WooDashboard extends WidgetBase
             if (empty($_POST[$fieldKey])) {
                 $messages[] = sprintf(
                     /* translators: %s: Field name. */
-                    __('%s is a required field.', 'woocommerce'),
+                    __('%s is a required field.', 'elementrify'),
                     $fieldName
                 );
             }
@@ -523,28 +523,28 @@ class WooDashboard extends WidgetBase
         if ($accountEmailRaw !== '') {
             $accountEmail = sanitize_email($accountEmailRaw);
             if (!is_email($accountEmail)) {
-                $messages[] = __('Please provide a valid email address.', 'woocommerce');
+                $messages[] = __('Please provide a valid email address.', 'elementrify');
             } elseif (email_exists($accountEmail) && $accountEmail !== $currentUser->user_email) {
-                $messages[] = __('This email address is already registered.', 'woocommerce');
+                $messages[] = __('This email address is already registered.', 'elementrify');
             } elseif (is_email($accountEmail)) {
                 $userObj->user_email = $accountEmail;
             }
         }
 
         if ($passCur !== '' && $pass1 === '' && $pass2 === '') {
-            $messages[] = __('Please fill out all password fields.', 'woocommerce');
+            $messages[] = __('Please fill out all password fields.', 'elementrify');
             $savePass = false;
         } elseif ($pass1 !== '' && $passCur === '') {
-            $messages[] = __('Please enter your current password.', 'woocommerce');
+            $messages[] = __('Please enter your current password.', 'elementrify');
             $savePass = false;
         } elseif ($pass1 !== '' && $pass2 === '') {
-            $messages[] = __('Please re-enter your password.', 'woocommerce');
+            $messages[] = __('Please re-enter your password.', 'elementrify');
             $savePass = false;
         } elseif (($pass1 !== '' || $pass2 !== '') && $pass1 !== $pass2) {
-            $messages[] = __('New passwords do not match.', 'woocommerce');
+            $messages[] = __('New passwords do not match.', 'elementrify');
             $savePass = false;
         } elseif ($pass1 !== '' && !wp_check_password($passCur, $currentUser->user_pass, $currentUser->ID)) {
-            $messages[] = __('Your current password is incorrect.', 'woocommerce');
+            $messages[] = __('Your current password is incorrect.', 'elementrify');
             $savePass = false;
         }
 
@@ -599,7 +599,7 @@ class WooDashboard extends WidgetBase
                 [
                     sprintf(
                         /* translators: %s: Error message. */
-                        __('An error occurred while saving account details: %s', 'woocommerce'),
+                        __('An error occurred while saving account details: %s', 'elementrify'),
                         $e->getMessage()
                     ),
                 ]
@@ -614,7 +614,7 @@ class WooDashboard extends WidgetBase
         return [
             'success'      => true,
             'messages'     => [],
-            'message'      => __('Account details changed successfully.', 'woocommerce'),
+            'message'      => __('Account details changed successfully.', 'elementrify'),
             'display_name' => $displayName,
         ];
     }

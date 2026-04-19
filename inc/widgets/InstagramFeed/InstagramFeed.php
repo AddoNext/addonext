@@ -730,7 +730,7 @@ class InstagramFeed extends WidgetBase
             $align = $el['align'] ?? 'center';
             $type = $el['element'] ?? '';
             $class = 'elementrify-instagram-feed__el elementrify-instagram-feed__el--' . esc_attr($type) . ' elementrify-instagram-feed__el--' . esc_attr($align);
-            echo '<div class="' . $class . '">';
+            echo '<div class="' . esc_attr($class) . '">';
             if ($type === 'username' && $username !== '') {
                 echo '<a href="' . esc_url($permalink) . '" target="' . esc_attr($new_tab) . '" rel="noopener noreferrer" class="elementrify-instagram-feed__username">' . esc_html($username) . '</a>';
             } elseif ($type === 'caption' && $caption !== '') {

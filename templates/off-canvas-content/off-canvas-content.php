@@ -48,6 +48,7 @@ $wrapper_classes = [
             <div class="elementrify-off-canvas__panel-body">
                 <?php
                 if ($content_source === 'template' && $template_id > 0) {
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor library template HTML.
                     echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id);
                 } else {
                     echo wp_kses_post($content);

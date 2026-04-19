@@ -12,8 +12,8 @@ if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
     $addressList = apply_filters(
         'woocommerce_my_account_get_addresses',
         [
-            'billing'  => __('Billing address', 'woocommerce'),
-            'shipping' => __('Shipping address', 'woocommerce'),
+            'billing'  => __('Billing address', 'elementrify'),
+            'shipping' => __('Shipping address', 'elementrify'),
         ],
         $customerId
     );
@@ -21,7 +21,7 @@ if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
     $addressList = apply_filters(
         'woocommerce_my_account_get_addresses',
         [
-            'billing' => __('Billing address', 'woocommerce'),
+            'billing' => __('Billing address', 'elementrify'),
         ],
         $customerId
     );
@@ -33,7 +33,7 @@ if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
         echo wp_kses_post(
             apply_filters(
                 'woocommerce_my_account_my_address_description',
-                esc_html__('The following addresses will be used on the checkout page by default.', 'woocommerce')
+                esc_html__('The following addresses will be used on the checkout page by default.', 'elementrify')
             )
         );
         ?>
@@ -71,7 +71,7 @@ if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
                         <?php if ($hasAddress) : ?>
                             <div class="elementrify-wd-addresses__text"><?php echo wp_kses_post($formatted); ?></div>
                         <?php else : ?>
-                            <p class="elementrify-wd-addresses__empty"><?php esc_html_e('You have not set up this type of address yet.', 'woocommerce'); ?></p>
+                            <p class="elementrify-wd-addresses__empty"><?php esc_html_e('You have not set up this type of address yet.', 'elementrify'); ?></p>
                         <?php endif; ?>
                         <?php do_action('woocommerce_my_account_after_my_address', $addressKey); ?>
                     </div>
@@ -83,8 +83,8 @@ if (!wc_ship_to_billing_address_only() && wc_shipping_enabled()) {
                                 <?php
                                 printf(
                                     $hasAddress
-                                        ? esc_html__('Edit %s', 'woocommerce')
-                                        : esc_html__('Add %s', 'woocommerce'),
+                                        ? esc_html__('Edit %s', 'elementrify')
+                                        : esc_html__('Add %s', 'elementrify'),
                                     esc_html($addressTitle)
                                 );
                                 ?>

@@ -68,7 +68,7 @@ function elementrify_logo_showcase_img_url($item, $placeholder_src) {
                 $alt = isset($item['alt']) ? $item['alt'] : '';
             ?>
                 <div class="elementrify-logo-showcase__card">
-                    <?php if ($link_url !== '') : ?><a href="<?php echo $link_url; ?>" class="elementrify-logo-showcase__link"><?php endif; ?>
+                    <?php if ($link_url !== '') : ?><a href="<?php echo esc_url($link_url); ?>" class="elementrify-logo-showcase__link"><?php endif; ?>
                         <img class="elementrify-logo-showcase__img" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($alt); ?>">
                     <?php if ($link_url !== '') : ?></a><?php endif; ?>
                 </div>
@@ -91,7 +91,7 @@ function elementrify_logo_showcase_img_url($item, $placeholder_src) {
                 ?>
                     <div class="swiper-slide">
                         <div class="elementrify-logo-showcase__card">
-                            <?php if ($link_url !== '') : ?><a href="<?php echo $link_url; ?>" class="elementrify-logo-showcase__link"><?php endif; ?>
+                            <?php if ($link_url !== '') : ?><a href="<?php echo esc_url($link_url); ?>" class="elementrify-logo-showcase__link"><?php endif; ?>
                                 <img class="elementrify-logo-showcase__img" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($alt); ?>">
                             <?php if ($link_url !== '') : ?></a><?php endif; ?>
                         </div>

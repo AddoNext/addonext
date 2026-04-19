@@ -15,6 +15,8 @@
  * Requires WP: 6.0
  */
 
+defined('ABSPATH') || exit;
+
 use Elementrify\Common\WidgetManager;
 use Elementrify\Common\ExtensionManager;
 use Elementrify\Common\GlobalCustomAssets;

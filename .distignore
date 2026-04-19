@@ -1,0 +1,15 @@
+.DS_Store
+.git
+.gitignore
+.github
+.cursor
+.cursorignore
+node_modules
+deploy.sh
+composer.lock
+package-lock.json
+wordpress
+build
+*.map
+.env
+.env.*

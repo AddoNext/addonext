@@ -125,7 +125,10 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
                     <?php endif; ?>
                     <?php if ($icon_html !== '') : ?>
                         <span class="elementrify-pc-card__icon-wrap" style="<?php echo esc_attr($icon_wrap_style); ?>">
-                            <span class="elementrify-pc-card__icon"><?php echo $icon_html; ?></span>
+                            <span class="elementrify-pc-card__icon"><?php
+                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Icons_Manager::render_icon output.
+                            echo $icon_html;
+                            ?></span>
                         </span>
                     <?php endif; ?>
                     <div class="elementrify-pc-card__body">

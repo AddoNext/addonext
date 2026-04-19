@@ -30,7 +30,7 @@ $this->add_render_attribute('wrapper', 'data-allow-multiple', $allow_multiple ? 
         $this->add_inline_editing_attributes($content_key, 'advanced');
     ?>
     <div <?php $this->print_render_attribute_string($item_key); ?>>
-        <<?php echo $title_tag; ?> class="elementrify-accordion__header" role="button" tabindex="0">
+        <<?php echo esc_attr($title_tag); ?> class="elementrify-accordion__header" role="button" tabindex="0">
             <?php if ($has_icon) : ?>
                 <span class="elementrify-accordion__icon elementrify-accordion__icon--closed" aria-hidden="true">
                     <?php \Elementor\Icons_Manager::render_icon($settings['selected_icon'], ['aria-hidden' => 'true']); ?>
@@ -43,7 +43,7 @@ $this->add_render_attribute('wrapper', 'data-allow-multiple', $allow_multiple ? 
                 </span>
             <?php endif; ?>
             <span class="elementrify-accordion__title"><?php echo wp_kses_post($item['tab_title']); ?></span>
-        </<?php echo $title_tag; ?>>
+        </<?php echo esc_attr($title_tag); ?>>
         <div <?php $this->print_render_attribute_string($content_key); ?>>
             <?php $this->print_text_editor($item['tab_content']); ?>
         </div>

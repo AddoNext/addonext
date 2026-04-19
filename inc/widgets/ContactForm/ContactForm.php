@@ -422,7 +422,11 @@ class ContactForm extends WidgetBase
             $data[$name] = $value;
         }
 
-        $subject = sprintf(__('[%s] Contact form submission', 'elementrify'), get_bloginfo('name'));
+        $subject = sprintf(
+            /* translators: %s: site title */
+            __('[%s] Contact form submission', 'elementrify'),
+            get_bloginfo('name')
+        );
         $body_email = '';
         foreach ($fields_config as $field) {
             $name = isset($field['name']) ? $field['name'] : '';

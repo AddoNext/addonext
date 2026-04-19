@@ -79,6 +79,7 @@ fi
 echo "Removing development files from staged copy..."
 FILES_TO_REMOVE=(
     ".gitignore"
+    ".distignore"
     ".cursorignore"
     "compose.yml"
     "composer.lock"

@@ -84,7 +84,7 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
                 $post_id   = get_the_ID();
                 $categories = get_the_category($post_id);
                 $first_cat  = !empty($categories) ? $categories[0] : null;
-                $read_mins  = $show_read_time ? max(1, (int) ceil(str_word_count(strip_tags(get_the_content())) / 200)) : 0;
+                $read_mins  = $show_read_time ? max(1, (int) ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200)) : 0;
                 ?>
                 <article class="elementrify-smart-post-list__card">
                     <a href="<?php the_permalink(); ?>" class="elementrify-smart-post-list__card-link" aria-hidden="true" tabindex="-1"></a>
