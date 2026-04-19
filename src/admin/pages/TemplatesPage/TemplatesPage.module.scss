@@ -2,6 +2,13 @@
   padding: $space-6 0;
 }
 
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
 .placeholder {
   font-size: $text-sm;
   color: var(--color-text-muted);

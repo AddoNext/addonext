@@ -2,17 +2,9 @@ import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCrown, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { DEFAULT_PRO_UPGRADE_FEATURES } from "../../constants/proUpgradeFeatures";
 import type { UpgradeToProModalProps } from "./types";
 import styles from "./UpgradeToProModal.module.scss";
-
-const FEATURES = [
-  "Advanced Widget Library with 21+ widgets",
-  "Access to advanced extensions",
-  "Premium Templates",
-  "Priority Support",
-  "Early Access to New Features",
-  'Priority Feature Requests'
-];
 
 const UpgradeToProModal: React.FC<UpgradeToProModalProps> = ({ open, onClose, upgradeUrl }) => {
   useEffect(() => {
@@ -54,7 +46,7 @@ const UpgradeToProModal: React.FC<UpgradeToProModalProps> = ({ open, onClose, up
         </div>
         <div className={styles.body}>
           <ul className={styles.list}>
-            {FEATURES.map((text) => (
+            {DEFAULT_PRO_UPGRADE_FEATURES.map((text) => (
               <li key={text} className={styles.listItem}>
                 <FontAwesomeIcon icon={faCheck} className={styles.check} aria-hidden />
                 <span>{text}</span>
