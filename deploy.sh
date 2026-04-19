@@ -22,6 +22,10 @@ echo "Creating staged copy in build directory..."
 rsync -a --delete \
     --exclude ".git" \
     --exclude "build" \
+    --exclude "/wordpress/" \
+    --exclude "/vendor/" \
+    --exclude "/deploy.sh" \
+    --exclude ".DS_Store" \
     "${PROJECT_ROOT}/" "${STAGING_DIR}/"
 
 VERSION="$(
@@ -44,7 +48,33 @@ echo "Refreshing staged copy with latest build output..."
 rsync -a --delete \
     --exclude ".git" \
     --exclude "build" \
+    --exclude "/wordpress/" \
+    --exclude "/vendor/" \
+    --exclude "/deploy.sh" \
+    --exclude ".DS_Store" \
     "${PROJECT_ROOT}/" "${STAGING_DIR}/"
+
+echo "Installing production-only Composer dependencies in staging..."
+if ! command -v composer >/dev/null 2>&1; then
+    echo "Error: composer is not installed or not in PATH (required for a lean vendor folder)."
+    exit 1
+fi
+(
+    cd "${STAGING_DIR}"
+    composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+)
+
+echo "Removing non-runtime folders from vendor (tests, VCS metadata)..."
+if [[ -d "${STAGING_DIR}/vendor" ]]; then
+    while IFS= read -r -d '' dir_to_prune; do
+        rm -rf "${dir_to_prune}"
+    done < <(find "${STAGING_DIR}/vendor" -depth -type d \( \
+        -name ".git" -o \
+        -name ".github" -o \
+        -name "tests" -o \
+        -name "Tests" \
+    \) -print0 2>/dev/null)
+fi
 
 echo "Removing development files from staged copy..."
 FILES_TO_REMOVE=(
@@ -53,9 +83,7 @@ FILES_TO_REMOVE=(
     "compose.yml"
     "composer.lock"
     "package-lock.json"
-    "vendor"
     "node_modules"
-    "wordpress"
     "configs"
 )
 
@@ -74,4 +102,15 @@ echo "Creating zip archive ${ZIP_NAME}..."
     zip -rq "${ZIP_NAME}" "${PLUGIN_SLUG}"
 )
 
+rm -rf "${STAGING_DIR}"
+
 echo "Deployment package ready: ${ZIP_PATH}"
+
+FREEMIUS_MAX_BYTES=$((30 * 1024 * 1024))
+case "$(uname -s)" in
+    Darwin*) ZIP_BYTES=$(stat -f%z "${ZIP_PATH}" 2>/dev/null || echo 0) ;;
+    *)       ZIP_BYTES=$(stat -c%s "${ZIP_PATH}" 2>/dev/null || echo 0) ;;
+esac
+if [[ "${ZIP_BYTES}" -gt "${FREEMIUS_MAX_BYTES}" ]]; then
+    echo "Warning: ${ZIP_NAME} is $((ZIP_BYTES / 1024 / 1024))MB; Freemius upload limit is 30MB."
+fi

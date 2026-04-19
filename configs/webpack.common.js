@@ -80,7 +80,7 @@ module.exports = {
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                            resources: require('path').resolve(__dirname, 'src/scss/config/config.scss')
+                            resources: require('path').resolve(__dirname, '../src/scss/config/config.scss')
                         }
                     }
                 ]
