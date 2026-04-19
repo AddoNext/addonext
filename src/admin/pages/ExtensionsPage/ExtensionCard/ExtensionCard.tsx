@@ -27,7 +27,7 @@ const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSe
       return;
     }
     const target = e.target as HTMLElement;
-    if (target.closest("a") || target.closest("button") || target.closest("label")) {
+    if (target.closest("a") || target.closest("button")) {
       return;
     }
     onLockedUpgrade();
@@ -52,14 +52,20 @@ const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSe
     >
       <div className={styles.topRow}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.controls}>
+        <div
+          className={styles.controls}
+          onClick={isLocked ? (e) => e.stopPropagation() : undefined}
+        >
           {isLocked && (
             <button
               type="button"
               className={styles.lock}
               title="Pro plan required"
               aria-label="Pro plan required"
-              onClick={() => onLockedUpgrade?.()}
+              onClick={(e) => {
+                e.stopPropagation();
+                onLockedUpgrade?.();
+              }}
             >
               <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
             </button>

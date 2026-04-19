@@ -22,7 +22,7 @@ const WidgetCard: React.FC<WidgetCardProps> = ({ widget, onToggle, onLockedUpgra
       return;
     }
     const target = e.target as HTMLElement;
-    if (target.closest("label") || target.closest("a") || target.closest("button")) {
+    if (target.closest("a") || target.closest("button")) {
       return;
     }
     onLockedUpgrade();
@@ -56,11 +56,23 @@ const WidgetCard: React.FC<WidgetCardProps> = ({ widget, onToggle, onLockedUpgra
             style={{ color: widget.brand_color }}
           />
         </div>
-        <div className={styles.toggleRow}>
+        <div
+          className={styles.toggleRow}
+          onClick={locked ? (e) => e.stopPropagation() : undefined}
+        >
           {locked && (
-            <span className={styles.lock} title="Pro plan required" aria-hidden>
+            <button
+              type="button"
+              className={styles.lock}
+              title="Pro plan required"
+              aria-label="View upgrade options"
+              onClick={(e) => {
+                e.stopPropagation();
+                onLockedUpgrade?.();
+              }}
+            >
               <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
-            </span>
+            </button>
           )}
           <ToggleSwitch
             checked={widget.active}

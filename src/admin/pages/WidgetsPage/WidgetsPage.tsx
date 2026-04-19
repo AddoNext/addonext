@@ -99,45 +99,43 @@ const WidgetsPage: React.FC = () => {
     toggleCategory(slug, enable, categoryWidgetIds);
   };
 
-  if (awaitingInitialData) {
-    return (
-      <div className={styles.page}>
+  return (
+    <div className={styles.page}>
+      {awaitingInitialData ? (
         <div className={styles.loadingWrap}>
           <LoadingSpinner screenReaderLabel="Loading widgets" />
         </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className={styles.page}>
-      <WidgetsToolbar
-        searchValue={searchQuery}
-        onSearchChange={setSearchQuery}
-        filter={filter}
-        onFilterChange={setFilter}
-        activeCount={activeCount}
-        totalCount={totalCount}
-        onEnableAll={() => enableAll(widgets.filter((w) => !w.is_locked).map((w) => w.id))}
-      />
-
-      <div className={styles.content}>
-        {Object.keys(categories).map((slug) => (
-          <WidgetsCategorySection
-            key={slug}
-            category={{ slug, ...categories[slug] }}
-            widgets={widgetsByCategory[slug] ?? []}
-            onToggle={toggleWidget}
-            onToggleAll={handleToggleCategory}
-            onLockedUpgrade={() => setUpgradeOpen(true)}
+      ) : (
+        <>
+          <WidgetsToolbar
+            searchValue={searchQuery}
+            onSearchChange={setSearchQuery}
+            filter={filter}
+            onFilterChange={setFilter}
+            activeCount={activeCount}
+            totalCount={totalCount}
+            onEnableAll={() => enableAll(widgets.filter((w) => !w.is_locked).map((w) => w.id))}
           />
-        ))}
-        {filteredWidgets.length === 0 && (
-          <p className={styles.placeholder}>
-            {searchQuery || filter !== "all" ? "No widgets match your filters" : "No widgets found"}
-          </p>
-        )}
-      </div>
+
+          <div className={styles.content}>
+            {Object.keys(categories).map((slug) => (
+              <WidgetsCategorySection
+                key={slug}
+                category={{ slug, ...categories[slug] }}
+                widgets={widgetsByCategory[slug] ?? []}
+                onToggle={toggleWidget}
+                onToggleAll={handleToggleCategory}
+                onLockedUpgrade={() => setUpgradeOpen(true)}
+              />
+            ))}
+            {filteredWidgets.length === 0 && (
+              <p className={styles.placeholder}>
+                {searchQuery || filter !== "all" ? "No widgets match your filters" : "No widgets found"}
+              </p>
+            )}
+          </div>
+        </>
+      )}
 
       <UpgradeToProModal
         open={upgradeOpen}
