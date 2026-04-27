@@ -18,12 +18,13 @@
 defined('ABSPATH') || exit;
 
 use Elementrify\Common\WidgetManager;
-use Elementrify\Common\ExtensionManager;
-use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Admin\LicenseController;
+use Elementrify\Common\ExtensionManager;
 use Elementrify\Admin\SettingsController;
+use Elementrify\Admin\MigrationController;
+use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Admin\ExtensionsController;
 use Elementrify\Admin\WidgetsAssetController;
 
@@ -124,6 +125,7 @@ class Elementrify
 
         emty_container(SettingsController::class);
         emty_container(LicenseController::class);
+        emty_container(MigrationController::class);
     }
 }
 

@@ -13,13 +13,13 @@ use Elementrify\Widgets\Button\Button;
 use Elementrify\Widgets\Spacer\Spacer;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Common\ExtensionManager;
-use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\Dropcap\Dropcap;
 use Elementrify\Widgets\FlipBox\FlipBox;
 use Elementrify\Widgets\IconBox\IconBox;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Admin\SettingsController;
+use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Widgets\BarChart\BarChart;
 use Elementrify\Widgets\IconList\IconList;
 use Elementrify\Widgets\ImageBox\ImageBox;
@@ -29,6 +29,7 @@ use Elementrify\Widgets\PromoBox\PromoBox;
 use Elementrify\Widgets\Timeline\Timeline;
 use Elementrify\Widgets\UspItems\UspItems;
 use Elementrify\Admin\ExtensionsController;
+use Elementrify\Admin\MigrationController;
 use Elementrify\Widgets\Accordion\Accordion;
 use Elementrify\Widgets\AddToCart\AddToCart;
 use Elementrify\Widgets\AreaChart\AreaChart;
@@ -60,6 +61,7 @@ use Elementrify\Widgets\SocialShare\SocialShare;
 use Elementrify\Widgets\TeamMembers\TeamMembers;
 use Elementrify\Widgets\TwitterFeed\TwitterFeed;
 use Elementrify\Widgets\VideoPlayer\VideoPlayer;
+use Elementrify\Extensions\Duplicator\Duplicator;
 use Elementrify\Widgets\AdvancedTabs\AdvancedTabs;
 use Elementrify\Widgets\AnimatedText\AnimatedText;
 use Elementrify\Widgets\CallToAction\CallToAction;
@@ -69,21 +71,18 @@ use Elementrify\Widgets\LogoShowcase\LogoShowcase;
 use Elementrify\Widgets\PricingTable\PricingTable;
 use Elementrify\Widgets\Testimonials\Testimonials;
 use Elementrify\Widgets\VideoGallery\VideoGallery;
+use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Widgets\ContentToggle\ContentToggle;
 use Elementrify\Widgets\ImageCarousel\ImageCarousel;
 use Elementrify\Widgets\ProductFilter\ProductFilter;
 use Elementrify\Widgets\SmartPostList\SmartPostList;
 use Elementrify\Widgets\SubscribeForm\SubscribeForm;
-use Elementrify\Extensions\CustomScripts\CustomScripts;
 use Elementrify\Extensions\CustomStyles\CustomStyles;
-use Elementrify\Extensions\Duplicator\Duplicator;
-use Elementrify\Extensions\MovingCircles\MovingCircles;
-use Elementrify\Extensions\ParticleEffects\ParticleEffects;
-use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
-use Elementrify\Extensions\ScrollToTop\ScrollToTop;
 use Elementrify\Extensions\SmoothScroll\SmoothScroll;
 use Elementrify\Widgets\CountdownTimer\CountdownTimer;
 use Elementrify\Widgets\NavigationMenu\NavigationMenu;
+use Elementrify\Extensions\CustomScripts\CustomScripts;
+use Elementrify\Extensions\MovingCircles\MovingCircles;
 use Elementrify\Widgets\AdvancedHeading\AdvancedHeading;
 use Elementrify\Widgets\AnimatedCounter\AnimatedCounter;
 use Elementrify\Widgets\ComparisonTable\ComparisonTable;
@@ -93,11 +92,13 @@ use Elementrify\Widgets\TableOfContents\TableOfContents;
 use Elementrify\Widgets\AnimatedGradient\AnimatedGradient;
 use Elementrify\Widgets\CircularProgress\CircularProgress;
 use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
+use Elementrify\Extensions\ParticleEffects\ParticleEffects;
 use Elementrify\Widgets\AdvancedAnalytics\AdvancedAnalytics;
 use Elementrify\Widgets\AdvancedGoogleMap\AdvancedGoogleMap;
 use Elementrify\Widgets\BeforeAfterSlider\BeforeAfterSlider;
 use Elementrify\Widgets\ProductCategories\ProductCategories;
 use Elementrify\Widgets\ContactForm7Styler\ContactForm7Styler;
+use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
 
 return [
     AdminController::class        => create(AdminController::class),
@@ -196,5 +197,6 @@ return [
     MovingCircles::class          => create(MovingCircles::class),
     ExtensionManager::class       => create(ExtensionManager::class),
     GlobalCustomAssets::class     => create(GlobalCustomAssets::class),
-    ExtensionsController::class   => create(ExtensionsController::class)
+    ExtensionsController::class   => create(ExtensionsController::class),
+    MigrationController::class    => create(MigrationController::class)
 ];
