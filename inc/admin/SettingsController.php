@@ -71,18 +71,18 @@ class SettingsController
                     'description' => 'Get early access to experimental features and widgets',
                     'default'     => true
                 ],
-                [
-                    'id'        => 'google_fonts_loading',
-                    'type'      => 'radio',
-                    'optionKey' => 'google_fonts_loading',
-                    'label'     => 'Google Fonts Loading',
-                    'default'   => 'cdn',
-                    'options'   => [
-                        ['value' => 'cdn', 'label' => 'Load from Google CDN (Recommended)'],
-                        ['value' => 'local', 'label' => 'Load Locally (GDPR Compliant)'],
-                        ['value' => 'disable', 'label' => 'Disable Google Fonts']
-                    ]
-                ],
+                // [
+                //     'id'        => 'google_fonts_loading',
+                //     'type'      => 'radio',
+                //     'optionKey' => 'google_fonts_loading',
+                //     'label'     => 'Google Fonts Loading',
+                //     'default'   => 'cdn',
+                //     'options'   => [
+                //         ['value' => 'cdn', 'label' => 'Load from Google CDN (Recommended)'],
+                //         ['value' => 'local', 'label' => 'Load Locally (GDPR Compliant)'],
+                //         ['value' => 'disable', 'label' => 'Disable Google Fonts']
+                //     ]
+                // ],
                 [
                     'id'          => 'css_class_prefix',
                     'type'        => 'text',
