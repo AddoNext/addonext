@@ -17,6 +17,8 @@ interface ExtensionsPageContentProps {
   onToggle: (id: string, enabled: boolean) => void;
   onEnableAll: (enable: boolean) => void;
   onLockedUpgrade?: () => void;
+  onLockedToggleAttempt?: (id: string) => void;
+  previewLockedExtensionId?: string | null;
 }
 
 const ExtensionsPageContent: React.FC<ExtensionsPageContentProps> = ({
@@ -29,6 +31,8 @@ const ExtensionsPageContent: React.FC<ExtensionsPageContentProps> = ({
   onToggle,
   onEnableAll,
   onLockedUpgrade,
+  onLockedToggleAttempt,
+  previewLockedExtensionId,
 }) => {
   const { openSettingsModal } = useExtensionSettings();
 
@@ -65,6 +69,8 @@ const ExtensionsPageContent: React.FC<ExtensionsPageContentProps> = ({
               onToggle={onToggle}
               onSettingsClick={ext.hasSettings ? (id) => openSettingsModal(id) : undefined}
               onLockedUpgrade={onLockedUpgrade}
+              onLockedToggleAttempt={onLockedToggleAttempt}
+              lockedTogglePreview={previewLockedExtensionId === ext.id}
             />
           ))}
         </div>

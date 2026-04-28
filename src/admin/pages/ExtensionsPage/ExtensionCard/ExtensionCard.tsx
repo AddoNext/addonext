@@ -15,9 +15,18 @@ interface ExtensionCardProps {
   onToggle: (id: string, enabled: boolean) => void;
   onSettingsClick?: (id: string) => void;
   onLockedUpgrade?: () => void;
+  onLockedToggleAttempt?: (id: string) => void;
+  lockedTogglePreview?: boolean;
 }
 
-const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSettingsClick, onLockedUpgrade }) => {
+const ExtensionCard: React.FC<ExtensionCardProps> = ({
+  extension,
+  onToggle,
+  onSettingsClick,
+  onLockedUpgrade,
+  onLockedToggleAttempt,
+  lockedTogglePreview = false,
+}) => {
   const { id, title, isEnabled, isLocked, badge, docUrl, demoUrl, hasSettings } = extension;
   const docHref = docUrl?.trim() ?? "";
   const demoHref = demoUrl?.trim() ?? "";
@@ -54,7 +63,14 @@ const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSe
         <h3 className={styles.title}>{title}</h3>
         <div
           className={styles.controls}
-          onClick={isLocked ? (e) => e.stopPropagation() : undefined}
+          onClick={
+            isLocked
+              ? (e) => {
+                  e.stopPropagation();
+                  onLockedToggleAttempt?.(id);
+                }
+              : undefined
+          }
         >
           {isLocked && (
             <button
@@ -72,7 +88,7 @@ const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, onToggle, onSe
           )}
           <ToggleSwitch
             accent
-            checked={isEnabled}
+            checked={isLocked ? lockedTogglePreview : isEnabled}
             disabled={isLocked}
             onCheckedChange={(next) => onToggle(id, next)}
             aria-label={isLocked ? `${title} (premium)` : title}

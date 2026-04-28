@@ -15,6 +15,7 @@ const WidgetsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState<WidgetFilter>("all");
   const [upgradeOpen, setUpgradeOpen] = useState(false);
+  const [previewLockedWidgetId, setPreviewLockedWidgetId] = useState<string | null>(null);
 
   const { fetchLicense } = useDispatch(STORE_NAME) as { fetchLicense: () => Promise<void> };
 
@@ -99,6 +100,16 @@ const WidgetsPage: React.FC = () => {
     toggleCategory(slug, enable, categoryWidgetIds);
   };
 
+  const handleLockedToggleAttempt = useCallback((widgetId: string) => {
+    setPreviewLockedWidgetId(widgetId);
+    setUpgradeOpen(true);
+  }, []);
+
+  const handleUpgradeModalClose = useCallback(() => {
+    setUpgradeOpen(false);
+    setPreviewLockedWidgetId(null);
+  }, []);
+
   return (
     <div className={styles.page}>
       {awaitingInitialData ? (
@@ -126,6 +137,8 @@ const WidgetsPage: React.FC = () => {
                 onToggle={toggleWidget}
                 onToggleAll={handleToggleCategory}
                 onLockedUpgrade={() => setUpgradeOpen(true)}
+                onLockedToggleAttempt={handleLockedToggleAttempt}
+                previewLockedWidgetId={previewLockedWidgetId}
               />
             ))}
             {filteredWidgets.length === 0 && (
@@ -139,7 +152,7 @@ const WidgetsPage: React.FC = () => {
 
       <UpgradeToProModal
         open={upgradeOpen}
-        onClose={() => setUpgradeOpen(false)}
+        onClose={handleUpgradeModalClose}
         upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
       />
     </div>

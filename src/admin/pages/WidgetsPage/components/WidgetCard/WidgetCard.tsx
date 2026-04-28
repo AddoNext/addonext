@@ -12,9 +12,17 @@ interface WidgetCardProps {
   widget: Widget;
   onToggle: (id: string, checked: boolean) => void;
   onLockedUpgrade?: () => void;
+  onLockedToggleAttempt?: (id: string) => void;
+  lockedTogglePreview?: boolean;
 }
 
-const WidgetCard: React.FC<WidgetCardProps> = ({ widget, onToggle, onLockedUpgrade }) => {
+const WidgetCard: React.FC<WidgetCardProps> = ({
+  widget,
+  onToggle,
+  onLockedUpgrade,
+  onLockedToggleAttempt,
+  lockedTogglePreview = false,
+}) => {
   const locked = Boolean(widget.is_locked);
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -58,7 +66,14 @@ const WidgetCard: React.FC<WidgetCardProps> = ({ widget, onToggle, onLockedUpgra
         </div>
         <div
           className={styles.toggleRow}
-          onClick={locked ? (e) => e.stopPropagation() : undefined}
+          onClick={
+            locked
+              ? (e) => {
+                  e.stopPropagation();
+                  onLockedToggleAttempt?.(widget.id);
+                }
+              : undefined
+          }
         >
           {locked && (
             <button
@@ -75,7 +90,7 @@ const WidgetCard: React.FC<WidgetCardProps> = ({ widget, onToggle, onLockedUpgra
             </button>
           )}
           <ToggleSwitch
-            checked={widget.active}
+            checked={locked ? lockedTogglePreview : widget.active}
             disabled={locked}
             onCheckedChange={(checked) => onToggle(widget.id, checked)}
             aria-label={locked ? `${widget.title} (Pro)` : widget.title}

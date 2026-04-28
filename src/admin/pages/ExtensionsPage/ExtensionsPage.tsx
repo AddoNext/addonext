@@ -135,6 +135,7 @@ const ExtensionsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [upgradeOpen, setUpgradeOpen] = useState(false);
+  const [previewLockedExtensionId, setPreviewLockedExtensionId] = useState<string | null>(null);
 
   const { fetchLicense } = useDispatch(STORE_NAME) as { fetchLicense: () => Promise<void> };
   const licenseData = useSelect(
@@ -277,6 +278,16 @@ const ExtensionsPage: React.FC = () => {
     );
   }, []);
 
+  const handleLockedToggleAttempt = useCallback((extensionId: string) => {
+    setPreviewLockedExtensionId(extensionId);
+    setUpgradeOpen(true);
+  }, []);
+
+  const handleUpgradeModalClose = useCallback(() => {
+    setUpgradeOpen(false);
+    setPreviewLockedExtensionId(null);
+  }, []);
+
   return (
     <ExtensionSettingsProvider extensions={extensions} onSettingsSaved={patchExtensionSettings}>
       <ExtensionsPageContent
@@ -289,10 +300,12 @@ const ExtensionsPage: React.FC = () => {
         onToggle={handleToggle}
         onEnableAll={handleEnableAll}
         onLockedUpgrade={() => setUpgradeOpen(true)}
+        onLockedToggleAttempt={handleLockedToggleAttempt}
+        previewLockedExtensionId={previewLockedExtensionId}
       />
       <UpgradeToProModal
         open={upgradeOpen}
-        onClose={() => setUpgradeOpen(false)}
+        onClose={handleUpgradeModalClose}
         upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
       />
     </ExtensionSettingsProvider>

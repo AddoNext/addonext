@@ -20,6 +20,8 @@ interface WidgetsCategorySectionProps {
   onToggle: (id: string, checked: boolean) => void;
   onToggleAll: (slug: string, enable: boolean) => void;
   onLockedUpgrade?: () => void;
+  onLockedToggleAttempt?: (id: string) => void;
+  previewLockedWidgetId?: string | null;
 }
 
 const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
@@ -28,6 +30,8 @@ const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
   onToggle,
   onToggleAll,
   onLockedUpgrade,
+  onLockedToggleAttempt,
+  previewLockedWidgetId,
 }) => {
   if (widgets.length === 0) return null;
 
@@ -66,6 +70,8 @@ const WidgetsCategorySection: React.FC<WidgetsCategorySectionProps> = ({
             widget={widget}
             onToggle={onToggle}
             onLockedUpgrade={onLockedUpgrade}
+            onLockedToggleAttempt={onLockedToggleAttempt}
+            lockedTogglePreview={previewLockedWidgetId === widget.id}
           />
         ))}
       </div>
