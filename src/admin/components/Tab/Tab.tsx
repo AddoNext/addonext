@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useScreenSaveContext } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
 import type { Tab as TabItem } from "./types";
 import styles from "./Tab.module.scss";
@@ -11,6 +11,19 @@ interface TabProps {
 const Tab: React.FC<TabProps> = ({ tabs }) => {
   const { currentScreenSlug, setCurrentScreenSlug } = useScreenSaveContext();
   const currentTab = tabs.find((t) => t.slug === currentScreenSlug) ?? tabs[0];
+  const handleTabChange = useCallback(
+    (slug: string) => {
+      if (slug === currentScreenSlug) {
+        return;
+      }
+
+      setCurrentScreenSlug(slug);
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    },
+    [currentScreenSlug, setCurrentScreenSlug]
+  );
 
   return (
     <div className={styles.tabContainer}>
@@ -18,7 +31,7 @@ const Tab: React.FC<TabProps> = ({ tabs }) => {
         {tabs.map((tab) => (
           <button
             key={tab.slug}
-            onClick={() => setCurrentScreenSlug(tab.slug)}
+            onClick={() => handleTabChange(tab.slug)}
             className={classNames(styles.tabIndex, {
               [styles.active]: currentTab.slug === tab.slug,
             })}

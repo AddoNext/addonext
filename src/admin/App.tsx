@@ -16,6 +16,7 @@ import styles from "./App.module.scss";
 
 const STORAGE_KEY = "elementrify-theme";
 const DEFAULT_TAB_SLUG = "widgets";
+const WPBODY_DARK_CLASS = "elementrify-dark-mode";
 
 export const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -26,6 +27,17 @@ export const App = () => {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, theme);
+
+    const wpBodyElement = document.getElementById("wpbody");
+    if (!wpBodyElement) {
+      return;
+    }
+
+    wpBodyElement.classList.toggle(WPBODY_DARK_CLASS, theme === "dark");
+
+    return () => {
+      wpBodyElement.classList.remove(WPBODY_DARK_CLASS);
+    };
   }, [theme]);
 
   const tabs = useMemo(
