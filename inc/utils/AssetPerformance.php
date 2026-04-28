@@ -319,7 +319,7 @@ class AssetPerformance
     private function url_to_local_plugin_path(string $asset_url, string $expected_type): ?string
     {
         if (!defined('ELEMENTRIFY_URL') || !defined('ELEMENTRIFY_DIR')) {
-            return;
+            return null;
         }
 
         $clean_url = (string) strtok((string) strtok($asset_url, '?'), '#');
@@ -339,23 +339,23 @@ class AssetPerformance
         }
 
         if (!is_string($relative_path) || $relative_path === '' || strpos($relative_path, '..') !== false) {
-            return;
+            return null;
         }
 
         $plugin_dir      = rtrim((string) ELEMENTRIFY_DIR, '/\\') . '/';
         $normalized_path = wp_normalize_path($plugin_dir . $relative_path);
         $real_path       = realpath($normalized_path);
         if ($real_path === false || !is_file($real_path) || !is_readable($real_path)) {
-            return;
+            return null;
         }
 
         $real_plugin_dir = realpath($plugin_dir);
         if ($real_plugin_dir === false) {
-            return;
+            return null;
         }
 
         if (strpos(wp_normalize_path($real_path), wp_normalize_path($real_plugin_dir) . '/') !== 0) {
-            return;
+            return null;
         }
 
         $extension = strtolower((string) pathinfo($real_path, PATHINFO_EXTENSION));
@@ -367,7 +367,7 @@ class AssetPerformance
             return $real_path;
         }
 
-        return;
+        return null;
     }
 
     private function add_lazy_to_elementrify_images(string $html): string
