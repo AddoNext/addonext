@@ -32,13 +32,37 @@ class SettingsController
                     'default'     => false
                 ],
                 [
-                    'id'          => 'load_widgets_globally',
+                    'id'          => 'debug_display',
                     'type'        => 'toggle',
-                    'optionKey'   => 'load_widgets_globally',
-                    'label'       => 'Load Widgets Globally',
-                    'description' => 'Load all widget assets on every page (not recommended)',
-                    'default'     => false
+                    'optionKey'   => 'debug_display',
+                    'label'       => 'Display Debug Errors',
+                    'description' => 'Show PHP and WordPress debug errors on screen',
+                    'default'     => false,
+                    'dependsOn'   => [
+                        'optionKey' => 'debug_mode',
+                        'value'     => true
+                    ]
                 ],
+                [
+                    'id'          => 'debug_log',
+                    'type'        => 'toggle',
+                    'optionKey'   => 'debug_log',
+                    'label'       => 'Write Debug Log',
+                    'description' => 'Write debug messages to wp-content/debug.log',
+                    'default'     => true,
+                    'dependsOn'   => [
+                        'optionKey' => 'debug_mode',
+                        'value'     => true
+                    ]
+                ],
+                // [
+                //     'id'          => 'load_widgets_globally',
+                //     'type'        => 'toggle',
+                //     'optionKey'   => 'load_widgets_globally',
+                //     'label'       => 'Load Widgets Globally',
+                //     'description' => 'Load all widget assets on every page (not recommended)',
+                //     'default'     => false
+                // ],
                 [
                     'id'          => 'beta_features',
                     'type'        => 'toggle',
@@ -189,15 +213,15 @@ class SettingsController
                     'label'       => 'Custom JavaScript',
                     'default'     => '',
                     'placeholder' => '// Add your custom JavaScript here'
-                ],
-                [
-                    'id'          => 'developer_mode',
-                    'type'        => 'toggle',
-                    'optionKey'   => 'developer_mode',
-                    'label'       => 'Enable Developer Mode',
-                    'description' => 'Unlock advanced features and debugging tools',
-                    'default'     => false
                 ]
+                // [
+                //     'id'          => 'developer_mode',
+                //     'type'        => 'toggle',
+                //     'optionKey'   => 'developer_mode',
+                //     'label'       => 'Enable Developer Mode',
+                //     'description' => 'Unlock advanced features and debugging tools',
+                //     'default'     => false
+                // ]
             ]
         ],
         [

@@ -21,6 +21,7 @@ use Elementrify\Common\WidgetManager;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Utils\AssetPerformance;
+use Elementrify\Utils\DebugModeManager;
 use Elementrify\Admin\LicenseController;
 use Elementrify\Common\ExtensionManager;
 use Elementrify\Admin\SettingsController;
@@ -129,6 +130,7 @@ class Elementrify
         emty_container(AdminController::class);
         emty_container(GlobalCustomAssets::class);
         emty_container(AssetPerformance::class);
+        emty_container(DebugModeManager::class);
 
         if (class_exists('\Elementor\Plugin')) {
             emty_container(WidgetManager::class);

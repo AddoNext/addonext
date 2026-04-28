@@ -13,6 +13,7 @@ use Elementrify\Widgets\Button\Button;
 use Elementrify\Widgets\Spacer\Spacer;
 use Elementrify\Admin\WidgetController;
 use Elementrify\Utils\AssetPerformance;
+use Elementrify\Utils\DebugModeManager;
 use Elementrify\Common\ExtensionManager;
 use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\Dropcap\Dropcap;
@@ -109,6 +110,7 @@ return [
     WidgetsAssetController::class => create(WidgetsAssetController::class),
     SettingsController::class     => create(SettingsController::class),
     OptionsHelper::class          => create(OptionsHelper::class),
+    DebugModeManager::class       => create(DebugModeManager::class),
     DataProcessor::class          => create(DataProcessor::class),
     WidgetBase::class             => create(WidgetBase::class),
     Accordion::class              => create(Accordion::class),

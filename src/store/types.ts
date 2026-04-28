@@ -47,6 +47,11 @@ export interface SettingsFieldOption {
     label: string;
 }
 
+export interface SettingsFieldDependency {
+    optionKey: string;
+    value: unknown;
+}
+
 export interface SettingsField {
     id: string;
     type: SettingsFieldType;
@@ -56,6 +61,7 @@ export interface SettingsField {
     default?: unknown;
     options?: SettingsFieldOption[];
     placeholder?: string;
+    dependsOn?: SettingsFieldDependency;
 }
 
 export interface SettingsSection {

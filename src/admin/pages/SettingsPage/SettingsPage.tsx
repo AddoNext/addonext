@@ -14,7 +14,7 @@ import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContex
 import { useToast } from "../../contexts/ToastContext/ToastContext";
 import { STORE_NAME } from "../../../store/admin";
 import type { SettingsSection } from "./fields";
-import { renderField } from "./utils";
+import { renderField, shouldRenderField } from "./utils";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import BackupSection from "./components/BackupSection/BackupSection";
 import styles from "./SettingsPage.module.scss";
@@ -182,11 +182,13 @@ const SettingsPage: React.FC = () => {
                 <BackupSection />
               ) : section.fields.length > 0 ? (
                 <div className={styles.fieldsList}>
-                  {section.fields.map((field) => (
-                    <div key={field.id} className={styles.fieldItem}>
-                      {renderField(field, values, setValue)}
-                    </div>
-                  ))}
+                  {section.fields
+                    .filter((field) => shouldRenderField(field, values))
+                    .map((field) => (
+                      <div key={field.id} className={styles.fieldItem}>
+                        {renderField(field, values, setValue)}
+                      </div>
+                    ))}
                 </div>
               ) : (
                 <p className={styles.placeholder}>No settings in this section yet.</p>
