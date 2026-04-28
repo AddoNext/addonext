@@ -12,6 +12,7 @@ use Elementrify\Widgets\Banner\Banner;
 use Elementrify\Widgets\Button\Button;
 use Elementrify\Widgets\Spacer\Spacer;
 use Elementrify\Admin\WidgetController;
+use Elementrify\Utils\AssetPerformance;
 use Elementrify\Common\ExtensionManager;
 use Elementrify\Widgets\Divider\Divider;
 use Elementrify\Widgets\Dropcap\Dropcap;
@@ -19,6 +20,7 @@ use Elementrify\Widgets\FlipBox\FlipBox;
 use Elementrify\Widgets\IconBox\IconBox;
 use Elementrify\Widgets\Tooltip\Tooltip;
 use Elementrify\Admin\SettingsController;
+use Elementrify\Admin\MigrationController;
 use Elementrify\Common\GlobalCustomAssets;
 use Elementrify\Widgets\BarChart\BarChart;
 use Elementrify\Widgets\IconList\IconList;
@@ -29,7 +31,6 @@ use Elementrify\Widgets\PromoBox\PromoBox;
 use Elementrify\Widgets\Timeline\Timeline;
 use Elementrify\Widgets\UspItems\UspItems;
 use Elementrify\Admin\ExtensionsController;
-use Elementrify\Admin\MigrationController;
 use Elementrify\Widgets\Accordion\Accordion;
 use Elementrify\Widgets\AddToCart\AddToCart;
 use Elementrify\Widgets\AreaChart\AreaChart;
@@ -197,6 +198,7 @@ return [
     MovingCircles::class          => create(MovingCircles::class),
     ExtensionManager::class       => create(ExtensionManager::class),
     GlobalCustomAssets::class     => create(GlobalCustomAssets::class),
+    AssetPerformance::class       => create(AssetPerformance::class),
     ExtensionsController::class   => create(ExtensionsController::class),
     MigrationController::class    => create(MigrationController::class)
 ];

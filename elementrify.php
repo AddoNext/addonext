@@ -20,6 +20,7 @@ defined('ABSPATH') || exit;
 use Elementrify\Common\WidgetManager;
 use Elementrify\Admin\AdminController;
 use Elementrify\Admin\WidgetController;
+use Elementrify\Utils\AssetPerformance;
 use Elementrify\Admin\LicenseController;
 use Elementrify\Common\ExtensionManager;
 use Elementrify\Admin\SettingsController;
@@ -91,12 +92,24 @@ class Elementrify
 
     public function define_constants(): void
     {
-        define('ELEMENTRIFY_VERSION', '1.0.0');
-        define('ELEMENTRIFY_DIR', plugin_dir_path(__FILE__));
-        define('ELEMENTRIFY_URL', plugin_dir_url(__FILE__));
-        define('ELEMENTRIFY_FILE', __FILE__);
-        define('ELEMENTRIFY_BASENAME', plugin_basename(__FILE__));
-        define('ELEMENTRIFY', 'elementrify');
+        if (!\defined('ELEMENTRIFY_VERSION')) {
+            \define('ELEMENTRIFY_VERSION', '1.0.0');
+        }
+        if (!\defined('ELEMENTRIFY_DIR')) {
+            \define('ELEMENTRIFY_DIR', \plugin_dir_path(__FILE__));
+        }
+        if (!\defined('ELEMENTRIFY_URL')) {
+            \define('ELEMENTRIFY_URL', \plugin_dir_url(__FILE__));
+        }
+        if (!\defined('ELEMENTRIFY_FILE')) {
+            \define('ELEMENTRIFY_FILE', __FILE__);
+        }
+        if (!\defined('ELEMENTRIFY_BASENAME')) {
+            \define('ELEMENTRIFY_BASENAME', \plugin_basename(__FILE__));
+        }
+        if (!\defined('ELEMENTRIFY')) {
+            \define('ELEMENTRIFY', 'elementrify');
+        }
     }
 
     public static function init()
@@ -112,8 +125,10 @@ class Elementrify
 
     public function initialize_classes(): void
     {
+        $this->define_constants();
         emty_container(AdminController::class);
         emty_container(GlobalCustomAssets::class);
+        emty_container(AssetPerformance::class);
 
         if (class_exists('\Elementor\Plugin')) {
             emty_container(WidgetManager::class);
