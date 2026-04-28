@@ -56,6 +56,9 @@ const SettingsPage: React.FC = () => {
 
   const { addToast } = useToast();
   const { fetchSettings, setSettingsValue, saveSettings } = useDispatch(STORE_NAME);
+  const visibleSections = (sections ?? []).filter(
+    (section) => section.id === "backup" || section.fields.length > 0
+  );
 
   useEffect(() => {
     if (sections === null) {
@@ -120,7 +123,7 @@ const SettingsPage: React.FC = () => {
     );
   }
 
-  if (!sections || sections.length === 0) {
+  if (!sections || visibleSections.length === 0) {
     return (
       <div className={styles.page}>
         <p className={styles.loadingMessage}>No settings sections.</p>
@@ -140,7 +143,7 @@ const SettingsPage: React.FC = () => {
               </h3>
             </div>
             <nav className={styles.sidebarNav}>
-              {sections.map((section) => (
+              {visibleSections.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
@@ -160,7 +163,7 @@ const SettingsPage: React.FC = () => {
         </aside>
 
         <div ref={mainRef} className={styles.main}>
-          {sections.map((section) => (
+          {visibleSections.map((section) => (
             <section
               key={section.id}
               id={section.id}
