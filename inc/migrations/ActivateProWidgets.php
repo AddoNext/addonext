@@ -63,6 +63,6 @@ class ActivateProWidgets extends MigrationBase
      */
     public function validate(): bool
     {
-        return LicenseCapabilities::site_has_active_pro_plan();
+        return LicenseCapabilities::site_has_active_pro_plan() && class_exists('Elementor\Plugin');
     }
 }

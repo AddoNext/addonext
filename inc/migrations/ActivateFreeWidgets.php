@@ -61,6 +61,6 @@ class ActivateFreeWidgets extends MigrationBase
      */
     public function validate(): bool
     {
-        return true;
+        return class_exists('Elementor\Plugin');
     }
 }
