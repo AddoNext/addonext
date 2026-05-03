@@ -30,3 +30,45 @@
     margin: 0;
     padding: 0;
 }
+
+.elementorRequired {
+    margin: $space-8;
+    padding: $space-10 $space-8;
+    border-radius: $radius-xl;
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(circle at top right, rgba(96, 165, 250, 0.15), transparent 46%),
+        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.12), transparent 48%),
+        var(--color-surface);
+    text-align: center;
+}
+
+.elementorRequiredIcon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto $space-4;
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $text-xl;
+    font-weight: $font-weight-bold;
+    color: #fff;
+    background: linear-gradient(135deg, $color-brand-blue 0%, $color-brand-purple 100%);
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.3);
+}
+
+.elementorRequiredTitle {
+    font-size: $text-2xl;
+    font-weight: $font-weight-bold;
+    color: var(--color-text);
+    margin-bottom: $space-3;
+}
+
+.elementorRequiredText {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: $text-base;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+}

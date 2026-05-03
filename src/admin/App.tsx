@@ -18,12 +18,22 @@ const STORAGE_KEY = "elementrify-theme";
 const DEFAULT_TAB_SLUG = "widgets";
 const WPBODY_DARK_CLASS = "elementrify-dark-mode";
 
+declare global {
+  interface Window {
+    elementrifyAdminData?: {
+      isElementorActive?: boolean;
+    };
+  }
+}
+
 export const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
     const stored = localStorage.getItem(STORAGE_KEY);
     return (stored === "dark" || stored === "light") ? stored : "light";
   });
+  const isElementorActive =
+    typeof window === "undefined" ? true : window.elementrifyAdminData?.isElementorActive !== false;
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, theme);
@@ -85,7 +95,20 @@ export const App = () => {
                 onThemeToggle={handleThemeToggle}
                 onExportSettings={handleExportSettings}
               />
-              <Tab tabs={tabs} />
+              {isElementorActive ? (
+                <Tab tabs={tabs} />
+              ) : (
+                <section className={styles.elementorRequired}>
+                  <div className={styles.elementorRequiredIcon} aria-hidden>
+                    E
+                  </div>
+                  <h2 className={styles.elementorRequiredTitle}>Elementor Plugin Required</h2>
+                  <p className={styles.elementorRequiredText}>
+                    Elementrify needs Elementor to be active before it can load widgets, extensions, and settings.
+                    Please activate the Elementor plugin, then refresh this page.
+                  </p>
+                </section>
+              )}
             </WidgetsStateProvider>
           </ScreenSaveProvider>
         </ConfirmProvider>
