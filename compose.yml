@@ -100,7 +100,7 @@ services:
             - elementrify
         labels:
             traefik.http.routers.adminer.rule: Host(`adminer.localhost`)
-            traefik.http.services.adminer.loadbalancer.server.port: 80
+            traefik.http.services.adminer.loadbalancer.server.port: 8080
 volumes:
     wordpress:
     db:
