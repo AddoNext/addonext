@@ -23,8 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elementrify\\": "./inc",
-            "Elementrify\\Admin\\": "./inc/Admin"
+            "Elementrify\\": "./inc"
         },
         "files": [
             "container.php",
