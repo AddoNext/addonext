@@ -26,14 +26,32 @@ declare global {
   }
 }
 
+function readElementorActive(): boolean {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return true;
+  }
+  const localized = window.elementrifyAdminData?.isElementorActive;
+  if (typeof localized === "boolean") {
+    return localized;
+  }
+  const root = document.getElementById("elementrify-admin");
+  const attr = root?.getAttribute("data-elementor-active");
+  if (attr === "1") {
+    return true;
+  }
+  if (attr === "0") {
+    return false;
+  }
+  return false;
+}
+
 export const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
     const stored = localStorage.getItem(STORAGE_KEY);
     return (stored === "dark" || stored === "light") ? stored : "light";
   });
-  const isElementorActive =
-    typeof window === "undefined" ? true : window.elementrifyAdminData?.isElementorActive !== false;
+  const isElementorActive = readElementorActive();
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, theme);

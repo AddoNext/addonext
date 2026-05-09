@@ -12,6 +12,9 @@ defined('ABSPATH') or exit;
  */
 class AdminAssets
 {
+    /** @var string Elementor plugin basename relative to wp-plugins. */
+    public const ELEMENTOR_PLUGIN_FILE = 'elementor/elementor.php';
+
     /**
      * Registers admin asset hooks.
      */
@@ -21,10 +24,40 @@ class AdminAssets
     }
 
     /**
-     * Enqueues admin assets and passes runtime environment flags to React.
+     * Whether the Elementor main plugin file exists under wp-content/plugins.
+     *
+     * @return bool
      */
-    public function enqueue(): void
+    public static function is_elementor_installed(): bool
     {
+        return file_exists(WP_PLUGIN_DIR . '/' . self::ELEMENTOR_PLUGIN_FILE);
+    }
+
+    /**
+     * Whether the Elementor plugin is installed and active (WordPress plugin list).
+     *
+     * @return bool
+     */
+    public static function is_elementor_plugin_active(): bool
+    {
+        if (!function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        return is_plugin_active(self::ELEMENTOR_PLUGIN_FILE);
+    }
+
+    /**
+     * Enqueues admin assets and passes runtime environment flags to React.
+     *
+     * @param string $hook_suffix Current admin screen hook.
+     */
+    public function enqueue(string $hook_suffix): void
+    {
+        if ($hook_suffix !== 'toplevel_page_elementrify') {
+            return;
+        }
+
         wp_enqueue_style('elementrify-admin', ELEMENTRIFY_URL . 'dist/css/admin.min.css');
         wp_enqueue_script('elementrify-admin', ELEMENTRIFY_URL . 'dist/js/admin.min.js', [
             'wp-element',
@@ -36,7 +69,7 @@ class AdminAssets
             'elementrify-admin',
             'elementrifyAdminData',
             [
-                'isElementorActive' => class_exists(\Elementor\Plugin::class),
+                'isElementorActive' => self::is_elementor_plugin_active(),
             ]
         );
     }
