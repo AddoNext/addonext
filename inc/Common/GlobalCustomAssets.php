@@ -56,7 +56,7 @@ class GlobalCustomAssets
     /**
      * @return void
      */
-    private function enqueue_custom_css(): void
+    public function enqueue_custom_css(): void
     {
         $custom_css = trim((string) OptionsHelper::get_option('custom_css', ''));
 
@@ -72,7 +72,7 @@ class GlobalCustomAssets
     /**
      * @return void
      */
-    private function enqueue_custom_js(): void
+    public function enqueue_custom_js(): void
     {
         $custom_js = trim((string) OptionsHelper::get_option('custom_js', ''));
 
