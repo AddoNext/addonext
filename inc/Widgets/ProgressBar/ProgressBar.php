@@ -184,20 +184,6 @@ class ProgressBar extends WidgetBase
             ]
         );
 
-        $this->add_control(
-            'label_width',
-            [
-                'label'      => __('Label min width', 'elementrify'),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range'      => ['px' => ['min' => 0, 'max' => 200]],
-                'default'    => ['size' => 0],
-                'selectors'  => [
-                    '{{WRAPPER}} .elementrify-progress-bar__title' => 'min-width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -237,20 +223,6 @@ class ProgressBar extends WidgetBase
                     '{{WRAPPER}} .elementrify-progress-bar__percent' => 'color: {{VALUE}};',
                 ],
                 'condition' => ['percent_color_override' => ''],
-            ]
-        );
-
-        $this->add_control(
-            'percent_width',
-            [
-                'label'      => __('Percentage min width', 'elementrify'),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range'      => ['px' => ['min' => 0, 'max' => 80]],
-                'default'    => ['size' => 36],
-                'selectors'  => [
-                    '{{WRAPPER}} .elementrify-progress-bar__percent' => 'min-width: {{SIZE}}{{UNIT}};',
-                ],
             ]
         );
 
