@@ -3,6 +3,7 @@ namespace Elementrify\Widgets\ImageBox;
 
 use Elementrify\Base\WidgetBase;
 use Elementor\Controls_Manager;
+use Elementor\Utils;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -77,8 +78,11 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image',
             [
-                'label' => __('Image', 'elementrify'),
-                'type'  => Controls_Manager::MEDIA,
+                'label'   => __('Image', 'elementrify'),
+                'type'    => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
             ]
         );
 
@@ -168,7 +172,8 @@ class ImageBox extends WidgetBase
                 'label'        => __('Show title', 'elementrify'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
-                'default'     => 'yes',
+                'default'      => '',
+                'render_type'  => 'template',
             ]
         );
 
@@ -189,7 +194,8 @@ class ImageBox extends WidgetBase
                 'label'        => __('Show description', 'elementrify'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
-                'default'     => 'yes',
+                'default'      => '',
+                'render_type'  => 'template',
             ]
         );
 
@@ -552,14 +558,22 @@ class ImageBox extends WidgetBase
         view.addInlineEditingAttributes('title', 'none');
         view.addInlineEditingAttributes('description', 'none');
         var hasLink = settings.link && settings.link.url;
-        var showTitle = settings.show_title !== 'no';
-        var showDescription = settings.show_description !== 'no';
+        var showTitle = settings.show_title === 'yes';
+        var showDescription = settings.show_description === 'yes';
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}>
-            <# if (settings.image && (settings.image.url || settings.image.id)) { #>
+            <#
+            var placeholderUrl = '';
+            if (typeof elementor !== 'undefined' && elementor.config) {
+                placeholderUrl = elementor.config.placeholder_img_url || (elementor.config.urls && elementor.config.urls.placeholder) || '';
+            }
+            var editorImgSrc = (settings.image && settings.image.url) ? settings.image.url : placeholderUrl;
+            var showImageCol = (settings.image && settings.image.id) || editorImgSrc;
+            #>
+            <# if (showImageCol) { #>
                 <div class="elementrify-image-box__image">
                     <# if (hasLink) { #><a href="{{ settings.link.url }}"><# } #>
-                    <img src="{{ settings.image.url }}" alt="{{ settings.image.alt || settings.title }}">
+                    <img src="{{ editorImgSrc }}" alt="{{ settings.image && settings.image.alt ? settings.image.alt : settings.title }}">
                     <# if (hasLink) { #></a><# } #>
                 </div>
             <# } #>

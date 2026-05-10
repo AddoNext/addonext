@@ -2,8 +2,26 @@
 defined('ABSPATH') || exit;
 
 use Elementor\Group_Control_Image_Size;
+use Elementor\Utils;
 
 $settings     = $this->get_settings_for_display();
+$placeholder_src = Utils::get_placeholder_image_src();
+$image           = $settings['image'] ?? [];
+$url             = isset($image['url']) ? (string) $image['url'] : '';
+$has_attachment  = !empty($image['id']);
+$is_placeholder_only = $has_attachment === false && $url !== '' && $placeholder_src !== '' && $url === $placeholder_src;
+
+$in_elementor_preview = false;
+if (class_exists('\Elementor\Plugin')) {
+    $preview = \Elementor\Plugin::$instance->preview ?? null;
+    if (is_object($preview) && method_exists($preview, 'is_preview_mode')) {
+        $in_elementor_preview = $preview->is_preview_mode();
+    }
+}
+
+$has_visible_frontend_image = $has_attachment || ($url !== '' && !$is_placeholder_only);
+$show_image_wrapper         = $has_visible_frontend_image || $in_elementor_preview;
+
 $wrapper_class = 'elementrify-image-box';
 if (!empty($settings['image_bw_mode'])) {
     $wrapper_class .= ' elementrify-image-box--bw';
@@ -21,18 +39,22 @@ $this->add_render_attribute('wrapper', 'class', $wrapper_class);
 $this->add_inline_editing_attributes('title', 'none');
 $this->add_inline_editing_attributes('description', 'none');
 $has_link = !empty($settings['link']['url']);
-$image    = $settings['image'] ?? [];
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <?php if (!empty($image['url']) || !empty($image['id'])) : ?>
+    <?php if ($show_image_wrapper) : ?>
         <div class="elementrify-image-box__image">
             <?php if ($has_link) : ?><a href="<?php echo esc_url($settings['link']['url']); ?>"><?php endif; ?>
             <?php
-            if (!empty($image['id'])) {
+            if ($has_attachment) {
                 echo wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'image_size', 'image'));
             } else {
-                $img_url = !empty($image['url']) ? $image['url'] : '';
-                if ($img_url) {
+                $img_url = '';
+                if ($has_visible_frontend_image && $url !== '') {
+                    $img_url = $url;
+                } elseif ($in_elementor_preview && $placeholder_src !== '') {
+                    $img_url = ($url !== '') ? $url : $placeholder_src;
+                }
+                if ($img_url !== '') {
                     echo '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($image['alt'] ?? $settings['title'] ?? '') . '">';
                 }
             }
