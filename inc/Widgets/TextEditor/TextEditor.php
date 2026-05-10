@@ -253,7 +253,7 @@ class TextEditor extends WidgetBase
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'     => ['px' => ['min' => 1, 'max' => 15]],
-                'default'   => ['unit' => 'px', 'size' => 4],
+                'default'   => ['unit' => 'px', 'size' => 1],
                 'condition' => ['text_3d' => 'yes'],
                 'selectors' => [
                     '{{WRAPPER}} .elementrify-text-editor--3d' => '--elementrify-te-3d-depth: {{SIZE}}px;',
