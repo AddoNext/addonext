@@ -91,6 +91,7 @@ class PriceList extends WidgetBase
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
+            'render_type'  => 'template',
         ]);
 
         $this->add_control('show_header_rule', [
@@ -98,6 +99,7 @@ class PriceList extends WidgetBase
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
+            'render_type'  => 'template',
         ]);
 
         $repeater = new Repeater();
@@ -163,6 +165,7 @@ class PriceList extends WidgetBase
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
+            'render_type'  => 'template',
         ]);
 
         $this->end_controls_section();
@@ -519,9 +522,9 @@ class PriceList extends WidgetBase
     {
         ?>
         <#
-        var showSubtitle = settings.show_subtitle !== 'no';
-        var showRule = settings.show_header_rule !== 'no';
-        var showFooter = settings.show_footer !== 'no';
+        var showSubtitle = settings.show_subtitle === 'yes';
+        var showRule = settings.show_header_rule === 'yes';
+        var showFooter = settings.show_footer === 'yes';
         var items = settings.items || [];
         view.addRenderAttribute('pl_heading', 'class', 'elementrify-price-list__main-title elementor-inline-editing');
         view.addRenderAttribute('pl_heading', 'data-elementor-setting-key', 'heading_title');

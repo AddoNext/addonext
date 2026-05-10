@@ -7,9 +7,9 @@ $settings = $this->get_settings_for_display();
 $headingTitle = isset($settings['heading_title']) ? (string) $settings['heading_title'] : '';
 $headingSubtitle = isset($settings['heading_subtitle']) ? (string) $settings['heading_subtitle'] : '';
 $footerNote = isset($settings['footer_note']) ? (string) $settings['footer_note'] : '';
-$showSubtitle = !isset($settings['show_subtitle']) || $settings['show_subtitle'] === 'yes';
-$showHeaderRule = !isset($settings['show_header_rule']) || $settings['show_header_rule'] === 'yes';
-$showFooter = !isset($settings['show_footer']) || $settings['show_footer'] === 'yes';
+$showSubtitle = ($settings['show_subtitle'] ?? 'yes') === 'yes';
+$showHeaderRule = ($settings['show_header_rule'] ?? 'yes') === 'yes';
+$showFooter = ($settings['show_footer'] ?? 'yes') === 'yes';
 $items = isset($settings['items']) && is_array($settings['items']) ? $settings['items'] : [];
 $isEditor = Plugin::$instance->editor->is_edit_mode();
 
