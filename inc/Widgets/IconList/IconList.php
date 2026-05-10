@@ -134,7 +134,7 @@ class IconList extends WidgetBase
                     'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
                     'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
                 ],
-                'prefix_class' => 'elementrify-icon-list--align-%s-',
+                'prefix_class' => 'elementrify-icon-list%s-align-',
             ]
         );
 
