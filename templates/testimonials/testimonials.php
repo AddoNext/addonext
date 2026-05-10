@@ -30,8 +30,6 @@ function elementrify_testimonial_card_style($item) {
         $light = "rgba($r,$g,$b,0.14)";
         $fade = "rgba($r,$g,$b,0.04)";
         $parts[] = 'background: linear-gradient(135deg, ' . $light . ' 0%, ' . $fade . ' 45%, #ffffff 100%);';
-    } else {
-        $parts[] = 'background-color: #ffffff;';
     }
     return implode(' ', $parts);
 }

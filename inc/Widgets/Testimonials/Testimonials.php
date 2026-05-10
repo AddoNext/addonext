@@ -656,7 +656,7 @@ class Testimonials extends WidgetBase
                             if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
                             var r = parseInt(h.slice(0,2), 16), g = parseInt(h.slice(2,4), 16), b = parseInt(h.slice(4,6), 16);
                             cardStyle += 'background: linear-gradient(135deg, rgba('+r+','+g+','+b+',0.14) 0%, rgba('+r+','+g+','+b+',0.04) 45%, #ffffff 100%);';
-                        } else { cardStyle += 'background-color: #ffffff;'; }
+                        }
                     }
                 #>
                     <div class="elementrify-testimonial-card"<# if (cardStyle) { #> style="{{ cardStyle }}"<# } #>>
@@ -695,7 +695,7 @@ class Testimonials extends WidgetBase
                                 if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
                                 var r = parseInt(h.slice(0,2), 16), g = parseInt(h.slice(2,4), 16), b = parseInt(h.slice(4,6), 16);
                                 cardStyle += 'background: linear-gradient(135deg, rgba('+r+','+g+','+b+',0.14) 0%, rgba('+r+','+g+','+b+',0.04) 45%, #ffffff 100%);';
-                            } else { cardStyle += 'background-color: #ffffff;'; }
+                            }
                         }
                     #>
                         <div class="swiper-slide">
