@@ -108,7 +108,8 @@
 }
 
 .elementrify-usp-items--hover-bg .elementrify-usp-item:hover {
-    background-color: var(--usp-hover-card-bg, #f9fafb);
+    /* Beat Elementor Style tab background selectors on .elementrify-usp-item */
+    background-color: var(--usp-hover-card-bg, #f9fafb) !important;
 }
 
 .elementrify-usp-items--hover-zoom .elementrify-usp-item:hover {
