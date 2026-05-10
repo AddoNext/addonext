@@ -27,12 +27,40 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   text-decoration: none;
   cursor: pointer;
   border: none;
   font-weight: 600;
   font-size: 14px;
+  line-height: 1.25;
+  padding: 10px 18px;
   transition-property: color, background, background-color, border-color, box-shadow, transform;
+}
+
+.elementrify-button.elementrify-button--xs {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.elementrify-button.elementrify-button--sm {
+  font-size: 13px;
+  padding: 8px 15px;
+}
+
+.elementrify-button.elementrify-button--md {
+  font-size: 14px;
+  padding: 10px 18px;
+}
+
+.elementrify-button.elementrify-button--lg {
+  font-size: 16px;
+  padding: 12px 22px;
+}
+
+.elementrify-button.elementrify-button--xl {
+  font-size: 18px;
+  padding: 14px 26px;
 }
 
 .elementrify-button--primary {

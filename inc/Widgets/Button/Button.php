@@ -126,23 +126,24 @@ class Button extends WidgetBase
         $this->add_control(
             'size',
             [
-                'label'   => __('Size', 'elementrify'),
-                'type'    => Controls_Manager::SELECT,
-                'default' => 'md',
-                'options' => self::get_button_sizes(),
+                'label'       => __('Size', 'elementrify'),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'md',
+                'options'     => self::get_button_sizes(),
+                'render_type' => 'template',
             ]
         );
 
         $this->add_control(
             'selected_icon',
             [
-                'label'   => __('Icon', 'elementrify'),
-                'type'    => Controls_Manager::ICONS,
+                'label'            => __('Icon', 'elementrify'),
+                'type'             => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
-                'label_block' => false,
-                'default' => [
-                    'value'   => 'eicon-save',
-                    'library' => 'eicons',
+                'label_block'      => false,
+                'default'          => [
+                    'value'   => '',
+                    'library' => '',
                 ],
             ]
         );
@@ -190,6 +191,7 @@ class Button extends WidgetBase
                 'selectors' => [
                     '{{WRAPPER}} .elementrify-button__content' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
+                'default'   => ['size' => 4, 'unit' => 'px'],
                 'condition' => [
                     'text!' => '',
                     'selected_icon[value]!' => '',
@@ -555,7 +557,7 @@ class Button extends WidgetBase
 
         view.addRenderAttribute('wrapper', 'class', 'elementrify-button-wrapper');
         view.addRenderAttribute('button', 'class', 'elementrify-button');
-        view.addRenderAttribute('button', 'class', 'elementrify-button--' + settings.size);
+        view.addRenderAttribute('button', 'class', 'elementrify-button--' + (settings.size || 'md'));
         view.addRenderAttribute('button', 'class', 'elementrify-button--' + settings.variant);
 
         if (settings.hover_animation) {

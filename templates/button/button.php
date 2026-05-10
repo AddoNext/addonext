@@ -10,10 +10,11 @@ if (! $has_text && ! $has_icon) {
 }
 
 $variant = isset($settings['variant']) ? $settings['variant'] : 'primary';
+$size    = isset($settings['size']) && $settings['size'] !== '' ? $settings['size'] : 'md';
 
 $this->add_render_attribute('wrapper', 'class', 'elementrify-button-wrapper');
 $this->add_render_attribute('button', 'class', 'elementrify-button');
-$this->add_render_attribute('button', 'class', 'elementrify-button--' . esc_attr($settings['size']));
+$this->add_render_attribute('button', 'class', 'elementrify-button--' . esc_attr($size));
 $this->add_render_attribute('button', 'class', 'elementrify-button--' . esc_attr($variant));
 
 if (! empty($settings['hover_animation'])) {
