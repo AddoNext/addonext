@@ -1074,6 +1074,89 @@ class HeroSlider extends WidgetBase
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
+        $nav_arrow_visibility = ['navigation' => ['both', 'arrows']];
+        $nav_dots_visibility  = ['navigation' => ['both', 'dots']];
+
+        $this->add_control('nav_heading_arrows', [
+            'label'     => __('Arrows', 'elementrify'),
+            'type'      => Controls_Manager::HEADING,
+            'condition' => $nav_arrow_visibility,
+        ]);
+
+        $this->add_responsive_control('nav_arrow_size', [
+            'label'      => __('Arrow size', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => ['px' => ['min' => 18, 'max' => 80]],
+            'default'    => ['size' => 24, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-hero-slider' => '--swiper-navigation-size: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => $nav_arrow_visibility,
+        ]);
+
+        $this->add_control('nav_arrow_color', [
+            'label'     => __('Arrow color', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#ffffff',
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-hero-slider' => '--swiper-navigation-color: {{VALUE}};',
+            ],
+            'condition' => $nav_arrow_visibility,
+        ]);
+
+        $this->add_control('nav_heading_dots', [
+            'label'     => __('Dots', 'elementrify'),
+            'type'      => Controls_Manager::HEADING,
+            'separator' => 'before',
+            'condition' => $nav_dots_visibility,
+        ]);
+
+        $this->add_responsive_control('nav_dot_size', [
+            'label'      => __('Dot size', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => ['px' => ['min' => 4, 'max' => 28]],
+            'default'    => ['size' => 8, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-hero-slider' => '--swiper-pagination-bullet-size: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => $nav_dots_visibility,
+        ]);
+
+        $this->add_control('nav_dot_color_active', [
+            'label'     => __('Active dot color', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#ffffff',
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-hero-slider' => '--swiper-pagination-color: {{VALUE}};',
+            ],
+            'condition' => $nav_dots_visibility,
+        ]);
+
+        $this->add_control('nav_dot_color_inactive', [
+            'label'     => __('Inactive dot color', 'elementrify'),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => 'rgba(255, 255, 255, 0.45)',
+            'alpha'     => true,
+            'selectors' => [
+                '{{WRAPPER}} .elementrify-hero-slider' => '--swiper-pagination-bullet-inactive-color: {{VALUE}};',
+            ],
+            'condition' => $nav_dots_visibility,
+        ]);
+
+        $this->add_responsive_control('nav_dot_gap', [
+            'label'      => __('Dot spacing', 'elementrify'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => ['px' => ['min' => 0, 'max' => 24]],
+            'default'    => ['size' => 4, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .elementrify-hero-slider' => '--swiper-pagination-bullet-horizontal-gap: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => $nav_dots_visibility,
+        ]);
+
         $this->add_control('nav_dots_offset', [
             'label'      => __('Dots offset from bottom', 'elementrify'),
             'type'       => Controls_Manager::SLIDER,
