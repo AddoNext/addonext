@@ -5,6 +5,7 @@ import { HeaderProps } from "./types";
 import styles from "./Header.module.scss";
 import Button from "../Button/Button";
 import { useScreenSaveContext } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
+import logo from "../../../img/logo.svg";
 
 const Header: React.FC<HeaderProps> = ({
   title = "Elementrify",
@@ -21,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className={styles.inner}>
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <FontAwesomeIcon icon={faCube} className={styles.logoIcon} />
+            <img src={logo} alt="Elementrify" className={styles.logoImg} />
           </div>
           <div>
             <h1 className={styles.title}>{title}</h1>
