@@ -119,7 +119,17 @@ class AssetPerformance
             ob_end_clean();
         }
 
-        readfile($path);
+        $filesystem = $this->get_filesystem();
+        if ($filesystem === false) {
+            return new WP_Error('filesystem_error', '', ['status' => 500]);
+        }
+
+        $content = $filesystem->get_contents($path);
+        if ($content === false) {
+            return new WP_Error('not_found', '', ['status' => 404]);
+        }
+
+        echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Cached asset bytes.
         exit;
     }
 
@@ -289,16 +299,45 @@ class AssetPerformance
             return false;
         }
 
-        if (!@rename($tmp, $cache_path)) {
-            if (!@copy($tmp, $cache_path)) {
-                @wp_delete_file($tmp);
+        $filesystem = $this->get_filesystem();
+        if ($filesystem === false) {
+            @wp_delete_file($tmp);
+
+            return false;
+        }
+
+        if (!$filesystem->move($tmp, $cache_path, true)) {
+            if (!$filesystem->copy($tmp, $cache_path, true)) {
+                $filesystem->delete($tmp);
 
                 return false;
             }
-            @wp_delete_file($tmp);
+            $filesystem->delete($tmp);
         }
 
         return is_file($cache_path) && (int) @filesize($cache_path) > 0;
+    }
+
+    /**
+     * @return \WP_Filesystem_Base|false
+     */
+    private function get_filesystem()
+    {
+        global $wp_filesystem;
+
+        if (!empty($wp_filesystem)) {
+            return $wp_filesystem;
+        }
+
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+        }
+
+        if (!WP_Filesystem()) {
+            return false;
+        }
+
+        return $wp_filesystem;
     }
 
     private function upload_url_for_key(string $key, string $extension): string
