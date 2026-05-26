@@ -4,7 +4,7 @@
  * Plugin URI: https://elementrify.com/
  * Description: A collection of Elementor page builder widgets and extensions for WordPress. Including a 360 image viewer, a 3D model viewer, a PDF viewer, a map widget and a more advanced version of the Elementor's Accordion widget.
  * Version: 1.0.0
- * Author: AddoNext
+ * Author: Elementrify
  * Author URI: https://elementrify.com/
  * Text Domain: elementrify
  * Domain Path: /languages
