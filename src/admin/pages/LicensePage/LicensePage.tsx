@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,6 +6,7 @@ import {
   faCrown,
   faCalendar,
   faHeadset,
+  faKey,
   faStar,
   faCopy,
   faArrowsRotate,
@@ -50,14 +51,18 @@ const PREMIUM_FEATURES = [
 ];
 
 const LicensePage: React.FC = () => {
+  const [activationKey, setActivationKey] = useState("");
+
   const licenseData = useSelect((select) => (select(STORE_NAME) as { getLicenseData: () => LicenseData | null }).getLicenseData(), []);
   const licenseResolving = useSelect((select) => (select(STORE_NAME) as { getLicenseResolving: () => boolean }).getLicenseResolving(), []);
   const licenseError = useSelect((select) => (select(STORE_NAME) as { getLicenseError: () => string | null }).getLicenseError(), []);
+  const licenseActivating = useSelect((select) => (select(STORE_NAME) as { getLicenseActivating: () => boolean }).getLicenseActivating(), []);
   const licenseDeactivating = useSelect((select) => (select(STORE_NAME) as { getLicenseDeactivating: () => boolean }).getLicenseDeactivating(), []);
   const licenseChecking = useSelect((select) => (select(STORE_NAME) as { getLicenseChecking: () => boolean }).getLicenseChecking(), []);
 
-  const { fetchLicense, deactivateLicense, checkLicenseStatus } = useDispatch(STORE_NAME) as {
+  const { fetchLicense, activateLicense, deactivateLicense, checkLicenseStatus } = useDispatch(STORE_NAME) as {
     fetchLicense: () => Promise<void>;
+    activateLicense: (key: string) => Promise<{ success: boolean; message?: string }>;
     deactivateLicense: () => Promise<{ success: boolean; message?: string }>;
     checkLicenseStatus: () => Promise<void>;
   };
@@ -72,6 +77,13 @@ const LicensePage: React.FC = () => {
     if (!licenseData?.license_key_masked) return;
     navigator.clipboard.writeText(licenseData.license_key_masked);
   }, [licenseData?.license_key_masked]);
+
+  const handleActivate = useCallback(async () => {
+    const key = activationKey.trim();
+    if (!key) return;
+    const result = await activateLicense(key);
+    if (result?.success) setActivationKey("");
+  }, [activationKey, activateLicense]);
 
   const handleDeactivate = useCallback(async () => {
     await deactivateLicense();
@@ -201,6 +213,47 @@ const LicensePage: React.FC = () => {
 
       {!data.is_active && (
         <>
+          <section className={`${styles.section} ${styles.activationSection}`}>
+            <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
+              <FontAwesomeIcon icon={faKey} className={styles.activationIcon} />
+              <div>
+                <h2 className={styles.sectionTitle}>License Activation</h2>
+                <p className={styles.sectionSubtitle}>Enter your license key to activate premium features</p>
+              </div>
+            </div>
+            <div className={styles.activationForm}>
+              <label className={styles.activationLabel} htmlFor="license-key-input">
+                License Key
+              </label>
+              <div className={styles.activationRow}>
+                <input
+                  id="license-key-input"
+                  type="text"
+                  className={styles.activationInput}
+                  placeholder="ANXT-XXXX-XXXX-XXXX-XXXX"
+                  value={activationKey}
+                  onChange={(e) => setActivationKey(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className={styles.btnActivate}
+                  onClick={handleActivate}
+                  disabled={licenseActivating || !activationKey.trim()}
+                >
+                  {licenseActivating ? (
+                    <FontAwesomeIcon icon={faCircleNotch} spin />
+                  ) : (
+                    <FontAwesomeIcon icon={faKey} />
+                  )}{" "}
+                  Activate
+                </button>
+              </div>
+              <p className={styles.activationHint}>
+                You can find your license key in your purchase confirmation email or account dashboard
+              </p>
+            </div>
+          </section>
+
           <section className={styles.section}>
             <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
               <FontAwesomeIcon icon={faStar} className={styles.iconYellow} />
