@@ -68,22 +68,39 @@ export const App = () => {
     };
   }, [theme]);
 
+  const licenseData = useSelect(
+    (select) => (select(STORE_NAME) as { getLicenseData: () => { is_active?: boolean } | null }).getLicenseData(),
+    []
+  );
+  const licenseResolving = useSelect(
+    (select) => (select(STORE_NAME) as { getLicenseResolving: () => boolean }).getLicenseResolving(),
+    []
+  );
+  const { fetchLicense, exportBackup } = useDispatch(STORE_NAME) as {
+    fetchLicense: () => Promise<void>;
+    exportBackup: (p: { values: Record<string, unknown>; saveToServer: boolean }) => Promise<{ success: boolean; download?: string; backup_name?: string }>;
+  };
+
+  useEffect(() => {
+    if (licenseData === null && !licenseResolving) {
+      void fetchLicense();
+    }
+  }, [licenseData, licenseResolving, fetchLicense]);
+
+  const isLicenseActive = licenseData?.is_active === true;
+
   const tabs = useMemo(
     () => [
       { label: "Widgets", slug: "widgets", selected: true, screen: <WidgetsPage /> },
       { label: "Extensions", slug: "extensions", screen: <ExtensionsPage /> },
       { label: "Templates", slug: "templates", screen: <TemplatesPage /> },
       { label: "Settings", slug: "settings", screen: <SettingsPage /> },
-      { label: "License", slug: "license", screen: <LicensePage /> },
+      { label: isLicenseActive ? "License" : "Upgrade", slug: "license", screen: <LicensePage /> },
     ],
-    []
+    [isLicenseActive]
   );
 
   const values = useSelect((select) => (select(STORE_NAME) as { getSettingsValues: () => Record<string, unknown> }).getSettingsValues(), []);
-  const { exportBackup } = useDispatch(STORE_NAME) as {
-    exportBackup: (p: { values: Record<string, unknown>; saveToServer: boolean }) => Promise<{ success: boolean; download?: string; backup_name?: string }>;
-  };
-
   const handleThemeToggle = () => setTheme((prev) => (prev === "light" ? "dark" : "light"));
   const handleExportSettings = useCallback(async () => {
     try {

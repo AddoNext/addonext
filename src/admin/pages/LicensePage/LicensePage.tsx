@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,7 +6,6 @@ import {
   faCrown,
   faCalendar,
   faHeadset,
-  faKey,
   faStar,
   faCopy,
   faArrowsRotate,
@@ -51,18 +50,14 @@ const PREMIUM_FEATURES = [
 ];
 
 const LicensePage: React.FC = () => {
-  const [activationKey, setActivationKey] = useState("");
-
   const licenseData = useSelect((select) => (select(STORE_NAME) as { getLicenseData: () => LicenseData | null }).getLicenseData(), []);
   const licenseResolving = useSelect((select) => (select(STORE_NAME) as { getLicenseResolving: () => boolean }).getLicenseResolving(), []);
   const licenseError = useSelect((select) => (select(STORE_NAME) as { getLicenseError: () => string | null }).getLicenseError(), []);
-  const licenseActivating = useSelect((select) => (select(STORE_NAME) as { getLicenseActivating: () => boolean }).getLicenseActivating(), []);
   const licenseDeactivating = useSelect((select) => (select(STORE_NAME) as { getLicenseDeactivating: () => boolean }).getLicenseDeactivating(), []);
   const licenseChecking = useSelect((select) => (select(STORE_NAME) as { getLicenseChecking: () => boolean }).getLicenseChecking(), []);
 
-  const { fetchLicense, activateLicense, deactivateLicense, checkLicenseStatus } = useDispatch(STORE_NAME) as {
+  const { fetchLicense, deactivateLicense, checkLicenseStatus } = useDispatch(STORE_NAME) as {
     fetchLicense: () => Promise<void>;
-    activateLicense: (key: string) => Promise<{ success: boolean; message?: string }>;
     deactivateLicense: () => Promise<{ success: boolean; message?: string }>;
     checkLicenseStatus: () => Promise<void>;
   };
@@ -77,13 +72,6 @@ const LicensePage: React.FC = () => {
     if (!licenseData?.license_key_masked) return;
     navigator.clipboard.writeText(licenseData.license_key_masked);
   }, [licenseData?.license_key_masked]);
-
-  const handleActivate = useCallback(async () => {
-    const key = activationKey.trim();
-    if (!key) return;
-    const result = await activateLicense(key);
-    if (result?.success) setActivationKey("");
-  }, [activationKey, activateLicense]);
 
   const handleDeactivate = useCallback(async () => {
     await deactivateLicense();
@@ -120,77 +108,77 @@ const LicensePage: React.FC = () => {
         </div>
       )}
 
-      <section className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <div>
-            <h2 className={`${styles.sectionTitleLarge} ${styles.sectionTitleRow}`}>
-              <FontAwesomeIcon icon={faShieldHalved} className={styles.iconGreen} />
-              License Status
-            </h2>
-            <p className={styles.sectionSubtitle}>Manage your AddoNext license key and subscription</p>
+      {data.is_active && (
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <h2 className={`${styles.sectionTitleLarge} ${styles.sectionTitleRow}`}>
+                <FontAwesomeIcon icon={faShieldHalved} className={styles.iconGreen} />
+                License Status
+              </h2>
+              <p className={styles.sectionSubtitle}>Manage your Elementrify license key and subscription</p>
+            </div>
+            <div className={statusPillClass}>
+              <span className={styles.statusDot} />
+              <span>{data.status_label ?? "Active"}</span>
+            </div>
           </div>
-          <div className={statusPillClass}>
-            {data.is_active && <span className={styles.statusDot} />}
-            <span>{data.status_label ?? "Not activated"}</span>
-          </div>
-        </div>
 
-        {(data.plan_title || data.expires_label || data.support_label) && (
-          <div className={styles.cardsGrid}>
-            <div className={styles.cardGreen}>
-              <div className={styles.cardTitleRow}>
-                <span className={styles.cardTitle}>License Type</span>
-                <FontAwesomeIcon icon={faCrown} className={styles.iconGreen} />
-              </div>
-              <p className={styles.cardValue}>{data.plan_title || "—"}</p>
-              <p className={styles.cardSublabel}>{data.sites_label || "—"}</p>
-            </div>
-            <div className={styles.cardBlue}>
-              <div className={styles.cardTitleRow}>
-                <span className={styles.cardTitleBlue}>Expires</span>
-                <FontAwesomeIcon icon={faCalendar} className={styles.iconBlue} />
-              </div>
-              <p className={styles.cardValueBlue}>{data.expires_label || "—"}</p>
-              <p className={styles.cardSublabelBlue}>{data.time_left_label || "—"}</p>
-            </div>
-            <div className={styles.cardPurple}>
-              <div className={styles.cardTitleRow}>
-                <span className={styles.cardTitlePurple}>Support</span>
-                <FontAwesomeIcon icon={faHeadset} className={styles.iconPurple} />
-              </div>
-              <p className={styles.cardValuePurple}>{data.support_label || "—"}</p>
-              <p className={styles.cardSublabelPurple}>{data.support_sublabel || "—"}</p>
-            </div>
-          </div>
-        )}
-
-        {(data.license_key_masked || data.is_active) && (
-          <div className={styles.licenseKeyBlock}>
-            <div className={styles.licenseKeyRow}>
-              <div>
-                <h4 className={styles.licenseKeyLabel}>License Key</h4>
-                <div className={styles.licenseKeyInputGroup}>
-                  <code className={styles.licenseKeyCode}>{data.license_key_masked ? data.license_key_masked : "—"}</code>
-                  <button type="button" className={styles.btnCopy} onClick={handleCopyKey} aria-label="Copy license key">
-                    <FontAwesomeIcon icon={faCopy} />
-                  </button>
+          {(data.plan_title || data.expires_label || data.support_label) && (
+            <div className={styles.cardsGrid}>
+              <div className={styles.cardGreen}>
+                <div className={styles.cardTitleRow}>
+                  <span className={styles.cardTitle}>License Type</span>
+                  <FontAwesomeIcon icon={faCrown} className={styles.iconGreen} />
                 </div>
+                <p className={styles.cardValue}>{data.plan_title || "—"}</p>
+                <p className={styles.cardSublabel}>{data.sites_label || "—"}</p>
               </div>
-              <div className={styles.licenseKeyActions}>
-                <button
-                  type="button"
-                  className={styles.btnSecondary}
-                  onClick={handleCheckStatus}
-                  disabled={licenseChecking}
-                >
-                  {licenseChecking ? (
-                    <FontAwesomeIcon icon={faCircleNotch} spin />
-                  ) : (
-                    <FontAwesomeIcon icon={faArrowsRotate} />
-                  )}{" "}
-                  Check Status
-                </button>
-                {data.is_active && (
+              <div className={styles.cardBlue}>
+                <div className={styles.cardTitleRow}>
+                  <span className={styles.cardTitleBlue}>Expires</span>
+                  <FontAwesomeIcon icon={faCalendar} className={styles.iconBlue} />
+                </div>
+                <p className={styles.cardValueBlue}>{data.expires_label || "—"}</p>
+                <p className={styles.cardSublabelBlue}>{data.time_left_label || "—"}</p>
+              </div>
+              <div className={styles.cardPurple}>
+                <div className={styles.cardTitleRow}>
+                  <span className={styles.cardTitlePurple}>Support</span>
+                  <FontAwesomeIcon icon={faHeadset} className={styles.iconPurple} />
+                </div>
+                <p className={styles.cardValuePurple}>{data.support_label || "—"}</p>
+                <p className={styles.cardSublabelPurple}>{data.support_sublabel || "—"}</p>
+              </div>
+            </div>
+          )}
+
+          {(data.license_key_masked || data.is_active) && (
+            <div className={styles.licenseKeyBlock}>
+              <div className={styles.licenseKeyRow}>
+                <div>
+                  <h4 className={styles.licenseKeyLabel}>License Key</h4>
+                  <div className={styles.licenseKeyInputGroup}>
+                    <code className={styles.licenseKeyCode}>{data.license_key_masked ? data.license_key_masked : "—"}</code>
+                    <button type="button" className={styles.btnCopy} onClick={handleCopyKey} aria-label="Copy license key">
+                      <FontAwesomeIcon icon={faCopy} />
+                    </button>
+                  </div>
+                </div>
+                <div className={styles.licenseKeyActions}>
+                  <button
+                    type="button"
+                    className={styles.btnSecondary}
+                    onClick={handleCheckStatus}
+                    disabled={licenseChecking}
+                  >
+                    {licenseChecking ? (
+                      <FontAwesomeIcon icon={faCircleNotch} spin />
+                    ) : (
+                      <FontAwesomeIcon icon={faArrowsRotate} />
+                    )}{" "}
+                    Check Status
+                  </button>
                   <button
                     type="button"
                     className={styles.btnDanger}
@@ -204,53 +192,10 @@ const LicensePage: React.FC = () => {
                     )}{" "}
                     Deactivate
                   </button>
-                )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </section>
-
-      {!data.is_active && (
-        <section className={`${styles.section} ${styles.activationSection}`}>
-          <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
-            <FontAwesomeIcon icon={faKey} className={styles.activationIcon} />
-            <div>
-              <h2 className={styles.sectionTitle}>License Activation</h2>
-              <p className={styles.sectionSubtitle}>Enter your license key to activate premium features</p>
-            </div>
-          </div>
-          <div className={styles.activationForm}>
-            <label className={styles.activationLabel} htmlFor="license-key-input">
-              License Key
-            </label>
-            <div className={styles.activationRow}>
-              <input
-                id="license-key-input"
-                type="text"
-                className={styles.activationInput}
-                placeholder="ANXT-XXXX-XXXX-XXXX-XXXX"
-                value={activationKey}
-                onChange={(e) => setActivationKey(e.target.value)}
-              />
-              <button
-                type="button"
-                className={styles.btnActivate}
-                onClick={handleActivate}
-                disabled={licenseActivating || !activationKey.trim()}
-              >
-                {licenseActivating ? (
-                  <FontAwesomeIcon icon={faCircleNotch} spin />
-                ) : (
-                  <FontAwesomeIcon icon={faKey} />
-                )}{" "}
-                Activate
-              </button>
-            </div>
-            <p className={styles.activationHint}>
-              You can find your license key in your purchase confirmation email or account dashboard
-            </p>
-          </div>
+          )}
         </section>
       )}
 
