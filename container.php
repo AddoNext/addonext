@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') or exit;
+
 use function DI\create;
 use Elementrify\Base\WidgetBase;
 use Elementrify\Admin\AdminAssets;

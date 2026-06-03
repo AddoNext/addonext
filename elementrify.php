@@ -93,23 +93,23 @@ class Elementrify
 
     public function define_constants(): void
     {
-        if (!\defined('ELEMENTRIFY_VERSION')) {
-            \define('ELEMENTRIFY_VERSION', '1.0.0');
+        if (!defined('ELEMENTRIFY_VERSION')) {
+            define('ELEMENTRIFY_VERSION', '1.0.0');
         }
-        if (!\defined('ELEMENTRIFY_DIR')) {
-            \define('ELEMENTRIFY_DIR', \plugin_dir_path(__FILE__));
+        if (!defined('ELEMENTRIFY_DIR')) {
+            define('ELEMENTRIFY_DIR', plugin_dir_path(__FILE__));
         }
-        if (!\defined('ELEMENTRIFY_URL')) {
-            \define('ELEMENTRIFY_URL', \plugin_dir_url(__FILE__));
+        if (!defined('ELEMENTRIFY_URL')) {
+            define('ELEMENTRIFY_URL', plugin_dir_url(__FILE__));
         }
-        if (!\defined('ELEMENTRIFY_FILE')) {
-            \define('ELEMENTRIFY_FILE', __FILE__);
+        if (!defined('ELEMENTRIFY_FILE')) {
+            define('ELEMENTRIFY_FILE', __FILE__);
         }
-        if (!\defined('ELEMENTRIFY_BASENAME')) {
-            \define('ELEMENTRIFY_BASENAME', \plugin_basename(__FILE__));
+        if (!defined('ELEMENTRIFY_BASENAME')) {
+            define('ELEMENTRIFY_BASENAME', plugin_basename(__FILE__));
         }
-        if (!\defined('ELEMENTRIFY')) {
-            \define('ELEMENTRIFY', 'elementrify');
+        if (!defined('ELEMENTRIFY')) {
+            define('ELEMENTRIFY', 'elementrify');
         }
     }
 
