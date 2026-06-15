@@ -9,12 +9,12 @@ $tooltip_pos = isset($settings['tooltip_position']) ? $settings['tooltip_positio
 $pulse       = !empty($settings['hotspot_animation']) && $settings['hotspot_animation'] === 'yes';
 
 $wrapper_classes = [
-    'elementrify-image-hotspot',
-    'elementrify-image-hotspot--trigger-' . esc_attr($trigger),
-    'elementrify-image-hotspot--tooltip-' . esc_attr($tooltip_pos),
+    'veloria-image-hotspot',
+    'veloria-image-hotspot--trigger-' . esc_attr($trigger),
+    'veloria-image-hotspot--tooltip-' . esc_attr($tooltip_pos),
 ];
 if ($pulse) {
-    $wrapper_classes[] = 'elementrify-image-hotspot--pulse';
+    $wrapper_classes[] = 'veloria-image-hotspot--pulse';
 }
 if ($trigger === 'click') {
     $wrapper_classes[] = 'elementor-clickable';
@@ -38,23 +38,23 @@ if ($image_url === '') {
 }
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="elementrify-image-hotspot__img" loading="lazy">
+    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="veloria-image-hotspot__img" loading="lazy">
     <?php foreach ($hotspots as $index => $h) :
         $x = isset($h['x']['size']) ? (float) $h['x']['size'] : 50;
         $y = isset($h['y']['size']) ? (float) $h['y']['size'] : 50;
         $color = isset($h['hotspot_color']) ? esc_attr($h['hotspot_color']) : '#605BE5';
         $point_style = sprintf('left:%s%%; top:%s%%; background-color:%s; --hotspot-color:%s;', $x, $y, $color, $color);
     ?>
-    <span class="elementrify-image-hotspot__point elementor-repeater-item-<?php echo esc_attr($h['_id'] ?? $index); ?>" style="<?php echo esc_attr($point_style); ?>" data-index="<?php echo esc_attr($index); ?>">
+    <span class="veloria-image-hotspot__point elementor-repeater-item-<?php echo esc_attr($h['_id'] ?? $index); ?>" style="<?php echo esc_attr($point_style); ?>" data-index="<?php echo esc_attr($index); ?>">
         <?php if ($pulse) : ?>
-        <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
-        <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
-        <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
+        <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
+        <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
+        <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
         <?php endif; ?>
-        <span class="elementrify-image-hotspot__tooltip">
-            <?php if (!empty($h['title'])) : ?><span class="elementrify-image-hotspot__tooltip-title"><?php echo wp_kses_post($h['title']); ?></span><?php endif; ?>
-            <?php if (!empty($h['description'])) : ?><span class="elementrify-image-hotspot__tooltip-desc"><?php echo wp_kses_post($h['description']); ?></span><?php endif; ?>
-            <?php if (!empty($h['price'])) : ?><span class="elementrify-image-hotspot__tooltip-price"><?php echo wp_kses_post($h['price']); ?></span><?php endif; ?>
+        <span class="veloria-image-hotspot__tooltip">
+            <?php if (!empty($h['title'])) : ?><span class="veloria-image-hotspot__tooltip-title"><?php echo wp_kses_post($h['title']); ?></span><?php endif; ?>
+            <?php if (!empty($h['description'])) : ?><span class="veloria-image-hotspot__tooltip-desc"><?php echo wp_kses_post($h['description']); ?></span><?php endif; ?>
+            <?php if (!empty($h['price'])) : ?><span class="veloria-image-hotspot__tooltip-price"><?php echo wp_kses_post($h['price']); ?></span><?php endif; ?>
         </span>
     </span>
     <?php endforeach; ?>

@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\BentoGrid;
+namespace Veloria\Widgets\BentoGrid;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
@@ -13,12 +13,12 @@ class BentoGrid extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-gallery-grid elementrify-icon';
+        return 'eicon-gallery-grid veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-bento-grid';
+        return 'veloria-bento-grid';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class BentoGrid extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Bento Grid', 'elementrify');
+        return __('Bento Grid', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Configurable bento-style feature grid.', 'elementrify');
+        return __('Configurable bento-style feature grid.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -49,16 +49,16 @@ class BentoGrid extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-bento-grid'];
+        return ['veloria-bento-grid'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-bento-grid',
-            ELEMENTRIFY_URL . 'assets/css/bento-grid.css',
+            'veloria-bento-grid',
+            VELORIA_URL . 'assets/css/bento-grid.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -74,7 +74,7 @@ class BentoGrid extends WidgetBase
 
         $columnRepeater = new Repeater();
         $columnRepeater->add_control('icon', [
-            'label'   => __('Icon', 'elementrify'),
+            'label'   => __('Icon', 'veloria'),
             'type'    => Controls_Manager::ICONS,
             'default' => [
                 'value'   => 'fas fa-rocket',
@@ -82,32 +82,32 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('icon_color', [
-            'label'   => __('Icon color', 'elementrify'),
+            'label'   => __('Icon color', 'veloria'),
             'type'    => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
         $columnRepeater->add_control('title', [
-            'label'   => __('Title', 'elementrify'),
+            'label'   => __('Title', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Lightning Fast', 'elementrify'),
+            'default' => __('Lightning Fast', 'veloria'),
         ]);
         $columnRepeater->add_control('subtitle', [
-            'label'   => __('Subtitle', 'elementrify'),
+            'label'   => __('Subtitle', 'veloria'),
             'type'    => Controls_Manager::TEXTAREA,
             'rows'    => 2,
-            'default' => __('Optimized performance for the best user experience', 'elementrify'),
+            'default' => __('Optimized performance for the best user experience', 'veloria'),
         ]);
         $columnRepeater->add_control('background_type', [
-            'label'   => __('Background type', 'elementrify'),
+            'label'   => __('Background type', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'solid',
             'options' => [
-                'solid'    => __('Solid color', 'elementrify'),
-                'gradient' => __('Gradient', 'elementrify'),
+                'solid'    => __('Solid color', 'veloria'),
+                'gradient' => __('Gradient', 'veloria'),
             ],
         ]);
         $columnRepeater->add_control('background_color', [
-            'label'     => __('Background color', 'elementrify'),
+            'label'     => __('Background color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#eef6ff',
             'condition' => [
@@ -115,7 +115,7 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('gradient_start', [
-            'label'     => __('Gradient start', 'elementrify'),
+            'label'     => __('Gradient start', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#eef6ff',
             'condition' => [
@@ -123,7 +123,7 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('gradient_end', [
-            'label'     => __('Gradient end', 'elementrify'),
+            'label'     => __('Gradient end', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e8f7ff',
             'condition' => [
@@ -131,7 +131,7 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('gradient_angle', [
-            'label'      => __('Gradient angle', 'elementrify'),
+            'label'      => __('Gradient angle', 'veloria'),
             'type'       => Controls_Manager::NUMBER,
             'default'    => 135,
             'min'        => 0,
@@ -142,19 +142,19 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('span_desktop', [
-            'label'   => __('Desktop span (12 cols)', 'elementrify'),
+            'label'   => __('Desktop span (12 cols)', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => '6',
             'options' => $spanOptions,
         ]);
         $columnRepeater->add_control('span_tablet', [
-            'label'   => __('Tablet span (12 cols)', 'elementrify'),
+            'label'   => __('Tablet span (12 cols)', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => '6',
             'options' => $spanOptions,
         ]);
         $columnRepeater->add_control('span_mobile', [
-            'label'   => __('Mobile span (12 cols)', 'elementrify'),
+            'label'   => __('Mobile span (12 cols)', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => '12',
             'options' => $spanOptions,
@@ -162,12 +162,12 @@ class BentoGrid extends WidgetBase
 
         $rowRepeater = new Repeater();
         $rowRepeater->add_control('row_label', [
-            'label'   => __('Row label', 'elementrify'),
+            'label'   => __('Row label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Row', 'elementrify'),
+            'default' => __('Row', 'veloria'),
         ]);
         $rowRepeater->add_control('columns', [
-            'label'       => __('Tiles', 'elementrify'),
+            'label'       => __('Tiles', 'veloria'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $columnRepeater->get_controls(),
             'default'     => [],
@@ -175,22 +175,22 @@ class BentoGrid extends WidgetBase
         ]);
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('rows', [
-            'label'       => __('Rows', 'elementrify'),
+            'label'       => __('Rows', 'veloria'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $rowRepeater->get_controls(),
             'title_field' => '{{{ row_label }}}',
             'default'     => [
                 [
-                    'row_label' => __('Top row', 'elementrify'),
+                    'row_label' => __('Top row', 'veloria'),
                     'columns'   => [
                         [
-                            'title'            => __('Lightning Fast', 'elementrify'),
-                            'subtitle'         => __('Optimized performance for the best user experience', 'elementrify'),
+                            'title'            => __('Lightning Fast', 'veloria'),
+                            'subtitle'         => __('Optimized performance for the best user experience', 'veloria'),
                             'icon'             => ['value' => 'fas fa-rocket', 'library' => 'fa-solid'],
                             'icon_color'       => '#2563eb',
                             'background_type'  => 'solid',
@@ -200,8 +200,8 @@ class BentoGrid extends WidgetBase
                             'span_mobile'      => '12',
                         ],
                         [
-                            'title'            => __('Secure', 'elementrify'),
-                            'subtitle'         => __('Enterprise-grade security for your peace of mind', 'elementrify'),
+                            'title'            => __('Secure', 'veloria'),
+                            'subtitle'         => __('Enterprise-grade security for your peace of mind', 'veloria'),
                             'icon'             => ['value' => 'fas fa-shield-alt', 'library' => 'fa-solid'],
                             'icon_color'       => '#9333ea',
                             'background_type'  => 'solid',
@@ -213,10 +213,10 @@ class BentoGrid extends WidgetBase
                     ],
                 ],
                 [
-                    'row_label' => __('Bottom row', 'elementrify'),
+                    'row_label' => __('Bottom row', 'veloria'),
                     'columns'   => [
                         [
-                            'title'            => __('Mobile Ready', 'elementrify'),
+                            'title'            => __('Mobile Ready', 'veloria'),
                             'subtitle'         => '',
                             'icon'             => ['value' => 'fas fa-mobile-alt', 'library' => 'fa-solid'],
                             'icon_color'       => '#16a34a',
@@ -227,7 +227,7 @@ class BentoGrid extends WidgetBase
                             'span_mobile'      => '12',
                         ],
                         [
-                            'title'            => __('Customizable', 'elementrify'),
+                            'title'            => __('Customizable', 'veloria'),
                             'subtitle'         => '',
                             'icon'             => ['value' => 'fas fa-palette', 'library' => 'fa-solid'],
                             'icon_color'       => '#ea580c',
@@ -238,8 +238,8 @@ class BentoGrid extends WidgetBase
                             'span_mobile'      => '12',
                         ],
                         [
-                            'title'            => __('24/7 Support', 'elementrify'),
-                            'subtitle'         => __('Always here to help', 'elementrify'),
+                            'title'            => __('24/7 Support', 'veloria'),
+                            'subtitle'         => __('Always here to help', 'veloria'),
                             'icon'             => ['value' => 'fas fa-headset', 'library' => 'fa-solid'],
                             'icon_color'       => '#dc2626',
                             'background_type'  => 'solid',
@@ -256,34 +256,34 @@ class BentoGrid extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style', [
-            'label' => __('Style', 'elementrify'),
+            'label' => __('Style', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('row_gap', [
-            'label'      => __('Row gap', 'elementrify'),
+            'label'      => __('Row gap', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 14],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-bento-grid' => '--elementrify-bento-row-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid' => '--veloria-bento-row-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('column_gap', [
-            'label'      => __('Column gap', 'elementrify'),
+            'label'      => __('Column gap', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 14],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-bento-grid' => '--elementrify-bento-column-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid' => '--veloria-bento-column-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('card_padding', [
-            'label'      => __('Tile padding', 'elementrify'),
+            'label'      => __('Tile padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
@@ -295,29 +295,29 @@ class BentoGrid extends WidgetBase
                 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-bento-grid__tile' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid__tile' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('card_radius', [
-            'label'      => __('Tile border radius', 'elementrify'),
+            'label'      => __('Tile border radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 60]],
             'default'    => ['unit' => 'px', 'size' => 12],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-bento-grid__tile' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid__tile' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('tile_min_height', [
-            'label'      => __('Tile min height', 'elementrify'),
+            'label'      => __('Tile min height', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 80, 'max' => 420]],
             'default'    => ['unit' => 'px', 'size' => 160],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-bento-grid__tile' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid__tile' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -325,8 +325,8 @@ class BentoGrid extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'label'    => __('Title typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-bento-grid__title',
+                'label'    => __('Title typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-bento-grid__title',
                 'global'   => [
                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                 ],
@@ -342,11 +342,11 @@ class BentoGrid extends WidgetBase
         );
 
         $this->add_control('title_color', [
-            'label'     => __('Title color', 'elementrify'),
+            'label'     => __('Title color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-bento-grid__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-bento-grid__title' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -354,8 +354,8 @@ class BentoGrid extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'label'    => __('Subtitle typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-bento-grid__subtitle',
+                'label'    => __('Subtitle typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-bento-grid__subtitle',
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 14, 'unit' => 'px']],
@@ -364,23 +364,23 @@ class BentoGrid extends WidgetBase
         );
 
         $this->add_control('subtitle_color', [
-            'label'     => __('Subtitle color', 'elementrify'),
+            'label'     => __('Subtitle color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#4b5563',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-bento-grid__subtitle' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-bento-grid__subtitle' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('icon_size', [
-            'label'      => __('Icon size', 'elementrify'),
+            'label'      => __('Icon size', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 12, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 28],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-bento-grid__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .elementrify-bento-grid__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-bento-grid__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -394,7 +394,7 @@ class BentoGrid extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/bento-grid/bento-grid.php';
+        $path = VELORIA_DIR . 'templates/bento-grid/bento-grid.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -411,9 +411,9 @@ class BentoGrid extends WidgetBase
         <#
         var rows = settings.rows || [];
         #>
-        <div class="elementrify-bento-grid">
+        <div class="veloria-bento-grid">
             <# _.each(rows, function(row) { #>
-                <div class="elementrify-bento-grid__row">
+                <div class="veloria-bento-grid__row">
                     <#
                     var columns = row.columns || [];
                     _.each(columns, function(col, colIndex) {
@@ -427,16 +427,16 @@ class BentoGrid extends WidgetBase
                         var iconColor = col.icon_color || '#2563eb';
                         var tileStyle = '--er-bento-span-d:' + dSpan + ';--er-bento-span-t:' + tSpan + ';--er-bento-span-m:' + mSpan + ';--er-bento-icon-color:' + iconColor + ';background:' + bg + ';';
                         var tileKey = 'tile_' + colIndex;
-                        view.addRenderAttribute(tileKey, 'class', 'elementrify-bento-grid__tile');
+                        view.addRenderAttribute(tileKey, 'class', 'veloria-bento-grid__tile');
                         view.addRenderAttribute(tileKey, 'style', tileStyle);
                     #>
                         <div {{{ view.getRenderAttributeString(tileKey) }}}>
                             <# if (col.icon && col.icon.value) { #>
-                                <div class="elementrify-bento-grid__icon"><i class="<# print(col.icon.value); #>"></i></div>
+                                <div class="veloria-bento-grid__icon"><i class="<# print(col.icon.value); #>"></i></div>
                             <# } #>
-                            <h4 class="elementrify-bento-grid__title"><# print(col.title || ''); #></h4>
+                            <h4 class="veloria-bento-grid__title"><# print(col.title || ''); #></h4>
                             <# if (col.subtitle) { #>
-                                <p class="elementrify-bento-grid__subtitle"><# print(col.subtitle); #></p>
+                                <p class="veloria-bento-grid__subtitle"><# print(col.subtitle); #></p>
                             <# } #>
                         </div>
                     <# }); #>

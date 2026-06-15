@@ -3,7 +3,7 @@ defined('ABSPATH') || exit;
 
 use Elementor\Icons_Manager;
 use Elementor\Utils;
-use Elementrify\Widgets\HeroBanner\HeroBanner;
+use Veloria\Widgets\HeroBanner\HeroBanner;
 
 if (emt_fs()->can_use_premium_code__premium_only()) {
     if (emt_fs()->is_plan('pro')) {
@@ -51,74 +51,74 @@ if ($is_file_video) {
     }
 }
 ?>
-<div class="elementrify-hero-banner" data-typing-ms="<?php echo esc_attr((string) $typing_ms); ?>" data-typing-loop="<?php echo $typing_loop ? '1' : '0'; ?>">
-    <div class="elementrify-hero-banner__bg">
+<div class="veloria-hero-banner" data-typing-ms="<?php echo esc_attr((string) $typing_ms); ?>" data-typing-loop="<?php echo $typing_loop ? '1' : '0'; ?>">
+    <div class="veloria-hero-banner__bg">
         <?php if ($bg_mode === 'video' && $is_file_video) : ?>
-            <video class="elementrify-hero-banner__video" autoplay muted playsinline loop preload="metadata">
+            <video class="veloria-hero-banner__video" autoplay muted playsinline loop preload="metadata">
                 <source src="<?php echo esc_url($video_link); ?>" type="<?php echo esc_attr($video_mime); ?>" />
             </video>
         <?php elseif ($bg_mode === 'video' && $youtube_id !== '') : ?>
-            <div class="elementrify-hero-banner__video elementrify-hero-banner__video--youtube">
+            <div class="veloria-hero-banner__video veloria-hero-banner__video--youtube">
                 <iframe
                     src="<?php echo esc_url('https://www.youtube-nocookie.com/embed/' . $youtube_id . '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&loop=1&playlist=' . rawurlencode($youtube_id)); ?>"
-                    title="<?php echo esc_attr__('Background video', 'elementrify'); ?>"
+                    title="<?php echo esc_attr__('Background video', 'veloria'); ?>"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         <?php elseif ($bg_mode === 'video' && $vimeo_id !== '') : ?>
-            <div class="elementrify-hero-banner__video elementrify-hero-banner__video--vimeo">
+            <div class="veloria-hero-banner__video veloria-hero-banner__video--vimeo">
                 <iframe
                     src="<?php echo esc_url('https://player.vimeo.com/video/' . $vimeo_id . '?autoplay=1&muted=1&background=1&loop=1'); ?>"
-                    title="<?php echo esc_attr__('Background video', 'elementrify'); ?>"
+                    title="<?php echo esc_attr__('Background video', 'veloria'); ?>"
                     loading="lazy"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         <?php endif; ?>
     </div>
-    <div class="elementrify-hero-banner__overlay" aria-hidden="true"></div>
-    <div class="elementrify-hero-banner__inner">
-        <div class="elementrify-hero-banner__content">
+    <div class="veloria-hero-banner__overlay" aria-hidden="true"></div>
+    <div class="veloria-hero-banner__inner">
+        <div class="veloria-hero-banner__content">
             <?php if ($tag_prefix !== '' || $tag_accent !== '') : ?>
-                <p class="elementrify-hero-banner__tagline">
+                <p class="veloria-hero-banner__tagline">
                     <?php if ($tag_prefix !== '') : ?>
-                        <span class="elementrify-hero-banner__tagline-prefix"><?php echo esc_html($tag_prefix); ?></span>
+                        <span class="veloria-hero-banner__tagline-prefix"><?php echo esc_html($tag_prefix); ?></span>
                     <?php endif; ?>
                     <?php if ($tag_prefix !== '' && $tag_accent !== '') : ?>
                         <?php echo ' '; ?>
                     <?php endif; ?>
                     <?php if ($tag_accent !== '') : ?>
-                        <span class="elementrify-hero-banner__tagline-accent"><span class="elementrify-hero-banner__tagline-accent-text"><?php echo esc_html($tag_accent); ?></span></span>
+                        <span class="veloria-hero-banner__tagline-accent"><span class="veloria-hero-banner__tagline-accent-text"><?php echo esc_html($tag_accent); ?></span></span>
                     <?php endif; ?>
                 </p>
             <?php endif; ?>
             <?php if ($title !== '') : ?>
-                <<?php echo esc_attr($title_tag); ?> class="elementrify-hero-banner__title" aria-label="<?php echo esc_attr($title); ?>">
+                <<?php echo esc_attr($title_tag); ?> class="veloria-hero-banner__title" aria-label="<?php echo esc_attr($title); ?>">
                     <?php if ($title_static !== '') : ?>
-                        <span class="elementrify-hero-banner__title-static"><?php echo esc_html($title_static); ?> </span>
+                        <span class="veloria-hero-banner__title-static"><?php echo esc_html($title_static); ?> </span>
                     <?php endif; ?>
                     <?php if ($title_typing !== '') : ?>
-                        <span class="elementrify-hero-banner__title-typing-wrap">
-                            <span class="elementrify-hero-banner__title-typing" data-text="<?php echo esc_attr($title_typing); ?>"></span><span class="elementrify-hero-banner__title-cursor" aria-hidden="true"></span>
+                        <span class="veloria-hero-banner__title-typing-wrap">
+                            <span class="veloria-hero-banner__title-typing" data-text="<?php echo esc_attr($title_typing); ?>"></span><span class="veloria-hero-banner__title-cursor" aria-hidden="true"></span>
                         </span>
                     <?php endif; ?>
                 </<?php echo esc_attr($title_tag); ?>>
             <?php endif; ?>
             <?php if ($show_line || $subtitle !== '') : ?>
-                <div class="elementrify-hero-banner__subrow-wrap">
-                    <div class="elementrify-hero-banner__subrow">
+                <div class="veloria-hero-banner__subrow-wrap">
+                    <div class="veloria-hero-banner__subrow">
                         <?php if ($show_line) : ?>
-                            <span class="elementrify-hero-banner__accent-line" aria-hidden="true"></span>
+                            <span class="veloria-hero-banner__accent-line" aria-hidden="true"></span>
                         <?php endif; ?>
                         <?php if ($subtitle !== '') : ?>
-                            <p class="elementrify-hero-banner__subtitle"><?php echo esc_html($subtitle); ?></p>
+                            <p class="veloria-hero-banner__subtitle"><?php echo esc_html($subtitle); ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
             <?php endif; ?>
             <?php if ($buttons !== []) : ?>
-                <div class="elementrify-hero-banner__actions">
+                <div class="veloria-hero-banner__actions">
                     <?php foreach ($buttons as $index => $row) : ?>
                         <?php
                         if (!is_array($row)) {
@@ -137,14 +137,14 @@ if ($is_file_video) {
                             $link['url'] = '#';
                         }
                         $key = 'hero_banner_btn_' . (int) $index;
-                        $this->add_render_attribute($key, 'class', 'elementrify-hero-banner__btn elementrify-hero-banner__btn--' . $type);
+                        $this->add_render_attribute($key, 'class', 'veloria-hero-banner__btn veloria-hero-banner__btn--' . $type);
                         $this->add_link_attributes($key, $link);
                         ?>
                         <a <?php echo $this->get_render_attribute_string($key); ?>>
-                            <span class="elementrify-hero-banner__btn-inner">
-                                <span class="elementrify-hero-banner__btn-text"><?php echo esc_html($text); ?></span>
+                            <span class="veloria-hero-banner__btn-inner">
+                                <span class="veloria-hero-banner__btn-text"><?php echo esc_html($text); ?></span>
                                 <?php if ($show_icon && !empty($icon['value'])) : ?>
-                                    <span class="elementrify-hero-banner__btn-icon" aria-hidden="true">
+                                    <span class="veloria-hero-banner__btn-icon" aria-hidden="true">
                                         <?php Icons_Manager::render_icon($icon, ['aria-hidden' => 'true']); ?>
                                     </span>
                                 <?php endif; ?>

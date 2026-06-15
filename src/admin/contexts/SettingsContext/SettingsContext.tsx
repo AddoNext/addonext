@@ -11,7 +11,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    apiFetch({ path: "/elementrify/v1/settings" })
+    apiFetch({ path: "/veloria/v1/settings" })
       .then((res: { success?: boolean; settings?: Record<string, unknown> }) => {
         if (res?.success && res.settings) {
           setValues(res.settings);
@@ -33,7 +33,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     setIsSaving(true);
     try {
       const res = await apiFetch({
-        path: "/elementrify/v1/settings",
+        path: "/veloria/v1/settings",
         method: "POST",
         data: { settings: values },
       }) as { success?: boolean };

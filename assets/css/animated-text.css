@@ -1,41 +1,41 @@
-.elementrify-animated-text {
+.veloria-animated-text {
     display: block;
     line-height: 1.35;
 }
 
-.elementrify-animated-text__before:empty,
-.elementrify-animated-text__after:empty {
+.veloria-animated-text__before:empty,
+.veloria-animated-text__after:empty {
     display: none;
 }
 
-.elementrify-animated-text__before,
-.elementrify-animated-text__after {
+.veloria-animated-text__before,
+.veloria-animated-text__after {
     display: inline;
     vertical-align: baseline;
 }
 
-.elementrify-animated-text__animated-wrap {
+.veloria-animated-text__animated-wrap {
     display: inline;
     vertical-align: baseline;
 }
 
-.elementrify-animated-text__animated {
+.veloria-animated-text__animated {
     display: inline;
     vertical-align: baseline;
 }
 
-.elementrify-animated-text--gradient .elementrify-animated-text__animated {
+.veloria-animated-text--gradient .veloria-animated-text__animated {
     color: transparent;
     background-image: linear-gradient(
-        var(--elementrify-at-gradient-angle, 120deg),
-        var(--elementrify-at-gradient-start, #ec4899),
-        var(--elementrify-at-gradient-end, #8b5cf6)
+        var(--veloria-at-gradient-angle, 120deg),
+        var(--veloria-at-gradient-start, #ec4899),
+        var(--veloria-at-gradient-end, #8b5cf6)
     );
     -webkit-background-clip: text;
     background-clip: text;
 }
 
-.elementrify-animated-text--gradient .elementrify-animated-text__squeeze-sizer {
+.veloria-animated-text--gradient .veloria-animated-text__squeeze-sizer {
     color: inherit;
     -webkit-text-fill-color: currentColor;
     background-image: none;
@@ -43,11 +43,11 @@
     background-clip: border-box;
 }
 
-.elementrify-animated-text__typed {
+.veloria-animated-text__typed {
     display: inline;
 }
 
-.elementrify-animated-text__cursor {
+.veloria-animated-text__cursor {
     display: none;
     margin-left: 1px;
     font-weight: 300;
@@ -56,14 +56,14 @@
     background: none;
     -webkit-background-clip: border-box;
     background-clip: border-box;
-    animation: elementrify-at-cursor-blink 0.9s step-end infinite;
+    animation: veloria-at-cursor-blink 0.9s step-end infinite;
 }
 
-.elementrify-animated-text__cursor.is-visible {
+.veloria-animated-text__cursor.is-visible {
     display: inline;
 }
 
-@keyframes elementrify-at-cursor-blink {
+@keyframes veloria-at-cursor-blink {
     0%,
     100% {
         opacity: 1;
@@ -73,55 +73,55 @@
     }
 }
 
-.elementrify-animated-text--reveal .elementrify-animated-text__space {
+.veloria-animated-text--reveal .veloria-animated-text__space {
     display: inline;
     white-space: pre;
 }
 
-.elementrify-animated-text--reveal .elementrify-animated-text__word {
+.veloria-animated-text--reveal .veloria-animated-text__word {
     display: inline-block;
     opacity: 0;
     transition:
-        opacity var(--elementrify-at-duration, 500ms) ease,
-        transform var(--elementrify-at-duration, 500ms) ease;
-    transition-delay: calc(var(--word-index, 0) * var(--elementrify-at-stagger, 80ms));
+        opacity var(--veloria-at-duration, 500ms) ease,
+        transform var(--veloria-at-duration, 500ms) ease;
+    transition-delay: calc(var(--word-index, 0) * var(--veloria-at-stagger, 80ms));
 }
 
-.elementrify-animated-text--reveal[data-reveal-direction="up"] .elementrify-animated-text__word {
+.veloria-animated-text--reveal[data-reveal-direction="up"] .veloria-animated-text__word {
     transform: translate3d(0, 0.45em, 0);
 }
 
-.elementrify-animated-text--reveal[data-reveal-direction="down"] .elementrify-animated-text__word {
+.veloria-animated-text--reveal[data-reveal-direction="down"] .veloria-animated-text__word {
     transform: translate3d(0, -0.45em, 0);
 }
 
-.elementrify-animated-text--reveal[data-reveal-direction="left"] .elementrify-animated-text__word {
+.veloria-animated-text--reveal[data-reveal-direction="left"] .veloria-animated-text__word {
     transform: translate3d(0.35em, 0, 0);
 }
 
-.elementrify-animated-text--reveal[data-reveal-direction="right"] .elementrify-animated-text__word {
+.veloria-animated-text--reveal[data-reveal-direction="right"] .veloria-animated-text__word {
     transform: translate3d(-0.35em, 0, 0);
 }
 
-.elementrify-animated-text--reveal[data-reveal-direction="fade"] .elementrify-animated-text__word {
+.veloria-animated-text--reveal[data-reveal-direction="fade"] .veloria-animated-text__word {
     transform: none;
 }
 
-.elementrify-animated-text--reveal.is-revealed .elementrify-animated-text__word {
+.veloria-animated-text--reveal.is-revealed .veloria-animated-text__word {
     opacity: 1;
     transform: none;
 }
 
-.elementrify-animated-text__char {
+.veloria-animated-text__char {
     letter-spacing: inherit;
 }
 
-.elementrify-animated-text--square-squeeze > .elementrify-animated-text__before,
-.elementrify-animated-text--square-squeeze > .elementrify-animated-text__after {
+.veloria-animated-text--square-squeeze > .veloria-animated-text__before,
+.veloria-animated-text--square-squeeze > .veloria-animated-text__after {
     flex-shrink: 0;
 }
 
-.elementrify-animated-text--square-squeeze {
+.veloria-animated-text--square-squeeze {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -130,7 +130,7 @@
     line-height: 1.35;
 }
 
-.elementrify-animated-text--square-squeeze .elementrify-animated-text__squeeze {
+.veloria-animated-text--square-squeeze .veloria-animated-text__squeeze {
     display: inline-flex;
     flex: 0 0 auto;
     max-width: 100%;
@@ -138,11 +138,11 @@
     vertical-align: middle;
 }
 
-.elementrify-animated-text__squeeze-frame {
-    --elementrify-at-sq-corner: 8px;
-    --elementrify-at-sq-corner-start: #fde68a;
-    --elementrify-at-sq-corner-end: #d97706;
-    --elementrify-at-sq-corner-angle: 135deg;
+.veloria-animated-text__squeeze-frame {
+    --veloria-at-sq-corner: 8px;
+    --veloria-at-sq-corner-start: #fde68a;
+    --veloria-at-sq-corner-end: #d97706;
+    --veloria-at-sq-corner-angle: 135deg;
     --sq-dur: 600ms;
     position: relative;
     display: inline-block;
@@ -154,17 +154,17 @@
     vertical-align: middle;
 }
 
-.elementrify-animated-text--square-squeeze.elementrify-animated-text--gradient .elementrify-animated-text__squeeze-frame {
+.veloria-animated-text--square-squeeze.veloria-animated-text--gradient .veloria-animated-text__squeeze-frame {
     border-color: transparent;
     border-image: linear-gradient(
-            var(--elementrify-at-gradient-angle, 120deg),
-            var(--elementrify-at-gradient-start, #ec4899),
-            var(--elementrify-at-gradient-end, #8b5cf6)
+            var(--veloria-at-gradient-angle, 120deg),
+            var(--veloria-at-gradient-start, #ec4899),
+            var(--veloria-at-gradient-end, #8b5cf6)
         )
         1;
 }
 
-.elementrify-animated-text__squeeze-inner {
+.veloria-animated-text__squeeze-inner {
     position: relative;
     z-index: 1;
     display: inline-block;
@@ -174,7 +174,7 @@
     padding: 2px 6px 2px 6px;
 }
 
-.elementrify-animated-text__squeeze-sizer {
+.veloria-animated-text__squeeze-sizer {
     visibility: hidden;
     display: block;
     white-space: nowrap;
@@ -184,7 +184,7 @@
     user-select: none;
 }
 
-.elementrify-animated-text__squeeze-text {
+.veloria-animated-text__squeeze-text {
     position: absolute;
     z-index: 1;
     left: 50%;
@@ -199,28 +199,28 @@
     text-align: center;
 }
 
-.elementrify-animated-text--square-squeeze.elementrify-animated-text--gradient .elementrify-animated-text__squeeze-text {
+.veloria-animated-text--square-squeeze.veloria-animated-text--gradient .veloria-animated-text__squeeze-text {
     color: transparent;
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(
-        var(--elementrify-at-gradient-angle, 120deg),
-        var(--elementrify-at-gradient-start, #ec4899),
-        var(--elementrify-at-gradient-end, #8b5cf6)
+        var(--veloria-at-gradient-angle, 120deg),
+        var(--veloria-at-gradient-start, #ec4899),
+        var(--veloria-at-gradient-end, #8b5cf6)
     );
     -webkit-background-clip: text;
     background-clip: text;
 }
 
-.elementrify-animated-text__squeeze-corner {
+.veloria-animated-text__squeeze-corner {
     position: absolute;
     z-index: 2;
-    width: var(--elementrify-at-sq-corner);
-    height: var(--elementrify-at-sq-corner);
+    width: var(--veloria-at-sq-corner);
+    height: var(--veloria-at-sq-corner);
     background-color: transparent;
     background-image: linear-gradient(
-        var(--elementrify-at-sq-corner-angle, 135deg),
-        var(--elementrify-at-sq-corner-start, #fde68a),
-        var(--elementrify-at-sq-corner-end, #d97706)
+        var(--veloria-at-sq-corner-angle, 135deg),
+        var(--veloria-at-sq-corner-start, #fde68a),
+        var(--veloria-at-sq-corner-end, #d97706)
     );
     transition:
         transform var(--sq-dur, 600ms) ease,
@@ -232,42 +232,42 @@
     box-sizing: border-box;
 }
 
-.elementrify-animated-text--square-squeeze.elementrify-animated-text--gradient .elementrify-animated-text__squeeze-corner {
+.veloria-animated-text--square-squeeze.veloria-animated-text--gradient .veloria-animated-text__squeeze-corner {
     background-image: linear-gradient(
-        var(--elementrify-at-gradient-angle, 120deg),
-        var(--elementrify-at-gradient-start, #ec4899),
-        var(--elementrify-at-gradient-end, #8b5cf6)
+        var(--veloria-at-gradient-angle, 120deg),
+        var(--veloria-at-gradient-start, #ec4899),
+        var(--veloria-at-gradient-end, #8b5cf6)
     );
 }
 
-.elementrify-animated-text__squeeze-corner--tl {
+.veloria-animated-text__squeeze-corner--tl {
     top: 0;
     left: 0;
     transform: translate(0, 0);
 }
 
-.elementrify-animated-text__squeeze-corner--tr {
+.veloria-animated-text__squeeze-corner--tr {
     top: 0;
     right: 0;
     transform: translate(0, 0);
 }
 
-.elementrify-animated-text__squeeze-corner--br {
+.veloria-animated-text__squeeze-corner--br {
     right: 0;
     bottom: 0;
     transform: translate(0, 0);
 }
 
-.elementrify-animated-text__squeeze-corner--bl {
+.veloria-animated-text__squeeze-corner--bl {
     bottom: 0;
     left: 0;
     transform: translate(0, 0);
 }
 
-.elementrify-animated-text__squeeze-frame.is-squeezed .elementrify-animated-text__squeeze-corner--tl,
-.elementrify-animated-text__squeeze-frame.is-squeezed .elementrify-animated-text__squeeze-corner--tr,
-.elementrify-animated-text__squeeze-frame.is-squeezed .elementrify-animated-text__squeeze-corner--br,
-.elementrify-animated-text__squeeze-frame.is-squeezed .elementrify-animated-text__squeeze-corner--bl {
+.veloria-animated-text__squeeze-frame.is-squeezed .veloria-animated-text__squeeze-corner--tl,
+.veloria-animated-text__squeeze-frame.is-squeezed .veloria-animated-text__squeeze-corner--tr,
+.veloria-animated-text__squeeze-frame.is-squeezed .veloria-animated-text__squeeze-corner--br,
+.veloria-animated-text__squeeze-frame.is-squeezed .veloria-animated-text__squeeze-corner--bl {
     top: 50%;
     left: 50%;
     right: auto;

@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\BeforeAfterSlider;
+namespace Veloria\Widgets\BeforeAfterSlider;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -23,18 +23,18 @@ class BeforeAfterSlider extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('elementrify-before-after-slider');
-        wp_enqueue_script('elementrify-before-after-slider');
+        wp_enqueue_style('veloria-before-after-slider');
+        wp_enqueue_script('veloria-before-after-slider');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-image-before-after elementrify-icon';
+        return 'eicon-image-before-after veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-before-after-slider';
+        return 'veloria-before-after-slider';
     }
 
     public function get_admin_category(): string
@@ -44,12 +44,12 @@ class BeforeAfterSlider extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Before After Slider', 'elementrify');
+        return __('Before After Slider', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Compare two images with a draggable divider', 'elementrify');
+        return __('Compare two images with a draggable divider', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -65,27 +65,27 @@ class BeforeAfterSlider extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-before-after-slider'];
+        return ['veloria-before-after-slider'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-before-after-slider'];
+        return ['veloria-before-after-slider'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-before-after-slider',
-            ELEMENTRIFY_URL . 'assets/css/before-after-slider.css',
+            'veloria-before-after-slider',
+            VELORIA_URL . 'assets/css/before-after-slider.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-before-after-slider',
-            ELEMENTRIFY_URL . 'assets/js/before-after-slider.js',
+            'veloria-before-after-slider',
+            VELORIA_URL . 'assets/js/before-after-slider.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -96,17 +96,17 @@ class BeforeAfterSlider extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('image_before', [
-            'label' => __('Before image', 'elementrify'),
+            'label' => __('Before image', 'veloria'),
             'type'  => Controls_Manager::MEDIA,
         ]);
 
         $this->add_control('image_after', [
-            'label' => __('After image', 'elementrify'),
+            'label' => __('After image', 'veloria'),
             'type'  => Controls_Manager::MEDIA,
         ]);
 
@@ -116,7 +116,7 @@ class BeforeAfterSlider extends WidgetBase
         ]);
 
         $this->add_control('initial_position', [
-            'label'      => __('Initial position', 'elementrify'),
+            'label'      => __('Initial position', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['%'],
             'range'      => ['%' => ['min' => 0, 'max' => 100]],
@@ -124,121 +124,121 @@ class BeforeAfterSlider extends WidgetBase
         ]);
 
         $this->add_control('slide_direction', [
-            'label'   => __('Slide direction', 'elementrify'),
+            'label'   => __('Slide direction', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'horizontal',
             'options' => [
-                'horizontal' => __('Horizontal', 'elementrify'),
-                'vertical'   => __('Vertical', 'elementrify'),
+                'horizontal' => __('Horizontal', 'veloria'),
+                'vertical'   => __('Vertical', 'veloria'),
             ],
         ]);
 
         $this->add_control('object_fit', [
-            'label'   => __('Image fit', 'elementrify'),
+            'label'   => __('Image fit', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'cover',
             'options' => [
-                'cover'   => __('Cover', 'elementrify'),
-                'contain' => __('Contain', 'elementrify'),
-                'fill'    => __('Fill', 'elementrify'),
+                'cover'   => __('Cover', 'veloria'),
+                'contain' => __('Contain', 'veloria'),
+                'fill'    => __('Fill', 'veloria'),
             ],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-before-after__img' => 'object-fit: {{VALUE}};',
+                '{{WRAPPER}} .veloria-before-after__img' => 'object-fit: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('show_labels', [
-            'label'        => __('Show labels', 'elementrify'),
+            'label'        => __('Show labels', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Show', 'elementrify'),
-            'label_off'    => __('Hide', 'elementrify'),
+            'label_on'     => __('Show', 'veloria'),
+            'label_off'    => __('Hide', 'veloria'),
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('label_before', [
-            'label'     => __('Before label', 'elementrify'),
+            'label'     => __('Before label', 'veloria'),
             'type'      => Controls_Manager::TEXT,
-            'default'   => __('Before', 'elementrify'),
+            'default'   => __('Before', 'veloria'),
             'condition' => ['show_labels' => 'yes'],
         ]);
 
         $this->add_control('label_after', [
-            'label'     => __('After label', 'elementrify'),
+            'label'     => __('After label', 'veloria'),
             'type'      => Controls_Manager::TEXT,
-            'default'   => __('After', 'elementrify'),
+            'default'   => __('After', 'veloria'),
             'condition' => ['show_labels' => 'yes'],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_separator', [
-            'label' => __('Separator & handle', 'elementrify'),
+            'label' => __('Separator & handle', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('line_width', [
-            'label'      => __('Line width', 'elementrify'),
+            'label'      => __('Line width', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 1, 'max' => 8]],
             'default'    => ['unit' => 'px', 'size' => 2],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-before-after' => '--elementrify-ba-line-w: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-before-after' => '--veloria-ba-line-w: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('line_color', [
-            'label'     => __('Line color', 'elementrify'),
+            'label'     => __('Line color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-before-after' => '--elementrify-ba-line-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-before-after' => '--veloria-ba-line-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('handle_size', [
-            'label'      => __('Handle size', 'elementrify'),
+            'label'      => __('Handle size', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 28, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 48],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-before-after' => '--elementrify-ba-handle: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-before-after' => '--veloria-ba-handle: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('handle_bg', [
-            'label'     => __('Handle background', 'elementrify'),
+            'label'     => __('Handle background', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-before-after' => '--elementrify-ba-handle-bg: {{VALUE}};',
+                '{{WRAPPER}} .veloria-before-after' => '--veloria-ba-handle-bg: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('handle_icon_color', [
-            'label'     => __('Icon color', 'elementrify'),
+            'label'     => __('Icon color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#0f172a',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-before-after__handle' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                '{{WRAPPER}} .veloria-before-after__handle' => 'color: {{VALUE}}; fill: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('handle_icon_size', [
-            'label'      => __('Icon size', 'elementrify'),
+            'label'      => __('Icon size', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 10, 'max' => 40]],
             'default'    => ['unit' => 'px', 'size' => 18],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-before-after__handle-icon' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-before-after__handle-icon' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('handle_icon', [
-            'label' => __('Handle icon', 'elementrify'),
+            'label' => __('Handle icon', 'veloria'),
             'type'  => Controls_Manager::ICONS,
             'default' => [
                 'value'   => 'fas fa-arrows-alt-h',
@@ -249,12 +249,12 @@ class BeforeAfterSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_frame', [
-            'label' => __('Container', 'elementrify'),
+            'label' => __('Container', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('frame_min_height', [
-            'label'      => __('Min height', 'elementrify'),
+            'label'      => __('Min height', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh'],
             'range'      => [
@@ -266,21 +266,21 @@ class BeforeAfterSlider extends WidgetBase
                 'size' => 400,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-before-after__frame' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-before-after__frame' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('frame_padding', [
-            'label'      => __('Padding', 'elementrify'),
+            'label'      => __('Padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-before-after__frame' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-before-after__frame' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('border_radius', [
-            'label'      => __('Border radius', 'elementrify'),
+            'label'      => __('Border radius', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'default'    => [
@@ -291,39 +291,39 @@ class BeforeAfterSlider extends WidgetBase
                 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-before-after__frame' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-before-after__frame' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Border::get_type(), [
             'name'     => 'frame_border',
-            'selector' => '{{WRAPPER}} .elementrify-before-after__frame',
+            'selector' => '{{WRAPPER}} .veloria-before-after__frame',
         ]);
 
         $this->add_group_control(Group_Control_Box_Shadow::get_type(), [
             'name'     => 'frame_shadow',
-            'selector' => '{{WRAPPER}} .elementrify-before-after__frame',
+            'selector' => '{{WRAPPER}} .veloria-before-after__frame',
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_labels', [
-            'label'     => __('Labels', 'elementrify'),
+            'label'     => __('Labels', 'veloria'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_labels' => 'yes'],
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name'     => 'label_typography',
-            'selector' => '{{WRAPPER}} .elementrify-before-after__label',
+            'selector' => '{{WRAPPER}} .veloria-before-after__label',
         ]);
 
         $this->add_control('label_color', [
-            'label'     => __('Color', 'elementrify'),
+            'label'     => __('Color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-before-after__label' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-before-after__label' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -337,7 +337,7 @@ class BeforeAfterSlider extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/before-after-slider/before-after-slider.php';
+        $path = VELORIA_DIR . 'templates/before-after-slider/before-after-slider.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -357,32 +357,32 @@ class BeforeAfterSlider extends WidgetBase
             split = settings.initial_position.size;
         }
         var vertical = settings.slide_direction === 'vertical';
-        var rootClass = 'elementrify-before-after' + ( vertical ? ' elementrify-before-after--vertical' : '' );
+        var rootClass = 'veloria-before-after' + ( vertical ? ' veloria-before-after--vertical' : '' );
         var clipAfter = vertical ? 'inset(' + split + '% 0 0 0)' : 'inset(0 0 0 ' + split + '%)';
         var dividerStyle = vertical ? 'top:' + split + '%;' : 'left:' + split + '%;';
         var handleOrient = vertical ? 'vertical' : 'horizontal';
         var editorIcon = vertical ? 'fas fa-arrows-alt-v' : 'fas fa-arrows-alt-h';
         #>
         <div class="{{ rootClass }}" style="--ba-split: {{ split }}%; --ba-split-num: {{ split }};" data-initial-split="{{ split }}" data-ba-orientation="{{ handleOrient }}">
-            <div class="elementrify-before-after__frame">
-                <div class="elementrify-before-after__before">
+            <div class="veloria-before-after__frame">
+                <div class="veloria-before-after__before">
                     <# if ( settings.image_before && settings.image_before.url ) { #>
-                    <img class="elementrify-before-after__img" src="{{ settings.image_before.url }}" alt="" draggable="false">
+                    <img class="veloria-before-after__img" src="{{ settings.image_before.url }}" alt="" draggable="false">
                     <# } #>
                 </div>
-                <div class="elementrify-before-after__after" style="clip-path: {{ clipAfter }};">
+                <div class="veloria-before-after__after" style="clip-path: {{ clipAfter }};">
                     <# if ( settings.image_after && settings.image_after.url ) { #>
-                    <img class="elementrify-before-after__img" src="{{ settings.image_after.url }}" alt="" draggable="false">
+                    <img class="veloria-before-after__img" src="{{ settings.image_after.url }}" alt="" draggable="false">
                     <# } #>
                 </div>
                 <# if ( settings.show_labels === 'yes' ) { #>
-                <span class="elementrify-before-after__label elementrify-before-after__label--before">{{{ settings.label_before }}}</span>
-                <span class="elementrify-before-after__label elementrify-before-after__label--after">{{{ settings.label_after }}}</span>
+                <span class="veloria-before-after__label veloria-before-after__label--before">{{{ settings.label_before }}}</span>
+                <span class="veloria-before-after__label veloria-before-after__label--after">{{{ settings.label_after }}}</span>
                 <# } #>
-                <div class="elementrify-before-after__divider" style="{{ dividerStyle }}">
-                    <span class="elementrify-before-after__line" aria-hidden="true"></span>
-                    <button type="button" class="elementrify-before-after__handle" aria-label="<?php echo esc_attr__('Drag to compare images', 'elementrify'); ?>" role="slider" aria-orientation="{{ handleOrient }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ split }}">
-                        <span class="elementrify-before-after__handle-icon">
+                <div class="veloria-before-after__divider" style="{{ dividerStyle }}">
+                    <span class="veloria-before-after__line" aria-hidden="true"></span>
+                    <button type="button" class="veloria-before-after__handle" aria-label="<?php echo esc_attr__('Drag to compare images', 'veloria'); ?>" role="slider" aria-orientation="{{ handleOrient }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ split }}">
+                        <span class="veloria-before-after__handle-icon">
                             <i class="{{ editorIcon }}" aria-hidden="true"></i>
                         </span>
                     </button>

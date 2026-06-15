@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var SWIPER_SEL = '.elementrify-pc__swiper.swiper';
+  var SWIPER_SEL = '.veloria-pc__swiper.swiper';
 
   function initPcSlider(el) {
     if (!el || typeof Swiper === 'undefined') {
@@ -31,9 +31,9 @@
       loop = false;
     }
 
-    var shell = el.closest('.elementrify-pc__slider-shell');
-    var nextBtn = shell ? shell.querySelector('.elementrify-pc__nav--next') : null;
-    var prevBtn = shell ? shell.querySelector('.elementrify-pc__nav--prev') : null;
+    var shell = el.closest('.veloria-pc__slider-shell');
+    var nextBtn = shell ? shell.querySelector('.veloria-pc__nav--next') : null;
+    var prevBtn = shell ? shell.querySelector('.veloria-pc__nav--prev') : null;
     var dotsEl = el.querySelector('.swiper-pagination');
 
     var options = {
@@ -104,7 +104,7 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-categories.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-categories.default', function ($scope) {
       scan($scope && $scope[0] ? $scope[0] : document);
     });
   }

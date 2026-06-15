@@ -33,15 +33,15 @@
             el._countdownInterval = null;
         }
 
-        var segments = el.querySelectorAll('.elementrify-countdown__segment');
+        var segments = el.querySelectorAll('.veloria-countdown__segment');
         var valueEls = {};
         var shutterValueEls = {};
         var segmentByUnit = {};
         segments.forEach(function (seg) {
             var unit = seg.getAttribute('data-unit');
-            var val = seg.querySelector('.elementrify-countdown__value');
-            var shutterVal = seg.querySelector('.elementrify-countdown__shutter-value');
-            var shutterEl = seg.querySelector('.elementrify-countdown__shutter');
+            var val = seg.querySelector('.veloria-countdown__value');
+            var shutterVal = seg.querySelector('.veloria-countdown__shutter-value');
+            var shutterEl = seg.querySelector('.veloria-countdown__shutter');
             if (unit && val) {
                 valueEls[unit] = val;
                 segmentByUnit[unit] = seg;
@@ -102,17 +102,17 @@
 
     function scan(root) {
         root = root || document;
-        var widgets = root.querySelectorAll('.elementrify-countdown[data-due]');
+        var widgets = root.querySelectorAll('.veloria-countdown[data-due]');
         widgets.forEach(runCountdown);
     }
 
     function initAddedNode(node) {
         if (node.nodeType !== 1) return;
-        if (node.matches && node.matches('.elementrify-countdown[data-due]')) {
+        if (node.matches && node.matches('.veloria-countdown[data-due]')) {
             runCountdown(node);
         }
         if (node.querySelectorAll) {
-            var list = node.querySelectorAll('.elementrify-countdown[data-due]');
+            var list = node.querySelectorAll('.veloria-countdown[data-due]');
             list.forEach(runCountdown);
         }
     }
@@ -147,7 +147,7 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-countdown-timer.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-countdown-timer.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) scan(el);
         });

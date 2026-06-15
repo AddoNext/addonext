@@ -1,17 +1,17 @@
 <?php
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use Elementrify\Utils\OptionsHelper;
-use Elementrify\Common\ExtensionManager;
+use Veloria\Utils\OptionsHelper;
+use Veloria\Common\ExtensionManager;
 
 defined('ABSPATH') or exit;
 
 /**
  * Extensions Controller: REST API for extensions data and actions
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class ExtensionsController
@@ -31,20 +31,20 @@ class ExtensionsController
      */
     public function register_endpoints(): void
     {
-        register_rest_route('elementrify/v1', '/extensions', [
+        register_rest_route('veloria/v1', '/extensions', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_get_extensions'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
-        register_rest_route('elementrify/v1', '/extensions', [
+        register_rest_route('veloria/v1', '/extensions', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_update_extensions'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
         register_rest_route(
-            'elementrify/v1',
+            'veloria/v1',
             '/extensions/(?P<id>[a-z0-9\\-]+)/settings',
             [
                 'methods'             => ['GET', 'POST'],
@@ -108,7 +108,7 @@ class ExtensionsController
             return new WP_REST_Response(
                 [
                     'success' => false,
-                    'message' => __('Invalid extensions', 'elementrify')
+                    'message' => __('Invalid extensions', 'veloria')
                 ],
                 400
             );
@@ -121,7 +121,7 @@ class ExtensionsController
 
         return new WP_REST_Response([
             'success'    => true,
-            'message'    => __('Extensions updated successfully', 'elementrify'),
+            'message'    => __('Extensions updated successfully', 'veloria'),
             'extensions' => $manager->get_extensions_catalog()
         ]);
     }
@@ -139,13 +139,13 @@ class ExtensionsController
         $class   = $manager->get_extension_class_for_id($id);
 
         if ($class === null) {
-            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'elementrify')], 404);
+            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'veloria')], 404);
         }
 
         $instance = emty_container($class);
 
         if (!$instance->has_settings()) {
-            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'elementrify')], 400);
+            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'veloria')], 400);
         }
 
         return new WP_REST_Response([
@@ -169,20 +169,20 @@ class ExtensionsController
         $class   = $manager->get_extension_class_for_id($id);
 
         if ($class === null) {
-            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'elementrify')], 404);
+            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'veloria')], 404);
         }
 
         $instance = emty_container($class);
 
         if (!$instance->has_settings()) {
-            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'elementrify')], 400);
+            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'veloria')], 400);
         }
 
         $raw = $request->get_param('settings');
 
         if (!is_array($raw)) {
             return new WP_REST_Response(
-                ['success' => false, 'message' => __('Invalid settings', 'elementrify')],
+                ['success' => false, 'message' => __('Invalid settings', 'veloria')],
                 400
             );
         }
@@ -192,7 +192,7 @@ class ExtensionsController
 
         return new WP_REST_Response([
             'success'  => true,
-            'message'  => __('Settings saved', 'elementrify'),
+            'message'  => __('Settings saved', 'veloria'),
             'id'       => $id,
             'settings' => $manager->get_extension_settings_payload($id),
         ]);

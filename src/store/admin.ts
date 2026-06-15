@@ -20,7 +20,7 @@ import type {
     LicenseDeactivateResponse,
 } from './types';
 
-const STORE_NAME = 'elementrify/admin';
+const STORE_NAME = 'veloria/admin';
 
 const DEFAULT_STATE: AdminState = {
     widgets: [],
@@ -215,7 +215,7 @@ const store = createReduxStore(STORE_NAME, {
             return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_SETTINGS_RESOLVING, payload: true });
                 try {
-                    const res = await apiFetch({ path: '/elementrify/v1/settings' }) as SettingsGetResponse;
+                    const res = await apiFetch({ path: '/veloria/v1/settings' }) as SettingsGetResponse;
                     if (res?.success && res.sections && res.values) {
                         dispatch({ type: SET_SETTINGS_DATA, payload: { sections: res.sections, values: res.values } });
                     }
@@ -235,7 +235,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_SETTINGS_SAVING, payload: true });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/settings',
+                        path: '/veloria/v1/settings',
                         method: 'POST',
                         data: { values: settingsValues },
                     }) as { success?: boolean };
@@ -278,7 +278,7 @@ const store = createReduxStore(STORE_NAME, {
             return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_BACKUPS_RESOLVING, payload: true });
                 try {
-                    const res = await apiFetch({ path: '/elementrify/v1/backups' }) as BackupsListResponse;
+                    const res = await apiFetch({ path: '/veloria/v1/backups' }) as BackupsListResponse;
                     if (res?.success && res.backups) {
                         dispatch({ type: SET_BACKUPS, payload: res.backups });
                     }
@@ -297,7 +297,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_BACKUPS_EXPORTING, payload: true });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/backups/export',
+                        path: '/veloria/v1/backups/export',
                         method: 'POST',
                         data: { values: payload.values, save_to_server: payload.saveToServer },
                     }) as BackupsExportResponse;
@@ -325,7 +325,7 @@ const store = createReduxStore(STORE_NAME, {
                         const formData = new FormData();
                         formData.append('file', payload.file);
                         const res = await apiFetch({
-                            path: '/elementrify/v1/backups/import',
+                            path: '/veloria/v1/backups/import',
                             method: 'POST',
                             body: formData,
                         }) as BackupsImportResponse;
@@ -335,7 +335,7 @@ const store = createReduxStore(STORE_NAME, {
                         }
                     } else {
                         const res = await apiFetch({
-                            path: '/elementrify/v1/backups/import',
+                            path: '/veloria/v1/backups/import',
                             method: 'POST',
                             data: { values: payload.values },
                         }) as BackupsImportResponse;
@@ -360,7 +360,7 @@ const store = createReduxStore(STORE_NAME, {
             return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 try {
                     const res = await apiFetch({
-                        path: `/elementrify/v1/backups?file=${encodeURIComponent(file)}`,
+                        path: `/veloria/v1/backups?file=${encodeURIComponent(file)}`,
                         method: 'DELETE',
                     }) as BackupsListResponse;
                     if (res?.success && res.backups) {
@@ -378,7 +378,7 @@ const store = createReduxStore(STORE_NAME, {
         downloadBackup(file: string) {
             return async () => {
                 const res = await apiFetch({
-                    path: `/elementrify/v1/backups/download?file=${encodeURIComponent(file)}`,
+                    path: `/veloria/v1/backups/download?file=${encodeURIComponent(file)}`,
                 }) as BackupsDownloadResponse;
                 if (res?.success && res.content) {
                     const blob = new Blob([res.content], { type: 'application/json' });
@@ -399,7 +399,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_BACKUPS_ERROR, payload: null });
                 try {
                     const downloadRes = await apiFetch({
-                        path: `/elementrify/v1/backups/download?file=${encodeURIComponent(file)}`,
+                        path: `/veloria/v1/backups/download?file=${encodeURIComponent(file)}`,
                     }) as BackupsDownloadResponse;
                     if (!downloadRes?.success || !downloadRes.content) {
                         dispatch({
@@ -411,7 +411,7 @@ const store = createReduxStore(STORE_NAME, {
                     const data = JSON.parse(downloadRes.content) as { values?: Record<string, unknown> };
                     const values = data?.values && typeof data.values === 'object' ? data.values : {};
                     const importRes = await apiFetch({
-                        path: '/elementrify/v1/backups/import',
+                        path: '/veloria/v1/backups/import',
                         method: 'POST',
                         data: { values },
                     }) as BackupsImportResponse;
@@ -432,7 +432,7 @@ const store = createReduxStore(STORE_NAME, {
             return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_LICENSE_RESOLVING, payload: true });
                 try {
-                    const res = await apiFetch({ path: '/elementrify/v1/license' }) as LicenseGetResponse;
+                    const res = await apiFetch({ path: '/veloria/v1/license' }) as LicenseGetResponse;
                     if (res?.success && res.data) {
                         dispatch({ type: SET_LICENSE_DATA, payload: res.data });
                     }
@@ -452,7 +452,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_LICENSE_ERROR, payload: null });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/license/activate',
+                        path: '/veloria/v1/license/activate',
                         method: 'POST',
                         data: { license_key: licenseKey },
                     }) as LicenseActivateResponse;
@@ -478,7 +478,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_LICENSE_ERROR, payload: null });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/license/deactivate',
+                        path: '/veloria/v1/license/deactivate',
                         method: 'POST',
                     }) as LicenseDeactivateResponse;
                     if (res?.success && res.data) {
@@ -502,7 +502,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_LICENSE_CHECKING, payload: true });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/license/check',
+                        path: '/veloria/v1/license/check',
                         method: 'POST',
                     }) as LicenseGetResponse;
                     if (res?.success && res.data) {
@@ -522,7 +522,7 @@ const store = createReduxStore(STORE_NAME, {
             return ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_RESOLVING, payload: true });
                 return apiFetch({
-                    path: '/elementrify/v1/update-widgets',
+                    path: '/veloria/v1/update-widgets',
                     method: 'POST',
                     data: { widgets },
                 })
@@ -634,7 +634,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_RESOLVING, payload: true });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/widgets',
+                        path: '/veloria/v1/widgets',
                     }) as WidgetsGetResponse;
                     if (res?.success && res.widgets) {
                         dispatch({ type: GET_WIDGETS, payload: res.widgets });
@@ -654,7 +654,7 @@ const store = createReduxStore(STORE_NAME, {
                 dispatch({ type: SET_CATEGORIES_RESOLVING, payload: true });
                 try {
                     const res = await apiFetch({
-                        path: '/elementrify/v1/categories',
+                        path: '/veloria/v1/categories',
                     }) as CategoriesGetResponse;
                     if (res?.success && res.categories) {
                         dispatch({ type: GET_CATEGORIES, payload: res.categories });

@@ -1,11 +1,11 @@
 <?php
 defined('ABSPATH') || exit;
 
-if (!function_exists('elementrify_pc_hex_to_rgb')) {
+if (!function_exists('veloria_pc_hex_to_rgb')) {
     /**
      * @return array{0: int, 1: int, 2: int}|null
      */
-    function elementrify_pc_hex_to_rgb(string $hex): ?array
+    function veloria_pc_hex_to_rgb(string $hex): ?array
     {
         $hex = strtolower(trim($hex));
         $hex = ltrim($hex, '#');
@@ -26,9 +26,9 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
         ];
     }
 
-    function elementrify_pc_rgba(string $hex, float $alpha): string
+    function veloria_pc_rgba(string $hex, float $alpha): string
     {
-        $rgb = elementrify_pc_hex_to_rgb($hex);
+        $rgb = veloria_pc_hex_to_rgb($hex);
         if ($rgb === null) {
             return 'rgba(37, 99, 235, ' . max(0.0, min(1.0, $alpha)) . ')';
         }
@@ -37,7 +37,7 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
         return 'rgba(' . $rgb[0] . ',' . $rgb[1] . ',' . $rgb[2] . ',' . $a . ')';
     }
 
-    function elementrify_pc_render_category_card(array $item, bool $show_count, string $hover_effect): void
+    function veloria_pc_render_category_card(array $item, bool $show_count, string $hover_effect): void
     {
         $allowed_hover = ['none', 'zoom-in', 'zoom-out', 'jump', 'tilt'];
         if (!in_array($hover_effect, $allowed_hover, true)) {
@@ -82,8 +82,8 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
         }
 
         $use_image = $bg_url !== '';
-        $tint_soft = elementrify_pc_rgba($icon_color, 0.38);
-        $tint_deep = elementrify_pc_rgba($icon_color, 0.82);
+        $tint_soft = veloria_pc_rgba($icon_color, 0.38);
+        $tint_deep = veloria_pc_rgba($icon_color, 0.82);
 
         if ($use_image) {
             $bg_layer_style = 'background-image: url(' . esc_url($bg_url) . ');';
@@ -91,7 +91,7 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
             $bg_layer_style = 'background-image: linear-gradient(180deg, ' . $tint_soft . ' 0%, ' . $tint_deep . ' 100%);';
         }
 
-        $effect_class = 'elementrify-pc-card__media--effect-' . $hover_effect;
+        $effect_class = 'veloria-pc-card__media--effect-' . $hover_effect;
 
         $link = get_term_link($term);
         if (is_wp_error($link)) {
@@ -102,7 +102,7 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
         if ($show_count) {
             $count_html = sprintf(
                 /* translators: %d: product count */
-                _n('%d product', '%d products', (int) $term->count, 'elementrify'),
+                _n('%d product', '%d products', (int) $term->count, 'veloria'),
                 (int) $term->count
             );
         }
@@ -114,27 +114,27 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
             $icon_html = (string) ob_get_clean();
         }
 
-        $icon_wrap_style = '--elementrify-pc-icon:' . esc_attr($icon_color) . ';';
+        $icon_wrap_style = '--veloria-pc-icon:' . esc_attr($icon_color) . ';';
         ?>
-        <article class="elementrify-pc-card">
-            <a class="elementrify-pc-card__link" href="<?php echo esc_url($link); ?>">
-                <div class="elementrify-pc-card__media <?php echo esc_attr($effect_class); ?>">
-                    <div class="elementrify-pc-card__bg" style="<?php echo esc_attr($bg_layer_style); ?>"></div>
+        <article class="veloria-pc-card">
+            <a class="veloria-pc-card__link" href="<?php echo esc_url($link); ?>">
+                <div class="veloria-pc-card__media <?php echo esc_attr($effect_class); ?>">
+                    <div class="veloria-pc-card__bg" style="<?php echo esc_attr($bg_layer_style); ?>"></div>
                     <?php if ($use_image) : ?>
-                        <span class="elementrify-pc-card__scrim" aria-hidden="true"></span>
+                        <span class="veloria-pc-card__scrim" aria-hidden="true"></span>
                     <?php endif; ?>
                     <?php if ($icon_html !== '') : ?>
-                        <span class="elementrify-pc-card__icon-wrap" style="<?php echo esc_attr($icon_wrap_style); ?>">
-                            <span class="elementrify-pc-card__icon"><?php
+                        <span class="veloria-pc-card__icon-wrap" style="<?php echo esc_attr($icon_wrap_style); ?>">
+                            <span class="veloria-pc-card__icon"><?php
                             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Icons_Manager::render_icon output.
                             echo $icon_html;
                             ?></span>
                         </span>
                     <?php endif; ?>
-                    <div class="elementrify-pc-card__body">
-                        <h3 class="elementrify-pc-card__title"><?php echo esc_html($term->name); ?></h3>
+                    <div class="veloria-pc-card__body">
+                        <h3 class="veloria-pc-card__title"><?php echo esc_html($term->name); ?></h3>
                         <?php if ($count_html !== '') : ?>
-                            <p class="elementrify-pc-card__count"><?php echo esc_html($count_html); ?></p>
+                            <p class="veloria-pc-card__count"><?php echo esc_html($count_html); ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ if (!function_exists('elementrify_pc_hex_to_rgb')) {
 }
 
 if (!class_exists('WooCommerce') || !taxonomy_exists('product_cat')) {
-    echo '<div class="elementrify-pc elementrify-pc--empty"><p class="elementrify-pc__empty-note">' . esc_html__('WooCommerce and product categories are required.', 'elementrify') . '</p></div>';
+    echo '<div class="veloria-pc veloria-pc--empty"><p class="veloria-pc__empty-note">' . esc_html__('WooCommerce and product categories are required.', 'veloria') . '</p></div>';
     return;
 }
 
@@ -153,7 +153,7 @@ $settings = $this->get_settings_for_display();
 $items = isset($settings['category_items']) && is_array($settings['category_items']) ? $settings['category_items'] : [];
 
 if ($items === []) {
-    echo '<div class="elementrify-pc elementrify-pc--empty"><p class="elementrify-pc__empty-note">' . esc_html__('Add categories in the widget settings.', 'elementrify') . '</p></div>';
+    echo '<div class="veloria-pc veloria-pc--empty"><p class="veloria-pc__empty-note">' . esc_html__('Add categories in the widget settings.', 'veloria') . '</p></div>';
     return;
 }
 
@@ -176,7 +176,7 @@ $show_dots = $layout_mode === 'slider' && ($slider_nav === 'both' || $slider_nav
 $is_slider = $layout_mode === 'slider';
 
 $grid_style = $layout_mode === 'grid'
-    ? sprintf('--elementrify-pc-cols:%d;--elementrify-pc-gap:%dpx;', $grid_columns, $grid_gap)
+    ? sprintf('--veloria-pc-cols:%d;--veloria-pc-gap:%dpx;', $grid_columns, $grid_gap)
     : '';
 
 $allowed_hover = ['none', 'zoom-in', 'zoom-out', 'jump', 'tilt'];
@@ -195,19 +195,19 @@ foreach ($items as $row) {
     }
 }
 ?>
-<div class="elementrify-pc<?php echo $is_slider ? ' elementrify-pc--is-slider' : ''; ?>" data-layout="<?php echo esc_attr($layout_mode); ?>">
+<div class="veloria-pc<?php echo $is_slider ? ' veloria-pc--is-slider' : ''; ?>" data-layout="<?php echo esc_attr($layout_mode); ?>">
     <?php if ($layout_mode === 'grid') : ?>
-        <div class="elementrify-pc__grid" style="<?php echo esc_attr($grid_style); ?>">
+        <div class="veloria-pc__grid" style="<?php echo esc_attr($grid_style); ?>">
             <?php foreach ($items as $item) : ?>
                 <?php if (is_array($item)) {
-                    elementrify_pc_render_category_card($item, $show_count, $hover_effect);
+                    veloria_pc_render_category_card($item, $show_count, $hover_effect);
                 } ?>
             <?php endforeach; ?>
         </div>
     <?php else : ?>
-        <div class="elementrify-pc__slider-shell">
+        <div class="veloria-pc__slider-shell">
             <div
-                class="elementrify-pc__swiper swiper"
+                class="veloria-pc__swiper swiper"
                 data-slides-desktop="<?php echo esc_attr((string) $slides_desktop); ?>"
                 data-slides-tablet="<?php echo esc_attr((string) $slides_tablet); ?>"
                 data-slides-mobile="<?php echo esc_attr((string) $slides_mobile); ?>"
@@ -229,19 +229,19 @@ foreach ($items as $row) {
                         }
                         ?>
                         <div class="swiper-slide">
-                            <?php elementrify_pc_render_category_card($item, $show_count, $hover_effect); ?>
+                            <?php veloria_pc_render_category_card($item, $show_count, $hover_effect); ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
                 <?php if ($show_dots && $valid_slider_items > 0) : ?>
-                    <div class="swiper-pagination elementrify-pc__pagination"></div>
+                    <div class="swiper-pagination veloria-pc__pagination"></div>
                 <?php endif; ?>
             </div>
             <?php if ($show_arrows && $valid_slider_items > 0) : ?>
-                <button type="button" class="elementrify-pc__nav elementrify-pc__nav--prev" aria-label="<?php esc_attr_e('Previous', 'elementrify'); ?>">
+                <button type="button" class="veloria-pc__nav veloria-pc__nav--prev" aria-label="<?php esc_attr_e('Previous', 'veloria'); ?>">
                     <span aria-hidden="true">‹</span>
                 </button>
-                <button type="button" class="elementrify-pc__nav elementrify-pc__nav--next" aria-label="<?php esc_attr_e('Next', 'elementrify'); ?>">
+                <button type="button" class="veloria-pc__nav veloria-pc__nav--next" aria-label="<?php esc_attr_e('Next', 'veloria'); ?>">
                     <span aria-hidden="true">›</span>
                 </button>
             <?php endif; ?>

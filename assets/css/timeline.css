@@ -1,19 +1,19 @@
-.elementrify-timeline {
+.veloria-timeline {
     width: 100%;
 }
 
-.elementrify-timeline__item {
+.veloria-timeline__item {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     margin-bottom: 24px;
 }
 
-.elementrify-timeline__item:last-child {
+.veloria-timeline__item:last-child {
     margin-bottom: 0;
 }
 
-.elementrify-timeline__track {
+.veloria-timeline__track {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     align-self: stretch;
 }
 
-.elementrify-timeline__dot {
+.veloria-timeline__dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -31,7 +31,7 @@
     margin-left: -6px;
 }
 
-.elementrify-timeline__line {
+.veloria-timeline__line {
     width: 2px;
     flex: 1;
     min-height: 32px;
@@ -42,7 +42,7 @@
     transform: translateX(-50%);
 }
 
-.elementrify-timeline__content {
+.veloria-timeline__content {
     flex: 1;
     min-width: 0;
     display: flex;
@@ -51,14 +51,14 @@
     margin-top: -4px;
 }
 
-.elementrify-timeline__year {
+.veloria-timeline__year {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
     margin: 0;
 }
 
-.elementrify-timeline__title {
+.veloria-timeline__title {
     margin: 0;
     color: #3C3C3C;
     font-size: 16px;
@@ -66,7 +66,7 @@
     line-height: 1.4;
 }
 
-.elementrify-timeline__subtitle {
+.veloria-timeline__subtitle {
     margin: 0;
     color: #7D7D7D;
     font-size: 14px;

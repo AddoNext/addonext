@@ -1,5 +1,5 @@
 <?php
-namespace Elementrify\Widgets\WooCheckout;
+namespace Veloria\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
@@ -15,8 +15,8 @@ class CheckoutTemplate
     {
         $relative = 'templates/woo-checkout/partials/' . $name . '.php';
         $path = apply_filters(
-            'elementrify_checkout_partial_path',
-            ELEMENTRIFY_DIR . $relative,
+            'veloria_checkout_partial_path',
+            VELORIA_DIR . $relative,
             $name,
             $vars
         );

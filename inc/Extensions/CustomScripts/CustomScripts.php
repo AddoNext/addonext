@@ -1,14 +1,14 @@
 <?php
-namespace Elementrify\Extensions\CustomScripts;
+namespace Veloria\Extensions\CustomScripts;
 
-use Elementrify\Base\ExtensionBase;
+use Veloria\Base\ExtensionBase;
 
 defined('ABSPATH') or exit;
 
 /**
  * Registers per-element custom JavaScript in Elementor and extension settings for global script placement.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class CustomScripts extends ExtensionBase
@@ -20,17 +20,17 @@ class CustomScripts extends ExtensionBase
 
     public function get_title(): string
     {
-        return __('Custom Scripts', 'elementrify');
+        return __('Custom Scripts', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Add a Custom JavaScript section under Advanced for widgets, sections, columns, and containers.', 'elementrify');
+        return __('Add a Custom JavaScript section under Advanced for widgets, sections, columns, and containers.', 'veloria');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-editor-code elementrify-icon';
+        return 'eicon-editor-code veloria-icon';
     }
 
     public function get_category(): string
@@ -62,12 +62,12 @@ class CustomScripts extends ExtensionBase
             [
                 'id'          => 'load_position',
                 'type'        => 'select',
-                'label'       => __('Load position', 'elementrify'),
-                'description' => __('Choose where custom JavaScript should be printed.', 'elementrify'),
+                'label'       => __('Load position', 'veloria'),
+                'description' => __('Choose where custom JavaScript should be printed.', 'veloria'),
                 'default'     => 'footer',
                 'options'     => [
-                    ['value' => 'header', 'label' => __('Header', 'elementrify')],
-                    ['value' => 'footer', 'label' => __('Footer', 'elementrify')],
+                    ['value' => 'header', 'label' => __('Header', 'veloria')],
+                    ['value' => 'footer', 'label' => __('Footer', 'veloria')],
                 ],
             ],
         ];
@@ -123,17 +123,17 @@ class CustomScripts extends ExtensionBase
         $registered[$stack_name] = true;
 
         $element->start_controls_section(
-            'section_elementrify_custom_scripts',
+            'section_veloria_custom_scripts',
             [
-                'label' => __('Custom JavaScript - Elementrify', 'elementrify'),
+                'label' => __('Custom JavaScript - Veloria', 'veloria'),
                 'tab'   => \Elementor\Controls_Manager::TAB_ADVANCED,
             ]
         );
 
         $element->add_control(
-            'elementrify_custom_js',
+            'veloria_custom_js',
             [
-                'label'               => __('Custom JavaScript', 'elementrify'),
+                'label'               => __('Custom JavaScript', 'veloria'),
                 'type'                => \Elementor\Controls_Manager::CODE,
                 'language'            => 'javascript',
                 'render_type'         => 'ui',
@@ -142,12 +142,12 @@ class CustomScripts extends ExtensionBase
         );
 
         $element->add_control(
-            'elementrify_custom_js_hint',
+            'veloria_custom_js_hint',
             [
                 'type'            => \Elementor\Controls_Manager::RAW_HTML,
                 'raw'             => '<p class="elementor-descriptor"><em>' . esc_html__(
                     'Runs on the front end after this element is rendered. Avoid conflicting with other scripts.',
-                    'elementrify'
+                    'veloria'
                 ) . '</em></p>',
                 'content_classes' => 'elementor-descriptor',
             ]
@@ -167,14 +167,14 @@ class CustomScripts extends ExtensionBase
         }
 
         $settings = $element->get_settings_for_display();
-        $custom_js = isset($settings['elementrify_custom_js']) ? trim((string) $settings['elementrify_custom_js']) : '';
+        $custom_js = isset($settings['veloria_custom_js']) ? trim((string) $settings['veloria_custom_js']) : '';
 
         if ($custom_js === '') {
             return;
         }
 
         printf(
-            '<script id="elementrify-element-js-%s">' . "\n%s\n</script>\n",
+            '<script id="veloria-element-js-%s">' . "\n%s\n</script>\n",
             esc_attr((string) $element->get_id()),
             $custom_js // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted builder input
         );

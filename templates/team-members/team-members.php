@@ -27,19 +27,19 @@ $slide_gap = $is_slider && isset($settings['slide_gap']['size']) ? (int) $settin
 
 $pagination_class = '';
 if ($pagination_type === 'square') {
-    $pagination_class = ' elementrify-pagination-square';
+    $pagination_class = ' veloria-pagination-square';
 } elseif ($pagination_type === 'progressbar') {
-    $pagination_class = ' elementrify-pagination-bar';
+    $pagination_class = ' veloria-pagination-bar';
 }
 
 $inline_style = '';
 if ($view === 'grid') {
-    $inline_style = '--elementrify-team-members-columns: ' . $columns . '; --elementrify-team-members-gap: ' . $column_gap . 'px;';
+    $inline_style = '--veloria-team-members-columns: ' . $columns . '; --veloria-team-members-gap: ' . $column_gap . 'px;';
 } else {
-    $inline_style = '--elementrify-dots-gap: ' . $dots_gap . 'px;';
+    $inline_style = '--veloria-dots-gap: ' . $dots_gap . 'px;';
 }
 
-function elementrify_team_members_card_social($item) {
+function veloria_team_members_card_social($item) {
     $linkedin_url = !empty($item['link_linkedin']['url']) ? esc_url($item['link_linkedin']['url']) : '#';
     $twitter_url = !empty($item['link_twitter']['url']) ? esc_url($item['link_twitter']['url']) : '#';
     $linkedin_attr = $linkedin_url !== '#' ? ' target="_blank" rel="noopener noreferrer"' : '';
@@ -50,7 +50,7 @@ function elementrify_team_members_card_social($item) {
 
 if ($view === 'grid') :
 ?>
-<div class="elementrify-team-members elementrify-team-members--grid" style="<?php echo esc_attr($inline_style); ?>">
+<div class="veloria-team-members veloria-team-members--grid" style="<?php echo esc_attr($inline_style); ?>">
     <?php foreach ($items as $item) :
         $img_url = isset($item['image']['url']) ? trim((string) $item['image']['url']) : '';
         if ($img_url === '' && !empty($item['image']['id'])) {
@@ -65,13 +65,13 @@ if ($view === 'grid') :
         $name = isset($item['name']) ? $item['name'] : '';
         $role = isset($item['role']) ? $item['role'] : '';
     ?>
-        <div class="elementrify-team-members-card">
-            <img class="elementrify-team-members-card__image" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?>">
-            <h3 class="elementrify-team-members-card__name"><?php echo esc_html($name); ?></h3>
-            <p class="elementrify-team-members-card__role"><?php echo esc_html($role); ?></p>
-            <div class="elementrify-team-members-card__social"><?php
+        <div class="veloria-team-members-card">
+            <img class="veloria-team-members-card__image" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?>">
+            <h3 class="veloria-team-members-card__name"><?php echo esc_html($name); ?></h3>
+            <p class="veloria-team-members-card__role"><?php echo esc_html($role); ?></p>
+            <div class="veloria-team-members-card__social"><?php
             echo wp_kses(
-                elementrify_team_members_card_social($item),
+                veloria_team_members_card_social($item),
                 [
                     'a'    => [
                         'href'       => true,
@@ -95,7 +95,7 @@ if ($view === 'grid') :
 <?php
 else :
 ?>
-<div class="elementrify-team-members elementrify-team-members--slider swiper<?php echo esc_attr($pagination_class); ?>"
+<div class="veloria-team-members veloria-team-members--slider swiper<?php echo esc_attr($pagination_class); ?>"
      data-autoplay="<?php echo $autoplay ? '1' : '0'; ?>"
      data-autoplay-delay="<?php echo esc_attr($autoplay_delay); ?>"
      data-loop="<?php echo $loop ? '1' : '0'; ?>"
@@ -119,13 +119,13 @@ else :
             $role = isset($item['role']) ? $item['role'] : '';
         ?>
             <div class="swiper-slide">
-                <div class="elementrify-team-members-card">
-                    <img class="elementrify-team-members-card__image" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?>">
-                    <h3 class="elementrify-team-members-card__name"><?php echo esc_html($name); ?></h3>
-                    <p class="elementrify-team-members-card__role"><?php echo esc_html($role); ?></p>
-                    <div class="elementrify-team-members-card__social"><?php
+                <div class="veloria-team-members-card">
+                    <img class="veloria-team-members-card__image" src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?>">
+                    <h3 class="veloria-team-members-card__name"><?php echo esc_html($name); ?></h3>
+                    <p class="veloria-team-members-card__role"><?php echo esc_html($role); ?></p>
+                    <div class="veloria-team-members-card__social"><?php
             echo wp_kses(
-                elementrify_team_members_card_social($item),
+                veloria_team_members_card_social($item),
                 [
                     'a'    => [
                         'href'       => true,
@@ -148,10 +148,10 @@ else :
         <?php endforeach; ?>
     </div>
     <?php if ($show_arrows) : ?>
-        <div class="elementrify-team-members__arrow elementrify-team-members__arrow--prev swiper-button-prev" role="button" tabindex="0" aria-label="<?php esc_attr_e('Previous', 'elementrify'); ?>">
+        <div class="veloria-team-members__arrow veloria-team-members__arrow--prev swiper-button-prev" role="button" tabindex="0" aria-label="<?php esc_attr_e('Previous', 'veloria'); ?>">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
         </div>
-        <div class="elementrify-team-members__arrow elementrify-team-members__arrow--next swiper-button-next" role="button" tabindex="0" aria-label="<?php esc_attr_e('Next', 'elementrify'); ?>">
+        <div class="veloria-team-members__arrow veloria-team-members__arrow--next swiper-button-next" role="button" tabindex="0" aria-label="<?php esc_attr_e('Next', 'veloria'); ?>">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
         </div>
     <?php endif; ?>

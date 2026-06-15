@@ -1,4 +1,4 @@
-.elementrify-banner {
+.veloria-banner {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-.elementrify-banner__bg {
+.veloria-banner__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -15,7 +15,7 @@
     background-size: cover;
 }
 
-.elementrify-banner__video {
+.veloria-banner__video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -24,12 +24,12 @@
     pointer-events: none;
 }
 
-.elementrify-banner__video--youtube {
+.veloria-banner__video--youtube {
     overflow: hidden;
 }
 
-.elementrify-banner__video--youtube iframe,
-.elementrify-banner__video--vimeo iframe {
+.veloria-banner__video--youtube iframe,
+.veloria-banner__video--vimeo iframe {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -41,14 +41,14 @@
     pointer-events: none;
 }
 
-.elementrify-banner__overlay {
+.veloria-banner__overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
 }
 
-.elementrify-banner__inner {
+.veloria-banner__inner {
     position: relative;
     z-index: 2;
     display: flex;
@@ -62,17 +62,17 @@
     box-sizing: border-box;
 }
 
-.elementrify-banner__title {
+.veloria-banner__title {
     margin: 0;
     max-width: 100%;
 }
 
-.elementrify-banner__subtitle {
+.veloria-banner__subtitle {
     margin: 0;
     max-width: 100%;
 }
 
-.elementrify-banner__actions {
+.veloria-banner__actions {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -81,7 +81,7 @@
     width: 100%;
 }
 
-.elementrify-banner__btn {
+.veloria-banner__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -95,30 +95,30 @@
         box-shadow 0.2s ease;
 }
 
-.elementrify-banner__btn:hover {
+.veloria-banner__btn:hover {
     transform: translateY(-2px);
 }
 
-.elementrify-banner__btn--solid:hover {
+.veloria-banner__btn--solid:hover {
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
 }
 
-.elementrify-banner__btn--outlined:hover {
+.veloria-banner__btn--outlined:hover {
     background-color: rgba(255, 255, 255, 0.12);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
 }
 
-.elementrify-banner__btn:focus-visible {
+.veloria-banner__btn:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .elementrify-banner__btn {
+    .veloria-banner__btn {
         transition-duration: 0.01ms;
     }
 
-    .elementrify-banner__btn:hover {
+    .veloria-banner__btn:hover {
         transform: none;
     }
 }

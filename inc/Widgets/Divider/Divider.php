@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\Divider;
+namespace Veloria\Widgets\Divider;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Icons_Manager;
@@ -12,12 +12,12 @@ class Divider extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-divider elementrify-icon';
+        return 'eicon-divider veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-divider';
+        return 'veloria-divider';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class Divider extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Divider', 'elementrify');
+        return __('Divider', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Section dividers & separators', 'elementrify');
+        return __('Section dividers & separators', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -42,16 +42,16 @@ class Divider extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-divider'];
+        return ['veloria-divider'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-divider',
-            ELEMENTRIFY_URL . 'assets/css/divider.css',
+            'veloria-divider',
+            VELORIA_URL . 'assets/css/divider.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -60,7 +60,7 @@ class Divider extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -68,12 +68,12 @@ class Divider extends WidgetBase
         $this->add_control(
             'variant',
             [
-                'label'   => __('Variant', 'elementrify'),
+                'label'   => __('Variant', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'line',
                 'options' => [
-                    'line'      => __('Simple line', 'elementrify'),
-                    'line_icon' => __('Line with icon', 'elementrify'),
+                    'line'      => __('Simple line', 'veloria'),
+                    'line_icon' => __('Line with icon', 'veloria'),
                 ],
             ]
         );
@@ -81,14 +81,14 @@ class Divider extends WidgetBase
         $this->add_control(
             'style',
             [
-                'label'   => __('Line style', 'elementrify'),
+                'label'   => __('Line style', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'solid',
                 'options' => [
-                    'solid'  => __('Solid', 'elementrify'),
-                    'double' => __('Double', 'elementrify'),
-                    'dotted' => __('Dotted', 'elementrify'),
-                    'dashed' => __('Dashed', 'elementrify'),
+                    'solid'  => __('Solid', 'veloria'),
+                    'double' => __('Double', 'veloria'),
+                    'dotted' => __('Dotted', 'veloria'),
+                    'dashed' => __('Dashed', 'veloria'),
                 ],
             ]
         );
@@ -96,7 +96,7 @@ class Divider extends WidgetBase
         $this->add_control(
             'selected_icon',
             [
-                'label'     => __('Icon', 'elementrify'),
+                'label'     => __('Icon', 'veloria'),
                 'type'      => Controls_Manager::ICONS,
                 'default'   => [
                     'value'   => 'eicon-star',
@@ -111,7 +111,7 @@ class Divider extends WidgetBase
         $this->start_controls_section(
             'section_style_line',
             [
-                'label' => __('Line', 'elementrify'),
+                'label' => __('Line', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -119,11 +119,11 @@ class Divider extends WidgetBase
         $this->add_control(
             'color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e5e7eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-divider__line' => 'border-top-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .veloria-divider__line' => 'border-top-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -131,13 +131,13 @@ class Divider extends WidgetBase
         $this->add_responsive_control(
             'thickness',
             [
-                'label'      => __('Thickness', 'elementrify'),
+                'label'      => __('Thickness', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['max' => 20], 'em' => ['max' => 2]],
                 'default'    => ['size' => 1, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-divider__line' => 'border-top-width: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .veloria-divider__line' => 'border-top-width: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -145,15 +145,15 @@ class Divider extends WidgetBase
         $this->add_responsive_control(
             'align',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-h-align-left'],
-                    'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-h-align-center'],
-                    'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-h-align-right'],
+                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-h-align-left'],
+                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-h-align-center'],
+                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-h-align-right'],
                 ],
                 'default'      => 'center',
-                'prefix_class' => 'elementrify-divider-wrapper--align-',
+                'prefix_class' => 'veloria-divider-wrapper--align-',
             ]
         );
 
@@ -162,7 +162,7 @@ class Divider extends WidgetBase
         $this->start_controls_section(
             'section_style_icon',
             [
-                'label'     => __('Icon', 'elementrify'),
+                'label'     => __('Icon', 'veloria'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['variant' => 'line_icon'],
             ]
@@ -171,15 +171,15 @@ class Divider extends WidgetBase
         $this->add_responsive_control(
             'icon_size',
             [
-                'label'      => __('Icon size', 'elementrify'),
+                'label'      => __('Icon size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 8, 'max' => 64], 'em' => ['min' => 0.5, 'max' => 4]],
                 'default'    => ['size' => 16, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-divider__icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-divider__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-divider__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-divider__icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-divider__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-divider__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -187,11 +187,11 @@ class Divider extends WidgetBase
         $this->add_control(
             'icon_color',
             [
-                'label'     => __('Icon color', 'elementrify'),
+                'label'     => __('Icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-divider__icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-divider__icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -202,7 +202,7 @@ class Divider extends WidgetBase
                 'name'     => 'icon_background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .elementrify-divider__icon',
+                'selector' => '{{WRAPPER}} .veloria-divider__icon',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#5E42DA'],
@@ -216,13 +216,13 @@ class Divider extends WidgetBase
         $this->add_responsive_control(
             'icon_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 40], 'em' => ['min' => 0, 'max' => 2.5]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-divider__icon' => 'padding: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-divider__icon' => 'padding: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -230,13 +230,13 @@ class Divider extends WidgetBase
         $this->add_control(
             'icon_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range'      => ['px' => ['max' => 200], '%' => ['max' => 50], 'em' => ['max' => 10]],
                 'default'    => ['size' => 50, 'unit' => '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-divider__icon' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-divider__icon' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -246,7 +246,7 @@ class Divider extends WidgetBase
 
     public function render(): void
     {
-        $template_path = ELEMENTRIFY_DIR . 'templates/divider/divider.php';
+        $template_path = VELORIA_DIR . 'templates/divider/divider.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -257,25 +257,25 @@ class Divider extends WidgetBase
         ?>
         <#
         var variant = settings.variant || 'line';
-        var wrapperClass = 'elementrify-divider-wrapper';
-        if (variant === 'line_icon') wrapperClass += ' elementrify-divider-wrapper--line-icon';
+        var wrapperClass = 'veloria-divider-wrapper';
+        if (variant === 'line_icon') wrapperClass += ' veloria-divider-wrapper--line-icon';
         view.addRenderAttribute('wrapper', 'class', wrapperClass);
         var lineStyle = settings.style || 'solid';
         var lineColor = settings.color || '#e5e7eb';
         var thick = settings.thickness && settings.thickness.size != null ? settings.thickness.size : 1;
         var thickUnit = settings.thickness && settings.thickness.unit ? settings.thickness.unit : 'px';
         var lineStyleAttr = 'border:none;border-top-width:' + thick + thickUnit + ';border-top-style:' + lineStyle + ';border-top-color:' + lineColor + ';height:0;min-height:0;';
-        view.addRenderAttribute('line_left', 'class', 'elementrify-divider__line elementrify-divider__line--left elementrify-divider__line--' + lineStyle);
+        view.addRenderAttribute('line_left', 'class', 'veloria-divider__line veloria-divider__line--left veloria-divider__line--' + lineStyle);
         view.addRenderAttribute('line_left', 'style', lineStyleAttr);
-        view.addRenderAttribute('line_right', 'class', 'elementrify-divider__line elementrify-divider__line--right elementrify-divider__line--' + lineStyle);
+        view.addRenderAttribute('line_right', 'class', 'veloria-divider__line veloria-divider__line--right veloria-divider__line--' + lineStyle);
         view.addRenderAttribute('line_right', 'style', lineStyleAttr);
-        view.addRenderAttribute('line_standalone', 'class', 'elementrify-divider__line elementrify-divider__line--standalone');
+        view.addRenderAttribute('line_standalone', 'class', 'veloria-divider__line veloria-divider__line--standalone');
         view.addRenderAttribute('line_standalone', 'style', lineStyleAttr);
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}>
             <# if (variant === 'line_icon') { #>
                 <span {{{ view.getRenderAttributeString('line_left') }}}></span>
-                <span class="elementrify-divider__icon" aria-hidden="true">
+                <span class="veloria-divider__icon" aria-hidden="true">
                     <# var iconData = (settings.selected_icon && settings.selected_icon.value) ? settings.selected_icon : { value: 'eicon-star', library: 'eicons' }; #>
                     {{{ elementor.helpers.renderIcon(view, iconData, {}, 'i', 'object').value }}}
                 </span>

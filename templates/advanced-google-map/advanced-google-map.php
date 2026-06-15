@@ -22,37 +22,37 @@ $show_address_block = !empty($settings['show_address_block']);
 $address_position   = isset($settings['address_position']) && $settings['address_position'] === 'top' ? 'top' : 'bottom';
 $position_class     = $address_position === 'top' ? 'is-top' : 'is-bottom';
 ?>
-<div class="elementrify-advanced-google-map">
+<div class="veloria-advanced-google-map">
     <?php if ($show_address_block && $address_position === 'top') : ?>
-        <div class="elementrify-advanced-google-map__address <?php echo esc_attr($position_class); ?>">
+        <div class="veloria-advanced-google-map__address <?php echo esc_attr($position_class); ?>">
             <?php if (!empty($settings['address_title'])) : ?>
-                <div class="elementrify-advanced-google-map__address-title"><?php echo esc_html($settings['address_title']); ?></div>
+                <div class="veloria-advanced-google-map__address-title"><?php echo esc_html($settings['address_title']); ?></div>
             <?php endif; ?>
             <?php if (!empty($settings['address_description'])) : ?>
-                <div class="elementrify-advanced-google-map__address-desc"><?php echo wp_kses_post($settings['address_description']); ?></div>
+                <div class="veloria-advanced-google-map__address-desc"><?php echo wp_kses_post($settings['address_description']); ?></div>
             <?php endif; ?>
         </div>
     <?php endif; ?>
 
     <?php if ($map_url !== '') : ?>
         <iframe
-            class="elementrify-advanced-google-map__frame"
+            class="veloria-advanced-google-map__frame"
             src="<?php echo esc_url($map_url); ?>"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen
         ></iframe>
     <?php else : ?>
-        <div class="elementrify-advanced-google-map__placeholder"><?php esc_html_e('Set map source in widget settings.', 'elementrify'); ?></div>
+        <div class="veloria-advanced-google-map__placeholder"><?php esc_html_e('Set map source in widget settings.', 'veloria'); ?></div>
     <?php endif; ?>
 
     <?php if ($show_address_block && $address_position === 'bottom') : ?>
-        <div class="elementrify-advanced-google-map__address <?php echo esc_attr($position_class); ?>">
+        <div class="veloria-advanced-google-map__address <?php echo esc_attr($position_class); ?>">
             <?php if (!empty($settings['address_title'])) : ?>
-                <div class="elementrify-advanced-google-map__address-title"><?php echo esc_html($settings['address_title']); ?></div>
+                <div class="veloria-advanced-google-map__address-title"><?php echo esc_html($settings['address_title']); ?></div>
             <?php endif; ?>
             <?php if (!empty($settings['address_description'])) : ?>
-                <div class="elementrify-advanced-google-map__address-desc"><?php echo wp_kses_post($settings['address_description']); ?></div>
+                <div class="veloria-advanced-google-map__address-desc"><?php echo wp_kses_post($settings['address_description']); ?></div>
             <?php endif; ?>
         </div>
     <?php endif; ?>

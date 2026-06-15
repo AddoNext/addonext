@@ -7,7 +7,7 @@ $animate = isset($settings['enable_counter_animation']) && $settings['enable_cou
 $duration = isset($settings['counter_animation_duration']) && $settings['counter_animation_duration'] !== '' ? (int) $settings['counter_animation_duration'] : 1400;
 
 ?>
-<div class="elementrify-advanced-analytics" data-aa-animate="<?php echo esc_attr($animate); ?>" data-aa-duration="<?php echo esc_attr((string) $duration); ?>">
+<div class="veloria-advanced-analytics" data-aa-animate="<?php echo esc_attr($animate); ?>" data-aa-duration="<?php echo esc_attr((string) $duration); ?>">
     <?php foreach ($cards as $index => $card) : ?>
         <?php
         $value = isset($card['value']) ? (string) $card['value'] : '';
@@ -22,18 +22,18 @@ $duration = isset($settings['counter_animation_duration']) && $settings['counter
         $labelKey = 'cards.' . $index . '.label';
         $trendKey = 'cards.' . $index . '.trend';
 
-        $this->add_render_attribute($valueKey, 'class', 'elementrify-advanced-analytics__value');
+        $this->add_render_attribute($valueKey, 'class', 'veloria-advanced-analytics__value');
         $this->add_inline_editing_attributes($valueKey, 'basic');
 
-        $this->add_render_attribute($labelKey, 'class', 'elementrify-advanced-analytics__label');
+        $this->add_render_attribute($labelKey, 'class', 'veloria-advanced-analytics__label');
         $this->add_inline_editing_attributes($labelKey, 'basic');
 
-        $this->add_render_attribute($trendKey, 'class', 'elementrify-advanced-analytics__trend elementrify-advanced-analytics__trend--' . $trendType);
+        $this->add_render_attribute($trendKey, 'class', 'veloria-advanced-analytics__trend veloria-advanced-analytics__trend--' . $trendType);
         $this->add_inline_editing_attributes($trendKey, 'basic');
         ?>
-        <div class="elementrify-advanced-analytics__card" style="--aa-card-bg: <?php echo esc_attr($cardBg); ?>; --aa-icon-bg: <?php echo esc_attr($iconBg); ?>;">
-            <div class="elementrify-advanced-analytics__top">
-                <div class="elementrify-advanced-analytics__icon">
+        <div class="veloria-advanced-analytics__card" style="--aa-card-bg: <?php echo esc_attr($cardBg); ?>; --aa-icon-bg: <?php echo esc_attr($iconBg); ?>;">
+            <div class="veloria-advanced-analytics__top">
+                <div class="veloria-advanced-analytics__icon">
                     <?php if (!empty($icon['value'])) {
                         \Elementor\Icons_Manager::render_icon($icon, ['aria-hidden' => 'true']);
                     } ?>
@@ -41,7 +41,7 @@ $duration = isset($settings['counter_animation_duration']) && $settings['counter
                 <span <?php $this->print_render_attribute_string($trendKey); ?>><?php echo esc_html($trend); ?></span>
             </div>
 
-            <div class="elementrify-advanced-analytics__bottom">
+            <div class="veloria-advanced-analytics__bottom">
                 <div <?php $this->print_render_attribute_string($valueKey); ?> data-aa-value="<?php echo esc_attr($value); ?>"><?php echo esc_html($value); ?></div>
                 <div <?php $this->print_render_attribute_string($labelKey); ?>><?php echo esc_html($label); ?></div>
             </div>

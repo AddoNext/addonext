@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\SocialShare;
+namespace Veloria\Widgets\SocialShare;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 
@@ -11,12 +11,12 @@ class SocialShare extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-share elementrify-icon';
+        return 'eicon-share veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-social-share';
+        return 'veloria-social-share';
     }
 
     public function get_admin_category(): string
@@ -26,12 +26,12 @@ class SocialShare extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Social Share', 'elementrify');
+        return __('Social Share', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Boost sharing buttons', 'elementrify');
+        return __('Boost sharing buttons', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -41,16 +41,16 @@ class SocialShare extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-social-share'];
+        return ['veloria-social-share'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-social-share',
-            ELEMENTRIFY_URL . 'assets/css/social-share.css',
+            'veloria-social-share',
+            VELORIA_URL . 'assets/css/social-share.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -81,7 +81,7 @@ class SocialShare extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -89,9 +89,9 @@ class SocialShare extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Title', 'elementrify'),
+                'label'   => __('Title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Share this on', 'elementrify'),
+                'default' => __('Share this on', 'veloria'),
             ]
         );
 
@@ -99,31 +99,31 @@ class SocialShare extends WidgetBase
         $repeater->add_control(
             'network',
             [
-                'label'   => __('Network', 'elementrify'),
+                'label'   => __('Network', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'facebook',
                 'options' => [
-                    'facebook'  => __('Facebook', 'elementrify'),
-                    'twitter'   => __('Twitter', 'elementrify'),
-                    'instagram' => __('Instagram', 'elementrify'),
-                    'linkedin'  => __('LinkedIn', 'elementrify'),
-                    'youtube'   => __('YouTube', 'elementrify'),
+                    'facebook'  => __('Facebook', 'veloria'),
+                    'twitter'   => __('Twitter', 'veloria'),
+                    'instagram' => __('Instagram', 'veloria'),
+                    'linkedin'  => __('LinkedIn', 'veloria'),
+                    'youtube'   => __('YouTube', 'veloria'),
                 ],
             ]
         );
         $repeater->add_control(
             'custom_url',
             [
-                'label'       => __('Custom URL', 'elementrify'),
+                'label'       => __('Custom URL', 'veloria'),
                 'type'        => Controls_Manager::URL,
-                'placeholder' => __('Leave empty to share current page', 'elementrify'),
-                'description' => __('Used for Instagram/YouTube or to override share link.', 'elementrify'),
+                'placeholder' => __('Leave empty to share current page', 'veloria'),
+                'description' => __('Used for Instagram/YouTube or to override share link.', 'veloria'),
             ]
         );
         $repeater->add_control(
             'custom_color',
             [
-                'label' => __('Icon background color', 'elementrify'),
+                'label' => __('Icon background color', 'veloria'),
                 'type'  => Controls_Manager::COLOR,
             ]
         );
@@ -131,7 +131,7 @@ class SocialShare extends WidgetBase
         $this->add_control(
             'networks',
             [
-                'label'       => __('Networks', 'elementrify'),
+                'label'       => __('Networks', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
@@ -150,7 +150,7 @@ class SocialShare extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -158,10 +158,10 @@ class SocialShare extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-social-share__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-social-share__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -169,13 +169,13 @@ class SocialShare extends WidgetBase
         $this->add_control(
             'title_spacing',
             [
-                'label'      => __('Spacing after title', 'elementrify'),
+                'label'      => __('Spacing after title', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 40]],
                 'default'    => ['size' => 12],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-social-share__title' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-social-share__title' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -185,7 +185,7 @@ class SocialShare extends WidgetBase
         $this->start_controls_section(
             'section_style_icons',
             [
-                'label' => __('Icons', 'elementrify'),
+                'label' => __('Icons', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -193,13 +193,13 @@ class SocialShare extends WidgetBase
         $this->add_responsive_control(
             'icon_size',
             [
-                'label'      => __('Size', 'elementrify'),
+                'label'      => __('Size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 24, 'max' => 80]],
                 'default'    => ['size' => 32],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-social-share__link' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-social-share__link' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -207,13 +207,13 @@ class SocialShare extends WidgetBase
         $this->add_responsive_control(
             'gap',
             [
-                'label'      => __('Spacing between icons', 'elementrify'),
+                'label'      => __('Spacing between icons', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 40]],
                 'default'    => ['size' => 12],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-social-share' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-social-share' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -224,18 +224,18 @@ class SocialShare extends WidgetBase
     public static function get_network_label(string $network): string
     {
         $labels = [
-            'facebook'  => __('Facebook', 'elementrify'),
-            'twitter'   => __('Twitter', 'elementrify'),
-            'instagram' => __('Instagram', 'elementrify'),
-            'linkedin'  => __('LinkedIn', 'elementrify'),
-            'youtube'   => __('YouTube', 'elementrify'),
+            'facebook'  => __('Facebook', 'veloria'),
+            'twitter'   => __('Twitter', 'veloria'),
+            'instagram' => __('Instagram', 'veloria'),
+            'linkedin'  => __('LinkedIn', 'veloria'),
+            'youtube'   => __('YouTube', 'veloria'),
         ];
         return $labels[ $network ] ?? $network;
     }
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/social-share/social-share.php';
+        $path = VELORIA_DIR . 'templates/social-share/social-share.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -244,16 +244,16 @@ class SocialShare extends WidgetBase
     protected function content_template(): void
     {
         $network_labels = [
-            'facebook' => __('Facebook', 'elementrify'),
-            'twitter' => __('Twitter', 'elementrify'),
-            'instagram' => __('Instagram', 'elementrify'),
-            'linkedin' => __('LinkedIn', 'elementrify'),
-            'youtube' => __('YouTube', 'elementrify'),
+            'facebook' => __('Facebook', 'veloria'),
+            'twitter' => __('Twitter', 'veloria'),
+            'instagram' => __('Instagram', 'veloria'),
+            'linkedin' => __('LinkedIn', 'veloria'),
+            'youtube' => __('YouTube', 'veloria'),
         ];
         ?>
-        <div class="elementrify-social-share">
+        <div class="veloria-social-share">
             <# if (settings.title) { #>
-                <span class="elementrify-social-share__title">{{{ settings.title }}}</span>
+                <span class="veloria-social-share__title">{{{ settings.title }}}</span>
             <# } #>
             <# _.each(settings.networks, function(n) {
                 var shareUrl = '#';
@@ -262,10 +262,10 @@ class SocialShare extends WidgetBase
                 }
                 var colorStyle = n.custom_color ? ' style="background-color: ' + n.custom_color + '"' : '';
                 var platformLabel = n.network === 'facebook' ? '<?php echo esc_js( $network_labels['facebook'] ); ?>' : (n.network === 'twitter' ? '<?php echo esc_js( $network_labels['twitter'] ); ?>' : (n.network === 'instagram' ? '<?php echo esc_js( $network_labels['instagram'] ); ?>' : (n.network === 'linkedin' ? '<?php echo esc_js( $network_labels['linkedin'] ); ?>' : '<?php echo esc_js( $network_labels['youtube'] ); ?>')));
-                var tooltipText = '<?php echo esc_attr__( 'Share on', 'elementrify' ); ?> ' + platformLabel;
+                var tooltipText = '<?php echo esc_attr__( 'Share on', 'veloria' ); ?> ' + platformLabel;
             #>
-                <a href="<# print(shareUrl); #>" target="_blank" rel="noopener noreferrer" class="elementrify-social-share__link elementrify-social-share__link--{{{ n.network }}}" aria-label="<# print(tooltipText); #>"{{{ colorStyle }}}>
-                    <span class="elementrify-social-share__tooltip" role="tooltip"><# print(tooltipText); #></span>
+                <a href="<# print(shareUrl); #>" target="_blank" rel="noopener noreferrer" class="veloria-social-share__link veloria-social-share__link--{{{ n.network }}}" aria-label="<# print(tooltipText); #>"{{{ colorStyle }}}>
+                    <span class="veloria-social-share__tooltip" role="tooltip"><# print(tooltipText); #></span>
                     <?php
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Editor template; SVG markup from get_icon_svg() uses esc_attr on classes.
                     echo $this->get_icons_svg_markup();
@@ -278,7 +278,7 @@ class SocialShare extends WidgetBase
 
     public function get_icon_svg(string $network): string
     {
-        $class = 'elementrify-social-share__icon elementrify-social-share__icon--' . $network;
+        $class = 'veloria-social-share__icon veloria-social-share__icon--' . $network;
         $icons = [
             'facebook'  => '<svg class="' . esc_attr($class) . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
             'twitter'   => '<svg class="' . esc_attr($class) . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',

@@ -1,4 +1,4 @@
-.elementrify-text-editor {
+.veloria-text-editor {
     margin: 0;
     font-size: 16px;
     font-weight: 400;
@@ -6,27 +6,27 @@
     color: #555555;
 }
 
-.elementrify-text-editor p {
+.veloria-text-editor p {
     margin: 0 0 1em;
 }
 
-.elementrify-text-editor p:last-child {
+.veloria-text-editor p:last-child {
     margin-bottom: 0;
 }
 
-.elementrify-text-editor--align-left .elementrify-text-editor {
+.veloria-text-editor--align-left .veloria-text-editor {
     text-align: left;
 }
 
-.elementrify-text-editor--align-center .elementrify-text-editor {
+.veloria-text-editor--align-center .veloria-text-editor {
     text-align: center;
 }
 
-.elementrify-text-editor--align-right .elementrify-text-editor {
+.veloria-text-editor--align-right .veloria-text-editor {
     text-align: right;
 }
 
-.elementrify-text-editor--drop-cap .elementrify-text-editor > p:first-child::first-letter {
+.veloria-text-editor--drop-cap .veloria-text-editor > p:first-child::first-letter {
     float: left;
     font-size: 3.5em;
     line-height: 0.85;
@@ -34,26 +34,26 @@
     font-weight: 700;
 }
 
-.elementrify-text-editor.elementrify-text-editor--gradient {
+.veloria-text-editor.veloria-text-editor--gradient {
     background: linear-gradient(
-        var(--elementrify-te-gradient-angle, 90deg),
-        var(--elementrify-te-gradient-start, #2563eb),
-        var(--elementrify-te-gradient-end, #7c3aed)
+        var(--veloria-te-gradient-angle, 90deg),
+        var(--veloria-te-gradient-start, #2563eb),
+        var(--veloria-te-gradient-end, #7c3aed)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent !important;
 }
 
-.elementrify-text-editor.elementrify-text-editor--gradient a {
+.veloria-text-editor.veloria-text-editor--gradient a {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.elementrify-text-editor.elementrify-text-editor--3d {
-    --te-d: var(--elementrify-te-3d-depth, 4px);
-    --te-c: var(--elementrify-te-3d-color, rgba(0,0,0,0.3));
+.veloria-text-editor.veloria-text-editor--3d {
+    --te-d: var(--veloria-te-3d-depth, 4px);
+    --te-c: var(--veloria-te-3d-color, rgba(0,0,0,0.3));
     text-shadow:
         var(--te-d) 0 0 var(--te-c),
         calc(var(--te-d) * 0.94) calc(var(--te-d) * 0.34) 0 var(--te-c),
@@ -66,7 +66,7 @@
         calc(var(--te-d) * -1) 0 0 var(--te-c);
 }
 
-.elementrify-text-editor.elementrify-text-editor--3d.elementrify-text-editor--gradient {
+.veloria-text-editor.veloria-text-editor--3d.veloria-text-editor--gradient {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent !important;

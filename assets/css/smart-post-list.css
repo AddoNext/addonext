@@ -1,10 +1,10 @@
-.elementrify-smart-post-list {
+.veloria-smart-post-list {
     background: transparent;
     padding: 2rem;
     border-radius: 8px;
 }
 
-.elementrify-smart-post-list__header {
+.veloria-smart-post-list__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,14 +13,14 @@
     margin-bottom: 1.5rem;
 }
 
-.elementrify-smart-post-list__title {
+.veloria-smart-post-list__title {
     margin: 0;
     font-size: 1.75rem;
     font-weight: 700;
     color: #111827;
 }
 
-.elementrify-smart-post-list__sort-select {
+.veloria-smart-post-list__sort-select {
     padding: 0.5rem 2rem 0.5rem 0.75rem;
     font-size: 0.9375rem;
     color: #374151;
@@ -31,13 +31,13 @@
     appearance: auto;
 }
 
-.elementrify-smart-post-list__grid {
+.veloria-smart-post-list__grid {
     display: grid;
     gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
-.elementrify-smart-post-list__card {
+.veloria-smart-post-list__card {
     position: relative;
     background: #fff;
     border-radius: 8px;
@@ -46,17 +46,17 @@
     transition: box-shadow 0.2s;
 }
 
-.elementrify-smart-post-list__card:hover {
+.veloria-smart-post-list__card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.elementrify-smart-post-list__card-link {
+.veloria-smart-post-list__card-link {
     position: absolute;
     inset: 0;
     z-index: 0;
 }
 
-.elementrify-smart-post-list__image-wrap {
+.veloria-smart-post-list__image-wrap {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
@@ -65,7 +65,7 @@
     border-radius: 8px 8px 0 0;
 }
 
-.elementrify-smart-post-list__image {
+.veloria-smart-post-list__image {
     position: absolute;
     left: 0;
     top: 0;
@@ -74,19 +74,19 @@
     object-fit: cover;
 }
 
-.elementrify-smart-post-list__image-placeholder {
+.veloria-smart-post-list__image-placeholder {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
 }
 
-.elementrify-smart-post-list__card-body {
+.veloria-smart-post-list__card-body {
     padding: 1.25rem;
     position: relative;
     z-index: 1;
 }
 
-.elementrify-smart-post-list__meta-top {
+.veloria-smart-post-list__meta-top {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -94,7 +94,7 @@
     margin-bottom: 0.75rem;
 }
 
-.elementrify-smart-post-list__category {
+.veloria-smart-post-list__category {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     font-size: 0.6875rem;
@@ -106,35 +106,35 @@
     border-radius: 50px;
 }
 
-.elementrify-smart-post-list__card:nth-child(3n+1) .elementrify-smart-post-list__category { background: #2563eb; }
-.elementrify-smart-post-list__card:nth-child(3n+2) .elementrify-smart-post-list__category { background: #7c3aed; }
-.elementrify-smart-post-list__card:nth-child(3n+3) .elementrify-smart-post-list__category { background: #059669; }
-.elementrify-smart-post-list__card:nth-child(6n+4) .elementrify-smart-post-list__category { background: #ea580c; }
-.elementrify-smart-post-list__card:nth-child(6n+5) .elementrify-smart-post-list__category { background: #db2777; }
-.elementrify-smart-post-list__card:nth-child(6n+6) .elementrify-smart-post-list__category { background: #0891b2; }
+.veloria-smart-post-list__card:nth-child(3n+1) .veloria-smart-post-list__category { background: #2563eb; }
+.veloria-smart-post-list__card:nth-child(3n+2) .veloria-smart-post-list__category { background: #7c3aed; }
+.veloria-smart-post-list__card:nth-child(3n+3) .veloria-smart-post-list__category { background: #059669; }
+.veloria-smart-post-list__card:nth-child(6n+4) .veloria-smart-post-list__category { background: #ea580c; }
+.veloria-smart-post-list__card:nth-child(6n+5) .veloria-smart-post-list__category { background: #db2777; }
+.veloria-smart-post-list__card:nth-child(6n+6) .veloria-smart-post-list__category { background: #0891b2; }
 
-.elementrify-smart-post-list__meta-date {
+.veloria-smart-post-list__meta-date {
     font-size: 0.8125rem;
     color: #6b7280;
 }
 
-.elementrify-smart-post-list__card-title {
+.veloria-smart-post-list__card-title {
     margin: 0 0 0.5rem;
     font-size: 1.125rem;
     font-weight: 700;
     line-height: 1.4;
 }
 
-.elementrify-smart-post-list__card-title a {
+.veloria-smart-post-list__card-title a {
     color: inherit;
     text-decoration: none;
 }
 
-.elementrify-smart-post-list__card-title a:hover {
+.veloria-smart-post-list__card-title a:hover {
     text-decoration: underline;
 }
 
-.elementrify-smart-post-list__excerpt {
+.veloria-smart-post-list__excerpt {
     margin: 0 0 1rem;
     font-size: 0.9375rem;
     line-height: 1.6;
@@ -145,7 +145,7 @@
     overflow: hidden;
 }
 
-.elementrify-smart-post-list__footer {
+.veloria-smart-post-list__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -153,42 +153,42 @@
     gap: 0.5rem;
 }
 
-.elementrify-smart-post-list__author {
+.veloria-smart-post-list__author {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.elementrify-smart-post-list__avatar {
+.veloria-smart-post-list__avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.elementrify-smart-post-list__author-name {
+.veloria-smart-post-list__author-name {
     font-size: 0.875rem;
     color: #374151;
 }
 
-.elementrify-smart-post-list__read-time {
+.veloria-smart-post-list__read-time {
     font-size: 0.8125rem;
     color: #6b7280;
 }
 
-.elementrify-smart-post-list__empty {
+.veloria-smart-post-list__empty {
     grid-column: 1 / -1;
     text-align: center;
     color: #6b7280;
     padding: 2rem;
 }
 
-.elementrify-smart-post-list__pagination {
+.veloria-smart-post-list__pagination {
     display: flex;
     justify-content: center;
 }
 
-.elementrify-smart-post-list__page-list {
+.veloria-smart-post-list__page-list {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -197,9 +197,9 @@
     padding: 0;
 }
 
-.elementrify-smart-post-list__page-link,
-.elementrify-smart-post-list__page-prev a,
-.elementrify-smart-post-list__page-next a {
+.veloria-smart-post-list__page-link,
+.veloria-smart-post-list__page-prev a,
+.veloria-smart-post-list__page-next a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -215,19 +215,19 @@
     transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.elementrify-smart-post-list__page-link:hover,
-.elementrify-smart-post-list__page-prev a:hover,
-.elementrify-smart-post-list__page-next a:hover {
+.veloria-smart-post-list__page-link:hover,
+.veloria-smart-post-list__page-prev a:hover,
+.veloria-smart-post-list__page-next a:hover {
     background: #f3f4f6;
 }
 
-.elementrify-smart-post-list__page-link.is-active {
+.veloria-smart-post-list__page-link.is-active {
     background: #2563eb;
     color: #fff;
     border-color: #2563eb;
 }
 
-.elementrify-smart-post-list__page-ellipsis {
+.veloria-smart-post-list__page-ellipsis {
     display: inline-flex;
     align-items: center;
     justify-content: center;

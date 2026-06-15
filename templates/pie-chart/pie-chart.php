@@ -17,18 +17,18 @@ foreach ($data as $row) {
     $colors[] = isset($row['color']) ? $row['color'] : '#2563eb';
 }
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-pie-chart');
+$this->add_render_attribute('wrapper', 'class', 'veloria-pie-chart');
 $this->add_render_attribute('wrapper', 'data-labels', implode('|', $labels));
 $this->add_render_attribute('wrapper', 'data-values', implode('|', $values));
 $this->add_render_attribute('wrapper', 'data-colors', implode('|', $colors));
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($title !== '') : ?>
-        <h3 class="elementrify-pie-chart__title"><?php echo esc_html($title); ?></h3>
+        <h3 class="veloria-pie-chart__title"><?php echo esc_html($title); ?></h3>
     <?php endif; ?>
-    <div class="elementrify-pie-chart__wrap">
-        <div class="elementrify-pie-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
-        <div class="elementrify-pie-chart__legend"></div>
+    <div class="veloria-pie-chart__wrap">
+        <div class="veloria-pie-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
+        <div class="veloria-pie-chart__legend"></div>
     </div>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\AnimatedGradient;
+namespace Veloria\Widgets\AnimatedGradient;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -15,12 +15,12 @@ class AnimatedGradient extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-paint-tool elementrify-icon';
+        return 'eicon-paint-tool veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-animated-gradient';
+        return 'veloria-animated-gradient';
     }
 
     public function get_admin_category(): string
@@ -30,12 +30,12 @@ class AnimatedGradient extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Animated Gradient', 'elementrify');
+        return __('Animated Gradient', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Moving gradient as background or gradient text.', 'elementrify');
+        return __('Moving gradient as background or gradient text.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -51,21 +51,21 @@ class AnimatedGradient extends WidgetBase
 
     public function get_keywords(): array
     {
-        return ['elementrify', 'gradient', 'animated', 'text', 'background', 'color'];
+        return ['veloria', 'gradient', 'animated', 'text', 'background', 'color'];
     }
 
     public function get_style_depends(): array
     {
-        return ['elementrify-animated-gradient'];
+        return ['veloria-animated-gradient'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-animated-gradient',
-            ELEMENTRIFY_URL . 'assets/css/animated-gradient.css',
+            'veloria-animated-gradient',
+            VELORIA_URL . 'assets/css/animated-gradient.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -75,20 +75,20 @@ class AnimatedGradient extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('text', [
-            'label'   => __('Text', 'elementrify'),
+            'label'   => __('Text', 'veloria'),
             'type'    => Controls_Manager::TEXTAREA,
-            'default' => __('Gradient in motion', 'elementrify'),
+            'default' => __('Gradient in motion', 'veloria'),
             'rows'    => 3,
             'dynamic' => ['active' => true],
         ]);
 
         $this->add_control('html_tag', [
-            'label'   => __('HTML tag', 'elementrify'),
+            'label'   => __('HTML tag', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'h2',
             'options' => [
@@ -107,19 +107,19 @@ class AnimatedGradient extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style', [
-            'label' => __('Gradient', 'elementrify'),
+            'label' => __('Gradient', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('gradient_mode', [
-            'label'        => __('Apply gradient to', 'elementrify'),
+            'label'        => __('Apply gradient to', 'veloria'),
             'type'         => Controls_Manager::SELECT,
             'default'      => 'bg',
             'options'      => [
-                'bg'   => __('Background', 'elementrify'),
-                'text' => __('Text', 'elementrify'),
+                'bg'   => __('Background', 'veloria'),
+                'text' => __('Text', 'veloria'),
             ],
-            'prefix_class' => 'elementrify-animated-gradient--',
+            'prefix_class' => 'veloria-animated-gradient--',
         ]);
 
         $this->add_control('text_mode_inner_clear', [
@@ -129,7 +129,7 @@ class AnimatedGradient extends WidgetBase
                 'gradient_mode' => 'text',
             ],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-animated-gradient__inner' => 'background-image: none !important; background-color: transparent !important; background-size: auto !important; animation: none !important;',
+                '{{WRAPPER}} .veloria-animated-gradient__inner' => 'background-image: none !important; background-color: transparent !important; background-size: auto !important; animation: none !important;',
             ],
         ]);
 
@@ -137,8 +137,8 @@ class AnimatedGradient extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography_text',
-                'label'    => __('Typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-animated-gradient__text',
+                'label'    => __('Typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-animated-gradient__text',
                 'global'   => [
                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                 ],
@@ -146,11 +146,11 @@ class AnimatedGradient extends WidgetBase
         );
 
         $this->add_control('text_color_on_bg', [
-            'label'     => __('Text color', 'elementrify'),
+            'label'     => __('Text color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}}.elementrify-animated-gradient--bg .elementrify-animated-gradient__text' => 'color: {{VALUE}};',
+                '{{WRAPPER}}.veloria-animated-gradient--bg .veloria-animated-gradient__text' => 'color: {{VALUE}};',
             ],
             'condition' => [
                 'gradient_mode' => 'bg',
@@ -158,38 +158,38 @@ class AnimatedGradient extends WidgetBase
         ]);
 
         $this->add_control('gradient_color_start', [
-            'label'     => __('Gradient start', 'elementrify'),
+            'label'     => __('Gradient start', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#d65db1',
             'selectors' => [
-                '{{WRAPPER}}' => '--elementrify-ag-start: {{VALUE}};',
+                '{{WRAPPER}}' => '--veloria-ag-start: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('gradient_color_end', [
-            'label'     => __('Gradient end', 'elementrify'),
+            'label'     => __('Gradient end', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#845ef7',
             'selectors' => [
-                '{{WRAPPER}}' => '--elementrify-ag-end: {{VALUE}};',
+                '{{WRAPPER}}' => '--veloria-ag-end: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('gradient_angle', [
-            'label'     => __('Gradient angle', 'elementrify'),
+            'label'     => __('Gradient angle', 'veloria'),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 0,
             'max'       => 360,
             'step'      => 1,
             'default'   => 90,
             'selectors' => [
-                '{{WRAPPER}}.elementrify-animated-gradient--bg .elementrify-animated-gradient__inner' => 'background-image: linear-gradient({{VALUE}}deg, var(--elementrify-ag-start, #d65db1), var(--elementrify-ag-end, #845ef7), var(--elementrify-ag-start, #d65db1));',
-                '{{WRAPPER}}.elementrify-animated-gradient--text .elementrify-animated-gradient__text' => 'background-image: linear-gradient({{VALUE}}deg, var(--elementrify-ag-start, #d65db1), var(--elementrify-ag-end, #845ef7), var(--elementrify-ag-start, #d65db1));',
+                '{{WRAPPER}}.veloria-animated-gradient--bg .veloria-animated-gradient__inner' => 'background-image: linear-gradient({{VALUE}}deg, var(--veloria-ag-start, #d65db1), var(--veloria-ag-end, #845ef7), var(--veloria-ag-start, #d65db1));',
+                '{{WRAPPER}}.veloria-animated-gradient--text .veloria-animated-gradient__text' => 'background-image: linear-gradient({{VALUE}}deg, var(--veloria-ag-start, #d65db1), var(--veloria-ag-end, #845ef7), var(--veloria-ag-start, #d65db1));',
             ],
         ]);
 
         $this->add_responsive_control('gradient_scale', [
-            'label'      => __('Gradient stretch', 'elementrify'),
+            'label'      => __('Gradient stretch', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['%'],
             'range'      => [
@@ -200,77 +200,77 @@ class AnimatedGradient extends WidgetBase
                 'size' => 300,
             ],
             'selectors'  => [
-                '{{WRAPPER}}.elementrify-animated-gradient--bg .elementrify-animated-gradient__inner' => 'background-size: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}}.elementrify-animated-gradient--text .elementrify-animated-gradient__text' => 'background-size: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}}.veloria-animated-gradient--bg .veloria-animated-gradient__inner' => 'background-size: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}}.veloria-animated-gradient--text .veloria-animated-gradient__text' => 'background-size: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('animation_direction', [
-            'label'        => __('Motion direction', 'elementrify'),
+            'label'        => __('Motion direction', 'veloria'),
             'type'         => Controls_Manager::SELECT,
             'default'      => 'h',
             'options'      => [
-                'h' => __('Horizontal', 'elementrify'),
-                'v' => __('Vertical', 'elementrify'),
-                'd' => __('Diagonal', 'elementrify'),
+                'h' => __('Horizontal', 'veloria'),
+                'v' => __('Vertical', 'veloria'),
+                'd' => __('Diagonal', 'veloria'),
             ],
-            'prefix_class' => 'elementrify-animated-gradient--dir-',
+            'prefix_class' => 'veloria-animated-gradient--dir-',
         ]);
 
         $this->add_control('animation_duration', [
-            'label'       => __('Animation speed (seconds)', 'elementrify'),
-            'description' => __('Lower is faster. One loop duration in seconds.', 'elementrify'),
+            'label'       => __('Animation speed (seconds)', 'veloria'),
+            'description' => __('Lower is faster. One loop duration in seconds.', 'veloria'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 0.5,
             'max'         => 120,
             'step'        => 0.1,
             'default'     => 8,
             'selectors'   => [
-                '{{WRAPPER}}' => '--elementrify-ag-duration: {{VALUE}}s;',
+                '{{WRAPPER}}' => '--veloria-ag-duration: {{VALUE}}s;',
             ],
         ]);
 
         $this->add_control('animation_easing', [
-            'label'     => __('Easing', 'elementrify'),
+            'label'     => __('Easing', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'ease-in-out',
             'options'   => [
-                'linear'      => __('Linear', 'elementrify'),
-                'ease'        => __('Ease', 'elementrify'),
-                'ease-in-out' => __('Ease in out', 'elementrify'),
+                'linear'      => __('Linear', 'veloria'),
+                'ease'        => __('Ease', 'veloria'),
+                'ease-in-out' => __('Ease in out', 'veloria'),
             ],
             'selectors' => [
-                '{{WRAPPER}}' => '--elementrify-ag-ease: {{VALUE}};',
+                '{{WRAPPER}}' => '--veloria-ag-ease: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('align', [
-            'label'        => __('Alignment', 'elementrify'),
+            'label'        => __('Alignment', 'veloria'),
             'type'         => Controls_Manager::CHOOSE,
             'options'      => [
                 'left'   => [
-                    'title' => __('Left', 'elementrify'),
+                    'title' => __('Left', 'veloria'),
                     'icon'  => 'eicon-text-align-left',
                 ],
                 'center' => [
-                    'title' => __('Center', 'elementrify'),
+                    'title' => __('Center', 'veloria'),
                     'icon'  => 'eicon-text-align-center',
                 ],
                 'right'  => [
-                    'title' => __('Right', 'elementrify'),
+                    'title' => __('Right', 'veloria'),
                     'icon'  => 'eicon-text-align-right',
                 ],
             ],
             'default'      => 'left',
-            'prefix_class' => 'elementrify-animated-gradient--align-',
+            'prefix_class' => 'veloria-animated-gradient--align-',
             'selectors'    => [
-                '{{WRAPPER}} .elementrify-animated-gradient__inner' => 'text-align: {{VALUE}};',
-                '{{WRAPPER}} .elementrify-animated-gradient__text' => 'text-align: {{VALUE}};',
+                '{{WRAPPER}} .veloria-animated-gradient__inner' => 'text-align: {{VALUE}};',
+                '{{WRAPPER}} .veloria-animated-gradient__text' => 'text-align: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('inner_padding', [
-            'label'      => __('Padding', 'elementrify'),
+            'label'      => __('Padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'default'    => [
@@ -281,16 +281,16 @@ class AnimatedGradient extends WidgetBase
                 'unit' => 'em',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-animated-gradient__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-animated-gradient__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('inner_radius', [
-            'label'      => __('Border radius', 'elementrify'),
+            'label'      => __('Border radius', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-animated-gradient__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-animated-gradient__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -304,7 +304,7 @@ class AnimatedGradient extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/animated-gradient/animated-gradient.php';
+        $path = VELORIA_DIR . 'templates/animated-gradient/animated-gradient.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -328,10 +328,10 @@ class AnimatedGradient extends WidgetBase
         if (['h','v','d'].indexOf(dir) === -1) { dir = 'h'; }
         var align = settings.align || 'left';
         if (['left','center','right'].indexOf(align) === -1) { align = 'left'; }
-        var innerClass = 'elementrify-animated-gradient elementrify-animated-gradient__inner elementrify-animated-gradient--' + mode + ' elementrify-animated-gradient--dir-' + dir + ' elementrify-animated-gradient--align-' + align;
+        var innerClass = 'veloria-animated-gradient veloria-animated-gradient__inner veloria-animated-gradient--' + mode + ' veloria-animated-gradient--dir-' + dir + ' veloria-animated-gradient--align-' + align;
         #>
         <div class="<# print( innerClass ); #>">
-            <{{ tag }} class="elementrify-animated-gradient__text">{{{ raw }}}</{{ tag }}>
+            <{{ tag }} class="veloria-animated-gradient__text">{{{ raw }}}</{{ tag }}>
         </div>
         <?php
                 }

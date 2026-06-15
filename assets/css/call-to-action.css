@@ -1,4 +1,4 @@
-.elementrify-cta {
+.veloria-cta {
     position: relative;
     width: 100%;
     text-align: center;
@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-.elementrify-cta::before {
+.veloria-cta::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -15,7 +15,7 @@
     pointer-events: none;
 }
 
-.elementrify-cta__inner {
+.veloria-cta__inner {
     position: relative;
     z-index: 1;
     max-width: 640px;
@@ -23,7 +23,7 @@
     margin-right: auto;
 }
 
-.elementrify-cta__title {
+.veloria-cta__title {
     margin: 0 0 12px;
     font-weight: 700;
     font-size: 32px;
@@ -31,7 +31,7 @@
     color: #ffffff;
 }
 
-.elementrify-cta__description {
+.veloria-cta__description {
     margin: 0 0 24px;
     font-weight: 400;
     font-size: 16px;
@@ -39,7 +39,7 @@
     color: #ffffff;
 }
 
-.elementrify-cta__button {
+.veloria-cta__button {
     display: inline-block;
     background-color: #ffffff;
     color: #FF6400;
@@ -54,11 +54,11 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.elementrify-cta__button:hover {
+.veloria-cta__button:hover {
     opacity: 0.95;
 }
 
-.elementrify-cta__button:focus {
+.veloria-cta__button:focus {
     outline: 2px solid rgba(255, 255, 255, 0.6);
     outline-offset: 2px;
 }

@@ -1,14 +1,14 @@
 <?php
-namespace Elementrify\Extensions\CustomStyles;
+namespace Veloria\Extensions\CustomStyles;
 
-use Elementrify\Base\ExtensionBase;
+use Veloria\Base\ExtensionBase;
 
 defined('ABSPATH') or exit;
 
 /**
  * Registers per-element Custom CSS controls in Elementor (widgets, sections, columns, containers).
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class CustomStyles extends ExtensionBase
@@ -20,17 +20,17 @@ class CustomStyles extends ExtensionBase
 
     public function get_title(): string
     {
-        return __('Custom Styles', 'elementrify');
+        return __('Custom Styles', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Add a Custom CSS section under Advanced for widgets, sections, columns, and containers.', 'elementrify');
+        return __('Add a Custom CSS section under Advanced for widgets, sections, columns, and containers.', 'veloria');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-code elementrify-icon';
+        return 'eicon-code veloria-icon';
     }
 
     public function get_category(): string
@@ -90,17 +90,17 @@ class CustomStyles extends ExtensionBase
         $registered[$stack_name] = true;
 
         $element->start_controls_section(
-            'section_elementrify_custom_styles',
+            'section_veloria_custom_styles',
             [
-                'label' => __('Custom CSS - Elementrify', 'elementrify'),
+                'label' => __('Custom CSS - Veloria', 'veloria'),
                 'tab'   => \Elementor\Controls_Manager::TAB_ADVANCED,
             ]
         );
 
         $element->add_control(
-            'elementrify_custom_css',
+            'veloria_custom_css',
             [
-                'label'               => __('Custom CSS', 'elementrify'),
+                'label'               => __('Custom CSS', 'veloria'),
                 'type'                => \Elementor\Controls_Manager::CODE,
                 'language'            => 'css',
                 'render_type'         => 'ui',
@@ -109,12 +109,12 @@ class CustomStyles extends ExtensionBase
         );
 
         $element->add_control(
-            'elementrify_custom_css_hint',
+            'veloria_custom_css_hint',
             [
                 'type'            => \Elementor\Controls_Manager::RAW_HTML,
                 'raw'             => '<p class="elementor-descriptor"><em>' . esc_html__(
                     'Use the "selector" keyword to target this element’s wrapper.',
-                    'elementrify'
+                    'veloria'
                 ) . '</em></p>',
                 'content_classes' => 'elementor-descriptor',
             ]
@@ -140,11 +140,11 @@ class CustomStyles extends ExtensionBase
 
         $settings = $element->get_settings();
 
-        if (!is_array($settings) || empty($settings['elementrify_custom_css'])) {
+        if (!is_array($settings) || empty($settings['veloria_custom_css'])) {
             return;
         }
 
-        $css = trim((string) $settings['elementrify_custom_css']);
+        $css = trim((string) $settings['veloria_custom_css']);
 
         if ($css === '') {
             return;
@@ -157,7 +157,7 @@ class CustomStyles extends ExtensionBase
         $css = str_replace('selector', $selector, $css);
 
         $post_css->get_stylesheet()->add_raw_css(
-            sprintf('/* Elementrify custom CSS: %s */', $element->get_name()) . $css
+            sprintf('/* Veloria custom CSS: %s */', $element->get_name()) . $css
         );
     }
 

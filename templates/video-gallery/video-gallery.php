@@ -2,12 +2,12 @@
 /**
  * Video Gallery widget template.
  *
- * @var \Elementrify\Widgets\VideoGallery\VideoGallery $this
+ * @var \Veloria\Widgets\VideoGallery\VideoGallery $this
  */
 
 defined('ABSPATH') || exit;
 
-use Elementrify\Widgets\VideoPlayer\VideoPlayer;
+use Veloria\Widgets\VideoPlayer\VideoPlayer;
 
 $settings = $this->get_settings_for_display();
 $items    = isset($settings['items']) && is_array($settings['items']) ? $settings['items'] : [];
@@ -16,10 +16,10 @@ if ($items === []) {
     return;
 }
 
-$this->add_render_attribute('wrap', 'class', 'elementrify-video-gallery');
+$this->add_render_attribute('wrap', 'class', 'veloria-video-gallery');
 ?>
 <div <?php $this->print_render_attribute_string('wrap'); ?>>
-    <div class="elementrify-video-gallery__grid">
+    <div class="veloria-video-gallery__grid">
         <?php
         foreach ($items as $index => $item) {
             $video_type = isset($item['video_type']) ? (string) $item['video_type'] : 'youtube';
@@ -42,36 +42,36 @@ $this->add_render_attribute('wrap', 'class', 'elementrify-video-gallery');
             $subtitle      = isset($item['subtitle']) ? (string) $item['subtitle'] : '';
             $thumbnail_url = isset($item['thumbnail']['url']) ? trim((string) $item['thumbnail']['url']) : '';
 
-            $inner_class = 'elementrify-video-player__inner';
+            $inner_class = 'veloria-video-player__inner';
             if ($thumbnail_url !== '') {
-                $inner_class .= ' elementrify-video-player--has-thumbnail';
+                $inner_class .= ' veloria-video-player--has-thumbnail';
             }
 
             $item_id = isset($item['_id']) ? (string) $item['_id'] : (string) $index;
             ?>
-            <div class="elementrify-video-gallery__cell elementor-repeater-item-<?php echo esc_attr($item_id); ?>">
-                <div class="elementrify-video-player elementrify-video-player--gallery-tile">
+            <div class="veloria-video-gallery__cell elementor-repeater-item-<?php echo esc_attr($item_id); ?>">
+                <div class="veloria-video-player veloria-video-player--gallery-tile">
                     <div
                         class="<?php echo esc_attr($inner_class); ?>"
                         data-embed="<?php echo esc_attr($embed_url); ?>"
                         data-hosted="<?php echo esc_attr($hosted_url); ?>"
                         data-type="<?php echo esc_attr($video_type); ?>"
                     >
-                        <div class="elementrify-video-player__overlay">
+                        <div class="veloria-video-player__overlay">
                             <?php if ($thumbnail_url !== '') : ?>
-                                <img class="elementrify-video-player__thumbnail" src="<?php echo esc_url($thumbnail_url); ?>" alt="" loading="lazy" decoding="async">
-                                <span class="elementrify-video-player__overlay-shade" aria-hidden="true"></span>
+                                <img class="veloria-video-player__thumbnail" src="<?php echo esc_url($thumbnail_url); ?>" alt="" loading="lazy" decoding="async">
+                                <span class="veloria-video-player__overlay-shade" aria-hidden="true"></span>
                             <?php endif; ?>
-                            <button type="button" class="elementrify-video-gallery__play" aria-label="<?php esc_attr_e('Play video', 'elementrify'); ?>">
-                                <span class="elementrify-video-gallery__play-icon"></span>
+                            <button type="button" class="veloria-video-gallery__play" aria-label="<?php esc_attr_e('Play video', 'veloria'); ?>">
+                                <span class="veloria-video-gallery__play-icon"></span>
                             </button>
                             <?php if (($show_title && $title !== '') || ($show_subtitle && $subtitle !== '')) : ?>
-                                <div class="elementrify-video-player__caption">
+                                <div class="veloria-video-player__caption">
                                     <?php if ($show_title && $title !== '') : ?>
-                                        <div class="elementrify-video-player__title"><?php echo esc_html($title); ?></div>
+                                        <div class="veloria-video-player__title"><?php echo esc_html($title); ?></div>
                                     <?php endif; ?>
                                     <?php if ($show_subtitle && $subtitle !== '') : ?>
-                                        <div class="elementrify-video-player__subtitle"><?php echo esc_html($subtitle); ?></div>
+                                        <div class="veloria-video-player__subtitle"><?php echo esc_html($subtitle); ?></div>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
@@ -83,14 +83,14 @@ $this->add_render_attribute('wrap', 'class', 'elementrify-video-gallery');
         }
         ?>
     </div>
-    <div class="elementrify-video-gallery__lightbox" hidden data-open="0">
-        <div class="elementrify-video-gallery__lightbox-backdrop" tabindex="-1" aria-hidden="true"></div>
-        <div class="elementrify-video-gallery__lightbox-dialog" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr__('Video', 'elementrify'); ?>">
-            <button type="button" class="elementrify-video-gallery__lightbox-close" aria-label="<?php esc_attr_e('Close', 'elementrify'); ?>">
-                <span class="elementrify-video-gallery__lightbox-close-icon" aria-hidden="true">&times;</span>
+    <div class="veloria-video-gallery__lightbox" hidden data-open="0">
+        <div class="veloria-video-gallery__lightbox-backdrop" tabindex="-1" aria-hidden="true"></div>
+        <div class="veloria-video-gallery__lightbox-dialog" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr__('Video', 'veloria'); ?>">
+            <button type="button" class="veloria-video-gallery__lightbox-close" aria-label="<?php esc_attr_e('Close', 'veloria'); ?>">
+                <span class="veloria-video-gallery__lightbox-close-icon" aria-hidden="true">&times;</span>
             </button>
-            <div class="elementrify-video-gallery__lightbox-stage">
-                <div class="elementrify-video-gallery__lightbox-embed"></div>
+            <div class="veloria-video-gallery__lightbox-stage">
+                <div class="veloria-video-gallery__lightbox-embed"></div>
             </div>
         </div>
     </div>

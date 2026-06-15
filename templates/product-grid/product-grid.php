@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 if (!class_exists('WooCommerce')) {
-    echo '<div class="elementrify-product-grid__placeholder">' . esc_html__('WooCommerce is required for Product Grid.', 'elementrify') . '</div>';
+    echo '<div class="veloria-product-grid__placeholder">' . esc_html__('WooCommerce is required for Product Grid.', 'veloria') . '</div>';
     return;
 }
 
@@ -135,7 +135,7 @@ $showAddToCart = isset($settings['show_add_to_cart'])
     ? ($settings['show_add_to_cart'] === 'yes')
     : (isset($settings['show_actions']) && $settings['show_actions'] === 'yes');
 $hoverEffect = isset($settings['image_hover_effect']) ? (string) $settings['image_hover_effect'] : 'zoom-out';
-$hoverClass = 'elementrify-product-grid__image-wrap--' . preg_replace('/[^a-z\\-]/', '', $hoverEffect);
+$hoverClass = 'veloria-product-grid__image-wrap--' . preg_replace('/[^a-z\\-]/', '', $hoverEffect);
 
 $cartUrl = '';
 if (function_exists('wc_get_page_id')) {
@@ -163,11 +163,11 @@ $gridShellStyle = sprintf(
 );
 ?>
 <div
-    class="elementrify-product-grid-shell"
+    class="veloria-product-grid-shell"
     style="<?php echo esc_attr($gridShellStyle); ?>"
     <?php echo $cartUrl !== '' ? 'data-cart-url="' . esc_url($cartUrl) . '"' : ''; ?>>
     <?php if ($productQuery->have_posts()) : ?>
-        <div class="elementrify-product-grid">
+        <div class="veloria-product-grid">
             <?php while ($productQuery->have_posts()) : $productQuery->the_post(); ?>
                 <?php
                 $product = wc_get_product(get_the_ID());
@@ -185,59 +185,59 @@ $gridShellStyle = sprintf(
                 $rating = (float) $product->get_average_rating();
                 $ratingCount = (int) $product->get_rating_count();
                 ?>
-                <article class="elementrify-product-grid__card">
-                    <div class="elementrify-product-grid__image-wrap <?php echo esc_attr($hoverClass); ?>">
-                        <a href="<?php the_permalink(); ?>" class="elementrify-product-grid__image-link">
-                            <?php echo wp_kses_post($product->get_image('woocommerce_thumbnail', ['class' => 'elementrify-product-grid__image'])); ?>
+                <article class="veloria-product-grid__card">
+                    <div class="veloria-product-grid__image-wrap <?php echo esc_attr($hoverClass); ?>">
+                        <a href="<?php the_permalink(); ?>" class="veloria-product-grid__image-link">
+                            <?php echo wp_kses_post($product->get_image('woocommerce_thumbnail', ['class' => 'veloria-product-grid__image'])); ?>
                         </a>
                         <?php if ($showBadges && ($isOnSale || $isFeatured)) : ?>
-                            <div class="elementrify-product-grid__badges">
+                            <div class="veloria-product-grid__badges">
                                 <?php if ($isOnSale) : ?>
-                                    <span class="elementrify-product-grid__badge elementrify-product-grid__badge--sale"><?php esc_html_e('Sale', 'elementrify'); ?></span>
+                                    <span class="veloria-product-grid__badge veloria-product-grid__badge--sale"><?php esc_html_e('Sale', 'veloria'); ?></span>
                                 <?php endif; ?>
                                 <?php if ($isFeatured) : ?>
-                                    <span class="elementrify-product-grid__badge elementrify-product-grid__badge--new"><?php esc_html_e('Featured', 'elementrify'); ?></span>
+                                    <span class="veloria-product-grid__badge veloria-product-grid__badge--new"><?php esc_html_e('Featured', 'veloria'); ?></span>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>
                     </div>
-                    <div class="elementrify-product-grid__card-body">
+                    <div class="veloria-product-grid__card-body">
                         <?php if ($showRating) : ?>
-                            <div class="elementrify-product-grid__rating">
+                            <div class="veloria-product-grid__rating">
                                 <?php echo wp_kses_post(wc_get_rating_html($rating, $ratingCount)); ?>
-                                <span class="elementrify-product-grid__rating-value">(<?php echo esc_html(number_format_i18n($rating, 1)); ?>)</span>
+                                <span class="veloria-product-grid__rating-value">(<?php echo esc_html(number_format_i18n($rating, 1)); ?>)</span>
                             </div>
                         <?php endif; ?>
 
-                        <h3 class="elementrify-product-grid__title">
+                        <h3 class="veloria-product-grid__title">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         </h3>
 
                         <?php if ($categoryLine !== '') : ?>
-                            <div class="elementrify-product-grid__meta"><?php echo wp_kses_post($categoryLine); ?></div>
+                            <div class="veloria-product-grid__meta"><?php echo wp_kses_post($categoryLine); ?></div>
                         <?php endif; ?>
 
                         <?php if ($showShortDesc && $shortDesc !== '') : ?>
-                            <div class="elementrify-product-grid__desc"><?php echo esc_html(wp_trim_words(wp_strip_all_tags($shortDesc), 7, '')); ?></div>
+                            <div class="veloria-product-grid__desc"><?php echo esc_html(wp_trim_words(wp_strip_all_tags($shortDesc), 7, '')); ?></div>
                         <?php endif; ?>
 
-                        <div class="elementrify-product-grid__price-row">
-                            <span class="elementrify-product-grid__price-main">
-                                <span class="elementrify-product-grid__price-current"><?php echo wp_kses_post(wc_price((float) $currentPrice)); ?></span>
+                        <div class="veloria-product-grid__price-row">
+                            <span class="veloria-product-grid__price-main">
+                                <span class="veloria-product-grid__price-current"><?php echo wp_kses_post(wc_price((float) $currentPrice)); ?></span>
                                 <?php if ($showOldPrice && $regularPrice !== '' && $salePrice !== '' && (float) $regularPrice > (float) $salePrice) : ?>
-                                    <span class="elementrify-product-grid__price-old"><?php echo wp_kses_post(wc_price((float) $regularPrice)); ?></span>
+                                    <span class="veloria-product-grid__price-old"><?php echo wp_kses_post(wc_price((float) $regularPrice)); ?></span>
                                 <?php endif; ?>
                             </span>
                             <?php if ($showWishlist || $showAddToCart) : ?>
-                                <span class="elementrify-product-grid__actions">
+                                <span class="veloria-product-grid__actions">
                                     <?php if ($showWishlist) : ?>
-                                        <a class="elementrify-product-grid__icon-btn" href="<?php the_permalink(); ?>" aria-label="<?php esc_attr_e('View Product', 'elementrify'); ?>">
+                                        <a class="veloria-product-grid__icon-btn" href="<?php the_permalink(); ?>" aria-label="<?php esc_attr_e('View Product', 'veloria'); ?>">
                                             <i class="far fa-heart" aria-hidden="true"></i>
                                         </a>
                                     <?php endif; ?>
                                     <?php if ($showAddToCart) : ?>
                                         <a
-                                            class="elementrify-product-grid__icon-btn elementrify-product-grid__icon-btn--cart elementrify-product-grid__cart-btn <?php echo esc_attr($product->supports('ajax_add_to_cart') ? 'add_to_cart_button ajax_add_to_cart' : ''); ?>"
+                                            class="veloria-product-grid__icon-btn veloria-product-grid__icon-btn--cart veloria-product-grid__cart-btn <?php echo esc_attr($product->supports('ajax_add_to_cart') ? 'add_to_cart_button ajax_add_to_cart' : ''); ?>"
                                             href="<?php echo esc_url($product->add_to_cart_url()); ?>"
                                             data-product_id="<?php echo esc_attr((string) $product->get_id()); ?>"
                                             data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
@@ -246,7 +246,7 @@ $gridShellStyle = sprintf(
                                             aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>">
                                             <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                                         </a>
-                                        <a class="elementrify-product-grid__cart-tooltip" href="#"><?php esc_html_e('View cart', 'elementrify'); ?></a>
+                                        <a class="veloria-product-grid__cart-tooltip" href="#"><?php esc_html_e('View cart', 'veloria'); ?></a>
                                     <?php endif; ?>
                                 </span>
                             <?php endif; ?>
@@ -256,7 +256,7 @@ $gridShellStyle = sprintf(
             <?php endwhile; ?>
         </div>
     <?php else : ?>
-        <div class="elementrify-product-grid__placeholder"><?php esc_html_e('No products found for selected filters.', 'elementrify'); ?></div>
+        <div class="veloria-product-grid__placeholder"><?php esc_html_e('No products found for selected filters.', 'veloria'); ?></div>
     <?php endif; ?>
 </div>
 <?php

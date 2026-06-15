@@ -21,7 +21,7 @@
             return Array.from(text)
                 .map(function (ch, i) {
                     return (
-                        '<span class="elementrify-animated-text__word elementrify-animated-text__char" style="--word-index: ' +
+                        '<span class="veloria-animated-text__word veloria-animated-text__char" style="--word-index: ' +
                         i +
                         ';">' +
                         escapeHtml(ch) +
@@ -36,10 +36,10 @@
         for (var j = 0; j < parts.length; j += 1) {
             var part = parts[j];
             if (/^\s+$/.test(part)) {
-                html += '<span class="elementrify-animated-text__space">' + escapeHtml(part) + '</span>';
+                html += '<span class="veloria-animated-text__space">' + escapeHtml(part) + '</span>';
             } else {
                 html +=
-                    '<span class="elementrify-animated-text__word" style="--word-index: ' +
+                    '<span class="veloria-animated-text__word" style="--word-index: ' +
                     index +
                     ';">' +
                     escapeHtml(part) +
@@ -88,40 +88,40 @@
     }
 
     function clearTypewriter(el) {
-        if (el._elementrifyAtTypeInterval) {
-            clearInterval(el._elementrifyAtTypeInterval);
-            el._elementrifyAtTypeInterval = null;
+        if (el._veloriaAtTypeInterval) {
+            clearInterval(el._veloriaAtTypeInterval);
+            el._veloriaAtTypeInterval = null;
         }
-        if (el._elementrifyAtLoopTimeout) {
-            clearTimeout(el._elementrifyAtLoopTimeout);
-            el._elementrifyAtLoopTimeout = null;
+        if (el._veloriaAtLoopTimeout) {
+            clearTimeout(el._veloriaAtLoopTimeout);
+            el._veloriaAtLoopTimeout = null;
         }
-        if (el._elementrifyAtStartTimeout) {
-            clearTimeout(el._elementrifyAtStartTimeout);
-            el._elementrifyAtStartTimeout = null;
+        if (el._veloriaAtStartTimeout) {
+            clearTimeout(el._veloriaAtStartTimeout);
+            el._veloriaAtStartTimeout = null;
         }
-        if (el._elementrifyAtRevealTimeout) {
-            clearTimeout(el._elementrifyAtRevealTimeout);
-            el._elementrifyAtRevealTimeout = null;
+        if (el._veloriaAtRevealTimeout) {
+            clearTimeout(el._veloriaAtRevealTimeout);
+            el._veloriaAtRevealTimeout = null;
         }
-        if (el._elementrifyAtSqTimeout) {
-            clearTimeout(el._elementrifyAtSqTimeout);
-            el._elementrifyAtSqTimeout = null;
+        if (el._veloriaAtSqTimeout) {
+            clearTimeout(el._veloriaAtSqTimeout);
+            el._veloriaAtSqTimeout = null;
         }
-        if (el._elementrifyAtSqStartTimeout) {
-            clearTimeout(el._elementrifyAtSqStartTimeout);
-            el._elementrifyAtSqStartTimeout = null;
+        if (el._veloriaAtSqStartTimeout) {
+            clearTimeout(el._veloriaAtSqStartTimeout);
+            el._veloriaAtSqStartTimeout = null;
         }
     }
 
     function disconnectSquare(el) {
         clearTypewriter(el);
-        if (el._elementrifyAtSqIo) {
-            el._elementrifyAtSqIo.disconnect();
-            el._elementrifyAtSqIo = null;
+        if (el._veloriaAtSqIo) {
+            el._veloriaAtSqIo.disconnect();
+            el._veloriaAtSqIo = null;
         }
-        el._elementrifySqGen = (el._elementrifySqGen || 0) + 1;
-        var frame = el.querySelector('.elementrify-animated-text__squeeze-frame');
+        el._veloriaSqGen = (el._veloriaSqGen || 0) + 1;
+        var frame = el.querySelector('.veloria-animated-text__squeeze-frame');
         if (frame) {
             frame.classList.remove('is-squeezed');
         }
@@ -129,9 +129,9 @@
 
     function disconnectReveal(el) {
         clearTypewriter(el);
-        if (el._elementrifyAtIo) {
-            el._elementrifyAtIo.disconnect();
-            el._elementrifyAtIo = null;
+        if (el._veloriaAtIo) {
+            el._veloriaAtIo.disconnect();
+            el._veloriaAtIo = null;
         }
     }
 
@@ -159,11 +159,11 @@
             betweenPhrases = 600;
         }
 
-        var typed = el.querySelector('.elementrify-animated-text__typed');
+        var typed = el.querySelector('.veloria-animated-text__typed');
         if (!typed) {
             return;
         }
-        var cursor = el.querySelector('.elementrify-animated-text__cursor');
+        var cursor = el.querySelector('.veloria-animated-text__cursor');
 
         clearTypewriter(el);
 
@@ -176,13 +176,13 @@
                 cursor.classList.add('is-visible');
             }
             var i = 0;
-            el._elementrifyAtTypeInterval = setInterval(function () {
+            el._veloriaAtTypeInterval = setInterval(function () {
                 if (i < chars.length) {
                     typed.textContent += chars[i];
                     i += 1;
                 } else {
-                    clearInterval(el._elementrifyAtTypeInterval);
-                    el._elementrifyAtTypeInterval = null;
+                    clearInterval(el._veloriaAtTypeInterval);
+                    el._veloriaAtTypeInterval = null;
                     onPhraseComplete();
                 }
             }, speed);
@@ -197,7 +197,7 @@
                 if (!phraseListLoop) {
                     if (loop) {
                         phraseIndex = 0;
-                        el._elementrifyAtLoopTimeout = setTimeout(function () {
+                        el._veloriaAtLoopTimeout = setTimeout(function () {
                             runTyping();
                         }, pauseAfterCycle);
                     }
@@ -205,13 +205,13 @@
                 }
                 phraseIndex = 0;
                 var pause = loop ? pauseAfterCycle : betweenPhrases;
-                el._elementrifyAtLoopTimeout = setTimeout(function () {
+                el._veloriaAtLoopTimeout = setTimeout(function () {
                     runTyping();
                 }, pause);
                 return;
             }
             typed.textContent = '';
-            el._elementrifyAtLoopTimeout = setTimeout(function () {
+            el._veloriaAtLoopTimeout = setTimeout(function () {
                 typeCurrentPhrase();
             }, betweenPhrases);
         }
@@ -222,7 +222,7 @@
             typeCurrentPhrase();
         }
 
-        el._elementrifyAtStartTimeout = setTimeout(function () {
+        el._veloriaAtStartTimeout = setTimeout(function () {
             runTyping();
         }, startDelay);
     }
@@ -248,26 +248,26 @@
             stagger = 80;
         }
 
-        var container = el.querySelector('.elementrify-animated-text__animated');
+        var container = el.querySelector('.veloria-animated-text__animated');
         if (!container) {
             return;
         }
 
         disconnectReveal(el);
 
-        el._elementrifyRevealGen = (el._elementrifyRevealGen || 0) + 1;
-        var revealGen = el._elementrifyRevealGen;
+        el._veloriaRevealGen = (el._veloriaRevealGen || 0) + 1;
+        var revealGen = el._veloriaRevealGen;
 
         var phraseIndex = 0;
         var running = false;
         var doneOnce = false;
 
         function playPhrase() {
-            if (el._elementrifyAtRevealTimeout) {
-                clearTimeout(el._elementrifyAtRevealTimeout);
-                el._elementrifyAtRevealTimeout = null;
+            if (el._veloriaAtRevealTimeout) {
+                clearTimeout(el._veloriaAtRevealTimeout);
+                el._veloriaAtRevealTimeout = null;
             }
-            if (revealGen !== el._elementrifyRevealGen) {
+            if (revealGen !== el._veloriaRevealGen) {
                 return;
             }
             if (phraseIndex >= phrases.length) {
@@ -283,18 +283,18 @@
             container.innerHTML = buildRevealHtml(text, split);
             requestAnimationFrame(function () {
                 requestAnimationFrame(function () {
-                    if (revealGen !== el._elementrifyRevealGen) {
+                    if (revealGen !== el._veloriaRevealGen) {
                         return;
                     }
                     el.classList.add('is-revealed');
                     var delay = getRevealDelay(text, split, duration, stagger);
-                    el._elementrifyAtRevealTimeout = setTimeout(function () {
-                        if (revealGen !== el._elementrifyRevealGen) {
+                    el._veloriaAtRevealTimeout = setTimeout(function () {
+                        if (revealGen !== el._veloriaRevealGen) {
                             return;
                         }
                         phraseIndex += 1;
-                        el._elementrifyAtRevealTimeout = setTimeout(function () {
-                            if (revealGen !== el._elementrifyRevealGen) {
+                        el._veloriaAtRevealTimeout = setTimeout(function () {
+                            if (revealGen !== el._veloriaRevealGen) {
                                 return;
                             }
                             playPhrase();
@@ -308,9 +308,9 @@
             function (entries) {
                 entries.forEach(function (entry) {
                     if (!entry.isIntersecting) {
-                        if (el._elementrifyAtRevealTimeout) {
-                            clearTimeout(el._elementrifyAtRevealTimeout);
-                            el._elementrifyAtRevealTimeout = null;
+                        if (el._veloriaAtRevealTimeout) {
+                            clearTimeout(el._veloriaAtRevealTimeout);
+                            el._veloriaAtRevealTimeout = null;
                         }
                         if (!once) {
                             el.classList.remove('is-revealed');
@@ -340,7 +340,7 @@
         );
 
         io.observe(el);
-        el._elementrifyAtIo = io;
+        el._veloriaAtIo = io;
     }
 
     function initSquareSqueeze(el) {
@@ -348,9 +348,9 @@
         if (!phrases.length) {
             return;
         }
-        var frame = el.querySelector('.elementrify-animated-text__squeeze-frame');
-        var textEl = el.querySelector('.elementrify-animated-text__squeeze-text');
-        var sizerEl = el.querySelector('.elementrify-animated-text__squeeze-sizer');
+        var frame = el.querySelector('.veloria-animated-text__squeeze-frame');
+        var textEl = el.querySelector('.veloria-animated-text__squeeze-text');
+        var sizerEl = el.querySelector('.veloria-animated-text__squeeze-sizer');
         if (!frame || !textEl) {
             return;
         }
@@ -364,8 +364,8 @@
 
         disconnectSquare(el);
 
-        el._elementrifySqGen = (el._elementrifySqGen || 0) + 1;
-        var gen = el._elementrifySqGen;
+        el._veloriaSqGen = (el._veloriaSqGen || 0) + 1;
+        var gen = el._veloriaSqGen;
 
         var squeezeMs = parseInt(el.getAttribute('data-square-squeeze'), 10);
         if (!squeezeMs || squeezeMs < 100) {
@@ -392,13 +392,13 @@
         var doneOnce = false;
 
         function runCycle() {
-            if (stopped || gen !== el._elementrifySqGen) {
+            if (stopped || gen !== el._veloriaSqGen) {
                 return;
             }
             frame.style.setProperty('--sq-dur', squeezeMs + 'ms');
             frame.classList.add('is-squeezed');
-            el._elementrifyAtSqTimeout = setTimeout(function () {
-                if (gen !== el._elementrifySqGen) {
+            el._veloriaAtSqTimeout = setTimeout(function () {
+                if (gen !== el._veloriaSqGen) {
                     return;
                 }
                 var next = phraseIndex + 1;
@@ -416,12 +416,12 @@
                 setSqueezePhrase(phrases[phraseIndex]);
                 frame.style.setProperty('--sq-dur', expandMs + 'ms');
                 frame.classList.remove('is-squeezed');
-                el._elementrifyAtSqTimeout = setTimeout(function () {
-                    if (gen !== el._elementrifySqGen) {
+                el._veloriaAtSqTimeout = setTimeout(function () {
+                    if (gen !== el._veloriaSqGen) {
                         return;
                     }
-                    el._elementrifyAtSqTimeout = setTimeout(function () {
-                        if (gen !== el._elementrifySqGen || stopped) {
+                    el._veloriaAtSqTimeout = setTimeout(function () {
+                        if (gen !== el._veloriaSqGen || stopped) {
                             return;
                         }
                         runCycle();
@@ -438,8 +438,8 @@
             setSqueezePhrase(phrases[0]);
             stopped = false;
             running = true;
-            el._elementrifyAtSqStartTimeout = setTimeout(function () {
-                if (gen !== el._elementrifySqGen) {
+            el._veloriaAtSqStartTimeout = setTimeout(function () {
+                if (gen !== el._veloriaSqGen) {
                     return;
                 }
                 runCycle();
@@ -453,13 +453,13 @@
                 function (entries) {
                     entries.forEach(function (entry) {
                         if (!entry.isIntersecting) {
-                            if (el._elementrifyAtSqTimeout) {
-                                clearTimeout(el._elementrifyAtSqTimeout);
-                                el._elementrifyAtSqTimeout = null;
+                            if (el._veloriaAtSqTimeout) {
+                                clearTimeout(el._veloriaAtSqTimeout);
+                                el._veloriaAtSqTimeout = null;
                             }
-                            if (el._elementrifyAtSqStartTimeout) {
-                                clearTimeout(el._elementrifyAtSqStartTimeout);
-                                el._elementrifyAtSqStartTimeout = null;
+                            if (el._veloriaAtSqStartTimeout) {
+                                clearTimeout(el._veloriaAtSqStartTimeout);
+                                el._veloriaAtSqStartTimeout = null;
                             }
                             frame.classList.remove('is-squeezed');
                             phraseIndex = 0;
@@ -486,7 +486,7 @@
             );
 
             io.observe(el);
-            el._elementrifyAtSqIo = io;
+            el._veloriaAtSqIo = io;
         }
     }
 
@@ -515,7 +515,7 @@
 
     function scan(root) {
         var scope = root || document;
-        var nodes = scope.querySelectorAll('.elementrify-animated-text');
+        var nodes = scope.querySelectorAll('.veloria-animated-text');
         for (var n = 0; n < nodes.length; n += 1) {
             initEl(nodes[n]);
         }
@@ -535,13 +535,13 @@
         if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks || !elementorFrontend.hooks.addAction) {
             return;
         }
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-animated-text.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-animated-text.default', function ($scope) {
             if ($scope && $scope.find) {
-                $scope.find('.elementrify-animated-text').each(function () {
+                $scope.find('.veloria-animated-text').each(function () {
                     resetAndInit(this);
                 });
             } else if ($scope && $scope[0]) {
-                var list = $scope[0].querySelectorAll('.elementrify-animated-text');
+                var list = $scope[0].querySelectorAll('.veloria-animated-text');
                 for (var i = 0; i < list.length; i += 1) {
                     resetAndInit(list[i]);
                 }

@@ -1,14 +1,14 @@
-.elementrify-highlight__content {
+.veloria-highlight__content {
     margin: 0 0 1em;
     font-size: 16px;
     line-height: 1.6;
 }
 
-.elementrify-highlight__content:last-child {
+.veloria-highlight__content:last-child {
     margin-bottom: 0;
 }
 
-.elementrify-highlight__mark {
+.veloria-highlight__mark {
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;

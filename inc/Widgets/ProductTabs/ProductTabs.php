@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ProductTabs;
+namespace Veloria\Widgets\ProductTabs;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -24,19 +24,19 @@ class ProductTabs extends WidgetBase
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('elementrify-product-grid');
-        wp_enqueue_style('elementrify-product-tabs');
-        wp_enqueue_script('elementrify-product-tabs');
+        wp_enqueue_style('veloria-product-grid');
+        wp_enqueue_style('veloria-product-tabs');
+        wp_enqueue_script('veloria-product-tabs');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-tabs elementrify-icon';
+        return 'eicon-tabs veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-product-tabs';
+        return 'veloria-product-tabs';
     }
 
     public function get_admin_category(): string
@@ -46,12 +46,12 @@ class ProductTabs extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Tabs', 'elementrify');
+        return __('Product Tabs', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Product grids in tabs with filters and footer links.', 'elementrify');
+        return __('Product grids in tabs with filters and footer links.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -61,28 +61,28 @@ class ProductTabs extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-product-grid', 'elementrify-product-tabs'];
+        return ['veloria-product-grid', 'veloria-product-tabs'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'jquery', 'wc-add-to-cart', 'elementrify-product-tabs'];
+        return ['elementor-frontend', 'jquery', 'wc-add-to-cart', 'veloria-product-tabs'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-product-tabs',
-            ELEMENTRIFY_URL . 'assets/css/product-tabs.css',
-            ['elementrify-product-grid'],
-            ELEMENTRIFY_VERSION
+            'veloria-product-tabs',
+            VELORIA_URL . 'assets/css/product-tabs.css',
+            ['veloria-product-grid'],
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-product-tabs',
-            ELEMENTRIFY_URL . 'assets/js/product-tabs.js',
+            'veloria-product-tabs',
+            VELORIA_URL . 'assets/js/product-tabs.js',
             ['elementor-frontend', 'jquery', 'wc-add-to-cart'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -120,29 +120,29 @@ class ProductTabs extends WidgetBase
     {
         return [
             [
-                'tab_title' => __('Products', 'elementrify'),
+                'tab_title' => __('Products', 'veloria'),
                 'limit' => 4,
-                'footer_button_text' => __('View All Products', 'elementrify'),
+                'footer_button_text' => __('View All Products', 'veloria'),
             ],
             [
-                'tab_title' => __('Best Sellers', 'elementrify'),
+                'tab_title' => __('Best Sellers', 'veloria'),
                 'limit' => 4,
                 'orderby' => 'popularity',
                 'order' => 'DESC',
-                'footer_button_text' => __('View All Best Sellers', 'elementrify'),
+                'footer_button_text' => __('View All Best Sellers', 'veloria'),
             ],
             [
-                'tab_title' => __('New Arrivals', 'elementrify'),
+                'tab_title' => __('New Arrivals', 'veloria'),
                 'limit' => 4,
                 'orderby' => 'date',
                 'order' => 'DESC',
-                'footer_button_text' => __('View All New Arrivals', 'elementrify'),
+                'footer_button_text' => __('View All New Arrivals', 'veloria'),
             ],
             [
-                'tab_title' => __('On Sale', 'elementrify'),
+                'tab_title' => __('On Sale', 'veloria'),
                 'limit' => 4,
                 'sale_only' => 'yes',
-                'footer_button_text' => __('View All Sale Products', 'elementrify'),
+                'footer_button_text' => __('View All Sale Products', 'veloria'),
             ],
         ];
     }
@@ -152,20 +152,20 @@ class ProductTabs extends WidgetBase
         $category_options = $this->get_product_category_options();
 
         $this->start_controls_section('section_tabs', [
-            'label' => __('Tabs', 'elementrify'),
+            'label' => __('Tabs', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $repeater = new Repeater();
 
         $repeater->add_control('tab_title', [
-            'label' => __('Tab title', 'elementrify'),
+            'label' => __('Tab title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Tab', 'elementrify'),
+            'default' => __('Tab', 'veloria'),
         ]);
 
         $repeater->add_control('limit', [
-            'label' => __('Products count', 'elementrify'),
+            'label' => __('Products count', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 50,
@@ -173,7 +173,7 @@ class ProductTabs extends WidgetBase
         ]);
 
         $repeater->add_control('categories', [
-            'label' => __('Categories', 'elementrify'),
+            'label' => __('Categories', 'veloria'),
             'type' => Controls_Manager::SELECT2,
             'multiple' => true,
             'label_block' => true,
@@ -181,84 +181,84 @@ class ProductTabs extends WidgetBase
         ]);
 
         $repeater->add_control('include_ids', [
-            'label' => __('Include product IDs', 'elementrify'),
+            'label' => __('Include product IDs', 'veloria'),
             'type' => Controls_Manager::TEXT,
             'placeholder' => '12, 43',
         ]);
 
         $repeater->add_control('exclude_ids', [
-            'label' => __('Exclude product IDs', 'elementrify'),
+            'label' => __('Exclude product IDs', 'veloria'),
             'type' => Controls_Manager::TEXT,
             'placeholder' => '8, 16',
         ]);
 
         $repeater->add_control('sale_only', [
-            'label' => __('On sale only', 'elementrify'),
+            'label' => __('On sale only', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
         ]);
 
         $repeater->add_control('featured_only', [
-            'label' => __('Featured only', 'elementrify'),
+            'label' => __('Featured only', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
         ]);
 
         $repeater->add_control('stock_status', [
-            'label' => __('Stock status', 'elementrify'),
+            'label' => __('Stock status', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'all',
             'options' => [
-                'all' => __('All', 'elementrify'),
-                'instock' => __('In stock', 'elementrify'),
-                'outofstock' => __('Out of stock', 'elementrify'),
-                'onbackorder' => __('On backorder', 'elementrify'),
+                'all' => __('All', 'veloria'),
+                'instock' => __('In stock', 'veloria'),
+                'outofstock' => __('Out of stock', 'veloria'),
+                'onbackorder' => __('On backorder', 'veloria'),
             ],
         ]);
 
         $repeater->add_control('orderby', [
-            'label' => __('Order by', 'elementrify'),
+            'label' => __('Order by', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'date',
             'options' => [
-                'date' => __('Date', 'elementrify'),
-                'title' => __('Title', 'elementrify'),
-                'price' => __('Price', 'elementrify'),
-                'popularity' => __('Popularity', 'elementrify'),
-                'rating' => __('Rating', 'elementrify'),
-                'rand' => __('Random', 'elementrify'),
-                'menu_order' => __('Menu order', 'elementrify'),
+                'date' => __('Date', 'veloria'),
+                'title' => __('Title', 'veloria'),
+                'price' => __('Price', 'veloria'),
+                'popularity' => __('Popularity', 'veloria'),
+                'rating' => __('Rating', 'veloria'),
+                'rand' => __('Random', 'veloria'),
+                'menu_order' => __('Menu order', 'veloria'),
             ],
         ]);
 
         $repeater->add_control('order', [
-            'label' => __('Order', 'elementrify'),
+            'label' => __('Order', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'DESC',
             'options' => [
-                'DESC' => __('Descending', 'elementrify'),
-                'ASC' => __('Ascending', 'elementrify'),
+                'DESC' => __('Descending', 'veloria'),
+                'ASC' => __('Ascending', 'veloria'),
             ],
         ]);
 
         $repeater->add_control('footer_button_text', [
-            'label' => __('Footer button text', 'elementrify'),
+            'label' => __('Footer button text', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('View All', 'elementrify'),
+            'default' => __('View All', 'veloria'),
             'label_block' => true,
         ]);
 
         $repeater->add_control('footer_button_link', [
-            'label' => __('Footer button link', 'elementrify'),
+            'label' => __('Footer button link', 'veloria'),
             'type' => Controls_Manager::URL,
             'placeholder' => home_url('/'),
             'default' => ['url' => '', 'is_external' => '', 'nofollow' => ''],
         ]);
 
         $this->add_control('tabs', [
-            'label' => __('Tabs', 'elementrify'),
+            'label' => __('Tabs', 'veloria'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
             'default' => self::default_tabs(),
@@ -268,12 +268,12 @@ class ProductTabs extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_grid', [
-            'label' => __('Grid & card', 'elementrify'),
+            'label' => __('Grid & card', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('columns', [
-            'label' => __('Columns (desktop)', 'elementrify'),
+            'label' => __('Columns (desktop)', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 6,
@@ -282,7 +282,7 @@ class ProductTabs extends WidgetBase
             'editor_available' => true,
         ]);
         $this->add_control('columns_tablet', [
-            'label' => __('Columns (tablet)', 'elementrify'),
+            'label' => __('Columns (tablet)', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 4,
@@ -291,7 +291,7 @@ class ProductTabs extends WidgetBase
             'editor_available' => true,
         ]);
         $this->add_control('columns_mobile', [
-            'label' => __('Columns (mobile)', 'elementrify'),
+            'label' => __('Columns (mobile)', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 2,
@@ -300,7 +300,7 @@ class ProductTabs extends WidgetBase
             'editor_available' => true,
         ]);
         $this->add_control('column_gap', [
-            'label' => __('Column gap', 'elementrify'),
+            'label' => __('Column gap', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 0,
             'max' => 60,
@@ -309,7 +309,7 @@ class ProductTabs extends WidgetBase
             'editor_available' => true,
         ]);
         $this->add_control('row_gap', [
-            'label' => __('Row gap', 'elementrify'),
+            'label' => __('Row gap', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 0,
             'max' => 60,
@@ -319,79 +319,79 @@ class ProductTabs extends WidgetBase
         ]);
 
         $this->add_control('show_rating', [
-            'label' => __('Show rating', 'elementrify'),
+            'label' => __('Show rating', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
         ]);
         $this->add_control('show_short_desc', [
-            'label' => __('Show short description', 'elementrify'),
+            'label' => __('Show short description', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
         ]);
         $this->add_control('show_old_price', [
-            'label' => __('Show old price', 'elementrify'),
+            'label' => __('Show old price', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
         ]);
         $this->add_control('show_badges', [
-            'label' => __('Show badges', 'elementrify'),
+            'label' => __('Show badges', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
         ]);
         $this->add_control('show_wishlist', [
-            'label' => __('Show wishlist button', 'elementrify'),
+            'label' => __('Show wishlist button', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
         ]);
         $this->add_control('show_add_to_cart', [
-            'label' => __('Show add to cart', 'elementrify'),
+            'label' => __('Show add to cart', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
         ]);
         $this->add_control('image_hover_effect', [
-            'label' => __('Image hover effect', 'elementrify'),
+            'label' => __('Image hover effect', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'zoom-out',
             'options' => [
-                'none' => __('None', 'elementrify'),
-                'zoom-in' => __('Zoom in', 'elementrify'),
-                'zoom-out' => __('Zoom out', 'elementrify'),
-                'jump' => __('Jump', 'elementrify'),
-                'tilt' => __('Tilt', 'elementrify'),
+                'none' => __('None', 'veloria'),
+                'zoom-in' => __('Zoom in', 'veloria'),
+                'zoom-out' => __('Zoom out', 'veloria'),
+                'jump' => __('Jump', 'veloria'),
+                'tilt' => __('Tilt', 'veloria'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_tabs_style', [
-            'label' => __('Tabs', 'elementrify'),
+            'label' => __('Tabs', 'veloria'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('tabs_alignment', [
-            'label' => __('Alignment', 'elementrify'),
+            'label' => __('Alignment', 'veloria'),
             'type' => Controls_Manager::CHOOSE,
             'options' => [
-                'flex-start' => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                'flex-end' => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
+                'flex-start' => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                'flex-end' => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
             ],
             'default' => 'flex-start',
             'toggle' => true,
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__nav' => 'justify-content: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__nav' => 'justify-content: {{VALUE}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'tab_typography',
-            'selector' => '{{WRAPPER}} .elementrify-product-tabs__tab',
+            'selector' => '{{WRAPPER}} .veloria-product-tabs__tab',
             'fields_options' => [
                 'font_weight' => [
                     'default' => '500',
@@ -400,80 +400,80 @@ class ProductTabs extends WidgetBase
         ]);
 
         $this->add_control('tab_color', [
-            'label' => __('Text color', 'elementrify'),
+            'label' => __('Text color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#6b7280',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__tab' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__tab' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('tab_color_active', [
-            'label' => __('Active text color', 'elementrify'),
+            'label' => __('Active text color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#2563eb',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__tab.is-active' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__tab.is-active' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('tab_indicator_color', [
-            'label' => __('Active underline color', 'elementrify'),
+            'label' => __('Active underline color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#2563eb',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__tab.is-active::after' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__tab.is-active::after' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('tabs_border_color', [
-            'label' => __('Bar border color', 'elementrify'),
+            'label' => __('Bar border color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#e5e7eb',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__nav' => 'border-bottom-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__nav' => 'border-bottom-color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_footer_btn_style', [
-            'label' => __('Footer button', 'elementrify'),
+            'label' => __('Footer button', 'veloria'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('footer_btn_align', [
-            'label' => __('Alignment', 'elementrify'),
+            'label' => __('Alignment', 'veloria'),
             'type' => Controls_Manager::CHOOSE,
             'options' => [
-                'left' => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                'right' => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
+                'left' => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                'right' => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
             ],
             'default' => 'center',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__footer' => 'text-align: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__footer' => 'text-align: {{VALUE}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'footer_btn_typography',
-            'selector' => '{{WRAPPER}} .elementrify-product-tabs__cta',
+            'selector' => '{{WRAPPER}} .veloria-product-tabs__cta',
         ]);
 
         $this->add_control('footer_btn_text_color', [
-            'label' => __('Text color', 'elementrify'),
+            'label' => __('Text color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__cta' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-tabs__cta' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Background::get_type(), [
             'name' => 'footer_btn_background',
             'types' => ['classic', 'gradient'],
-            'selector' => '{{WRAPPER}} .elementrify-product-tabs__cta',
+            'selector' => '{{WRAPPER}} .veloria-product-tabs__cta',
             'fields_options' => [
                 'background' => ['default' => 'classic'],
                 'color' => ['default' => '#f3f4f6'],
@@ -482,11 +482,11 @@ class ProductTabs extends WidgetBase
 
         $this->add_group_control(Group_Control_Border::get_type(), [
             'name' => 'footer_btn_border',
-            'selector' => '{{WRAPPER}} .elementrify-product-tabs__cta',
+            'selector' => '{{WRAPPER}} .veloria-product-tabs__cta',
         ]);
 
         $this->add_control('footer_btn_radius', [
-            'label' => __('Border radius', 'elementrify'),
+            'label' => __('Border radius', 'veloria'),
             'type' => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'default' => [
@@ -498,12 +498,12 @@ class ProductTabs extends WidgetBase
                 'isLinked' => true,
             ],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__cta' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-product-tabs__cta' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('footer_btn_padding', [
-            'label' => __('Padding', 'elementrify'),
+            'label' => __('Padding', 'veloria'),
             'type' => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default' => [
@@ -515,13 +515,13 @@ class ProductTabs extends WidgetBase
                 'isLinked' => false,
             ],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-tabs__cta' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-product-tabs__cta' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Box_Shadow::get_type(), [
             'name' => 'footer_btn_shadow',
-            'selector' => '{{WRAPPER}} .elementrify-product-tabs__cta',
+            'selector' => '{{WRAPPER}} .veloria-product-tabs__cta',
         ]);
 
         $this->end_controls_section();
@@ -647,7 +647,7 @@ class ProductTabs extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/product-tabs/product-tabs.php';
+        $path = VELORIA_DIR . 'templates/product-tabs/product-tabs.php';
         if (is_readable($path)) {
             include $path;
         }

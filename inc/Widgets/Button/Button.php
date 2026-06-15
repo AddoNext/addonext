@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\Button;
+namespace Veloria\Widgets\Button;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -17,30 +17,30 @@ class Button extends WidgetBase
     public static function get_button_sizes(): array
     {
         return [
-            'xs' => __('Extra Small', 'elementrify'),
-            'sm' => __('Small', 'elementrify'),
-            'md' => __('Medium', 'elementrify'),
-            'lg' => __('Large', 'elementrify'),
-            'xl' => __('Extra Large', 'elementrify'),
+            'xs' => __('Extra Small', 'veloria'),
+            'sm' => __('Small', 'veloria'),
+            'md' => __('Medium', 'veloria'),
+            'lg' => __('Large', 'veloria'),
+            'xl' => __('Extra Large', 'veloria'),
         ];
     }
 
     public static function get_variants(): array
     {
         return [
-            'primary'   => __('Primary', 'elementrify'),
-            'secondary' => __('Secondary', 'elementrify'),
+            'primary'   => __('Primary', 'veloria'),
+            'secondary' => __('Secondary', 'veloria'),
         ];
     }
 
     public function get_icon(): string
     {
-        return 'eicon-button elementrify-icon';
+        return 'eicon-button veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-button';
+        return 'veloria-button';
     }
 
     public function get_admin_category(): string
@@ -50,12 +50,12 @@ class Button extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Button', 'elementrify');
+        return __('Button', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Fully customizable button with variants, link, icon and styles', 'elementrify');
+        return __('Fully customizable button with variants, link, icon and styles', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -65,16 +65,16 @@ class Button extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-button'];
+        return ['veloria-button'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-button',
-            ELEMENTRIFY_URL . 'assets/css/button.css',
+            'veloria-button',
+            VELORIA_URL . 'assets/css/button.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -83,7 +83,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -91,7 +91,7 @@ class Button extends WidgetBase
         $this->add_control(
             'variant',
             [
-                'label'   => __('Variant', 'elementrify'),
+                'label'   => __('Variant', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'primary',
                 'options' => self::get_variants(),
@@ -101,18 +101,18 @@ class Button extends WidgetBase
         $this->add_control(
             'text',
             [
-                'label'       => __('Text', 'elementrify'),
+                'label'       => __('Text', 'veloria'),
                 'type'        => Controls_Manager::TEXT,
                 'dynamic'     => ['active' => true],
-                'default'     => __('Click Here', 'elementrify'),
-                'placeholder' => __('Click Here', 'elementrify'),
+                'default'     => __('Click Here', 'veloria'),
+                'placeholder' => __('Click Here', 'veloria'),
             ]
         );
 
         $this->add_control(
             'link',
             [
-                'label'   => __('Link', 'elementrify'),
+                'label'   => __('Link', 'veloria'),
                 'type'    => Controls_Manager::URL,
                 'dynamic' => ['active' => true],
                 'default' => [
@@ -126,7 +126,7 @@ class Button extends WidgetBase
         $this->add_control(
             'size',
             [
-                'label'       => __('Size', 'elementrify'),
+                'label'       => __('Size', 'veloria'),
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'md',
                 'options'     => self::get_button_sizes(),
@@ -137,7 +137,7 @@ class Button extends WidgetBase
         $this->add_control(
             'selected_icon',
             [
-                'label'            => __('Icon', 'elementrify'),
+                'label'            => __('Icon', 'veloria'),
                 'type'             => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'label_block'      => false,
@@ -154,21 +154,21 @@ class Button extends WidgetBase
         $this->add_control(
             'icon_align',
             [
-                'label'   => __('Icon Position', 'elementrify'),
+                'label'   => __('Icon Position', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'default' => is_rtl() ? 'row-reverse' : 'row',
                 'options' => [
                     'row'          => [
-                        'title' => __('Start', 'elementrify'),
+                        'title' => __('Start', 'veloria'),
                         'icon'  => "eicon-h-align-{$start}",
                     ],
                     'row-reverse'  => [
-                        'title' => __('End', 'elementrify'),
+                        'title' => __('End', 'veloria'),
                         'icon'  => "eicon-h-align-{$end}",
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button__content' => 'flex-direction: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button__content' => 'flex-direction: {{VALUE}};',
                 ],
                 'condition' => [
                     'text!' => '',
@@ -180,7 +180,7 @@ class Button extends WidgetBase
         $this->add_control(
             'icon_indent',
             [
-                'label'      => __('Icon Spacing', 'elementrify'),
+                'label'      => __('Icon Spacing', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => [
@@ -189,7 +189,7 @@ class Button extends WidgetBase
                     'rem' => ['max' => 5],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button__content' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-button__content' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
                 'default'   => ['size' => 4, 'unit' => 'px'],
                 'condition' => [
@@ -202,11 +202,11 @@ class Button extends WidgetBase
         $this->add_control(
             'button_css_id',
             [
-                'label'       => __('Button ID', 'elementrify'),
+                'label'       => __('Button ID', 'veloria'),
                 'type'        => Controls_Manager::TEXT,
                 'dynamic'     => ['active' => true],
                 'default'     => '',
-                'title'       => __('Add your custom id WITHOUT the Pound key. e.g: my-id', 'elementrify'),
+                'title'       => __('Add your custom id WITHOUT the Pound key. e.g: my-id', 'veloria'),
                 'separator'   => 'before',
             ]
         );
@@ -216,7 +216,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_common',
             [
-                'label' => __('Alignment & typography', 'elementrify'),
+                'label' => __('Alignment & typography', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -224,28 +224,28 @@ class Button extends WidgetBase
         $this->add_responsive_control(
             'align',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
                     'left'    => [
-                        'title' => __('Left', 'elementrify'),
+                        'title' => __('Left', 'veloria'),
                         'icon'  => 'eicon-h-align-left',
                     ],
                     'center'  => [
-                        'title' => __('Center', 'elementrify'),
+                        'title' => __('Center', 'veloria'),
                         'icon'  => 'eicon-h-align-center',
                     ],
                     'right'   => [
-                        'title' => __('Right', 'elementrify'),
+                        'title' => __('Right', 'veloria'),
                         'icon'  => 'eicon-h-align-right',
                     ],
                     'justify' => [
-                        'title' => __('Stretch', 'elementrify'),
+                        'title' => __('Stretch', 'veloria'),
                         'icon'  => 'eicon-h-align-stretch',
                     ],
                 ],
                 'default'      => 'left',
-                'prefix_class' => 'elementrify-button-wrapper%s-align-',
+                'prefix_class' => 'veloria-button-wrapper%s-align-',
             ]
         );
 
@@ -253,7 +253,7 @@ class Button extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography',
-                'selector' => '{{WRAPPER}} .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-button',
                 'fields_options' => [
                     'font_size' => [
                         'default' => ['unit' => 'px', 'size' => 14],
@@ -266,7 +266,7 @@ class Button extends WidgetBase
             Group_Control_Text_Shadow::get_type(),
             [
                 'name'     => 'text_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-button',
             ]
         );
 
@@ -275,7 +275,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_primary',
             [
-                'label'     => __('Primary style', 'elementrify'),
+                'label'     => __('Primary style', 'veloria'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['variant' => 'primary'],
             ]
@@ -283,16 +283,16 @@ class Button extends WidgetBase
 
         $this->start_controls_tabs('tabs_primary_style');
 
-        $this->start_controls_tab('tab_primary_normal', ['label' => __('Normal', 'elementrify')]);
+        $this->start_controls_tab('tab_primary_normal', ['label' => __('Normal', 'veloria')]);
 
         $this->add_control(
             'button_text_color',
             [
-                'label'     => __('Text & icon color', 'elementrify'),
+                'label'     => __('Text & icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -303,7 +303,7 @@ class Button extends WidgetBase
                 'name'     => 'background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-button',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'     => ['default' => '#5E42DA'],
@@ -318,21 +318,21 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'button_box_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-button',
             ]
         );
 
         $this->end_controls_tab();
 
-        $this->start_controls_tab('tab_primary_hover', ['label' => __('Hover', 'elementrify')]);
+        $this->start_controls_tab('tab_primary_hover', ['label' => __('Hover', 'veloria')]);
 
         $this->add_control(
             'hover_text_color',
             [
-                'label'     => __('Text & icon color', 'elementrify'),
+                'label'     => __('Text & icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -343,7 +343,7 @@ class Button extends WidgetBase
                 'name'     => 'background_hover',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus',
+                'selector' => '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus',
                 'fields_options' => ['background' => ['default' => 'classic']],
             ]
         );
@@ -352,7 +352,7 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'button_box_shadow_hover',
-                'selector' => '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus',
+                'selector' => '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus',
             ]
         );
 
@@ -364,7 +364,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_secondary',
             [
-                'label'     => __('Secondary style', 'elementrify'),
+                'label'     => __('Secondary style', 'veloria'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['variant' => 'secondary'],
             ]
@@ -372,16 +372,16 @@ class Button extends WidgetBase
 
         $this->start_controls_tabs('tabs_secondary_style');
 
-        $this->start_controls_tab('tab_secondary_normal', ['label' => __('Normal', 'elementrify')]);
+        $this->start_controls_tab('tab_secondary_normal', ['label' => __('Normal', 'veloria')]);
 
         $this->add_control(
             'secondary_text_color',
             [
-                'label'     => __('Text & icon color', 'elementrify'),
+                'label'     => __('Text & icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#5E42DA',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -389,11 +389,11 @@ class Button extends WidgetBase
         $this->add_control(
             'secondary_bg_color',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'transparent',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -402,7 +402,7 @@ class Button extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'secondary_border',
-                'selector' => '{{WRAPPER}} .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-button',
                 'fields_options' => [
                     'border' => ['default' => 'solid'],
                     'width'  => [
@@ -420,21 +420,21 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'secondary_box_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-button',
             ]
         );
 
         $this->end_controls_tab();
 
-        $this->start_controls_tab('tab_secondary_hover', ['label' => __('Hover', 'elementrify')]);
+        $this->start_controls_tab('tab_secondary_hover', ['label' => __('Hover', 'veloria')]);
 
         $this->add_control(
             'secondary_hover_text_color',
             [
-                'label'     => __('Text & icon color', 'elementrify'),
+                'label'     => __('Text & icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -442,10 +442,10 @@ class Button extends WidgetBase
         $this->add_control(
             'secondary_hover_bg_color',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -453,10 +453,10 @@ class Button extends WidgetBase
         $this->add_control(
             'secondary_hover_border_color',
             [
-                'label'     => __('Border color', 'elementrify'),
+                'label'     => __('Border color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -465,7 +465,7 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'secondary_box_shadow_hover',
-                'selector' => '{{WRAPPER}} .elementrify-button:hover, {{WRAPPER}} .elementrify-button:focus',
+                'selector' => '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus',
             ]
         );
 
@@ -477,7 +477,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_shape',
             [
-                'label' => __('Shape & motion', 'elementrify'),
+                'label' => __('Shape & motion', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -485,7 +485,7 @@ class Button extends WidgetBase
         $this->add_responsive_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default'    => [
@@ -493,7 +493,7 @@ class Button extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -501,7 +501,7 @@ class Button extends WidgetBase
         $this->add_responsive_control(
             'padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default'    => [
@@ -509,7 +509,7 @@ class Button extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -517,12 +517,12 @@ class Button extends WidgetBase
         $this->add_control(
             'hover_transition_duration',
             [
-                'label'      => __('Transition duration', 'elementrify'),
+                'label'      => __('Transition duration', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['s', 'ms'],
                 'default'    => ['unit' => 's', 'size' => 0.3],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-button' => 'transition-duration: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-button' => 'transition-duration: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -530,7 +530,7 @@ class Button extends WidgetBase
         $this->add_control(
             'hover_animation',
             [
-                'label' => __('Hover animation', 'elementrify'),
+                'label' => __('Hover animation', 'veloria'),
                 'type'  => Controls_Manager::HOVER_ANIMATION,
             ]
         );
@@ -541,7 +541,7 @@ class Button extends WidgetBase
     public function render(): void
     {
         $settings = $this->get_settings_for_display();
-        $template_path = ELEMENTRIFY_DIR . 'templates/button/button.php';
+        $template_path = VELORIA_DIR . 'templates/button/button.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -555,25 +555,25 @@ class Button extends WidgetBase
         const hasIcon = settings.selected_icon && settings.selected_icon.value;
         if (! hasText && ! hasIcon) return;
 
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-button-wrapper');
-        view.addRenderAttribute('button', 'class', 'elementrify-button');
-        view.addRenderAttribute('button', 'class', 'elementrify-button--' + (settings.size || 'md'));
-        view.addRenderAttribute('button', 'class', 'elementrify-button--' + settings.variant);
+        view.addRenderAttribute('wrapper', 'class', 'veloria-button-wrapper');
+        view.addRenderAttribute('button', 'class', 'veloria-button');
+        view.addRenderAttribute('button', 'class', 'veloria-button--' + (settings.size || 'md'));
+        view.addRenderAttribute('button', 'class', 'veloria-button--' + settings.variant);
 
         if (settings.hover_animation) {
             view.addRenderAttribute('button', 'class', 'elementor-animation-' + settings.hover_animation);
         }
         if (settings.link && settings.link.url) {
             view.addRenderAttribute('button', 'href', elementor.helpers.sanitizeUrl(settings.link.url));
-            view.addRenderAttribute('button', 'class', 'elementrify-button-link');
+            view.addRenderAttribute('button', 'class', 'veloria-button-link');
         } else {
             view.addRenderAttribute('button', 'role', 'button');
         }
         if (settings.button_css_id) {
             view.addRenderAttribute('button', 'id', settings.button_css_id);
         }
-        view.addRenderAttribute('content', 'class', 'elementrify-button__content');
-        view.addRenderAttribute('text', 'class', 'elementrify-button__text');
+        view.addRenderAttribute('content', 'class', 'veloria-button__content');
+        view.addRenderAttribute('text', 'class', 'veloria-button__text');
         view.addInlineEditingAttributes('text', 'none');
 
         let iconHtml = '';
@@ -585,7 +585,7 @@ class Button extends WidgetBase
             <a {{{ view.getRenderAttributeString('button') }}}>
                 <span {{{ view.getRenderAttributeString('content') }}}>
                     <# if (hasIcon && iconHtml && iconHtml.rendered) { #>
-                        <span class="elementrify-button__icon">{{{ iconHtml.value }}}</span>
+                        <span class="veloria-button__icon">{{{ iconHtml.value }}}</span>
                     <# } #>
                     <# if (hasText) { #>
                         <span {{{ view.getRenderAttributeString('text') }}}>{{{ settings.text }}}</span>

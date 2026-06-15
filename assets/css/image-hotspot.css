@@ -1,17 +1,17 @@
-.elementrify-image-hotspot {
+.veloria-image-hotspot {
     position: relative;
     display: inline-block;
     max-width: 100%;
 }
 
-.elementrify-image-hotspot__img {
+.veloria-image-hotspot__img {
     display: block;
     width: 100%;
     height: auto;
     vertical-align: middle;
 }
 
-.elementrify-image-hotspot__point {
+.veloria-image-hotspot__point {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,7 +26,7 @@
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
-.elementrify-image-hotspot__pulse {
+.veloria-image-hotspot__pulse {
     display: none;
     position: absolute;
     inset: 0;
@@ -34,19 +34,19 @@
     border: 2px solid var(--hotspot-color, #605BE5);
     background: transparent;
     opacity: 0;
-    animation: elementrify-hotspot-pulse 2s ease-out infinite;
+    animation: veloria-hotspot-pulse 2s ease-out infinite;
     pointer-events: none;
 }
 
-.elementrify-image-hotspot--pulse .elementrify-image-hotspot__pulse {
+.veloria-image-hotspot--pulse .veloria-image-hotspot__pulse {
     display: block;
 }
 
-.elementrify-image-hotspot--pulse .elementrify-image-hotspot__pulse:nth-child(1) { animation-delay: 0s; }
-.elementrify-image-hotspot--pulse .elementrify-image-hotspot__pulse:nth-child(2) { animation-delay: 0.66s; }
-.elementrify-image-hotspot--pulse .elementrify-image-hotspot__pulse:nth-child(3) { animation-delay: 1.32s; }
+.veloria-image-hotspot--pulse .veloria-image-hotspot__pulse:nth-child(1) { animation-delay: 0s; }
+.veloria-image-hotspot--pulse .veloria-image-hotspot__pulse:nth-child(2) { animation-delay: 0.66s; }
+.veloria-image-hotspot--pulse .veloria-image-hotspot__pulse:nth-child(3) { animation-delay: 1.32s; }
 
-@keyframes elementrify-hotspot-pulse {
+@keyframes veloria-hotspot-pulse {
     0% {
         transform: scale(1);
         opacity: 0.7;
@@ -57,7 +57,7 @@
     }
 }
 
-.elementrify-image-hotspot__point::after {
+.veloria-image-hotspot__point::after {
     content: '';
     position: absolute;
     inset: -4px;
@@ -67,18 +67,18 @@
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.elementrify-image-hotspot__point:hover,
-.elementrify-image-hotspot__point.is-active {
+.veloria-image-hotspot__point:hover,
+.veloria-image-hotspot__point.is-active {
     box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.2);
 }
 
-.elementrify-image-hotspot__point:hover::after,
-.elementrify-image-hotspot__point.is-active::after {
+.veloria-image-hotspot__point:hover::after,
+.veloria-image-hotspot__point.is-active::after {
     border-color: #4ADE80;
     box-shadow: 0 0 0 2px #4ADE80;
 }
 
-.elementrify-image-hotspot__tooltip {
+.veloria-image-hotspot__tooltip {
     position: absolute;
     z-index: 10;
     min-width: 200px;
@@ -89,41 +89,41 @@
     pointer-events: none;
 }
 
-.elementrify-image-hotspot--trigger-hover .elementrify-image-hotspot__point:hover .elementrify-image-hotspot__tooltip,
-.elementrify-image-hotspot--trigger-click .elementrify-image-hotspot__point.is-active .elementrify-image-hotspot__tooltip {
+.veloria-image-hotspot--trigger-hover .veloria-image-hotspot__point:hover .veloria-image-hotspot__tooltip,
+.veloria-image-hotspot--trigger-click .veloria-image-hotspot__point.is-active .veloria-image-hotspot__tooltip {
     visibility: visible;
     opacity: 1;
 }
 
-.elementrify-image-hotspot--tooltip-bottom .elementrify-image-hotspot__tooltip {
+.veloria-image-hotspot--tooltip-bottom .veloria-image-hotspot__tooltip {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 12px;
 }
 
-.elementrify-image-hotspot--tooltip-top .elementrify-image-hotspot__tooltip {
+.veloria-image-hotspot--tooltip-top .veloria-image-hotspot__tooltip {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 12px;
 }
 
-.elementrify-image-hotspot--tooltip-left .elementrify-image-hotspot__tooltip {
+.veloria-image-hotspot--tooltip-left .veloria-image-hotspot__tooltip {
     right: 100%;
     top: 50%;
     transform: translateY(-50%);
     margin-right: 12px;
 }
 
-.elementrify-image-hotspot--tooltip-right .elementrify-image-hotspot__tooltip {
+.veloria-image-hotspot--tooltip-right .veloria-image-hotspot__tooltip {
     left: 100%;
     top: 50%;
     transform: translateY(-50%);
     margin-left: 12px;
 }
 
-.elementrify-image-hotspot__tooltip-title {
+.veloria-image-hotspot__tooltip-title {
     display: block;
     font-weight: 700;
     font-size: 15px;
@@ -131,14 +131,14 @@
     margin-bottom: 4px;
 }
 
-.elementrify-image-hotspot__tooltip-desc {
+.veloria-image-hotspot__tooltip-desc {
     display: block;
     font-size: 13px;
     line-height: 1.45;
     margin-bottom: 6px;
 }
 
-.elementrify-image-hotspot__tooltip-price {
+.veloria-image-hotspot__tooltip-price {
     display: block;
     font-weight: 700;
     font-size: 14px;

@@ -15,18 +15,18 @@ $line_style_attr = sprintf(
     esc_attr($line_color)
 );
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-divider-wrapper');
+$this->add_render_attribute('wrapper', 'class', 'veloria-divider-wrapper');
 if ($variant === 'line_icon') {
-    $this->add_render_attribute('wrapper', 'class', 'elementrify-divider-wrapper--line-icon');
+    $this->add_render_attribute('wrapper', 'class', 'veloria-divider-wrapper--line-icon');
 }
 
-$line_class_left  = 'elementrify-divider__line elementrify-divider__line--left elementrify-divider__line--' . esc_attr($style);
-$line_class_right = 'elementrify-divider__line elementrify-divider__line--right elementrify-divider__line--' . esc_attr($style);
+$line_class_left  = 'veloria-divider__line veloria-divider__line--left veloria-divider__line--' . esc_attr($style);
+$line_class_right = 'veloria-divider__line veloria-divider__line--right veloria-divider__line--' . esc_attr($style);
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($variant === 'line_icon') : ?>
         <span class="<?php echo esc_attr($line_class_left); ?>" style="<?php echo esc_attr($line_style_attr); ?>"></span>
-        <span class="elementrify-divider__icon" aria-hidden="true">
+        <span class="veloria-divider__icon" aria-hidden="true">
             <?php
             $icon_settings = !empty($settings['selected_icon']['value'])
                 ? $settings['selected_icon']
@@ -36,6 +36,6 @@ $line_class_right = 'elementrify-divider__line elementrify-divider__line--right 
         </span>
         <span class="<?php echo esc_attr($line_class_right); ?>" style="<?php echo esc_attr($line_style_attr); ?>"></span>
     <?php else : ?>
-        <span class="elementrify-divider__line elementrify-divider__line--standalone" style="<?php echo esc_attr($line_style_attr); ?>"></span>
+        <span class="veloria-divider__line veloria-divider__line--standalone" style="<?php echo esc_attr($line_style_attr); ?>"></span>
     <?php endif; ?>
 </div>

@@ -1,4 +1,4 @@
-=== Elementrify ===
+=== Veloria ===
 Contributors: addonext
 Tags: elementor, page builder, widgets, woocommerce, charts
 Requires at least: 6.0
@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A large library of Elementor widgets plus site-wide extensions: content and layout blocks, creative effects, marketing tools, data visualizations, and WooCommerce components—all manageable from the Elementrify admin.
+A large library of Elementor widgets plus site-wide extensions: content and layout blocks, creative effects, marketing tools, data visualizations, and WooCommerce components—all manageable from the Veloria admin.
 
 == Description ==
 
-Elementrify extends the Elementor page builder with dozens of widgets grouped into clear categories, optional extensions that apply across your site, and a dedicated settings area to enable only what you need.
+Veloria extends the Elementor page builder with dozens of widgets grouped into clear categories, optional extensions that apply across your site, and a dedicated settings area to enable only what you need.
 
 **Content widgets**
 
@@ -48,16 +48,16 @@ WooCommerce-related widgets are available when WooCommerce is installed. Some Co
 
 == Installation ==
 
-1. Upload the `elementrify` folder to `/wp-content/plugins/`, or install the ZIP from the Plugins → Add New screen.
+1. Upload the `veloria` folder to `/wp-content/plugins/`, or install the ZIP from the Plugins → Add New screen.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Ensure **Elementor** is installed and activated.
-4. Open **Elementrify** in the admin menu to configure active widgets and extensions, then edit any page with Elementor and find **Elementrify** widgets in the panel.
+4. Open **Veloria** in the admin menu to configure active widgets and extensions, then edit any page with Elementor and find **Veloria** widgets in the panel.
 
 == Frequently Asked Questions ==
 
-= Does Elementrify work without Elementor? =
+= Does Veloria work without Elementor? =
 
-No. Elementrify registers widgets for Elementor. Install and activate Elementor first.
+No. Veloria registers widgets for Elementor. Install and activate Elementor first.
 
 = Do I need WooCommerce? =
 
@@ -65,15 +65,15 @@ Only if you want to use the WooCommerce-specific widgets. All other widgets work
 
 = Where do I enable or disable individual widgets? =
 
-Use the Elementrify admin screens to control which widgets and extensions are active for your site.
+Use the Veloria admin screens to control which widgets and extensions are active for your site.
 
 = Is Elementor Pro required? =
 
-No. Elementrify is built for the Elementor editor; Elementor Pro is optional unless your own layout relies on Pro-only Elementor features.
+No. Veloria is built for the Elementor editor; Elementor Pro is optional unless your own layout relies on Pro-only Elementor features.
 
 == Screenshots ==
 
-1. Elementrify widgets in the Elementor panel under the Elementrify category.
+1. Veloria widgets in the Elementor panel under the Veloria category.
 2. Admin area for managing widgets and extensions.
 3. Example: charts and data widgets on the front end.
 4. Example: WooCommerce widgets in a store layout.

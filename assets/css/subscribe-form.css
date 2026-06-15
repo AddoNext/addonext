@@ -1,4 +1,4 @@
-.elementrify-subscribe-form {
+.veloria-subscribe-form {
     text-align: center;
     background: linear-gradient(90deg, #FF4081 0%, #E01A4F 100%);
     padding: 2.5rem 2.5rem;
@@ -6,7 +6,7 @@
     border-radius: 12px;
 }
 
-.elementrify-subscribe-form__icon {
+.veloria-subscribe-form__icon {
     margin-bottom: 1rem;
     display: inline-flex;
     align-items: center;
@@ -19,8 +19,8 @@
     max-height: 32px;
 }
 
-.elementrify-subscribe-form__icon i,
-.elementrify-subscribe-form__icon svg {
+.veloria-subscribe-form__icon i,
+.veloria-subscribe-form__icon svg {
     color: #ffffff !important;
     fill: #ffffff !important;
     font-size: 32px !important;
@@ -31,17 +31,17 @@
     flex-shrink: 0;
 }
 
-.elementrify-subscribe-form__icon svg {
+.veloria-subscribe-form__icon svg {
     object-fit: contain;
 }
 
-.elementrify-subscribe-form__icon * {
+.veloria-subscribe-form__icon * {
     max-width: 100% !important;
     max-height: 100% !important;
     box-sizing: border-box;
 }
 
-.elementrify-subscribe-form__title {
+.veloria-subscribe-form__title {
     margin: 0 0 0.5rem;
     color: #ffffff;
     font-size: 26px;
@@ -49,14 +49,14 @@
     line-height: 1.2;
 }
 
-.elementrify-subscribe-form__subtitle {
+.veloria-subscribe-form__subtitle {
     margin: 0 0 1.5rem;
     color: rgba(255, 255, 255, 0.9);
     font-size: 16px;
     line-height: 1.4;
 }
 
-.elementrify-subscribe-form__form {
+.veloria-subscribe-form__form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -65,7 +65,7 @@
     gap: 0;
 }
 
-.elementrify-subscribe-form__input {
+.veloria-subscribe-form__input {
     flex: 1 1 0;
     min-width: 0;
     max-width: 100%;
@@ -79,16 +79,16 @@
     box-sizing: border-box;
 }
 
-.elementrify-subscribe-form__input::placeholder {
+.veloria-subscribe-form__input::placeholder {
     color: #6b7280;
     font-weight: 400;
 }
 
-.elementrify-subscribe-form__input:focus {
+.veloria-subscribe-form__input:focus {
     outline: none;
 }
 
-.elementrify-subscribe-form__submit {
+.veloria-subscribe-form__submit {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -103,72 +103,72 @@
     cursor: pointer;
 }
 
-.elementrify-subscribe-form__spinner {
+.veloria-subscribe-form__spinner {
     display: none;
     width: 1em;
     height: 1em;
     border: 2px solid currentColor;
     border-right-color: transparent;
     border-radius: 50%;
-    animation: elementrify-subscribe-form-spin 0.6s linear infinite;
+    animation: veloria-subscribe-form-spin 0.6s linear infinite;
 }
 
-.elementrify-subscribe-form__submit--loading .elementrify-subscribe-form__spinner {
+.veloria-subscribe-form__submit--loading .veloria-subscribe-form__spinner {
     display: block;
 }
 
-.elementrify-subscribe-form__submit--loading .elementrify-subscribe-form__submit-text {
+.veloria-subscribe-form__submit--loading .veloria-subscribe-form__submit-text {
     order: 1;
 }
 
-.elementrify-subscribe-form__submit--loading .elementrify-subscribe-form__spinner {
+.veloria-subscribe-form__submit--loading .veloria-subscribe-form__spinner {
     order: 0;
 }
 
-@keyframes elementrify-subscribe-form-spin {
+@keyframes veloria-subscribe-form-spin {
     to {
         transform: rotate(360deg);
     }
 }
 
-.elementrify-subscribe-form__submit:hover:not(:disabled) {
+.veloria-subscribe-form__submit:hover:not(:disabled) {
     opacity: 0.95;
 }
 
-.elementrify-subscribe-form__submit:disabled {
+.veloria-subscribe-form__submit:disabled {
     opacity: 0.8;
     cursor: not-allowed;
 }
 
-.elementrify-subscribe-form__message:empty {
+.veloria-subscribe-form__message:empty {
     display: none;
 }
 
-.elementrify-subscribe-form__message:not(:empty) {
+.veloria-subscribe-form__message:not(:empty) {
     margin-top: 1rem;
     padding: 0.5rem;
     font-size: 0.875rem;
     line-height: 1.4;
 }
 
-.elementrify-subscribe-form__message--success {
+.veloria-subscribe-form__message--success {
     color: rgba(255, 255, 255, 0.95);
 }
 
-.elementrify-subscribe-form__message--error {
+.veloria-subscribe-form__message--error {
     color: rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 479px) {
-    .elementrify-subscribe-form__form {
+    .veloria-subscribe-form__form {
         flex-direction: column;
     }
 
-    .elementrify-subscribe-form__input {
+    .veloria-subscribe-form__input {
         border-radius: 8px;
     }
 
-    .elementrify-subscribe-form__submit {
+    .veloria-subscribe-form__submit {
         border-radius: 8px;
     }
 }

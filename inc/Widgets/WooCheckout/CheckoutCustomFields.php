@@ -1,15 +1,15 @@
 <?php
-namespace Elementrify\Widgets\WooCheckout;
+namespace Veloria\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
 /**
- * Outputs checkout fields as Elementrify markup while preserving WooCommerce field names and classes for checkout scripts.
+ * Outputs checkout fields as Veloria markup while preserving WooCommerce field names and classes for checkout scripts.
  */
 class CheckoutCustomFields
 {
     /**
-     * Replaces WooCommerce paragraph.form-row shells with Elementrify markup; checkout.js still targets .form-row.
+     * Replaces WooCommerce paragraph.form-row shells with Veloria markup; checkout.js still targets .form-row.
      */
     public static function wrapFieldHtml(string $html): string
     {
@@ -18,11 +18,11 @@ class CheckoutCustomFields
             return $html;
         }
 
-        $html = preg_replace('/^<p\s+class="/', '<div class="elementrify-co-field elementrify-co-tpl-field ', $html, 1);
+        $html = preg_replace('/^<p\s+class="/', '<div class="veloria-co-field veloria-co-tpl-field ', $html, 1);
         $html = preg_replace('/<\/p>\s*$/', '</div>', $html, 1);
         $html = preg_replace(
             '/<span class="woocommerce-input-wrapper">/',
-            '<span class="woocommerce-input-wrapper elementrify-co-field__inner">',
+            '<span class="woocommerce-input-wrapper veloria-co-field__inner">',
             $html,
             1
         );
@@ -44,7 +44,7 @@ class CheckoutCustomFields
         if (!is_array($inputClass)) {
             $inputClass = [];
         }
-        $inputClass[] = 'elementrify-co-input';
+        $inputClass[] = 'veloria-co-input';
         $args['input_class'] = array_values(array_unique($inputClass));
 
         $html = woocommerce_form_field($key, $args, $value);

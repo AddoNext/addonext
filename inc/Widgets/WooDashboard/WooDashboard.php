@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\WooDashboard;
+namespace Veloria\Widgets\WooDashboard;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -15,7 +15,7 @@ defined('ABSPATH') or exit;
 /**
  * WooDashboard widget.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class WooDashboard extends WidgetBase
@@ -28,18 +28,18 @@ class WooDashboard extends WidgetBase
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('elementrify-woo-dashboard');
-        wp_enqueue_script('elementrify-woo-dashboard');
+        wp_enqueue_style('veloria-woo-dashboard');
+        wp_enqueue_script('veloria-woo-dashboard');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-user-circle-o elementrify-icon';
+        return 'eicon-user-circle-o veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-woo-dashboard';
+        return 'veloria-woo-dashboard';
     }
 
     public function get_admin_category(): string
@@ -49,12 +49,12 @@ class WooDashboard extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Woo Dashboard', 'elementrify');
+        return __('Woo Dashboard', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Customer dashboard summary with orders and shortcuts.', 'elementrify');
+        return __('Customer dashboard summary with orders and shortcuts.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -70,12 +70,12 @@ class WooDashboard extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-woo-dashboard'];
+        return ['veloria-woo-dashboard'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'jquery', 'elementrify-woo-dashboard'];
+        return ['elementor-frontend', 'jquery', 'veloria-woo-dashboard'];
     }
 
     public function enqueue_assets(): void
@@ -84,32 +84,32 @@ class WooDashboard extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         wp_register_style(
-            'elementrify-woo-dashboard',
-            ELEMENTRIFY_URL . 'assets/css/woo-dashboard.css',
+            'veloria-woo-dashboard',
+            VELORIA_URL . 'assets/css/woo-dashboard.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-woo-dashboard',
-            ELEMENTRIFY_URL . 'assets/js/woo-dashboard.js',
+            'veloria-woo-dashboard',
+            VELORIA_URL . 'assets/js/woo-dashboard.js',
             ['elementor-frontend', 'jquery', 'wc-country-select', 'wc-address-i18n'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
 
         wp_localize_script(
-            'elementrify-woo-dashboard',
-            'elementrifyWooDashboard',
+            'veloria-woo-dashboard',
+            'veloriaWooDashboard',
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),
-                'nonce'   => wp_create_nonce('elementrify_woo_dashboard_account'),
-                'nonceAddress' => wp_create_nonce('elementrify_woo_dashboard_address'),
+                'nonce'   => wp_create_nonce('veloria_woo_dashboard_account'),
+                'nonceAddress' => wp_create_nonce('veloria_woo_dashboard_address'),
                 'i18n'    => [
-                    'editAddress'  => __('Edit %s', 'elementrify'),
-                    'addAddress'   => __('Add %s', 'elementrify'),
-                    'addressSaved' => __('Address saved.', 'elementrify'),
-                    'addressEmpty' => __('You have not set up this type of address yet.', 'elementrify'),
+                    'editAddress'  => __('Edit %s', 'veloria'),
+                    'addAddress'   => __('Add %s', 'veloria'),
+                    'addressSaved' => __('Address saved.', 'veloria'),
+                    'addressEmpty' => __('You have not set up this type of address yet.', 'veloria'),
                 ],
             ]
         );
@@ -122,9 +122,9 @@ class WooDashboard extends WidgetBase
      */
     public static function register_ajax_handlers(): void
     {
-        add_action('wp_ajax_elementrify_woo_dashboard_save_account', [__CLASS__, 'ajax_save_account']);
-        add_action('wp_ajax_elementrify_woo_dashboard_save_address', [__CLASS__, 'ajax_save_address']);
-        add_action('wp_ajax_elementrify_woo_dashboard_get_address_form', [__CLASS__, 'ajax_get_address_form']);
+        add_action('wp_ajax_veloria_woo_dashboard_save_account', [__CLASS__, 'ajax_save_account']);
+        add_action('wp_ajax_veloria_woo_dashboard_save_address', [__CLASS__, 'ajax_save_address']);
+        add_action('wp_ajax_veloria_woo_dashboard_get_address_form', [__CLASS__, 'ajax_get_address_form']);
     }
 
     /**
@@ -133,16 +133,16 @@ class WooDashboard extends WidgetBase
     public static function ajax_get_address_form(): void
     {
         if (!isset($_POST['address_nonce'])
-            || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'elementrify_woo_dashboard_address')) {
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'veloria_woo_dashboard_address')) {
             wp_send_json_error(
-                ['messages' => [__('Invalid session. Please refresh the page.', 'elementrify')]],
+                ['messages' => [__('Invalid session. Please refresh the page.', 'veloria')]],
                 403
             );
         }
 
         if (!is_user_logged_in() || !class_exists('WooCommerce')) {
             wp_send_json_error(
-                ['messages' => [__('You cannot perform this action.', 'elementrify')]],
+                ['messages' => [__('You cannot perform this action.', 'veloria')]],
                 403
             );
         }
@@ -153,18 +153,18 @@ class WooDashboard extends WidgetBase
             : sanitize_key($typeRaw);
 
         if (!in_array($address_type, ['billing', 'shipping'], true)) {
-            wp_send_json_error(['messages' => [__('Invalid address type.', 'elementrify')]], 400);
+            wp_send_json_error(['messages' => [__('Invalid address type.', 'veloria')]], 400);
         }
 
         if ($address_type === 'shipping' && (wc_ship_to_billing_address_only() || !wc_shipping_enabled())) {
-            wp_send_json_error(['messages' => [__('Shipping address is not available.', 'elementrify')]], 400);
+            wp_send_json_error(['messages' => [__('Shipping address is not available.', 'veloria')]], 400);
         }
 
         $vars = self::get_address_edit_template_vars($address_type);
         ob_start();
         wc_get_template('myaccount/form-edit-address.php', $vars);
         $html = ob_get_clean();
-        $html = preg_replace('/<form\b/', '<form class="elementrify-wd-addresses__wc-form"', $html, 1);
+        $html = preg_replace('/<form\b/', '<form class="veloria-wd-addresses__wc-form"', $html, 1);
 
         wp_send_json_success(['html' => $html]);
     }
@@ -174,16 +174,16 @@ class WooDashboard extends WidgetBase
      */
     public static function ajax_save_account(): void
     {
-        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['nonce'])), 'elementrify_woo_dashboard_account')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['nonce'])), 'veloria_woo_dashboard_account')) {
             wp_send_json_error(
-                ['messages' => [__('Invalid session. Please refresh the page.', 'elementrify')]],
+                ['messages' => [__('Invalid session. Please refresh the page.', 'veloria')]],
                 403
             );
         }
 
         if (!is_user_logged_in() || !class_exists('WooCommerce')) {
             wp_send_json_error(
-                ['messages' => [__('You cannot perform this action.', 'elementrify')]],
+                ['messages' => [__('You cannot perform this action.', 'veloria')]],
                 403
             );
         }
@@ -207,18 +207,18 @@ class WooDashboard extends WidgetBase
     public static function ajax_save_address(): void
     {
         $nonceOk = isset($_POST['address_nonce'])
-            && wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'elementrify_woo_dashboard_address');
+            && wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'veloria_woo_dashboard_address');
 
         if (!$nonceOk) {
             wp_send_json_error(
-                ['messages' => [__('Invalid session. Please refresh the page.', 'elementrify')]],
+                ['messages' => [__('Invalid session. Please refresh the page.', 'veloria')]],
                 403
             );
         }
 
         if (!is_user_logged_in() || !class_exists('WooCommerce')) {
             wp_send_json_error(
-                ['messages' => [__('You cannot perform this action.', 'elementrify')]],
+                ['messages' => [__('You cannot perform this action.', 'veloria')]],
                 403
             );
         }
@@ -314,7 +314,7 @@ class WooDashboard extends WidgetBase
 
         $user_id = get_current_user_id();
         if ($user_id <= 0) {
-            return $fail([__('You must be logged in.', 'elementrify')]);
+            return $fail([__('You must be logged in.', 'veloria')]);
         }
 
         $address_type = function_exists('wc_edit_address_i18n')
@@ -322,15 +322,15 @@ class WooDashboard extends WidgetBase
             : sanitize_key($address_type_raw);
 
         if (!in_array($address_type, ['billing', 'shipping'], true)) {
-            return $fail([__('Invalid address type.', 'elementrify')]);
+            return $fail([__('Invalid address type.', 'veloria')]);
         }
 
         if ($address_type === 'shipping' && (wc_ship_to_billing_address_only() || !wc_shipping_enabled())) {
-            return $fail([__('Shipping address is not available.', 'elementrify')]);
+            return $fail([__('Shipping address is not available.', 'veloria')]);
         }
 
         if (!isset($_POST[$address_type . '_country'])) {
-            return $fail([__('Please select a country.', 'elementrify')]);
+            return $fail([__('Please select a country.', 'veloria')]);
         }
 
         $customer = new \WC_Customer($user_id);
@@ -357,7 +357,7 @@ class WooDashboard extends WidgetBase
             if (!empty($field['required']) && empty($value)) {
                 $messages[] = sprintf(
                     /* translators: %s: Field name. */
-                    __('%s is a required field.', 'elementrify'),
+                    __('%s is a required field.', 'veloria'),
                     wp_strip_all_tags((string) $field['label'])
                 );
                 $field_invalid = true;
@@ -371,8 +371,8 @@ class WooDashboard extends WidgetBase
                             $value = wc_format_postcode($value, $postcode_country);
                             if ($value !== '' && !\WC_Validation::is_postcode($value, $postcode_country)) {
                                 $postcode_notice = ('IE' === $postcode_country)
-                                    ? __('Please enter a valid Eircode.', 'elementrify')
-                                    : __('Please enter a valid postcode / ZIP.', 'elementrify');
+                                    ? __('Please enter a valid Eircode.', 'veloria')
+                                    : __('Please enter a valid postcode / ZIP.', 'veloria');
                                 $messages[] = $postcode_notice;
                                 $field_invalid = true;
                             }
@@ -381,7 +381,7 @@ class WooDashboard extends WidgetBase
                             if ($value !== '' && !\WC_Validation::is_phone($value)) {
                                 $messages[] = sprintf(
                                     /* translators: %s: Field name. */
-                                    __('%s is not a valid phone number.', 'elementrify'),
+                                    __('%s is not a valid phone number.', 'veloria'),
                                     wp_strip_all_tags((string) $field['label'])
                                 );
                                 $field_invalid = true;
@@ -392,7 +392,7 @@ class WooDashboard extends WidgetBase
                             if (!is_email($value)) {
                                 $messages[] = sprintf(
                                     /* translators: %s: Field name. */
-                                    __('%s is not a valid email address.', 'elementrify'),
+                                    __('%s is not a valid email address.', 'veloria'),
                                     wp_strip_all_tags((string) $field['label'])
                                 );
                                 $field_invalid = true;
@@ -441,7 +441,7 @@ class WooDashboard extends WidgetBase
         return [
             'success'      => true,
             'messages'     => [],
-            'message'      => __('Address changed successfully.', 'elementrify'),
+            'message'      => __('Address changed successfully.', 'veloria'),
             'formatted'    => $formatted,
             'has_address'  => $has_address,
             'address_type' => $address_type,
@@ -466,7 +466,7 @@ class WooDashboard extends WidgetBase
 
         $userId = get_current_user_id();
         if ($userId <= 0) {
-            return $fail([__('You must be logged in.', 'elementrify')]);
+            return $fail([__('You must be logged in.', 'veloria')]);
         }
 
         $accountFirstName = !empty($_POST['account_first_name']) ? wc_clean(wp_unslash((string) $_POST['account_first_name'])) : '';
@@ -480,7 +480,7 @@ class WooDashboard extends WidgetBase
 
         $currentUser = get_user_by('id', $userId);
         if (!$currentUser instanceof \WP_User) {
-            return $fail([__('Could not load your profile.', 'elementrify')]);
+            return $fail([__('Could not load your profile.', 'veloria')]);
         }
 
         $currentFirstName = $currentUser->first_name;
@@ -496,16 +496,16 @@ class WooDashboard extends WidgetBase
         $messages = [];
 
         if (is_email($accountDisplayName)) {
-            $messages[] = __('Display name cannot be changed to email address due to privacy concern.', 'elementrify');
+            $messages[] = __('Display name cannot be changed to email address due to privacy concern.', 'veloria');
         }
 
         $requiredFields = apply_filters(
             'woocommerce_save_account_details_required_fields',
             [
-                'account_first_name'   => __('First name', 'elementrify'),
-                'account_last_name'    => __('Last name', 'elementrify'),
-                'account_display_name' => __('Display name', 'elementrify'),
-                'account_email'        => __('Email address', 'elementrify'),
+                'account_first_name'   => __('First name', 'veloria'),
+                'account_last_name'    => __('Last name', 'veloria'),
+                'account_display_name' => __('Display name', 'veloria'),
+                'account_email'        => __('Email address', 'veloria'),
             ]
         );
 
@@ -513,7 +513,7 @@ class WooDashboard extends WidgetBase
             if (empty($_POST[$fieldKey])) {
                 $messages[] = sprintf(
                     /* translators: %s: Field name. */
-                    __('%s is a required field.', 'elementrify'),
+                    __('%s is a required field.', 'veloria'),
                     $fieldName
                 );
             }
@@ -523,28 +523,28 @@ class WooDashboard extends WidgetBase
         if ($accountEmailRaw !== '') {
             $accountEmail = sanitize_email($accountEmailRaw);
             if (!is_email($accountEmail)) {
-                $messages[] = __('Please provide a valid email address.', 'elementrify');
+                $messages[] = __('Please provide a valid email address.', 'veloria');
             } elseif (email_exists($accountEmail) && $accountEmail !== $currentUser->user_email) {
-                $messages[] = __('This email address is already registered.', 'elementrify');
+                $messages[] = __('This email address is already registered.', 'veloria');
             } elseif (is_email($accountEmail)) {
                 $userObj->user_email = $accountEmail;
             }
         }
 
         if ($passCur !== '' && $pass1 === '' && $pass2 === '') {
-            $messages[] = __('Please fill out all password fields.', 'elementrify');
+            $messages[] = __('Please fill out all password fields.', 'veloria');
             $savePass = false;
         } elseif ($pass1 !== '' && $passCur === '') {
-            $messages[] = __('Please enter your current password.', 'elementrify');
+            $messages[] = __('Please enter your current password.', 'veloria');
             $savePass = false;
         } elseif ($pass1 !== '' && $pass2 === '') {
-            $messages[] = __('Please re-enter your password.', 'elementrify');
+            $messages[] = __('Please re-enter your password.', 'veloria');
             $savePass = false;
         } elseif (($pass1 !== '' || $pass2 !== '') && $pass1 !== $pass2) {
-            $messages[] = __('New passwords do not match.', 'elementrify');
+            $messages[] = __('New passwords do not match.', 'veloria');
             $savePass = false;
         } elseif ($pass1 !== '' && !wp_check_password($passCur, $currentUser->user_pass, $currentUser->ID)) {
-            $messages[] = __('Your current password is incorrect.', 'elementrify');
+            $messages[] = __('Your current password is incorrect.', 'veloria');
             $savePass = false;
         }
 
@@ -599,7 +599,7 @@ class WooDashboard extends WidgetBase
                 [
                     sprintf(
                         /* translators: %s: Error message. */
-                        __('An error occurred while saving account details: %s', 'elementrify'),
+                        __('An error occurred while saving account details: %s', 'veloria'),
                         $e->getMessage()
                     ),
                 ]
@@ -614,7 +614,7 @@ class WooDashboard extends WidgetBase
         return [
             'success'      => true,
             'messages'     => [],
-            'message'      => __('Account details changed successfully.', 'elementrify'),
+            'message'      => __('Account details changed successfully.', 'veloria'),
             'display_name' => $displayName,
         ];
     }
@@ -629,69 +629,69 @@ class WooDashboard extends WidgetBase
             : '';
 
         $this->start_controls_section('section_visibility', [
-            'label' => __('Sections', 'elementrify'),
+            'label' => __('Sections', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_sidebar', [
-            'label'        => __('Sidebar', 'elementrify'),
+            'label'        => __('Sidebar', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_stats', [
-            'label'        => __('Summary cards (top)', 'elementrify'),
+            'label'        => __('Summary cards (top)', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_recent_orders', [
-            'label'        => __('Recent orders card', 'elementrify'),
+            'label'        => __('Recent orders card', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_quick_actions', [
-            'label'        => __('Quick actions', 'elementrify'),
+            'label'        => __('Quick actions', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_panel_orders', [
-            'label'       => __('Orders panel & menu', 'elementrify'),
-            'description' => __('Hides the orders screen and its sidebar link.', 'elementrify'),
+            'label'       => __('Orders panel & menu', 'veloria'),
+            'description' => __('Hides the orders screen and its sidebar link.', 'veloria'),
             'type'        => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'     => 'yes',
         ]);
 
         $this->add_control('show_panel_wishlist', [
-            'label'        => __('Wishlist panel & menu', 'elementrify'),
+            'label'        => __('Wishlist panel & menu', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_panel_account', [
-            'label'        => __('Account details panel & menu', 'elementrify'),
+            'label'        => __('Account details panel & menu', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_panel_addresses', [
-            'label'        => __('Addresses panel & menu', 'elementrify'),
+            'label'        => __('Addresses panel & menu', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_logout_nav', [
-            'label'        => __('Logout in sidebar', 'elementrify'),
+            'label'        => __('Logout in sidebar', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -700,45 +700,45 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_stats_content', [
-            'label'     => __('Summary cards', 'elementrify'),
+            'label'     => __('Summary cards', 'veloria'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['show_stats' => 'yes'],
         ]);
 
         $this->add_control('stat_label_orders', [
-            'label'   => __('Orders card label', 'elementrify'),
+            'label'   => __('Orders card label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Total Orders', 'elementrify'),
+            'default' => __('Total Orders', 'veloria'),
         ]);
 
         $this->add_control('stat_icon_orders', [
-            'label'            => __('Orders card icon', 'elementrify'),
+            'label'            => __('Orders card icon', 'veloria'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'stat_icon_orders_legacy',
             'default'          => ['value' => 'fas fa-shopping-bag', 'library' => 'fa-solid'],
         ]);
 
         $this->add_control('stat_label_spent', [
-            'label'   => __('Spent card label', 'elementrify'),
+            'label'   => __('Spent card label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Total Spent', 'elementrify'),
+            'default' => __('Total Spent', 'veloria'),
         ]);
 
         $this->add_control('stat_icon_spent', [
-            'label'            => __('Spent card icon', 'elementrify'),
+            'label'            => __('Spent card icon', 'veloria'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'stat_icon_spent_legacy',
             'default'          => ['value' => 'fas fa-dollar-sign', 'library' => 'fa-solid'],
         ]);
 
         $this->add_control('stat_label_wishlist', [
-            'label'   => __('Wishlist card label', 'elementrify'),
+            'label'   => __('Wishlist card label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Wishlist Items', 'elementrify'),
+            'default' => __('Wishlist Items', 'veloria'),
         ]);
 
         $this->add_control('stat_icon_wishlist', [
-            'label'            => __('Wishlist card icon', 'elementrify'),
+            'label'            => __('Wishlist card icon', 'veloria'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'stat_icon_wishlist_legacy',
             'default'          => ['value' => 'fas fa-heart', 'library' => 'fa-solid'],
@@ -747,93 +747,93 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_quick_actions_content', [
-            'label'     => __('Quick actions', 'elementrify'),
+            'label'     => __('Quick actions', 'veloria'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['show_quick_actions' => 'yes'],
         ]);
 
         $this->add_control('quick_actions_title', [
-            'label'   => __('Title', 'elementrify'),
+            'label'   => __('Title', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Quick Actions', 'elementrify'),
+            'default' => __('Quick Actions', 'veloria'),
         ]);
 
         $qaRepeater = new Repeater();
         $qaRepeater->add_control('item_label', [
-            'label'   => __('Label', 'elementrify'),
+            'label'   => __('Label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Action', 'elementrify'),
+            'default' => __('Action', 'veloria'),
         ]);
         $qaRepeater->add_control('item_icon', [
-            'label'            => __('Icon', 'elementrify'),
+            'label'            => __('Icon', 'veloria'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'item_icon_legacy',
             'default'          => ['value' => 'fas fa-circle', 'library' => 'fa-solid'],
         ]);
         $qaRepeater->add_control('item_icon_color', [
-            'label'   => __('Icon color', 'elementrify'),
+            'label'   => __('Icon color', 'veloria'),
             'type'    => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
         $qaRepeater->add_control('item_action', [
-            'label'   => __('Action', 'elementrify'),
+            'label'   => __('Action', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'panel',
             'options' => [
-                'panel' => __('Open dashboard panel', 'elementrify'),
-                'url'   => __('Custom link', 'elementrify'),
+                'panel' => __('Open dashboard panel', 'veloria'),
+                'url'   => __('Custom link', 'veloria'),
             ],
         ]);
         $qaRepeater->add_control('item_panel', [
-            'label'     => __('Panel', 'elementrify'),
+            'label'     => __('Panel', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'orders',
             'options'   => [
-                'dashboard'    => __('Dashboard', 'elementrify'),
-                'orders'       => __('Orders', 'elementrify'),
-                'wishlist'     => __('Wishlist', 'elementrify'),
-                'edit-account' => __('Account details', 'elementrify'),
-                'edit-address' => __('Addresses', 'elementrify'),
+                'dashboard'    => __('Dashboard', 'veloria'),
+                'orders'       => __('Orders', 'veloria'),
+                'wishlist'     => __('Wishlist', 'veloria'),
+                'edit-account' => __('Account details', 'veloria'),
+                'edit-address' => __('Addresses', 'veloria'),
             ],
             'condition' => ['item_action' => 'panel'],
         ]);
         $qaRepeater->add_control('item_link', [
-            'label'       => __('Link', 'elementrify'),
+            'label'       => __('Link', 'veloria'),
             'type'        => Controls_Manager::URL,
             'dynamic'     => ['active' => true],
-            'placeholder' => __('https://', 'elementrify'),
+            'placeholder' => __('https://', 'veloria'),
             'condition'   => ['item_action' => 'url'],
         ]);
 
         $this->add_control('quick_actions_items', [
-            'label'       => __('Actions', 'elementrify'),
+            'label'       => __('Actions', 'veloria'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $qaRepeater->get_controls(),
             'title_field' => '{{{ item_label }}}',
             'default'     => [
                 [
-                    'item_label'      => __('Reorder', 'elementrify'),
+                    'item_label'      => __('Reorder', 'veloria'),
                     'item_icon'       => ['value' => 'fas fa-sync-alt', 'library' => 'fa-solid'],
                     'item_icon_color' => '#2563eb',
                     'item_action'     => 'panel',
                     'item_panel'      => 'orders',
                 ],
                 [
-                    'item_label'      => __('Track Order', 'elementrify'),
+                    'item_label'      => __('Track Order', 'veloria'),
                     'item_icon'       => ['value' => 'fas fa-truck', 'library' => 'fa-solid'],
                     'item_icon_color' => '#16a34a',
                     'item_action'     => 'panel',
                     'item_panel'      => 'orders',
                 ],
                 [
-                    'item_label'      => __('Support', 'elementrify'),
+                    'item_label'      => __('Support', 'veloria'),
                     'item_icon'       => ['value' => 'fas fa-headset', 'library' => 'fa-solid'],
                     'item_icon_color' => '#7c3aed',
                     'item_action'     => 'panel',
                     'item_panel'      => 'edit-account',
                 ],
                 [
-                    'item_label'      => __('Downloads', 'elementrify'),
+                    'item_label'      => __('Downloads', 'veloria'),
                     'item_icon'       => ['value' => 'fas fa-file-download', 'library' => 'fa-solid'],
                     'item_icon_color' => '#ea580c',
                     'item_action'     => 'url',
@@ -849,12 +849,12 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_orders', [
-            'label' => __('Orders', 'elementrify'),
+            'label' => __('Orders', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('orders_limit', [
-            'label'   => __('Recent orders limit', 'elementrify'),
+            'label'   => __('Recent orders limit', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 20,
@@ -862,7 +862,7 @@ class WooDashboard extends WidgetBase
         ]);
 
         $this->add_control('orders_list_limit', [
-            'label'   => __('Orders screen limit', 'elementrify'),
+            'label'   => __('Orders screen limit', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 50,
@@ -872,22 +872,22 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_guest', [
-            'label' => __('Guest', 'elementrify'),
+            'label' => __('Guest', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('guest_message', [
-            'label'       => __('Guest message', 'elementrify'),
+            'label'       => __('Guest message', 'veloria'),
             'type'        => Controls_Manager::TEXTAREA,
-            'default'     => __('Please log in to view your dashboard.', 'elementrify'),
+            'default'     => __('Please log in to view your dashboard.', 'veloria'),
             'rows'        => 3,
-            'placeholder' => __('Message shown to logged-out visitors.', 'elementrify'),
+            'placeholder' => __('Message shown to logged-out visitors.', 'veloria'),
         ]);
 
         $this->add_control('guest_button_label', [
-            'label'   => __('Guest button label', 'elementrify'),
+            'label'   => __('Guest button label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Log in', 'elementrify'),
+            'default' => __('Log in', 'veloria'),
         ]);
 
         $this->end_controls_section();
@@ -903,35 +903,35 @@ class WooDashboard extends WidgetBase
     private function register_style_controls(): void
     {
         $this->start_controls_section('section_stats_style', [
-            'label'     => __('Summary cards', 'elementrify'),
+            'label'     => __('Summary cards', 'veloria'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_stats' => 'yes'],
         ]);
 
         $this->add_responsive_control('stats_row_gap', [
-            'label'      => __('Column gap', 'elementrify'),
+            'label'      => __('Column gap', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'default'    => ['size' => 14, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__stats' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__stats' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('stats_row_margin_bottom', [
-            'label'      => __('Bottom spacing', 'elementrify'),
+            'label'      => __('Bottom spacing', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['size' => 18, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__stats' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__stats' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('stats_columns', [
-            'label'          => __('Columns', 'elementrify'),
+            'label'          => __('Columns', 'veloria'),
             'type'           => Controls_Manager::SELECT,
             'default'        => '3',
             'tablet_default' => '3',
@@ -942,7 +942,7 @@ class WooDashboard extends WidgetBase
                 '3' => '3',
             ],
             'selectors'      => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__stats' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                '{{WRAPPER}} .veloria-woo-dashboard__stats' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
             ],
         ]);
 
@@ -950,9 +950,9 @@ class WooDashboard extends WidgetBase
 
         foreach (
             [
-                'orders'   => ['label' => __('Orders card', 'elementrify'), 'sel' => '{{WRAPPER}} .elementrify-woo-dashboard__stat--orders'],
-                'spent'    => ['label' => __('Spent card', 'elementrify'), 'sel' => '{{WRAPPER}} .elementrify-woo-dashboard__stat--spent'],
-                'wishlist' => ['label' => __('Wishlist card', 'elementrify'), 'sel' => '{{WRAPPER}} .elementrify-woo-dashboard__stat--wishlist'],
+                'orders'   => ['label' => __('Orders card', 'veloria'), 'sel' => '{{WRAPPER}} .veloria-woo-dashboard__stat--orders'],
+                'spent'    => ['label' => __('Spent card', 'veloria'), 'sel' => '{{WRAPPER}} .veloria-woo-dashboard__stat--spent'],
+                'wishlist' => ['label' => __('Wishlist card', 'veloria'), 'sel' => '{{WRAPPER}} .veloria-woo-dashboard__stat--wishlist'],
             ] as $key => $meta
         ) {
             $this->start_controls_tab('tab_stat_' . $key, ['label' => $meta['label']]);
@@ -976,7 +976,7 @@ class WooDashboard extends WidgetBase
             );
 
             $this->add_responsive_control('stat_radius_' . $key, [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
@@ -985,7 +985,7 @@ class WooDashboard extends WidgetBase
             ]);
 
             $this->add_responsive_control('stat_padding_' . $key, [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -994,7 +994,7 @@ class WooDashboard extends WidgetBase
             ]);
 
             $this->add_responsive_control('stat_min_height_' . $key, [
-                'label'      => __('Min height', 'elementrify'),
+                'label'      => __('Min height', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 300]],
@@ -1012,7 +1012,7 @@ class WooDashboard extends WidgetBase
             );
 
             $this->add_control('stat_text_color_' . $key, [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
@@ -1024,8 +1024,8 @@ class WooDashboard extends WidgetBase
                 Group_Control_Typography::get_type(),
                 [
                     'name'     => 'stat_label_typo_' . $key,
-                    'label'    => __('Label typography', 'elementrify'),
-                    'selector' => $sel . ' .elementrify-woo-dashboard__stat-label',
+                    'label'    => __('Label typography', 'veloria'),
+                    'selector' => $sel . ' .veloria-woo-dashboard__stat-label',
                 ]
             );
 
@@ -1033,40 +1033,40 @@ class WooDashboard extends WidgetBase
                 Group_Control_Typography::get_type(),
                 [
                     'name'     => 'stat_value_typo_' . $key,
-                    'label'    => __('Value typography', 'elementrify'),
-                    'selector' => $sel . ' .elementrify-woo-dashboard__stat-value',
+                    'label'    => __('Value typography', 'veloria'),
+                    'selector' => $sel . ' .veloria-woo-dashboard__stat-value',
                 ]
             );
 
             $this->add_responsive_control('stat_icon_size_' . $key, [
-                'label'      => __('Icon size', 'elementrify'),
+                'label'      => __('Icon size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 8, 'max' => 64]],
                 'selectors'  => [
-                    $sel . ' .elementrify-woo-dashboard__stat-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
-                    $sel . ' .elementrify-woo-dashboard__stat-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    $sel . ' .veloria-woo-dashboard__stat-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
+                    $sel . ' .veloria-woo-dashboard__stat-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]);
 
             $this->add_control('stat_icon_color_' . $key, [
-                'label'     => __('Icon color', 'elementrify'),
+                'label'     => __('Icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $sel . ' .elementrify-woo-dashboard__stat-icon'     => 'color: {{VALUE}}; opacity: 1;',
-                    $sel . ' .elementrify-woo-dashboard__stat-icon i'   => 'color: {{VALUE}};',
-                    $sel . ' .elementrify-woo-dashboard__stat-icon svg' => 'fill: {{VALUE}};',
+                    $sel . ' .veloria-woo-dashboard__stat-icon'     => 'color: {{VALUE}}; opacity: 1;',
+                    $sel . ' .veloria-woo-dashboard__stat-icon i'   => 'color: {{VALUE}};',
+                    $sel . ' .veloria-woo-dashboard__stat-icon svg' => 'fill: {{VALUE}};',
                 ],
             ]);
 
             $this->add_responsive_control('stat_icon_position_' . $key, [
-                'label'      => __('Icon offset', 'elementrify'),
+                'label'      => __('Icon offset', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48]],
                 'default'    => ['size' => 14, 'unit' => 'px'],
                 'selectors'  => [
-                    $sel . ' .elementrify-woo-dashboard__stat-icon' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
+                    $sel . ' .veloria-woo-dashboard__stat-icon' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
                 ],
             ]);
 
@@ -1078,13 +1078,13 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_quick_actions_style', [
-            'label'     => __('Quick actions', 'elementrify'),
+            'label'     => __('Quick actions', 'veloria'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_quick_actions' => 'yes'],
         ]);
 
         $this->add_control('qa_title_heading', [
-            'label' => __('Title', 'elementrify'),
+            'label' => __('Title', 'veloria'),
             'type'  => Controls_Manager::HEADING,
         ]);
 
@@ -1092,26 +1092,26 @@ class WooDashboard extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'qa_title_typo',
-                'selector' => '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__card-title',
+                'selector' => '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__card-title',
             ]
         );
 
         $this->add_control('qa_title_color', [
-            'label'     => __('Title color', 'elementrify'),
+            'label'     => __('Title color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__card-title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__card-title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('qa_grid_heading', [
-            'label'     => __('Grid', 'elementrify'),
+            'label'     => __('Grid', 'veloria'),
             'type'      => Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
 
         $this->add_responsive_control('qa_columns', [
-            'label'          => __('Columns', 'elementrify'),
+            'label'          => __('Columns', 'veloria'),
             'type'           => Controls_Manager::SELECT,
             'default'        => '2',
             'tablet_default' => '2',
@@ -1123,33 +1123,33 @@ class WooDashboard extends WidgetBase
                 '4' => '4',
             ],
             'selectors'      => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__actions' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__actions' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
             ],
         ]);
 
         $this->add_responsive_control('qa_grid_gap', [
-            'label'      => __('Gap', 'elementrify'),
+            'label'      => __('Gap', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 40]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__actions' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__actions' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('qa_item_heading', [
-            'label'     => __('Action button', 'elementrify'),
+            'label'     => __('Action button', 'veloria'),
             'type'      => Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
 
         $this->add_control('qa_item_bg_color', [
-            'label'     => __('Background color', 'elementrify'),
+            'label'     => __('Background color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -1157,37 +1157,37 @@ class WooDashboard extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'qa_item_border',
-                'selector' => '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action',
+                'selector' => '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action',
             ]
         );
 
         $this->add_responsive_control('qa_item_radius', [
-            'label'      => __('Border radius', 'elementrify'),
+            'label'      => __('Border radius', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('qa_item_padding', [
-            'label'      => __('Padding', 'elementrify'),
+            'label'      => __('Padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('qa_icon_size', [
-            'label'      => __('Icon size', 'elementrify'),
+            'label'      => __('Icon size', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 16, 'max' => 48]],
             'default'    => ['size' => 28, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -1195,16 +1195,16 @@ class WooDashboard extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'qa_label_typo',
-                'label'    => __('Label typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-label',
+                'label'    => __('Label typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-label',
             ]
         );
 
         $this->add_control('qa_label_color', [
-            'label'     => __('Label color', 'elementrify'),
+            'label'     => __('Label color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-label' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-label' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -1283,7 +1283,7 @@ class WooDashboard extends WidgetBase
     {
         $roles = $user->roles;
         if (empty($roles)) {
-            return __('Member', 'elementrify');
+            return __('Member', 'veloria');
         }
 
         $roleKey = $roles[0];
@@ -1316,7 +1316,7 @@ class WooDashboard extends WidgetBase
             wp_enqueue_script('wc-country-select');
             wp_enqueue_script('wc-address-i18n');
         }
-        $path = ELEMENTRIFY_DIR . 'templates/woo-dashboard/woo-dashboard.php';
+        $path = VELORIA_DIR . 'templates/woo-dashboard/woo-dashboard.php';
         if (is_readable($path)) {
             include $path;
         }

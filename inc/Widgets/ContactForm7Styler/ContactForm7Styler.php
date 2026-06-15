@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ContactForm7Styler;
+namespace Veloria\Widgets\ContactForm7Styler;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
@@ -16,12 +16,12 @@ class ContactForm7Styler extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-mail elementrify-icon';
+        return 'eicon-mail veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-contact-form-7-styler';
+        return 'veloria-contact-form-7-styler';
     }
 
     public function get_admin_category(): string
@@ -31,12 +31,12 @@ class ContactForm7Styler extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Contact Form 7 Styler', 'elementrify');
+        return __('Contact Form 7 Styler', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Select a CF7 form and tune layout, fields, button, and messages.', 'elementrify');
+        return __('Select a CF7 form and tune layout, fields, button, and messages.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -46,7 +46,7 @@ class ContactForm7Styler extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-contact-form-7-styler'];
+        return ['veloria-contact-form-7-styler'];
     }
 
     public function __construct($data = [], $args = null)
@@ -61,16 +61,16 @@ class ContactForm7Styler extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('elementrify-contact-form-7-styler');
+        wp_enqueue_style('veloria-contact-form-7-styler');
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-contact-form-7-styler',
-            ELEMENTRIFY_URL . 'assets/css/contact-form-7-styler.css',
+            'veloria-contact-form-7-styler',
+            VELORIA_URL . 'assets/css/contact-form-7-styler.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -79,7 +79,7 @@ class ContactForm7Styler extends WidgetBase
      */
     public static function get_cf7_form_options(): array
     {
-        $choices = ['__none__' => __('— Select form —', 'elementrify')];
+        $choices = ['__none__' => __('— Select form —', 'veloria')];
         if (!post_type_exists('wpcf7_contact_form')) {
             return $choices;
         }
@@ -110,7 +110,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_form',
             [
-                'label' => __('Form', 'elementrify'),
+                'label' => __('Form', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -118,13 +118,13 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'cf7_form_id',
             [
-                'label'       => __('Contact Form 7', 'elementrify'),
+                'label'       => __('Contact Form 7', 'veloria'),
                 'type'        => Controls_Manager::SELECT,
                 'options'     => self::get_cf7_form_options(),
                 'default'     => '__none__',
                 'description' => self::is_cf7_active()
                     ? ''
-                    : __('Install and activate the Contact Form 7 plugin to list forms.', 'elementrify'),
+                    : __('Install and activate the Contact Form 7 plugin to list forms.', 'veloria'),
             ]
         );
 
@@ -133,7 +133,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_wrapper',
             [
-                'label' => __('Wrapper', 'elementrify'),
+                'label' => __('Wrapper', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -141,16 +141,16 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'wrapper_align',
             [
-                'label'     => __('Alignment', 'elementrify'),
+                'label'     => __('Alignment', 'veloria'),
                 'type'      => Controls_Manager::CHOOSE,
                 'options'   => [
-                    'flex-start' => ['title' => __('Start', 'elementrify'), 'icon' => 'eicon-h-align-left'],
-                    'center'     => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-h-align-center'],
-                    'flex-end'   => ['title' => __('End', 'elementrify'), 'icon' => 'eicon-h-align-right'],
+                    'flex-start' => ['title' => __('Start', 'veloria'), 'icon' => 'eicon-h-align-left'],
+                    'center'     => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-h-align-center'],
+                    'flex-end'   => ['title' => __('End', 'veloria'), 'icon' => 'eicon-h-align-right'],
                 ],
                 'default'   => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler' => 'display: flex; justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler' => 'display: flex; justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -158,13 +158,13 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'wrapper_max_width',
             [
-                'label'      => __('Max width', 'elementrify'),
+                'label'      => __('Max width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => ['px' => ['min' => 280, 'max' => 1200]],
                 'default'    => ['size' => 640, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner' => 'width: 100%; max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner' => 'width: 100%; max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -172,7 +172,7 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'wrapper_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => [
@@ -180,7 +180,7 @@ class ContactForm7Styler extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -188,10 +188,10 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'wrapper_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -200,18 +200,18 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'wrapper_border',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner',
             ]
         );
 
         $this->add_responsive_control(
             'wrapper_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -220,7 +220,7 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'wrapper_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner',
             ]
         );
 
@@ -229,7 +229,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __('Field layout', 'elementrify'),
+                'label' => __('Field layout', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -237,13 +237,13 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'field_stack_gap',
             [
-                'label'      => __('Space between rows', 'elementrify'),
+                'label'      => __('Space between rows', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48]],
                 'default'    => ['size' => 16, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form' => 'display: flex; flex-direction: column; gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form' => 'display: flex; flex-direction: column; gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -251,12 +251,12 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'label_position',
             [
-                'label'   => __('Label position', 'elementrify'),
+                'label'   => __('Label position', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'block',
                 'options' => [
-                    'block' => __('Above field', 'elementrify'),
-                    'inline' => __('Inline (wide screens)', 'elementrify'),
+                    'block' => __('Above field', 'veloria'),
+                    'inline' => __('Inline (wide screens)', 'veloria'),
                 ],
             ]
         );
@@ -266,7 +266,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_labels',
             [
-                'label' => __('Labels', 'elementrify'),
+                'label' => __('Labels', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -275,18 +275,18 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'label_typography',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form label',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form label',
             ]
         );
 
         $this->add_control(
             'label_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form label' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -294,13 +294,13 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'label_spacing',
             [
-                'label'      => __('Space below label', 'elementrify'),
+                'label'      => __('Space below label', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 6, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form label' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form label' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -310,25 +310,25 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_fields',
             [
-                'label' => __('Fields', 'elementrify'),
+                'label' => __('Fields', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $field_selectors = '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-text, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-email, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-url, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-tel, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-number, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-date, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-textarea, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form select.wpcf7-select, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-file';
+        $field_selectors = '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-text, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-email, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-url, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-tel, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-number, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-date, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-textarea, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form select.wpcf7-select, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-file';
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'field_typography',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-form-control, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form select.wpcf7-form-control',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-form-control, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form select.wpcf7-form-control',
             ]
         );
 
         $this->add_control(
             'field_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
@@ -340,7 +340,7 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'field_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
@@ -353,14 +353,14 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'field_border',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:not(.wpcf7-submit), {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form select.wpcf7-form-control',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:not(.wpcf7-submit), {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form select.wpcf7-form-control',
             ]
         );
 
         $this->add_responsive_control(
             'field_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'default'    => ['top' => '8', 'right' => '8', 'bottom' => '8', 'left' => '8', 'unit' => 'px', 'isLinked' => true],
@@ -373,7 +373,7 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'field_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => ['top' => '10', 'right' => '14', 'bottom' => '10', 'left' => '14', 'unit' => 'px', 'isLinked' => false],
@@ -386,13 +386,13 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'textarea_min_height',
             [
-                'label'      => __('Textarea min height', 'elementrify'),
+                'label'      => __('Textarea min height', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 80, 'max' => 400]],
                 'default'    => ['size' => 140, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-textarea' => 'min-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-textarea' => 'min-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -400,11 +400,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'field_focus_border',
             [
-                'label'     => __('Focus border color', 'elementrify'),
+                'label'     => __('Focus border color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:focus:not(.wpcf7-submit), {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control:focus, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form select.wpcf7-form-control:focus' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:focus:not(.wpcf7-submit), {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control:focus, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form select.wpcf7-form-control:focus' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -413,8 +413,8 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'field_focus_shadow',
-                'label'    => __('Focus shadow', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:focus:not(.wpcf7-submit), {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control:focus, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form select.wpcf7-form-control:focus',
+                'label'    => __('Focus shadow', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:focus:not(.wpcf7-submit), {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control:focus, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form select.wpcf7-form-control:focus',
             ]
         );
 
@@ -423,7 +423,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_placeholder',
             [
-                'label' => __('Placeholder', 'elementrify'),
+                'label' => __('Placeholder', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -431,11 +431,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'placeholder_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#9ca3af',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form ::placeholder' => 'color: {{VALUE}}; opacity: 1;',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form ::placeholder' => 'color: {{VALUE}}; opacity: 1;',
                 ],
             ]
         );
@@ -445,7 +445,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_submit',
             [
-                'label' => __('Submit button', 'elementrify'),
+                'label' => __('Submit button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -453,17 +453,17 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'submit_align',
             [
-                'label'     => __('Alignment', 'elementrify'),
+                'label'     => __('Alignment', 'veloria'),
                 'type'      => Controls_Manager::CHOOSE,
                 'options'   => [
-                    'flex-start' => ['title' => __('Start', 'elementrify'), 'icon' => 'eicon-h-align-left'],
-                    'center'     => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-h-align-center'],
-                    'flex-end'   => ['title' => __('End', 'elementrify'), 'icon' => 'eicon-h-align-right'],
+                    'flex-start' => ['title' => __('Start', 'veloria'), 'icon' => 'eicon-h-align-left'],
+                    'center'     => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-h-align-center'],
+                    'flex-end'   => ['title' => __('End', 'veloria'), 'icon' => 'eicon-h-align-right'],
                 ],
                 'default'   => 'flex-start',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form .wpcf7-submit-wrap' => 'justify-content: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form p:has(input.wpcf7-submit)' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form .wpcf7-submit-wrap' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form p:has(input.wpcf7-submit)' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -471,7 +471,7 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'submit_width',
             [
-                'label'      => __('Button width', 'elementrify'),
+                'label'      => __('Button width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -479,7 +479,7 @@ class ContactForm7Styler extends WidgetBase
                     '%'  => ['min' => 10, 'max' => 100],
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'width: {{SIZE}}{{UNIT}}; max-width: 100%;',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'width: {{SIZE}}{{UNIT}}; max-width: 100%;',
                 ],
             ]
         );
@@ -489,7 +489,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_tab(
             'submit_tab_normal',
             [
-                'label' => __('Normal', 'elementrify'),
+                'label' => __('Normal', 'veloria'),
             ]
         );
 
@@ -497,18 +497,18 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'submit_typography',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit',
             ]
         );
 
         $this->add_control(
             'submit_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -516,11 +516,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'submit_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -529,19 +529,19 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'submit_border',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit',
             ]
         );
 
         $this->add_responsive_control(
             'submit_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'default'    => ['top' => '8', 'right' => '8', 'bottom' => '8', 'left' => '8', 'unit' => 'px', 'isLinked' => true],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -549,12 +549,12 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'submit_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => ['top' => '12', 'right' => '24', 'bottom' => '12', 'left' => '24', 'unit' => 'px', 'isLinked' => false],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -563,7 +563,7 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'submit_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit',
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit',
             ]
         );
 
@@ -572,17 +572,17 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_tab(
             'submit_tab_hover',
             [
-                'label' => __('Hover', 'elementrify'),
+                'label' => __('Hover', 'veloria'),
             ]
         );
 
         $this->add_control(
             'submit_hover_text',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -590,10 +590,10 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'submit_hover_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit:hover' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit:hover' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -602,8 +602,8 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'submit_hover_shadow',
-                'label'    => __('Shadow', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-submit:hover',
+                'label'    => __('Shadow', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-form input.wpcf7-submit:hover',
             ]
         );
 
@@ -615,7 +615,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_checkbox',
             [
-                'label' => __('Checkboxes & consent', 'elementrify'),
+                'label' => __('Checkboxes & consent', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -623,12 +623,12 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'list_item_gap',
             [
-                'label'      => __('Space between options', 'elementrify'),
+                'label'      => __('Space between options', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-list-item' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-list-item' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -637,18 +637,18 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'acceptance_typography',
-                'label'    => __('Acceptance label typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-acceptance label, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-checkbox .wpcf7-list-item-label, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-radio .wpcf7-list-item-label',
+                'label'    => __('Acceptance label typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-acceptance label, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-checkbox .wpcf7-list-item-label, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-radio .wpcf7-list-item-label',
             ]
         );
 
         $this->add_control(
             'acceptance_label_color',
             [
-                'label'     => __('Option text color', 'elementrify'),
+                'label'     => __('Option text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-acceptance label, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-checkbox .wpcf7-list-item-label, {{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-radio .wpcf7-list-item-label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-acceptance label, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-checkbox .wpcf7-list-item-label, {{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-radio .wpcf7-list-item-label' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -658,7 +658,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_messages',
             [
-                'label' => __('Messages', 'elementrify'),
+                'label' => __('Messages', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -667,18 +667,18 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'response_typography',
-                'label'    => __('Response area typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-response-output',
+                'label'    => __('Response area typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-response-output',
             ]
         );
 
         $this->add_control(
             'response_text_color',
             [
-                'label'     => __('Response text color', 'elementrify'),
+                'label'     => __('Response text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-response-output' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-response-output' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -686,10 +686,10 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'response_bg',
             [
-                'label'     => __('Response background', 'elementrify'),
+                'label'     => __('Response background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-response-output' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-response-output' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -697,11 +697,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'response_padding',
             [
-                'label'      => __('Response padding', 'elementrify'),
+                'label'      => __('Response padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-response-output' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-response-output' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -709,11 +709,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'response_radius',
             [
-                'label'      => __('Response radius', 'elementrify'),
+                'label'      => __('Response radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-response-output' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-response-output' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -721,11 +721,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'tip_color',
             [
-                'label'     => __('Validation tip color', 'elementrify'),
+                'label'     => __('Validation tip color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#dc2626',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-not-valid-tip' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-not-valid-tip' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -734,19 +734,19 @@ class ContactForm7Styler extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'tip_typography',
-                'label'    => __('Validation tip typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-not-valid-tip',
+                'label'    => __('Validation tip typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-not-valid-tip',
             ]
         );
 
         $this->add_control(
             'sent_ok_bg',
             [
-                'label'     => __('Success notice background', 'elementrify'),
+                'label'     => __('Success notice background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ecfdf5',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-mail-sent-ok' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-mail-sent-ok' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -754,11 +754,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'sent_ok_color',
             [
-                'label'     => __('Success notice text', 'elementrify'),
+                'label'     => __('Success notice text', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#065f46',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-mail-sent-ok' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-mail-sent-ok' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -766,11 +766,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'validation_errors_bg',
             [
-                'label'     => __('Error summary background', 'elementrify'),
+                'label'     => __('Error summary background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#fef2f2',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-validation-errors' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-validation-errors' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -778,11 +778,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'validation_errors_color',
             [
-                'label'     => __('Error summary text', 'elementrify'),
+                'label'     => __('Error summary text', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#991b1b',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-validation-errors' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-validation-errors' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -792,7 +792,7 @@ class ContactForm7Styler extends WidgetBase
         $this->start_controls_section(
             'section_spinner',
             [
-                'label' => __('Spinner', 'elementrify'),
+                'label' => __('Spinner', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -800,13 +800,13 @@ class ContactForm7Styler extends WidgetBase
         $this->add_responsive_control(
             'spinner_size',
             [
-                'label'      => __('Size', 'elementrify'),
+                'label'      => __('Size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 12, 'max' => 48]],
                 'default'    => ['size' => 24, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-spinner' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-spinner' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -814,11 +814,11 @@ class ContactForm7Styler extends WidgetBase
         $this->add_control(
             'spinner_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cf7-styler-inner .wpcf7-spinner::before' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cf7-styler-inner .wpcf7-spinner::before' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -833,14 +833,14 @@ class ContactForm7Styler extends WidgetBase
         $form_id  = ($raw_id === '' || $raw_id === '__none__') ? 0 : (int) $raw_id;
 
         $label_pos = isset($settings['label_position']) ? (string) $settings['label_position'] : 'block';
-        $classes   = ['elementrify-cf7-styler'];
+        $classes   = ['veloria-cf7-styler'];
         if ($label_pos === 'inline') {
-            $classes[] = 'elementrify-cf7-styler--labels-inline';
+            $classes[] = 'veloria-cf7-styler--labels-inline';
         }
 
         $this->add_render_attribute('root', 'class', $classes);
 
-        $path = ELEMENTRIFY_DIR . 'templates/contact-form-7-styler/contact-form-7-styler.php';
+        $path = VELORIA_DIR . 'templates/contact-form-7-styler/contact-form-7-styler.php';
         if (is_readable($path)) {
             include $path;
         }

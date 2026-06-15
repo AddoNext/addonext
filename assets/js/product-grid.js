@@ -48,7 +48,7 @@
     if (typeof wc_add_to_cart_params !== 'undefined' && wc_add_to_cart_params.cart_url) {
       return wc_add_to_cart_params.cart_url;
     }
-    var shell = link && link.closest ? link.closest('.elementrify-product-grid-shell') : null;
+    var shell = link && link.closest ? link.closest('.veloria-product-grid-shell') : null;
     if (shell && shell.getAttribute('data-cart-url')) {
       return shell.getAttribute('data-cart-url');
     }
@@ -57,7 +57,7 @@
 
   function showCartTooltip(buttonEl) {
     if (!buttonEl || !buttonEl.closest) return;
-    var actions = buttonEl.closest('.elementrify-product-grid__actions');
+    var actions = buttonEl.closest('.veloria-product-grid__actions');
     if (!actions) return;
     actions.classList.add('is-cart-tooltip-visible');
     window.clearTimeout(actions.__pgTooltipTimer);
@@ -88,12 +88,12 @@
 
   function clearCartButtonLoading(btn) {
     if (!btn || !btn.classList) return;
-    btn.classList.remove('elementrify-product-grid__cart-btn--pending');
+    btn.classList.remove('veloria-product-grid__cart-btn--pending');
   }
 
   function bindCartTooltipOpeners(root) {
     var scope = root || document;
-    var tooltipLinks = scope.querySelectorAll('.elementrify-product-grid__cart-tooltip');
+    var tooltipLinks = scope.querySelectorAll('.veloria-product-grid__cart-tooltip');
     tooltipLinks.forEach(function (link) {
       if (link.getAttribute('data-pg-bound') === 'yes') return;
       link.setAttribute('data-pg-bound', 'yes');
@@ -115,20 +115,20 @@
   if (typeof jQuery !== 'undefined') {
     jQuery(document.body).on('adding_to_cart', function (event, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (btn && btn.classList && btn.classList.contains('elementrify-product-grid__cart-btn')) {
-        btn.classList.add('elementrify-product-grid__cart-btn--pending');
+      if (btn && btn.classList && btn.classList.contains('veloria-product-grid__cart-btn')) {
+        btn.classList.add('veloria-product-grid__cart-btn--pending');
       }
     });
     jQuery(document.body).on('ajax_request_not_sent.adding_to_cart', function (event, a, b, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
       if (!btn || !btn.classList) return;
-      if (btn.classList.contains('elementrify-product-grid__cart-btn')) {
+      if (btn.classList.contains('veloria-product-grid__cart-btn')) {
         clearCartButtonLoading(btn);
       }
     });
     jQuery(document.body).on('added_to_cart', function (event, fragments, cartHash, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (btn && btn.classList && btn.classList.contains('elementrify-product-grid__cart-btn')) {
+      if (btn && btn.classList && btn.classList.contains('veloria-product-grid__cart-btn')) {
         clearCartButtonLoading(btn);
         showCartTooltip(btn);
         showAddSuccess(btn);
@@ -145,7 +145,7 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-grid.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-grid.default', function ($scope) {
       var el = $scope && $scope[0] ? $scope[0] : $scope;
       if (!el || !el.querySelectorAll) return;
       scan(el);

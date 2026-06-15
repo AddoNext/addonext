@@ -21,11 +21,11 @@ $align = isset($settings['align']) && in_array($settings['align'], ['left', 'cen
     ? $settings['align']
     : 'left';
 
-$this->add_render_attribute('inner', 'class', 'elementrify-animated-gradient elementrify-animated-gradient__inner');
-$this->add_render_attribute('inner', 'class', 'elementrify-animated-gradient--' . $mode);
-$this->add_render_attribute('inner', 'class', 'elementrify-animated-gradient--dir-' . $dir);
-$this->add_render_attribute('inner', 'class', 'elementrify-animated-gradient--align-' . $align);
-$this->add_render_attribute('text', 'class', 'elementrify-animated-gradient__text');
+$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient veloria-animated-gradient__inner');
+$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient--' . $mode);
+$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient--dir-' . $dir);
+$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient--align-' . $align);
+$this->add_render_attribute('text', 'class', 'veloria-animated-gradient__text');
 ?>
 <div <?php $this->print_render_attribute_string('inner'); ?>>
     <<?php echo esc_attr($tag); ?> <?php $this->print_render_attribute_string('text'); ?>><?php echo esc_html($raw); ?></<?php echo esc_attr($tag); ?>>

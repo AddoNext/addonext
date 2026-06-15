@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\Tooltip;
+namespace Veloria\Widgets\Tooltip;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -11,12 +11,12 @@ class Tooltip extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-info-circle elementrify-icon';
+        return 'eicon-info-circle veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-tooltip';
+        return 'veloria-tooltip';
     }
 
     public function get_admin_category(): string
@@ -26,12 +26,12 @@ class Tooltip extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Tooltip', 'elementrify');
+        return __('Tooltip', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Interactive hover tooltips', 'elementrify');
+        return __('Interactive hover tooltips', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -41,21 +41,21 @@ class Tooltip extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-tooltip'];
+        return ['veloria-tooltip'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-tooltip'];
+        return ['veloria-tooltip'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-tooltip',
-            ELEMENTRIFY_URL . 'assets/css/tooltip.css',
+            'veloria-tooltip',
+            VELORIA_URL . 'assets/css/tooltip.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -64,7 +64,7 @@ class Tooltip extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -72,9 +72,9 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'trigger_text',
             [
-                'label'   => __('Button text', 'elementrify'),
+                'label'   => __('Button text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Information', 'elementrify'),
+                'default' => __('Information', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -82,7 +82,7 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'selected_icon',
             [
-                'label'   => __('Icon', 'elementrify'),
+                'label'   => __('Icon', 'veloria'),
                 'type'    => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'label_block' => false,
@@ -96,7 +96,7 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'link',
             [
-                'label'   => __('Link', 'elementrify'),
+                'label'   => __('Link', 'veloria'),
                 'type'    => Controls_Manager::URL,
                 'dynamic' => ['active' => true],
                 'default' => [
@@ -110,9 +110,9 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'tooltip_text',
             [
-                'label'   => __('Tooltip text', 'elementrify'),
+                'label'   => __('Tooltip text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Get detailed information here', 'elementrify'),
+                'default' => __('Get detailed information here', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -122,7 +122,7 @@ class Tooltip extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'elementrify'),
+                'label' => __('Button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -131,7 +131,7 @@ class Tooltip extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .elementrify-tooltip__trigger',
+                'selector' => '{{WRAPPER}} .veloria-tooltip__trigger',
                 'fields_options' => [
                     'typography' => ['default' => 'custom'],
                     'font_size'  => ['default' => ['unit' => 'px', 'size' => 14]],
@@ -142,14 +142,14 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'button_icon_size',
             [
-                'label'      => __('Icon size', 'elementrify'),
+                'label'      => __('Icon size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 8, 'max' => 32]],
                 'default'    => ['unit' => 'px', 'size' => 14],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-tooltip__trigger .elementrify-tooltip__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-tooltip__trigger .elementrify-tooltip__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger .veloria-tooltip__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger .veloria-tooltip__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -157,11 +157,11 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'button_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#3667F8',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-tooltip__trigger' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -169,12 +169,12 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'button_text_color',
             [
-                'label'     => __('Text & icon color', 'elementrify'),
+                'label'     => __('Text & icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-tooltip__trigger' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-tooltip__trigger svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -182,13 +182,13 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['unit' => 'px', 'size' => 6],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-tooltip__trigger' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -196,7 +196,7 @@ class Tooltip extends WidgetBase
         $this->add_responsive_control(
             'button_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => [
@@ -204,7 +204,7 @@ class Tooltip extends WidgetBase
                     'unit' => 'px', 'isLinked' => false,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-tooltip__trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -212,13 +212,13 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'button_icon_spacing',
             [
-                'label'      => __('Icon spacing', 'elementrify'),
+                'label'      => __('Icon spacing', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['unit' => 'px', 'size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-tooltip__trigger .elementrify-tooltip__icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__trigger .veloria-tooltip__icon' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -228,7 +228,7 @@ class Tooltip extends WidgetBase
         $this->start_controls_section(
             'section_style_tooltip',
             [
-                'label' => __('Tooltip', 'elementrify'),
+                'label' => __('Tooltip', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -237,7 +237,7 @@ class Tooltip extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'tooltip_typography',
-                'selector' => '{{WRAPPER}} .elementrify-tooltip__content',
+                'selector' => '{{WRAPPER}} .veloria-tooltip__content',
                 'fields_options' => [
                     'typography' => ['default' => 'custom'],
                     'font_size'  => ['default' => ['unit' => 'px', 'size' => 14]],
@@ -248,13 +248,13 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'tooltip_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#212529',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-tooltip__content' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-tooltip__content::after' => 'border-top-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-tooltip--below .elementrify-tooltip__content::after' => 'border-bottom-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip__content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip__content::after' => 'border-top-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip--below .veloria-tooltip__content::after' => 'border-bottom-color: {{VALUE}};',
                 ],
             ]
         );
@@ -262,11 +262,11 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'tooltip_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-tooltip__content' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-tooltip__content' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -274,13 +274,13 @@ class Tooltip extends WidgetBase
         $this->add_control(
             'tooltip_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['unit' => 'px', 'size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-tooltip__content' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__content' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -288,7 +288,7 @@ class Tooltip extends WidgetBase
         $this->add_responsive_control(
             'tooltip_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => [
@@ -296,7 +296,7 @@ class Tooltip extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-tooltip__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-tooltip__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -306,7 +306,7 @@ class Tooltip extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/tooltip/tooltip.php';
+        $path = VELORIA_DIR . 'templates/tooltip/tooltip.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -316,8 +316,8 @@ class Tooltip extends WidgetBase
     {
         ?>
         <#
-        var triggerText = settings.trigger_text || '<?php echo esc_js(__('Information', 'elementrify')); ?>';
-        var tooltipText = settings.tooltip_text || '<?php echo esc_js(__('Get detailed information here', 'elementrify')); ?>';
+        var triggerText = settings.trigger_text || '<?php echo esc_js(__('Information', 'veloria')); ?>';
+        var tooltipText = settings.tooltip_text || '<?php echo esc_js(__('Get detailed information here', 'veloria')); ?>';
         var hasLink = settings.link && settings.link.url;
         var linkUrl = hasLink ? settings.link.url : '#';
         var targetAttr = (settings.link && settings.link.is_external) ? ' target="_blank"' : '';
@@ -326,16 +326,16 @@ class Tooltip extends WidgetBase
             ? elementor.helpers.renderIcon(view, settings.selected_icon, { 'aria-hidden': 'true' }, 'i', 'object').value
             : '';
         #>
-        <div class="elementrify-tooltip">
+        <div class="veloria-tooltip">
             <# if (hasLink && linkUrl !== '#') { #>
-                <a href="{{ linkUrl }}" class="elementrify-tooltip__trigger"{{{ targetAttr }}}{{{ relAttr }}}>
+                <a href="{{ linkUrl }}" class="veloria-tooltip__trigger"{{{ targetAttr }}}{{{ relAttr }}}>
             <# } else { #>
-                <span class="elementrify-tooltip__trigger" tabindex="0" role="button">
+                <span class="veloria-tooltip__trigger" tabindex="0" role="button">
             <# } #>
-                <# if (iconHtml) { #><span class="elementrify-tooltip__icon">{{{ iconHtml }}}</span><# } #>
-                <span class="elementrify-tooltip__label">{{{ triggerText }}}</span>
+                <# if (iconHtml) { #><span class="veloria-tooltip__icon">{{{ iconHtml }}}</span><# } #>
+                <span class="veloria-tooltip__label">{{{ triggerText }}}</span>
             <# if (hasLink && linkUrl !== '#') { #></a><# } else { #></span><# } #>
-            <span class="elementrify-tooltip__content">{{{ tooltipText }}}</span>
+            <span class="veloria-tooltip__content">{{{ tooltipText }}}</span>
         </div>
         <?php
     }

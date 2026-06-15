@@ -7,7 +7,7 @@ if (emt_fs()->can_use_premium_code__premium_only()) {
 $settings = $this->get_settings_for_display();
 $rows = isset($settings['rows']) && is_array($settings['rows']) ? $settings['rows'] : [];
 ?>
-<div class="elementrify-bento-grid">
+<div class="veloria-bento-grid">
     <?php foreach ($rows as $row) : ?>
         <?php
         $columns = isset($row['columns']) && is_array($row['columns']) ? $row['columns'] : [];
@@ -15,7 +15,7 @@ $rows = isset($settings['rows']) && is_array($settings['rows']) ? $settings['row
             continue;
         }
         ?>
-        <div class="elementrify-bento-grid__row">
+        <div class="veloria-bento-grid__row">
             <?php foreach ($columns as $column) : ?>
                 <?php
                 $spanDesktop = isset($column['span_desktop']) ? max(1, min(12, (int) $column['span_desktop'])) : 6;
@@ -37,19 +37,19 @@ $rows = isset($settings['rows']) && is_array($settings['rows']) ? $settings['row
 
                 $tileStyle = '--er-bento-span-d:' . $spanDesktop . ';--er-bento-span-t:' . $spanTablet . ';--er-bento-span-m:' . $spanMobile . ';--er-bento-icon-color:' . esc_attr($iconColor) . ';' . $backgroundStyle;
                 ?>
-                <div class="elementrify-bento-grid__tile" style="<?php echo esc_attr($tileStyle); ?>">
+                <div class="veloria-bento-grid__tile" style="<?php echo esc_attr($tileStyle); ?>">
                     <?php if (!empty($column['icon']['value'])) : ?>
-                        <div class="elementrify-bento-grid__icon">
+                        <div class="veloria-bento-grid__icon">
                             <?php \Elementor\Icons_Manager::render_icon($column['icon'], ['aria-hidden' => 'true']); ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($title !== '') : ?>
-                        <h4 class="elementrify-bento-grid__title"><?php echo esc_html($title); ?></h4>
+                        <h4 class="veloria-bento-grid__title"><?php echo esc_html($title); ?></h4>
                     <?php endif; ?>
 
                     <?php if ($subtitle !== '') : ?>
-                        <p class="elementrify-bento-grid__subtitle"><?php echo esc_html($subtitle); ?></p>
+                        <p class="veloria-bento-grid__subtitle"><?php echo esc_html($subtitle); ?></p>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>

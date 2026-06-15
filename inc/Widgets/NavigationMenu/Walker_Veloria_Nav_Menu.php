@@ -1,12 +1,12 @@
 <?php
-namespace Elementrify\Widgets\NavigationMenu;
+namespace Veloria\Widgets\NavigationMenu;
 
 defined('ABSPATH') || exit;
 
 /**
  * Walker for Navigation Menu widget markup and submenu structure.
  */
-class Walker_Elementrify_Nav_Menu extends \Walker_Nav_Menu
+class Walker_Veloria_Nav_Menu extends \Walker_Nav_Menu
 {
     /**
      * Starts the list before the elements are added.
@@ -26,9 +26,9 @@ class Walker_Elementrify_Nav_Menu extends \Walker_Nav_Menu
         }
         $indent = str_repeat($t, $depth);
 
-        $classes = ['sub-menu', 'elementrify-nav-menu__sub'];
+        $classes = ['sub-menu', 'veloria-nav-menu__sub'];
         if ($depth > 0) {
-            $classes[] = 'elementrify-nav-menu__sub--nested';
+            $classes[] = 'veloria-nav-menu__sub--nested';
         }
         if (is_object($args) && !empty($args->submenu_class)) {
             foreach (preg_split('/\s+/', $args->submenu_class) as $extra_class) {

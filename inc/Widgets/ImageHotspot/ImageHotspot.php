@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ImageHotspot;
+namespace Veloria\Widgets\ImageHotspot;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -18,18 +18,18 @@ class ImageHotspot extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('elementrify-image-hotspot');
-        wp_enqueue_script('elementrify-image-hotspot');
+        wp_enqueue_style('veloria-image-hotspot');
+        wp_enqueue_script('veloria-image-hotspot');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-image-hotspot elementrify-icon';
+        return 'eicon-image-hotspot veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-image-hotspot';
+        return 'veloria-image-hotspot';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class ImageHotspot extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Image Hotspot', 'elementrify');
+        return __('Image Hotspot', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Interactive image markers', 'elementrify');
+        return __('Interactive image markers', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -54,12 +54,12 @@ class ImageHotspot extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-image-hotspot'];
+        return ['veloria-image-hotspot'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'elementrify-image-hotspot'];
+        return ['elementor-frontend', 'veloria-image-hotspot'];
     }
 
     public function register_controls(): void
@@ -67,7 +67,7 @@ class ImageHotspot extends WidgetBase
         $this->start_controls_section(
             'section_image',
             [
-                'label' => __('Image', 'elementrify'),
+                'label' => __('Image', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -75,7 +75,7 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'image',
             [
-                'label'   => __('Image', 'elementrify'),
+                'label'   => __('Image', 'veloria'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => ['url' => \Elementor\Utils::get_placeholder_image_src()],
             ]
@@ -84,7 +84,7 @@ class ImageHotspot extends WidgetBase
         $this->add_responsive_control(
             'image_width',
             [
-                'label'      => __('Width', 'elementrify'),
+                'label'      => __('Width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -93,8 +93,8 @@ class ImageHotspot extends WidgetBase
                 ],
                 'default'    => ['unit' => '%', 'size' => 100],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-image-hotspot' => 'width: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-image-hotspot__img' => 'width: 100%;',
+                    '{{WRAPPER}} .veloria-image-hotspot' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__img' => 'width: 100%;',
                 ],
             ]
         );
@@ -102,7 +102,7 @@ class ImageHotspot extends WidgetBase
         $this->add_responsive_control(
             'image_height',
             [
-                'label'      => __('Height', 'elementrify'),
+                'label'      => __('Height', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -110,8 +110,8 @@ class ImageHotspot extends WidgetBase
                     '%'  => ['min' => 1, 'max' => 100],
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-image-hotspot' => 'height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-image-hotspot__img' => 'height: 100%; object-fit: cover;',
+                    '{{WRAPPER}} .veloria-image-hotspot' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__img' => 'height: 100%; object-fit: cover;',
                 ],
             ]
         );
@@ -121,7 +121,7 @@ class ImageHotspot extends WidgetBase
         $this->start_controls_section(
             'section_hotspots',
             [
-                'label' => __('Hotspots', 'elementrify'),
+                'label' => __('Hotspots', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -131,7 +131,7 @@ class ImageHotspot extends WidgetBase
         $repeater->add_control(
             'x',
             [
-                'label'      => __('Horizontal position (%)', 'elementrify'),
+                'label'      => __('Horizontal position (%)', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['%'],
                 'range'      => ['%' => ['min' => 0, 'max' => 100]],
@@ -142,7 +142,7 @@ class ImageHotspot extends WidgetBase
         $repeater->add_control(
             'y',
             [
-                'label'      => __('Vertical position (%)', 'elementrify'),
+                'label'      => __('Vertical position (%)', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['%'],
                 'range'      => ['%' => ['min' => 0, 'max' => 100]],
@@ -153,16 +153,16 @@ class ImageHotspot extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Title', 'elementrify'),
+                'label'   => __('Title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Hotspot', 'elementrify'),
+                'default' => __('Hotspot', 'veloria'),
             ]
         );
 
         $repeater->add_control(
             'description',
             [
-                'label'   => __('Description', 'elementrify'),
+                'label'   => __('Description', 'veloria'),
                 'type'    => Controls_Manager::TEXTAREA,
                 'default' => '',
             ]
@@ -171,7 +171,7 @@ class ImageHotspot extends WidgetBase
         $repeater->add_control(
             'price',
             [
-                'label'   => __('Price / Label', 'elementrify'),
+                'label'   => __('Price / Label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -180,7 +180,7 @@ class ImageHotspot extends WidgetBase
         $repeater->add_control(
             'hotspot_color',
             [
-                'label'   => __('Hotspot color', 'elementrify'),
+                'label'   => __('Hotspot color', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#605BE5',
             ]
@@ -189,12 +189,12 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'hotspots',
             [
-                'label'       => __('Hotspots', 'elementrify'),
+                'label'       => __('Hotspots', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['title' => __('Collaboration Hub', 'elementrify'), 'description' => __('Central station for team meetings and creative brainstorming.', 'elementrify'), 'price' => '$1,299', 'x' => ['size' => 70], 'y' => ['size' => 35], 'hotspot_color' => '#E91E8C'],
-                    ['title' => __('Meeting Point', 'elementrify'), 'x' => ['size' => 30], 'y' => ['size' => 40], 'hotspot_color' => '#2196F3'],
+                    ['title' => __('Collaboration Hub', 'veloria'), 'description' => __('Central station for team meetings and creative brainstorming.', 'veloria'), 'price' => '$1,299', 'x' => ['size' => 70], 'y' => ['size' => 35], 'hotspot_color' => '#E91E8C'],
+                    ['title' => __('Meeting Point', 'veloria'), 'x' => ['size' => 30], 'y' => ['size' => 40], 'hotspot_color' => '#2196F3'],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -203,12 +203,12 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'tooltip_trigger',
             [
-                'label'   => __('Show tooltip', 'elementrify'),
+                'label'   => __('Show tooltip', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'hover',
                 'options' => [
-                    'hover' => __('On hover', 'elementrify'),
-                    'click' => __('On click', 'elementrify'),
+                    'hover' => __('On hover', 'veloria'),
+                    'click' => __('On click', 'veloria'),
                 ],
             ]
         );
@@ -216,14 +216,14 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'tooltip_position',
             [
-                'label'   => __('Tooltip position', 'elementrify'),
+                'label'   => __('Tooltip position', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'bottom',
                 'options' => [
-                    'top'    => __('Top', 'elementrify'),
-                    'bottom' => __('Bottom', 'elementrify'),
-                    'left'   => __('Left', 'elementrify'),
-                    'right'  => __('Right', 'elementrify'),
+                    'top'    => __('Top', 'veloria'),
+                    'bottom' => __('Bottom', 'veloria'),
+                    'left'   => __('Left', 'veloria'),
+                    'right'  => __('Right', 'veloria'),
                 ],
             ]
         );
@@ -233,7 +233,7 @@ class ImageHotspot extends WidgetBase
         $this->start_controls_section(
             'section_style_hotspot',
             [
-                'label' => __('Hotspot', 'elementrify'),
+                'label' => __('Hotspot', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -241,13 +241,13 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'hotspot_size',
             [
-                'label'      => __('Size', 'elementrify'),
+                'label'      => __('Size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 8, 'max' => 48]],
                 'default'    => ['size' => 20],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__point' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; margin-left: calc(-{{SIZE}}{{UNIT}} / 2); margin-top: calc(-{{SIZE}}{{UNIT}} / 2);',
+                    '{{WRAPPER}} .veloria-image-hotspot__point' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; margin-left: calc(-{{SIZE}}{{UNIT}} / 2); margin-top: calc(-{{SIZE}}{{UNIT}} / 2);',
                 ],
             ]
         );
@@ -255,11 +255,11 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'active_ring_color',
             [
-                'label'     => __('Active ring color', 'elementrify'),
+                'label'     => __('Active ring color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4ADE80',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__point.is-active::after' => 'border-color: {{VALUE}}; box-shadow: 0 0 0 2px {{VALUE}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__point.is-active::after' => 'border-color: {{VALUE}}; box-shadow: 0 0 0 2px {{VALUE}};',
                 ],
             ]
         );
@@ -267,10 +267,10 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'hotspot_animation',
             [
-                'label'        => __('Pulse animation', 'elementrify'),
+                'label'        => __('Pulse animation', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => __('Yes', 'elementrify'),
-                'label_off'    => __('No', 'elementrify'),
+                'label_on'     => __('Yes', 'veloria'),
+                'label_off'    => __('No', 'veloria'),
                 'return_value' => 'yes',
                 'default'      => 'yes',
             ]
@@ -281,7 +281,7 @@ class ImageHotspot extends WidgetBase
         $this->start_controls_section(
             'section_style_tooltip',
             [
-                'label' => __('Tooltip', 'elementrify'),
+                'label' => __('Tooltip', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -290,18 +290,18 @@ class ImageHotspot extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'tooltip_title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-image-hotspot__tooltip-title',
+                'selector' => '{{WRAPPER}} .veloria-image-hotspot__tooltip-title',
             ]
         );
 
         $this->add_control(
             'tooltip_title_color',
             [
-                'label'     => __('Title color', 'elementrify'),
+                'label'     => __('Title color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__tooltip-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__tooltip-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -310,18 +310,18 @@ class ImageHotspot extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'tooltip_desc_typography',
-                'selector' => '{{WRAPPER}} .elementrify-image-hotspot__tooltip-desc',
+                'selector' => '{{WRAPPER}} .veloria-image-hotspot__tooltip-desc',
             ]
         );
 
         $this->add_control(
             'tooltip_desc_color',
             [
-                'label'     => __('Description color', 'elementrify'),
+                'label'     => __('Description color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__tooltip-desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__tooltip-desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -329,11 +329,11 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'tooltip_price_color',
             [
-                'label'     => __('Price color', 'elementrify'),
+                'label'     => __('Price color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E91E8C',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__tooltip-price' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__tooltip-price' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -341,11 +341,11 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'tooltip_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__tooltip' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__tooltip' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -353,13 +353,13 @@ class ImageHotspot extends WidgetBase
         $this->add_control(
             'tooltip_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__tooltip' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__tooltip' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -367,7 +367,7 @@ class ImageHotspot extends WidgetBase
         $this->add_responsive_control(
             'tooltip_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => [
@@ -375,7 +375,7 @@ class ImageHotspot extends WidgetBase
                     'unit' => 'px', 'isLinked' => false,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-image-hotspot__tooltip' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-image-hotspot__tooltip' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -384,7 +384,7 @@ class ImageHotspot extends WidgetBase
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'tooltip_box_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-image-hotspot__tooltip',
+                'selector' => '{{WRAPPER}} .veloria-image-hotspot__tooltip',
             ]
         );
 
@@ -393,7 +393,7 @@ class ImageHotspot extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/image-hotspot/image-hotspot.php';
+        $path = VELORIA_DIR . 'templates/image-hotspot/image-hotspot.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -409,26 +409,26 @@ class ImageHotspot extends WidgetBase
         var trigger = settings.tooltip_trigger || 'hover';
         var tooltipPos = settings.tooltip_position || 'bottom';
         var pulse = settings.hotspot_animation === 'yes';
-        var pulseClass = pulse ? ' elementrify-image-hotspot--pulse' : '';
+        var pulseClass = pulse ? ' veloria-image-hotspot--pulse' : '';
         var clickableClass = (trigger === 'click') ? ' elementor-clickable' : '';
         #>
-        <div class="elementrify-image-hotspot elementrify-image-hotspot--trigger-{{ trigger }} elementrify-image-hotspot--tooltip-{{ tooltipPos }}{{ pulseClass }}{{ clickableClass }}" data-trigger="{{ trigger }}">
-            <img src="{{ imageUrl }}" alt="" class="elementrify-image-hotspot__img">
+        <div class="veloria-image-hotspot veloria-image-hotspot--trigger-{{ trigger }} veloria-image-hotspot--tooltip-{{ tooltipPos }}{{ pulseClass }}{{ clickableClass }}" data-trigger="{{ trigger }}">
+            <img src="{{ imageUrl }}" alt="" class="veloria-image-hotspot__img">
             <# _.each(hotspots, function(h, i) {
                 var x = (h.x && h.x.size !== undefined) ? h.x.size : 50;
                 var y = (h.y && h.y.size !== undefined) ? h.y.size : 50;
                 var color = h.hotspot_color || '#605BE5';
             #>
-            <span class="elementrify-image-hotspot__point elementor-repeater-item-{{ h._id }}" style="left:{{ x }}%; top:{{ y }}%; background-color: {{ color }}; --hotspot-color: {{ color }};" data-index="{{ i }}">
+            <span class="veloria-image-hotspot__point elementor-repeater-item-{{ h._id }}" style="left:{{ x }}%; top:{{ y }}%; background-color: {{ color }}; --hotspot-color: {{ color }};" data-index="{{ i }}">
                 <# if (pulse) { #>
-                <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
-                <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
-                <span class="elementrify-image-hotspot__pulse" aria-hidden="true"></span>
+                <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
+                <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
+                <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
                 <# } #>
-                <span class="elementrify-image-hotspot__tooltip">
-                    <# if (h.title) { #><span class="elementrify-image-hotspot__tooltip-title">{{{ h.title }}}</span><# } #>
-                    <# if (h.description) { #><span class="elementrify-image-hotspot__tooltip-desc">{{{ h.description }}}</span><# } #>
-                    <# if (h.price) { #><span class="elementrify-image-hotspot__tooltip-price">{{{ h.price }}}</span><# } #>
+                <span class="veloria-image-hotspot__tooltip">
+                    <# if (h.title) { #><span class="veloria-image-hotspot__tooltip-title">{{{ h.title }}}</span><# } #>
+                    <# if (h.description) { #><span class="veloria-image-hotspot__tooltip-desc">{{{ h.description }}}</span><# } #>
+                    <# if (h.price) { #><span class="veloria-image-hotspot__tooltip-price">{{{ h.price }}}</span><# } #>
                 </span>
             </span>
             <# }); #>

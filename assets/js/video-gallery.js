@@ -35,22 +35,22 @@
     }
 
     function closeLightbox(root) {
-        var lb = root.querySelector(".elementrify-video-gallery__lightbox");
+        var lb = root.querySelector(".veloria-video-gallery__lightbox");
         if (!lb) {
             return;
         }
-        var embed = root.querySelector(".elementrify-video-gallery__lightbox-embed");
+        var embed = root.querySelector(".veloria-video-gallery__lightbox-embed");
         if (embed) {
             embed.innerHTML = "";
         }
         lb.hidden = true;
         lb.setAttribute("data-open", "0");
-        document.body.classList.remove("elementrify-video-gallery--scroll-lock");
+        document.body.classList.remove("veloria-video-gallery--scroll-lock");
     }
 
     function openLightbox(root, inner) {
-        var lb = root.querySelector(".elementrify-video-gallery__lightbox");
-        var embed = root.querySelector(".elementrify-video-gallery__lightbox-embed");
+        var lb = root.querySelector(".veloria-video-gallery__lightbox");
+        var embed = root.querySelector(".veloria-video-gallery__lightbox-embed");
         if (!lb || !embed) {
             return;
         }
@@ -62,51 +62,51 @@
         injectPlayer(embed, embedUrl, hostedUrl, type);
         lb.hidden = false;
         lb.setAttribute("data-open", "1");
-        document.body.classList.add("elementrify-video-gallery--scroll-lock");
+        document.body.classList.add("veloria-video-gallery--scroll-lock");
 
-        var closeBtn = root.querySelector(".elementrify-video-gallery__lightbox-close");
+        var closeBtn = root.querySelector(".veloria-video-gallery__lightbox-close");
         if (closeBtn) {
             closeBtn.focus();
         }
     }
 
     function bindGallery(root) {
-        if (root.getAttribute("data-elementrify-vg-bound") === "1") {
+        if (root.getAttribute("data-veloria-vg-bound") === "1") {
             return;
         }
-        root.setAttribute("data-elementrify-vg-bound", "1");
+        root.setAttribute("data-veloria-vg-bound", "1");
 
         root.addEventListener("click", function (e) {
-            var play = e.target.closest(".elementrify-video-gallery__play");
+            var play = e.target.closest(".veloria-video-gallery__play");
             if (play && root.contains(play)) {
                 e.preventDefault();
-                var inner = play.closest(".elementrify-video-player__inner");
+                var inner = play.closest(".veloria-video-player__inner");
                 if (inner && root.contains(inner)) {
                     openLightbox(root, inner);
                 }
                 return;
             }
 
-            if (e.target.closest(".elementrify-video-gallery__lightbox-close")) {
+            if (e.target.closest(".veloria-video-gallery__lightbox-close")) {
                 e.preventDefault();
                 closeLightbox(root);
                 return;
             }
 
-            if (e.target.classList.contains("elementrify-video-gallery__lightbox-backdrop")) {
+            if (e.target.classList.contains("veloria-video-gallery__lightbox-backdrop")) {
                 closeLightbox(root);
             }
         });
     }
 
-    if (!window.elementrifyVideoGalleryEscBound) {
-        window.elementrifyVideoGalleryEscBound = true;
+    if (!window.veloriaVideoGalleryEscBound) {
+        window.veloriaVideoGalleryEscBound = true;
         document.addEventListener("keydown", function (e) {
             if (e.key !== "Escape") {
                 return;
             }
-            document.querySelectorAll('.elementrify-video-gallery__lightbox[data-open="1"]').forEach(function (lb) {
-                var root = lb.closest(".elementrify-video-gallery");
+            document.querySelectorAll('.veloria-video-gallery__lightbox[data-open="1"]').forEach(function (lb) {
+                var root = lb.closest(".veloria-video-gallery");
                 if (root) {
                     closeLightbox(root);
                 }
@@ -116,18 +116,18 @@
 
     function initScope(scope) {
         var rootEl = scope && scope.length ? scope[0] : document;
-        rootEl.querySelectorAll(".elementrify-video-gallery").forEach(bindGallery);
+        rootEl.querySelectorAll(".veloria-video-gallery").forEach(bindGallery);
     }
 
     $(window).on("elementor/frontend/init", function () {
         elementorFrontend.hooks.addAction(
-            "frontend/element_ready/elementrify-video-gallery.default",
+            "frontend/element_ready/veloria-video-gallery.default",
             initScope
         );
-        elementorFrontend.hooks.addAction("frontend/element_ready/elementrify-video-gallery", initScope);
+        elementorFrontend.hooks.addAction("frontend/element_ready/veloria-video-gallery", initScope);
     });
 
-    document.querySelectorAll(".elementor-widget-elementrify-video-gallery").forEach(function (widget) {
-        widget.querySelectorAll(".elementrify-video-gallery").forEach(bindGallery);
+    document.querySelectorAll(".elementor-widget-veloria-video-gallery").forEach(function (widget) {
+        widget.querySelectorAll(".veloria-video-gallery").forEach(bindGallery);
     });
 })(jQuery);

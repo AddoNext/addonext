@@ -1,10 +1,10 @@
 <?php
-namespace Elementrify\Widgets\WooCheckout;
+namespace Veloria\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
 /**
- * Composes Elementrify checkout: custom DOM for fields, order lines, and gateways; WooCommerce handles values and processing.
+ * Composes Veloria checkout: custom DOM for fields, order lines, and gateways; WooCommerce handles values and processing.
  */
 class CheckoutRenderer
 {
@@ -68,44 +68,44 @@ class CheckoutRenderer
 
         $billingTitle = isset($settings['billing_section_title']) && $settings['billing_section_title'] !== ''
             ? (string) $settings['billing_section_title']
-            : __('Billing details', 'elementrify');
+            : __('Billing details', 'veloria');
         $summaryTitle = isset($settings['order_summary_title']) && $settings['order_summary_title'] !== ''
             ? (string) $settings['order_summary_title']
-            : __('Order summary', 'elementrify');
+            : __('Order summary', 'veloria');
         $paymentTitle = isset($settings['payment_section_title']) && $settings['payment_section_title'] !== ''
             ? (string) $settings['payment_section_title']
-            : __('Payment method', 'elementrify');
+            : __('Payment method', 'veloria');
 
         $showCoupon = !empty($settings['show_coupon_sidebar']) && $settings['show_coupon_sidebar'] === 'yes';
 
         $gatewayMarkup = CheckoutPaymentUi::render_gateway_list();
 
-        echo '<form name="checkout" method="post" class="checkout woocommerce-checkout" action="' . esc_url(wc_get_checkout_url()) . '" enctype="multipart/form-data" aria-label="' . esc_attr__('Checkout', 'elementrify') . '">';
-        echo '<input type="hidden" name="elementrify_checkout" value="1" />';
+        echo '<form name="checkout" method="post" class="checkout woocommerce-checkout" action="' . esc_url(wc_get_checkout_url()) . '" enctype="multipart/form-data" aria-label="' . esc_attr__('Checkout', 'veloria') . '">';
+        echo '<input type="hidden" name="veloria_checkout" value="1" />';
         $showPaymentDescriptions = !empty($settings['show_payment_descriptions']) && $settings['show_payment_descriptions'] === 'yes';
-        echo '<input type="hidden" name="elementrify_show_payment_descriptions" value="' . esc_attr($showPaymentDescriptions ? '1' : '0') . '" />';
+        echo '<input type="hidden" name="veloria_show_payment_descriptions" value="' . esc_attr($showPaymentDescriptions ? '1' : '0') . '" />';
 
-        echo '<div class="elementrify-wc-checkout__layout">';
+        echo '<div class="veloria-wc-checkout__layout">';
 
-        echo '<div class="elementrify-wc-checkout__col elementrify-wc-checkout__col--main">';
+        echo '<div class="veloria-wc-checkout__col veloria-wc-checkout__col--main">';
 
         if ($checkout->get_checkout_fields()) {
-            echo '<div id="customer_details" class="elementrify-wc-checkout__customer-root">';
+            echo '<div id="customer_details" class="veloria-wc-checkout__customer-root">';
             do_action('woocommerce_checkout_before_customer_details');
 
-            echo '<div class="elementrify-wc-checkout__card elementrify-wc-checkout__card--billing">';
-            echo '<h3 class="elementrify-wc-checkout__section-title elementrify-wc-checkout__section-title--lg">' . esc_html($billingTitle) . '</h3>';
+            echo '<div class="veloria-wc-checkout__card veloria-wc-checkout__card--billing">';
+            echo '<h3 class="veloria-wc-checkout__section-title veloria-wc-checkout__section-title--lg">' . esc_html($billingTitle) . '</h3>';
             echo '<div class="woocommerce-billing-fields">';
             do_action('woocommerce_before_checkout_billing_form', $checkout);
-            echo '<div class="elementrify-co-fields-grid woocommerce-billing-fields__field-wrapper">';
+            echo '<div class="veloria-co-fields-grid woocommerce-billing-fields__field-wrapper">';
             CheckoutCustomFields::render_fieldset($checkout, 'billing');
             echo '</div>';
             self::render_account_fields($checkout);
             self::render_order_notes_fields($checkout);
 
-            echo '<div class="elementrify-wc-checkout__billing-payment">';
-            echo '<h4 class="elementrify-wc-checkout__section-title elementrify-wc-checkout__section-title--payment">' . esc_html($paymentTitle) . '</h4>';
-            echo '<div id="payment" class="woocommerce-checkout-payment elementrify-wc-checkout__payment-methods-slot elementrify-wc-checkout__payment-outer elementrify-co-payment-root">';
+            echo '<div class="veloria-wc-checkout__billing-payment">';
+            echo '<h4 class="veloria-wc-checkout__section-title veloria-wc-checkout__section-title--payment">' . esc_html($paymentTitle) . '</h4>';
+            echo '<div id="payment" class="woocommerce-checkout-payment veloria-wc-checkout__payment-methods-slot veloria-wc-checkout__payment-outer veloria-co-payment-root">';
             echo $gatewayMarkup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             echo '</div>';
             echo '</div>';
@@ -115,7 +115,7 @@ class CheckoutRenderer
             echo '</div>';
 
             if (self::needs_shipping_card($checkout)) {
-                echo '<div class="elementrify-wc-checkout__card elementrify-wc-checkout__card--additional">';
+                echo '<div class="veloria-wc-checkout__card veloria-wc-checkout__card--additional">';
                 self::render_shipping_fields_only($checkout);
                 echo '</div>';
             }
@@ -126,10 +126,10 @@ class CheckoutRenderer
 
         echo '</div>';
 
-        echo '<div class="elementrify-wc-checkout__col elementrify-wc-checkout__col--sidebar">';
-        echo '<div class="elementrify-wc-checkout__card elementrify-wc-checkout__card--summary">';
+        echo '<div class="veloria-wc-checkout__col veloria-wc-checkout__col--sidebar">';
+        echo '<div class="veloria-wc-checkout__card veloria-wc-checkout__card--summary">';
         do_action('woocommerce_checkout_before_order_review_heading');
-        echo '<h3 class="elementrify-wc-checkout__section-title elementrify-wc-checkout__section-title--lg">' . esc_html($summaryTitle) . '</h3>';
+        echo '<h3 class="veloria-wc-checkout__section-title veloria-wc-checkout__section-title--lg">' . esc_html($summaryTitle) . '</h3>';
 
         if ($showCoupon) {
             CheckoutTemplate::partial('coupon-block', ['settings' => $settings]);
@@ -138,7 +138,7 @@ class CheckoutRenderer
         echo '<div id="order_review" class="woocommerce-checkout-review-order">';
         do_action('woocommerce_checkout_before_order_review');
         echo CheckoutOrderUi::render(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<div class="elementrify-wc-checkout__place-order-slot">';
+        echo '<div class="veloria-wc-checkout__place-order-slot">';
         echo $paymentParts['place_order']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo '</div>';
         echo '</div>';
@@ -162,7 +162,7 @@ class CheckoutRenderer
             echo '<p class="form-row form-row-wide create-account">';
             echo '<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">';
             echo '<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1" ' . checked((true === $checkout->get_value('createaccount') || (true === apply_filters('woocommerce_create_account_default_checked', false))), true, false) . ' /> ';
-            echo '<span>' . esc_html__('Create an account?', 'elementrify') . '</span>';
+            echo '<span>' . esc_html__('Create an account?', 'veloria') . '</span>';
             echo '</label></p>';
         }
 
@@ -197,9 +197,9 @@ class CheckoutRenderer
             return;
         }
 
-        echo '<div class="woocommerce-additional-fields elementrify-wc-checkout__order-notes">';
+        echo '<div class="woocommerce-additional-fields veloria-wc-checkout__order-notes">';
         do_action('woocommerce_before_order_notes', $checkout);
-        echo '<div class="elementrify-co-fields-grid elementrify-co-fields-grid--order-notes woocommerce-additional-fields__field-wrapper">';
+        echo '<div class="veloria-co-fields-grid veloria-co-fields-grid--order-notes woocommerce-additional-fields__field-wrapper">';
         foreach ($orderFields as $key => $field) {
             CheckoutCustomFields::render_field($key, $field, $checkout->get_value($key));
         }
@@ -210,18 +210,18 @@ class CheckoutRenderer
 
     private static function render_shipping_fields_only(\WC_Checkout $checkout): void
     {
-        echo '<div class="col-2-set elementrify-wc-checkout__additional-set">';
+        echo '<div class="col-2-set veloria-wc-checkout__additional-set">';
 
         echo '<div class="woocommerce-shipping-fields">';
         echo '<h3 id="ship-to-different-address">';
         echo '<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">';
         echo '<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" type="checkbox" name="ship_to_different_address" value="1" ' . checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1, false) . ' /> ';
-        echo '<span>' . esc_html__('Ship to a different address?', 'elementrify') . '</span>';
+        echo '<span>' . esc_html__('Ship to a different address?', 'veloria') . '</span>';
         echo '</label></h3>';
 
         echo '<div class="shipping_address">';
         do_action('woocommerce_before_checkout_shipping_form', $checkout);
-        echo '<div class="elementrify-co-fields-grid woocommerce-shipping-fields__field-wrapper">';
+        echo '<div class="veloria-co-fields-grid woocommerce-shipping-fields__field-wrapper">';
         CheckoutCustomFields::render_fieldset($checkout, 'shipping');
         echo '</div>';
         do_action('woocommerce_after_checkout_shipping_form', $checkout);

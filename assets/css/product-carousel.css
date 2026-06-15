@@ -1,37 +1,37 @@
-.elementrify-product-carousel-shell {
+.veloria-product-carousel-shell {
   position: relative;
   width: 100%;
   overflow: visible;
 }
 
-.elementrify-product-carousel__viewport {
+.veloria-product-carousel__viewport {
   width: 100%;
   overflow: hidden;
 }
 
-.elementrify-product-carousel {
+.veloria-product-carousel {
   width: 100%;
 }
 
-.elementrify-product-carousel__card {
+.veloria-product-carousel__card {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   overflow: hidden;
 }
 
-.elementrify-product-carousel__image-wrap {
+.veloria-product-carousel__image-wrap {
   position: relative;
   background: #f8fafc;
   overflow: hidden;
 }
 
-.elementrify-product-carousel__image-link {
+.veloria-product-carousel__image-link {
   display: block;
   aspect-ratio: 1 / 1;
 }
 
-.elementrify-product-carousel__image {
+.veloria-product-carousel__image {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -39,27 +39,27 @@
   transition: transform 0.45s ease;
 }
 
-.elementrify-product-carousel__image-wrap--zoom-in:hover .elementrify-product-carousel__image {
+.veloria-product-carousel__image-wrap--zoom-in:hover .veloria-product-carousel__image {
   transform: scale(1.08);
 }
 
-.elementrify-product-carousel__image-wrap--zoom-out .elementrify-product-carousel__image {
+.veloria-product-carousel__image-wrap--zoom-out .veloria-product-carousel__image {
   transform: scale(1.08);
 }
 
-.elementrify-product-carousel__image-wrap--zoom-out:hover .elementrify-product-carousel__image {
+.veloria-product-carousel__image-wrap--zoom-out:hover .veloria-product-carousel__image {
   transform: scale(1);
 }
 
-.elementrify-product-carousel__image-wrap--jump:hover .elementrify-product-carousel__image {
+.veloria-product-carousel__image-wrap--jump:hover .veloria-product-carousel__image {
   transform: translateY(-8px);
 }
 
-.elementrify-product-carousel__image-wrap--tilt:hover .elementrify-product-carousel__image {
+.veloria-product-carousel__image-wrap--tilt:hover .veloria-product-carousel__image {
   transform: rotate(-3deg) scale(1.04);
 }
 
-.elementrify-product-carousel__badges {
+.veloria-product-carousel__badges {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -67,7 +67,7 @@
   gap: 6px;
 }
 
-.elementrify-product-carousel__badge {
+.veloria-product-carousel__badge {
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
@@ -76,19 +76,19 @@
   border-radius: 999px;
 }
 
-.elementrify-product-carousel__badge--sale {
+.veloria-product-carousel__badge--sale {
   background: #ef4444;
 }
 
-.elementrify-product-carousel__badge--new {
+.veloria-product-carousel__badge--new {
   background: #22c55e;
 }
 
-.elementrify-product-carousel__card-body {
+.veloria-product-carousel__card-body {
   padding: 12px;
 }
 
-.elementrify-product-carousel__rating {
+.veloria-product-carousel__rating {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -96,16 +96,16 @@
   font-size: 13px;
 }
 
-.elementrify-product-carousel__rating .star-rating {
+.veloria-product-carousel__rating .star-rating {
   margin: 0;
 }
 
-.elementrify-product-carousel__rating-value {
+.veloria-product-carousel__rating-value {
   color: #374151;
   font-weight: 600;
 }
 
-.elementrify-product-carousel__title {
+.veloria-product-carousel__title {
   margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
@@ -113,59 +113,59 @@
   color: #111827;
 }
 
-.elementrify-product-carousel__title a {
+.veloria-product-carousel__title a {
   color: inherit;
   text-decoration: none;
 }
 
-.elementrify-product-carousel__meta {
+.veloria-product-carousel__meta {
   margin: 0 0 8px;
   color: #9ca3af;
   font-size: 13px;
   line-height: 1.35;
 }
 
-.elementrify-product-carousel__meta a {
+.veloria-product-carousel__meta a {
   color: inherit;
   text-decoration: none;
 }
 
-.elementrify-product-carousel__desc {
+.veloria-product-carousel__desc {
   margin: 0 0 10px;
   color: #6b7280;
   font-size: 13px;
   line-height: 1.4;
 }
 
-.elementrify-product-carousel__price-row {
+.veloria-product-carousel__price-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.elementrify-product-carousel__price-main {
+.veloria-product-carousel__price-main {
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
   min-width: 0;
 }
 
-.elementrify-product-carousel__price-current {
+.veloria-product-carousel__price-current {
   font-size: 16px;
   font-weight: 800;
   color: #111827;
   line-height: 1;
 }
 
-.elementrify-product-carousel__price-old {
+.veloria-product-carousel__price-old {
   font-size: 14px;
   font-weight: 600;
   color: #9ca3af;
   text-decoration: line-through;
 }
 
-.elementrify-product-carousel__actions {
+.veloria-product-carousel__actions {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -173,7 +173,7 @@
   position: relative;
 }
 
-.elementrify-product-carousel__icon-btn {
+.veloria-product-carousel__icon-btn {
   width: 32px;
   height: 32px;
   border: 1px solid #d1d5db;
@@ -187,12 +187,12 @@
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
-.elementrify-product-carousel__icon-btn i {
+.veloria-product-carousel__icon-btn i {
   font-size: 14px;
   line-height: 1;
 }
 
-.elementrify-product-carousel__icon-btn--cart {
+.veloria-product-carousel__icon-btn--cart {
   color: #fff;
   background: #2563eb;
   border-color: #2563eb;
@@ -200,13 +200,13 @@
   position: relative;
 }
 
-.elementrify-product-carousel__icon-btn--cart.loading i,
-.elementrify-product-carousel__icon-btn--cart.elementrify-product-carousel__cart-btn--pending i {
+.veloria-product-carousel__icon-btn--cart.loading i,
+.veloria-product-carousel__icon-btn--cart.veloria-product-carousel__cart-btn--pending i {
   opacity: 0;
 }
 
-.elementrify-product-carousel__icon-btn--cart.loading::after,
-.elementrify-product-carousel__icon-btn--cart.elementrify-product-carousel__cart-btn--pending::after {
+.veloria-product-carousel__icon-btn--cart.loading::after,
+.veloria-product-carousel__icon-btn--cart.veloria-product-carousel__cart-btn--pending::after {
   content: '';
   position: absolute;
   width: 14px;
@@ -214,31 +214,31 @@
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: #fff;
   border-radius: 50%;
-  animation: elementrify-pc-cart-spin 0.7s linear infinite;
+  animation: veloria-pc-cart-spin 0.7s linear infinite;
   box-sizing: border-box;
 }
 
-.elementrify-product-carousel__icon-btn--cart.is-added-success {
+.veloria-product-carousel__icon-btn--cart.is-added-success {
   background: #16a34a;
   border-color: #16a34a;
   transform: scale(1.05);
 }
 
-.elementrify-product-carousel__icon-btn--cart.is-added-success::after {
+.veloria-product-carousel__icon-btn--cart.is-added-success::after {
   display: none;
 }
 
-@keyframes elementrify-pc-cart-spin {
+@keyframes veloria-pc-cart-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-.elementrify-product-carousel .added_to_cart {
+.veloria-product-carousel .added_to_cart {
   display: none !important;
 }
 
-.elementrify-product-carousel__cart-tooltip {
+.veloria-product-carousel__cart-tooltip {
   position: absolute;
   right: 0;
   bottom: calc(100% + 8px);
@@ -259,7 +259,7 @@
   z-index: 8;
 }
 
-.elementrify-product-carousel__cart-tooltip::after {
+.veloria-product-carousel__cart-tooltip::after {
   content: '';
   position: absolute;
   top: 100%;
@@ -269,18 +269,18 @@
   border-color: #2563eb transparent transparent transparent;
 }
 
-.elementrify-product-carousel__actions.is-cart-tooltip-visible .elementrify-product-carousel__cart-tooltip {
+.veloria-product-carousel__actions.is-cart-tooltip-visible .veloria-product-carousel__cart-tooltip {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.elementrify-product-carousel__cart-tooltip:hover {
+.veloria-product-carousel__cart-tooltip:hover {
   background: #1d4ed8;
   color: #fff;
 }
 
-.elementrify-product-carousel__nav-btn {
+.veloria-product-carousel__nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -299,26 +299,26 @@
   z-index: 6;
 }
 
-.elementrify-product-carousel__nav-btn i {
+.veloria-product-carousel__nav-btn i {
   font-size: 15px;
   font-weight: 400;
   line-height: 1;
 }
 
-.elementrify-product-carousel__nav-btn--prev {
+.veloria-product-carousel__nav-btn--prev {
   left: -18px;
 }
 
-.elementrify-product-carousel__nav-btn--next {
+.veloria-product-carousel__nav-btn--next {
   right: -18px;
 }
 
-.elementrify-product-carousel__dots .swiper-pagination-bullet {
+.veloria-product-carousel__dots .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
 }
 
-.elementrify-product-carousel__dots.swiper-pagination {
+.veloria-product-carousel__dots.swiper-pagination {
   position: relative;
   left: auto;
   right: auto;
@@ -328,25 +328,25 @@
   text-align: center;
 }
 
-.elementrify-product-carousel__placeholder,
-.elementrify-product-carousel__placeholder p {
+.veloria-product-carousel__placeholder,
+.veloria-product-carousel__placeholder p {
   margin: 0;
   color: #6b7280;
   font-size: 14px;
 }
 
 @media (max-width: 767px) {
-  .elementrify-product-carousel__nav-btn {
+  .veloria-product-carousel__nav-btn {
     width: 32px;
     height: 32px;
     font-size: 16px;
   }
 
-  .elementrify-product-carousel__nav-btn--prev {
+  .veloria-product-carousel__nav-btn--prev {
     left: -10px;
   }
 
-  .elementrify-product-carousel__nav-btn--next {
+  .veloria-product-carousel__nav-btn--next {
     right: -10px;
   }
 }

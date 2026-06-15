@@ -1,12 +1,12 @@
 <?php
-namespace Elementrify\Admin\Interfaces;
+namespace Veloria\Admin\Interfaces;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
 /**
  * Widget Interface
  * 
- * @package Elementrify
+ * @package Veloria
  */
 interface WidgetInterface {
     public function get_slug(): string;

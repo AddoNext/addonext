@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 $settings = $this->get_settings_for_display();
-$title    = isset($settings['section_title']) ? $settings['section_title'] : __('Latest Articles', 'elementrify');
+$title    = isset($settings['section_title']) ? $settings['section_title'] : __('Latest Articles', 'veloria');
 $sort_by  = isset($settings['sort_by']) ? $settings['sort_by'] : 'date_desc';
 $post_type = isset($settings['post_type']) ? $settings['post_type'] : 'post';
 $per_page = isset($settings['posts_per_page']) ? (int) $settings['posts_per_page'] : 9;
@@ -56,26 +56,26 @@ if ($post_type === 'post' && !empty($category_ids)) {
 $query = new \WP_Query($args);
 
 $sort_labels = [
-    'date_desc'  => __('Most Recent', 'elementrify'),
-    'date_asc'   => __('Oldest First', 'elementrify'),
-    'title_asc'  => __('Title A–Z', 'elementrify'),
-    'title_desc' => __('Title Z–A', 'elementrify'),
+    'date_desc'  => __('Most Recent', 'veloria'),
+    'date_asc'   => __('Oldest First', 'veloria'),
+    'title_asc'  => __('Title A–Z', 'veloria'),
+    'title_desc' => __('Title Z–A', 'veloria'),
 ];
 $sort_label = isset($sort_labels[$sort_by]) ? $sort_labels[$sort_by] : $sort_labels['date_desc'];
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
+$this->add_render_attribute('wrapper', 'class', 'veloria-smart-post-list');
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <div class="elementrify-smart-post-list__header">
-        <h2 class="elementrify-smart-post-list__title"><?php echo esc_html($title); ?></h2>
-        <select class="elementrify-smart-post-list__sort-select" aria-label="<?php esc_attr_e('Sort by', 'elementrify'); ?>">
+    <div class="veloria-smart-post-list__header">
+        <h2 class="veloria-smart-post-list__title"><?php echo esc_html($title); ?></h2>
+        <select class="veloria-smart-post-list__sort-select" aria-label="<?php esc_attr_e('Sort by', 'veloria'); ?>">
             <?php foreach ($sort_labels as $key => $label) : ?>
                 <option value="<?php echo esc_attr($key); ?>" <?php selected($sort_by, $key); ?>><?php echo esc_html($label); ?></option>
             <?php endforeach; ?>
         </select>
     </div>
 
-    <div class="elementrify-smart-post-list__grid">
+    <div class="veloria-smart-post-list__grid">
         <?php
         if ($query->have_posts()) :
             $index = 0;
@@ -86,42 +86,42 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
                 $first_cat  = !empty($categories) ? $categories[0] : null;
                 $read_mins  = $show_read_time ? max(1, (int) ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200)) : 0;
                 ?>
-                <article class="elementrify-smart-post-list__card">
-                    <a href="<?php the_permalink(); ?>" class="elementrify-smart-post-list__card-link" aria-hidden="true" tabindex="-1"></a>
+                <article class="veloria-smart-post-list__card">
+                    <a href="<?php the_permalink(); ?>" class="veloria-smart-post-list__card-link" aria-hidden="true" tabindex="-1"></a>
                     <?php if ($show_image) : ?>
-                        <div class="elementrify-smart-post-list__image-wrap">
+                        <div class="veloria-smart-post-list__image-wrap">
                             <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('medium_large', ['class' => 'elementrify-smart-post-list__image']); ?>
+                                <?php the_post_thumbnail('medium_large', ['class' => 'veloria-smart-post-list__image']); ?>
                             <?php else : ?>
-                                <div class="elementrify-smart-post-list__image-placeholder"></div>
+                                <div class="veloria-smart-post-list__image-placeholder"></div>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
-                    <div class="elementrify-smart-post-list__card-body">
-                        <div class="elementrify-smart-post-list__meta-top">
+                    <div class="veloria-smart-post-list__card-body">
+                        <div class="veloria-smart-post-list__meta-top">
                             <?php if ($show_category && $first_cat) : ?>
-                                <span class="elementrify-smart-post-list__category"><?php echo esc_html(strtoupper($first_cat->name)); ?></span>
+                                <span class="veloria-smart-post-list__category"><?php echo esc_html(strtoupper($first_cat->name)); ?></span>
                             <?php endif; ?>
                             <?php if ($show_date) : ?>
-                                <span class="elementrify-smart-post-list__meta-date"><?php echo esc_html(human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ' . __('ago', 'elementrify')); ?></span>
+                                <span class="veloria-smart-post-list__meta-date"><?php echo esc_html(human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ' . __('ago', 'veloria')); ?></span>
                             <?php endif; ?>
                         </div>
-                        <h3 class="elementrify-smart-post-list__card-title">
+                        <h3 class="veloria-smart-post-list__card-title">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         </h3>
                         <?php if ($show_excerpt) : ?>
-                            <p class="elementrify-smart-post-list__excerpt"><?php echo esc_html(wp_trim_words(get_the_excerpt(), $excerpt_length)); ?></p>
+                            <p class="veloria-smart-post-list__excerpt"><?php echo esc_html(wp_trim_words(get_the_excerpt(), $excerpt_length)); ?></p>
                         <?php endif; ?>
                         <?php if ($show_author || $show_read_time) : ?>
-                            <div class="elementrify-smart-post-list__footer">
+                            <div class="veloria-smart-post-list__footer">
                                 <?php if ($show_author) : ?>
-                                    <span class="elementrify-smart-post-list__author">
-                                        <?php echo get_avatar(get_the_author_meta('ID'), 32, '', '', ['class' => 'elementrify-smart-post-list__avatar']); ?>
-                                        <span class="elementrify-smart-post-list__author-name"><?php the_author(); ?></span>
+                                    <span class="veloria-smart-post-list__author">
+                                        <?php echo get_avatar(get_the_author_meta('ID'), 32, '', '', ['class' => 'veloria-smart-post-list__avatar']); ?>
+                                        <span class="veloria-smart-post-list__author-name"><?php the_author(); ?></span>
                                     </span>
                                 <?php endif; ?>
                                 <?php if ($show_read_time) : ?>
-                                    <span class="elementrify-smart-post-list__read-time"><?php echo (int) $read_mins; ?> <?php echo esc_html(_n('min read', 'min read', $read_mins, 'elementrify')); ?></span>
+                                    <span class="veloria-smart-post-list__read-time"><?php echo (int) $read_mins; ?> <?php echo esc_html(_n('min read', 'min read', $read_mins, 'veloria')); ?></span>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>
@@ -133,7 +133,7 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
             wp_reset_postdata();
         else :
             ?>
-            <p class="elementrify-smart-post-list__empty"><?php esc_html_e('No posts found.', 'elementrify'); ?></p>
+            <p class="veloria-smart-post-list__empty"><?php esc_html_e('No posts found.', 'veloria'); ?></p>
         <?php endif; ?>
     </div>
 
@@ -141,10 +141,10 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
     if ($show_pagination && $query->have_posts() && $query->max_num_pages > 1) :
         $total = (int) $query->max_num_pages;
         ?>
-        <nav class="elementrify-smart-post-list__pagination" aria-label="<?php esc_attr_e('Posts pagination', 'elementrify'); ?>">
-            <ul class="elementrify-smart-post-list__page-list">
+        <nav class="veloria-smart-post-list__pagination" aria-label="<?php esc_attr_e('Posts pagination', 'veloria'); ?>">
+            <ul class="veloria-smart-post-list__page-list">
                 <?php if ($paged > 1) : ?>
-                    <li class="elementrify-smart-post-list__page-prev"><a href="<?php echo esc_url($paged === 2 ? get_pagenum_link(1) : get_pagenum_link($paged - 1)); ?>">&laquo;</a></li>
+                    <li class="veloria-smart-post-list__page-prev"><a href="<?php echo esc_url($paged === 2 ? get_pagenum_link(1) : get_pagenum_link($paged - 1)); ?>">&laquo;</a></li>
                 <?php endif; ?>
                 <?php
                 $show_ellipsis_before = false;
@@ -153,11 +153,11 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
                     if ($total > 7) {
                         if ($i > 3 && $i < $total - 2 && abs($i - $paged) > 1) {
                             if ($i < $paged && !$show_ellipsis_before) {
-                                echo '<li><span class="elementrify-smart-post-list__page-ellipsis">…</span></li>';
+                                echo '<li><span class="veloria-smart-post-list__page-ellipsis">…</span></li>';
                                 $show_ellipsis_before = true;
                             }
                             if ($i > $paged && !$show_ellipsis_after) {
-                                echo '<li><span class="elementrify-smart-post-list__page-ellipsis">…</span></li>';
+                                echo '<li><span class="veloria-smart-post-list__page-ellipsis">…</span></li>';
                                 $show_ellipsis_after = true;
                             }
                             continue;
@@ -167,11 +167,11 @@ $this->add_render_attribute('wrapper', 'class', 'elementrify-smart-post-list');
                     $url = $i === 1 ? get_pagenum_link(1) : get_pagenum_link($i);
                     ?>
                     <li>
-                        <a class="elementrify-smart-post-list__page-link <?php echo $active ? 'is-active' : ''; ?>" href="<?php echo esc_url($url); ?>"><?php echo (int) $i; ?></a>
+                        <a class="veloria-smart-post-list__page-link <?php echo $active ? 'is-active' : ''; ?>" href="<?php echo esc_url($url); ?>"><?php echo (int) $i; ?></a>
                     </li>
                 <?php endfor; ?>
                 <?php if ($paged < $total) : ?>
-                    <li class="elementrify-smart-post-list__page-next"><a href="<?php echo esc_url(get_pagenum_link($paged + 1)); ?>">&raquo;</a></li>
+                    <li class="veloria-smart-post-list__page-next"><a href="<?php echo esc_url(get_pagenum_link($paged + 1)); ?>">&raquo;</a></li>
                 <?php endif; ?>
             </ul>
         </nav>

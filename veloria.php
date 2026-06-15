@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Elementrify
+ * Plugin Name: Veloria
  * Plugin URI: https://elementrify.com/
  * Description: A collection of Elementor page builder widgets and extensions for WordPress. Including a 360 image viewer, a 3D model viewer, a PDF viewer, a map widget and a more advanced version of the Elementor's Accordion widget.
  * Version: 1.0.0
  * Author: Elementrify
- * Text Domain: elementrify
+ * Text Domain: veloria
  * Domain Path: /languages
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,18 +16,18 @@
 
 defined('ABSPATH') || exit;
 
-use Elementrify\Common\WidgetManager;
-use Elementrify\Admin\AdminController;
-use Elementrify\Admin\WidgetController;
-use Elementrify\Utils\AssetPerformance;
-use Elementrify\Utils\DebugModeManager;
-use Elementrify\Admin\LicenseController;
-use Elementrify\Common\ExtensionManager;
-use Elementrify\Admin\SettingsController;
-use Elementrify\Admin\MigrationController;
-use Elementrify\Common\GlobalCustomAssets;
-use Elementrify\Admin\ExtensionsController;
-use Elementrify\Admin\WidgetsAssetController;
+use Veloria\Common\WidgetManager;
+use Veloria\Admin\AdminController;
+use Veloria\Admin\WidgetController;
+use Veloria\Utils\AssetPerformance;
+use Veloria\Utils\DebugModeManager;
+use Veloria\Admin\LicenseController;
+use Veloria\Common\ExtensionManager;
+use Veloria\Admin\SettingsController;
+use Veloria\Admin\MigrationController;
+use Veloria\Common\GlobalCustomAssets;
+use Veloria\Admin\ExtensionsController;
+use Veloria\Admin\WidgetsAssetController;
 
 require_once 'vendor/autoload.php';
 
@@ -48,7 +48,7 @@ if (!function_exists('emt_fs')) {
 
             $emt_fs = fs_dynamic_init([
                 'id'                  => '19063',
-                'slug'                => 'elementrify',
+                'slug'                => 'veloria',
                 'premium_slug'        => 'dragnext-premium',
                 'type'                => 'plugin',
                 'public_key'          => 'pk_213c59173633a027d6e134676b4ba',
@@ -67,8 +67,8 @@ if (!function_exists('emt_fs')) {
                     'is_require_payment' => true
                 ],
                 'menu'                => [
-                    'slug'       => 'elementrify',
-                    'first-path' => 'admin.php?page=elementrify&tab=setup-wizard'
+                    'slug'       => 'veloria',
+                    'first-path' => 'admin.php?page=veloria&tab=setup-wizard'
                 ]
             ]);
         }
@@ -82,7 +82,7 @@ if (!function_exists('emt_fs')) {
     do_action('emt_fs_loaded');
 }
 
-class Elementrify
+class Veloria
 {
     public function __construct()
     {
@@ -92,23 +92,23 @@ class Elementrify
 
     public function define_constants(): void
     {
-        if (!defined('ELEMENTRIFY_VERSION')) {
-            define('ELEMENTRIFY_VERSION', '1.0.0');
+        if (!defined('VELORIA_VERSION')) {
+            define('VELORIA_VERSION', '1.0.0');
         }
-        if (!defined('ELEMENTRIFY_DIR')) {
-            define('ELEMENTRIFY_DIR', plugin_dir_path(__FILE__));
+        if (!defined('VELORIA_DIR')) {
+            define('VELORIA_DIR', plugin_dir_path(__FILE__));
         }
-        if (!defined('ELEMENTRIFY_URL')) {
-            define('ELEMENTRIFY_URL', plugin_dir_url(__FILE__));
+        if (!defined('VELORIA_URL')) {
+            define('VELORIA_URL', plugin_dir_url(__FILE__));
         }
-        if (!defined('ELEMENTRIFY_FILE')) {
-            define('ELEMENTRIFY_FILE', __FILE__);
+        if (!defined('VELORIA_FILE')) {
+            define('VELORIA_FILE', __FILE__);
         }
-        if (!defined('ELEMENTRIFY_BASENAME')) {
-            define('ELEMENTRIFY_BASENAME', plugin_basename(__FILE__));
+        if (!defined('VELORIA_BASENAME')) {
+            define('VELORIA_BASENAME', plugin_basename(__FILE__));
         }
-        if (!defined('ELEMENTRIFY')) {
-            define('ELEMENTRIFY', 'elementrify');
+        if (!defined('VELORIA')) {
+            define('VELORIA', 'veloria');
         }
     }
 
@@ -117,7 +117,7 @@ class Elementrify
         static $instance = null;
 
         if (null === $instance) {
-            $instance = new Elementrify();
+            $instance = new Veloria();
         }
 
         return $instance;
@@ -145,4 +145,4 @@ class Elementrify
     }
 }
 
-Elementrify::init();
+Veloria::init();

@@ -4,14 +4,14 @@ defined('ABSPATH') || exit;
 $settings = $this->get_settings_for_display();
 $tag      = ! empty($settings['html_tag']) ? $settings['html_tag'] : 'h2';
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-advanced-heading');
-$this->add_render_attribute('title_wrapper', 'class', 'elementrify-advanced-heading__title');
-$this->add_render_attribute('title', 'class', 'elementrify-advanced-heading__text');
-$this->add_render_attribute('subtitle', 'class', 'elementrify-advanced-heading__subtitle');
+$this->add_render_attribute('wrapper', 'class', 'veloria-advanced-heading');
+$this->add_render_attribute('title_wrapper', 'class', 'veloria-advanced-heading__title');
+$this->add_render_attribute('title', 'class', 'veloria-advanced-heading__text');
+$this->add_render_attribute('subtitle', 'class', 'veloria-advanced-heading__subtitle');
 
 $show_subtitle = ! empty($settings['show_subtitle']) && $settings['show_subtitle'] === 'yes' && ! empty($settings['subtitle']);
 
-$this->add_render_attribute('title_gradient', 'class', 'elementrify-advanced-heading__gradient');
+$this->add_render_attribute('title_gradient', 'class', 'veloria-advanced-heading__gradient');
 $this->add_inline_editing_attributes('title', 'none');
 $this->add_inline_editing_attributes('title_gradient', 'none');
 $this->add_inline_editing_attributes('subtitle', 'none');

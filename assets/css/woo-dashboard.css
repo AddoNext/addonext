@@ -1,32 +1,32 @@
-.elementrify-woo-dashboard {
+.veloria-woo-dashboard {
   width: 100%;
   font-family: inherit;
 }
 
-.elementrify-woo-dashboard__layout {
+.veloria-woo-dashboard__layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 22px;
 }
 
-.elementrify-woo-dashboard__layout--no-sidebar {
+.veloria-woo-dashboard__layout--no-sidebar {
   grid-template-columns: 1fr;
 }
 
 @media (max-width: 1024px) {
-  .elementrify-woo-dashboard__layout {
+  .veloria-woo-dashboard__layout {
     grid-template-columns: 1fr;
   }
 }
 
-.elementrify-woo-dashboard__sidebar {
+.veloria-woo-dashboard__sidebar {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 18px;
 }
 
-.elementrify-woo-dashboard__profile {
+.veloria-woo-dashboard__profile {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -35,7 +35,7 @@
   margin-bottom: 12px;
 }
 
-.elementrify-woo-dashboard__avatar {
+.veloria-woo-dashboard__avatar {
   width: 56px;
   height: 56px;
   border-radius: 999px;
@@ -44,32 +44,32 @@
   flex: 0 0 auto;
 }
 
-.elementrify-woo-dashboard__avatar img {
+.veloria-woo-dashboard__avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.elementrify-woo-dashboard__name {
+.veloria-woo-dashboard__name {
   font-size: 16px;
   line-height: 1.2;
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__badge {
+.veloria-woo-dashboard__badge {
   margin-top: 4px;
   font-size: 12px;
   color: #64748b;
 }
 
-.elementrify-woo-dashboard__nav {
+.veloria-woo-dashboard__nav {
   display: grid;
   gap: 6px;
 }
 
-.elementrify-woo-dashboard__nav-item {
+.veloria-woo-dashboard__nav-item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -92,82 +92,82 @@
   appearance: none;
 }
 
-.elementrify-woo-dashboard__nav-item i {
+.veloria-woo-dashboard__nav-item i {
   width: 18px;
   text-align: center;
   color: #64748b;
 }
 
-.elementrify-woo-dashboard__nav-item.is-active,
-.elementrify-woo-dashboard__nav-item:hover {
+.veloria-woo-dashboard__nav-item.is-active,
+.veloria-woo-dashboard__nav-item:hover {
   background: #eef2ff;
   color: #1d4ed8;
 }
 
-.elementrify-woo-dashboard__nav-item.is-active i,
-.elementrify-woo-dashboard__nav-item:hover i {
+.veloria-woo-dashboard__nav-item.is-active i,
+.veloria-woo-dashboard__nav-item:hover i {
   color: #1d4ed8;
 }
 
-.elementrify-woo-dashboard__nav-item--logout {
+.veloria-woo-dashboard__nav-item--logout {
   margin-top: 6px;
   padding-top: 10px;
   border-top: 1px solid #eef2f7;
 }
 
-.elementrify-woo-dashboard__nav-item--logout:hover,
-.elementrify-woo-dashboard__nav-item--logout.is-active {
+.veloria-woo-dashboard__nav-item--logout:hover,
+.veloria-woo-dashboard__nav-item--logout.is-active {
   background: #fef2f2;
   color: #b91c1c;
 }
 
-.elementrify-woo-dashboard__nav-item--logout:hover i,
-.elementrify-woo-dashboard__nav-item--logout.is-active i {
+.veloria-woo-dashboard__nav-item--logout:hover i,
+.veloria-woo-dashboard__nav-item--logout.is-active i {
   color: #b91c1c;
 }
 
-.elementrify-woo-dashboard__panels {
+.veloria-woo-dashboard__panels {
   min-width: 0;
 }
 
-.elementrify-woo-dashboard__panel[hidden] {
+.veloria-woo-dashboard__panel[hidden] {
   display: none !important;
 }
 
-.elementrify-woo-dashboard__screen {
+.veloria-woo-dashboard__screen {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 16px;
 }
 
-.elementrify-woo-dashboard__screen-title {
+.veloria-woo-dashboard__screen-title {
   margin: 0 0 14px;
   font-size: 15px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__screen-body--wishlist .woocommerce {
+.veloria-woo-dashboard__screen-body--wishlist .woocommerce {
   margin: 0;
 }
 
-.elementrify-woo-dashboard__screen--woo-form .woocommerce {
+.veloria-woo-dashboard__screen--woo-form .woocommerce {
   margin: 0;
 }
 
-.elementrify-woo-dashboard__screen--woo-form .woocommerce-Addresses,
-.elementrify-woo-dashboard__screen--woo-form .woocommerce-Address {
+.veloria-woo-dashboard__screen--woo-form .woocommerce-Addresses,
+.veloria-woo-dashboard__screen--woo-form .woocommerce-Address {
   margin: 0;
 }
 
-.elementrify-woo-dashboard__screen--woo-form .woocommerce-EditAccountForm input.input-text,
-.elementrify-woo-dashboard__screen--woo-form .woocommerce-address-fields input.input-text,
-.elementrify-woo-dashboard__screen--woo-form .woocommerce-address-fields select {
+.veloria-woo-dashboard__screen--woo-form .woocommerce-EditAccountForm input.input-text,
+.veloria-woo-dashboard__screen--woo-form .woocommerce-address-fields input.input-text,
+.veloria-woo-dashboard__screen--woo-form .woocommerce-address-fields select {
   max-width: 100%;
 }
 
-.elementrify-woo-dashboard__card-link--btn {
+.veloria-woo-dashboard__card-link--btn {
   border: 0;
   background: none;
   padding: 0;
@@ -180,7 +180,7 @@
   text-underline-offset: 2px;
 }
 
-.elementrify-woo-dashboard__action {
+.veloria-woo-dashboard__action {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 16px 12px;
@@ -195,7 +195,7 @@
   appearance: none;
 }
 
-.elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action {
+.veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -205,19 +205,19 @@
   min-width: 0;
 }
 
-.elementrify-woo-dashboard__main {
+.veloria-woo-dashboard__main {
   min-width: 0;
 }
 
-body.elementrify-wd-modal-open {
+body.veloria-wd-modal-open {
   overflow: hidden;
 }
 
-.elementrify-woo-dashboard__modal[hidden] {
+.veloria-woo-dashboard__modal[hidden] {
   display: none !important;
 }
 
-.elementrify-woo-dashboard__modal {
+.veloria-woo-dashboard__modal {
   position: fixed;
   inset: 0;
   z-index: 100000;
@@ -227,7 +227,7 @@ body.elementrify-wd-modal-open {
   padding: 18px;
 }
 
-.elementrify-woo-dashboard__modal-backdrop {
+.veloria-woo-dashboard__modal-backdrop {
   position: absolute;
   inset: 0;
   border: 0;
@@ -237,7 +237,7 @@ body.elementrify-wd-modal-open {
   cursor: pointer;
 }
 
-.elementrify-woo-dashboard__modal-dialog {
+.veloria-woo-dashboard__modal-dialog {
   position: relative;
   z-index: 1;
   width: min(420px, 100%);
@@ -248,28 +248,28 @@ body.elementrify-wd-modal-open {
   box-shadow: 0 18px 50px rgba(15, 23, 42, .18);
 }
 
-.elementrify-woo-dashboard__modal-title {
+.veloria-woo-dashboard__modal-title {
   margin: 0 0 8px;
   font-size: 16px;
   font-weight: 800;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__modal-text {
+.veloria-woo-dashboard__modal-text {
   margin: 0 0 16px;
   font-size: 14px;
   line-height: 1.5;
   color: #64748b;
 }
 
-.elementrify-woo-dashboard__modal-actions {
+.veloria-woo-dashboard__modal-actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.elementrify-woo-dashboard__modal-btn {
+.veloria-woo-dashboard__modal-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -283,23 +283,23 @@ body.elementrify-wd-modal-open {
   font-family: inherit;
 }
 
-.elementrify-woo-dashboard__modal-btn--ghost {
+.veloria-woo-dashboard__modal-btn--ghost {
   background: #f8fafc;
   border-color: #e5e7eb;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__modal-btn--danger {
+.veloria-woo-dashboard__modal-btn--danger {
   background: #dc2626;
   color: #fff;
 }
 
-.elementrify-woo-dashboard__modal-btn--danger:hover {
+.veloria-woo-dashboard__modal-btn--danger:hover {
   background: #b91c1c;
   color: #fff;
 }
 
-.elementrify-woo-dashboard__stats {
+.veloria-woo-dashboard__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
@@ -307,16 +307,16 @@ body.elementrify-wd-modal-open {
 }
 
 @media (max-width: 767px) {
-  .elementrify-woo-dashboard__stats {
+  .veloria-woo-dashboard__stats {
     grid-template-columns: 1fr;
   }
 
-  .elementrify-woo-dashboard__stat-value {
+  .veloria-woo-dashboard__stat-value {
     font-size: 20px;
   }
 }
 
-.elementrify-woo-dashboard__stat {
+.veloria-woo-dashboard__stat {
   position: relative;
   border-radius: 14px;
   padding: 16px 16px 18px;
@@ -325,31 +325,31 @@ body.elementrify-wd-modal-open {
   border: 1px solid rgba(255, 255, 255, .12);
 }
 
-.elementrify-woo-dashboard__stat--orders {
+.veloria-woo-dashboard__stat--orders {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
-.elementrify-woo-dashboard__stat--spent {
+.veloria-woo-dashboard__stat--spent {
   background: linear-gradient(135deg, #22c55e, #16a34a);
 }
 
-.elementrify-woo-dashboard__stat--wishlist {
+.veloria-woo-dashboard__stat--wishlist {
   background: linear-gradient(135deg, #a855f7, #7c3aed);
 }
 
-.elementrify-woo-dashboard__stat-label {
+.veloria-woo-dashboard__stat-label {
   font-size: 13px;
   opacity: .9;
 }
 
-.elementrify-woo-dashboard__stat-value {
+.veloria-woo-dashboard__stat-value {
   margin-top: 6px;
   font-size: 22px;
   font-weight: 800;
   letter-spacing: .2px;
 }
 
-.elementrify-woo-dashboard__stat-icon {
+.veloria-woo-dashboard__stat-icon {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -361,43 +361,43 @@ body.elementrify-wd-modal-open {
   justify-content: center;
 }
 
-.elementrify-woo-dashboard__stat-icon i {
+.veloria-woo-dashboard__stat-icon i {
   font-size: inherit;
   line-height: 1;
 }
 
-.elementrify-woo-dashboard__stat-icon svg {
+.veloria-woo-dashboard__stat-icon svg {
   width: 1em;
   height: 1em;
   display: block;
   fill: currentColor;
 }
 
-.elementrify-woo-dashboard__cards {
+.veloria-woo-dashboard__cards {
   display: grid;
   grid-template-columns: 1.2fr .8fr;
   gap: 18px;
 }
 
 @media (max-width: 1024px) {
-  .elementrify-woo-dashboard__cards {
+  .veloria-woo-dashboard__cards {
     grid-template-columns: 1fr;
   }
 }
 
-.elementrify-woo-dashboard__cards--quick-only,
-.elementrify-woo-dashboard__cards--recent-only {
+.veloria-woo-dashboard__cards--quick-only,
+.veloria-woo-dashboard__cards--recent-only {
   grid-template-columns: 1fr;
 }
 
-.elementrify-woo-dashboard__card {
+.veloria-woo-dashboard__card {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 16px;
 }
 
-.elementrify-woo-dashboard__card-header {
+.veloria-woo-dashboard__card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -405,24 +405,24 @@ body.elementrify-wd-modal-open {
   margin-bottom: 10px;
 }
 
-.elementrify-woo-dashboard__card-title {
+.veloria-woo-dashboard__card-title {
   font-size: 15px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__card-link {
+.veloria-woo-dashboard__card-link {
   font-size: 13px;
   text-decoration: none;
   color: #2563eb;
 }
 
-.elementrify-woo-dashboard__order-list {
+.veloria-woo-dashboard__order-list {
   display: grid;
   gap: 10px;
 }
 
-.elementrify-woo-dashboard__order-row {
+.veloria-woo-dashboard__order-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -432,27 +432,27 @@ body.elementrify-wd-modal-open {
   background: #f8fafc;
 }
 
-.elementrify-woo-dashboard__order-number {
+.veloria-woo-dashboard__order-number {
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__order-date {
+.veloria-woo-dashboard__order-date {
   margin-top: 2px;
   font-size: 12px;
   color: #64748b;
 }
 
-.elementrify-woo-dashboard__order-right {
+.veloria-woo-dashboard__order-right {
   text-align: right;
 }
 
-.elementrify-woo-dashboard__order-total {
+.veloria-woo-dashboard__order-total {
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__order-status {
+.veloria-woo-dashboard__order-status {
   margin-top: 4px;
   display: inline-flex;
   align-items: center;
@@ -464,33 +464,33 @@ body.elementrify-wd-modal-open {
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__order-status.wc-completed {
+.veloria-woo-dashboard__order-status.wc-completed {
   background: #dcfce7;
   color: #166534;
 }
 
-.elementrify-woo-dashboard__order-status.wc-processing {
+.veloria-woo-dashboard__order-status.wc-processing {
   background: #dbeafe;
   color: #1d4ed8;
 }
 
-.elementrify-woo-dashboard__order-status.wc-on-hold {
+.veloria-woo-dashboard__order-status.wc-on-hold {
   background: #fef9c3;
   color: #854d0e;
 }
 
-.elementrify-woo-dashboard__actions {
+.veloria-woo-dashboard__actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
-.elementrify-woo-dashboard__action:hover {
+.veloria-woo-dashboard__action:hover {
   box-shadow: 0 8px 22px rgba(15, 23, 42, .08);
   transform: translateY(-1px);
 }
 
-.elementrify-woo-dashboard__action-icon {
+.veloria-woo-dashboard__action-icon {
   display: inline-flex;
   width: 44px;
   height: 44px;
@@ -504,7 +504,7 @@ body.elementrify-wd-modal-open {
   box-sizing: border-box;
 }
 
-.elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-icon {
+.veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon {
   width: auto;
   height: auto;
   min-width: 0;
@@ -520,31 +520,31 @@ body.elementrify-wd-modal-open {
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-icon i {
+.veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon i {
   font-size: 1em;
   line-height: 1;
   color: currentColor;
 }
 
-.elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-icon svg {
+.veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon svg {
   width: 1em;
   height: 1em;
   display: block;
   flex-shrink: 0;
 }
 
-.elementrify-woo-dashboard__card--quick-actions .elementrify-woo-dashboard__action-icon svg path {
+.veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon svg path {
   fill: currentColor;
 }
 
-.elementrify-woo-dashboard__action-label {
+.veloria-woo-dashboard__action-label {
   display: block;
   font-size: 14px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-woo-dashboard__notice {
+.veloria-woo-dashboard__notice {
   background: #fff;
   border: 1px dashed #cbd5e1;
   border-radius: 14px;
@@ -556,7 +556,7 @@ body.elementrify-wd-modal-open {
   gap: 12px;
 }
 
-.elementrify-woo-dashboard__notice-btn {
+.veloria-woo-dashboard__notice-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -568,22 +568,22 @@ body.elementrify-wd-modal-open {
   font-weight: 700;
 }
 
-.elementrify-woo-dashboard__notice-btn:hover {
+.veloria-woo-dashboard__notice-btn:hover {
   background: #1d4ed8;
   color: #fff;
 }
 
-.elementrify-woo-dashboard__empty {
+.veloria-woo-dashboard__empty {
   padding: 12px;
   color: #64748b;
   font-size: 14px;
 }
 
-.elementrify-wd-account__form {
+.veloria-wd-account__form {
   margin: 0;
 }
 
-.elementrify-wd-account__message {
+.veloria-wd-account__message {
   margin: 12px 0 0;
   padding: 10px 12px;
   border-radius: 10px;
@@ -594,19 +594,19 @@ body.elementrify-wd-modal-open {
   background: #f8fafc;
 }
 
-.elementrify-wd-account__message.is-success {
+.veloria-wd-account__message.is-success {
   border-color: #bbf7d0;
   background: #f0fdf4;
   color: #166534;
 }
 
-.elementrify-wd-account__message.is-error {
+.veloria-wd-account__message.is-error {
   border-color: #fecaca;
   background: #fef2f2;
   color: #991b1b;
 }
 
-.elementrify-wd-account__row {
+.veloria-wd-account__row {
   display: grid;
   grid-template-columns: minmax(120px, 200px) minmax(0, 1fr);
   gap: 12px 18px;
@@ -615,32 +615,32 @@ body.elementrify-wd-modal-open {
 }
 
 @media (max-width: 640px) {
-  .elementrify-wd-account__row {
+  .veloria-wd-account__row {
     grid-template-columns: 1fr;
   }
 }
 
-.elementrify-wd-account__row--wide .elementrify-wd-account__field {
+.veloria-wd-account__row--wide .veloria-wd-account__field {
   max-width: 100%;
 }
 
-.elementrify-wd-account__label {
+.veloria-wd-account__label {
   font-size: 13px;
   font-weight: 600;
   color: #0f172a;
   padding-top: 10px;
 }
 
-.elementrify-wd-account__required {
+.veloria-wd-account__required {
   color: #dc2626;
   margin-left: 2px;
 }
 
-.elementrify-wd-account__field {
+.veloria-wd-account__field {
   min-width: 0;
 }
 
-.elementrify-wd-account__input {
+.veloria-wd-account__input {
   width: 100%;
   max-width: 420px;
   box-sizing: border-box;
@@ -653,13 +653,13 @@ body.elementrify-wd-modal-open {
   background: #fff;
 }
 
-.elementrify-wd-account__input:focus {
+.veloria-wd-account__input:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
 }
 
-.elementrify-wd-account__hint {
+.veloria-wd-account__hint {
   margin: 8px 0 0;
   font-size: 12px;
   line-height: 1.45;
@@ -667,25 +667,25 @@ body.elementrify-wd-modal-open {
   color: #64748b;
 }
 
-.elementrify-wd-account__fieldset {
+.veloria-wd-account__fieldset {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 18px 14px 14px;
   margin: 22px 0 0;
 }
 
-.elementrify-wd-account__legend {
+.veloria-wd-account__legend {
   padding: 0 8px;
   font-size: 13px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-wd-account__actions {
+.veloria-wd-account__actions {
   margin-top: 18px;
 }
 
-.elementrify-wd-account__submit {
+.veloria-wd-account__submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -701,34 +701,34 @@ body.elementrify-wd-modal-open {
   transition: opacity .15s ease, transform .15s ease;
 }
 
-.elementrify-wd-account__submit:hover {
+.veloria-wd-account__submit:hover {
   opacity: .92;
 }
 
-.elementrify-wd-account__submit:disabled,
-.elementrify-wd-account__submit.is-loading {
+.veloria-wd-account__submit:disabled,
+.veloria-wd-account__submit.is-loading {
   opacity: .65;
   cursor: not-allowed;
 }
 
-.elementrify-wd-addresses-screen {
+.veloria-wd-addresses-screen {
   min-width: 0;
 }
 
-.elementrify-wd-addresses__intro {
+.veloria-wd-addresses__intro {
   margin: 0 0 16px;
   font-size: 14px;
   line-height: 1.5;
   color: #64748b;
 }
 
-.elementrify-wd-addresses__grid {
+.veloria-wd-addresses__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
 }
 
-.elementrify-wd-addresses__card {
+.veloria-wd-addresses__card {
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -738,14 +738,14 @@ body.elementrify-wd-modal-open {
   min-height: 100%;
 }
 
-.elementrify-wd-addresses__card-head {
+.veloria-wd-addresses__card-head {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.elementrify-wd-addresses__icon {
+.veloria-wd-addresses__icon {
   display: inline-flex;
   width: 40px;
   height: 40px;
@@ -758,12 +758,12 @@ body.elementrify-wd-modal-open {
   flex-shrink: 0;
 }
 
-.elementrify-wd-addresses__card:nth-child(2) .elementrify-wd-addresses__icon {
+.veloria-wd-addresses__card:nth-child(2) .veloria-wd-addresses__icon {
   background: #ecfdf5;
   color: #16a34a;
 }
 
-.elementrify-wd-addresses__card-title {
+.veloria-wd-addresses__card-title {
   margin: 0;
   font-size: 15px;
   font-weight: 700;
@@ -771,23 +771,23 @@ body.elementrify-wd-modal-open {
   color: #0f172a;
 }
 
-.elementrify-wd-addresses__body {
+.veloria-wd-addresses__body {
   flex: 1;
   min-height: 0;
 }
 
-.elementrify-wd-addresses__text {
+.veloria-wd-addresses__text {
   font-size: 14px;
   line-height: 1.55;
   color: #334155;
 }
 
-.elementrify-wd-addresses__text address {
+.veloria-wd-addresses__text address {
   margin: 0;
   font-style: normal;
 }
 
-.elementrify-wd-addresses__empty {
+.veloria-wd-addresses__empty {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
@@ -795,13 +795,13 @@ body.elementrify-wd-modal-open {
   color: #94a3b8;
 }
 
-.elementrify-wd-addresses__card-foot {
+.veloria-wd-addresses__card-foot {
   margin-top: 14px;
   padding-top: 14px;
   border-top: 1px solid #eef2f7;
 }
 
-.elementrify-wd-addresses__btn {
+.veloria-wd-addresses__btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -816,26 +816,26 @@ body.elementrify-wd-modal-open {
   transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
-.elementrify-wd-addresses__btn:hover {
+.veloria-wd-addresses__btn:hover {
   background: #eef2ff;
   border-color: #c7d2fe;
   color: #1e40af;
   box-shadow: 0 4px 12px rgba(37, 99, 235, .1);
 }
 
-.elementrify-wd-addresses__btn i {
+.veloria-wd-addresses__btn i {
   font-size: 12px;
   opacity: .9;
 }
 
-button.elementrify-wd-addresses__btn {
+button.veloria-wd-addresses__btn {
   font: inherit;
   cursor: pointer;
   width: 100%;
   justify-content: center;
 }
 
-.elementrify-wd-addresses__flash {
+.veloria-wd-addresses__flash {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-radius: 10px;
@@ -846,11 +846,11 @@ button.elementrify-wd-addresses__btn {
   border: 1px solid #bbf7d0;
 }
 
-.elementrify-wd-addresses__editor {
+.veloria-wd-addresses__editor {
   margin-top: 4px;
 }
 
-.elementrify-wd-addresses__form-message {
+.veloria-wd-addresses__form-message {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-radius: 10px;
@@ -860,30 +860,30 @@ button.elementrify-wd-addresses__btn {
   background: #f8fafc;
 }
 
-.elementrify-wd-addresses__form-message.is-success {
+.veloria-wd-addresses__form-message.is-success {
   border-color: #bbf7d0;
   background: #f0fdf4;
   color: #166534;
 }
 
-.elementrify-wd-addresses__form-message.is-error {
+.veloria-wd-addresses__form-message.is-error {
   border-color: #fecaca;
   background: #fef2f2;
   color: #991b1b;
 }
 
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields h2 {
+.veloria-wd-addresses__wc-form .woocommerce-address-fields h2 {
   margin: 0 0 12px;
   font-size: 15px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields .form-row {
+.veloria-wd-addresses__wc-form .woocommerce-address-fields .form-row {
   margin: 0 0 12px;
 }
 
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields label {
+.veloria-wd-addresses__wc-form .woocommerce-address-fields label {
   display: block;
   margin-bottom: 4px;
   font-size: 13px;
@@ -891,8 +891,8 @@ button.elementrify-wd-addresses__btn {
   color: #334155;
 }
 
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields input.input-text,
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields select {
+.veloria-wd-addresses__wc-form .woocommerce-address-fields input.input-text,
+.veloria-wd-addresses__wc-form .woocommerce-address-fields select {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -905,15 +905,15 @@ button.elementrify-wd-addresses__btn {
   background: #fff;
 }
 
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields input.input-text:focus,
-.elementrify-wd-addresses__wc-form .woocommerce-address-fields select:focus {
+.veloria-wd-addresses__wc-form .woocommerce-address-fields input.input-text:focus,
+.veloria-wd-addresses__wc-form .woocommerce-address-fields select:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
 }
 
-.elementrify-wd-addresses__wc-form button[type="submit"],
-.elementrify-wd-addresses__wc-form .button {
+.veloria-wd-addresses__wc-form button[type="submit"],
+.veloria-wd-addresses__wc-form .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -929,20 +929,20 @@ button.elementrify-wd-addresses__btn {
   transition: opacity .15s ease;
 }
 
-.elementrify-wd-addresses__wc-form button[type="submit"]:disabled,
-.elementrify-wd-addresses__wc-form button[type="submit"].is-loading {
+.veloria-wd-addresses__wc-form button[type="submit"]:disabled,
+.veloria-wd-addresses__wc-form button[type="submit"].is-loading {
   opacity: .65;
   cursor: not-allowed;
 }
 
-.elementrify-wd-addresses__editor-actions {
+.veloria-wd-addresses__editor-actions {
   display: flex;
   justify-content: flex-start;
   margin-top: 12px;
   padding-top: 4px;
 }
 
-.elementrify-wd-addresses__cancel-edit {
+.veloria-wd-addresses__cancel-edit {
   padding: 10px 16px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
@@ -954,7 +954,7 @@ button.elementrify-wd-addresses__btn {
   cursor: pointer;
 }
 
-.elementrify-wd-addresses__cancel-edit:hover {
+.veloria-wd-addresses__cancel-edit:hover {
   background: #f8fafc;
   color: #0f172a;
 }

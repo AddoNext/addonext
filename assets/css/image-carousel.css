@@ -1,35 +1,35 @@
-.elementrify-image-carousel {
+.veloria-image-carousel {
     position: relative;
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    height: var(--elementrify-carousel-height, auto);
+    height: var(--veloria-carousel-height, auto);
     --swiper-pagination-bullet-inactive-color: rgba(0, 0, 0, 0.45);
     --swiper-pagination-bullet-inactive-opacity: 0.7;
     --swiper-pagination-bullet-size: 10px;
 }
 
-.elementrify-image-carousel__wrapper,
-.elementrify-image-carousel .swiper-wrapper {
-    height: var(--elementrify-carousel-height, auto);
+.veloria-image-carousel__wrapper,
+.veloria-image-carousel .swiper-wrapper {
+    height: var(--veloria-carousel-height, auto);
 }
 
-.elementrify-image-carousel[style*="--elementrify-carousel-height"] .swiper-wrapper {
+.veloria-image-carousel[style*="--veloria-carousel-height"] .swiper-wrapper {
     height: 100%;
 }
 
-.elementrify-image-carousel__slide,
-.elementrify-image-carousel .swiper-slide {
-    height: var(--elementrify-carousel-height, auto);
+.veloria-image-carousel__slide,
+.veloria-image-carousel .swiper-slide {
+    height: var(--veloria-carousel-height, auto);
     box-sizing: border-box;
 }
 
-.elementrify-image-carousel[style*="--elementrify-carousel-height"] .swiper-slide {
+.veloria-image-carousel[style*="--veloria-carousel-height"] .swiper-slide {
     height: 100%;
 }
 
-.elementrify-image-carousel__slide img,
-.elementrify-image-carousel .swiper-slide img {
+.veloria-image-carousel__slide img,
+.veloria-image-carousel .swiper-slide img {
     display: block;
     width: 100%;
     height: auto;
@@ -38,12 +38,12 @@
     border-radius: inherit;
 }
 
-.elementrify-image-carousel[style*="--elementrify-carousel-height"] .swiper-slide img {
+.veloria-image-carousel[style*="--veloria-carousel-height"] .swiper-slide img {
     height: 100%;
     object-fit: cover;
 }
 
-.elementrify-image-carousel__arrow {
+.veloria-image-carousel__arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -61,36 +61,36 @@
     transition: opacity 0.2s, box-shadow 0.2s;
 }
 
-.elementrify-image-carousel__arrow::after {
+.veloria-image-carousel__arrow::after {
     content: none !important;
 }
 
-.elementrify-image-carousel__arrow:hover {
+.veloria-image-carousel__arrow:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.elementrify-image-carousel__arrow--prev {
+.veloria-image-carousel__arrow--prev {
     left: 12px;
 }
 
-.elementrify-image-carousel__arrow--next {
+.veloria-image-carousel__arrow--next {
     right: 12px;
 }
 
-.elementrify-image-carousel__arrow svg {
+.veloria-image-carousel__arrow svg {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
 }
 
-.elementrify-image-carousel .swiper-button-disabled {
+.veloria-image-carousel .swiper-button-disabled {
     opacity: 0.35;
     cursor: default;
 }
 
-.elementrify-image-carousel .swiper-pagination,
-.elementrify-image-carousel .swiper-pagination-bullets,
-.elementrify-image-carousel .swiper-pagination-horizontal {
+.veloria-image-carousel .swiper-pagination,
+.veloria-image-carousel .swiper-pagination-bullets,
+.veloria-image-carousel .swiper-pagination-horizontal {
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -99,12 +99,12 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    gap: var(--elementrify-dots-gap, 8px);
+    gap: var(--veloria-dots-gap, 8px);
     opacity: 1 !important;
     pointer-events: auto;
 }
 
-.elementrify-image-carousel .swiper-pagination-bullet {
+.veloria-image-carousel .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -115,28 +115,28 @@
     cursor: pointer;
 }
 
-.elementrify-image-carousel .swiper-pagination-bullet:hover {
+.veloria-image-carousel .swiper-pagination-bullet:hover {
     opacity: 0.9;
 }
 
-.elementrify-image-carousel .swiper-pagination-bullet-active {
+.veloria-image-carousel .swiper-pagination-bullet-active {
     background: rgba(0, 0, 0, 0.85);
     opacity: 1;
     transform: scale(1.2);
 }
 
-.elementrify-image-carousel.elementrify-pagination-square .swiper-pagination-bullet {
+.veloria-image-carousel.veloria-pagination-square .swiper-pagination-bullet {
     border-radius: 0;
 }
 
-.elementrify-image-carousel.elementrify-pagination-bar .swiper-pagination-bullet {
-    width: var(--elementrify-bar-width, 28px);
+.veloria-image-carousel.veloria-pagination-bar .swiper-pagination-bullet {
+    width: var(--veloria-bar-width, 28px);
     height: 5px;
     border-radius: 3px;
     transform: none;
 }
 
-.elementrify-image-carousel.elementrify-pagination-bar .swiper-pagination-bullet-active {
-    width: calc(var(--elementrify-bar-width, 28px) * 1.4);
+.veloria-image-carousel.veloria-pagination-bar .swiper-pagination-bullet-active {
+    width: calc(var(--veloria-bar-width, 28px) * 1.4);
     transform: none;
 }

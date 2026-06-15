@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ProductImage;
+namespace Veloria\Widgets\ProductImage;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 
 defined('ABSPATH') || exit;
@@ -22,18 +22,18 @@ class ProductImage extends WidgetBase
      */
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('elementrify-product-image');
-        wp_enqueue_script('elementrify-product-image');
+        wp_enqueue_style('veloria-product-image');
+        wp_enqueue_script('veloria-product-image');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-product-images elementrify-icon';
+        return 'eicon-product-images veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-product-image';
+        return 'veloria-product-image';
     }
 
     public function get_admin_category(): string
@@ -43,12 +43,12 @@ class ProductImage extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Image', 'elementrify');
+        return __('Product Image', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Main product image with optional gallery thumbnails, lightbox, or hover zoom.', 'elementrify');
+        return __('Main product image with optional gallery thumbnails, lightbox, or hover zoom.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -58,38 +58,38 @@ class ProductImage extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-product-image'];
+        return ['veloria-product-image'];
     }
 
     public function get_script_depends(): array
     {
-        return ['jquery', 'elementor-frontend', 'elementrify-product-image'];
+        return ['jquery', 'elementor-frontend', 'veloria-product-image'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-product-image',
-            ELEMENTRIFY_URL . 'assets/css/product-image.css',
+            'veloria-product-image',
+            VELORIA_URL . 'assets/css/product-image.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-product-image',
-            ELEMENTRIFY_URL . 'assets/js/product-image.js',
+            'veloria-product-image',
+            VELORIA_URL . 'assets/js/product-image.js',
             ['jquery', 'elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
 
         wp_localize_script(
-            'elementrify-product-image',
-            'elementrifyProductImage',
+            'veloria-product-image',
+            'veloriaProductImage',
             [
-                'prevLabel'  => __('Previous image', 'elementrify'),
-                'nextLabel'  => __('Next image', 'elementrify'),
-                'closeLabel' => __('Close preview', 'elementrify'),
+                'prevLabel'  => __('Previous image', 'veloria'),
+                'nextLabel'  => __('Next image', 'veloria'),
+                'closeLabel' => __('Close preview', 'veloria'),
             ]
         );
     }
@@ -210,49 +210,49 @@ class ProductImage extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_product', [
-            'label' => __('Product', 'elementrify'),
+            'label' => __('Product', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('product_id', [
-            'label'       => __('Product ID', 'elementrify'),
+            'label'       => __('Product ID', 'veloria'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 0,
-            'description' => __('Leave empty on single product pages or inside a product loop to use the current product.', 'elementrify'),
+            'description' => __('Leave empty on single product pages or inside a product loop to use the current product.', 'veloria'),
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_gallery', [
-            'label' => __('Gallery', 'elementrify'),
+            'label' => __('Gallery', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_thumbnails', [
-            'label'        => __('Show gallery thumbnails', 'elementrify'),
+            'label'        => __('Show gallery thumbnails', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('zoom_mode', [
-            'label'   => __('Zoom / preview', 'elementrify'),
+            'label'   => __('Zoom / preview', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'lightbox',
             'options' => [
-                'lightbox' => __('Lightbox on click', 'elementrify'),
-                'pan'      => __('Click to zoom & drag to pan', 'elementrify'),
+                'lightbox' => __('Lightbox on click', 'veloria'),
+                'pan'      => __('Click to zoom & drag to pan', 'veloria'),
             ],
         ]);
 
         $this->add_control('pan_zoom_scale', [
-            'label'       => __('Click zoom level', 'elementrify'),
+            'label'       => __('Click zoom level', 'veloria'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 1.5,
             'max'         => 3.5,
             'step'        => 0.05,
             'default'     => 2.25,
-            'description' => __('Used when “Click to zoom & drag to pan” is selected.', 'elementrify'),
+            'description' => __('Used when “Click to zoom & drag to pan” is selected.', 'veloria'),
             'condition'   => [
                 'zoom_mode!' => 'lightbox',
             ],
@@ -261,45 +261,45 @@ class ProductImage extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_main', [
-            'label' => __('Main image', 'elementrify'),
+            'label' => __('Main image', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('main_bg', [
-            'label'     => __('Background', 'elementrify'),
+            'label'     => __('Background', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#f1f5f9',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pi__main' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-pi__main' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('main_padding', [
-            'label'      => __('Padding', 'elementrify'),
+            'label'      => __('Padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'default'    => [
                 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__main' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__main' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('main_radius', [
-            'label'      => __('Border radius', 'elementrify'),
+            'label'      => __('Border radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__main' => 'border-radius: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .elementrify-pi__visual' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__main' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__visual' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('main_box_ratio', [
-            'label'     => __('Image box ratio', 'elementrify'),
+            'label'     => __('Image box ratio', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'options'   => [
                 '1 / 1'  => '1:1',
@@ -309,12 +309,12 @@ class ProductImage extends WidgetBase
             ],
             'default'   => '1 / 1',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pi__stage' => 'aspect-ratio: {{VALUE}};',
+                '{{WRAPPER}} .veloria-pi__stage' => 'aspect-ratio: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('main_box_max_height', [
-            'label'      => __('Image box max height', 'elementrify'),
+            'label'      => __('Image box max height', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh'],
             'range'      => [
@@ -326,88 +326,88 @@ class ProductImage extends WidgetBase
                 'size' => 560,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__stage' => 'max-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__stage' => 'max-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('main_img_radius', [
-            'label'      => __('Image radius', 'elementrify'),
+            'label'      => __('Image radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 32]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__main-img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__main-img' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_thumbs', [
-            'label'     => __('Thumbnails', 'elementrify'),
+            'label'     => __('Thumbnails', 'veloria'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_thumbnails' => 'yes'],
         ]);
 
         $this->add_responsive_control('thumbs_gap', [
-            'label'      => __('Gap', 'elementrify'),
+            'label'      => __('Gap', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 32]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__thumbs' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__thumbs' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('thumb_width', [
-            'label'      => __('Width', 'elementrify'),
+            'label'      => __('Width', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 48, 'max' => 160]],
             'default'    => ['size' => 80, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__thumb' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__thumb' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('thumb_radius', [
-            'label'      => __('Border radius', 'elementrify'),
+            'label'      => __('Border radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
             'default'    => ['size' => 10, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__thumb' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__thumb' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('thumb_border_color', [
-            'label'     => __('Border', 'elementrify'),
+            'label'     => __('Border', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e2e8f0',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pi__thumb' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-pi__thumb' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('thumb_border_active', [
-            'label'     => __('Active border', 'elementrify'),
+            'label'     => __('Active border', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#2563eb',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pi__thumb.is-active' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-pi__thumb.is-active' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('thumb_border_width', [
-            'label'      => __('Border width', 'elementrify'),
+            'label'      => __('Border width', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 1, 'max' => 4]],
             'default'    => ['size' => 2, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-pi__thumb' => 'border-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pi__thumb' => 'border-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -417,8 +417,8 @@ class ProductImage extends WidgetBase
     public function render(): void
     {
         if (!class_exists('WooCommerce')) {
-            echo '<div class="elementrify-pi elementrify-pi--inactive">';
-            echo esc_html__('WooCommerce is required for this widget.', 'elementrify');
+            echo '<div class="veloria-pi veloria-pi--inactive">';
+            echo esc_html__('WooCommerce is required for this widget.', 'veloria');
             echo '</div>';
 
             return;
@@ -428,8 +428,8 @@ class ProductImage extends WidgetBase
         $product_id = $this->resolve_product_id($settings);
 
         if ($product_id <= 0) {
-            echo '<div class="elementrify-pi elementrify-pi--empty">';
-            echo esc_html__('Set a product ID, or place this widget on a product page or inside a product loop.', 'elementrify');
+            echo '<div class="veloria-pi veloria-pi--empty">';
+            echo esc_html__('Set a product ID, or place this widget on a product page or inside a product loop.', 'veloria');
             echo '</div>';
 
             return;
@@ -437,8 +437,8 @@ class ProductImage extends WidgetBase
 
         $product = wc_get_product($product_id);
         if (!$product || !is_a($product, 'WC_Product')) {
-            echo '<div class="elementrify-pi elementrify-pi--empty">';
-            echo esc_html__('Product not found.', 'elementrify');
+            echo '<div class="veloria-pi veloria-pi--empty">';
+            echo esc_html__('Product not found.', 'veloria');
             echo '</div>';
 
             return;
@@ -467,7 +467,7 @@ class ProductImage extends WidgetBase
             $images_json = '[]';
         }
 
-        $path = ELEMENTRIFY_DIR . 'templates/product-image/product-image.php';
+        $path = VELORIA_DIR . 'templates/product-image/product-image.php';
         if (!is_readable($path)) {
             return;
         }

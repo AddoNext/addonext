@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\Spacer;
+namespace Veloria\Widgets\Spacer;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 
 defined('ABSPATH') or exit;
@@ -10,12 +10,12 @@ class Spacer extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-spacer elementrify-icon';
+        return 'eicon-spacer veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-spacer';
+        return 'veloria-spacer';
     }
 
     public function get_admin_category(): string
@@ -25,12 +25,12 @@ class Spacer extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Spacer', 'elementrify');
+        return __('Spacer', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Add vertical spacing', 'elementrify');
+        return __('Add vertical spacing', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -40,16 +40,16 @@ class Spacer extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-spacer'];
+        return ['veloria-spacer'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-spacer',
-            ELEMENTRIFY_URL . 'assets/css/spacer.css',
+            'veloria-spacer',
+            VELORIA_URL . 'assets/css/spacer.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -58,7 +58,7 @@ class Spacer extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -66,7 +66,7 @@ class Spacer extends WidgetBase
         $this->add_responsive_control(
             'space',
             [
-                'label'      => __('Space', 'elementrify'),
+                'label'      => __('Space', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem', 'vh'],
                 'range'      => [
@@ -80,7 +80,7 @@ class Spacer extends WidgetBase
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-spacer' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-spacer' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -90,7 +90,7 @@ class Spacer extends WidgetBase
 
     public function render(): void
     {
-        $template_path = ELEMENTRIFY_DIR . 'templates/spacer/spacer.php';
+        $template_path = VELORIA_DIR . 'templates/spacer/spacer.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -100,7 +100,7 @@ class Spacer extends WidgetBase
     {
         ?>
         <#
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-spacer');
+        view.addRenderAttribute('wrapper', 'class', 'veloria-spacer');
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}></div>
         <?php

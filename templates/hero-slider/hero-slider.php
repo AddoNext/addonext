@@ -3,8 +3,8 @@ defined('ABSPATH') || exit;
 
 use Elementor\Icons_Manager;
 use Elementor\Utils;
-use Elementrify\Widgets\HeroBanner\HeroBanner;
-use Elementrify\Widgets\HeroSlider\HeroSlider;
+use Veloria\Widgets\HeroBanner\HeroBanner;
+use Veloria\Widgets\HeroSlider\HeroSlider;
 
 $settings = $this->get_settings_for_display();
 
@@ -23,7 +23,7 @@ $show_arrows = in_array($nav, ['both', 'arrows'], true);
 $show_dots = in_array($nav, ['both', 'dots'], true);
 
 $root_attrs = [
-    'class'               => 'elementrify-hero-slider elementrify-hero-slider--mode-' . $mode,
+    'class'               => 'veloria-hero-slider veloria-hero-slider--mode-' . $mode,
     'data-mode'           => $mode,
     'data-navigation'     => $nav,
     'data-autoplay'       => $autoplay ? '1' : '0',
@@ -55,23 +55,23 @@ $render_bg_inner = static function (array $row, string $prefix, string $inner_cl
     }
     ?>>
         <?php if ($v['bg_mode'] === 'video' && $v['is_file_video']) : ?>
-            <video class="elementrify-hero-slider__video" autoplay muted playsinline loop preload="metadata">
+            <video class="veloria-hero-slider__video" autoplay muted playsinline loop preload="metadata">
                 <source src="<?php echo esc_url($v['video_link']); ?>" type="<?php echo esc_attr($v['video_mime']); ?>" />
             </video>
         <?php elseif ($v['bg_mode'] === 'video' && $v['youtube_id'] !== '') : ?>
-            <div class="elementrify-hero-slider__video elementrify-hero-slider__video--youtube">
+            <div class="veloria-hero-slider__video veloria-hero-slider__video--youtube">
                 <iframe
                     src="<?php echo esc_url('https://www.youtube-nocookie.com/embed/' . $v['youtube_id'] . '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&loop=1&playlist=' . rawurlencode($v['youtube_id'])); ?>"
-                    title="<?php echo esc_attr__('Background video', 'elementrify'); ?>"
+                    title="<?php echo esc_attr__('Background video', 'veloria'); ?>"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         <?php elseif ($v['bg_mode'] === 'video' && $v['vimeo_id'] !== '') : ?>
-            <div class="elementrify-hero-slider__video elementrify-hero-slider__video--vimeo">
+            <div class="veloria-hero-slider__video veloria-hero-slider__video--vimeo">
                 <iframe
                     src="<?php echo esc_url('https://player.vimeo.com/video/' . $v['vimeo_id'] . '?autoplay=1&muted=1&background=1&loop=1'); ?>"
-                    title="<?php echo esc_attr__('Background video', 'elementrify'); ?>"
+                    title="<?php echo esc_attr__('Background video', 'veloria'); ?>"
                     loading="lazy"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen></iframe>
@@ -87,7 +87,7 @@ $render_buttons = static function (array $buttons, string $id_prefix) use ($widg
         return;
     }
     ?>
-    <div class="elementrify-hero-slider__actions">
+    <div class="veloria-hero-slider__actions">
         <?php foreach ($buttons as $index => $row) : ?>
             <?php
             if (!is_array($row)) {
@@ -106,15 +106,15 @@ $render_buttons = static function (array $buttons, string $id_prefix) use ($widg
                 $link['url'] = '#';
             }
             $key = $id_prefix . '_' . (int) $index;
-            $widget->add_render_attribute($key, 'class', 'elementrify-hero-slider__btn elementrify-hero-slider__btn--' . $type);
+            $widget->add_render_attribute($key, 'class', 'veloria-hero-slider__btn veloria-hero-slider__btn--' . $type);
             $widget->add_link_attributes($key, $link);
             ?>
             <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor link attribute string. ?>
             <a <?php echo $widget->get_render_attribute_string($key); ?>>
-                <span class="elementrify-hero-slider__btn-inner">
-                    <span class="elementrify-hero-slider__btn-text"><?php echo esc_html($text); ?></span>
+                <span class="veloria-hero-slider__btn-inner">
+                    <span class="veloria-hero-slider__btn-text"><?php echo esc_html($text); ?></span>
                     <?php if ($show_icon && !empty($icon['value'])) : ?>
-                        <span class="elementrify-hero-slider__btn-icon" aria-hidden="true">
+                        <span class="veloria-hero-slider__btn-icon" aria-hidden="true">
                             <?php Icons_Manager::render_icon($icon, ['aria-hidden' => 'true']); ?>
                         </span>
                     <?php endif; ?>
@@ -141,40 +141,40 @@ $render_slide_text_block = static function (array $slide, int $slide_index) use 
     $show_line = !empty($slide['show_accent_line']) && $slide['show_accent_line'] === 'yes';
     $buttons = isset($slide['buttons']) && is_array($slide['buttons']) ? $slide['buttons'] : [];
     ?>
-    <div class="elementrify-hero-slider__content">
+    <div class="veloria-hero-slider__content">
         <?php if ($tag_prefix !== '' || $tag_accent !== '') : ?>
-            <p class="elementrify-hero-slider__tagline">
+            <p class="veloria-hero-slider__tagline">
                 <?php if ($tag_prefix !== '') : ?>
-                    <span class="elementrify-hero-slider__tagline-prefix"><?php echo esc_html($tag_prefix); ?></span>
+                    <span class="veloria-hero-slider__tagline-prefix"><?php echo esc_html($tag_prefix); ?></span>
                 <?php endif; ?>
                 <?php if ($tag_prefix !== '' && $tag_accent !== '') : ?>
                     <?php echo ' '; ?>
                 <?php endif; ?>
                 <?php if ($tag_accent !== '') : ?>
-                    <span class="elementrify-hero-slider__tagline-accent"><span class="elementrify-hero-slider__tagline-accent-text"><?php echo esc_html($tag_accent); ?></span></span>
+                    <span class="veloria-hero-slider__tagline-accent"><span class="veloria-hero-slider__tagline-accent-text"><?php echo esc_html($tag_accent); ?></span></span>
                 <?php endif; ?>
             </p>
         <?php endif; ?>
         <?php if ($title !== '') : ?>
-            <<?php echo esc_attr($title_tag); ?> class="elementrify-hero-slider__title" aria-label="<?php echo esc_attr($title); ?>">
+            <<?php echo esc_attr($title_tag); ?> class="veloria-hero-slider__title" aria-label="<?php echo esc_attr($title); ?>">
                 <?php if ($title_static !== '') : ?>
-                    <span class="elementrify-hero-slider__title-static"><?php echo esc_html($title_static); ?> </span>
+                    <span class="veloria-hero-slider__title-static"><?php echo esc_html($title_static); ?> </span>
                 <?php endif; ?>
                 <?php if ($title_typing !== '') : ?>
-                    <span class="elementrify-hero-slider__title-typing-wrap">
-                        <span class="elementrify-hero-slider__title-typing" data-text="<?php echo esc_attr($title_typing); ?>"></span><span class="elementrify-hero-slider__title-cursor" aria-hidden="true"></span>
+                    <span class="veloria-hero-slider__title-typing-wrap">
+                        <span class="veloria-hero-slider__title-typing" data-text="<?php echo esc_attr($title_typing); ?>"></span><span class="veloria-hero-slider__title-cursor" aria-hidden="true"></span>
                     </span>
                 <?php endif; ?>
             </<?php echo esc_attr($title_tag); ?>>
         <?php endif; ?>
         <?php if ($show_line || $subtitle !== '') : ?>
-            <div class="elementrify-hero-slider__subrow-wrap">
-                <div class="elementrify-hero-slider__subrow">
+            <div class="veloria-hero-slider__subrow-wrap">
+                <div class="veloria-hero-slider__subrow">
                     <?php if ($show_line) : ?>
-                        <span class="elementrify-hero-slider__accent-line" aria-hidden="true"></span>
+                        <span class="veloria-hero-slider__accent-line" aria-hidden="true"></span>
                     <?php endif; ?>
                     <?php if ($subtitle !== '') : ?>
-                        <p class="elementrify-hero-slider__subtitle"><?php echo esc_html($subtitle); ?></p>
+                        <p class="veloria-hero-slider__subtitle"><?php echo esc_html($subtitle); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -198,7 +198,7 @@ echo '>';
         $bg_slides = [[]];
     }
     ?>
-    <div class="elementrify-hero-slider__bg-swiper swiper">
+    <div class="veloria-hero-slider__bg-swiper swiper">
         <div class="swiper-wrapper">
             <?php foreach ($bg_slides as $bi => $bg_row) : ?>
                 <?php
@@ -208,13 +208,13 @@ echo '>';
                 $bg_rep_id = isset($bg_row['_id']) && (string) $bg_row['_id'] !== '' ? (string) $bg_row['_id'] : 'bg' . (int) $bi;
                 ?>
                 <div class="swiper-slide elementor-repeater-item-<?php echo esc_attr($bg_rep_id); ?>">
-                    <?php $render_bg_inner($bg_row, 'bg_only_panel', 'elementrify-hero-slider__bg-slide-inner', HeroSlider::demoBgImageUrl((int) $bi)); ?>
+                    <?php $render_bg_inner($bg_row, 'bg_only_panel', 'veloria-hero-slider__bg-slide-inner', HeroSlider::demoBgImageUrl((int) $bi)); ?>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
-    <div class="elementrify-hero-slider__overlay" aria-hidden="true"></div>
-    <div class="elementrify-hero-slider__inner">
+    <div class="veloria-hero-slider__overlay" aria-hidden="true"></div>
+    <div class="veloria-hero-slider__inner">
         <?php
         $tag_prefix = isset($settings['tagline_prefix']) ? (string) $settings['tagline_prefix'] : '';
         $tag_accent = isset($settings['tagline_accent']) ? (string) $settings['tagline_accent'] : '';
@@ -229,40 +229,40 @@ echo '>';
         $show_line = !empty($settings['show_accent_line']) && $settings['show_accent_line'] === 'yes';
         $buttons = isset($settings['buttons']) && is_array($settings['buttons']) ? $settings['buttons'] : [];
         ?>
-        <div class="elementrify-hero-slider__content">
+        <div class="veloria-hero-slider__content">
             <?php if ($tag_prefix !== '' || $tag_accent !== '') : ?>
-                <p class="elementrify-hero-slider__tagline">
+                <p class="veloria-hero-slider__tagline">
                     <?php if ($tag_prefix !== '') : ?>
-                        <span class="elementrify-hero-slider__tagline-prefix"><?php echo esc_html($tag_prefix); ?></span>
+                        <span class="veloria-hero-slider__tagline-prefix"><?php echo esc_html($tag_prefix); ?></span>
                     <?php endif; ?>
                     <?php if ($tag_prefix !== '' && $tag_accent !== '') : ?>
                         <?php echo ' '; ?>
                     <?php endif; ?>
                     <?php if ($tag_accent !== '') : ?>
-                        <span class="elementrify-hero-slider__tagline-accent"><span class="elementrify-hero-slider__tagline-accent-text"><?php echo esc_html($tag_accent); ?></span></span>
+                        <span class="veloria-hero-slider__tagline-accent"><span class="veloria-hero-slider__tagline-accent-text"><?php echo esc_html($tag_accent); ?></span></span>
                     <?php endif; ?>
                 </p>
             <?php endif; ?>
             <?php if ($title !== '') : ?>
-                <<?php echo esc_attr($title_tag); ?> class="elementrify-hero-slider__title" aria-label="<?php echo esc_attr($title); ?>">
+                <<?php echo esc_attr($title_tag); ?> class="veloria-hero-slider__title" aria-label="<?php echo esc_attr($title); ?>">
                     <?php if ($title_static !== '') : ?>
-                        <span class="elementrify-hero-slider__title-static"><?php echo esc_html($title_static); ?> </span>
+                        <span class="veloria-hero-slider__title-static"><?php echo esc_html($title_static); ?> </span>
                     <?php endif; ?>
                     <?php if ($title_typing !== '') : ?>
-                        <span class="elementrify-hero-slider__title-typing-wrap">
-                            <span class="elementrify-hero-slider__title-typing" data-text="<?php echo esc_attr($title_typing); ?>"></span><span class="elementrify-hero-slider__title-cursor" aria-hidden="true"></span>
+                        <span class="veloria-hero-slider__title-typing-wrap">
+                            <span class="veloria-hero-slider__title-typing" data-text="<?php echo esc_attr($title_typing); ?>"></span><span class="veloria-hero-slider__title-cursor" aria-hidden="true"></span>
                         </span>
                     <?php endif; ?>
                 </<?php echo esc_attr($title_tag); ?>>
             <?php endif; ?>
             <?php if ($show_line || $subtitle !== '') : ?>
-                <div class="elementrify-hero-slider__subrow-wrap">
-                    <div class="elementrify-hero-slider__subrow">
+                <div class="veloria-hero-slider__subrow-wrap">
+                    <div class="veloria-hero-slider__subrow">
                         <?php if ($show_line) : ?>
-                            <span class="elementrify-hero-slider__accent-line" aria-hidden="true"></span>
+                            <span class="veloria-hero-slider__accent-line" aria-hidden="true"></span>
                         <?php endif; ?>
                         <?php if ($subtitle !== '') : ?>
-                            <p class="elementrify-hero-slider__subtitle"><?php echo esc_html($subtitle); ?></p>
+                            <p class="veloria-hero-slider__subtitle"><?php echo esc_html($subtitle); ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -272,12 +272,12 @@ echo '>';
     </div>
 
 <?php elseif ($mode === 'content') : ?>
-    <div class="elementrify-hero-slider__sticky-bg">
-        <?php $render_bg_inner($settings, 'sticky_panel_bg', 'elementrify-hero-slider__sticky-bg-inner', HeroSlider::demoBgImageUrl(0)); ?>
+    <div class="veloria-hero-slider__sticky-bg">
+        <?php $render_bg_inner($settings, 'sticky_panel_bg', 'veloria-hero-slider__sticky-bg-inner', HeroSlider::demoBgImageUrl(0)); ?>
     </div>
-    <div class="elementrify-hero-slider__overlay" aria-hidden="true"></div>
-    <div class="elementrify-hero-slider__inner">
-        <div class="elementrify-hero-slider__content-swiper swiper">
+    <div class="veloria-hero-slider__overlay" aria-hidden="true"></div>
+    <div class="veloria-hero-slider__inner">
+        <div class="veloria-hero-slider__content-swiper swiper">
             <div class="swiper-wrapper">
                 <?php
                 $content_slides = isset($settings['content_slides']) && is_array($settings['content_slides']) ? $settings['content_slides'] : [];
@@ -300,7 +300,7 @@ echo '>';
     </div>
 
 <?php else : ?>
-    <div class="elementrify-hero-slider__main-swiper swiper">
+    <div class="veloria-hero-slider__main-swiper swiper">
         <div class="swiper-wrapper">
             <?php
             $hero_slides = isset($settings['hero_slides']) && is_array($settings['hero_slides']) ? $settings['hero_slides'] : [];
@@ -316,11 +316,11 @@ echo '>';
                 $hero_rep_id = isset($slide['_id']) && (string) $slide['_id'] !== '' ? (string) $slide['_id'] : 'hs' . (int) $si;
                 ?>
                 <div class="swiper-slide elementor-repeater-item-<?php echo esc_attr($hero_rep_id); ?>" data-typing-ms="<?php echo esc_attr((string) $typing_ms); ?>" data-typing-loop="<?php echo $typing_loop ? '1' : '0'; ?>">
-                    <div class="elementrify-hero-slider__combo-slide-bg">
-                        <?php $render_bg_inner($slide, 'combo_bg_panel', 'elementrify-hero-slider__combo-slide-bg-inner', HeroSlider::demoBgImageUrl((int) $si)); ?>
+                    <div class="veloria-hero-slider__combo-slide-bg">
+                        <?php $render_bg_inner($slide, 'combo_bg_panel', 'veloria-hero-slider__combo-slide-bg-inner', HeroSlider::demoBgImageUrl((int) $si)); ?>
                     </div>
-                    <div class="elementrify-hero-slider__slide-overlay" aria-hidden="true"></div>
-                    <div class="elementrify-hero-slider__inner elementrify-hero-slider__inner--in-slide">
+                    <div class="veloria-hero-slider__slide-overlay" aria-hidden="true"></div>
+                    <div class="veloria-hero-slider__inner veloria-hero-slider__inner--in-slide">
                         <?php $render_slide_text_block($slide, (int) $si); ?>
                     </div>
                 </div>
@@ -330,10 +330,10 @@ echo '>';
 <?php endif; ?>
 
 <?php if ($show_arrows) : ?>
-    <div class="elementrify-hero-slider__arrow elementrify-hero-slider__arrow--prev swiper-button-prev" role="button" tabindex="0" aria-label="<?php esc_attr_e('Previous slide', 'elementrify'); ?>"></div>
-    <div class="elementrify-hero-slider__arrow elementrify-hero-slider__arrow--next swiper-button-next" role="button" tabindex="0" aria-label="<?php esc_attr_e('Next slide', 'elementrify'); ?>"></div>
+    <div class="veloria-hero-slider__arrow veloria-hero-slider__arrow--prev swiper-button-prev" role="button" tabindex="0" aria-label="<?php esc_attr_e('Previous slide', 'veloria'); ?>"></div>
+    <div class="veloria-hero-slider__arrow veloria-hero-slider__arrow--next swiper-button-next" role="button" tabindex="0" aria-label="<?php esc_attr_e('Next slide', 'veloria'); ?>"></div>
 <?php endif; ?>
 <?php if ($show_dots) : ?>
-    <div class="swiper-pagination elementrify-hero-slider__pagination-wrap"></div>
+    <div class="swiper-pagination veloria-hero-slider__pagination-wrap"></div>
 <?php endif; ?>
 </div>

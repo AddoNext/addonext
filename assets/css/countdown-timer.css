@@ -1,4 +1,4 @@
-.elementrify-countdown {
+.veloria-countdown {
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -7,7 +7,7 @@
     gap: 12px;
 }
 
-.elementrify-countdown__segment {
+.veloria-countdown__segment {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,14 +16,14 @@
     flex: 1 1 0;
 }
 
-.elementrify-countdown__value {
+.veloria-countdown__value {
     display: block;
     font-weight: 700;
     line-height: 1.2;
     color: #fff;
 }
 
-.elementrify-countdown__label {
+.veloria-countdown__label {
     display: block;
     text-transform: uppercase;
     font-size: 12px;
@@ -33,52 +33,52 @@
     margin-top: 4px;
 }
 
-.elementrify-countdown--blocks .elementrify-countdown__segment[data-unit="days"] {
+.veloria-countdown--blocks .veloria-countdown__segment[data-unit="days"] {
     background-color: #E74C3C;
 }
 
-.elementrify-countdown--blocks .elementrify-countdown__segment[data-unit="hours"] {
+.veloria-countdown--blocks .veloria-countdown__segment[data-unit="hours"] {
     background-color: #F39C12;
 }
 
-.elementrify-countdown--blocks .elementrify-countdown__segment[data-unit="minutes"] {
+.veloria-countdown--blocks .veloria-countdown__segment[data-unit="minutes"] {
     background-color: #F1C40F;
 }
 
-.elementrify-countdown--blocks .elementrify-countdown__segment[data-unit="seconds"] {
+.veloria-countdown--blocks .veloria-countdown__segment[data-unit="seconds"] {
     background-color: #2ECC71;
 }
 
-.elementrify-countdown--cards {
+.veloria-countdown--cards {
     padding: 16px;
     border-radius: 12px;
 }
 
-.elementrify-countdown--cards .elementrify-countdown__segment {
+.veloria-countdown--cards .veloria-countdown__segment {
     background-color: #BF90FF;
 }
 
-.elementrify-countdown--cards .elementrify-countdown__label {
+.veloria-countdown--cards .veloria-countdown__label {
     text-transform: none;
     font-weight: 400;
 }
 
-.elementrify-countdown--minimal .elementrify-countdown__segment {
+.veloria-countdown--minimal .veloria-countdown__segment {
     background: none;
 }
 
-.elementrify-countdown--minimal .elementrify-countdown__value,
-.elementrify-countdown--minimal .elementrify-countdown__label,
-.elementor-widget-elementrify-countdown-timer .elementrify-countdown--minimal .elementrify-countdown__value,
-.elementor-widget-elementrify-countdown-timer .elementrify-countdown--minimal .elementrify-countdown__label {
+.veloria-countdown--minimal .veloria-countdown__value,
+.veloria-countdown--minimal .veloria-countdown__label,
+.elementor-widget-veloria-countdown-timer .veloria-countdown--minimal .veloria-countdown__value,
+.elementor-widget-veloria-countdown-timer .veloria-countdown--minimal .veloria-countdown__label {
     color: #000000 !important;
 }
 
-.elementrify-countdown--minimal .elementrify-countdown__label {
+.veloria-countdown--minimal .veloria-countdown__label {
     text-transform: uppercase;
 }
 
-.elementrify-countdown[data-shutter-flip="1"] .elementrify-countdown__value-box {
+.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__value-box {
     position: relative;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@
     background: inherit;
 }
 
-.elementrify-countdown[data-shutter-flip="1"] .elementrify-countdown__shutter {
+.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__shutter {
     position: absolute;
     top: 0;
     left: 0;
@@ -101,25 +101,25 @@
     backface-visibility: hidden;
 }
 
-.elementrify-countdown[data-shutter-flip="1"] .elementrify-countdown__shutter-value {
+.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__shutter-value {
     font-weight: 700;
     line-height: 1.2;
     color: #fff;
 }
 
-.elementrify-countdown[data-shutter-flip="1"] {
+.veloria-countdown[data-shutter-flip="1"] {
     perspective: 600px;
 }
 
-.elementrify-countdown[data-shutter-flip="1"] .elementrify-countdown__segment {
+.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__segment {
     transform-style: preserve-3d;
 }
 
-.elementrify-countdown[data-shutter-flip="1"] .elementrify-countdown__shutter.shutter-flip {
-    animation: elementrify-shutter-flip 0.45s ease-in-out forwards;
+.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__shutter.shutter-flip {
+    animation: veloria-shutter-flip 0.45s ease-in-out forwards;
 }
 
-@keyframes elementrify-shutter-flip {
+@keyframes veloria-shutter-flip {
     0% {
         transform: rotateX(0deg);
     }

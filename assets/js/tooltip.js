@@ -4,18 +4,18 @@
     var PAD = 8;
 
     function positionTooltip(wrapper) {
-        var trigger = wrapper.querySelector('.elementrify-tooltip__trigger');
-        var content = wrapper.querySelector('.elementrify-tooltip__content');
+        var trigger = wrapper.querySelector('.veloria-tooltip__trigger');
+        var content = wrapper.querySelector('.veloria-tooltip__content');
         if (!trigger || !content) return;
 
         content.style.removeProperty('--tooltip-adjust-x');
-        wrapper.classList.remove('elementrify-tooltip--below');
+        wrapper.classList.remove('veloria-tooltip--below');
 
         var cr = content.getBoundingClientRect();
         var vw = window.innerWidth;
 
         if (cr.top < PAD) {
-            wrapper.classList.add('elementrify-tooltip--below');
+            wrapper.classList.add('veloria-tooltip--below');
             cr = content.getBoundingClientRect();
         }
 
@@ -29,13 +29,13 @@
     }
 
     function clearPosition(wrapper) {
-        var content = wrapper.querySelector('.elementrify-tooltip__content');
+        var content = wrapper.querySelector('.veloria-tooltip__content');
         if (content) content.style.removeProperty('--tooltip-adjust-x');
-        wrapper.classList.remove('elementrify-tooltip--below');
+        wrapper.classList.remove('veloria-tooltip--below');
     }
 
     function bind(wrapper) {
-        var trigger = wrapper.querySelector('.elementrify-tooltip__trigger');
+        var trigger = wrapper.querySelector('.veloria-tooltip__trigger');
         if (!trigger) return;
 
         function onShow() {
@@ -56,7 +56,7 @@
 
     function scan(root) {
         root = root || document;
-        var wrappers = root.querySelectorAll('.elementrify-tooltip');
+        var wrappers = root.querySelectorAll('.veloria-tooltip');
         wrappers.forEach(function (el) {
             if (!el.getAttribute('data-tooltip-bound')) {
                 el.setAttribute('data-tooltip-bound', '1');
@@ -72,7 +72,7 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-tooltip.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-tooltip.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) scan(el);
         });

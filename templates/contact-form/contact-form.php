@@ -4,9 +4,9 @@ $settings = $this->get_settings_for_display();
 $fields = isset($settings['fields']) && is_array($settings['fields']) ? $settings['fields'] : [];
 $recipient = isset($settings['recipient_email']) ? $settings['recipient_email'] : get_option('admin_email');
 $enable_recaptcha = !empty($settings['enable_recaptcha']) && $settings['enable_recaptcha'] === 'yes';
-$submit_text = isset($settings['submit_text']) ? $settings['submit_text'] : __('Send Message', 'elementrify');
-$success_message = isset($settings['success_message']) ? $settings['success_message'] : __('Thank you for your message. We will get back to you soon.', 'elementrify');
-$error_message = isset($settings['error_message']) ? $settings['error_message'] : __('Something went wrong. Please try again.', 'elementrify');
+$submit_text = isset($settings['submit_text']) ? $settings['submit_text'] : __('Send Message', 'veloria');
+$success_message = isset($settings['success_message']) ? $settings['success_message'] : __('Thank you for your message. We will get back to you soon.', 'veloria');
+$error_message = isset($settings['error_message']) ? $settings['error_message'] : __('Something went wrong. Please try again.', 'veloria');
 
 $fields_config = [];
 foreach ($fields as $i => $f) {
@@ -18,9 +18,9 @@ foreach ($fields as $i => $f) {
         'label' => $label !== '' ? $label : ($placeholder !== '' ? $placeholder : 'field_' . $i),
     ];
 }
-$recaptcha_site_key = $enable_recaptcha ? \Elementrify\Utils\OptionsHelper::get_option('recaptcha_site_key', '') : '';
+$recaptcha_site_key = $enable_recaptcha ? \Veloria\Utils\OptionsHelper::get_option('recaptcha_site_key', '') : '';
 ?>
-<form class="elementrify-contact-form"
+<form class="veloria-contact-form"
       action=""
       method="post"
       enctype="multipart/form-data"
@@ -31,7 +31,7 @@ $recaptcha_site_key = $enable_recaptcha ? \Elementrify\Utils\OptionsHelper::get_
       data-error-msg="<?php echo esc_attr($error_message); ?>"
       data-fields-config="<?php echo esc_attr(wp_json_encode($fields_config)); ?>"
       data-sitekey="<?php echo esc_attr($recaptcha_site_key); ?>">
-    <?php wp_nonce_field('elementrify_contact_form', 'elementrify_contact_nonce'); ?>
+    <?php wp_nonce_field('veloria_contact_form', 'veloria_contact_nonce'); ?>
     <?php foreach ($fields as $i => $field) : ?>
         <?php
         $name = 'field_' . $i;
@@ -42,13 +42,13 @@ $recaptcha_site_key = $enable_recaptcha ? \Elementrify\Utils\OptionsHelper::get_
         $options = isset($field['options']) ? $field['options'] : '';
         $accept = isset($field['accept']) ? $field['accept'] : '';
         ?>
-        <div class="elementrify-contact-form__row">
+        <div class="veloria-contact-form__row">
             <?php if ($label !== '') : ?>
-                <label class="elementrify-contact-form__label" for="<?php echo esc_attr($name); ?>"><?php echo esc_html($label); ?></label>
+                <label class="veloria-contact-form__label" for="<?php echo esc_attr($name); ?>"><?php echo esc_html($label); ?></label>
             <?php endif; ?>
             <?php if ($type === 'textarea') : ?>
                 <textarea id="<?php echo esc_attr($name); ?>"
-                          class="elementrify-contact-form__textarea"
+                          class="veloria-contact-form__textarea"
                           name="<?php echo esc_attr($name); ?>"
                           placeholder="<?php echo esc_attr($placeholder); ?>"
                           <?php echo $required ? ' required' : ''; ?>
@@ -58,10 +58,10 @@ $recaptcha_site_key = $enable_recaptcha ? \Elementrify\Utils\OptionsHelper::get_
                 $opts = array_filter(array_map('trim', preg_split('/[\r\n]+/', $options)));
                 ?>
                 <select id="<?php echo esc_attr($name); ?>"
-                        class="elementrify-contact-form__select"
+                        class="veloria-contact-form__select"
                         name="<?php echo esc_attr($name); ?>"
                         <?php echo $required ? ' required' : ''; ?>>
-                    <option value=""><?php echo esc_html__('— Select —', 'elementrify'); ?></option>
+                    <option value=""><?php echo esc_html__('— Select —', 'veloria'); ?></option>
                     <?php foreach ($opts as $opt) : ?>
                         <option value="<?php echo esc_attr($opt); ?>"><?php echo esc_html($opt); ?></option>
                     <?php endforeach; ?>
@@ -69,14 +69,14 @@ $recaptcha_site_key = $enable_recaptcha ? \Elementrify\Utils\OptionsHelper::get_
             <?php elseif ($type === 'file') : ?>
                 <input type="file"
                        id="<?php echo esc_attr($name); ?>"
-                       class="elementrify-contact-form__input elementrify-contact-form__input--file"
+                       class="veloria-contact-form__input veloria-contact-form__input--file"
                        name="<?php echo esc_attr($name); ?>"
                        <?php echo $accept ? ' accept="' . esc_attr($accept) . '"' : ''; ?>
                        <?php echo $required ? ' required' : ''; ?>>
             <?php else : ?>
                 <input type="<?php echo esc_attr($type); ?>"
                        id="<?php echo esc_attr($name); ?>"
-                       class="elementrify-contact-form__input"
+                       class="veloria-contact-form__input"
                        name="<?php echo esc_attr($name); ?>"
                        placeholder="<?php echo esc_attr($placeholder); ?>"
                        <?php echo $required ? ' required' : ''; ?>>
@@ -84,10 +84,10 @@ $recaptcha_site_key = $enable_recaptcha ? \Elementrify\Utils\OptionsHelper::get_
         </div>
     <?php endforeach; ?>
     <?php if ($enable_recaptcha && $recaptcha_site_key !== '') : ?>
-        <div class="elementrify-contact-form__row elementrify-contact-form__recaptcha" data-sitekey="<?php echo esc_attr($recaptcha_site_key); ?>"></div>
+        <div class="veloria-contact-form__row veloria-contact-form__recaptcha" data-sitekey="<?php echo esc_attr($recaptcha_site_key); ?>"></div>
     <?php endif; ?>
-    <div class="elementrify-contact-form__row elementrify-contact-form__row--submit">
-        <button type="submit" class="elementrify-contact-form__submit"><span class="elementrify-contact-form__spinner" aria-hidden="true"></span><span class="elementrify-contact-form__submit-text"><?php echo esc_html($submit_text); ?></span></button>
+    <div class="veloria-contact-form__row veloria-contact-form__row--submit">
+        <button type="submit" class="veloria-contact-form__submit"><span class="veloria-contact-form__spinner" aria-hidden="true"></span><span class="veloria-contact-form__submit-text"><?php echo esc_html($submit_text); ?></span></button>
     </div>
-    <div class="elementrify-contact-form__message" aria-live="polite"></div>
+    <div class="veloria-contact-form__message" aria-live="polite"></div>
 </form>

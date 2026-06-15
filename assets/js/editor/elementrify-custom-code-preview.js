@@ -1,10 +1,10 @@
 /**
- * Live preview for Elementrify custom CSS / JS in the Elementor editor iframe.
+ * Live preview for Veloria custom CSS / JS in the Elementor editor iframe.
  */
 (function ($) {
 	'use strict';
 
-	var cfg = window.elementrifyEditorCustomCode || { stylesActive: false, scriptsActive: false };
+	var cfg = window.veloriaEditorCustomCode || { stylesActive: false, scriptsActive: false };
 	var debouncers = {};
 
 	if (!cfg.stylesActive && !cfg.scriptsActive) {
@@ -74,9 +74,9 @@
 		if (!settings) {
 			return;
 		}
-		var raw = settings.get('elementrify_custom_css');
+		var raw = settings.get('veloria_custom_css');
 		var css = typeof raw === 'string' ? raw.trim() : '';
-		var styleId = 'elementrify-editor-live-css-' + elementId;
+		var styleId = 'veloria-editor-live-css-' + elementId;
 		var existing = doc.getElementById(styleId);
 		if (!css) {
 			if (existing) {
@@ -107,9 +107,9 @@
 		if (!settings) {
 			return;
 		}
-		var raw = settings.get('elementrify_custom_js');
+		var raw = settings.get('veloria_custom_js');
 		var js = typeof raw === 'string' ? raw.trim() : '';
-		var scriptId = 'elementrify-editor-live-js-' + elementId;
+		var scriptId = 'veloria-editor-live-js-' + elementId;
 		var existing = doc.getElementById(scriptId);
 		if (existing) {
 			existing.remove();
@@ -154,16 +154,16 @@
 	}
 
 	function bindSettingsListener(model) {
-		if (!model || model._elementrifyCodePreviewBound) {
+		if (!model || model._veloriaCodePreviewBound) {
 			return;
 		}
 		var settings = getSettingsModel(model);
 		if (!settings || typeof settings.on !== 'function') {
 			return;
 		}
-		model._elementrifyCodePreviewBound = true;
+		model._veloriaCodePreviewBound = true;
 		var elId = model.get('id') || 'unknown';
-		var run = debounceByKey('elementrify-live-' + elId, function () {
+		var run = debounceByKey('veloria-live-' + elId, function () {
 			applyForModel(model);
 			applyJsForModel(model);
 		}, 200);
@@ -202,7 +202,7 @@
 					applyJsForModel(m);
 				}
 			});
-			var channelRefresh = debounceByKey('elementrify-editor-channel', function () {
+			var channelRefresh = debounceByKey('veloria-editor-channel', function () {
 				var selected =
 					elementor.selection && elementor.selection.getElements && elementor.selection.getElements()[0];
 				if (!selected) {

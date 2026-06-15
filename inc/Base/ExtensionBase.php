@@ -1,15 +1,15 @@
 <?php
-namespace Elementrify\Base;
+namespace Veloria\Base;
 
 defined('ABSPATH') or exit;
 
 /**
- * Base class for Elementrify extensions.
+ * Base class for Veloria extensions.
  *
  * Active extensions have {@see enqueue_assets()} wired on `wp_enqueue_scripts` by ExtensionManager only.
  *
  * @since 1.0.0
- * @package Elementrify
+ * @package Veloria
  */
 abstract class ExtensionBase
 {
@@ -77,15 +77,15 @@ abstract class ExtensionBase
     {
         wp_register_style(
             $this->get_id(),
-            ELEMENTRIFY_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
+            VELORIA_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
             $this->get_id(),
-            ELEMENTRIFY_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
+            VELORIA_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }

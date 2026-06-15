@@ -23,7 +23,7 @@ foreach ($data as $row) {
     $colors[] = isset($row['color']) ? (string) $row['color'] : '#4285F4';
 }
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-donut-chart');
+$this->add_render_attribute('wrapper', 'class', 'veloria-donut-chart');
 $this->add_render_attribute('wrapper', 'data-labels', implode('|', $labels));
 $this->add_render_attribute('wrapper', 'data-values', implode('|', $values));
 $this->add_render_attribute('wrapper', 'data-colors', implode('|', $colors));
@@ -36,11 +36,11 @@ $this->add_render_attribute('wrapper', 'data-inner-cutout', (string) $innerCutou
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($title !== '') : ?>
-        <h3 class="elementrify-donut-chart__title"><?php echo esc_html($title); ?></h3>
+        <h3 class="veloria-donut-chart__title"><?php echo esc_html($title); ?></h3>
     <?php endif; ?>
-    <div class="elementrify-donut-chart__wrap">
-        <div class="elementrify-donut-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
-        <div class="elementrify-donut-chart__legend"></div>
+    <div class="veloria-donut-chart__wrap">
+        <div class="veloria-donut-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
+        <div class="veloria-donut-chart__legend"></div>
     </div>
 </div>
 

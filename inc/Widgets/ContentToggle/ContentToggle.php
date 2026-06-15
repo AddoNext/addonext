@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ContentToggle;
+namespace Veloria\Widgets\ContentToggle;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
@@ -19,17 +19,17 @@ class ContentToggle extends WidgetBase
     public function enqueue_script_in_preview(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_script('elementrify-content-toggle');
+        wp_enqueue_script('veloria-content-toggle');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-toggle elementrify-icon';
+        return 'eicon-toggle veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-content-toggle';
+        return 'veloria-content-toggle';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class ContentToggle extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Content Toggle', 'elementrify');
+        return __('Content Toggle', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Switch between content blocks', 'elementrify');
+        return __('Switch between content blocks', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -54,27 +54,27 @@ class ContentToggle extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-content-toggle'];
+        return ['veloria-content-toggle'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-content-toggle'];
+        return ['veloria-content-toggle'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-content-toggle',
-            ELEMENTRIFY_URL . 'assets/css/content-toggle.css',
+            'veloria-content-toggle',
+            VELORIA_URL . 'assets/css/content-toggle.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-content-toggle',
-            ELEMENTRIFY_URL . 'assets/js/content-toggle.js',
+            'veloria-content-toggle',
+            VELORIA_URL . 'assets/js/content-toggle.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -84,7 +84,7 @@ class ContentToggle extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -92,49 +92,49 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'primary_label',
             [
-                'label'   => __('Primary label', 'elementrify'),
+                'label'   => __('Primary label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Basic', 'elementrify'),
+                'default' => __('Basic', 'veloria'),
             ]
         );
 
         $this->add_control(
             'primary_content',
             [
-                'label'   => __('Primary content', 'elementrify'),
+                'label'   => __('Primary content', 'veloria'),
                 'type'    => Controls_Manager::WYSIWYG,
-                'default' => '<p class="elementrify-content-toggle__price">$49<small>/year</small></p><p class="elementrify-content-toggle__sub">That\'s only $4.08/month</p><ul><li>5 websites</li><li>Email support</li><li>1 year updates</li></ul><p><a href="#" class="elementrify-content-toggle__cta">Get Started</a></p>',
+                'default' => '<p class="veloria-content-toggle__price">$49<small>/year</small></p><p class="veloria-content-toggle__sub">That\'s only $4.08/month</p><ul><li>5 websites</li><li>Email support</li><li>1 year updates</li></ul><p><a href="#" class="veloria-content-toggle__cta">Get Started</a></p>',
             ]
         );
 
         $this->add_control(
             'secondary_label',
             [
-                'label'   => __('Secondary label', 'elementrify'),
+                'label'   => __('Secondary label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Pro', 'elementrify'),
+                'default' => __('Pro', 'veloria'),
             ]
         );
 
         $this->add_control(
             'badge_text',
             [
-                'label'       => __('Badge text', 'elementrify'),
+                'label'       => __('Badge text', 'veloria'),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __('Save 25%', 'elementrify'),
-                'placeholder' => __('e.g. Save 25%', 'elementrify'),
+                'default'     => __('Save 25%', 'veloria'),
+                'placeholder' => __('e.g. Save 25%', 'veloria'),
             ]
         );
 
         $this->add_control(
             'default_active',
             [
-                'label'   => __('Default view', 'elementrify'),
+                'label'   => __('Default view', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'secondary',
                 'options' => [
-                    'primary'   => __('Primary', 'elementrify'),
-                    'secondary' => __('Secondary', 'elementrify'),
+                    'primary'   => __('Primary', 'veloria'),
+                    'secondary' => __('Secondary', 'veloria'),
                 ],
             ]
         );
@@ -142,9 +142,9 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'secondary_content',
             [
-                'label'   => __('Secondary content', 'elementrify'),
+                'label'   => __('Secondary content', 'veloria'),
                 'type'    => Controls_Manager::WYSIWYG,
-                'default' => '<p class="elementrify-content-toggle__price">$99<small>/year</small></p><p class="elementrify-content-toggle__sub">That\'s only $8.25/month</p><ul><li>Unlimited websites</li><li>Premium support</li><li>Lifetime updates</li></ul><p><a href="#" class="elementrify-content-toggle__cta">Upgrade Now</a></p>',
+                'default' => '<p class="veloria-content-toggle__price">$99<small>/year</small></p><p class="veloria-content-toggle__sub">That\'s only $8.25/month</p><ul><li>Unlimited websites</li><li>Premium support</li><li>Lifetime updates</li></ul><p><a href="#" class="veloria-content-toggle__cta">Upgrade Now</a></p>',
             ]
         );
 
@@ -153,7 +153,7 @@ class ContentToggle extends WidgetBase
         $this->start_controls_section(
             'section_style_wrapper',
             [
-                'label' => __('Container', 'elementrify'),
+                'label' => __('Container', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -161,11 +161,11 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-content-toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-content-toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default'    => ['top' => 12, 'right' => 12, 'bottom' => 12, 'left' => 12, 'unit' => 'px'],
             ]
@@ -175,7 +175,7 @@ class ContentToggle extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'           => 'border',
-                'selector'      => '{{WRAPPER}} .elementrify-content-toggle',
+                'selector'      => '{{WRAPPER}} .veloria-content-toggle',
                 'fields_options' => [
                     'border' => ['default' => 'solid'],
                     'color'  => ['default' => '#e6e6e6'],
@@ -187,11 +187,11 @@ class ContentToggle extends WidgetBase
         $this->add_responsive_control(
             'padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-content-toggle__panels' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-content-toggle__panels' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default'    => ['top' => 24, 'right' => 24, 'bottom' => 24, 'left' => 24, 'unit' => 'px'],
             ]
@@ -200,11 +200,11 @@ class ContentToggle extends WidgetBase
         $this->add_responsive_control(
             'margin',
             [
-                'label'      => __('Margin', 'elementrify'),
+                'label'      => __('Margin', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-content-toggle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-content-toggle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -214,7 +214,7 @@ class ContentToggle extends WidgetBase
         $this->start_controls_section(
             'section_style_labels',
             [
-                'label' => __('Toggle labels', 'elementrify'),
+                'label' => __('Toggle labels', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -222,11 +222,11 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'label_background',
             [
-                'label'     => __('Pill background', 'elementrify'),
+                'label'     => __('Pill background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f3f4f6',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__labels' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__labels' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -235,18 +235,18 @@ class ContentToggle extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'label_typography',
-                'selector' => '{{WRAPPER}} .elementrify-content-toggle__label',
+                'selector' => '{{WRAPPER}} .veloria-content-toggle__label',
             ]
         );
 
         $this->add_control(
             'label_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__label:not(.is-active)' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__label:not(.is-active)' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -254,11 +254,11 @@ class ContentToggle extends WidgetBase
         $this->add_responsive_control(
             'label_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-content-toggle__label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-content-toggle__label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default'    => ['top' => 10, 'right' => 24, 'bottom' => 10, 'left' => 24, 'unit' => 'px'],
             ]
@@ -269,7 +269,7 @@ class ContentToggle extends WidgetBase
         $this->start_controls_section(
             'section_style_badge',
             [
-                'label' => __('Badge', 'elementrify'),
+                'label' => __('Badge', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -277,11 +277,11 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'badge_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#22c55e',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__badge' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__badge' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -289,11 +289,11 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'badge_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__badge' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__badge' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -302,7 +302,7 @@ class ContentToggle extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'badge_typography',
-                'selector' => '{{WRAPPER}} .elementrify-content-toggle__badge',
+                'selector' => '{{WRAPPER}} .veloria-content-toggle__badge',
             ]
         );
 
@@ -311,7 +311,7 @@ class ContentToggle extends WidgetBase
         $this->start_controls_section(
             'section_style_active_label',
             [
-                'label' => __('Active label', 'elementrify'),
+                'label' => __('Active label', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -319,11 +319,11 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'active_label_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__label.is-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__label.is-active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -331,11 +331,11 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'active_label_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__label.is-active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__label.is-active' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -345,7 +345,7 @@ class ContentToggle extends WidgetBase
         $this->start_controls_section(
             'section_style_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -353,12 +353,12 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'content_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-content-toggle__panels' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__panels' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -367,20 +367,20 @@ class ContentToggle extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'content_typography',
-                'selector' => '{{WRAPPER}} .elementrify-content-toggle__panel',
+                'selector' => '{{WRAPPER}} .veloria-content-toggle__panel',
             ]
         );
 
         $this->add_control(
             'content_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__panel' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-content-toggle__panel p' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-content-toggle__panel ul li' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__panel' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__panel p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__panel ul li' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -388,14 +388,14 @@ class ContentToggle extends WidgetBase
         $this->add_control(
             'content_heading_color',
             [
-                'label'     => __('Heading color', 'elementrify'),
+                'label'     => __('Heading color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-content-toggle__panel h1,' .
-                    '{{WRAPPER}} .elementrify-content-toggle__panel h2,' .
-                    '{{WRAPPER}} .elementrify-content-toggle__panel h3,' .
-                    '{{WRAPPER}} .elementrify-content-toggle__panel h4' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-content-toggle__panel h1,' .
+                    '{{WRAPPER}} .veloria-content-toggle__panel h2,' .
+                    '{{WRAPPER}} .veloria-content-toggle__panel h3,' .
+                    '{{WRAPPER}} .veloria-content-toggle__panel h4' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -405,7 +405,7 @@ class ContentToggle extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/content-toggle/content-toggle.php';
+        $path = VELORIA_DIR . 'templates/content-toggle/content-toggle.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -416,11 +416,11 @@ class ContentToggle extends WidgetBase
         ?>
         <#
         var secondaryFirst = settings.default_active === 'secondary';
-        var primaryLabelClass = 'elementrify-content-toggle__label' + (secondaryFirst ? '' : ' is-active');
-        var secondaryLabelClass = 'elementrify-content-toggle__label' + (secondaryFirst ? ' is-active' : '');
-        var primaryPanelClass = 'elementrify-content-toggle__panel' + (secondaryFirst ? '' : ' is-active');
-        var secondaryPanelClass = 'elementrify-content-toggle__panel' + (secondaryFirst ? ' is-active' : '');
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-content-toggle');
+        var primaryLabelClass = 'veloria-content-toggle__label' + (secondaryFirst ? '' : ' is-active');
+        var secondaryLabelClass = 'veloria-content-toggle__label' + (secondaryFirst ? ' is-active' : '');
+        var primaryPanelClass = 'veloria-content-toggle__panel' + (secondaryFirst ? '' : ' is-active');
+        var secondaryPanelClass = 'veloria-content-toggle__panel' + (secondaryFirst ? ' is-active' : '');
+        view.addRenderAttribute('wrapper', 'class', 'veloria-content-toggle');
         view.addRenderAttribute('primary_label', 'class', primaryLabelClass);
         view.addRenderAttribute('primary_label', 'data-toggle', '0');
         view.addInlineEditingAttributes('primary_label', 'none');
@@ -435,16 +435,16 @@ class ContentToggle extends WidgetBase
         view.addInlineEditingAttributes('secondary_content', 'advanced');
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}>
-            <div class="elementrify-content-toggle__toggle-row">
-                <div class="elementrify-content-toggle__labels">
+            <div class="veloria-content-toggle__toggle-row">
+                <div class="veloria-content-toggle__labels">
                     <span {{{ view.getRenderAttributeString('primary_label') }}}>{{{ settings.primary_label }}}</span>
                     <span {{{ view.getRenderAttributeString('secondary_label') }}}>{{{ settings.secondary_label }}}</span>
                 </div>
                 <# if (settings.badge_text) { #>
-                <span class="elementrify-content-toggle__badge">{{{ settings.badge_text }}}</span>
+                <span class="veloria-content-toggle__badge">{{{ settings.badge_text }}}</span>
                 <# } #>
             </div>
-            <div class="elementrify-content-toggle__panels">
+            <div class="veloria-content-toggle__panels">
                 <div {{{ view.getRenderAttributeString('primary_content') }}}>{{{ settings.primary_content }}}</div>
                 <div {{{ view.getRenderAttributeString('secondary_content') }}}>{{{ settings.secondary_content }}}</div>
             </div>

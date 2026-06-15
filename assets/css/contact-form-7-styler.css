@@ -1,35 +1,35 @@
-.elementrify-cf7-styler {
+.veloria-cf7-styler {
   box-sizing: border-box;
 }
 
-.elementrify-cf7-styler *,
-.elementrify-cf7-styler *::before,
-.elementrify-cf7-styler *::after {
+.veloria-cf7-styler *,
+.veloria-cf7-styler *::before,
+.veloria-cf7-styler *::after {
   box-sizing: inherit;
 }
 
-.elementrify-cf7-styler-inner {
+.veloria-cf7-styler-inner {
   width: 100%;
 }
 
-.elementrify-cf7-styler-inner .wpcf7-form {
+.veloria-cf7-styler-inner .wpcf7-form {
   margin: 0;
 }
 
-.elementrify-cf7-styler-inner .wpcf7-form-control-wrap {
+.veloria-cf7-styler-inner .wpcf7-form-control-wrap {
   display: block;
   width: 100%;
 }
 
-.elementrify-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:not(.wpcf7-submit),
-.elementrify-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control,
-.elementrify-cf7-styler-inner .wpcf7-form select.wpcf7-form-control {
+.veloria-cf7-styler-inner .wpcf7-form input.wpcf7-form-control:not(.wpcf7-submit),
+.veloria-cf7-styler-inner .wpcf7-form textarea.wpcf7-form-control,
+.veloria-cf7-styler-inner .wpcf7-form select.wpcf7-form-control {
   width: 100%;
   max-width: 100%;
 }
 
-.elementrify-cf7-styler-inner .wpcf7-form .wpcf7-submit-wrap,
-.elementrify-cf7-styler-inner .wpcf7-form p:has(input.wpcf7-submit) {
+.veloria-cf7-styler-inner .wpcf7-form .wpcf7-submit-wrap,
+.veloria-cf7-styler-inner .wpcf7-form p:has(input.wpcf7-submit) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -37,11 +37,11 @@
   justify-content: flex-start;
 }
 
-.elementrify-cf7-styler-inner .wpcf7-list-item {
+.veloria-cf7-styler-inner .wpcf7-list-item {
   margin: 0;
 }
 
-.elementrify-cf7-styler__placeholder {
+.veloria-cf7-styler__placeholder {
   margin: 0;
   padding: 1rem;
   color: #6b7280;
@@ -51,32 +51,32 @@
   text-align: center;
 }
 
-.elementrify-cf7-styler--labels-inline .wpcf7-form label {
+.veloria-cf7-styler--labels-inline .wpcf7-form label {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
 @media (min-width: 768px) {
-  .elementrify-cf7-styler--labels-inline .wpcf7-form > p:has(.wpcf7-form-control-wrap) {
+  .veloria-cf7-styler--labels-inline .wpcf7-form > p:has(.wpcf7-form-control-wrap) {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 0.75rem 1rem;
   }
 
-  .elementrify-cf7-styler--labels-inline .wpcf7-form > p:has(.wpcf7-form-control-wrap) > label:first-child {
+  .veloria-cf7-styler--labels-inline .wpcf7-form > p:has(.wpcf7-form-control-wrap) > label:first-child {
     flex: 0 0 140px;
     max-width: 40%;
     margin-bottom: 0;
   }
 
-  .elementrify-cf7-styler--labels-inline .wpcf7-form > p:has(.wpcf7-form-control-wrap) > .wpcf7-form-control-wrap {
+  .veloria-cf7-styler--labels-inline .wpcf7-form > p:has(.wpcf7-form-control-wrap) > .wpcf7-form-control-wrap {
     flex: 1 1 200px;
     min-width: 0;
   }
 
-  .elementrify-cf7-styler--labels-inline .wpcf7-form > p:has(input.wpcf7-submit) {
+  .veloria-cf7-styler--labels-inline .wpcf7-form > p:has(input.wpcf7-submit) {
     flex-basis: 100%;
   }
 }

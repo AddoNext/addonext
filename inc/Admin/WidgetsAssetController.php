@@ -1,12 +1,12 @@
 <?php
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
 defined('ABSPATH') || exit;
 
 /**
  * WidgetsAssetController class
  *
- * @package Elementrify
+ * @package Veloria
  * @subpackage Admin
  * @since 1.0.0
  */
@@ -19,593 +19,593 @@ class WidgetsAssetController
      */
     private array $styles = [
         [
-            'handle' => 'elementrify-advanced-heading',
+            'handle' => 'veloria-advanced-heading',
             'file'   => 'assets/css/advanced-heading.css'
         ],
         [
-            'handle' => 'elementrify-advanced-tabs',
+            'handle' => 'veloria-advanced-tabs',
             'file'   => 'assets/css/advanced-tabs.css'
         ],
         [
-            'handle' => 'elementrify-content-toggle',
+            'handle' => 'veloria-content-toggle',
             'file'   => 'assets/css/content-toggle.css'
         ],
         [
-            'handle' => 'elementrify-advanced-google-map',
+            'handle' => 'veloria-advanced-google-map',
             'file'   => 'assets/css/advanced-google-map.css'
         ],
         [
-            'handle' => 'elementrify-smart-post-list',
+            'handle' => 'veloria-smart-post-list',
             'file'   => 'assets/css/smart-post-list.css'
         ],
         [
-            'handle' => 'elementrify-text-editor',
+            'handle' => 'veloria-text-editor',
             'file'   => 'assets/css/text-editor.css'
         ],
         [
-            'handle' => 'elementrify-video-player',
+            'handle' => 'veloria-video-player',
             'file'   => 'assets/css/video-player.css'
         ],
         [
-            'handle' => 'elementrify-video-gallery',
+            'handle' => 'veloria-video-gallery',
             'file'   => 'assets/css/video-gallery.css'
         ],
         [
-            'handle' => 'elementrify-image-box',
+            'handle' => 'veloria-image-box',
             'file'   => 'assets/css/image-box.css'
         ],
         [
-            'handle' => 'elementrify-author-box',
+            'handle' => 'veloria-author-box',
             'file'   => 'assets/css/author-box.css'
         ],
         [
-            'handle' => 'elementrify-banner',
+            'handle' => 'veloria-banner',
             'file'   => 'assets/css/banner.css'
         ],
         [
-            'handle' => 'elementrify-icon-box',
+            'handle' => 'veloria-icon-box',
             'file'   => 'assets/css/icon-box.css'
         ],
         [
-            'handle' => 'elementrify-icon-list',
+            'handle' => 'veloria-icon-list',
             'file'   => 'assets/css/icon-list.css'
         ],
         [
-            'handle' => 'elementrify-modal-popup',
+            'handle' => 'veloria-modal-popup',
             'file'   => 'assets/css/modal-popup.css'
         ],
         [
-            'handle' => 'elementrify-navigation-menu',
+            'handle' => 'veloria-navigation-menu',
             'file'   => 'assets/css/navigation-menu.css'
         ],
         [
-            'handle' => 'elementrify-notice-board',
+            'handle' => 'veloria-notice-board',
             'file'   => 'assets/css/notice-board.css'
         ],
         [
-            'handle' => 'elementrify-news-ticker',
+            'handle' => 'veloria-news-ticker',
             'file'   => 'assets/css/news-ticker.css'
         ],
         [
-            'handle' => 'elementrify-mini-cart',
+            'handle' => 'veloria-mini-cart',
             'file'   => 'assets/css/mini-cart.css'
         ],
         [
-            'handle' => 'elementrify-divider',
+            'handle' => 'veloria-divider',
             'file'   => 'assets/css/divider.css'
         ],
         [
-            'handle' => 'elementrify-spacer',
+            'handle' => 'veloria-spacer',
             'file'   => 'assets/css/spacer.css'
         ],
         [
-            'handle' => 'elementrify-blockquote',
+            'handle' => 'veloria-blockquote',
             'file'   => 'assets/css/blockquote.css'
         ],
         [
-            'handle' => 'elementrify-animated-counter',
+            'handle' => 'veloria-animated-counter',
             'file'   => 'assets/css/animated-counter.css'
         ],
         [
-            'handle' => 'elementrify-timeline',
+            'handle' => 'veloria-timeline',
             'file'   => 'assets/css/timeline.css'
         ],
         [
-            'handle' => 'elementrify-star-rating',
+            'handle' => 'veloria-star-rating',
             'file'   => 'assets/css/star-rating.css'
         ],
         [
-            'handle' => 'elementrify-image-carousel',
+            'handle' => 'veloria-image-carousel',
             'file'   => 'assets/css/image-carousel.css'
         ],
         [
-            'handle' => 'elementrify-product-carousel',
+            'handle' => 'veloria-product-carousel',
             'file'   => 'assets/css/product-carousel.css'
         ],
         [
-            'handle' => 'elementrify-product-grid',
+            'handle' => 'veloria-product-grid',
             'file'   => 'assets/css/product-grid.css'
         ],
         [
-            'handle' => 'elementrify-product-tabs',
+            'handle' => 'veloria-product-tabs',
             'file'   => 'assets/css/product-tabs.css'
         ],
         [
-            'handle' => 'elementrify-product-image',
+            'handle' => 'veloria-product-image',
             'file'   => 'assets/css/product-image.css'
         ],
         [
-            'handle' => 'elementrify-woo-checkout',
+            'handle' => 'veloria-woo-checkout',
             'file'   => 'assets/css/woo-checkout.css'
         ],
         [
-            'handle' => 'elementrify-woo-dashboard',
+            'handle' => 'veloria-woo-dashboard',
             'file'   => 'assets/css/woo-dashboard.css'
         ],
         [
-            'handle' => 'elementrify-woo-thank-you',
+            'handle' => 'veloria-woo-thank-you',
             'file'   => 'assets/css/woo-thank-you.css'
         ],
         [
-            'handle' => 'elementrify-product-categories',
+            'handle' => 'veloria-product-categories',
             'file'   => 'assets/css/product-categories.css'
         ],
         [
-            'handle' => 'elementrify-add-to-cart',
+            'handle' => 'veloria-add-to-cart',
             'file'   => 'assets/css/add-to-cart.css'
         ],
         [
-            'handle' => 'elementrify-testimonials',
+            'handle' => 'veloria-testimonials',
             'file'   => 'assets/css/testimonials.css'
         ],
         [
-            'handle' => 'elementrify-tooltip',
+            'handle' => 'veloria-tooltip',
             'file'   => 'assets/css/tooltip.css'
         ],
         [
-            'handle' => 'elementrify-countdown-timer',
+            'handle' => 'veloria-countdown-timer',
             'file'   => 'assets/css/countdown-timer.css'
         ],
         [
-            'handle' => 'elementrify-image-hotspot',
+            'handle' => 'veloria-image-hotspot',
             'file'   => 'assets/css/image-hotspot.css'
         ],
         [
-            'handle' => 'elementrify-line-chart',
+            'handle' => 'veloria-line-chart',
             'file'   => 'assets/css/line-chart.css'
         ],
         [
-            'handle' => 'elementrify-area-chart',
+            'handle' => 'veloria-area-chart',
             'file'   => 'assets/css/area-chart.css'
         ],
         [
-            'handle' => 'elementrify-bar-chart',
+            'handle' => 'veloria-bar-chart',
             'file'   => 'assets/css/bar-chart.css'
         ],
         [
-            'handle' => 'elementrify-pie-chart',
+            'handle' => 'veloria-pie-chart',
             'file'   => 'assets/css/pie-chart.css'
         ],
         [
-            'handle' => 'elementrify-radar-chart',
+            'handle' => 'veloria-radar-chart',
             'file'   => 'assets/css/radar-chart.css'
         ],
         [
-            'handle' => 'elementrify-donut-chart',
+            'handle' => 'veloria-donut-chart',
             'file'   => 'assets/css/donut-chart.css'
         ],
         [
-            'handle' => 'elementrify-advanced-analytics',
+            'handle' => 'veloria-advanced-analytics',
             'file'   => 'assets/css/advanced-analytics.css'
         ],
         [
-            'handle' => 'elementrify-contact-form',
+            'handle' => 'veloria-contact-form',
             'file'   => 'assets/css/contact-form.css'
         ],
         [
-            'handle' => 'elementrify-contact-form-7-styler',
+            'handle' => 'veloria-contact-form-7-styler',
             'file'   => 'assets/css/contact-form-7-styler.css'
         ],
         [
-            'handle' => 'elementrify-subscribe-form',
+            'handle' => 'veloria-subscribe-form',
             'file'   => 'assets/css/subscribe-form.css'
         ],
         [
-            'handle' => 'elementrify-table-of-contents',
+            'handle' => 'veloria-table-of-contents',
             'file'   => 'assets/css/table-of-contents.css'
         ],
         [
-            'handle' => 'elementrify-team-members',
+            'handle' => 'veloria-team-members',
             'file'   => 'assets/css/team-members.css'
         ],
         [
-            'handle' => 'elementrify-logo-showcase',
+            'handle' => 'veloria-logo-showcase',
             'file'   => 'assets/css/logo-showcase.css'
         ],
         [
-            'handle' => 'elementrify-lottie-animation',
+            'handle' => 'veloria-lottie-animation',
             'file'   => 'assets/css/lottie-animation.css'
         ],
         [
-            'handle' => 'elementrify-progress-bar',
+            'handle' => 'veloria-progress-bar',
             'file'   => 'assets/css/progress-bar.css'
         ],
         [
-            'handle' => 'elementrify-circular-progress',
+            'handle' => 'veloria-circular-progress',
             'file'   => 'assets/css/circular-progress.css'
         ],
         [
-            'handle' => 'elementrify-pricing-table',
+            'handle' => 'veloria-pricing-table',
             'file'   => 'assets/css/pricing-table.css'
         ],
         [
-            'handle' => 'elementrify-data-table',
+            'handle' => 'veloria-data-table',
             'file'   => 'assets/css/data-table.css'
         ],
         [
-            'handle' => 'elementrify-comparison-table',
+            'handle' => 'veloria-comparison-table',
             'file'   => 'assets/css/comparison-table.css'
         ],
         [
-            'handle' => 'elementrify-call-to-action',
+            'handle' => 'veloria-call-to-action',
             'file'   => 'assets/css/call-to-action.css'
         ],
         [
-            'handle' => 'elementrify-social-share',
+            'handle' => 'veloria-social-share',
             'file'   => 'assets/css/social-share.css'
         ],
         [
-            'handle' => 'elementrify-instagram-feed',
+            'handle' => 'veloria-instagram-feed',
             'file'   => 'assets/css/instagram-feed.css'
         ],
         [
-            'handle' => 'elementrify-twitter-feed',
+            'handle' => 'veloria-twitter-feed',
             'file'   => 'assets/css/twitter-feed.css'
         ],
         [
-            'handle' => 'elementrify-usp-items',
+            'handle' => 'veloria-usp-items',
             'file'   => 'assets/css/usp-items.css'
         ],
         [
-            'handle' => 'elementrify-flip-box',
+            'handle' => 'veloria-flip-box',
             'file'   => 'assets/css/flip-box.css'
         ],
         [
-            'handle' => 'elementrify-code-snippet',
+            'handle' => 'veloria-code-snippet',
             'file'   => 'assets/css/code-snippet.css'
         ],
         [
-            'handle' => 'elementrify-highlight',
+            'handle' => 'veloria-highlight',
             'file'   => 'assets/css/highlight.css'
         ],
         [
-            'handle' => 'elementrify-hero-banner',
+            'handle' => 'veloria-hero-banner',
             'file'   => 'assets/css/hero-banner.css'
         ],
         [
-            'handle' => 'elementrify-hero-slider',
+            'handle' => 'veloria-hero-slider',
             'file'   => 'assets/css/hero-slider.css'
         ],
         [
-            'handle' => 'elementrify-dual-heading',
+            'handle' => 'veloria-dual-heading',
             'file'   => 'assets/css/dual-heading.css'
         ],
         [
-            'handle' => 'elementrify-animated-gradient',
+            'handle' => 'veloria-animated-gradient',
             'file'   => 'assets/css/animated-gradient.css'
         ],
         [
-            'handle' => 'elementrify-animated-svg',
+            'handle' => 'veloria-animated-svg',
             'file'   => 'assets/css/animated-svg.css'
         ],
         [
-            'handle' => 'elementrify-bento-grid',
+            'handle' => 'veloria-bento-grid',
             'file'   => 'assets/css/bento-grid.css'
         ],
         [
-            'handle' => 'elementrify-dropcap',
+            'handle' => 'veloria-dropcap',
             'file'   => 'assets/css/dropcap.css'
         ],
         [
-            'handle' => 'elementrify-off-canvas-content',
+            'handle' => 'veloria-off-canvas-content',
             'file'   => 'assets/css/off-canvas-content.css'
         ],
         [
-            'handle' => 'elementrify-image-gallery',
+            'handle' => 'veloria-image-gallery',
             'file'   => 'assets/css/image-gallery.css'
         ],
         [
-            'handle' => 'elementrify-animated-text',
+            'handle' => 'veloria-animated-text',
             'file'   => 'assets/css/animated-text.css'
         ],
         [
-            'handle' => 'elementrify-before-after-slider',
+            'handle' => 'veloria-before-after-slider',
             'file'   => 'assets/css/before-after-slider.css'
         ],
         [
-            'handle' => 'elementrify-promo-box',
+            'handle' => 'veloria-promo-box',
             'file'   => 'assets/css/promo-box.css'
         ],
         [
-            'handle' => 'elementrify-price-list',
+            'handle' => 'veloria-price-list',
             'file'   => 'assets/css/price-list.css'
         ]
     ];
 
     private array $scripts = [
         [
-            'handle' => 'elementrify-advanced-tabs',
+            'handle' => 'veloria-advanced-tabs',
             'file'   => 'assets/js/advanced-tabs.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-content-toggle',
+            'handle' => 'veloria-content-toggle',
             'file'   => 'assets/js/content-toggle.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-advanced-google-map',
+            'handle' => 'veloria-advanced-google-map',
             'file'   => 'assets/js/advanced-google-map.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-video-player',
+            'handle' => 'veloria-video-player',
             'file'   => 'assets/js/video-player.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-video-gallery',
+            'handle' => 'veloria-video-gallery',
             'file'   => 'assets/js/video-gallery.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-image-box',
+            'handle' => 'veloria-image-box',
             'file'   => 'assets/js/image-box.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-modal-popup',
+            'handle' => 'veloria-modal-popup',
             'file'   => 'assets/js/modal-popup.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-navigation-menu',
+            'handle' => 'veloria-navigation-menu',
             'file'   => 'assets/js/navigation-menu.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-hero-banner',
+            'handle' => 'veloria-hero-banner',
             'file'   => 'assets/js/hero-banner.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-hero-slider',
+            'handle' => 'veloria-hero-slider',
             'file'   => 'assets/js/hero-slider.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend', 'swiper'],
         ],
         [
-            'handle' => 'elementrify-notice-board',
+            'handle' => 'veloria-notice-board',
             'file'   => 'assets/js/notice-board.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-animated-counter',
+            'handle' => 'veloria-animated-counter',
             'file'   => 'assets/js/animated-counter.js',
             'footer' => true
         ],
         [
-            'handle' => 'elementrify-animated-svg',
+            'handle' => 'veloria-animated-svg',
             'file'   => 'assets/js/animated-svg.js',
             'footer' => true,
             'deps'   => ['elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-image-carousel',
+            'handle' => 'veloria-image-carousel',
             'file'   => 'assets/js/image-carousel.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ],
         [
-            'handle' => 'elementrify-product-carousel',
+            'handle' => 'veloria-product-carousel',
             'file'   => 'assets/js/product-carousel.js',
             'footer' => true,
             'deps'   => ['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart'],
         ],
         [
-            'handle' => 'elementrify-product-grid',
+            'handle' => 'veloria-product-grid',
             'file'   => 'assets/js/product-grid.js',
             'footer' => true,
             'deps'   => ['elementor-frontend', 'jquery', 'wc-add-to-cart'],
         ],
         [
-            'handle' => 'elementrify-product-tabs',
+            'handle' => 'veloria-product-tabs',
             'file'   => 'assets/js/product-tabs.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend', 'wc-add-to-cart'],
         ],
         [
-            'handle' => 'elementrify-product-image',
+            'handle' => 'veloria-product-image',
             'file'   => 'assets/js/product-image.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-woo-checkout',
+            'handle' => 'veloria-woo-checkout',
             'file'   => 'assets/js/woo-checkout.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend', 'wc-checkout'],
         ],
         [
-            'handle' => 'elementrify-woo-dashboard',
+            'handle' => 'veloria-woo-dashboard',
             'file'   => 'assets/js/woo-dashboard.js',
             'footer' => true,
             'deps'   => ['elementor-frontend', 'jquery', 'wc-country-select', 'wc-address-i18n'],
         ],
         [
-            'handle' => 'elementrify-product-categories',
+            'handle' => 'veloria-product-categories',
             'file'   => 'assets/js/product-categories.js',
             'footer' => true,
             'deps'   => ['swiper', 'elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-add-to-cart',
+            'handle' => 'veloria-add-to-cart',
             'file'   => 'assets/js/add-to-cart.js',
             'footer' => true,
             'deps'   => ['elementor-frontend', 'jquery'],
         ],
         [
-            'handle' => 'elementrify-mini-cart',
+            'handle' => 'veloria-mini-cart',
             'file'   => 'assets/js/mini-cart.js',
             'footer' => true,
             'deps'   => ['elementor-frontend', 'jquery'],
         ],
         [
-            'handle' => 'elementrify-testimonials',
+            'handle' => 'veloria-testimonials',
             'file'   => 'assets/js/testimonials.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ],
         [
-            'handle' => 'elementrify-tooltip',
+            'handle' => 'veloria-tooltip',
             'file'   => 'assets/js/tooltip.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-countdown-timer',
+            'handle' => 'veloria-countdown-timer',
             'file'   => 'assets/js/countdown-timer.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-promo-box',
+            'handle' => 'veloria-promo-box',
             'file'   => 'assets/js/promo-box.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-image-hotspot',
+            'handle' => 'veloria-image-hotspot',
             'file'   => 'assets/js/image-hotspot.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-line-chart',
+            'handle' => 'veloria-line-chart',
             'file'   => 'assets/js/line-chart.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-area-chart',
+            'handle' => 'veloria-area-chart',
             'file'   => 'assets/js/area-chart.js',
             'footer' => true,
             'deps'   => ['elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-bar-chart',
+            'handle' => 'veloria-bar-chart',
             'file'   => 'assets/js/bar-chart.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-pie-chart',
+            'handle' => 'veloria-pie-chart',
             'file'   => 'assets/js/pie-chart.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-radar-chart',
+            'handle' => 'veloria-radar-chart',
             'file'   => 'assets/js/radar-chart.js',
             'footer' => true,
             'deps'   => ['elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-donut-chart',
+            'handle' => 'veloria-donut-chart',
             'file'   => 'assets/js/donut-chart.js',
             'footer' => true,
             'deps'   => ['elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-advanced-analytics',
+            'handle' => 'veloria-advanced-analytics',
             'file'   => 'assets/js/advanced-analytics.js',
             'footer' => true,
             'deps'   => ['elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-contact-form',
+            'handle' => 'veloria-contact-form',
             'file'   => 'assets/js/contact-form.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-subscribe-form',
+            'handle' => 'veloria-subscribe-form',
             'file'   => 'assets/js/subscribe-form.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-table-of-contents',
+            'handle' => 'veloria-table-of-contents',
             'file'   => 'assets/js/table-of-contents.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-team-members',
+            'handle' => 'veloria-team-members',
             'file'   => 'assets/js/team-members.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ],
         [
-            'handle' => 'elementrify-logo-showcase',
+            'handle' => 'veloria-logo-showcase',
             'file'   => 'assets/js/logo-showcase.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ],
         [
-            'handle' => 'elementrify-lottie-web',
+            'handle' => 'veloria-lottie-web',
             'file'   => 'assets/js/lib/lottie/lottie.min.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-lottie-animation',
+            'handle' => 'veloria-lottie-animation',
             'file'   => 'assets/js/lottie-animation.js',
             'footer' => true,
-            'deps'   => ['elementrify-lottie-web'],
+            'deps'   => ['veloria-lottie-web'],
         ],
         [
-            'handle' => 'elementrify-dual-heading-editor',
+            'handle' => 'veloria-dual-heading-editor',
             'file'   => 'assets/js/dual-heading-editor.js',
             'footer' => true,
             'deps'   => ['jquery', 'elementor-frontend'],
         ],
         [
-            'handle' => 'elementrify-instagram-feed',
+            'handle' => 'veloria-instagram-feed',
             'file'   => 'assets/js/instagram-feed.js',
             'footer' => true,
             'deps'   => ['swiper'],
         ],
         [
-            'handle' => 'elementrify-flip-box',
+            'handle' => 'veloria-flip-box',
             'file'   => 'assets/js/flip-box.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-code-snippet',
+            'handle' => 'veloria-code-snippet',
             'file'   => 'assets/js/code-snippet.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-off-canvas-content',
+            'handle' => 'veloria-off-canvas-content',
             'file'   => 'assets/js/off-canvas-content.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-image-gallery',
+            'handle' => 'veloria-image-gallery',
             'file'   => 'assets/js/image-gallery.js',
             'footer' => true,
         ],
         [
-            'handle' => 'elementrify-animated-text',
+            'handle' => 'veloria-animated-text',
             'file'   => 'assets/js/animated-text.js',
             'footer' => true,
             'deps'   => ['jquery'],
         ],
         [
-            'handle' => 'elementrify-before-after-slider',
+            'handle' => 'veloria-before-after-slider',
             'file'   => 'assets/js/before-after-slider.js',
             'footer' => true,
         ]
@@ -627,15 +627,15 @@ class WidgetsAssetController
      */
     public function register_styles(): void
     {
-        if (!defined('ELEMENTRIFY_URL') || !defined('ELEMENTRIFY_VERSION')) {
+        if (!defined('VELORIA_URL') || !defined('VELORIA_VERSION')) {
             return;
         }
         foreach ($this->styles as $asset) {
             wp_register_style(
                 $asset['handle'],
-                ELEMENTRIFY_URL . $asset['file'],
+                VELORIA_URL . $asset['file'],
                 [],
-                ELEMENTRIFY_VERSION
+                VELORIA_VERSION
             );
         }
     }
@@ -645,15 +645,15 @@ class WidgetsAssetController
      */
     public function register_scripts(): void
     {
-        if (!defined('ELEMENTRIFY_URL') || !defined('ELEMENTRIFY_VERSION')) {
+        if (!defined('VELORIA_URL') || !defined('VELORIA_VERSION')) {
             return;
         }
         foreach ($this->scripts as $asset) {
             wp_register_script(
                 $asset['handle'],
-                ELEMENTRIFY_URL . $asset['file'],
+                VELORIA_URL . $asset['file'],
                 $asset['deps'] ?? [],
-                ELEMENTRIFY_VERSION,
+                VELORIA_VERSION,
                 $asset['footer'] ?? true
             );
         }

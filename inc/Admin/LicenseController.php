@@ -1,9 +1,9 @@
 <?php
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use Elementrify\Utils\LicenseCapabilities;
+use Veloria\Utils\LicenseCapabilities;
 
 defined('ABSPATH') or exit;
 
@@ -27,13 +27,13 @@ class LicenseController
      */
     public function register_endpoints(): void
     {
-        register_rest_route('elementrify/v1', '/license', [
+        register_rest_route('veloria/v1', '/license', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_get_license'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
-        register_rest_route('elementrify/v1', '/license/activate', [
+        register_rest_route('veloria/v1', '/license/activate', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_activate_license'],
             'permission_callback' => [$this, 'check_permission'],
@@ -46,13 +46,13 @@ class LicenseController
             ]
         ]);
 
-        register_rest_route('elementrify/v1', '/license/deactivate', [
+        register_rest_route('veloria/v1', '/license/deactivate', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_deactivate_license'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
-        register_rest_route('elementrify/v1', '/license/check', [
+        register_rest_route('veloria/v1', '/license/check', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_check_license'],
             'permission_callback' => [$this, 'check_permission']

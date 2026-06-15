@@ -4,9 +4,9 @@
         if (wrapper.dataset && wrapper.dataset.modalInit) return;
         wrapper.dataset.modalInit = '1';
 
-        var trigger = wrapper.querySelector('.elementrify-modal__trigger');
-        var overlay = wrapper.querySelector('.elementrify-modal__overlay');
-        var closeBtn = wrapper.querySelector('.elementrify-modal__close');
+        var trigger = wrapper.querySelector('.veloria-modal__trigger');
+        var overlay = wrapper.querySelector('.veloria-modal__overlay');
+        var closeBtn = wrapper.querySelector('.veloria-modal__close');
         if (!trigger || !overlay) return;
 
         var countdownSeconds = parseInt(overlay.getAttribute('data-countdown'), 10) || 0;
@@ -51,7 +51,7 @@
             }
         });
 
-        var content = overlay.querySelector('.elementrify-modal__content');
+        var content = overlay.querySelector('.veloria-modal__content');
         if (content) {
             content.addEventListener('click', function (e) {
                 e.stopPropagation();
@@ -66,7 +66,7 @@
     }
 
     function run() {
-        document.querySelectorAll('.elementrify-modal').forEach(initModal);
+        document.querySelectorAll('.veloria-modal').forEach(initModal);
     }
 
     function observeModalNodes() {
@@ -77,11 +77,11 @@
             mutations.forEach(function (mutation) {
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
-                    if (node.classList && node.classList.contains('elementrify-modal')) {
+                    if (node.classList && node.classList.contains('veloria-modal')) {
                         initModal(node);
                     }
                     if (node.querySelector) {
-                        node.querySelectorAll('.elementrify-modal').forEach(initModal);
+                        node.querySelectorAll('.veloria-modal').forEach(initModal);
                     }
                 });
             });
@@ -106,7 +106,7 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-modal-popup.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-modal-popup.default', function ($scope) {
             var wrapper = $scope && ($scope[0] != null ? $scope[0] : $scope);
             if (wrapper && wrapper.querySelector) {
                 initModal(wrapper);

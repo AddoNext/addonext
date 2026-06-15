@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var CAROUSEL_SEL = '.elementrify-instagram-feed__carousel.swiper';
+    var CAROUSEL_SEL = '.veloria-instagram-feed__carousel.swiper';
 
     function initCarousel(el) {
         if (!el) return;
@@ -79,7 +79,7 @@
     setTimeout(runInit, 500);
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-instagram-feed.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-instagram-feed.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
                 var carousel = el.querySelector(CAROUSEL_SEL);

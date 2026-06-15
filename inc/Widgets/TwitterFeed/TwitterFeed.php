@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\TwitterFeed;
+namespace Veloria\Widgets\TwitterFeed;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -14,12 +14,12 @@ class TwitterFeed extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-twitter-feed elementrify-icon';
+        return 'eicon-twitter-feed veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-twitter-feed';
+        return 'veloria-twitter-feed';
     }
 
     public function get_admin_category(): string
@@ -29,12 +29,12 @@ class TwitterFeed extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Twitter Feed', 'elementrify');
+        return __('Twitter Feed', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Show recent posts from an X (Twitter) account using API v2.', 'elementrify');
+        return __('Show recent posts from an X (Twitter) account using API v2.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -44,16 +44,16 @@ class TwitterFeed extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-twitter-feed'];
+        return ['veloria-twitter-feed'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-twitter-feed',
-            ELEMENTRIFY_URL . 'assets/css/twitter-feed.css',
+            'veloria-twitter-feed',
+            VELORIA_URL . 'assets/css/twitter-feed.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -142,7 +142,7 @@ class TwitterFeed extends WidgetBase
 
         $limit = isset($settings['tweet_limit']) ? (int) $settings['tweet_limit'] : 5;
         $limit = max(1, min(100, $limit));
-        $cache_key = 'elementrify_tf_' . $this->get_id() . '_' . md5(
+        $cache_key = 'veloria_tf_' . $this->get_id() . '_' . md5(
             $username . '|' . substr(hash('sha256', $bearer_token), 0, 16) . '|' . $limit . '|' . (string) ($settings['cache_timeout'] ?? 'hour')
         );
 
@@ -228,31 +228,31 @@ class TwitterFeed extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_api', [
-            'label' => __('API', 'elementrify'),
+            'label' => __('API', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('username', [
-            'label'       => __('X username', 'elementrify'),
+            'label'       => __('X username', 'veloria'),
             'type'        => Controls_Manager::TEXT,
             'default'     => '',
             'placeholder' => 'elonmusk',
-            'description' => __('Without @. Requires a Twitter Developer app with read access.', 'elementrify'),
+            'description' => __('Without @. Requires a Twitter Developer app with read access.', 'veloria'),
         ]);
 
         $this->add_control('bearer_token', [
-            'label'       => __('Bearer token', 'elementrify'),
+            'label'       => __('Bearer token', 'veloria'),
             'type'        => Controls_Manager::TEXTAREA,
-            'placeholder' => __('Paste OAuth 2.0 Bearer Token (App only)', 'elementrify'),
+            'placeholder' => __('Paste OAuth 2.0 Bearer Token (App only)', 'veloria'),
             'description' => __(
                 'Create an app at developer.x.com, generate a Bearer Token, and ensure the project can access user tweet timelines (API v2).',
-                'elementrify'
+                'veloria'
             ),
             'rows'        => 3,
         ]);
 
         $this->add_control('tweet_limit', [
-            'label'   => __('Number of posts', 'elementrify'),
+            'label'   => __('Number of posts', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 100,
@@ -260,48 +260,48 @@ class TwitterFeed extends WidgetBase
         ]);
 
         $this->add_control('cache_timeout', [
-            'label'   => __('Cache duration', 'elementrify'),
+            'label'   => __('Cache duration', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'hour',
             'options' => [
-                'none'   => __('None', 'elementrify'),
-                'minute' => __('1 minute', 'elementrify'),
-                'hour'   => __('1 hour', 'elementrify'),
-                'day'    => __('1 day', 'elementrify'),
-                'week'   => __('1 week', 'elementrify'),
+                'none'   => __('None', 'veloria'),
+                'minute' => __('1 minute', 'veloria'),
+                'hour'   => __('1 hour', 'veloria'),
+                'day'    => __('1 day', 'veloria'),
+                'week'   => __('1 week', 'veloria'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_display', [
-            'label' => __('Display', 'elementrify'),
+            'label' => __('Display', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('open_new_tab', [
-            'label'        => __('Open links in new tab', 'elementrify'),
+            'label'        => __('Open links in new tab', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_date', [
-            'label'        => __('Show date', 'elementrify'),
+            'label'        => __('Show date', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_metrics', [
-            'label'        => __('Show engagement counts', 'elementrify'),
+            'label'        => __('Show engagement counts', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_profile_link', [
-            'label'        => __('Show profile link', 'elementrify'),
+            'label'        => __('Show profile link', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -310,36 +310,36 @@ class TwitterFeed extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_box', [
-            'label' => __('Cards', 'elementrify'),
+            'label' => __('Cards', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('card_bg', [
-            'label'     => __('Background', 'elementrify'),
+            'label'     => __('Background', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-twitter-feed__item' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-twitter-feed__item' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_border', [
-            'label'     => __('Border color', 'elementrify'),
+            'label'     => __('Border color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e2e8f0',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-twitter-feed__item' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-twitter-feed__item' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_radius', [
-            'label'      => __('Radius', 'elementrify'),
+            'label'      => __('Radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-twitter-feed__item' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-twitter-feed__item' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -347,18 +347,18 @@ class TwitterFeed extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'text_typography',
-                'label'    => __('Post text', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-twitter-feed__text',
+                'label'    => __('Post text', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-twitter-feed__text',
             ]
         );
 
         $this->add_control('link_color', [
-            'label'     => __('Link color', 'elementrify'),
+            'label'     => __('Link color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#1d9bf0',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-twitter-feed__permalink' => 'color: {{VALUE}};',
-                '{{WRAPPER}} .elementrify-twitter-feed__profile' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-twitter-feed__permalink' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-twitter-feed__profile' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -373,8 +373,8 @@ class TwitterFeed extends WidgetBase
 
         if ($token === '' || self::normalize_username($username) === '') {
             if (current_user_can('manage_options')) {
-                echo '<div class="elementrify-twitter-feed elementrify-twitter-feed--empty"><p class="elementrify-twitter-feed__notice">';
-                echo esc_html__('Add an X username and Bearer token in the widget settings.', 'elementrify');
+                echo '<div class="veloria-twitter-feed veloria-twitter-feed--empty"><p class="veloria-twitter-feed__notice">';
+                echo esc_html__('Add an X username and Bearer token in the widget settings.', 'veloria');
                 echo '</p></div>';
             }
 
@@ -382,12 +382,12 @@ class TwitterFeed extends WidgetBase
         }
 
         $tweets = $this->fetch_tweets($username, $token, $settings);
-        $tweets = apply_filters('elementrify_twitter_feed_tweets', $tweets, $settings, $username);
+        $tweets = apply_filters('veloria_twitter_feed_tweets', $tweets, $settings, $username);
 
         if ($tweets === []) {
             if (current_user_can('manage_options')) {
-                echo '<div class="elementrify-twitter-feed elementrify-twitter-feed--empty"><p class="elementrify-twitter-feed__notice">';
-                echo esc_html__('No posts returned. Check the username, token, and API access (v2 user timeline).', 'elementrify');
+                echo '<div class="veloria-twitter-feed veloria-twitter-feed--empty"><p class="veloria-twitter-feed__notice">';
+                echo esc_html__('No posts returned. Check the username, token, and API access (v2 user timeline).', 'veloria');
                 echo '</p></div>';
             }
 
@@ -395,7 +395,7 @@ class TwitterFeed extends WidgetBase
         }
 
         $display_username = self::normalize_username($username);
-        $path = ELEMENTRIFY_DIR . 'templates/twitter-feed/twitter-feed.php';
+        $path = VELORIA_DIR . 'templates/twitter-feed/twitter-feed.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -405,13 +405,13 @@ class TwitterFeed extends WidgetBase
     {
         ?>
         <# if (!settings.username || !settings.bearer_token) { #>
-            <div class="elementrify-twitter-feed elementrify-twitter-feed--empty">
-                <p class="elementrify-twitter-feed__notice"><?php echo esc_html__('Add username and Bearer token to load posts in the preview.', 'elementrify'); ?></p>
+            <div class="veloria-twitter-feed veloria-twitter-feed--empty">
+                <p class="veloria-twitter-feed__notice"><?php echo esc_html__('Add username and Bearer token to load posts in the preview.', 'veloria'); ?></p>
             </div>
         <# } else { #>
-            <div class="elementrify-twitter-feed">
-                <p class="elementrify-twitter-feed__notice"><?php echo esc_html__('Editor: posts load on the front end after saving.', 'elementrify'); ?></p>
-                <p class="elementrify-twitter-feed__preview-user">@{{ settings.username }}</p>
+            <div class="veloria-twitter-feed">
+                <p class="veloria-twitter-feed__notice"><?php echo esc_html__('Editor: posts load on the front end after saving.', 'veloria'); ?></p>
+                <p class="veloria-twitter-feed__preview-user">@{{ settings.username }}</p>
             </div>
         <# } #>
         <?php

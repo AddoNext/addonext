@@ -1,16 +1,16 @@
 <?php
-namespace Elementrify\Extensions\ScrollToTop;
+namespace Veloria\Extensions\ScrollToTop;
 
-use Elementrify\Base\ExtensionBase;
-use Elementrify\Common\ExtensionManager;
-use Elementrify\Utils\OptionsHelper;
+use Veloria\Base\ExtensionBase;
+use Veloria\Common\ExtensionManager;
+use Veloria\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
  * Floating button that scrolls the viewport to the top.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class ScrollToTop extends ExtensionBase
@@ -28,7 +28,7 @@ class ScrollToTop extends ExtensionBase
      */
     public function get_title(): string
     {
-        return __('Scroll to Top', 'elementrify');
+        return __('Scroll to Top', 'veloria');
     }
 
     /**
@@ -36,7 +36,7 @@ class ScrollToTop extends ExtensionBase
      */
     public function get_description(): string
     {
-        return __('Add a floating button that smoothly scrolls back to the top of the page.', 'elementrify');
+        return __('Add a floating button that smoothly scrolls back to the top of the page.', 'veloria');
     }
 
     /**
@@ -44,7 +44,7 @@ class ScrollToTop extends ExtensionBase
      */
     public function get_icon(): string
     {
-        return 'eicon-arrow-up elementrify-icon';
+        return 'eicon-arrow-up veloria-icon';
     }
 
     /**
@@ -80,29 +80,29 @@ class ScrollToTop extends ExtensionBase
             [
                 'id'          => 'position',
                 'type'        => 'select',
-                'label'       => __('Position', 'elementrify'),
-                'description' => __('Corner of the screen for the button.', 'elementrify'),
+                'label'       => __('Position', 'veloria'),
+                'description' => __('Corner of the screen for the button.', 'veloria'),
                 'default'     => 'bottom-right',
                 'options'     => [
-                    ['value' => 'bottom-right', 'label' => __('Bottom right', 'elementrify')],
-                    ['value' => 'bottom-left', 'label' => __('Bottom left', 'elementrify')],
-                    ['value' => 'top-right', 'label' => __('Top right', 'elementrify')],
-                    ['value' => 'top-left', 'label' => __('Top left', 'elementrify')],
+                    ['value' => 'bottom-right', 'label' => __('Bottom right', 'veloria')],
+                    ['value' => 'bottom-left', 'label' => __('Bottom left', 'veloria')],
+                    ['value' => 'top-right', 'label' => __('Top right', 'veloria')],
+                    ['value' => 'top-left', 'label' => __('Top left', 'veloria')],
                 ],
             ],
             [
                 'id'          => 'button_color',
                 'type'        => 'color',
-                'label'       => __('Button color', 'elementrify'),
-                'description' => __('CSS color (hex recommended), e.g. #4f46e5', 'elementrify'),
+                'label'       => __('Button color', 'veloria'),
+                'description' => __('CSS color (hex recommended), e.g. #4f46e5', 'veloria'),
                 'default'     => '#4f46e5',
                 'placeholder' => '#4f46e5',
             ],
             [
                 'id'          => 'button_size_px',
                 'type'        => 'range',
-                'label'       => __('Button size (px)', 'elementrify'),
-                'description' => __('Outer width and height of the square button.', 'elementrify'),
+                'label'       => __('Button size (px)', 'veloria'),
+                'description' => __('Outer width and height of the square button.', 'veloria'),
                 'default'     => 48,
                 'min'         => 32,
                 'max'         => 96,
@@ -112,8 +112,8 @@ class ScrollToTop extends ExtensionBase
             [
                 'id'          => 'padding_px',
                 'type'        => 'range',
-                'label'       => __('Inner padding (px)', 'elementrify'),
-                'description' => __('Space between the icon and the button edge.', 'elementrify'),
+                'label'       => __('Inner padding (px)', 'veloria'),
+                'description' => __('Space between the icon and the button edge.', 'veloria'),
                 'default'     => 12,
                 'min'         => 0,
                 'max'         => 36,
@@ -123,20 +123,20 @@ class ScrollToTop extends ExtensionBase
             [
                 'id'          => 'visibility',
                 'type'        => 'select',
-                'label'       => __('Where to show', 'elementrify'),
-                'description' => __('Control on which singular posts or pages the button appears.', 'elementrify'),
+                'label'       => __('Where to show', 'veloria'),
+                'description' => __('Control on which singular posts or pages the button appears.', 'veloria'),
                 'default'     => 'all',
                 'options'     => [
-                    ['value' => 'all', 'label' => __('All pages', 'elementrify')],
-                    ['value' => 'exclude', 'label' => __('All except selected', 'elementrify')],
-                    ['value' => 'include_only', 'label' => __('Only selected', 'elementrify')],
+                    ['value' => 'all', 'label' => __('All pages', 'veloria')],
+                    ['value' => 'exclude', 'label' => __('All except selected', 'veloria')],
+                    ['value' => 'include_only', 'label' => __('Only selected', 'veloria')],
                 ],
             ],
             [
                 'id'            => 'page_ids',
                 'type'          => 'checkbox_group',
-                'label'         => __('Posts & pages', 'elementrify'),
-                'description'   => __('Pick posts or pages for the visibility modes above.', 'elementrify'),
+                'label'         => __('Posts & pages', 'veloria'),
+                'description'   => __('Pick posts or pages for the visibility modes above.', 'veloria'),
                 'default'       => [],
                 'options'       => $this->get_page_and_post_options(),
                 'show_when_in'  => [
@@ -221,20 +221,20 @@ class ScrollToTop extends ExtensionBase
         $manager  = emty_container(ExtensionManager::class);
         $settings = $manager->get_extension_settings_payload($this->get_id());
 
-        $base = ELEMENTRIFY_URL . 'assets/';
+        $base = VELORIA_URL . 'assets/';
 
         wp_register_style(
             $this->get_id(),
             $base . 'css/extensions/' . $this->get_id() . '.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
             $this->get_id(),
             $base . 'js/extensions/' . $this->get_id() . '.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
 
@@ -245,7 +245,7 @@ class ScrollToTop extends ExtensionBase
         wp_add_inline_style(
             $this->get_id(),
             sprintf(
-                '#elementrify-scroll-top{width:%dpx;height:%dpx;padding:%dpx;background-color:%s;}',
+                '#veloria-scroll-top{width:%dpx;height:%dpx;padding:%dpx;background-color:%s;}',
                 max(32, min(96, $size)),
                 max(32, min(96, $size)),
                 max(0, min(36, $pad)),
@@ -259,7 +259,7 @@ class ScrollToTop extends ExtensionBase
 
         wp_localize_script(
             $this->get_id(),
-            'elementrifyScrollToTop',
+            'veloriaScrollToTop',
             [
                 'position'       => (string) $settings['position'],
                 'visibility'     => (string) $settings['visibility'],

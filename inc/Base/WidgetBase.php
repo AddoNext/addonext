@@ -1,12 +1,12 @@
 <?php
-namespace Elementrify\Base;
+namespace Veloria\Base;
 
 use Elementor\Widget_Base;
 
 defined('ABSPATH') || die('No direct access allowed');
 
 /**
- * Base class for Elementrify blocks
+ * Base class for Veloria blocks
  */
 abstract class WidgetBase extends Widget_Base
 {
@@ -49,7 +49,7 @@ abstract class WidgetBase extends Widget_Base
      */
     public function get_categories(): array
     {
-        return ['elementrify'];
+        return ['veloria'];
     }
 
     /**

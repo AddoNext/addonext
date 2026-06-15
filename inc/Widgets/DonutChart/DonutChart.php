@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\DonutChart;
+namespace Veloria\Widgets\DonutChart;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -18,18 +18,18 @@ class DonutChart extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('elementrify-donut-chart');
-        wp_enqueue_script('elementrify-donut-chart');
+        wp_enqueue_style('veloria-donut-chart');
+        wp_enqueue_script('veloria-donut-chart');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-circle-o elementrify-icon';
+        return 'eicon-circle-o veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-donut-chart';
+        return 'veloria-donut-chart';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class DonutChart extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Donut Chart', 'elementrify');
+        return __('Donut Chart', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Donut chart visualization', 'elementrify');
+        return __('Donut chart visualization', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -60,28 +60,28 @@ class DonutChart extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-donut-chart'];
+        return ['veloria-donut-chart'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'elementrify-donut-chart'];
+        return ['elementor-frontend', 'veloria-donut-chart'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-donut-chart',
-            ELEMENTRIFY_URL . 'assets/css/donut-chart.css',
+            'veloria-donut-chart',
+            VELORIA_URL . 'assets/css/donut-chart.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-donut-chart',
-            ELEMENTRIFY_URL . 'assets/js/donut-chart.js',
+            'veloria-donut-chart',
+            VELORIA_URL . 'assets/js/donut-chart.js',
             ['elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -94,7 +94,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -102,9 +102,9 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Chart title', 'elementrify'),
+                'label'   => __('Chart title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Department Budget Distribution', 'elementrify'),
+                'default' => __('Department Budget Distribution', 'veloria'),
             ]
         );
 
@@ -112,7 +112,7 @@ class DonutChart extends WidgetBase
         $repeater->add_control(
             'label',
             [
-                'label'   => __('Label', 'elementrify'),
+                'label'   => __('Label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -120,7 +120,7 @@ class DonutChart extends WidgetBase
         $repeater->add_control(
             'value',
             [
-                'label'   => __('Value', 'elementrify'),
+                'label'   => __('Value', 'veloria'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
                 'min'     => 0,
@@ -129,7 +129,7 @@ class DonutChart extends WidgetBase
         $repeater->add_control(
             'color',
             [
-                'label'   => __('Color', 'elementrify'),
+                'label'   => __('Color', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#4285F4',
             ]
@@ -146,7 +146,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'data',
             [
-                'label'       => __('Data', 'elementrify'),
+                'label'       => __('Data', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => $default_data,
@@ -157,7 +157,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'center_prefix',
             [
-                'label'   => __('Center value prefix', 'elementrify'),
+                'label'   => __('Center value prefix', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '$',
             ]
@@ -165,7 +165,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'center_suffix',
             [
-                'label'   => __('Center value suffix', 'elementrify'),
+                'label'   => __('Center value suffix', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => 'K',
             ]
@@ -173,15 +173,15 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'center_label',
             [
-                'label'   => __('Center label', 'elementrify'),
+                'label'   => __('Center label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Total Budget', 'elementrify'),
+                'default' => __('Total Budget', 'veloria'),
             ]
         );
         $this->add_control(
             'show_slice_labels',
             [
-                'label'        => __('Show slice labels', 'elementrify'),
+                'label'        => __('Show slice labels', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => 'yes',
                 'return_value' => 'yes',
@@ -190,7 +190,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'show_legend',
             [
-                'label'        => __('Show legend', 'elementrify'),
+                'label'        => __('Show legend', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => 'yes',
                 'return_value' => 'yes',
@@ -201,27 +201,27 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_chart',
             [
-                'label' => __('Chart', 'elementrify'),
+                'label' => __('Chart', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
             'chart_size',
             [
-                'label'      => __('Chart size', 'elementrify'),
+                'label'      => __('Chart size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 180, 'max' => 520]],
                 'default'    => ['size' => 360, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-donut-chart__canvas' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-donut-chart__canvas' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
         $this->add_control(
             'inner_cutout',
             [
-                'label' => __('Inner cutout (%)', 'elementrify'),
+                'label' => __('Inner cutout (%)', 'veloria'),
                 'type'  => Controls_Manager::SLIDER,
                 'range' => ['px' => ['min' => 35, 'max' => 80]],
                 'default' => ['size' => 50],
@@ -232,7 +232,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -240,33 +240,33 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-donut-chart__title',
+                'selector' => '{{WRAPPER}} .veloria-donut-chart__title',
             ]
         );
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-donut-chart__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-donut-chart__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
         $this->add_control(
             'title_align',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                    'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                    'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
+                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-donut-chart__title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-donut-chart__title' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -275,7 +275,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_center',
             [
-                'label' => __('Center text', 'elementrify'),
+                'label' => __('Center text', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -283,17 +283,17 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'center_value_typography',
-                'selector' => '{{WRAPPER}} .elementrify-donut-chart__center-value',
+                'selector' => '{{WRAPPER}} .veloria-donut-chart__center-value',
             ]
         );
         $this->add_control(
             'center_value_color',
             [
-                'label'     => __('Value color', 'elementrify'),
+                'label'     => __('Value color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-donut-chart__center-value' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-donut-chart__center-value' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -301,17 +301,17 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'center_label_typography',
-                'selector' => '{{WRAPPER}} .elementrify-donut-chart__center-label',
+                'selector' => '{{WRAPPER}} .veloria-donut-chart__center-label',
             ]
         );
         $this->add_control(
             'center_label_color',
             [
-                'label'     => __('Label color', 'elementrify'),
+                'label'     => __('Label color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-donut-chart__center-label' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-donut-chart__center-label' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -320,7 +320,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_legend',
             [
-                'label' => __('Legend', 'elementrify'),
+                'label' => __('Legend', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -328,17 +328,17 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'legend_typography',
-                'selector' => '{{WRAPPER}} .elementrify-donut-chart__legend-item',
+                'selector' => '{{WRAPPER}} .veloria-donut-chart__legend-item',
             ]
         );
         $this->add_control(
             'legend_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-donut-chart__legend-item' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-donut-chart__legend-item' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -352,7 +352,7 @@ class DonutChart extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/donut-chart/donut-chart.php';
+        $path = VELORIA_DIR . 'templates/donut-chart/donut-chart.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -384,7 +384,7 @@ class DonutChart extends WidgetBase
         var showLegend = settings.show_legend === 'yes' ? 'yes' : 'no';
         var innerCutout = settings.inner_cutout && settings.inner_cutout.size ? settings.inner_cutout.size : 50;
         #>
-        <div class="elementrify-donut-chart"
+        <div class="veloria-donut-chart"
             data-labels="{{ labels.join('|') }}"
             data-values="{{ values.join('|') }}"
             data-colors="{{ colors.join('|') }}"
@@ -394,10 +394,10 @@ class DonutChart extends WidgetBase
             data-show-labels="{{ showLabels }}"
             data-show-legend="{{ showLegend }}"
             data-inner-cutout="{{ innerCutout }}">
-            <# if (title) { #><h3 class="elementrify-donut-chart__title">{{{ title }}}</h3><# } #>
-            <div class="elementrify-donut-chart__wrap">
-                <div class="elementrify-donut-chart__canvas" role="img" aria-label="{{ title }}"></div>
-                <div class="elementrify-donut-chart__legend"></div>
+            <# if (title) { #><h3 class="veloria-donut-chart__title">{{{ title }}}</h3><# } #>
+            <div class="veloria-donut-chart__wrap">
+                <div class="veloria-donut-chart__canvas" role="img" aria-label="{{ title }}"></div>
+                <div class="veloria-donut-chart__legend"></div>
             </div>
         </div>
         <?php

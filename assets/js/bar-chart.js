@@ -44,7 +44,7 @@
         }
         if (yTicks.indexOf(max) === -1) yTicks.push(max);
 
-        var canvas = container.querySelector('.elementrify-bar-chart__canvas');
+        var canvas = container.querySelector('.veloria-bar-chart__canvas');
         if (!canvas) return;
 
         var paddingTop = 16;
@@ -70,11 +70,11 @@
         var ns = 'http://www.w3.org/2000/svg';
         var svg = document.createElementNS(ns, 'svg');
         svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-        svg.setAttribute('class', 'elementrify-bar-chart__svg');
+        svg.setAttribute('class', 'veloria-bar-chart__svg');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
         var grid = document.createElementNS(ns, 'g');
-        grid.setAttribute('class', 'elementrify-bar-chart__grid');
+        grid.setAttribute('class', 'veloria-bar-chart__grid');
         var i;
         for (i = 0; i < yTicks.length; i++) {
             var gy = yScale(yTicks[i]);
@@ -88,7 +88,7 @@
         svg.appendChild(grid);
 
         var yLabels = document.createElementNS(ns, 'g');
-        yLabels.setAttribute('class', 'elementrify-bar-chart__axis-labels elementrify-bar-chart__axis-label');
+        yLabels.setAttribute('class', 'veloria-bar-chart__axis-labels veloria-bar-chart__axis-label');
         for (i = 0; i < yTicks.length; i++) {
             var text = document.createElementNS(ns, 'text');
             text.setAttribute('x', paddingLeft - 8);
@@ -100,7 +100,7 @@
         svg.appendChild(yLabels);
 
         var bars = document.createElementNS(ns, 'g');
-        bars.setAttribute('class', 'elementrify-bar-chart__bars');
+        bars.setAttribute('class', 'veloria-bar-chart__bars');
         var chartBottom = height - paddingBottom;
         for (i = 0; i < values.length; i++) {
             var rect = document.createElementNS(ns, 'rect');
@@ -115,7 +115,7 @@
         svg.appendChild(bars);
 
         var xLabels = document.createElementNS(ns, 'g');
-        xLabels.setAttribute('class', 'elementrify-bar-chart__axis-labels elementrify-bar-chart__axis-label');
+        xLabels.setAttribute('class', 'veloria-bar-chart__axis-labels veloria-bar-chart__axis-label');
         for (i = 0; i < labels.length; i++) {
             var xtext = document.createElementNS(ns, 'text');
             xtext.setAttribute('x', barX(i) + barWidth / 2);
@@ -132,10 +132,10 @@
 
     function run(root) {
         root = root || document;
-        var containers = root.querySelectorAll('.elementrify-bar-chart');
+        var containers = root.querySelectorAll('.veloria-bar-chart');
         containers.forEach(function (el) {
             if (el.getAttribute('data-chart-built') === '1') return;
-            var canvas = el.querySelector('.elementrify-bar-chart__canvas');
+            var canvas = el.querySelector('.veloria-bar-chart__canvas');
             var valuesStr = (el.getAttribute('data-values') || '').split('|');
             var hasData = valuesStr.length > 0 && valuesStr.some(function (v) { return v !== '' && !isNaN(parseFloat(v, 10)); });
             if (canvas && hasData) {
@@ -164,16 +164,16 @@
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
                     var containers = [];
-                    if (node.classList && node.classList.contains('elementrify-bar-chart')) {
+                    if (node.classList && node.classList.contains('veloria-bar-chart')) {
                         containers.push(node);
                     }
                     if (node.querySelectorAll) {
-                        var found = node.querySelectorAll('.elementrify-bar-chart');
+                        var found = node.querySelectorAll('.veloria-bar-chart');
                         for (var i = 0; i < found.length; i++) containers.push(found[i]);
                     }
                     containers.forEach(function (container) {
-                        var canvas = container.querySelector('.elementrify-bar-chart__canvas');
-                        var needsBuild = canvas && !container.querySelector('.elementrify-bar-chart__svg');
+                        var canvas = container.querySelector('.veloria-bar-chart__canvas');
+                        var needsBuild = canvas && !container.querySelector('.veloria-bar-chart__svg');
                         if (needsBuild) {
                             container.removeAttribute('data-chart-built');
                             buildChart(container);
@@ -192,10 +192,10 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-bar-chart.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-bar-chart.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
-                var containers = el.querySelectorAll('.elementrify-bar-chart');
+                var containers = el.querySelectorAll('.veloria-bar-chart');
                 containers.forEach(function (c) {
                     c.removeAttribute('data-chart-built');
                 });

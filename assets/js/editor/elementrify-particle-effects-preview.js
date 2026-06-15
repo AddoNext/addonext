@@ -114,37 +114,37 @@
 		if (!el) {
 			return;
 		}
-		var host = el.querySelector('.elementrify-particles__host');
+		var host = el.querySelector('.veloria-particles__host');
 		if (host) {
 			host.remove();
 		}
-		el.classList.remove('elementrify-particles');
-		el.removeAttribute('data-elementrify-particles');
-		el.removeAttribute('data-elementrify-particles-host-id');
-		el.removeAttribute('data-elementrify-particles-preset');
-		el.removeAttribute('data-elementrify-particles-density');
-		el.removeAttribute('data-elementrify-particles-speed');
-		el.removeAttribute('data-elementrify-particles-node');
-		el.removeAttribute('data-elementrify-particles-line');
-		el.removeAttribute('data-elementrify-particles-fp');
+		el.classList.remove('veloria-particles');
+		el.removeAttribute('data-veloria-particles');
+		el.removeAttribute('data-veloria-particles-host-id');
+		el.removeAttribute('data-veloria-particles-preset');
+		el.removeAttribute('data-veloria-particles-density');
+		el.removeAttribute('data-veloria-particles-speed');
+		el.removeAttribute('data-veloria-particles-node');
+		el.removeAttribute('data-veloria-particles-line');
+		el.removeAttribute('data-veloria-particles-fp');
 	}
 
 	function applyParticleMarkupFromPlainSettings(el, id, plain) {
 		if (!el || !plain || typeof plain !== 'object') {
 			return;
 		}
-		var enabled = plain.elementrify_particles_enable;
+		var enabled = plain.veloria_particles_enable;
 		if (enabled !== 'yes') {
 			clearParticleMarkup(el);
 			return;
 		}
-		var preset = plain.elementrify_particles_preset || 'default';
-		var density = plain.elementrify_particles_density;
+		var preset = plain.veloria_particles_preset || 'default';
+		var density = plain.veloria_particles_density;
 		var densitySize = 80;
 		if (density && typeof density === 'object' && density.size !== undefined && density.size !== null) {
 			densitySize = density.size;
 		}
-		var speed = plain.elementrify_particles_speed;
+		var speed = plain.veloria_particles_speed;
 		var speedSize = 100;
 		if (speed && typeof speed === 'object' && speed.size !== undefined && speed.size !== null) {
 			speedSize = speed.size;
@@ -153,25 +153,25 @@
 		}
 		speedSize = Math.max(10, Math.min(300, parseInt(speedSize, 10) || 100));
 
-		var nodeRaw = plain.elementrify_particles_node_color;
+		var nodeRaw = plain.veloria_particles_node_color;
 		if (nodeRaw === undefined || nodeRaw === null || nodeRaw === '') {
-			nodeRaw = plain.elementrify_particles_color;
+			nodeRaw = plain.veloria_particles_color;
 		}
 		var nodeColor = normalizeElementorColor(nodeRaw) || '#ffffff';
-		var lineColor = normalizeElementorColor(plain.elementrify_particles_line_color);
+		var lineColor = normalizeElementorColor(plain.veloria_particles_line_color);
 
-		el.classList.add('elementrify-particles');
-		el.setAttribute('data-elementrify-particles', 'yes');
-		el.setAttribute('data-elementrify-particles-host-id', id);
-		el.setAttribute('data-elementrify-particles-preset', String(preset));
-		el.setAttribute('data-elementrify-particles-density', String(densitySize));
-		el.setAttribute('data-elementrify-particles-speed', String(speedSize));
-		el.setAttribute('data-elementrify-particles-node', nodeColor);
-		el.removeAttribute('data-elementrify-particles-fp');
+		el.classList.add('veloria-particles');
+		el.setAttribute('data-veloria-particles', 'yes');
+		el.setAttribute('data-veloria-particles-host-id', id);
+		el.setAttribute('data-veloria-particles-preset', String(preset));
+		el.setAttribute('data-veloria-particles-density', String(densitySize));
+		el.setAttribute('data-veloria-particles-speed', String(speedSize));
+		el.setAttribute('data-veloria-particles-node', nodeColor);
+		el.removeAttribute('data-veloria-particles-fp');
 		if (lineColor) {
-			el.setAttribute('data-elementrify-particles-line', lineColor);
+			el.setAttribute('data-veloria-particles-line', lineColor);
 		} else {
-			el.removeAttribute('data-elementrify-particles-line');
+			el.removeAttribute('data-veloria-particles-line');
 		}
 	}
 
@@ -212,13 +212,13 @@
 		}
 		if (typeof settings.get === 'function') {
 			[
-				'elementrify_particles_enable',
-				'elementrify_particles_preset',
-				'elementrify_particles_density',
-				'elementrify_particles_speed',
-				'elementrify_particles_node_color',
-				'elementrify_particles_line_color',
-				'elementrify_particles_color',
+				'veloria_particles_enable',
+				'veloria_particles_preset',
+				'veloria_particles_density',
+				'veloria_particles_speed',
+				'veloria_particles_node_color',
+				'veloria_particles_line_color',
+				'veloria_particles_color',
 			].forEach(function (key) {
 				var live = settings.get(key);
 				if (live !== undefined) {
@@ -319,11 +319,11 @@
 			return;
 		}
 		var win = frame.contentWindow;
-		if (typeof win.elementrifyParticlesRescan !== 'function') {
+		if (typeof win.veloriaParticlesRescan !== 'function') {
 			return;
 		}
 		try {
-			win.elementrifyParticlesRescan(frame.contentDocument);
+			win.veloriaParticlesRescan(frame.contentDocument);
 		} catch (e) {
 			/* ignore cross-origin or incomplete load */
 		}

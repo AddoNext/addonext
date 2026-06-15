@@ -1,26 +1,26 @@
-.elementrify-advanced-heading {
+.veloria-advanced-heading {
     margin: 0;
 }
 
-.elementrify-advanced-heading--align-left .elementrify-advanced-heading,
-.elementrify-advanced-heading--align-left .elementrify-advanced-heading__title,
-.elementrify-advanced-heading--align-left .elementrify-advanced-heading__subtitle {
+.veloria-advanced-heading--align-left .veloria-advanced-heading,
+.veloria-advanced-heading--align-left .veloria-advanced-heading__title,
+.veloria-advanced-heading--align-left .veloria-advanced-heading__subtitle {
     text-align: left;
 }
 
-.elementrify-advanced-heading--align-center .elementrify-advanced-heading,
-.elementrify-advanced-heading--align-center .elementrify-advanced-heading__title,
-.elementrify-advanced-heading--align-center .elementrify-advanced-heading__subtitle {
+.veloria-advanced-heading--align-center .veloria-advanced-heading,
+.veloria-advanced-heading--align-center .veloria-advanced-heading__title,
+.veloria-advanced-heading--align-center .veloria-advanced-heading__subtitle {
     text-align: center;
 }
 
-.elementrify-advanced-heading--align-right .elementrify-advanced-heading,
-.elementrify-advanced-heading--align-right .elementrify-advanced-heading__title,
-.elementrify-advanced-heading--align-right .elementrify-advanced-heading__subtitle {
+.veloria-advanced-heading--align-right .veloria-advanced-heading,
+.veloria-advanced-heading--align-right .veloria-advanced-heading__title,
+.veloria-advanced-heading--align-right .veloria-advanced-heading__subtitle {
     text-align: right;
 }
 
-.elementrify-advanced-heading__title {
+.veloria-advanced-heading__title {
     margin: 0;
     font-family: inherit;
     font-size: 2.25rem;
@@ -29,18 +29,18 @@
     letter-spacing: -0.025em;
 }
 
-.elementrify-advanced-heading__gradient {
+.veloria-advanced-heading__gradient {
     background: linear-gradient(
         to right,
-        var(--elementrify-gradient-start, #2563eb),
-        var(--elementrify-gradient-end, #7c3aed)
+        var(--veloria-gradient-start, #2563eb),
+        var(--veloria-gradient-end, #7c3aed)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.elementrify-advanced-heading__subtitle {
+.veloria-advanced-heading__subtitle {
     margin: 0;
     display: block;
     font-size: 0.875rem;

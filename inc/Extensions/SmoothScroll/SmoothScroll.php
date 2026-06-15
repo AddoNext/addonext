@@ -1,15 +1,15 @@
 <?php
-namespace Elementrify\Extensions\SmoothScroll;
+namespace Veloria\Extensions\SmoothScroll;
 
-use Elementrify\Base\ExtensionBase;
-use Elementrify\Utils\OptionsHelper;
+use Veloria\Base\ExtensionBase;
+use Veloria\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
  * Smooth wheel scrolling for the front using Lenis.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class SmoothScroll extends ExtensionBase
@@ -32,7 +32,7 @@ class SmoothScroll extends ExtensionBase
      */
     public function get_title(): string
     {
-        return __('Smooth Scroll', 'elementrify');
+        return __('Smooth Scroll', 'veloria');
     }
 
     /**
@@ -40,7 +40,7 @@ class SmoothScroll extends ExtensionBase
      */
     public function get_description(): string
     {
-        return __('Smooth mouse-wheel scrolling for the whole page.', 'elementrify');
+        return __('Smooth mouse-wheel scrolling for the whole page.', 'veloria');
     }
 
     /**
@@ -48,7 +48,7 @@ class SmoothScroll extends ExtensionBase
      */
     public function get_icon(): string
     {
-        return 'eicon-smooth-scroll elementrify-icon';
+        return 'eicon-smooth-scroll veloria-icon';
     }
 
     /**
@@ -97,10 +97,10 @@ class SmoothScroll extends ExtensionBase
             return;
         }
 
-        $base = ELEMENTRIFY_URL . 'assets/';
+        $base = VELORIA_URL . 'assets/';
 
         wp_register_style(
-            'elementrify-lenis',
+            'veloria-lenis',
             $base . 'css/extensions/lenis.css',
             [],
             self::LENIS_VERSION
@@ -109,12 +109,12 @@ class SmoothScroll extends ExtensionBase
         wp_register_style(
             $this->get_id(),
             $base . 'css/extensions/' . $this->get_id() . '.css',
-            ['elementrify-lenis'],
-            ELEMENTRIFY_VERSION
+            ['veloria-lenis'],
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-lenis',
+            'veloria-lenis',
             $base . 'js/extensions/lenis.min.js',
             [],
             self::LENIS_VERSION,
@@ -124,8 +124,8 @@ class SmoothScroll extends ExtensionBase
         wp_register_script(
             $this->get_id(),
             $base . 'js/extensions/' . $this->get_id() . '.js',
-            ['elementrify-lenis'],
-            ELEMENTRIFY_VERSION,
+            ['veloria-lenis'],
+            VELORIA_VERSION,
             true
         );
 

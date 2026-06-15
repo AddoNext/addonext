@@ -2,7 +2,7 @@
   'use strict';
 
   function setColorSwatchBackground(wrapper) {
-    var swatches = wrapper.querySelectorAll('.elementrify-product-filter__color-option span[data-color]');
+    var swatches = wrapper.querySelectorAll('.veloria-product-filter__color-option span[data-color]');
     for (var i = 0; i < swatches.length; i += 1) {
       var swatch = swatches[i];
       var color = swatch.getAttribute('data-color');
@@ -24,14 +24,14 @@
   }
 
   function bindRatingStars(form) {
-    var wrap = form.querySelector('.elementrify-product-filter__rating-stars-wrap');
+    var wrap = form.querySelector('.veloria-product-filter__rating-stars-wrap');
     if (!wrap) {
       return;
     }
 
-    var stars = wrap.querySelector('.elementrify-product-filter__rating-stars');
-    var caption = wrap.querySelector('.elementrify-product-filter__rating-caption');
-    var hidden = wrap.querySelector('.elementrify-product-filter__rating-hidden');
+    var stars = wrap.querySelector('.veloria-product-filter__rating-stars');
+    var caption = wrap.querySelector('.veloria-product-filter__rating-caption');
+    var hidden = wrap.querySelector('.veloria-product-filter__rating-hidden');
     if (!stars || !caption || !hidden) {
       return;
     }
@@ -48,7 +48,7 @@
     var hoverVal = null;
 
     function applyStarPairClasses() {
-      var pairs = stars.querySelectorAll('.elementrify-product-filter__star-pair');
+      var pairs = stars.querySelectorAll('.veloria-product-filter__star-pair');
       for (var i = 0; i < pairs.length; i += 1) {
         var starIndex = i + 1;
         pairs[i].classList.remove('is-full', 'is-half');
@@ -98,7 +98,7 @@
     }
 
     stars.addEventListener('click', function (ev) {
-      var btn = ev.target.closest('.elementrify-product-filter__star-half');
+      var btn = ev.target.closest('.veloria-product-filter__star-half');
       if (!btn || !stars.contains(btn)) {
         return;
       }
@@ -114,7 +114,7 @@
     });
 
     stars.addEventListener('pointerover', function (ev) {
-      var btn = ev.target.closest('.elementrify-product-filter__star-half');
+      var btn = ev.target.closest('.veloria-product-filter__star-half');
       if (!btn || !stars.contains(btn)) {
         return;
       }
@@ -138,13 +138,13 @@
   }
 
   function bindDualRange(wrapper) {
-    var track = wrapper.querySelector('.elementrify-product-filter__dual-range');
+    var track = wrapper.querySelector('.veloria-product-filter__dual-range');
     if (!track) {
       return;
     }
 
-    var rangeMin = track.querySelector('.elementrify-product-filter__range--min');
-    var rangeMax = track.querySelector('.elementrify-product-filter__range--max');
+    var rangeMin = track.querySelector('.veloria-product-filter__range--min');
+    var rangeMax = track.querySelector('.veloria-product-filter__range--max');
     if (!rangeMin || !rangeMax) {
       return;
     }
@@ -154,7 +154,7 @@
     var minInput = minId ? wrapper.querySelector('#' + minId) : null;
     var maxInput = maxId ? wrapper.querySelector('#' + maxId) : null;
     if (!minInput || !maxInput) {
-      var fallbackWrap = wrapper.querySelector('.elementrify-product-filter__price-inputs');
+      var fallbackWrap = wrapper.querySelector('.veloria-product-filter__price-inputs');
       if (fallbackWrap) {
         var nums = fallbackWrap.querySelectorAll('input[type="number"]');
         if (nums.length >= 2) {
@@ -170,7 +170,7 @@
     var lowerLimit = parseInt(rangeMin.min, 10) || 0;
     var upperLimit = parseInt(rangeMin.max, 10) || 500;
 
-    var fillEl = track.querySelector('.elementrify-product-filter__range-fill');
+    var fillEl = track.querySelector('.veloria-product-filter__range-fill');
 
     function clamp(v) {
       if (v < lowerLimit) {
@@ -286,18 +286,18 @@
   }
 
   function bindFilterSubmit(wrapper) {
-    var form = wrapper.tagName === 'FORM' ? wrapper : wrapper.querySelector('form.elementrify-product-filter');
+    var form = wrapper.tagName === 'FORM' ? wrapper : wrapper.querySelector('form.veloria-product-filter');
     if (!form) {
       return;
     }
 
     form.addEventListener('submit', function () {
-      var existingDynamicInputs = form.querySelectorAll('input[type="hidden"][data-elementrify-generated="1"]');
+      var existingDynamicInputs = form.querySelectorAll('input[type="hidden"][data-veloria-generated="1"]');
       for (var removeIndex = 0; removeIndex < existingDynamicInputs.length; removeIndex += 1) {
         existingDynamicInputs[removeIndex].remove();
       }
 
-      var ratingHidden = form.querySelector('.elementrify-product-filter__rating-hidden');
+      var ratingHidden = form.querySelector('.veloria-product-filter__rating-hidden');
       if (ratingHidden) {
         var rv = parseFloat(ratingHidden.value);
         if (!ratingHidden.value || isNaN(rv) || rv <= 0) {
@@ -335,20 +335,20 @@
         input.type = 'hidden';
         input.name = key;
         input.value = groupedValues[key].join(',');
-        input.setAttribute('data-elementrify-generated', '1');
+        input.setAttribute('data-veloria-generated', '1');
         form.appendChild(input);
       }
     });
   }
 
   function init(scope) {
-    var wrappers = scope.querySelectorAll('.elementrify-product-filter');
+    var wrappers = scope.querySelectorAll('.veloria-product-filter');
     for (var i = 0; i < wrappers.length; i += 1) {
       var wrapper = wrappers[i];
-      if (wrapper.getAttribute('data-elementrify-filter-init') === '1') {
+      if (wrapper.getAttribute('data-veloria-filter-init') === '1') {
         continue;
       }
-      wrapper.setAttribute('data-elementrify-filter-init', '1');
+      wrapper.setAttribute('data-veloria-filter-init', '1');
       setColorSwatchBackground(wrapper);
       bindDualRange(wrapper);
       bindRatingStars(wrapper);
@@ -365,7 +365,7 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-filter.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-filter.default', function ($scope) {
       var node = $scope && $scope[0] ? $scope[0] : $scope;
       if (node) {
         init(node);

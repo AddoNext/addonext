@@ -8,10 +8,10 @@
     escBound = true;
     document.addEventListener('keydown', function (evt) {
       if (!evt || evt.key !== 'Escape') return;
-      var open = document.querySelector('.elementrify-woo-dashboard__modal:not([hidden])');
+      var open = document.querySelector('.veloria-woo-dashboard__modal:not([hidden])');
       if (!open) return;
       open.setAttribute('hidden', '');
-      document.body.classList.remove('elementrify-wd-modal-open');
+      document.body.classList.remove('veloria-wd-modal-open');
     });
   }
 
@@ -26,8 +26,8 @@
       var key = String(panel || '');
       if (!key) return;
 
-      var panels = shell.querySelectorAll('.elementrify-woo-dashboard__panel');
-      var navButtons = shell.querySelectorAll('.elementrify-woo-dashboard__nav-item[data-wd-panel]');
+      var panels = shell.querySelectorAll('.veloria-woo-dashboard__panel');
+      var navButtons = shell.querySelectorAll('.veloria-woo-dashboard__nav-item[data-wd-panel]');
 
       var hasTarget = false;
       panels.forEach(function (p) {
@@ -61,17 +61,17 @@
     }
 
     function openModal() {
-      var modal = shell.querySelector('.elementrify-woo-dashboard__modal');
+      var modal = shell.querySelector('.veloria-woo-dashboard__modal');
       if (!modal) return;
       modal.removeAttribute('hidden');
-      document.body.classList.add('elementrify-wd-modal-open');
+      document.body.classList.add('veloria-wd-modal-open');
     }
 
     function closeModal() {
-      var modal = shell.querySelector('.elementrify-woo-dashboard__modal');
+      var modal = shell.querySelector('.veloria-woo-dashboard__modal');
       if (!modal) return;
       modal.setAttribute('hidden', '');
-      document.body.classList.remove('elementrify-wd-modal-open');
+      document.body.classList.remove('veloria-wd-modal-open');
     }
 
     shell.addEventListener(
@@ -115,18 +115,18 @@
    * @param {HTMLElement} shell
    */
   function initAddressEditors(shell) {
-    var cfg = window.elementrifyWooDashboard || {};
+    var cfg = window.veloriaWooDashboard || {};
     var ajaxUrl = cfg.ajaxUrl || shell.getAttribute('data-ajax-url') || '';
     var nonceAddress = cfg.nonceAddress || shell.getAttribute('data-address-nonce') || '';
     var i18n = cfg.i18n || {};
 
-    shell.querySelectorAll('.elementrify-wd-addresses__card').forEach(function (card) {
+    shell.querySelectorAll('.veloria-wd-addresses__card').forEach(function (card) {
       if (card.getAttribute('data-wd-address-bound') === 'yes') return;
       card.setAttribute('data-wd-address-bound', 'yes');
 
-      var view = card.querySelector('.elementrify-wd-addresses__view');
-      var editor = card.querySelector('.elementrify-wd-addresses__editor');
-      var msgEl = card.querySelector('.elementrify-wd-addresses__form-message');
+      var view = card.querySelector('.veloria-wd-addresses__view');
+      var editor = card.querySelector('.veloria-wd-addresses__editor');
+      var msgEl = card.querySelector('.veloria-wd-addresses__form-message');
       var title = card.getAttribute('data-address-title') || '';
 
       function openEditor() {
@@ -146,14 +146,14 @@
         if (editor) editor.setAttribute('hidden', '');
       }
 
-      var toggle = card.querySelector('.elementrify-wd-addresses__toggle-edit');
+      var toggle = card.querySelector('.veloria-wd-addresses__toggle-edit');
       if (toggle) {
         toggle.addEventListener('click', function () {
           openEditor();
         });
       }
 
-      var cancel = card.querySelector('.elementrify-wd-addresses__cancel-edit');
+      var cancel = card.querySelector('.veloria-wd-addresses__cancel-edit');
       if (cancel) {
         cancel.addEventListener('click', function () {
           closeEditor();
@@ -167,7 +167,7 @@
         if (
           !activeForm ||
           !activeForm.classList ||
-          !activeForm.classList.contains('elementrify-wd-addresses__wc-form')
+          !activeForm.classList.contains('veloria-wd-addresses__wc-form')
         ) {
           return;
         }
@@ -196,7 +196,7 @@
 
         var fd = new FormData(activeForm);
         fd.delete('action');
-        fd.append('action', 'elementrify_woo_dashboard_save_address');
+        fd.append('action', 'veloria_woo_dashboard_save_address');
         fd.append('address_nonce', nonceAddress);
         fd.append('address_type', card.getAttribute('data-address-key') || '');
 
@@ -210,20 +210,20 @@
           })
           .then(function (data) {
             if (data && data.success && data.data) {
-              var viewBody = card.querySelector('.elementrify-wd-addresses__view-body');
+              var viewBody = card.querySelector('.veloria-wd-addresses__view-body');
               var hasAddr = !!data.data.hasAddress;
               if (viewBody) {
                 if (hasAddr && data.data.formatted) {
                   viewBody.innerHTML =
-                    '<div class="elementrify-wd-addresses__text">' + data.data.formatted + '</div>';
+                    '<div class="veloria-wd-addresses__text">' + data.data.formatted + '</div>';
                 } else {
                   viewBody.innerHTML =
-                    '<p class="elementrify-wd-addresses__empty">' +
+                    '<p class="veloria-wd-addresses__empty">' +
                     (i18n.addressEmpty || '') +
                     '</p>';
                 }
               }
-              var labelSpan = card.querySelector('.elementrify-wd-addresses__btn-label');
+              var labelSpan = card.querySelector('.veloria-wd-addresses__btn-label');
               if (labelSpan && title) {
                 var editT = (i18n.editAddress || 'Edit %s').replace('%s', title);
                 var addT = (i18n.addAddress || 'Add %s').replace('%s', title);
@@ -234,7 +234,7 @@
                 closeEditor();
                 if (view && data.data.message) {
                   var flash = document.createElement('p');
-                  flash.className = 'elementrify-wd-addresses__flash';
+                  flash.className = 'veloria-wd-addresses__flash';
                   flash.textContent = data.data.message;
                   view.insertBefore(flash, view.firstChild);
                   window.setTimeout(function () {
@@ -246,7 +246,7 @@
               }
 
               var refreshFd = new FormData();
-              refreshFd.append('action', 'elementrify_woo_dashboard_get_address_form');
+              refreshFd.append('action', 'veloria_woo_dashboard_get_address_form');
               refreshFd.append('address_nonce', nonceAddress);
               refreshFd.append('address_type', card.getAttribute('data-address-key') || '');
 
@@ -263,9 +263,9 @@
                     var wrap = document.createElement('div');
                     wrap.innerHTML = resp.data.html.trim();
                     var newForm =
-                      wrap.querySelector('form.elementrify-wd-addresses__wc-form') ||
+                      wrap.querySelector('form.veloria-wd-addresses__wc-form') ||
                       wrap.querySelector('form');
-                    var oldForm = editor.querySelector('form.elementrify-wd-addresses__wc-form');
+                    var oldForm = editor.querySelector('form.veloria-wd-addresses__wc-form');
                     if (newForm && oldForm && oldForm.parentNode) {
                       oldForm.parentNode.replaceChild(newForm, oldForm);
                     }
@@ -298,7 +298,7 @@
           })
           .then(function () {
             var endBtn = card.querySelector(
-              'form.elementrify-wd-addresses__wc-form button[type="submit"]'
+              'form.veloria-wd-addresses__wc-form button[type="submit"]'
             );
             if (endBtn) {
               endBtn.disabled = false;
@@ -313,11 +313,11 @@
    * @param {HTMLElement} shell
    */
   function initAccountForm(shell) {
-    var form = shell.querySelector('.elementrify-wd-account__form');
+    var form = shell.querySelector('.veloria-wd-account__form');
     if (!form || form.getAttribute('data-wd-account-bound') === 'yes') return;
     form.setAttribute('data-wd-account-bound', 'yes');
 
-    var cfg = window.elementrifyWooDashboard || {};
+    var cfg = window.veloriaWooDashboard || {};
     var ajaxUrl = cfg.ajaxUrl || shell.getAttribute('data-ajax-url') || '';
     var nonce = cfg.nonce || shell.getAttribute('data-account-nonce') || '';
 
@@ -325,8 +325,8 @@
       evt.preventDefault();
       if (!ajaxUrl) return;
 
-      var msgEl = form.querySelector('.elementrify-wd-account__message');
-      var submitBtn = form.querySelector('.elementrify-wd-account__submit');
+      var msgEl = form.querySelector('.veloria-wd-account__message');
+      var submitBtn = form.querySelector('.veloria-wd-account__submit');
 
       function setMessage(text, kind) {
         if (!msgEl) return;
@@ -353,7 +353,7 @@
       setLoading(true);
 
       var fd = new FormData(form);
-      fd.append('action', 'elementrify_woo_dashboard_save_account');
+      fd.append('action', 'veloria_woo_dashboard_save_account');
       fd.append('nonce', nonce);
 
       fetch(ajaxUrl, {
@@ -371,7 +371,7 @@
               input.value = '';
             });
             if (data.data.displayName) {
-              var nameNode = shell.querySelector('.elementrify-woo-dashboard__name');
+              var nameNode = shell.querySelector('.veloria-woo-dashboard__name');
               if (nameNode) {
                 nameNode.textContent = data.data.displayName;
               }
@@ -403,7 +403,7 @@
 
   function boot(scope) {
     var root = scope && scope.querySelector ? scope : document;
-    var shells = root.querySelectorAll('.elementrify-woo-dashboard__shell');
+    var shells = root.querySelectorAll('.veloria-woo-dashboard__shell');
     shells.forEach(initShell);
   }
 
@@ -428,8 +428,8 @@
       if (!el || !el.querySelector) return;
       boot(el);
     }
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-woo-dashboard.default', onWidgetReady);
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-woo-dashboard', onWidgetReady);
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-woo-dashboard.default', onWidgetReady);
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-woo-dashboard', onWidgetReady);
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {

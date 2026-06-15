@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\AreaChart;
+namespace Veloria\Widgets\AreaChart;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -21,18 +21,18 @@ class AreaChart extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('elementrify-area-chart');
-        wp_enqueue_script('elementrify-area-chart');
+        wp_enqueue_style('veloria-area-chart');
+        wp_enqueue_script('veloria-area-chart');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-chart-area elementrify-icon';
+        return 'eicon-chart-area veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-area-chart';
+        return 'veloria-area-chart';
     }
 
     public function get_admin_category(): string
@@ -42,12 +42,12 @@ class AreaChart extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Area Chart', 'elementrify');
+        return __('Area Chart', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Trend area chart with gradient fill.', 'elementrify');
+        return __('Trend area chart with gradient fill.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -63,32 +63,32 @@ class AreaChart extends WidgetBase
 
     public function get_keywords(): array
     {
-        return ['elementrify', 'chart', 'area', 'graph', 'revenue'];
+        return ['veloria', 'chart', 'area', 'graph', 'revenue'];
     }
 
     public function get_style_depends(): array
     {
-        return ['elementrify-area-chart'];
+        return ['veloria-area-chart'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'elementrify-area-chart'];
+        return ['elementor-frontend', 'veloria-area-chart'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-area-chart',
-            ELEMENTRIFY_URL . 'assets/css/area-chart.css',
+            'veloria-area-chart',
+            VELORIA_URL . 'assets/css/area-chart.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-area-chart',
-            ELEMENTRIFY_URL . 'assets/js/area-chart.js',
+            'veloria-area-chart',
+            VELORIA_URL . 'assets/js/area-chart.js',
             ['elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -99,24 +99,24 @@ class AreaChart extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('title', [
-            'label'   => __('Chart title', 'elementrify'),
+            'label'   => __('Chart title', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Monthly Revenue Growth', 'elementrify'),
+            'default' => __('Monthly Revenue Growth', 'veloria'),
         ]);
 
         $repeater = new Repeater();
         $repeater->add_control('label', [
-            'label'   => __('Label', 'elementrify'),
+            'label'   => __('Label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
         $repeater->add_control('value', [
-            'label'   => __('Value', 'elementrify'),
+            'label'   => __('Value', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'default' => 0,
         ]);
@@ -137,7 +137,7 @@ class AreaChart extends WidgetBase
         ];
 
         $this->add_control('data', [
-            'label'       => __('Data', 'elementrify'),
+            'label'       => __('Data', 'veloria'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $repeater->get_controls(),
             'default'     => $default_data,
@@ -145,25 +145,25 @@ class AreaChart extends WidgetBase
         ]);
 
         $this->add_control('y_axis_suffix', [
-            'label'   => __('Y-axis suffix', 'elementrify'),
+            'label'   => __('Y-axis suffix', 'veloria'),
             'type'    => Controls_Manager::TEXT,
             'default' => 'k',
         ]);
 
         $this->add_control('y_min', [
-            'label'       => __('Y-axis min', 'elementrify'),
+            'label'       => __('Y-axis min', 'veloria'),
             'type'        => Controls_Manager::NUMBER,
-            'description' => __('Leave empty to auto-calculate from data.', 'elementrify'),
+            'description' => __('Leave empty to auto-calculate from data.', 'veloria'),
         ]);
 
         $this->add_control('y_max', [
-            'label'       => __('Y-axis max', 'elementrify'),
+            'label'       => __('Y-axis max', 'veloria'),
             'type'        => Controls_Manager::NUMBER,
-            'description' => __('Leave empty to auto-calculate from data.', 'elementrify'),
+            'description' => __('Leave empty to auto-calculate from data.', 'veloria'),
         ]);
 
         $this->add_control('smooth_line', [
-            'label'        => __('Smooth curve', 'elementrify'),
+            'label'        => __('Smooth curve', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -172,12 +172,12 @@ class AreaChart extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_chart', [
-            'label' => __('Chart', 'elementrify'),
+            'label' => __('Chart', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('chart_width', [
-            'label'      => __('Width', 'elementrify'),
+            'label'      => __('Width', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['%', 'px'],
             'range'      => [
@@ -186,12 +186,12 @@ class AreaChart extends WidgetBase
             ],
             'default'    => ['unit' => '%', 'size' => 100],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-area-chart' => 'max-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-area-chart' => 'max-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('chart_height', [
-            'label'      => __('Height', 'elementrify'),
+            'label'      => __('Height', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => [
@@ -199,21 +199,21 @@ class AreaChart extends WidgetBase
             ],
             'default'    => ['unit' => 'px', 'size' => 320],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-area-chart__canvas' => 'height: {{SIZE}}{{UNIT}}; min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-area-chart__canvas' => 'height: {{SIZE}}{{UNIT}}; min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('line_color', [
-            'label'     => __('Line color', 'elementrify'),
+            'label'     => __('Line color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#5b9bd5',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-area-chart__line' => 'stroke: {{VALUE}};',
+                '{{WRAPPER}} .veloria-area-chart__line' => 'stroke: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('area_opacity_top', [
-            'label'   => __('Fill opacity (top)', 'elementrify'),
+            'label'   => __('Fill opacity (top)', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 0,
             'max'     => 1,
@@ -222,7 +222,7 @@ class AreaChart extends WidgetBase
         ]);
 
         $this->add_control('area_opacity_bottom', [
-            'label'   => __('Fill opacity (bottom)', 'elementrify'),
+            'label'   => __('Fill opacity (bottom)', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 0,
             'max'     => 1,
@@ -231,18 +231,18 @@ class AreaChart extends WidgetBase
         ]);
 
         $this->add_control('grid_color', [
-            'label'     => __('Grid color', 'elementrify'),
+            'label'     => __('Grid color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e2e8f0',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-area-chart__grid line' => 'stroke: {{VALUE}};',
+                '{{WRAPPER}} .veloria-area-chart__grid line' => 'stroke: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_title', [
-            'label' => __('Title', 'elementrify'),
+            'label' => __('Title', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -250,37 +250,37 @@ class AreaChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-area-chart__title',
+                'selector' => '{{WRAPPER}} .veloria-area-chart__title',
             ]
         );
 
         $this->add_control('title_color', [
-            'label'     => __('Color', 'elementrify'),
+            'label'     => __('Color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#334155',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-area-chart__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-area-chart__title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('title_align', [
-            'label'   => __('Alignment', 'elementrify'),
+            'label'   => __('Alignment', 'veloria'),
             'type'    => Controls_Manager::CHOOSE,
             'options' => [
-                'left'   => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
+                'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
             ],
             'default' => 'center',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-area-chart__title' => 'text-align: {{VALUE}};',
+                '{{WRAPPER}} .veloria-area-chart__title' => 'text-align: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_axes', [
-            'label' => __('Axis labels', 'elementrify'),
+            'label' => __('Axis labels', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -288,16 +288,16 @@ class AreaChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'axis_typography',
-                'selector' => '{{WRAPPER}} .elementrify-area-chart__axis-label',
+                'selector' => '{{WRAPPER}} .veloria-area-chart__axis-label',
             ]
         );
 
         $this->add_control('axis_color', [
-            'label'     => __('Color', 'elementrify'),
+            'label'     => __('Color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#94a3b8',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-area-chart__axis-label' => 'fill: {{VALUE}};',
+                '{{WRAPPER}} .veloria-area-chart__axis-label' => 'fill: {{VALUE}};',
             ],
         ]);
 
@@ -311,7 +311,7 @@ class AreaChart extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/area-chart/area-chart.php';
+        $path = VELORIA_DIR . 'templates/area-chart/area-chart.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -342,7 +342,7 @@ class AreaChart extends WidgetBase
         var opTop = settings.area_opacity_top !== undefined && settings.area_opacity_top !== '' ? parseFloat(settings.area_opacity_top) : 0.4;
         var opBot = settings.area_opacity_bottom !== undefined && settings.area_opacity_bottom !== '' ? parseFloat(settings.area_opacity_bottom) : 0.03;
         #>
-        <div class="elementrify-area-chart"
+        <div class="veloria-area-chart"
             data-labels="{{ labels.join('|') }}"
             data-values="{{ values.join('|') }}"
             data-y-suffix="{{ ySuffix }}"
@@ -353,9 +353,9 @@ class AreaChart extends WidgetBase
             data-area-opacity-top="{{ opTop }}"
             data-area-opacity-bottom="{{ opBot }}">
             <# if (title) { #>
-                <h3 class="elementrify-area-chart__title">{{{ title }}}</h3>
+                <h3 class="veloria-area-chart__title">{{{ title }}}</h3>
             <# } #>
-            <div class="elementrify-area-chart__canvas" role="img" aria-label="{{ title }}"></div>
+            <div class="veloria-area-chart__canvas" role="img" aria-label="{{ title }}"></div>
         </div>
         <?php
                 }

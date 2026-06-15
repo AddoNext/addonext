@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\IconList;
+namespace Veloria\Widgets\IconList;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class IconList extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-bullet-list elementrify-icon';
+        return 'eicon-bullet-list veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-icon-list';
+        return 'veloria-icon-list';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class IconList extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Icon List', 'elementrify');
+        return __('Icon List', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('List with custom icons', 'elementrify');
+        return __('List with custom icons', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -43,16 +43,16 @@ class IconList extends WidgetBase
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-icon-list',
-            ELEMENTRIFY_URL . 'assets/css/icon-list.css',
+            'veloria-icon-list',
+            VELORIA_URL . 'assets/css/icon-list.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
     public function get_style_depends(): array
     {
-        return ['elementrify-icon-list'];
+        return ['veloria-icon-list'];
     }
 
     public function register_controls(): void
@@ -60,25 +60,25 @@ class IconList extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $repeater = new Repeater();
         $repeater->add_control('text', [
-            'label'   => __('Text', 'elementrify'),
+            'label'   => __('Text', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('List item', 'elementrify'),
+            'default' => __('List item', 'veloria'),
         ]);
         $repeater->add_control('selected_icon', [
-            'label'   => __('Icon', 'elementrify'),
+            'label'   => __('Icon', 'veloria'),
             'type'    => Controls_Manager::ICONS,
             'fa4compatibility' => 'icon',
             'default' => ['value' => 'fas fa-check', 'library' => 'fa-solid'],
         ]);
         $repeater->add_control('link', [
-            'label'   => __('Link', 'elementrify'),
+            'label'   => __('Link', 'veloria'),
             'type'    => Controls_Manager::URL,
             'dynamic' => ['active' => true],
         ]);
@@ -86,14 +86,14 @@ class IconList extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Items', 'elementrify'),
+                'label'       => __('Items', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['text' => __('Complete access to all premium widgets and templates', 'elementrify'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
-                    ['text' => __('Priority customer support with dedicated account manager', 'elementrify'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
-                    ['text' => __('Free updates and new features for lifetime', 'elementrify'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
-                    ['text' => __('Advanced analytics and performance monitoring tools', 'elementrify'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
+                    ['text' => __('Complete access to all premium widgets and templates', 'veloria'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
+                    ['text' => __('Priority customer support with dedicated account manager', 'veloria'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
+                    ['text' => __('Free updates and new features for lifetime', 'veloria'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
+                    ['text' => __('Advanced analytics and performance monitoring tools', 'veloria'), 'selected_icon' => ['value' => 'fas fa-check', 'library' => 'fa-solid']],
                 ],
                 'title_field' => '{{{ text }}}',
             ]
@@ -104,7 +104,7 @@ class IconList extends WidgetBase
         $this->start_controls_section(
             'section_list_style',
             [
-                'label' => __('List', 'elementrify'),
+                'label' => __('List', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -112,13 +112,13 @@ class IconList extends WidgetBase
         $this->add_responsive_control(
             'space_between',
             [
-                'label'   => __('Space between items', 'elementrify'),
+                'label'   => __('Space between items', 'veloria'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'   => ['px' => ['min' => 0, 'max' => 60]],
                 'default' => ['size' => 18, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-list__item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -126,15 +126,15 @@ class IconList extends WidgetBase
         $this->add_responsive_control(
             'alignment',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'default' => 'left',
                 'options' => [
-                    'left'   => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                    'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                    'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
+                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
                 ],
-                'prefix_class' => 'elementrify-icon-list%s-align-',
+                'prefix_class' => 'veloria-icon-list%s-align-',
             ]
         );
 
@@ -143,7 +143,7 @@ class IconList extends WidgetBase
         $this->start_controls_section(
             'section_icon_style',
             [
-                'label' => __('Icon', 'elementrify'),
+                'label' => __('Icon', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -151,13 +151,13 @@ class IconList extends WidgetBase
         $this->add_responsive_control(
             'icon_size',
             [
-                'label'   => __('Size', 'elementrify'),
+                'label'   => __('Size', 'veloria'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'   => ['px' => ['min' => 8, 'max' => 48]],
                 'default' => ['size' => 24, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-list__icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -165,11 +165,11 @@ class IconList extends WidgetBase
         $this->add_control(
             'icon_background_color',
             [
-                'label'  => __('Background color', 'elementrify'),
+                'label'  => __('Background color', 'veloria'),
                 'type'   => Controls_Manager::COLOR,
                 'default' => '#3B82F6',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-list__icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -177,12 +177,12 @@ class IconList extends WidgetBase
         $this->add_control(
             'icon_color',
             [
-                'label'  => __('Icon color', 'elementrify'),
+                'label'  => __('Icon color', 'veloria'),
                 'type'   => Controls_Manager::COLOR,
                 'default' => '#FFFFFF',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__icon i' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-icon-list__icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-list__icon i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-list__icon svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -190,7 +190,7 @@ class IconList extends WidgetBase
         $this->add_responsive_control(
             'icon_border_radius',
             [
-                'label'   => __('Border radius', 'elementrify'),
+                'label'   => __('Border radius', 'veloria'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range'   => [
@@ -199,7 +199,7 @@ class IconList extends WidgetBase
                 ],
                 'default' => ['size' => 50, 'unit' => '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__icon' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-list__icon' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -207,13 +207,13 @@ class IconList extends WidgetBase
         $this->add_responsive_control(
             'icon_gap',
             [
-                'label'   => __('Gap from text', 'elementrify'),
+                'label'   => __('Gap from text', 'veloria'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'   => ['px' => ['min' => 0, 'max' => 40]],
                 'default' => ['size' => 10, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__item' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-list__item' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -223,7 +223,7 @@ class IconList extends WidgetBase
         $this->start_controls_section(
             'section_text_style',
             [
-                'label' => __('Text', 'elementrify'),
+                'label' => __('Text', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -231,12 +231,12 @@ class IconList extends WidgetBase
         $this->add_control(
             'text_color',
             [
-                'label'  => __('Color', 'elementrify'),
+                'label'  => __('Color', 'veloria'),
                 'type'   => Controls_Manager::COLOR,
                 'default' => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-list__text' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-icon-list__link .elementrify-icon-list__text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-list__text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-list__link .veloria-icon-list__text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -245,7 +245,7 @@ class IconList extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'text_typography',
-                'selector' => '{{WRAPPER}} .elementrify-icon-list__text',
+                'selector' => '{{WRAPPER}} .veloria-icon-list__text',
                 'fields_options' => [
                     'font_size' => ['default' => ['size' => 14, 'unit' => 'px']],
                 ],
@@ -257,7 +257,7 @@ class IconList extends WidgetBase
 
     public function render(): void
     {
-        $template_path = ELEMENTRIFY_DIR . 'templates/icon-list/icon-list.php';
+        $template_path = VELORIA_DIR . 'templates/icon-list/icon-list.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -267,7 +267,7 @@ class IconList extends WidgetBase
     {
         ?>
         <#
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-icon-list');
+        view.addRenderAttribute('wrapper', 'class', 'veloria-icon-list');
         #>
         <ul {{{ view.getRenderAttributeString('wrapper') }}}>
             <# _.each(settings.items, function(item) {
@@ -275,14 +275,14 @@ class IconList extends WidgetBase
                 var iconHtml = iconData && iconData.value ? elementor.helpers.renderIcon(view, iconData, {}, 'i', 'object').value : '';
                 var hasLink = item.link && item.link.url;
             #>
-            <li class="elementrify-icon-list__item">
-                <# if (iconHtml) { #><span class="elementrify-icon-list__icon">{{{ iconHtml }}}</span><# } #>
+            <li class="veloria-icon-list__item">
+                <# if (iconHtml) { #><span class="veloria-icon-list__icon">{{{ iconHtml }}}</span><# } #>
                 <# if (hasLink) { #>
-                    <a href="{{ item.link.url }}" class="elementrify-icon-list__link" <# if (item.link.is_external) { #>target="_blank"<# } #><# if (item.link.nofollow) { #>rel="nofollow"<# } #>>
-                        <span class="elementrify-icon-list__text" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="basic">{{{ item.text }}}</span>
+                    <a href="{{ item.link.url }}" class="veloria-icon-list__link" <# if (item.link.is_external) { #>target="_blank"<# } #><# if (item.link.nofollow) { #>rel="nofollow"<# } #>>
+                        <span class="veloria-icon-list__text" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="basic">{{{ item.text }}}</span>
                     </a>
                 <# } else { #>
-                    <span class="elementrify-icon-list__text" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="basic">{{{ item.text }}}</span>
+                    <span class="veloria-icon-list__text" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="basic">{{{ item.text }}}</span>
                 <# } #>
             </li>
             <# }); #>

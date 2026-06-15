@@ -1,11 +1,11 @@
-.elementrify-advanced-tabs {
+.veloria-advanced-tabs {
     background: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 6px;
     overflow: hidden;
 }
 
-.elementrify-advanced-tabs__headers {
+.veloria-advanced-tabs__headers {
     display: flex;
     border-bottom: 1px solid #e6e6e6;
     background: #fff;
@@ -13,7 +13,7 @@
     margin: 0;
 }
 
-.elementrify-advanced-tabs__header {
+.veloria-advanced-tabs__header {
     flex: 1;
     padding: 12px 20px;
     cursor: pointer;
@@ -29,64 +29,64 @@
     text-align: center;
 }
 
-.elementrify-advanced-tabs__header:hover {
+.veloria-advanced-tabs__header:hover {
     color: #1d4ed8;
 }
 
-.elementrify-advanced-tabs__header.is-active {
+.veloria-advanced-tabs__header.is-active {
     color: #2563eb;
     background: #e6f0fa;
     border-bottom-color: #2563eb;
 }
 
-.elementrify-advanced-tabs__panels {
+.veloria-advanced-tabs__panels {
     padding: 24px;
     border-top: 1px solid #e6e6e6;
 }
 
-.elementrify-advanced-tabs__panel {
+.veloria-advanced-tabs__panel {
     display: none;
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #374151;
 }
 
-.elementrify-advanced-tabs__panel.is-active {
+.veloria-advanced-tabs__panel.is-active {
     display: block;
 }
 
-.elementrify-advanced-tabs__panel :first-child {
+.veloria-advanced-tabs__panel :first-child {
     margin-top: 0;
 }
 
-.elementrify-advanced-tabs__panel :last-child {
+.veloria-advanced-tabs__panel :last-child {
     margin-bottom: 0;
 }
 
-.elementrify-advanced-tabs__panel h1,
-.elementrify-advanced-tabs__panel h2,
-.elementrify-advanced-tabs__panel h3,
-.elementrify-advanced-tabs__panel h4 {
+.veloria-advanced-tabs__panel h1,
+.veloria-advanced-tabs__panel h2,
+.veloria-advanced-tabs__panel h3,
+.veloria-advanced-tabs__panel h4 {
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
     margin: 0 0 12px;
 }
 
-.elementrify-advanced-tabs__panel p {
+.veloria-advanced-tabs__panel p {
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #374151;
     margin: 0 0 16px;
 }
 
-.elementrify-advanced-tabs__panel ul {
+.veloria-advanced-tabs__panel ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.elementrify-advanced-tabs__panel ul li {
+.veloria-advanced-tabs__panel ul li {
     position: relative;
     padding-left: 24px;
     margin-bottom: 8px;
@@ -94,7 +94,7 @@
     color: #374151;
 }
 
-.elementrify-advanced-tabs__panel ul li::before {
+.veloria-advanced-tabs__panel ul li::before {
     content: "";
     position: absolute;
     left: 0;

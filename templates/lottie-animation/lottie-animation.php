@@ -12,7 +12,7 @@ if ($source === 'file') {
 }
 
 if ($url === '') {
-    $url = \Elementrify\Widgets\LottieAnimation\LottieAnimation::DEFAULT_JSON_URL;
+    $url = \Veloria\Widgets\LottieAnimation\LottieAnimation::DEFAULT_JSON_URL;
 }
 
 $jsonUrl = esc_url($url);
@@ -23,7 +23,7 @@ if ($jsonUrl === '') {
 $settingsJson = $this->build_lottie_settings_json($s);
 
 $inner = sprintf(
-    '<div class="elementrify-lottie-animation" data-settings="%s" data-json-url="%s"></div>',
+    '<div class="veloria-lottie-animation" data-settings="%s" data-json-url="%s"></div>',
     esc_attr($settingsJson),
     $jsonUrl
 );
@@ -45,7 +45,7 @@ if ($linkOn && is_array($link) && !empty($link['url'])) {
         }
         $relAttr = $relParts !== [] ? ' rel="' . esc_attr(implode(' ', $relParts)) . '"' : '';
         $inner   = sprintf(
-            '<a class="elementrify-lottie-animation__link" href="%s"%s%s>%s</a>',
+            '<a class="veloria-lottie-animation__link" href="%s"%s%s>%s</a>',
             $href,
             $target,
             $relAttr,
@@ -55,6 +55,6 @@ if ($linkOn && is_array($link) && !empty($link['url'])) {
 }
 
 printf(
-    '<div class="elementrify-lottie-animation__wrapper">%s</div>',
+    '<div class="veloria-lottie-animation__wrapper">%s</div>',
     $inner // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- href/attrs escaped above
 );

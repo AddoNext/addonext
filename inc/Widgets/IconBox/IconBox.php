@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\IconBox;
+namespace Veloria\Widgets\IconBox;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
@@ -13,12 +13,12 @@ class IconBox extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-social-icons elementrify-icon';
+        return 'eicon-social-icons veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-icon-box';
+        return 'veloria-icon-box';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class IconBox extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Icon Box', 'elementrify');
+        return __('Icon Box', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Row of clickable social or custom icons with custom colors and hover effects.', 'elementrify');
+        return __('Row of clickable social or custom icons with custom colors and hover effects.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -43,7 +43,7 @@ class IconBox extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-icon-box'];
+        return ['veloria-icon-box'];
     }
 
     /**
@@ -61,10 +61,10 @@ class IconBox extends WidgetBase
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-icon-box',
-            ELEMENTRIFY_URL . 'assets/css/icon-box.css',
+            'veloria-icon-box',
+            VELORIA_URL . 'assets/css/icon-box.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -73,7 +73,7 @@ class IconBox extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -83,7 +83,7 @@ class IconBox extends WidgetBase
         $repeater->add_control(
             'social_icon',
             [
-                'label'   => __('Icon', 'elementrify'),
+                'label'   => __('Icon', 'veloria'),
                 'type'    => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
@@ -102,7 +102,7 @@ class IconBox extends WidgetBase
         $repeater->add_control(
             'link',
             [
-                'label'   => __('Link', 'elementrify'),
+                'label'   => __('Link', 'veloria'),
                 'type'    => Controls_Manager::URL,
                 'default' => ['is_external' => 'true'],
                 'dynamic' => ['active' => true],
@@ -112,7 +112,7 @@ class IconBox extends WidgetBase
         $repeater->add_control(
             'background_color',
             [
-                'label'   => __('Background color', 'elementrify'),
+                'label'   => __('Background color', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#3B5998',
             ]
@@ -121,7 +121,7 @@ class IconBox extends WidgetBase
         $this->add_control(
             'icon_list',
             [
-                'label'       => __('Icons', 'elementrify'),
+                'label'       => __('Icons', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
@@ -153,18 +153,18 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'align',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'flex-start'    => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                    'center'       => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                    'flex-end'    => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
-                    'space-between' => ['title' => __('Space between', 'elementrify'), 'icon' => 'eicon-text-align-justify'],
-                    'space-around'  => ['title' => __('Space around', 'elementrify'), 'icon' => 'eicon-columns'],
+                    'flex-start'    => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                    'center'       => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                    'flex-end'    => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
+                    'space-between' => ['title' => __('Space between', 'veloria'), 'icon' => 'eicon-text-align-justify'],
+                    'space-around'  => ['title' => __('Space around', 'veloria'), 'icon' => 'eicon-columns'],
                 ],
                 'default'      => 'center',
                 'selectors'    => [
-                    '{{WRAPPER}} .elementrify-icon-box__list' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__list' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -172,15 +172,15 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'flex_wrap',
             [
-                'label'   => __('Flex wrap', 'elementrify'),
+                'label'   => __('Flex wrap', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'wrap',
                 'options' => [
-                    'wrap'   => __('Wrap', 'elementrify'),
-                    'nowrap' => __('No wrap', 'elementrify'),
+                    'wrap'   => __('Wrap', 'veloria'),
+                    'nowrap' => __('No wrap', 'veloria'),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-box__list' => 'flex-wrap: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__list' => 'flex-wrap: {{VALUE}};',
                 ],
             ]
         );
@@ -188,13 +188,13 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'gap',
             [
-                'label'      => __('Spacing between icons', 'elementrify'),
+                'label'      => __('Spacing between icons', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-icon-box__list' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-box__list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -202,15 +202,15 @@ class IconBox extends WidgetBase
         $this->add_control(
             'flex_direction',
             [
-                'label'   => __('Direction', 'elementrify'),
+                'label'   => __('Direction', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'row',
                 'options' => [
-                    'row'    => __('Horizontal', 'elementrify'),
-                    'column' => __('Vertical', 'elementrify'),
+                    'row'    => __('Horizontal', 'veloria'),
+                    'column' => __('Vertical', 'veloria'),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-box__list' => 'flex-direction: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__list' => 'flex-direction: {{VALUE}};',
                 ],
             ]
         );
@@ -220,7 +220,7 @@ class IconBox extends WidgetBase
         $this->start_controls_section(
             'section_style_icon',
             [
-                'label' => __('Icon', 'elementrify'),
+                'label' => __('Icon', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -228,13 +228,13 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'icon_size',
             [
-                'label'      => __('Icon size', 'elementrify'),
+                'label'      => __('Icon size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 8, 'max' => 120]],
                 'default'    => ['size' => 15, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-icon-box__link' => '--elementrify-ib-icon-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-box__link' => '--veloria-ib-icon-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -242,13 +242,13 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'box_size',
             [
-                'label'      => __('Box size', 'elementrify'),
+                'label'      => __('Box size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 16, 'max' => 200]],
                 'default'    => ['size' => 30, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-icon-box__link' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-box__link' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -256,12 +256,12 @@ class IconBox extends WidgetBase
         $this->add_control(
             'icon_color',
             [
-                'label'     => __('Icon color', 'elementrify'),
+                'label'     => __('Icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-box__link i'   => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-icon-box__link svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__link i'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__link svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -269,13 +269,13 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'icon_padding',
             [
-                'label'      => __('Padding inside circle', 'elementrify'),
+                'label'      => __('Padding inside circle', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 0, 'max' => 60]],
                 'default'    => ['size' => 7],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-icon-box__link' => 'padding: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-box__link' => 'padding: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -283,13 +283,13 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 200], '%' => ['min' => 0, 'max' => 100]],
                 'default'    => ['unit' => '%', 'size' => 50],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-icon-box__link' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-icon-box__link' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -297,7 +297,7 @@ class IconBox extends WidgetBase
         $this->add_control(
             'border_heading',
             [
-                'label'     => __('Border', 'elementrify'),
+                'label'     => __('Border', 'veloria'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -306,13 +306,13 @@ class IconBox extends WidgetBase
         $this->add_responsive_control(
             'border_width',
             [
-                'label'      => __('Border width', 'elementrify'),
+                'label'      => __('Border width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 10]],
                 'default'    => ['size' => 0],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-icon-box__link' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+                    '{{WRAPPER}} .veloria-icon-box__link' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
                 ],
             ]
         );
@@ -320,11 +320,11 @@ class IconBox extends WidgetBase
         $this->add_control(
             'border_color',
             [
-                'label'     => __('Border color', 'elementrify'),
+                'label'     => __('Border color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-box__link' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__link' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -334,7 +334,7 @@ class IconBox extends WidgetBase
         $this->start_controls_section(
             'section_style_hover',
             [
-                'label' => __('Hover', 'elementrify'),
+                'label' => __('Hover', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -342,27 +342,27 @@ class IconBox extends WidgetBase
         $this->add_control(
             'hover_effect',
             [
-                'label'   => __('Hover effect', 'elementrify'),
+                'label'   => __('Hover effect', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'lift',
                 'options' => [
-                    'none'    => __('None', 'elementrify'),
-                    'scale'   => __('Scale up', 'elementrify'),
-                    'lift'    => __('Lift', 'elementrify'),
-                    'shrink'  => __('Shrink', 'elementrify'),
-                    'opacity' => __('Opacity', 'elementrify'),
+                    'none'    => __('None', 'veloria'),
+                    'scale'   => __('Scale up', 'veloria'),
+                    'lift'    => __('Lift', 'veloria'),
+                    'shrink'  => __('Shrink', 'veloria'),
+                    'opacity' => __('Opacity', 'veloria'),
                 ],
-                'prefix_class' => 'elementrify-icon-box-hover-',
+                'prefix_class' => 'veloria-icon-box-hover-',
             ]
         );
 
         $this->add_control(
             'hover_primary_color',
             [
-                'label'   => __('Background color on hover', 'elementrify'),
+                'label'   => __('Background color on hover', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-box__link:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__link:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -370,11 +370,11 @@ class IconBox extends WidgetBase
         $this->add_control(
             'hover_secondary_color',
             [
-                'label'   => __('Icon color on hover', 'elementrify'),
+                'label'   => __('Icon color on hover', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-icon-box__link:hover i'   => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-icon-box__link:hover svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__link:hover i'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-icon-box__link:hover svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -383,8 +383,8 @@ class IconBox extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'      => 'hover_box_shadow',
-                'label'     => __('Box shadow on hover', 'elementrify'),
-                'selector'  => '{{WRAPPER}} .elementrify-icon-box__link:hover',
+                'label'     => __('Box shadow on hover', 'veloria'),
+                'selector'  => '{{WRAPPER}} .veloria-icon-box__link:hover',
                 'condition' => ['hover_effect!' => 'none'],
             ]
         );
@@ -399,7 +399,7 @@ class IconBox extends WidgetBase
         if (empty($list)) {
             return;
         }
-        $template_path = ELEMENTRIFY_DIR . 'templates/icon-box/icon-box.php';
+        $template_path = VELORIA_DIR . 'templates/icon-box/icon-box.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -433,11 +433,11 @@ class IconBox extends WidgetBase
         var borderUnit = borderW.unit || 'px';
         var borderColor = (settings.border_color && settings.border_color !== '') ? settings.border_color : 'transparent';
         var iconColor = (settings.icon_color && settings.icon_color !== '') ? settings.icon_color : '#ffffff';
-        var wrapperStyle = '--elementrify-ib-gap:' + gapVal + ';--elementrify-ib-align:' + align + ';--elementrify-ib-wrap:' + flexWrap + ';--elementrify-ib-direction:' + flexDirection + ';--elementrify-ib-box-size:' + boxSizeVal + ';--elementrify-ib-padding:' + paddingVal + ';--elementrify-ib-radius:' + radiusVal + ';';
-        if (iconSizeVal) wrapperStyle += '--elementrify-ib-icon-size:' + iconSizeVal + ';';
+        var wrapperStyle = '--veloria-ib-gap:' + gapVal + ';--veloria-ib-align:' + align + ';--veloria-ib-wrap:' + flexWrap + ';--veloria-ib-direction:' + flexDirection + ';--veloria-ib-box-size:' + boxSizeVal + ';--veloria-ib-padding:' + paddingVal + ';--veloria-ib-radius:' + radiusVal + ';';
+        if (iconSizeVal) wrapperStyle += '--veloria-ib-icon-size:' + iconSizeVal + ';';
         #>
-        <div class="elementrify-icon-box" style="{{{ wrapperStyle }}}">
-            <div class="elementrify-icon-box__list">
+        <div class="veloria-icon-box" style="{{{ wrapperStyle }}}">
+            <div class="veloria-icon-box__list">
                 <# _.each(list, function(item, index) {
                     var linkUrl = item.link && item.link.url ? item.link.url : '#',
                         bgColor = item.background_color || '#3B5998',
@@ -449,8 +449,8 @@ class IconBox extends WidgetBase
                         ? elementor.helpers.renderIcon(view, item.social_icon, { 'aria-hidden': 'true' }, 'i', 'object').value
                         : '';
                 #>
-                <a class="elementrify-icon-box__link elementor-repeater-item-{{ item._id }}" href="{{ linkUrl }}"{{{ targetAttr }}}{{{ relAttr }}} style="{{{ linkStyle }}}">
-                    <# if (iconHtml) { #><span class="elementrify-icon-box__icon-inner" style="color:{{{ iconColor }}};">{{{ iconHtml }}}</span><# } #>
+                <a class="veloria-icon-box__link elementor-repeater-item-{{ item._id }}" href="{{ linkUrl }}"{{{ targetAttr }}}{{{ relAttr }}} style="{{{ linkStyle }}}">
+                    <# if (iconHtml) { #><span class="veloria-icon-box__icon-inner" style="color:{{{ iconColor }}};">{{{ iconHtml }}}</span><# } #>
                 </a>
                 <# } ); #>
             </div>

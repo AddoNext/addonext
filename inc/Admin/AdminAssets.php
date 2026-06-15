@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
 defined('ABSPATH') or exit;
 
@@ -8,7 +8,7 @@ defined('ABSPATH') or exit;
  * Class AdminAssets
  * Enqueue admin assets
  * 
- * @package Elementrify
+ * @package Veloria
  */
 class AdminAssets
 {
@@ -54,20 +54,20 @@ class AdminAssets
      */
     public function enqueue(string $hook_suffix): void
     {
-        if ($hook_suffix !== 'toplevel_page_elementrify') {
+        if ($hook_suffix !== 'toplevel_page_veloria') {
             return;
         }
 
-        wp_enqueue_style('elementrify-admin', ELEMENTRIFY_URL . 'dist/css/admin.min.css');
-        wp_enqueue_script('elementrify-admin', ELEMENTRIFY_URL . 'dist/js/admin.min.js', [
+        wp_enqueue_style('veloria-admin', VELORIA_URL . 'dist/css/admin.min.css');
+        wp_enqueue_script('veloria-admin', VELORIA_URL . 'dist/js/admin.min.js', [
             'wp-element',
             'wp-i18n',
             'wp-api-fetch',
             'wp-data'
-        ], ELEMENTRIFY_VERSION, true);
+        ], VELORIA_VERSION, true);
         wp_localize_script(
-            'elementrify-admin',
-            'elementrifyAdminData',
+            'veloria-admin',
+            'veloriaAdminData',
             [
                 'isElementorActive' => self::is_elementor_plugin_active(),
             ]

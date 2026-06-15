@@ -14,8 +14,8 @@ if (empty($items)) {
 $radius = 16;
 $circumference = 2 * M_PI * $radius;
 ?>
-<div class="elementrify-circular-progress">
-    <div class="elementrify-circular-progress__list">
+<div class="veloria-circular-progress">
+    <div class="veloria-circular-progress__list">
         <?php foreach ($items as $item) :
             $percent = isset($item['percent']['size']) ? max(0, min(100, (int) $item['percent']['size'])) : 0;
             $bar_color = !empty($item['bar_color']) ? $item['bar_color'] : '#4285F4';
@@ -23,16 +23,16 @@ $circumference = 2 * M_PI * $radius;
             $subtitle = isset($item['subtitle']) ? $item['subtitle'] : '';
             $dash = ($percent / 100) * $circumference;
         ?>
-            <div class="elementrify-circular-progress__item">
-                <div class="elementrify-circular-progress__circle-wrap">
-                    <svg class="elementrify-circular-progress__svg" viewBox="0 0 36 36">
-                        <circle class="elementrify-circular-progress__bg" cx="18" cy="18" r="<?php echo (int) $radius; ?>" fill="none"/>
-                        <circle class="elementrify-circular-progress__fill" cx="18" cy="18" r="<?php echo (int) $radius; ?>" fill="none" stroke-dasharray="<?php echo esc_attr($dash . ', ' . $circumference); ?>" transform="rotate(-90 18 18)" style="stroke: <?php echo esc_attr($bar_color); ?>;"/>
+            <div class="veloria-circular-progress__item">
+                <div class="veloria-circular-progress__circle-wrap">
+                    <svg class="veloria-circular-progress__svg" viewBox="0 0 36 36">
+                        <circle class="veloria-circular-progress__bg" cx="18" cy="18" r="<?php echo (int) $radius; ?>" fill="none"/>
+                        <circle class="veloria-circular-progress__fill" cx="18" cy="18" r="<?php echo (int) $radius; ?>" fill="none" stroke-dasharray="<?php echo esc_attr($dash . ', ' . $circumference); ?>" transform="rotate(-90 18 18)" style="stroke: <?php echo esc_attr($bar_color); ?>;"/>
                     </svg>
-                    <span class="elementrify-circular-progress__value"><?php echo (int) $percent; ?>%</span>
+                    <span class="veloria-circular-progress__value"><?php echo (int) $percent; ?>%</span>
                 </div>
-                <?php if ($title !== '') : ?><span class="elementrify-circular-progress__title"><?php echo esc_html($title); ?></span><?php endif; ?>
-                <?php if ($subtitle !== '') : ?><span class="elementrify-circular-progress__subtitle"><?php echo esc_html($subtitle); ?></span><?php endif; ?>
+                <?php if ($title !== '') : ?><span class="veloria-circular-progress__title"><?php echo esc_html($title); ?></span><?php endif; ?>
+                <?php if ($subtitle !== '') : ?><span class="veloria-circular-progress__subtitle"><?php echo esc_html($subtitle); ?></span><?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>

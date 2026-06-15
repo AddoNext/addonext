@@ -17,14 +17,14 @@ $border_sz = isset($border_w['size']) ? (float) $border_w['size'] : 0;
 $border_un = $border_w['unit'] ?? 'px';
 $border_cl = !empty($settings['border_color']) ? $settings['border_color'] : 'transparent';
 
-$wrapper_style = '--elementrify-ib-gap:' . esc_attr($gap_val) . ';--elementrify-ib-align:' . esc_attr($align) . ';--elementrify-ib-wrap:' . esc_attr($wrap) . ';--elementrify-ib-direction:' . esc_attr($direction) . ';--elementrify-ib-box-size:' . esc_attr($box_size) . ';--elementrify-ib-padding:' . esc_attr($padding) . ';--elementrify-ib-radius:' . esc_attr($radius) . ';';
+$wrapper_style = '--veloria-ib-gap:' . esc_attr($gap_val) . ';--veloria-ib-align:' . esc_attr($align) . ';--veloria-ib-wrap:' . esc_attr($wrap) . ';--veloria-ib-direction:' . esc_attr($direction) . ';--veloria-ib-box-size:' . esc_attr($box_size) . ';--veloria-ib-padding:' . esc_attr($padding) . ';--veloria-ib-radius:' . esc_attr($radius) . ';';
 if ($icon_size !== '') {
-    $wrapper_style .= '--elementrify-ib-icon-size:' . esc_attr($icon_size) . ';';
+    $wrapper_style .= '--veloria-ib-icon-size:' . esc_attr($icon_size) . ';';
 }
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-icon-box');
+$this->add_render_attribute('wrapper', 'class', 'veloria-icon-box');
 $this->add_render_attribute('wrapper', 'style', $wrapper_style);
-$this->add_render_attribute('list', 'class', 'elementrify-icon-box__list');
+$this->add_render_attribute('list', 'class', 'veloria-icon-box__list');
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <div <?php $this->print_render_attribute_string('list'); ?>>
@@ -38,7 +38,7 @@ $this->add_render_attribute('list', 'class', 'elementrify-icon-box__list');
             }
 
             $this->add_render_attribute($link_key, 'class', [
-                'elementrify-icon-box__link',
+                'veloria-icon-box__link',
                 'elementor-repeater-item-' . ($item['_id'] ?? ''),
             ]);
             $this->add_render_attribute($link_key, 'style', $link_style);
@@ -53,7 +53,7 @@ $this->add_render_attribute('list', 'class', 'elementrify-icon-box__list');
             <a <?php $this->print_render_attribute_string($link_key); ?>>
                 <?php
                 if (!empty($item['social_icon']['value'])) {
-                    echo '<span class="elementrify-icon-box__icon-inner" style="color:' . esc_attr($icon_color) . ';">';
+                    echo '<span class="veloria-icon-box__icon-inner" style="color:' . esc_attr($icon_color) . ';">';
                     \Elementor\Icons_Manager::render_icon($item['social_icon'], ['aria-hidden' => 'true']);
                     echo '</span>';
                 }

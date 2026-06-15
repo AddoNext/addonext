@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\OffCanvasContent;
+namespace Veloria\Widgets\OffCanvasContent;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
@@ -12,7 +12,7 @@ class OffCanvasContent extends WidgetBase
 {
     private function get_elementor_templates(): array
     {
-        $options = ['' => __('Select a template', 'elementrify')];
+        $options = ['' => __('Select a template', 'veloria')];
         $posts = get_posts([
             'post_type'      => 'elementor_library',
             'post_status'    => 'publish',
@@ -24,7 +24,7 @@ class OffCanvasContent extends WidgetBase
             foreach ($posts as $post) {
                 $options[(string) $post->ID] = $post->post_title !== '' ? $post->post_title : sprintf(
                     /* translators: %d: Elementor template post ID */
-                    __('Template #%d', 'elementrify'),
+                    __('Template #%d', 'veloria'),
                     $post->ID
                 );
             }
@@ -34,12 +34,12 @@ class OffCanvasContent extends WidgetBase
 
     public function get_icon(): string
     {
-        return 'eicon-sidebar elementrify-icon';
+        return 'eicon-sidebar veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-off-canvas-content';
+        return 'veloria-off-canvas-content';
     }
 
     public function get_admin_category(): string
@@ -49,12 +49,12 @@ class OffCanvasContent extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Off-canvas Content', 'elementrify');
+        return __('Off-canvas Content', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Slide-out sidebar panels', 'elementrify');
+        return __('Slide-out sidebar panels', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -64,27 +64,27 @@ class OffCanvasContent extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-off-canvas-content'];
+        return ['veloria-off-canvas-content'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-off-canvas-content'];
+        return ['veloria-off-canvas-content'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-off-canvas-content',
-            ELEMENTRIFY_URL . 'assets/css/off-canvas-content.css',
+            'veloria-off-canvas-content',
+            VELORIA_URL . 'assets/css/off-canvas-content.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-off-canvas-content',
-            ELEMENTRIFY_URL . 'assets/js/off-canvas-content.js',
+            'veloria-off-canvas-content',
+            VELORIA_URL . 'assets/js/off-canvas-content.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -92,18 +92,18 @@ class OffCanvasContent extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('trigger_text', [
-            'label'   => __('Trigger label', 'elementrify'),
+            'label'   => __('Trigger label', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Open panel', 'elementrify'),
+            'default' => __('Open panel', 'veloria'),
         ]);
 
         $this->add_control('trigger_icon', [
-            'label'   => __('Trigger icon', 'elementrify'),
+            'label'   => __('Trigger icon', 'veloria'),
             'type'    => Controls_Manager::ICONS,
             'default' => [
                 'value'   => 'eicon-menu-bar',
@@ -112,32 +112,32 @@ class OffCanvasContent extends WidgetBase
         ]);
 
         $this->add_control('panel_title', [
-            'label'   => __('Panel title', 'elementrify'),
+            'label'   => __('Panel title', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Off-canvas content', 'elementrify'),
+            'default' => __('Off-canvas content', 'veloria'),
         ]);
 
         $this->add_control('content_source', [
-            'label'   => __('Content source', 'elementrify'),
+            'label'   => __('Content source', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'text',
             'options' => [
-                'text'     => __('Text editor', 'elementrify'),
-                'template' => __('Elementor template', 'elementrify'),
+                'text'     => __('Text editor', 'veloria'),
+                'template' => __('Elementor template', 'veloria'),
             ],
         ]);
 
         $this->add_control('panel_content', [
-            'label'   => __('Panel body', 'elementrify'),
+            'label'   => __('Panel body', 'veloria'),
             'type'    => Controls_Manager::WYSIWYG,
-            'default' => __('Add content for the slide-out panel.', 'elementrify'),
+            'default' => __('Add content for the slide-out panel.', 'veloria'),
             'condition' => [
                 'content_source' => 'text',
             ],
         ]);
 
         $this->add_control('panel_template_id', [
-            'label'       => __('Choose template', 'elementrify'),
+            'label'       => __('Choose template', 'veloria'),
             'type'        => Controls_Manager::SELECT2,
             'options'     => $this->get_elementor_templates(),
             'label_block' => true,
@@ -147,20 +147,20 @@ class OffCanvasContent extends WidgetBase
         ]);
 
         $this->add_control('panel_position', [
-            'label'   => __('Panel position', 'elementrify'),
+            'label'   => __('Panel position', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'right',
             'options' => [
-                'right'  => __('Right', 'elementrify'),
-                'left'   => __('Left', 'elementrify'),
-                'top'    => __('Top', 'elementrify'),
-                'bottom' => __('Bottom', 'elementrify'),
-                'center' => __('Center (modal)', 'elementrify'),
+                'right'  => __('Right', 'veloria'),
+                'left'   => __('Left', 'veloria'),
+                'top'    => __('Top', 'veloria'),
+                'bottom' => __('Bottom', 'veloria'),
+                'center' => __('Center (modal)', 'veloria'),
             ],
         ]);
 
         $this->add_responsive_control('panel_width', [
-            'label'      => __('Side panel width', 'elementrify'),
+            'label'      => __('Side panel width', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => [
@@ -169,12 +169,12 @@ class OffCanvasContent extends WidgetBase
             ],
             'default'    => ['size' => 360, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-off-canvas--left .elementrify-off-canvas__panel, {{WRAPPER}} .elementrify-off-canvas--right .elementrify-off-canvas__panel' => 'width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-off-canvas--left .veloria-off-canvas__panel, {{WRAPPER}} .veloria-off-canvas--right .veloria-off-canvas__panel' => 'width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('panel_top_bottom_max_height', [
-            'label'      => __('Top / bottom max height', 'elementrify'),
+            'label'      => __('Top / bottom max height', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh', '%'],
             'range'      => [
@@ -184,12 +184,12 @@ class OffCanvasContent extends WidgetBase
             ],
             'default'    => ['size' => 60, 'unit' => 'vh'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-off-canvas--top .elementrify-off-canvas__panel, {{WRAPPER}} .elementrify-off-canvas--bottom .elementrify-off-canvas__panel' => 'max-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-off-canvas--top .veloria-off-canvas__panel, {{WRAPPER}} .veloria-off-canvas--bottom .veloria-off-canvas__panel' => 'max-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('modal_max_width', [
-            'label'      => __('Modal max width', 'elementrify'),
+            'label'      => __('Modal max width', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => [
@@ -198,45 +198,45 @@ class OffCanvasContent extends WidgetBase
             ],
             'default'    => ['size' => 560, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-off-canvas--center .elementrify-off-canvas__panel' => 'max-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-off-canvas--center .veloria-off-canvas__panel' => 'max-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('close_on_overlay', [
-            'label'        => __('Close when overlay is clicked', 'elementrify'),
+            'label'        => __('Close when overlay is clicked', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Yes', 'elementrify'),
-            'label_off'    => __('No', 'elementrify'),
+            'label_on'     => __('Yes', 'veloria'),
+            'label_off'    => __('No', 'veloria'),
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('panel_animation', [
-            'label'   => __('Animation', 'elementrify'),
+            'label'   => __('Animation', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'slide',
             'options' => [
-                'slide'      => __('Slide', 'elementrify'),
-                'slide_fade' => __('Slide + fade', 'elementrify'),
-                'fade'       => __('Fade', 'elementrify'),
-                'zoom'       => __('Zoom', 'elementrify'),
+                'slide'      => __('Slide', 'veloria'),
+                'slide_fade' => __('Slide + fade', 'veloria'),
+                'fade'       => __('Fade', 'veloria'),
+                'zoom'       => __('Zoom', 'veloria'),
             ],
         ]);
 
         $this->add_control('panel_header_layout', [
-            'label'   => __('Panel header', 'elementrify'),
+            'label'   => __('Panel header', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'title_and_close',
             'options' => [
-                'title_and_close' => __('Title and close button', 'elementrify'),
-                'close_only'      => __('Close button only', 'elementrify'),
+                'title_and_close' => __('Title and close button', 'veloria'),
+                'close_only'      => __('Close button only', 'veloria'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_trigger', [
-            'label' => __('Trigger', 'elementrify'),
+            'label' => __('Trigger', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -244,32 +244,32 @@ class OffCanvasContent extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'trigger_typography',
-                'selector' => '{{WRAPPER}} .elementrify-off-canvas__trigger-label',
+                'selector' => '{{WRAPPER}} .veloria-off-canvas__trigger-label',
             ]
         );
 
         $this->add_control('trigger_text_color', [
-            'label'     => __('Text color', 'elementrify'),
+            'label'     => __('Text color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-off-canvas__trigger' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-off-canvas__trigger' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('trigger_background', [
-            'label'     => __('Background color', 'elementrify'),
+            'label'     => __('Background color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#f3f4f6',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-off-canvas__trigger' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-off-canvas__trigger' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_panel', [
-            'label' => __('Panel', 'elementrify'),
+            'label' => __('Panel', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -278,7 +278,7 @@ class OffCanvasContent extends WidgetBase
             [
                 'name'     => 'panel_background',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .elementrify-off-canvas__panel-inner',
+                'selector' => '{{WRAPPER}} .veloria-off-canvas__panel-inner',
                 'fields_options' => [
                     'color' => ['default' => '#ffffff'],
                 ],
@@ -286,11 +286,11 @@ class OffCanvasContent extends WidgetBase
         );
 
         $this->add_control('panel_text_color', [
-            'label'     => __('Text color', 'elementrify'),
+            'label'     => __('Text color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-off-canvas__panel-inner' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-off-canvas__panel-inner' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -299,7 +299,7 @@ class OffCanvasContent extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/off-canvas-content/off-canvas-content.php';
+        $path = VELORIA_DIR . 'templates/off-canvas-content/off-canvas-content.php';
         if (is_readable($path)) include $path;
     }
 }

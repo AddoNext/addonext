@@ -1,17 +1,17 @@
 <?php
-namespace Elementrify\Migrations;
+namespace Veloria\Migrations;
 
-use Elementrify\Base\MigrationBase;
-use Elementrify\Utils\OptionsHelper;
-use Elementrify\Common\WidgetManager;
-use Elementrify\Utils\LicenseCapabilities;
+use Veloria\Base\MigrationBase;
+use Veloria\Utils\OptionsHelper;
+use Veloria\Common\WidgetManager;
+use Veloria\Utils\LicenseCapabilities;
 
 defined('ABSPATH') or exit;
 
 /**
  * Migration to activate pro widgets
  *
- * @package Elementrify\Migrations
+ * @package Veloria\Migrations
  */
 class ActivateProWidgets extends MigrationBase
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\Blockquote;
+namespace Veloria\Widgets\Blockquote;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
@@ -13,12 +13,12 @@ class Blockquote extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-blockquote elementrify-icon';
+        return 'eicon-blockquote veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-blockquote';
+        return 'veloria-blockquote';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class Blockquote extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Blockquote', 'elementrify');
+        return __('Blockquote', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Styled quote blocks with author', 'elementrify');
+        return __('Styled quote blocks with author', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -43,16 +43,16 @@ class Blockquote extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-blockquote'];
+        return ['veloria-blockquote'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-blockquote',
-            ELEMENTRIFY_URL . 'assets/css/blockquote.css',
+            'veloria-blockquote',
+            VELORIA_URL . 'assets/css/blockquote.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -61,7 +61,7 @@ class Blockquote extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -69,9 +69,9 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'quote',
             [
-                'label'   => __('Quote', 'elementrify'),
+                'label'   => __('Quote', 'veloria'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('The best way to predict the future is to create it. This platform has enabled us to build exactly what we envisioned.', 'elementrify'),
+                'default' => __('The best way to predict the future is to create it. This platform has enabled us to build exactly what we envisioned.', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -79,7 +79,7 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'show_quote_icon',
             [
-                'label'        => __('Show quote icon', 'elementrify'),
+                'label'        => __('Show quote icon', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -89,7 +89,7 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'author_image',
             [
-                'label'   => __('Author image', 'elementrify'),
+                'label'   => __('Author image', 'veloria'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => [],
             ]
@@ -98,9 +98,9 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'author',
             [
-                'label'   => __('Author name', 'elementrify'),
+                'label'   => __('Author name', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Sarah Johnson', 'elementrify'),
+                'default' => __('Sarah Johnson', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -108,9 +108,9 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'author_title',
             [
-                'label'   => __('Author title / affiliation', 'elementrify'),
+                'label'   => __('Author title / affiliation', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('CEO, TechCorp', 'elementrify'),
+                'default' => __('CEO, TechCorp', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -120,7 +120,7 @@ class Blockquote extends WidgetBase
         $this->start_controls_section(
             'section_style_box',
             [
-                'label' => __('Box', 'elementrify'),
+                'label' => __('Box', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -128,12 +128,12 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'accent_color',
             [
-                'label'     => __('Accent color (icon)', 'elementrify'),
+                'label'     => __('Accent color (icon)', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#59B1F2',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-blockquote' => 'border-left-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-blockquote__icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-blockquote' => 'border-left-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-blockquote__icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -141,13 +141,13 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'border_width',
             [
-                'label'      => __('Left border width', 'elementrify'),
+                'label'      => __('Left border width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 12]],
                 'default'    => ['size' => 3],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-blockquote' => 'border-left-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-blockquote' => 'border-left-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -158,7 +158,7 @@ class Blockquote extends WidgetBase
                 'name'     => 'background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .elementrify-blockquote',
+                'selector' => '{{WRAPPER}} .veloria-blockquote',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#F0F7FC'],
@@ -172,13 +172,13 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24], 'em' => ['min' => 0, 'max' => 2]],
                 'default'    => ['size' => 10, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-blockquote' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-blockquote' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -186,12 +186,12 @@ class Blockquote extends WidgetBase
         $this->add_responsive_control(
             'padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => ['top' => 32, 'right' => 40, 'bottom' => 32, 'left' => 40, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-blockquote' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-blockquote' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -200,7 +200,7 @@ class Blockquote extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'box_shadow',
-                'selector' => '{{WRAPPER}} .elementrify-blockquote',
+                'selector' => '{{WRAPPER}} .veloria-blockquote',
             ]
         );
 
@@ -209,7 +209,7 @@ class Blockquote extends WidgetBase
         $this->start_controls_section(
             'section_style_quote',
             [
-                'label' => __('Quote text', 'elementrify'),
+                'label' => __('Quote text', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -218,7 +218,7 @@ class Blockquote extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'quote_typography',
-                'selector' => '{{WRAPPER}} .elementrify-blockquote__text',
+                'selector' => '{{WRAPPER}} .veloria-blockquote__text',
                 'fields_options' => [
                     'font_size' => ['default' => ['unit' => 'px', 'size' => 17]],
                     'line_height' => ['default' => ['unit' => 'em', 'size' => 1.6]],
@@ -229,11 +229,11 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'quote_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-blockquote__text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-blockquote__text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -243,7 +243,7 @@ class Blockquote extends WidgetBase
         $this->start_controls_section(
             'section_style_author',
             [
-                'label' => __('Author', 'elementrify'),
+                'label' => __('Author', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -251,14 +251,14 @@ class Blockquote extends WidgetBase
         $this->add_responsive_control(
             'avatar_size',
             [
-                'label'      => __('Avatar size', 'elementrify'),
+                'label'      => __('Avatar size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 24, 'max' => 80], 'em' => ['min' => 1, 'max' => 4]],
                 'default'    => ['size' => 48, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-blockquote__avatar' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-blockquote__avatar img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-blockquote__avatar' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-blockquote__avatar img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -267,8 +267,8 @@ class Blockquote extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'author_typography',
-                'label'    => __('Author name', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-blockquote__author-name',
+                'label'    => __('Author name', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-blockquote__author-name',
                 'fields_options' => [
                     'font_size' => ['default' => ['unit' => 'px', 'size' => 17]],
                     'font_weight' => ['default' => '700'],
@@ -279,11 +279,11 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'author_name_color',
             [
-                'label'     => __('Author name color', 'elementrify'),
+                'label'     => __('Author name color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-blockquote__author-name' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-blockquote__author-name' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -292,8 +292,8 @@ class Blockquote extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'author_title_typography',
-                'label'    => __('Author title', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-blockquote__author-title',
+                'label'    => __('Author title', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-blockquote__author-title',
                 'fields_options' => [
                     'font_size' => ['default' => ['unit' => 'px', 'size' => 14]],
                 ],
@@ -303,11 +303,11 @@ class Blockquote extends WidgetBase
         $this->add_control(
             'author_title_color',
             [
-                'label'     => __('Author title color', 'elementrify'),
+                'label'     => __('Author title color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#777777',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-blockquote__author-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-blockquote__author-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -317,7 +317,7 @@ class Blockquote extends WidgetBase
 
     public function render(): void
     {
-        $template_path = ELEMENTRIFY_DIR . 'templates/blockquote/blockquote.php';
+        $template_path = VELORIA_DIR . 'templates/blockquote/blockquote.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -327,27 +327,27 @@ class Blockquote extends WidgetBase
     {
         ?>
         <#
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-blockquote');
+        view.addRenderAttribute('wrapper', 'class', 'veloria-blockquote');
         view.addInlineEditingAttributes('quote', 'none');
         var hasAuthor = settings.author || settings.author_title || (settings.author_image && settings.author_image.url);
         #>
         <blockquote {{{ view.getRenderAttributeString('wrapper') }}}>
-            <div class="elementrify-blockquote__body">
+            <div class="veloria-blockquote__body">
                 <# if (settings.show_quote_icon === 'yes') { #>
-                    <span class="elementrify-blockquote__icon" aria-hidden="true">&ldquo;</span>
+                    <span class="veloria-blockquote__icon" aria-hidden="true">&ldquo;</span>
                 <# } #>
-                <p class="elementrify-blockquote__text" {{{ view.getRenderAttributeString('quote') }}}>{{{ settings.quote }}}</p>
+                <p class="veloria-blockquote__text" {{{ view.getRenderAttributeString('quote') }}}>{{{ settings.quote }}}</p>
             </div>
             <# if (hasAuthor) { #>
-                <footer class="elementrify-blockquote__footer">
+                <footer class="veloria-blockquote__footer">
                     <# if (settings.author_image && settings.author_image.url) { #>
-                        <span class="elementrify-blockquote__avatar">
+                        <span class="veloria-blockquote__avatar">
                             <img src="{{ settings.author_image.url }}" alt="{{ settings.author ? settings.author : '' }}">
                         </span>
                     <# } #>
-                    <span class="elementrify-blockquote__author-info">
-                        <# if (settings.author) { #><cite class="elementrify-blockquote__author-name">{{{ settings.author }}}</cite><# } #>
-                        <# if (settings.author_title) { #><span class="elementrify-blockquote__author-title">{{{ settings.author_title }}}</span><# } #>
+                    <span class="veloria-blockquote__author-info">
+                        <# if (settings.author) { #><cite class="veloria-blockquote__author-name">{{{ settings.author }}}</cite><# } #>
+                        <# if (settings.author_title) { #><span class="veloria-blockquote__author-title">{{{ settings.author_title }}}</span><# } #>
                     </span>
                 </footer>
             <# } #>

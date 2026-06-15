@@ -1,15 +1,15 @@
 <?php
-namespace Elementrify\Extensions\ReadingProgressBar;
+namespace Veloria\Extensions\ReadingProgressBar;
 
-use Elementrify\Base\ExtensionBase;
-use Elementrify\Common\ExtensionManager;
+use Veloria\Base\ExtensionBase;
+use Veloria\Common\ExtensionManager;
 
 defined('ABSPATH') or exit;
 
 /**
  * Displays a fixed reading progress bar based on scroll depth.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class ReadingProgressBar extends ExtensionBase
@@ -21,17 +21,17 @@ class ReadingProgressBar extends ExtensionBase
 
     public function get_title(): string
     {
-        return __('Reading Progress Bar', 'elementrify');
+        return __('Reading Progress Bar', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Show a top progress indicator based on current scroll position.', 'elementrify');
+        return __('Show a top progress indicator based on current scroll position.', 'veloria');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-skill-bar elementrify-icon';
+        return 'eicon-skill-bar veloria-icon';
     }
 
     public function get_category(): string
@@ -58,24 +58,24 @@ class ReadingProgressBar extends ExtensionBase
             [
                 'id'          => 'progress_color',
                 'type'        => 'color',
-                'label'       => __('Progress color', 'elementrify'),
-                'description' => __('Bar fill color (hex), e.g. #4f46e5', 'elementrify'),
+                'label'       => __('Progress color', 'veloria'),
+                'description' => __('Bar fill color (hex), e.g. #4f46e5', 'veloria'),
                 'default'     => '#4f46e5',
                 'placeholder' => '#4f46e5',
             ],
             [
                 'id'          => 'track_color',
                 'type'        => 'color',
-                'label'       => __('Track color', 'elementrify'),
-                'description' => __('Background color behind the progress bar.', 'elementrify'),
+                'label'       => __('Track color', 'veloria'),
+                'description' => __('Background color behind the progress bar.', 'veloria'),
                 'default'     => '#e5e7eb',
                 'placeholder' => '#e5e7eb',
             ],
             [
                 'id'          => 'height_px',
                 'type'        => 'range',
-                'label'       => __('Bar height (px)', 'elementrify'),
-                'description' => __('Thickness of the progress bar.', 'elementrify'),
+                'label'       => __('Bar height (px)', 'veloria'),
+                'description' => __('Thickness of the progress bar.', 'veloria'),
                 'default'     => 4,
                 'min'         => 2,
                 'max'         => 16,
@@ -85,8 +85,8 @@ class ReadingProgressBar extends ExtensionBase
             [
                 'id'          => 'offset_top_px',
                 'type'        => 'range',
-                'label'       => __('Top offset (px)', 'elementrify'),
-                'description' => __('Distance from top edge, useful with sticky notices.', 'elementrify'),
+                'label'       => __('Top offset (px)', 'veloria'),
+                'description' => __('Distance from top edge, useful with sticky notices.', 'veloria'),
                 'default'     => 0,
                 'min'         => 0,
                 'max'         => 120,
@@ -143,23 +143,23 @@ class ReadingProgressBar extends ExtensionBase
 
         wp_register_style(
             $this->get_id(),
-            ELEMENTRIFY_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
+            VELORIA_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
             $this->get_id(),
-            ELEMENTRIFY_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
+            VELORIA_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
 
         wp_add_inline_style(
             $this->get_id(),
             sprintf(
-                ':root{--elementrify-rpb-color:%1$s;--elementrify-rpb-track:%2$s;--elementrify-rpb-height:%3$dpx;--elementrify-rpb-top:%4$dpx;}',
+                ':root{--veloria-rpb-color:%1$s;--veloria-rpb-track:%2$s;--veloria-rpb-height:%3$dpx;--veloria-rpb-top:%4$dpx;}',
                 $progress,
                 $track,
                 $height,

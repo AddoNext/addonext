@@ -1,5 +1,5 @@
 <?php
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
@@ -21,10 +21,10 @@ class AdminController
     public function register_admin_menu(): void
     {
         add_menu_page(
-            'Elementrify',
-            'Elementrify',
+            'Veloria',
+            'Veloria',
             'manage_options',
-            'elementrify',
+            'veloria',
             [ $this, 'render_admin_page' ],
             'dashicons-welcome-widgets-menus',
             100
@@ -34,7 +34,7 @@ class AdminController
     public function render_admin_page(): void
     {
         $elementor_active = AdminAssets::is_elementor_plugin_active();
-        echo '<div id="elementrify-admin" data-elementor-active="' . ($elementor_active ? '1' : '0') . '"></div>';
+        echo '<div id="veloria-admin" data-elementor-active="' . ($elementor_active ? '1' : '0') . '"></div>';
     }
 
     /**
@@ -59,12 +59,12 @@ class AdminController
                 admin_url('plugins.php?action=activate&plugin=' . rawurlencode($plugin_file)),
                 'activate-plugin_' . $plugin_file
             );
-            $message    = __('Elementrify is not working because you need to activate the Elementor plugin.', 'elementrify');
-            $button     = __('Activate Elementor Now', 'elementrify');
+            $message    = __('Veloria is not working because you need to activate the Elementor plugin.', 'veloria');
+            $button     = __('Activate Elementor Now', 'veloria');
         } else {
             $action_url = admin_url('plugin-install.php?s=elementor&tab=search&type=term');
-            $message    = __('Elementrify requires the Elementor plugin. Install Elementor from WordPress.org to continue.', 'elementrify');
-            $button     = __('Install Elementor', 'elementrify');
+            $message    = __('Veloria requires the Elementor plugin. Install Elementor from WordPress.org to continue.', 'veloria');
+            $button     = __('Install Elementor', 'veloria');
         }
 
         printf(

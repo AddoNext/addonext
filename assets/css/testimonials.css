@@ -1,11 +1,11 @@
-.elementrify-testimonials--grid {
+.veloria-testimonials--grid {
     display: grid;
-    grid-template-columns: repeat(var(--elementrify-testimonials-columns, 3), 1fr);
-    gap: var(--elementrify-testimonials-gap, 16px);
+    grid-template-columns: repeat(var(--veloria-testimonials-columns, 3), 1fr);
+    gap: var(--veloria-testimonials-gap, 16px);
     width: 100%;
 }
 
-.elementrify-testimonial-card {
+.veloria-testimonial-card {
     padding: 24px;
     border-radius: 12px;
     border: 1px solid transparent;
@@ -16,33 +16,33 @@
     gap: 12px;
 }
 
-.elementrify-testimonial__stars {
+.veloria-testimonial__stars {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     gap: 2px;
 }
 
-.elementrify-testimonial__star {
+.veloria-testimonial__star {
     position: relative;
     display: inline-block;
     line-height: 1;
 }
 
-.elementrify-testimonial__star-empty {
+.veloria-testimonial__star-empty {
     display: block;
     color: #e5e7eb;
     font-size: 18px;
 }
 
-.elementrify-testimonial__star-empty svg {
+.veloria-testimonial__star-empty svg {
     width: 1em;
     height: 1em;
     vertical-align: top;
     display: block;
 }
 
-.elementrify-testimonial__star-fill {
+.veloria-testimonial__star-fill {
     position: absolute;
     left: 0;
     top: 0;
@@ -50,34 +50,34 @@
     height: 100%;
 }
 
-.elementrify-testimonial__star-filled {
+.veloria-testimonial__star-filled {
     display: block;
     color: #eab308;
     font-size: 18px;
 }
 
-.elementrify-testimonial__star-filled svg {
+.veloria-testimonial__star-filled svg {
     width: 1em;
     height: 1em;
     vertical-align: top;
     display: block;
 }
 
-.elementrify-testimonial-card__quote {
+.veloria-testimonial-card__quote {
     margin: 0;
     font-size: 15px;
     line-height: 1.5;
     color: #374151;
 }
 
-.elementrify-testimonial-card__footer {
+.veloria-testimonial-card__footer {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-top: auto;
 }
 
-.elementrify-testimonial-card__avatar {
+.veloria-testimonial-card__avatar {
     width: 48px!important;
     height: 48px!important;
     border-radius: 50%!important;
@@ -85,39 +85,39 @@
     flex-shrink: 0;
 }
 
-.elementrify-testimonial-card__meta {
+.veloria-testimonial-card__meta {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.elementrify-testimonial-card__name {
+.veloria-testimonial-card__name {
     font-weight: 600;
     font-size: 15px;
     color: #111827;
 }
 
-.elementrify-testimonial-card__role {
+.veloria-testimonial-card__role {
     font-size: 13px;
     color: #6b7280;
 }
 
-.elementrify-testimonials--slider {
+.veloria-testimonials--slider {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
-.elementrify-testimonials--slider .swiper-wrapper {
+.veloria-testimonials--slider .swiper-wrapper {
     align-items: stretch;
 }
 
-.elementrify-testimonials--slider .swiper-slide {
+.veloria-testimonials--slider .swiper-slide {
     height: auto;
     box-sizing: border-box;
 }
 
-.elementrify-testimonials__arrow {
+.veloria-testimonials__arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -135,36 +135,36 @@
     transition: opacity 0.2s, box-shadow 0.2s;
 }
 
-.elementrify-testimonials__arrow::after {
+.veloria-testimonials__arrow::after {
     content: none !important;
 }
 
-.elementrify-testimonials__arrow:hover {
+.veloria-testimonials__arrow:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.elementrify-testimonials__arrow--prev {
+.veloria-testimonials__arrow--prev {
     left: 12px;
 }
 
-.elementrify-testimonials__arrow--next {
+.veloria-testimonials__arrow--next {
     right: 12px;
 }
 
-.elementrify-testimonials__arrow svg {
+.veloria-testimonials__arrow svg {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
 }
 
-.elementrify-testimonials--slider .swiper-button-disabled {
+.veloria-testimonials--slider .swiper-button-disabled {
     opacity: 0.35;
     cursor: default;
 }
 
-.elementrify-testimonials--slider .swiper-pagination,
-.elementrify-testimonials--slider .swiper-pagination-bullets,
-.elementrify-testimonials--slider .swiper-pagination-horizontal {
+.veloria-testimonials--slider .swiper-pagination,
+.veloria-testimonials--slider .swiper-pagination-bullets,
+.veloria-testimonials--slider .swiper-pagination-horizontal {
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -173,12 +173,12 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    gap: var(--elementrify-dots-gap, 8px);
+    gap: var(--veloria-dots-gap, 8px);
     opacity: 1 !important;
     pointer-events: auto;
 }
 
-.elementrify-testimonials--slider .swiper-pagination-bullet {
+.veloria-testimonials--slider .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -189,28 +189,28 @@
     cursor: pointer;
 }
 
-.elementrify-testimonials--slider .swiper-pagination-bullet:hover {
+.veloria-testimonials--slider .swiper-pagination-bullet:hover {
     opacity: 0.9;
 }
 
-.elementrify-testimonials--slider .swiper-pagination-bullet-active {
+.veloria-testimonials--slider .swiper-pagination-bullet-active {
     background: rgba(0, 0, 0, 0.85);
     opacity: 1;
     transform: scale(1.2);
 }
 
-.elementrify-testimonials--slider.elementrify-pagination-square .swiper-pagination-bullet {
+.veloria-testimonials--slider.veloria-pagination-square .swiper-pagination-bullet {
     border-radius: 0;
 }
 
-.elementrify-testimonials--slider.elementrify-pagination-bar .swiper-pagination-bullet {
-    width: var(--elementrify-bar-width, 28px);
+.veloria-testimonials--slider.veloria-pagination-bar .swiper-pagination-bullet {
+    width: var(--veloria-bar-width, 28px);
     height: 5px;
     border-radius: 3px;
     transform: none;
 }
 
-.elementrify-testimonials--slider.elementrify-pagination-bar .swiper-pagination-bullet-active {
-    width: calc(var(--elementrify-bar-width, 28px) * 1.4);
+.veloria-testimonials--slider.veloria-pagination-bar .swiper-pagination-bullet-active {
+    width: calc(var(--veloria-bar-width, 28px) * 1.4);
     transform: none;
 }

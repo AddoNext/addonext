@@ -1,24 +1,24 @@
 <?php
-namespace Elementrify\Common;
+namespace Veloria\Common;
 
-use Elementrify\Base\ExtensionBase;
-use Elementrify\Utils\OptionsHelper;
-use Elementrify\Utils\LicenseCapabilities;
-use Elementrify\Extensions\CustomScripts\CustomScripts;
-use Elementrify\Extensions\CustomStyles\CustomStyles;
-use Elementrify\Extensions\Duplicator\Duplicator;
-use Elementrify\Extensions\ReadingProgressBar\ReadingProgressBar;
-use Elementrify\Extensions\MovingCircles\MovingCircles;
-use Elementrify\Extensions\ParticleEffects\ParticleEffects;
-use Elementrify\Extensions\ScrollToTop\ScrollToTop;
-use Elementrify\Extensions\SmoothScroll\SmoothScroll;
+use Veloria\Base\ExtensionBase;
+use Veloria\Utils\OptionsHelper;
+use Veloria\Utils\LicenseCapabilities;
+use Veloria\Extensions\CustomScripts\CustomScripts;
+use Veloria\Extensions\CustomStyles\CustomStyles;
+use Veloria\Extensions\Duplicator\Duplicator;
+use Veloria\Extensions\ReadingProgressBar\ReadingProgressBar;
+use Veloria\Extensions\MovingCircles\MovingCircles;
+use Veloria\Extensions\ParticleEffects\ParticleEffects;
+use Veloria\Extensions\ScrollToTop\ScrollToTop;
+use Veloria\Extensions\SmoothScroll\SmoothScroll;
 
 defined('ABSPATH') or exit;
 
 /**
- * Elementrify Extension Manager class
+ * Veloria Extension Manager class
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class ExtensionManager

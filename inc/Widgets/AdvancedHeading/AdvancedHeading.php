@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\AdvancedHeading;
+namespace Veloria\Widgets\AdvancedHeading;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -12,12 +12,12 @@ class AdvancedHeading extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-heading elementrify-icon';
+        return 'eicon-heading veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-advanced-heading';
+        return 'veloria-advanced-heading';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class AdvancedHeading extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Advanced Heading', 'elementrify');
+        return __('Advanced Heading', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Create stunning headings with animations', 'elementrify');
+        return __('Create stunning headings with animations', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -42,16 +42,16 @@ class AdvancedHeading extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-advanced-heading'];
+        return ['veloria-advanced-heading'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-advanced-heading',
-            ELEMENTRIFY_URL . 'assets/css/advanced-heading.css',
+            'veloria-advanced-heading',
+            VELORIA_URL . 'assets/css/advanced-heading.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -60,7 +60,7 @@ class AdvancedHeading extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -68,9 +68,9 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Regular text', 'elementrify'),
+                'label'   => __('Regular text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Frequently Asked', 'elementrify'),
+                'default' => __('Frequently Asked', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -78,9 +78,9 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'title_gradient',
             [
-                'label'   => __('Gradient text', 'elementrify'),
+                'label'   => __('Gradient text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Questions', 'elementrify'),
+                'default' => __('Questions', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -88,7 +88,7 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'show_subtitle',
             [
-                'label'        => __('Show subtitle', 'elementrify'),
+                'label'        => __('Show subtitle', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => '',
                 'return_value' => 'yes',
@@ -98,9 +98,9 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'subtitle',
             [
-                'label'     => __('Subtitle', 'elementrify'),
+                'label'     => __('Subtitle', 'veloria'),
                 'type'      => Controls_Manager::TEXTAREA,
-                'default'   => __('Everything you need to know about Elementrify', 'elementrify'),
+                'default'   => __('Everything you need to know about Veloria', 'veloria'),
                 'condition' => ['show_subtitle' => 'yes'],
                 'dynamic'   => ['active' => true],
             ]
@@ -109,7 +109,7 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'html_tag',
             [
-                'label'   => __('HTML tag', 'elementrify'),
+                'label'   => __('HTML tag', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'h2',
                 'options' => [
@@ -128,15 +128,15 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'align',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-h-align-left'],
-                    'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-h-align-center'],
-                    'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-h-align-right'],
+                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-h-align-left'],
+                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-h-align-center'],
+                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-h-align-right'],
                 ],
                 'default'      => 'center',
-                'prefix_class' => 'elementrify-advanced-heading--align-',
+                'prefix_class' => 'veloria-advanced-heading--align-',
             ]
         );
 
@@ -145,7 +145,7 @@ class AdvancedHeading extends WidgetBase
         $this->start_controls_section(
             'section_style',
             [
-                'label' => __('Style', 'elementrify'),
+                'label' => __('Style', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -154,7 +154,7 @@ class AdvancedHeading extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography',
-                'selector' => '{{WRAPPER}} .elementrify-advanced-heading__title',
+                'selector' => '{{WRAPPER}} .veloria-advanced-heading__title',
                 'global'   => [
                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                 ],
@@ -164,11 +164,11 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-heading__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-heading__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -178,7 +178,7 @@ class AdvancedHeading extends WidgetBase
         $this->start_controls_section(
             'section_style_gradient',
             [
-                'label' => __('Gradient text', 'elementrify'),
+                'label' => __('Gradient text', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -186,11 +186,11 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'gradient_color_start',
             [
-                'label'     => __('Gradient start', 'elementrify'),
+                'label'     => __('Gradient start', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-heading__gradient' => '--elementrify-gradient-start: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-heading__gradient' => '--veloria-gradient-start: {{VALUE}};',
                 ],
             ]
         );
@@ -198,11 +198,11 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'gradient_color_end',
             [
-                'label'     => __('Gradient end', 'elementrify'),
+                'label'     => __('Gradient end', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#7c3aed',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-heading__gradient' => '--elementrify-gradient-end: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-heading__gradient' => '--veloria-gradient-end: {{VALUE}};',
                 ],
             ]
         );
@@ -212,7 +212,7 @@ class AdvancedHeading extends WidgetBase
         $this->start_controls_section(
             'section_style_subtitle',
             [
-                'label'     => __('Subtitle', 'elementrify'),
+                'label'     => __('Subtitle', 'veloria'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_subtitle' => 'yes'],
             ]
@@ -222,18 +222,18 @@ class AdvancedHeading extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography_subtitle',
-                'selector' => '{{WRAPPER}} .elementrify-advanced-heading__subtitle',
+                'selector' => '{{WRAPPER}} .veloria-advanced-heading__subtitle',
             ]
         );
 
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-heading__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-heading__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -241,7 +241,7 @@ class AdvancedHeading extends WidgetBase
         $this->add_control(
             'subtitle_spacing',
             [
-                'label'     => __('Spacing', 'elementrify'),
+                'label'     => __('Spacing', 'veloria'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'     => [
@@ -250,7 +250,7 @@ class AdvancedHeading extends WidgetBase
                 ],
                 'default'   => ['unit' => 'px', 'size' => 12],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-heading__subtitle' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-advanced-heading__subtitle' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -260,7 +260,7 @@ class AdvancedHeading extends WidgetBase
 
     public function render(): void
     {
-        $template_path = ELEMENTRIFY_DIR . 'templates/advanced-heading/advanced-heading.php';
+        $template_path = VELORIA_DIR . 'templates/advanced-heading/advanced-heading.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -271,10 +271,10 @@ class AdvancedHeading extends WidgetBase
         ?>
         <#
         var tag = elementor.helpers.validateHTMLTag(settings.html_tag) || 'h2';
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-advanced-heading');
-        view.addRenderAttribute('title_wrapper', 'class', 'elementrify-advanced-heading__title');
-        view.addRenderAttribute('title', 'class', 'elementrify-advanced-heading__text');
-        view.addRenderAttribute('title_gradient', 'class', 'elementrify-advanced-heading__gradient');
+        view.addRenderAttribute('wrapper', 'class', 'veloria-advanced-heading');
+        view.addRenderAttribute('title_wrapper', 'class', 'veloria-advanced-heading__title');
+        view.addRenderAttribute('title', 'class', 'veloria-advanced-heading__text');
+        view.addRenderAttribute('title_gradient', 'class', 'veloria-advanced-heading__gradient');
         view.addInlineEditingAttributes('title', 'none');
         view.addInlineEditingAttributes('title_gradient', 'none');
         view.addInlineEditingAttributes('subtitle', 'none');
@@ -284,7 +284,7 @@ class AdvancedHeading extends WidgetBase
                 <span {{{ view.getRenderAttributeString('title') }}}>{{{ settings.title }}}</span><# if (settings.title_gradient) { #> <span {{{ view.getRenderAttributeString('title_gradient') }}}>{{{ settings.title_gradient }}}</span><# } #>
             </{{{ tag }}}>
             <# if (settings.show_subtitle && settings.subtitle) { #>
-            <p class="elementrify-advanced-heading__subtitle">{{{ settings.subtitle }}}</p>
+            <p class="veloria-advanced-heading__subtitle">{{{ settings.subtitle }}}</p>
             <# } #>
         </div>
         <?php

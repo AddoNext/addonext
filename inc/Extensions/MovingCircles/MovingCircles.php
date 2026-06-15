@@ -1,14 +1,14 @@
 <?php
-namespace Elementrify\Extensions\MovingCircles;
+namespace Veloria\Extensions\MovingCircles;
 
-use Elementrify\Base\ExtensionBase;
+use Veloria\Base\ExtensionBase;
 
 defined('ABSPATH') or exit;
 
 /**
  * Soft floating circles behind sections, columns, containers, and widgets (Style tab).
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class MovingCircles extends ExtensionBase
@@ -31,7 +31,7 @@ class MovingCircles extends ExtensionBase
      */
     public function get_title(): string
     {
-        return __('Moving Circles', 'elementrify');
+        return __('Moving Circles', 'veloria');
     }
 
     /**
@@ -39,7 +39,7 @@ class MovingCircles extends ExtensionBase
      */
     public function get_description(): string
     {
-        return __('Add a calm floating-circle backdrop from the Style tab on widgets, sections, columns, and containers.', 'elementrify');
+        return __('Add a calm floating-circle backdrop from the Style tab on widgets, sections, columns, and containers.', 'veloria');
     }
 
     /**
@@ -47,7 +47,7 @@ class MovingCircles extends ExtensionBase
      */
     public function get_icon(): string
     {
-        return 'eicon-circle-o elementrify-icon';
+        return 'eicon-circle-o veloria-icon';
     }
 
     /**
@@ -118,15 +118,15 @@ class MovingCircles extends ExtensionBase
 
         wp_register_style(
             'moving-circles',
-            ELEMENTRIFY_URL . 'assets/css/extensions/moving-circles.css',
+            VELORIA_URL . 'assets/css/extensions/moving-circles.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
             'moving-circles',
-            ELEMENTRIFY_URL . 'assets/js/extensions/moving-circles.js',
+            VELORIA_URL . 'assets/js/extensions/moving-circles.js',
             ['jquery', 'elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -160,20 +160,20 @@ class MovingCircles extends ExtensionBase
         $registered[$stack_name] = true;
 
         $element->start_controls_section(
-            'section_elementrify_moving_circles',
+            'section_veloria_moving_circles',
             [
-                'label' => __('Moving circles', 'elementrify'),
+                'label' => __('Moving circles', 'veloria'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $element->add_control(
-            'elementrify_moving_circles_enable',
+            'veloria_moving_circles_enable',
             [
-                'label'              => __('Circle backdrop', 'elementrify'),
+                'label'              => __('Circle backdrop', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'           => __('Yes', 'elementrify'),
-                'label_off'          => __('No', 'elementrify'),
+                'label_on'           => __('Yes', 'veloria'),
+                'label_off'          => __('No', 'veloria'),
                 'return_value'       => 'yes',
                 'default'            => '',
                 'frontend_available' => true,
@@ -181,9 +181,9 @@ class MovingCircles extends ExtensionBase
         );
 
         $element->add_control(
-            'elementrify_moving_circles_count',
+            'veloria_moving_circles_count',
             [
-                'label'              => __('Number of circles', 'elementrify'),
+                'label'              => __('Number of circles', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SLIDER,
                 'size_units'         => ['px'],
                 'range'              => [
@@ -198,15 +198,15 @@ class MovingCircles extends ExtensionBase
                 ],
                 'frontend_available' => true,
                 'condition'          => [
-                    'elementrify_moving_circles_enable' => 'yes',
+                    'veloria_moving_circles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_moving_circles_speed',
+            'veloria_moving_circles_speed',
             [
-                'label'              => __('Motion speed', 'elementrify'),
+                'label'              => __('Motion speed', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SLIDER,
                 'size_units'         => ['px'],
                 'range'              => [
@@ -220,17 +220,17 @@ class MovingCircles extends ExtensionBase
                     'size' => 100,
                 ],
                 'frontend_available' => true,
-                'description'        => __('100% is the default pace. Higher moves faster.', 'elementrify'),
+                'description'        => __('100% is the default pace. Higher moves faster.', 'veloria'),
                 'condition'          => [
-                    'elementrify_moving_circles_enable' => 'yes',
+                    'veloria_moving_circles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_moving_circles_size',
+            'veloria_moving_circles_size',
             [
-                'label'              => __('Circle size', 'elementrify'),
+                'label'              => __('Circle size', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SLIDER,
                 'size_units'         => ['px'],
                 'range'              => [
@@ -245,20 +245,20 @@ class MovingCircles extends ExtensionBase
                 ],
                 'frontend_available' => true,
                 'condition'          => [
-                    'elementrify_moving_circles_enable' => 'yes',
+                    'veloria_moving_circles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_moving_circles_color',
+            'veloria_moving_circles_color',
             [
-                'label'              => __('Circle color', 'elementrify'),
+                'label'              => __('Circle color', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::COLOR,
                 'default'            => '#ffffff',
                 'frontend_available' => true,
                 'condition'          => [
-                    'elementrify_moving_circles_enable' => 'yes',
+                    'veloria_moving_circles_enable' => 'yes',
                 ],
             ]
         );
@@ -278,15 +278,15 @@ class MovingCircles extends ExtensionBase
 
         $settings = $element->get_settings_for_display();
 
-        if (empty($settings['elementrify_moving_circles_enable']) || $settings['elementrify_moving_circles_enable'] !== 'yes') {
+        if (empty($settings['veloria_moving_circles_enable']) || $settings['veloria_moving_circles_enable'] !== 'yes') {
             return;
         }
 
         $count = 10;
 
-        if (isset($settings['elementrify_moving_circles_count']) && is_array($settings['elementrify_moving_circles_count'])) {
-            $count = isset($settings['elementrify_moving_circles_count']['size'])
-                ? (int) $settings['elementrify_moving_circles_count']['size']
+        if (isset($settings['veloria_moving_circles_count']) && is_array($settings['veloria_moving_circles_count'])) {
+            $count = isset($settings['veloria_moving_circles_count']['size'])
+                ? (int) $settings['veloria_moving_circles_count']['size']
                 : 10;
         }
 
@@ -294,9 +294,9 @@ class MovingCircles extends ExtensionBase
 
         $speedPercent = 100;
 
-        if (isset($settings['elementrify_moving_circles_speed']) && is_array($settings['elementrify_moving_circles_speed'])) {
-            $speedPercent = isset($settings['elementrify_moving_circles_speed']['size'])
-                ? (int) $settings['elementrify_moving_circles_speed']['size']
+        if (isset($settings['veloria_moving_circles_speed']) && is_array($settings['veloria_moving_circles_speed'])) {
+            $speedPercent = isset($settings['veloria_moving_circles_speed']['size'])
+                ? (int) $settings['veloria_moving_circles_speed']['size']
                 : 100;
         }
 
@@ -304,24 +304,24 @@ class MovingCircles extends ExtensionBase
 
         $sizePx = 48;
 
-        if (isset($settings['elementrify_moving_circles_size']) && is_array($settings['elementrify_moving_circles_size'])) {
-            $sizePx = isset($settings['elementrify_moving_circles_size']['size'])
-                ? (int) $settings['elementrify_moving_circles_size']['size']
+        if (isset($settings['veloria_moving_circles_size']) && is_array($settings['veloria_moving_circles_size'])) {
+            $sizePx = isset($settings['veloria_moving_circles_size']['size'])
+                ? (int) $settings['veloria_moving_circles_size']['size']
                 : 48;
         }
 
         $sizePx = max(12, min(140, $sizePx));
 
-        $colorRaw = $this->extract_color_input($settings, 'elementrify_moving_circles_color');
+        $colorRaw = $this->extract_color_input($settings, 'veloria_moving_circles_color');
         $color    = $this->sanitize_color_value($colorRaw, '#ffffff');
 
-        $element->add_render_attribute('_wrapper', 'class', 'elementrify-moving-circles');
-        $element->add_render_attribute('_wrapper', 'data-elementrify-moving-circles', 'yes');
-        $element->add_render_attribute('_wrapper', 'data-elementrify-moving-circles-host-id', esc_attr($element->get_id()));
-        $element->add_render_attribute('_wrapper', 'data-elementrify-moving-circles-count', (string) $count);
-        $element->add_render_attribute('_wrapper', 'data-elementrify-moving-circles-speed', (string) $speedPercent);
-        $element->add_render_attribute('_wrapper', 'data-elementrify-moving-circles-size', (string) $sizePx);
-        $element->add_render_attribute('_wrapper', 'data-elementrify-moving-circles-color', esc_attr($color));
+        $element->add_render_attribute('_wrapper', 'class', 'veloria-moving-circles');
+        $element->add_render_attribute('_wrapper', 'data-veloria-moving-circles', 'yes');
+        $element->add_render_attribute('_wrapper', 'data-veloria-moving-circles-host-id', esc_attr($element->get_id()));
+        $element->add_render_attribute('_wrapper', 'data-veloria-moving-circles-count', (string) $count);
+        $element->add_render_attribute('_wrapper', 'data-veloria-moving-circles-speed', (string) $speedPercent);
+        $element->add_render_attribute('_wrapper', 'data-veloria-moving-circles-size', (string) $sizePx);
+        $element->add_render_attribute('_wrapper', 'data-veloria-moving-circles-color', esc_attr($color));
     }
 
     /**

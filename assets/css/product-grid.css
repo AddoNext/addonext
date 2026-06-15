@@ -1,8 +1,8 @@
-.elementrify-product-grid-shell {
+.veloria-product-grid-shell {
   width: 100%;
 }
 
-.elementrify-product-grid-shell > .elementrify-product-grid {
+.veloria-product-grid-shell > .veloria-product-grid {
   display: grid;
   grid-template-columns: repeat(var(--epg-cols-mobile, 1), minmax(0, 1fr));
   column-gap: var(--epg-col-gap, 16px);
@@ -10,36 +10,36 @@
 }
 
 @media (min-width: 768px) {
-  .elementrify-product-grid-shell > .elementrify-product-grid {
+  .veloria-product-grid-shell > .veloria-product-grid {
     grid-template-columns: repeat(var(--epg-cols-tablet, 2), minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1025px) {
-  .elementrify-product-grid-shell > .elementrify-product-grid {
+  .veloria-product-grid-shell > .veloria-product-grid {
     grid-template-columns: repeat(var(--epg-cols-desktop, 4), minmax(0, 1fr));
   }
 }
 
-.elementrify-product-grid__card {
+.veloria-product-grid__card {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   overflow: hidden;
 }
 
-.elementrify-product-grid__image-wrap {
+.veloria-product-grid__image-wrap {
   position: relative;
   background: #f8fafc;
   overflow: hidden;
 }
 
-.elementrify-product-grid__image-link {
+.veloria-product-grid__image-link {
   display: block;
   aspect-ratio: 1 / 1;
 }
 
-.elementrify-product-grid__image {
+.veloria-product-grid__image {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -47,27 +47,27 @@
   transition: transform 0.45s ease;
 }
 
-.elementrify-product-grid__image-wrap--zoom-in:hover .elementrify-product-grid__image {
+.veloria-product-grid__image-wrap--zoom-in:hover .veloria-product-grid__image {
   transform: scale(1.08);
 }
 
-.elementrify-product-grid__image-wrap--zoom-out .elementrify-product-grid__image {
+.veloria-product-grid__image-wrap--zoom-out .veloria-product-grid__image {
   transform: scale(1.08);
 }
 
-.elementrify-product-grid__image-wrap--zoom-out:hover .elementrify-product-grid__image {
+.veloria-product-grid__image-wrap--zoom-out:hover .veloria-product-grid__image {
   transform: scale(1);
 }
 
-.elementrify-product-grid__image-wrap--jump:hover .elementrify-product-grid__image {
+.veloria-product-grid__image-wrap--jump:hover .veloria-product-grid__image {
   transform: translateY(-8px);
 }
 
-.elementrify-product-grid__image-wrap--tilt:hover .elementrify-product-grid__image {
+.veloria-product-grid__image-wrap--tilt:hover .veloria-product-grid__image {
   transform: rotate(-3deg) scale(1.04);
 }
 
-.elementrify-product-grid__badges {
+.veloria-product-grid__badges {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -75,7 +75,7 @@
   gap: 6px;
 }
 
-.elementrify-product-grid__badge {
+.veloria-product-grid__badge {
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
@@ -84,19 +84,19 @@
   border-radius: 999px;
 }
 
-.elementrify-product-grid__badge--sale {
+.veloria-product-grid__badge--sale {
   background: #ef4444;
 }
 
-.elementrify-product-grid__badge--new {
+.veloria-product-grid__badge--new {
   background: #22c55e;
 }
 
-.elementrify-product-grid__card-body {
+.veloria-product-grid__card-body {
   padding: 12px;
 }
 
-.elementrify-product-grid__rating {
+.veloria-product-grid__rating {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -104,16 +104,16 @@
   font-size: 13px;
 }
 
-.elementrify-product-grid__rating .star-rating {
+.veloria-product-grid__rating .star-rating {
   margin: 0;
 }
 
-.elementrify-product-grid__rating-value {
+.veloria-product-grid__rating-value {
   color: #374151;
   font-weight: 600;
 }
 
-.elementrify-product-grid__title {
+.veloria-product-grid__title {
   margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
@@ -121,59 +121,59 @@
   color: #111827;
 }
 
-.elementrify-product-grid__title a {
+.veloria-product-grid__title a {
   color: inherit;
   text-decoration: none;
 }
 
-.elementrify-product-grid__meta {
+.veloria-product-grid__meta {
   margin: 0 0 8px;
   color: #9ca3af;
   font-size: 13px;
   line-height: 1.35;
 }
 
-.elementrify-product-grid__meta a {
+.veloria-product-grid__meta a {
   color: inherit;
   text-decoration: none;
 }
 
-.elementrify-product-grid__desc {
+.veloria-product-grid__desc {
   margin: 0 0 10px;
   color: #6b7280;
   font-size: 13px;
   line-height: 1.4;
 }
 
-.elementrify-product-grid__price-row {
+.veloria-product-grid__price-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.elementrify-product-grid__price-main {
+.veloria-product-grid__price-main {
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
   min-width: 0;
 }
 
-.elementrify-product-grid__price-current {
+.veloria-product-grid__price-current {
   font-size: 16px;
   font-weight: 800;
   color: #111827;
   line-height: 1;
 }
 
-.elementrify-product-grid__price-old {
+.veloria-product-grid__price-old {
   font-size: 14px;
   font-weight: 600;
   color: #9ca3af;
   text-decoration: line-through;
 }
 
-.elementrify-product-grid__actions {
+.veloria-product-grid__actions {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -181,7 +181,7 @@
   position: relative;
 }
 
-.elementrify-product-grid__icon-btn {
+.veloria-product-grid__icon-btn {
   width: 32px;
   height: 32px;
   border: 1px solid #d1d5db;
@@ -195,12 +195,12 @@
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
-.elementrify-product-grid__icon-btn i {
+.veloria-product-grid__icon-btn i {
   font-size: 14px;
   line-height: 1;
 }
 
-.elementrify-product-grid__icon-btn--cart {
+.veloria-product-grid__icon-btn--cart {
   color: #fff;
   background: #2563eb;
   border-color: #2563eb;
@@ -208,13 +208,13 @@
   position: relative;
 }
 
-.elementrify-product-grid__icon-btn--cart.loading i,
-.elementrify-product-grid__icon-btn--cart.elementrify-product-grid__cart-btn--pending i {
+.veloria-product-grid__icon-btn--cart.loading i,
+.veloria-product-grid__icon-btn--cart.veloria-product-grid__cart-btn--pending i {
   opacity: 0;
 }
 
-.elementrify-product-grid__icon-btn--cart.loading::after,
-.elementrify-product-grid__icon-btn--cart.elementrify-product-grid__cart-btn--pending::after {
+.veloria-product-grid__icon-btn--cart.loading::after,
+.veloria-product-grid__icon-btn--cart.veloria-product-grid__cart-btn--pending::after {
   content: '';
   position: absolute;
   width: 14px;
@@ -222,31 +222,31 @@
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: #fff;
   border-radius: 50%;
-  animation: elementrify-pg-cart-spin 0.7s linear infinite;
+  animation: veloria-pg-cart-spin 0.7s linear infinite;
   box-sizing: border-box;
 }
 
-.elementrify-product-grid__icon-btn--cart.is-added-success {
+.veloria-product-grid__icon-btn--cart.is-added-success {
   background: #16a34a;
   border-color: #16a34a;
   transform: scale(1.05);
 }
 
-.elementrify-product-grid__icon-btn--cart.is-added-success::after {
+.veloria-product-grid__icon-btn--cart.is-added-success::after {
   display: none;
 }
 
-@keyframes elementrify-pg-cart-spin {
+@keyframes veloria-pg-cart-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-.elementrify-product-grid .added_to_cart {
+.veloria-product-grid .added_to_cart {
   display: none !important;
 }
 
-.elementrify-product-grid__cart-tooltip {
+.veloria-product-grid__cart-tooltip {
   position: absolute;
   right: 0;
   bottom: calc(100% + 8px);
@@ -267,7 +267,7 @@
   z-index: 8;
 }
 
-.elementrify-product-grid__cart-tooltip::after {
+.veloria-product-grid__cart-tooltip::after {
   content: '';
   position: absolute;
   top: 100%;
@@ -277,19 +277,19 @@
   border-color: #2563eb transparent transparent transparent;
 }
 
-.elementrify-product-grid__actions.is-cart-tooltip-visible .elementrify-product-grid__cart-tooltip {
+.veloria-product-grid__actions.is-cart-tooltip-visible .veloria-product-grid__cart-tooltip {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.elementrify-product-grid__cart-tooltip:hover {
+.veloria-product-grid__cart-tooltip:hover {
   background: #1d4ed8;
   color: #fff;
 }
 
-.elementrify-product-grid__placeholder,
-.elementrify-product-grid__placeholder p {
+.veloria-product-grid__placeholder,
+.veloria-product-grid__placeholder p {
   margin: 0;
   color: #6b7280;
   font-size: 14px;

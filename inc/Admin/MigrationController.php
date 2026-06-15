@@ -1,15 +1,15 @@
 <?php
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
-use Elementrify\Migrations\ActivateProWidgets;
-use Elementrify\Migrations\ActivateFreeWidgets;
+use Veloria\Migrations\ActivateProWidgets;
+use Veloria\Migrations\ActivateFreeWidgets;
 
 defined('ABSPATH') or exit;
 
 /**
  * Controller for running migrations
  *
- * @package Elementrify\Admin
+ * @package Veloria\Admin
  */
 class MigrationController
 {

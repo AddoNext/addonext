@@ -128,7 +128,7 @@ const LicensePage: React.FC = () => {
                 <FontAwesomeIcon icon={faShieldHalved} className={styles.iconGreen} />
                 License Status
               </h2>
-              <p className={styles.sectionSubtitle}>Manage your Elementrify license key and subscription</p>
+              <p className={styles.sectionSubtitle}>Manage your Veloria license key and subscription</p>
             </div>
             <div className={statusPillClass}>
               <span className={styles.statusDot} />

@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\CircularProgress;
+namespace Veloria\Widgets\CircularProgress;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class CircularProgress extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-circle-o elementrify-icon';
+        return 'eicon-circle-o veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-circular-progress';
+        return 'veloria-circular-progress';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class CircularProgress extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Circular Progress', 'elementrify');
+        return __('Circular Progress', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Circular progress indicators with title and subtitle', 'elementrify');
+        return __('Circular progress indicators with title and subtitle', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -48,12 +48,12 @@ class CircularProgress extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-circular-progress'];
+        return ['veloria-circular-progress'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('elementrify-circular-progress', ELEMENTRIFY_URL . 'assets/css/circular-progress.css', [], ELEMENTRIFY_VERSION);
+        wp_register_style('veloria-circular-progress', VELORIA_URL . 'assets/css/circular-progress.css', [], VELORIA_VERSION);
     }
 
     public function register_controls(): void
@@ -64,7 +64,7 @@ class CircularProgress extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -73,7 +73,7 @@ class CircularProgress extends WidgetBase
         $repeater->add_control(
             'percent',
             [
-                'label'   => __('Percentage', 'elementrify'),
+                'label'   => __('Percentage', 'veloria'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['%'],
                 'range'   => ['%' => ['min' => 0, 'max' => 100]],
@@ -83,7 +83,7 @@ class CircularProgress extends WidgetBase
         $repeater->add_control(
             'bar_color',
             [
-                'label'   => __('Progress color', 'elementrify'),
+                'label'   => __('Progress color', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#4285F4',
             ]
@@ -91,30 +91,30 @@ class CircularProgress extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Title', 'elementrify'),
+                'label'   => __('Title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Design Phase', 'elementrify'),
+                'default' => __('Design Phase', 'veloria'),
             ]
         );
         $repeater->add_control(
             'subtitle',
             [
-                'label'   => __('Subtitle', 'elementrify'),
+                'label'   => __('Subtitle', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('UI/UX Design Complete', 'elementrify'),
+                'default' => __('UI/UX Design Complete', 'veloria'),
             ]
         );
 
         $this->add_control(
             'items',
             [
-                'label'       => __('Items', 'elementrify'),
+                'label'       => __('Items', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['percent' => ['size' => 60], 'bar_color' => '#4285F4', 'title' => __('Design Phase', 'elementrify'), 'subtitle' => __('UI/UX Design Complete', 'elementrify')],
-                    ['percent' => ['size' => 70], 'bar_color' => '#34A853', 'title' => __('Development', 'elementrify'), 'subtitle' => __('Frontend Implementation', 'elementrify')],
-                    ['percent' => ['size' => 30], 'bar_color' => '#FBBC04', 'title' => __('Testing', 'elementrify'), 'subtitle' => __('Quality Assurance', 'elementrify')],
+                    ['percent' => ['size' => 60], 'bar_color' => '#4285F4', 'title' => __('Design Phase', 'veloria'), 'subtitle' => __('UI/UX Design Complete', 'veloria')],
+                    ['percent' => ['size' => 70], 'bar_color' => '#34A853', 'title' => __('Development', 'veloria'), 'subtitle' => __('Frontend Implementation', 'veloria')],
+                    ['percent' => ['size' => 30], 'bar_color' => '#FBBC04', 'title' => __('Testing', 'veloria'), 'subtitle' => __('Quality Assurance', 'veloria')],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -125,7 +125,7 @@ class CircularProgress extends WidgetBase
         $this->start_controls_section(
             'section_style_circle',
             [
-                'label' => __('Circle', 'elementrify'),
+                'label' => __('Circle', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -133,13 +133,13 @@ class CircularProgress extends WidgetBase
         $this->add_control(
             'circle_size',
             [
-                'label'      => __('Size', 'elementrify'),
+                'label'      => __('Size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 80, 'max' => 280]],
                 'default'    => ['size' => 130],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-circular-progress__svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-circular-progress__svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -147,14 +147,14 @@ class CircularProgress extends WidgetBase
         $this->add_control(
             'stroke_width',
             [
-                'label'      => __('Stroke width', 'elementrify'),
+                'label'      => __('Stroke width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 2, 'max' => 24]],
                 'default'    => ['size' => 3],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-circular-progress__bg' => 'stroke-width: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-circular-progress__fill' => 'stroke-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-circular-progress__bg' => 'stroke-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-circular-progress__fill' => 'stroke-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -162,11 +162,11 @@ class CircularProgress extends WidgetBase
         $this->add_control(
             'track_color',
             [
-                'label'     => __('Track color', 'elementrify'),
+                'label'     => __('Track color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E0E0E0',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-circular-progress__bg' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-circular-progress__bg' => 'stroke: {{VALUE}};',
                 ],
             ]
         );
@@ -176,7 +176,7 @@ class CircularProgress extends WidgetBase
         $this->start_controls_section(
             'section_style_value',
             [
-                'label' => __('Percentage value', 'elementrify'),
+                'label' => __('Percentage value', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -185,7 +185,7 @@ class CircularProgress extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'value_typography',
-                'selector' => '{{WRAPPER}} .elementrify-circular-progress__value',
+                'selector' => '{{WRAPPER}} .veloria-circular-progress__value',
                 'default'  => ['font_size' => ['unit' => 'px', 'size' => 18]],
             ]
         );
@@ -193,11 +193,11 @@ class CircularProgress extends WidgetBase
         $this->add_control(
             'value_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1a1a1a',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-circular-progress__value' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-circular-progress__value' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -207,7 +207,7 @@ class CircularProgress extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -216,18 +216,18 @@ class CircularProgress extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-circular-progress__title',
+                'selector' => '{{WRAPPER}} .veloria-circular-progress__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1a1a1a',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-circular-progress__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-circular-progress__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -237,7 +237,7 @@ class CircularProgress extends WidgetBase
         $this->start_controls_section(
             'section_style_subtitle',
             [
-                'label' => __('Subtitle', 'elementrify'),
+                'label' => __('Subtitle', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -246,18 +246,18 @@ class CircularProgress extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'selector' => '{{WRAPPER}} .elementrify-circular-progress__subtitle',
+                'selector' => '{{WRAPPER}} .veloria-circular-progress__subtitle',
             ]
         );
 
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#666666',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-circular-progress__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-circular-progress__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -267,7 +267,7 @@ class CircularProgress extends WidgetBase
         $this->start_controls_section(
             'section_style_layout',
             [
-                'label' => __('Layout', 'elementrify'),
+                'label' => __('Layout', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -275,13 +275,13 @@ class CircularProgress extends WidgetBase
         $this->add_control(
             'items_gap',
             [
-                'label'      => __('Gap between items', 'elementrify'),
+                'label'      => __('Gap between items', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 32],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-circular-progress__list' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-circular-progress__list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -296,7 +296,7 @@ class CircularProgress extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/circular-progress/circular-progress.php';
+        $path = VELORIA_DIR . 'templates/circular-progress/circular-progress.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -315,23 +315,23 @@ class CircularProgress extends WidgetBase
         var radius = 16;
         var circumference = 2 * Math.PI * radius;
         #>
-        <div class="elementrify-circular-progress">
-            <div class="elementrify-circular-progress__list">
+        <div class="veloria-circular-progress">
+            <div class="veloria-circular-progress__list">
                 <# _.each(items, function(item) {
                     var percent = (item.percent && item.percent.size != null) ? Math.max(0, Math.min(100, parseInt(item.percent.size, 10))) : 0;
                     var barColor = (item.bar_color) ? item.bar_color : '#4285F4';
                     var dash = (percent / 100) * circumference;
                 #>
-                    <div class="elementrify-circular-progress__item">
-                        <div class="elementrify-circular-progress__circle-wrap">
-                            <svg class="elementrify-circular-progress__svg" viewBox="0 0 36 36">
-                                <circle class="elementrify-circular-progress__bg" cx="18" cy="18" r="{{ radius }}" fill="none"/>
-                                <circle class="elementrify-circular-progress__fill" cx="18" cy="18" r="{{ radius }}" fill="none" stroke-dasharray="{{ dash }}, {{ circumference }}" transform="rotate(-90 18 18)" style="stroke: {{ barColor }};"/>
+                    <div class="veloria-circular-progress__item">
+                        <div class="veloria-circular-progress__circle-wrap">
+                            <svg class="veloria-circular-progress__svg" viewBox="0 0 36 36">
+                                <circle class="veloria-circular-progress__bg" cx="18" cy="18" r="{{ radius }}" fill="none"/>
+                                <circle class="veloria-circular-progress__fill" cx="18" cy="18" r="{{ radius }}" fill="none" stroke-dasharray="{{ dash }}, {{ circumference }}" transform="rotate(-90 18 18)" style="stroke: {{ barColor }};"/>
                             </svg>
-                            <span class="elementrify-circular-progress__value">{{ percent }}%</span>
+                            <span class="veloria-circular-progress__value">{{ percent }}%</span>
                         </div>
-                        <# if (item.title) { #><span class="elementrify-circular-progress__title">{{{ item.title }}}</span><# } #>
-                        <# if (item.subtitle) { #><span class="elementrify-circular-progress__subtitle">{{{ item.subtitle }}}</span><# } #>
+                        <# if (item.title) { #><span class="veloria-circular-progress__title">{{{ item.title }}}</span><# } #>
+                        <# if (item.subtitle) { #><span class="veloria-circular-progress__subtitle">{{{ item.subtitle }}}</span><# } #>
                     </div>
                 <# }); #>
             </div>

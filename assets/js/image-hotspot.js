@@ -5,7 +5,7 @@
         if (wrapper.getAttribute('data-click-bound') === '1') return;
         wrapper.setAttribute('data-click-bound', '1');
 
-        var points = wrapper.querySelectorAll('.elementrify-image-hotspot__point');
+        var points = wrapper.querySelectorAll('.veloria-image-hotspot__point');
 
         function setActive(point) {
             points.forEach(function (p) {
@@ -21,7 +21,7 @@
 
         function findPoint(el) {
             while (el && el !== wrapper) {
-                if (el.classList && el.classList.contains('elementrify-image-hotspot__point')) return el;
+                if (el.classList && el.classList.contains('veloria-image-hotspot__point')) return el;
                 el = el.parentElement;
             }
             return null;
@@ -49,7 +49,7 @@
 
     function scan(root) {
         root = root || document;
-        var widgets = root.querySelectorAll('.elementrify-image-hotspot[data-trigger="click"]');
+        var widgets = root.querySelectorAll('.veloria-image-hotspot[data-trigger="click"]');
         widgets.forEach(bindClickTrigger);
     }
 
@@ -80,7 +80,7 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-image-hotspot.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-image-hotspot.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) scan(el);
         });

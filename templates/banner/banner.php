@@ -35,42 +35,42 @@ if ($is_file_video) {
     }
 }
 ?>
-<div class="elementrify-banner">
-    <div class="elementrify-banner__bg">
+<div class="veloria-banner">
+    <div class="veloria-banner__bg">
         <?php if ($bg_mode === 'video' && $is_file_video) : ?>
-            <video class="elementrify-banner__video" autoplay muted playsinline loop preload="metadata">
+            <video class="veloria-banner__video" autoplay muted playsinline loop preload="metadata">
                 <source src="<?php echo esc_url($video_link); ?>" type="<?php echo esc_attr($video_mime); ?>" />
             </video>
         <?php elseif ($bg_mode === 'video' && $youtube_id !== '') : ?>
-            <div class="elementrify-banner__video elementrify-banner__video--youtube">
+            <div class="veloria-banner__video veloria-banner__video--youtube">
                 <iframe
                     src="<?php echo esc_url('https://www.youtube-nocookie.com/embed/' . $youtube_id . '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&loop=1&playlist=' . rawurlencode($youtube_id)); ?>"
-                    title="<?php echo esc_attr__('Background video', 'elementrify'); ?>"
+                    title="<?php echo esc_attr__('Background video', 'veloria'); ?>"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         <?php elseif ($bg_mode === 'video' && $vimeo_id !== '') : ?>
-            <div class="elementrify-banner__video elementrify-banner__video--vimeo">
+            <div class="veloria-banner__video veloria-banner__video--vimeo">
                 <iframe
                     src="<?php echo esc_url('https://player.vimeo.com/video/' . $vimeo_id . '?autoplay=1&muted=1&background=1&loop=1'); ?>"
-                    title="<?php echo esc_attr__('Background video', 'elementrify'); ?>"
+                    title="<?php echo esc_attr__('Background video', 'veloria'); ?>"
                     loading="lazy"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         <?php endif; ?>
     </div>
-    <div class="elementrify-banner__overlay" aria-hidden="true"></div>
-    <div class="elementrify-banner__inner">
+    <div class="veloria-banner__overlay" aria-hidden="true"></div>
+    <div class="veloria-banner__inner">
         <?php if ($title !== '') : ?>
-            <<?php echo esc_attr($title_tag); ?> class="elementrify-banner__title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
+            <<?php echo esc_attr($title_tag); ?> class="veloria-banner__title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
         <?php endif; ?>
         <?php if ($subtitle !== '') : ?>
-            <p class="elementrify-banner__subtitle"><?php echo esc_html($subtitle); ?></p>
+            <p class="veloria-banner__subtitle"><?php echo esc_html($subtitle); ?></p>
         <?php endif; ?>
         <?php if ($buttons !== []) : ?>
-            <div class="elementrify-banner__actions">
+            <div class="veloria-banner__actions">
                 <?php foreach ($buttons as $index => $row) : ?>
                     <?php
                     if (!is_array($row)) {
@@ -87,7 +87,7 @@ if ($is_file_video) {
                         $link['url'] = '#';
                     }
                     $key = 'banner_btn_' . (int) $index;
-                    $this->add_render_attribute($key, 'class', 'elementrify-banner__btn elementrify-banner__btn--' . $type);
+                    $this->add_render_attribute($key, 'class', 'veloria-banner__btn veloria-banner__btn--' . $type);
                     $this->add_link_attributes($key, $link);
                     ?>
                     <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor link attribute string. ?>

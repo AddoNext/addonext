@@ -1,14 +1,14 @@
-.elementrify-progress-bar {
+.veloria-progress-bar {
     width: 100%;
 }
 
-.elementrify-progress-bar__list {
+.veloria-progress-bar__list {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.elementrify-progress-bar__row {
+.veloria-progress-bar__row {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-.elementrify-progress-bar__header {
+.veloria-progress-bar__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.elementrify-progress-bar .elementrify-progress-bar__title {
+.veloria-progress-bar .veloria-progress-bar__title {
     font-size: 14px !important;
     font-weight: 400;
     color: #333333;
@@ -32,7 +32,7 @@
     text-align: left;
 }
 
-.elementrify-progress-bar .elementrify-progress-bar__percent {
+.veloria-progress-bar .veloria-progress-bar__percent {
     font-size: 14px !important;
     font-weight: 400;
     line-height: 1.4;
@@ -41,7 +41,7 @@
     margin-left: auto;
 }
 
-.elementrify-progress-bar__track {
+.veloria-progress-bar__track {
     width: 100%;
     height: 8px;
     background-color: #E8E8E8;
@@ -52,7 +52,7 @@
     box-sizing: border-box;
 }
 
-.elementrify-progress-bar__fill {
+.veloria-progress-bar__fill {
     display: block !important;
     height: 100%;
     min-height: 8px;

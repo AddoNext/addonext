@@ -1,8 +1,8 @@
-.elementrify-author-box {
+.veloria-author-box {
   width: 100%;
 }
 
-.elementrify-author-box__card {
+.veloria-author-box__card {
   box-sizing: border-box;
   max-width: 100%;
   margin-inline: auto;
@@ -16,14 +16,14 @@
   );
 }
 
-.elementrify-author-box__top {
+.veloria-author-box__top {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 1.5rem;
 }
 
-.elementrify-author-box__avatar-wrap {
+.veloria-author-box__avatar-wrap {
   box-sizing: border-box;
   flex-shrink: 0;
   width: var(--er-ab-avatar-size, 112px);
@@ -35,7 +35,7 @@
   line-height: 0;
 }
 
-.elementrify-author-box__avatar {
+.veloria-author-box__avatar {
   display: block;
   width: 100%!important;
   height: 100%!important;
@@ -45,12 +45,12 @@
   object-position: center;
 }
 
-.elementrify-author-box__main {
+.veloria-author-box__main {
   flex: 1 1 200px;
   min-width: 0;
 }
 
-.elementrify-author-box__name-heading {
+.veloria-author-box__name-heading {
   margin: 0 0 0.25rem;
   padding: 0;
   font-size: inherit;
@@ -58,7 +58,7 @@
   line-height: inherit;
 }
 
-.elementrify-author-box__name {
+.veloria-author-box__name {
   margin: 0 0 0.25rem;
   padding: 0;
   font-size: 1.25rem;
@@ -67,19 +67,19 @@
   color: #1a1a1a;
 }
 
-.elementrify-author-box__name-heading .elementrify-author-box__name {
+.veloria-author-box__name-heading .veloria-author-box__name {
   margin: 0;
 }
 
-a.elementrify-author-box__name {
+a.veloria-author-box__name {
   text-decoration: none;
 }
 
-a.elementrify-author-box__name:hover {
+a.veloria-author-box__name:hover {
   color: #2b66d9;
 }
 
-.elementrify-author-box__job {
+.veloria-author-box__job {
   margin: 0 0 0.75rem;
   padding: 0;
   font-size: 0.9375rem;
@@ -88,7 +88,7 @@ a.elementrify-author-box__name:hover {
   color: #2b66d9;
 }
 
-.elementrify-author-box__bio {
+.veloria-author-box__bio {
   margin: 0 0 1.125rem;
   padding: 0;
   font-size: 0.9375rem;
@@ -97,7 +97,7 @@ a.elementrify-author-box__name:hover {
   color: #4a5568;
 }
 
-.elementrify-author-box__social {
+.veloria-author-box__social {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -107,7 +107,7 @@ a.elementrify-author-box__name:hover {
   list-style: none;
 }
 
-.elementrify-author-box__social-link {
+.veloria-author-box__social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -119,67 +119,67 @@ a.elementrify-author-box__name:hover {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.elementrify-author-box__social-link:hover {
+.veloria-author-box__social-link:hover {
   color: #ffffff;
   transform: translateY(-2px);
 }
 
-.elementrify-author-box__social-link i,
-.elementrify-author-box__social-link .elementor-icon {
+.veloria-author-box__social-link i,
+.veloria-author-box__social-link .elementor-icon {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
 }
 
-.elementrify-author-box__social-link i,
-.elementrify-author-box__social-link svg {
+.veloria-author-box__social-link i,
+.veloria-author-box__social-link svg {
   font-size: 1rem;
   width: 1em;
   height: 1em;
 }
 
-.elementrify-author-box__social-link svg {
+.veloria-author-box__social-link svg {
   color: #ffffff;
   fill: currentColor;
 }
 
-.elementrify-author-box__social-link svg path,
-.elementrify-author-box__social-link svg circle,
-.elementrify-author-box__social-link svg rect,
-.elementrify-author-box__social-link svg polygon {
+.veloria-author-box__social-link svg path,
+.veloria-author-box__social-link svg circle,
+.veloria-author-box__social-link svg rect,
+.veloria-author-box__social-link svg polygon {
   fill: currentColor !important;
 }
 
-.elementrify-author-box__social-link--twitter {
+.veloria-author-box__social-link--twitter {
   background-color: #1d9bf0;
 }
 
-.elementrify-author-box__social-link--linkedin {
+.veloria-author-box__social-link--linkedin {
   background-color: #0a66c2;
 }
 
-.elementrify-author-box__social-link--github {
+.veloria-author-box__social-link--github {
   background-color: #24292f;
 }
 
-.elementrify-author-box__social-link--website {
+.veloria-author-box__social-link--website {
   background-color: #7c3aed;
 }
 
-.elementrify-author-box__divider {
+.veloria-author-box__divider {
   height: 0;
   margin: 1.5rem 0;
   border: 0;
   border-top: 1px solid #edf2f7;
 }
 
-.elementrify-author-box__stats {
+.veloria-author-box__stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem 0.75rem;
   text-align: center;
 }
 
-.elementrify-author-box__stat {
+.veloria-author-box__stat {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,14 +187,14 @@ a.elementrify-author-box__name:hover {
   min-width: 0;
 }
 
-.elementrify-author-box__stat-value {
+.veloria-author-box__stat-value {
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.2;
   color: #1a1a1a;
 }
 
-.elementrify-author-box__stat-label {
+.veloria-author-box__stat-label {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.35;
@@ -202,22 +202,22 @@ a.elementrify-author-box__name:hover {
 }
 
 @media (max-width: 767px) {
-  .elementrify-author-box__top {
+  .veloria-author-box__top {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .elementrify-author-box__main {
+  .veloria-author-box__main {
     width: 100%;
     text-align: center;
   }
 
-  .elementrify-author-box__social {
+  .veloria-author-box__social {
     justify-content: center;
   }
 
-  .elementrify-author-box__stats {
+  .veloria-author-box__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

@@ -11,10 +11,10 @@
   function registerHooks() {
     if (hooksRegistered || typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks) return;
     hooksRegistered = true;
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-woo-checkout.default', function () {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-woo-checkout.default', function () {
       maybeRefreshCheckout();
     });
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-woo-checkout', function () {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-woo-checkout', function () {
       maybeRefreshCheckout();
     });
   }

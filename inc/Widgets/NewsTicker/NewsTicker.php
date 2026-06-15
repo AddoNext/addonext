@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\NewsTicker;
+namespace Veloria\Widgets\NewsTicker;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
@@ -127,7 +127,7 @@ class NewsTicker extends WidgetBase
      */
     public function get_icon(): string
     {
-        return 'eicon-site-search elementrify-icon';
+        return 'eicon-site-search veloria-icon';
     }
 
     /**
@@ -135,7 +135,7 @@ class NewsTicker extends WidgetBase
      */
     public function get_name(): string
     {
-        return 'elementrify-news-ticker';
+        return 'veloria-news-ticker';
     }
 
     /**
@@ -151,7 +151,7 @@ class NewsTicker extends WidgetBase
      */
     public function get_title(): string
     {
-        return __('News Ticker', 'elementrify');
+        return __('News Ticker', 'veloria');
     }
 
     /**
@@ -159,7 +159,7 @@ class NewsTicker extends WidgetBase
      */
     public function get_description(): string
     {
-        return __('Continuous breaking-news style ticker with repeater items.', 'elementrify');
+        return __('Continuous breaking-news style ticker with repeater items.', 'veloria');
     }
 
     /**
@@ -193,7 +193,7 @@ class NewsTicker extends WidgetBase
      */
     public function get_style_depends(): array
     {
-        return ['elementrify-news-ticker'];
+        return ['veloria-news-ticker'];
     }
 
     /**
@@ -205,25 +205,25 @@ class NewsTicker extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('ticker_title', [
-            'label'       => __('Title', 'elementrify'),
+            'label'       => __('Title', 'veloria'),
             'type'        => Controls_Manager::TEXT,
             'label_block' => true,
-            'default'     => __('Breaking News', 'elementrify'),
+            'default'     => __('Breaking News', 'veloria'),
             'dynamic'     => ['active' => true],
         ]);
 
         $this->add_control('source_type', [
-            'label'   => __('Source', 'elementrify'),
+            'label'   => __('Source', 'veloria'),
             'type'    => Controls_Manager::SELECT2,
             'default' => 'custom',
             'options' => [
-                'custom'    => __('Custom', 'elementrify'),
-                'post_type' => __('Post Type', 'elementrify'),
+                'custom'    => __('Custom', 'veloria'),
+                'post_type' => __('Post Type', 'veloria'),
             ],
             'label_block' => true,
             'render_type' => 'template',
@@ -231,21 +231,21 @@ class NewsTicker extends WidgetBase
 
         $repeater = new Repeater();
         $repeater->add_control('item_text', [
-            'label'       => __('Text', 'elementrify'),
+            'label'       => __('Text', 'veloria'),
             'type'        => Controls_Manager::TEXT,
             'dynamic'     => ['active' => true],
             'label_block' => true,
-            'default'     => __('Breaking: New feature rollout starts today.', 'elementrify'),
+            'default'     => __('Breaking: New feature rollout starts today.', 'veloria'),
         ]);
 
         $this->add_control('ticker_items', [
-            'label'       => __('Items', 'elementrify'),
+            'label'       => __('Items', 'veloria'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $repeater->get_controls(),
             'default'     => [
-                ['item_text' => __('Breaking: New feature rollout starts today.', 'elementrify')],
-                ['item_text' => __('Market update: Industry index closes higher.', 'elementrify')],
-                ['item_text' => __('Weather alert: Heavy rain expected tonight.', 'elementrify')],
+                ['item_text' => __('Breaking: New feature rollout starts today.', 'veloria')],
+                ['item_text' => __('Market update: Industry index closes higher.', 'veloria')],
+                ['item_text' => __('Weather alert: Heavy rain expected tonight.', 'veloria')],
             ],
             'title_field' => '{{{ item_text }}}',
             'condition'   => [
@@ -254,7 +254,7 @@ class NewsTicker extends WidgetBase
         ]);
 
         $this->add_control('source_post_type', [
-            'label'     => __('Post type', 'elementrify'),
+            'label'     => __('Post type', 'veloria'),
             'type'      => Controls_Manager::SELECT2,
             'default'   => 'post',
             'options'   => self::get_post_type_options(),
@@ -266,7 +266,7 @@ class NewsTicker extends WidgetBase
         ]);
 
         $this->add_control('posts_limit', [
-            'label'     => __('Post count', 'elementrify'),
+            'label'     => __('Post count', 'veloria'),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 1,
             'max'       => 50,
@@ -279,30 +279,30 @@ class NewsTicker extends WidgetBase
         ]);
 
         $this->add_control('separator_text', [
-            'label'       => __('Separator', 'elementrify'),
+            'label'       => __('Separator', 'veloria'),
             'type'        => Controls_Manager::TEXT,
             'default'     => '•',
             'placeholder' => '•',
-            'description' => __('Text between each ticker item.', 'elementrify'),
+            'description' => __('Text between each ticker item.', 'veloria'),
         ]);
 
         $this->add_control('scroll_duration', [
-            'label'      => __('Scroll duration (seconds)', 'elementrify'),
+            'label'      => __('Scroll duration (seconds)', 'veloria'),
             'type'       => Controls_Manager::NUMBER,
             'min'        => 5,
             'max'        => 120,
             'step'       => 1,
             'default'    => 24,
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-news-ticker' => '--e-news-ticker-duration: {{VALUE}}s;',
+                '{{WRAPPER}} .veloria-news-ticker' => '--e-news-ticker-duration: {{VALUE}}s;',
             ],
         ]);
 
         $this->add_control('pause_on_hover', [
-            'label'        => __('Pause on hover', 'elementrify'),
+            'label'        => __('Pause on hover', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Yes', 'elementrify'),
-            'label_off'    => __('No', 'elementrify'),
+            'label_on'     => __('Yes', 'veloria'),
+            'label_off'    => __('No', 'veloria'),
             'return_value' => 'yes',
             'default'      => '',
         ]);
@@ -310,30 +310,30 @@ class NewsTicker extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_ticker', [
-            'label' => __('Ticker', 'elementrify'),
+            'label' => __('Ticker', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('ticker_bg_color', [
-            'label'     => __('Background', 'elementrify'),
+            'label'     => __('Background', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-news-ticker' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-news-ticker' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('ticker_padding', [
-            'label'      => __('Padding', 'elementrify'),
+            'label'      => __('Padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-news-ticker' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-news-ticker' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('item_gap', [
-            'label'      => __('Item spacing', 'elementrify'),
+            'label'      => __('Item spacing', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em', 'rem'],
             'range'      => [
@@ -344,14 +344,14 @@ class NewsTicker extends WidgetBase
                 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-news-ticker' => '--e-news-ticker-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-news-ticker' => '--e-news-ticker-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_text', [
-            'label' => __('Text', 'elementrify'),
+            'label' => __('Text', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -359,25 +359,25 @@ class NewsTicker extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-news-ticker__title',
+                'selector' => '{{WRAPPER}} .veloria-news-ticker__title',
             ]
         );
 
         $this->add_control('title_color', [
-            'label'     => __('Title color', 'elementrify'),
+            'label'     => __('Title color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-news-ticker__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-news-ticker__title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('title_background_color', [
-            'label'     => __('Title background', 'elementrify'),
+            'label'     => __('Title background', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#dc2626',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-news-ticker' => '--e-news-ticker-title-bg: {{VALUE}};',
+                '{{WRAPPER}} .veloria-news-ticker' => '--e-news-ticker-title-bg: {{VALUE}};',
             ],
         ]);
 
@@ -385,25 +385,25 @@ class NewsTicker extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'item_typography',
-                'selector' => '{{WRAPPER}} .elementrify-news-ticker__item',
+                'selector' => '{{WRAPPER}} .veloria-news-ticker__item',
             ]
         );
 
         $this->add_control('item_text_color', [
-            'label'     => __('Item color', 'elementrify'),
+            'label'     => __('Item color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-news-ticker__item' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-news-ticker__item' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('separator_color', [
-            'label'     => __('Separator color', 'elementrify'),
+            'label'     => __('Separator color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ef4444',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-news-ticker__separator' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-news-ticker__separator' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -423,17 +423,17 @@ class NewsTicker extends WidgetBase
         $settings = $this->get_settings_for_display();
         $pause_on_hover = isset($settings['pause_on_hover']) && $settings['pause_on_hover'] === 'yes';
         $source_type = isset($settings['source_type']) ? (string) $settings['source_type'] : 'custom';
-        $classes = ['elementrify-news-ticker'];
+        $classes = ['veloria-news-ticker'];
         if ($pause_on_hover) {
-            $classes[] = 'elementrify-news-ticker--pause-hover';
+            $classes[] = 'veloria-news-ticker--pause-hover';
         }
         if ($source_type === 'post_type') {
-            $classes[] = 'elementrify-news-ticker--source-post-type';
+            $classes[] = 'veloria-news-ticker--source-post-type';
         }
 
         $this->add_render_attribute('wrapper', 'class', $classes);
 
-        $path = ELEMENTRIFY_DIR . 'templates/news-ticker/news-ticker.php';
+        $path = VELORIA_DIR . 'templates/news-ticker/news-ticker.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -455,49 +455,49 @@ class NewsTicker extends WidgetBase
         var titleText = settings.ticker_title || '';
         var items = settings.ticker_items || [];
         var separator = settings.separator_text || '•';
-        var classes = 'elementrify-news-ticker';
+        var classes = 'veloria-news-ticker';
         if (settings.pause_on_hover === 'yes') {
-            classes += ' elementrify-news-ticker--pause-hover';
+            classes += ' veloria-news-ticker--pause-hover';
         }
         if (sourceType === 'post_type') {
-            classes += ' elementrify-news-ticker--source-post-type';
+            classes += ' veloria-news-ticker--source-post-type';
         }
         var previewItems = items;
         if (sourceType === 'post_type') {
             var previewPostType = settings.source_post_type || 'post';
             previewItems = [
-                { item_text: '<?php echo esc_js(__('Latest', 'elementrify')); ?> ' + previewPostType + ' #1' },
-                { item_text: '<?php echo esc_js(__('Latest', 'elementrify')); ?> ' + previewPostType + ' #2' },
-                { item_text: '<?php echo esc_js(__('Latest', 'elementrify')); ?> ' + previewPostType + ' #3' }
+                { item_text: '<?php echo esc_js(__('Latest', 'veloria')); ?> ' + previewPostType + ' #1' },
+                { item_text: '<?php echo esc_js(__('Latest', 'veloria')); ?> ' + previewPostType + ' #2' },
+                { item_text: '<?php echo esc_js(__('Latest', 'veloria')); ?> ' + previewPostType + ' #3' }
             ];
         }
         #>
         <div class="{{ classes }}">
             <# if (titleText !== '') { #>
-                <span class="elementrify-news-ticker__title">{{{ titleText }}}</span>
+                <span class="veloria-news-ticker__title">{{{ titleText }}}</span>
             <# } #>
-            <div class="elementrify-news-ticker__viewport" role="marquee" aria-label="<?php echo esc_attr__('News ticker', 'elementrify'); ?>">
-                <div class="elementrify-news-ticker__track">
-                    <div class="elementrify-news-ticker__group">
+            <div class="veloria-news-ticker__viewport" role="marquee" aria-label="<?php echo esc_attr__('News ticker', 'veloria'); ?>">
+                <div class="veloria-news-ticker__track">
+                    <div class="veloria-news-ticker__group">
                         <# if (previewItems.length === 0) { #>
-                            <span class="elementrify-news-ticker__item"><?php echo esc_html__('Add ticker items from the panel.', 'elementrify'); ?></span>
+                            <span class="veloria-news-ticker__item"><?php echo esc_html__('Add ticker items from the panel.', 'veloria'); ?></span>
                         <# } else { #>
                             <# _.each(previewItems, function(item) { #>
-                                <span class="elementrify-news-ticker__item">{{{ item.item_text }}}</span>
+                                <span class="veloria-news-ticker__item">{{{ item.item_text }}}</span>
                                 <# if (separator !== '') { #>
-                                    <span class="elementrify-news-ticker__separator" aria-hidden="true">{{{ separator }}}</span>
+                                    <span class="veloria-news-ticker__separator" aria-hidden="true">{{{ separator }}}</span>
                                 <# } #>
                             <# }); #>
                         <# } #>
                     </div>
-                    <div class="elementrify-news-ticker__group" aria-hidden="true">
+                    <div class="veloria-news-ticker__group" aria-hidden="true">
                         <# if (previewItems.length === 0) { #>
-                            <span class="elementrify-news-ticker__item"><?php echo esc_html__('Add ticker items from the panel.', 'elementrify'); ?></span>
+                            <span class="veloria-news-ticker__item"><?php echo esc_html__('Add ticker items from the panel.', 'veloria'); ?></span>
                         <# } else { #>
                             <# _.each(previewItems, function(item) { #>
-                                <span class="elementrify-news-ticker__item">{{{ item.item_text }}}</span>
+                                <span class="veloria-news-ticker__item">{{{ item.item_text }}}</span>
                                 <# if (separator !== '') { #>
-                                    <span class="elementrify-news-ticker__separator" aria-hidden="true">{{{ separator }}}</span>
+                                    <span class="veloria-news-ticker__separator" aria-hidden="true">{{{ separator }}}</span>
                                 <# } #>
                             <# }); #>
                         <# } #>

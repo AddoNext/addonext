@@ -1,4 +1,4 @@
-.elementrify-code-snippet {
+.veloria-code-snippet {
     background: #282c34;
     border-radius: 10px;
     overflow: hidden;
@@ -9,7 +9,7 @@
     color: #abb2bf;
 }
 
-.elementrify-code-snippet--theme-dark .elementrify-code-snippet__header {
+.veloria-code-snippet--theme-dark .veloria-code-snippet__header {
     background: #31363f;
     padding: 12px 16px;
     display: flex;
@@ -18,7 +18,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.elementrify-code-snippet__header {
+.veloria-code-snippet__header {
     background: #31363f;
     padding: 12px 16px;
     display: flex;
@@ -27,37 +27,37 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.elementrify-code-snippet__dots {
+.veloria-code-snippet__dots {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.elementrify-code-snippet__dot {
+.veloria-code-snippet__dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
 }
 
-.elementrify-code-snippet__dot--red {
+.veloria-code-snippet__dot--red {
     background: #ff5f56;
 }
 
-.elementrify-code-snippet__dot--yellow {
+.veloria-code-snippet__dot--yellow {
     background: #ffbd2e;
 }
 
-.elementrify-code-snippet__dot--green {
+.veloria-code-snippet__dot--green {
     background: #27c93f;
 }
 
-.elementrify-code-snippet__header-right {
+.veloria-code-snippet__header-right {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.elementrify-code-snippet__copy {
+.veloria-code-snippet__copy {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -73,13 +73,13 @@
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-.elementrify-code-snippet__copy:hover {
+.veloria-code-snippet__copy:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #fff;
 }
 
-.elementrify-code-snippet__copy-icon,
-.elementrify-code-snippet__check-icon {
+.veloria-code-snippet__copy-icon,
+.veloria-code-snippet__check-icon {
     position: absolute;
     inset: 0;
     display: flex;
@@ -88,31 +88,31 @@
     transition: opacity 0.2s ease;
 }
 
-.elementrify-code-snippet__check-icon {
+.veloria-code-snippet__check-icon {
     opacity: 0;
     color: #98c379;
 }
 
-.elementrify-code-snippet__copy.copied .elementrify-code-snippet__copy-icon {
+.veloria-code-snippet__copy.copied .veloria-code-snippet__copy-icon {
     opacity: 0;
 }
 
-.elementrify-code-snippet__copy.copied .elementrify-code-snippet__check-icon {
+.veloria-code-snippet__copy.copied .veloria-code-snippet__check-icon {
     opacity: 1;
 }
 
-.elementrify-code-snippet__copy.copied {
+.veloria-code-snippet__copy.copied {
     color: #98c379;
     border-color: rgba(152, 195, 121, 0.4);
 }
 
-.elementrify-code-snippet__copy-icon svg,
-.elementrify-code-snippet__check-icon svg {
+.veloria-code-snippet__copy-icon svg,
+.veloria-code-snippet__check-icon svg {
     display: block;
     flex-shrink: 0;
 }
 
-.elementrify-code-snippet__filename {
+.veloria-code-snippet__filename {
     background: rgba(255, 255, 255, 0.06);
     color: #abb2bf;
     font-size: 13px;
@@ -121,7 +121,7 @@
     border-radius: 4px;
 }
 
-.elementrify-code-snippet__pre {
+.veloria-code-snippet__pre {
     position: relative;
     margin: 0;
     padding: 14px 24px;
@@ -131,7 +131,7 @@
     line-height: 5px;
 }
 
-.elementrify-code-snippet__code {
+.veloria-code-snippet__code {
     position: absolute;
     left: 0;
     top: 0;
@@ -147,7 +147,7 @@
     line-height: 1.5;
 }
 
-.elementrify-code-snippet__display {
+.veloria-code-snippet__display {
     margin: 0;
     padding: 0;
     color: #abb2bf;
@@ -158,44 +158,44 @@
     font-family: inherit;
 }
 
-.elementrify-cs_keyword {
+.veloria-cs_keyword {
     color: #c678dd;
 }
 
-.elementrify-cs_funct {
+.veloria-cs_funct {
     color: #61afef;
 }
 
-.elementrify-cs_identifier {
+.veloria-cs_identifier {
     color: #d4d4d4;
 }
 
-.elementrify-cs_builtin {
+.veloria-cs_builtin {
     color: #d4d4d4;
 }
 
-.elementrify-cs_number {
+.veloria-cs_number {
     color: #d19a66;
 }
 
-.elementrify-cs_string {
+.veloria-cs_string {
     color: #98c379;
 }
 
-.elementrify-cs_comment {
+.veloria-cs_comment {
     color: #5c6370;
     font-style: italic;
 }
 
-.elementrify-cs_punctuation,
-.elementrify-cs_plain {
+.veloria-cs_punctuation,
+.veloria-cs_plain {
     color: #abb2bf;
 }
 
-.elementrify-cs_selector {
+.veloria-cs_selector {
     color: #e06c75;
 }
 
-.elementrify-cs_tag {
+.veloria-cs_tag {
     color: #e06c75;
 }

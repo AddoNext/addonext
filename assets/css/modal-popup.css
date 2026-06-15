@@ -1,12 +1,12 @@
-.elementrify-modal {
+.veloria-modal {
     position: relative;
 }
 
-.elementrify-modal .elementrify-button-wrapper {
+.veloria-modal .veloria-button-wrapper {
     display: inline-block;
 }
 
-.elementrify-modal .elementrify-button {
+.veloria-modal .veloria-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -18,56 +18,56 @@
     transition: color 0.2s ease, background 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
-.elementrify-modal .elementrify-button__content {
+.veloria-modal .veloria-button__content {
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
 }
 
-.elementrify-modal .elementrify-button--primary {
+.veloria-modal .veloria-button--primary {
     color: #ffffff;
     background: linear-gradient(90deg, #7B4397 0%, #B054BD 100%);
     border-radius: 4px;
 }
 
-.elementrify-modal .elementrify-button--primary:hover,
-.elementrify-modal .elementrify-button--primary:focus {
+.veloria-modal .veloria-button--primary:hover,
+.veloria-modal .veloria-button--primary:focus {
     opacity: 0.92;
 }
 
-.elementrify-modal .elementrify-button--secondary {
+.veloria-modal .veloria-button--secondary {
     color: #5E42DA;
     background-color: transparent;
     border: 2px solid #5E42DA;
     border-radius: 4px;
 }
 
-.elementrify-modal .elementrify-button--secondary:hover,
-.elementrify-modal .elementrify-button--secondary:focus {
+.veloria-modal .veloria-button--secondary:hover,
+.veloria-modal .veloria-button--secondary:focus {
     background-color: rgba(94, 66, 218, 0.08);
 }
 
-.elementrify-modal .elementrify-button--xs {
+.veloria-modal .veloria-button--xs {
     padding: 6px 14px;
 }
 
-.elementrify-modal .elementrify-button--sm {
+.veloria-modal .veloria-button--sm {
     padding: 8px 18px;
 }
 
-.elementrify-modal .elementrify-button--md {
+.veloria-modal .veloria-button--md {
     padding: 10px 24px;
 }
 
-.elementrify-modal .elementrify-button--lg {
+.veloria-modal .veloria-button--lg {
     padding: 12px 28px;
 }
 
-.elementrify-modal .elementrify-button--xl {
+.veloria-modal .veloria-button--xl {
     padding: 14px 32px;
 }
 
-.elementrify-modal__overlay {
+.veloria-modal__overlay {
     position: fixed;
     inset: 0;
     z-index: 999999;
@@ -81,12 +81,12 @@
     transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.elementrify-modal__overlay.is-open {
+.veloria-modal__overlay.is-open {
     opacity: 1;
     visibility: visible;
 }
 
-.elementrify-modal__content {
+.veloria-modal__content {
     position: relative;
     width: 100%;
     max-height: calc(100vh - 40px);
@@ -95,7 +95,7 @@
     border-radius: 12px;
 }
 
-.elementrify-modal__close {
+.veloria-modal__close {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -113,48 +113,48 @@
     transition: background 0.2s ease, opacity 0.2s ease;
 }
 
-.elementrify-modal__close:hover {
+.veloria-modal__close:hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
-.elementrify-modal__close-icon {
+.veloria-modal__close-icon {
     font-size: 16px;
     font-weight: 300;
     line-height: 1;
 }
 
-.elementrify-modal__title {
+.veloria-modal__title {
     margin: 0 0 12px;
     padding-right: 48px;
     font-size: 1rem;
     font-weight: 700;
 }
 
-.elementrify-modal__title:last-child {
+.veloria-modal__title:last-child {
     margin-bottom: 0;
 }
 
-.elementrify-modal__image {
+.veloria-modal__image {
     margin-bottom: 16px;
     line-height: 0;
 }
 
-.elementrify-modal__image img {
+.veloria-modal__image img {
     max-width: 100%;
     height: auto;
     vertical-align: middle;
 }
 
-.elementrify-modal__body {
+.veloria-modal__body {
     margin: 0;
     font-size: 14px;
     font-weight: 400;
 }
 
-.elementrify-modal__body p:first-child {
+.veloria-modal__body p:first-child {
     margin-top: 0;
 }
 
-.elementrify-modal__body p:last-child {
+.veloria-modal__body p:last-child {
     margin-bottom: 0;
 }

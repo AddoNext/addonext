@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ModalPopup;
+namespace Veloria\Widgets\ModalPopup;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class ModalPopup extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-lightbox elementrify-icon';
+        return 'eicon-lightbox veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-modal-popup';
+        return 'veloria-modal-popup';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ModalPopup extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Modal Popup', 'elementrify');
+        return __('Modal Popup', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Button-triggered popup with title, image, content, countdown and overlay.', 'elementrify');
+        return __('Button-triggered popup with title, image, content, countdown and overlay.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -42,27 +42,27 @@ class ModalPopup extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-modal-popup'];
+        return ['veloria-modal-popup'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-modal-popup'];
+        return ['veloria-modal-popup'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-modal-popup',
-            ELEMENTRIFY_URL . 'assets/css/modal-popup.css',
+            'veloria-modal-popup',
+            VELORIA_URL . 'assets/css/modal-popup.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-modal-popup',
-            ELEMENTRIFY_URL . 'assets/js/modal-popup.js',
+            'veloria-modal-popup',
+            VELORIA_URL . 'assets/js/modal-popup.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -72,7 +72,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_button',
             [
-                'label' => __('Button', 'elementrify'),
+                'label' => __('Button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -80,21 +80,21 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'trigger_text',
             [
-                'label'   => __('Button text', 'elementrify'),
+                'label'   => __('Button text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Open popup', 'elementrify'),
+                'default' => __('Open popup', 'veloria'),
             ]
         );
 
         $this->add_control(
             'button_variant',
             [
-                'label'   => __('Button variant', 'elementrify'),
+                'label'   => __('Button variant', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'primary',
                 'options' => [
-                    'primary'   => __('Primary', 'elementrify'),
-                    'secondary' => __('Secondary', 'elementrify'),
+                    'primary'   => __('Primary', 'veloria'),
+                    'secondary' => __('Secondary', 'veloria'),
                 ],
             ]
         );
@@ -102,15 +102,15 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'button_size',
             [
-                'label'   => __('Button size', 'elementrify'),
+                'label'   => __('Button size', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'md',
                 'options' => [
-                    'xs' => __('Extra Small', 'elementrify'),
-                    'sm' => __('Small', 'elementrify'),
-                    'md' => __('Medium', 'elementrify'),
-                    'lg' => __('Large', 'elementrify'),
-                    'xl' => __('Extra Large', 'elementrify'),
+                    'xs' => __('Extra Small', 'veloria'),
+                    'sm' => __('Small', 'veloria'),
+                    'md' => __('Medium', 'veloria'),
+                    'lg' => __('Large', 'veloria'),
+                    'xl' => __('Extra Large', 'veloria'),
                 ],
             ]
         );
@@ -120,7 +120,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_popup_content',
             [
-                'label' => __('Popup content', 'elementrify'),
+                'label' => __('Popup content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,16 +128,16 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'popup_title',
             [
-                'label'   => __('Title', 'elementrify'),
+                'label'   => __('Title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Popup title', 'elementrify'),
+                'default' => __('Popup title', 'veloria'),
             ]
         );
 
         $this->add_control(
             'popup_image',
             [
-                'label' => __('Image', 'elementrify'),
+                'label' => __('Image', 'veloria'),
                 'type'  => Controls_Manager::MEDIA,
             ]
         );
@@ -145,9 +145,9 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'popup_content',
             [
-                'label'   => __('Content', 'elementrify'),
+                'label'   => __('Content', 'veloria'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Add your paragraph or text content here.', 'elementrify'),
+                'default' => __('Add your paragraph or text content here.', 'veloria'),
                 'rows'    => 5,
             ]
         );
@@ -155,7 +155,7 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'countdown_seconds',
             [
-                'label'   => __('Auto-close countdown (seconds)', 'elementrify'),
+                'label'   => __('Auto-close countdown (seconds)', 'veloria'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
                 'min'     => 0,
@@ -167,7 +167,7 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'close_on_overlay_click',
             [
-                'label'        => __('Close on overlay click', 'elementrify'),
+                'label'        => __('Close on overlay click', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -179,7 +179,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'elementrify'),
+                'label' => __('Button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -188,7 +188,7 @@ class ModalPopup extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .elementrify-modal .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-modal .veloria-button',
                 'fields_options' => [
                     'font_weight' => ['default' => '400'],
                 ],
@@ -198,9 +198,9 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
-                'selectors' => ['{{WRAPPER}} .elementrify-modal .elementrify-button' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal .veloria-button' => 'color: {{VALUE}};'],
             ]
         );
 
@@ -210,7 +210,7 @@ class ModalPopup extends WidgetBase
                 'name'     => 'button_background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .elementrify-modal .elementrify-button',
+                'selector' => '{{WRAPPER}} .veloria-modal .veloria-button',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#7B4397'],
@@ -224,7 +224,7 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => [
@@ -234,17 +234,17 @@ class ModalPopup extends WidgetBase
                     'bottom' => 4,
                     'left' => 4,
                 ],
-                'selectors'  => ['{{WRAPPER}} .elementrify-modal .elementrify-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .veloria-modal .veloria-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
         $this->add_control(
             'button_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
-                'selectors'  => ['{{WRAPPER}} .elementrify-modal .elementrify-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .veloria-modal .veloria-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
@@ -253,7 +253,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_overlay',
             [
-                'label' => __('Overlay', 'elementrify'),
+                'label' => __('Overlay', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -261,17 +261,17 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'overlay_background',
             [
-                'label'     => __('Background color', 'elementrify'),
+                'label'     => __('Background color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0.5)',
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__overlay' => 'background-color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__overlay' => 'background-color: {{VALUE}};'],
             ]
         );
 
         $this->add_control(
             'overlay_blur',
             [
-                'label'        => __('Blur background', 'elementrify'),
+                'label'        => __('Blur background', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -281,12 +281,12 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'overlay_blur_amount',
             [
-                'label'     => __('Blur amount (px)', 'elementrify'),
+                'label'     => __('Blur amount (px)', 'veloria'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 30]],
                 'default'   => ['size' => 8],
                 'condition' => ['overlay_blur' => 'yes'],
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__overlay.is-blur' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__overlay.is-blur' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'],
             ]
         );
 
@@ -295,7 +295,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_popup',
             [
-                'label' => __('Popup box', 'elementrify'),
+                'label' => __('Popup box', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -303,43 +303,43 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'popup_background',
             [
-                'label'     => __('Background color', 'elementrify'),
+                'label'     => __('Background color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__content' => 'background-color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__content' => 'background-color: {{VALUE}};'],
             ]
         );
 
         $this->add_control(
             'popup_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
-                'selectors'  => ['{{WRAPPER}} .elementrify-modal__content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .veloria-modal__content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
         $this->add_control(
             'popup_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => ['top' => 24, 'right' => 24, 'bottom' => 24, 'left' => 24],
-                'selectors'  => ['{{WRAPPER}} .elementrify-modal__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .veloria-modal__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
         $this->add_responsive_control(
             'popup_max_width',
             [
-                'label'      => __('Max width', 'elementrify'),
+                'label'      => __('Max width', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 200, 'max' => 1200]],
                 'default'    => ['size' => 480, 'unit' => 'px'],
-                'selectors'  => ['{{WRAPPER}} .elementrify-modal__content' => 'max-width: {{SIZE}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .veloria-modal__content' => 'max-width: {{SIZE}}{{UNIT}};'],
             ]
         );
 
@@ -348,7 +348,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_close',
             [
-                'label' => __('Close button', 'elementrify'),
+                'label' => __('Close button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -356,21 +356,21 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'close_button_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__close' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__close' => 'color: {{VALUE}};'],
             ]
         );
 
         $this->add_control(
             'close_button_size',
             [
-                'label'     => __('Size (px)', 'elementrify'),
+                'label'     => __('Size (px)', 'veloria'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 16, 'max' => 56]],
                 'default'   => ['size' => 32],
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};'],
             ]
         );
 
@@ -379,7 +379,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Popup title', 'elementrify'),
+                'label' => __('Popup title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -388,16 +388,16 @@ class ModalPopup extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-modal__title',
+                'selector' => '{{WRAPPER}} .veloria-modal__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__title' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__title' => 'color: {{VALUE}};'],
             ]
         );
 
@@ -406,7 +406,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_body',
             [
-                'label' => __('Popup content', 'elementrify'),
+                'label' => __('Popup content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -415,16 +415,16 @@ class ModalPopup extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'body_typography',
-                'selector' => '{{WRAPPER}} .elementrify-modal__body',
+                'selector' => '{{WRAPPER}} .veloria-modal__body',
             ]
         );
 
         $this->add_control(
             'body_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
-                'selectors' => ['{{WRAPPER}} .elementrify-modal__body' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .veloria-modal__body' => 'color: {{VALUE}};'],
             ]
         );
 
@@ -433,7 +433,7 @@ class ModalPopup extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/modal-popup/modal-popup.php';
+        $path = VELORIA_DIR . 'templates/modal-popup/modal-popup.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -443,7 +443,7 @@ class ModalPopup extends WidgetBase
     {
         ?>
         <#
-        var overlayClass = 'elementrify-modal__overlay';
+        var overlayClass = 'veloria-modal__overlay';
         if (settings.overlay_blur === 'yes') overlayClass += ' is-blur';
         view.addRenderAttribute('overlay', 'class', overlayClass);
         view.addRenderAttribute('overlay', 'data-countdown', settings.countdown_seconds || 0);
@@ -452,22 +452,22 @@ class ModalPopup extends WidgetBase
         <#
         var variant = settings.button_variant || 'primary';
         var size = settings.button_size || 'md';
-        var triggerClass = 'elementrify-button elementrify-button--' + variant + ' elementrify-button--' + size + ' elementrify-modal__trigger';
+        var triggerClass = 'veloria-button veloria-button--' + variant + ' veloria-button--' + size + ' veloria-modal__trigger';
         #>
-        <div class="elementrify-modal">
-            <div class="elementrify-button-wrapper">
+        <div class="veloria-modal">
+            <div class="veloria-button-wrapper">
                 <button type="button" class="{{ triggerClass }}" role="button">
-                    <span class="elementrify-button__content">
-                        <span class="elementrify-button__text">{{{ settings.trigger_text }}}</span>
+                    <span class="veloria-button__content">
+                        <span class="veloria-button__text">{{{ settings.trigger_text }}}</span>
                     </span>
                 </button>
             </div>
             <div {{{ view.getRenderAttributeString('overlay') }}}>
-                <div class="elementrify-modal__content" role="dialog" aria-modal="true" aria-labelledby="elementrify-modal-title-{{ view.getID() }}">
-                    <button type="button" class="elementrify-modal__close" aria-label="<?php echo esc_attr__('Close', 'elementrify'); ?>"><span class="elementrify-modal__close-icon" aria-hidden="true">&times;</span></button>
-                    <# if (settings.popup_title) { #><h3 class="elementrify-modal__title" id="elementrify-modal-title-{{ view.getID() }}">{{{ settings.popup_title }}}</h3><# } #>
-                    <# if (settings.popup_image && settings.popup_image.url) { #><div class="elementrify-modal__image"><img src="{{ settings.popup_image.url }}" alt=""></div><# } #>
-                    <# if (settings.popup_content) { #><div class="elementrify-modal__body">{{{ settings.popup_content }}}</div><# } #>
+                <div class="veloria-modal__content" role="dialog" aria-modal="true" aria-labelledby="veloria-modal-title-{{ view.getID() }}">
+                    <button type="button" class="veloria-modal__close" aria-label="<?php echo esc_attr__('Close', 'veloria'); ?>"><span class="veloria-modal__close-icon" aria-hidden="true">&times;</span></button>
+                    <# if (settings.popup_title) { #><h3 class="veloria-modal__title" id="veloria-modal-title-{{ view.getID() }}">{{{ settings.popup_title }}}</h3><# } #>
+                    <# if (settings.popup_image && settings.popup_image.url) { #><div class="veloria-modal__image"><img src="{{ settings.popup_image.url }}" alt=""></div><# } #>
+                    <# if (settings.popup_content) { #><div class="veloria-modal__body">{{{ settings.popup_content }}}</div><# } #>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\CallToAction;
+namespace Veloria\Widgets\CallToAction;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
@@ -13,12 +13,12 @@ class CallToAction extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-call-to-action elementrify-icon';
+        return 'eicon-call-to-action veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-call-to-action';
+        return 'veloria-call-to-action';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class CallToAction extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Call to Action', 'elementrify');
+        return __('Call to Action', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Conversion focused CTAs', 'elementrify');
+        return __('Conversion focused CTAs', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -43,16 +43,16 @@ class CallToAction extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-call-to-action'];
+        return ['veloria-call-to-action'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-call-to-action',
-            ELEMENTRIFY_URL . 'assets/css/call-to-action.css',
+            'veloria-call-to-action',
+            VELORIA_URL . 'assets/css/call-to-action.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -61,7 +61,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -69,36 +69,36 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Title', 'elementrify'),
+                'label'   => __('Title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Ready to Get Started?', 'elementrify'),
+                'default' => __('Ready to Get Started?', 'veloria'),
             ]
         );
 
         $this->add_control(
             'description',
             [
-                'label'   => __('Description', 'elementrify'),
+                'label'   => __('Description', 'veloria'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Join thousands of satisfied customers today', 'elementrify'),
+                'default' => __('Join thousands of satisfied customers today', 'veloria'),
             ]
         );
 
         $this->add_control(
             'button_text',
             [
-                'label'   => __('Button text', 'elementrify'),
+                'label'   => __('Button text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Start Free Trial', 'elementrify'),
+                'default' => __('Start Free Trial', 'veloria'),
             ]
         );
 
         $this->add_control(
             'button_url',
             [
-                'label'       => __('Button URL', 'elementrify'),
+                'label'       => __('Button URL', 'veloria'),
                 'type'        => Controls_Manager::URL,
-                'placeholder' => __('https://example.com', 'elementrify'),
+                'placeholder' => __('https://example.com', 'veloria'),
             ]
         );
 
@@ -107,7 +107,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_background',
             [
-                'label' => __('Background', 'elementrify'),
+                'label' => __('Background', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -117,7 +117,7 @@ class CallToAction extends WidgetBase
             [
                 'name'           => 'background',
                 'types'          => ['classic', 'gradient'],
-                'selector'       => '{{WRAPPER}} .elementrify-cta',
+                'selector'       => '{{WRAPPER}} .veloria-cta',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#FF8300'],
@@ -129,7 +129,7 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'overlay_heading',
             [
-                'label'     => __('Overlay', 'elementrify'),
+                'label'     => __('Overlay', 'veloria'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -138,12 +138,12 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'overlay_color',
             [
-                'label'     => __('Overlay color', 'elementrify'),
+                'label'     => __('Overlay color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0)',
                 'alpha'     => true,
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta::before' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cta::before' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -151,13 +151,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'section_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', '%'],
                 'range'      => ['px' => ['min' => 0, 'max' => 100]],
                 'default'    => ['size' => 0],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cta' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .veloria-cta' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
                 ],
             ]
         );
@@ -165,7 +165,7 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'default'    => [
@@ -175,7 +175,7 @@ class CallToAction extends WidgetBase
                     'left'     => '32px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cta' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cta' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -185,7 +185,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -194,7 +194,7 @@ class CallToAction extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'title_typography',
-                'selector'       => '{{WRAPPER}} .elementrify-cta__title',
+                'selector'       => '{{WRAPPER}} .veloria-cta__title',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -206,11 +206,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cta__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -218,13 +218,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'title_spacing',
             [
-                'label'     => __('Spacing below', 'elementrify'),
+                'label'     => __('Spacing below', 'veloria'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'     => ['px' => ['min' => 0, 'max' => 60]],
                 'default'   => ['size' => 12, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cta__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -234,7 +234,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_description',
             [
-                'label' => __('Description', 'elementrify'),
+                'label' => __('Description', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,7 +243,7 @@ class CallToAction extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'description_typography',
-                'selector'       => '{{WRAPPER}} .elementrify-cta__description',
+                'selector'       => '{{WRAPPER}} .veloria-cta__description',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '400'],
@@ -255,11 +255,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'description_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta__description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cta__description' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -267,13 +267,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'description_spacing',
             [
-                'label'     => __('Spacing below', 'elementrify'),
+                'label'     => __('Spacing below', 'veloria'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'     => ['px' => ['min' => 0, 'max' => 80]],
                 'default'   => ['size' => 24, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cta__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -283,7 +283,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'elementrify'),
+                'label' => __('Button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -292,7 +292,7 @@ class CallToAction extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'button_typography',
-                'selector'       => '{{WRAPPER}} .elementrify-cta__button',
+                'selector'       => '{{WRAPPER}} .veloria-cta__button',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -304,11 +304,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta__button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cta__button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -316,11 +316,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FF6400',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-cta__button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-cta__button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -328,13 +328,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 10],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cta__button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cta__button' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -342,7 +342,7 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => [
@@ -352,7 +352,7 @@ class CallToAction extends WidgetBase
                     'left'     => '28px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-cta__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-cta__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -361,7 +361,7 @@ class CallToAction extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'           => 'button_box_shadow',
-                'selector'       => '{{WRAPPER}} .elementrify-cta__button',
+                'selector'       => '{{WRAPPER}} .veloria-cta__button',
                 'fields_options' => [
                     'box_shadow_type' => ['default' => 'yes'],
                     'box_shadow'     => [
@@ -382,7 +382,7 @@ class CallToAction extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/call-to-action/call-to-action.php';
+        $path = VELORIA_DIR . 'templates/call-to-action/call-to-action.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -401,16 +401,16 @@ class CallToAction extends WidgetBase
             buttonAttrs += ' rel="nofollow"';
         }
         #>
-        <div class="elementrify-cta">
-            <div class="elementrify-cta__inner">
+        <div class="veloria-cta">
+            <div class="veloria-cta__inner">
                 <# if (settings.title) { #>
-                    <h3 class="elementrify-cta__title">{{{ settings.title }}}</h3>
+                    <h3 class="veloria-cta__title">{{{ settings.title }}}</h3>
                 <# } #>
                 <# if (settings.description) { #>
-                    <p class="elementrify-cta__description">{{{ settings.description }}}</p>
+                    <p class="veloria-cta__description">{{{ settings.description }}}</p>
                 <# } #>
                 <# if (settings.button_text) { #>
-                    <a href="{{ buttonUrl }}"{{ buttonAttrs }} class="elementrify-cta__button">{{{ settings.button_text }}}</a>
+                    <a href="{{ buttonUrl }}"{{ buttonAttrs }} class="veloria-cta__button">{{{ settings.button_text }}}</a>
                 <# } #>
             </div>
         </div>

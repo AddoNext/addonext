@@ -1,8 +1,8 @@
-.elementrify-divider-wrapper {
+.veloria-divider-wrapper {
     width: 100%;
 }
 
-.elementrify-divider__line {
+.veloria-divider__line {
     border: none;
     border-top-style: solid;
     border-top-color: #e5e7eb;
@@ -11,31 +11,31 @@
     min-height: 0;
 }
 
-.elementrify-divider__line--standalone {
+.veloria-divider__line--standalone {
     display: block;
     width: 100%;
 }
 
-.elementrify-divider-wrapper--align-left .elementrify-divider__line--standalone {
+.veloria-divider-wrapper--align-left .veloria-divider__line--standalone {
     margin-right: auto;
 }
 
-.elementrify-divider-wrapper--align-center .elementrify-divider__line--standalone {
+.veloria-divider-wrapper--align-center .veloria-divider__line--standalone {
     margin-left: auto;
     margin-right: auto;
 }
 
-.elementrify-divider-wrapper--align-right .elementrify-divider__line--standalone {
+.veloria-divider-wrapper--align-right .veloria-divider__line--standalone {
     margin-left: auto;
 }
 
-.elementrify-divider-wrapper--line-icon {
+.veloria-divider-wrapper--line-icon {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.elementrify-divider-wrapper--line-icon .elementrify-divider__line {
+.veloria-divider-wrapper--line-icon .veloria-divider__line {
     display: block;
     flex: 1;
     min-width: 0;
@@ -47,7 +47,7 @@
     min-height: 0;
 }
 
-.elementrify-divider__icon {
+.veloria-divider__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -56,8 +56,8 @@
     font-size: 16px;
 }
 
-.elementrify-divider__icon i,
-.elementrify-divider__icon svg {
+.veloria-divider__icon i,
+.veloria-divider__icon svg {
     display: block;
     width: 1em;
     height: 1em;
@@ -65,15 +65,15 @@
     max-height: 100%;
 }
 
-.elementrify-divider-wrapper--align-left.elementrify-divider-wrapper--line-icon {
+.veloria-divider-wrapper--align-left.veloria-divider-wrapper--line-icon {
     margin-right: auto;
 }
 
-.elementrify-divider-wrapper--align-center.elementrify-divider-wrapper--line-icon {
+.veloria-divider-wrapper--align-center.veloria-divider-wrapper--line-icon {
     margin-left: auto;
     margin-right: auto;
 }
 
-.elementrify-divider-wrapper--align-right.elementrify-divider-wrapper--line-icon {
+.veloria-divider-wrapper--align-right.veloria-divider-wrapper--line-icon {
     margin-left: auto;
 }

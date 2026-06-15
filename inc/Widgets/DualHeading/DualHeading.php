@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\DualHeading;
+namespace Veloria\Widgets\DualHeading;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -23,23 +23,23 @@ class DualHeading extends WidgetBase
     public function enqueue_preview_styles(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('elementrify-dual-heading');
+        wp_enqueue_style('veloria-dual-heading');
     }
 
     public function enqueue_preview_scripts(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_script('elementrify-dual-heading-editor');
+        wp_enqueue_script('veloria-dual-heading-editor');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-heading elementrify-icon';
+        return 'eicon-heading veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-dual-heading';
+        return 'veloria-dual-heading';
     }
 
     public function get_admin_category(): string
@@ -49,12 +49,12 @@ class DualHeading extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Dual Heading', 'elementrify');
+        return __('Dual Heading', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Heading with separate styles for general and highlighted text.', 'elementrify');
+        return __('Heading with separate styles for general and highlighted text.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -64,27 +64,27 @@ class DualHeading extends WidgetBase
 
     public function get_keywords(): array
     {
-        return ['elementrify', 'heading', 'dual', 'gradient', 'title', 'typography'];
+        return ['veloria', 'heading', 'dual', 'gradient', 'title', 'typography'];
     }
 
     public function get_style_depends(): array
     {
-        return ['elementrify-dual-heading'];
+        return ['veloria-dual-heading'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-dual-heading',
-            ELEMENTRIFY_URL . 'assets/css/dual-heading.css',
+            'veloria-dual-heading',
+            VELORIA_URL . 'assets/css/dual-heading.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-dual-heading-editor',
-            ELEMENTRIFY_URL . 'assets/js/dual-heading-editor.js',
+            'veloria-dual-heading-editor',
+            VELORIA_URL . 'assets/js/dual-heading-editor.js',
             ['jquery', 'elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -92,26 +92,26 @@ class DualHeading extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('first_line', [
-            'label'   => __('General text', 'elementrify'),
+            'label'   => __('General text', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('What a', 'elementrify'),
+            'default' => __('What a', 'veloria'),
             'dynamic' => ['active' => true],
         ]);
 
         $this->add_control('second_line', [
-            'label'   => __('Highlighted text', 'elementrify'),
+            'label'   => __('Highlighted text', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Amazing experience', 'elementrify'),
+            'default' => __('Amazing experience', 'veloria'),
             'dynamic' => ['active' => true],
         ]);
 
         $this->add_control('html_tag', [
-            'label'   => __('HTML tag', 'elementrify'),
+            'label'   => __('HTML tag', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'h2',
             'options' => [
@@ -127,30 +127,30 @@ class DualHeading extends WidgetBase
         ]);
 
         $this->add_control('align', [
-            'label'        => __('Alignment', 'elementrify'),
+            'label'        => __('Alignment', 'veloria'),
             'type'         => Controls_Manager::CHOOSE,
             'options'      => [
                 'left'   => [
-                    'title' => __('Left', 'elementrify'),
+                    'title' => __('Left', 'veloria'),
                     'icon'  => 'eicon-text-align-left',
                 ],
                 'center' => [
-                    'title' => __('Center', 'elementrify'),
+                    'title' => __('Center', 'veloria'),
                     'icon'  => 'eicon-text-align-center',
                 ],
                 'right'  => [
-                    'title' => __('Right', 'elementrify'),
+                    'title' => __('Right', 'veloria'),
                     'icon'  => 'eicon-text-align-right',
                 ],
             ],
             'default'      => 'left',
-            'prefix_class' => 'elementrify-dual-heading--align-',
+            'prefix_class' => 'veloria-dual-heading--align-',
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_general', [
-            'label' => __('General text', 'elementrify'),
+            'label' => __('General text', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -158,8 +158,8 @@ class DualHeading extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography_general',
-                'label'    => __('Typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-dual-heading__general',
+                'label'    => __('Typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-dual-heading__general',
                 'global'   => [
                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                 ],
@@ -172,16 +172,16 @@ class DualHeading extends WidgetBase
         );
 
         $this->add_control('color_general', [
-            'label'     => __('Text color', 'elementrify'),
+            'label'     => __('Text color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#343a40',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-dual-heading__general' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-dual-heading__general' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('parts_gap', [
-            'label'      => __('Space between parts', 'elementrify'),
+            'label'      => __('Space between parts', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => [
@@ -193,35 +193,35 @@ class DualHeading extends WidgetBase
                 'size' => 0.35,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-dual-heading__title' => 'column-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-dual-heading__title' => 'column-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_highlight', [
-            'label' => __('Highlighted text', 'elementrify'),
+            'label' => __('Highlighted text', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('highlight_appearance', [
-            'label'        => __('Highlight style', 'elementrify'),
+            'label'        => __('Highlight style', 'veloria'),
             'type'         => Controls_Manager::SELECT,
             'default'      => 'text',
             'options'      => [
-                'text' => __('Gradient text', 'elementrify'),
-                'box'  => __('Box', 'elementrify'),
+                'text' => __('Gradient text', 'veloria'),
+                'box'  => __('Box', 'veloria'),
             ],
-            'prefix_class' => 'elementrify-dual-heading--hl-',
+            'prefix_class' => 'veloria-dual-heading--hl-',
         ]);
 
         $this->add_control('highlight_box_fill', [
-            'label'     => __('Box fill', 'elementrify'),
+            'label'     => __('Box fill', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'gradient',
             'options'   => [
-                'gradient' => __('Gradient', 'elementrify'),
-                'solid'    => __('Solid color', 'elementrify'),
+                'gradient' => __('Gradient', 'veloria'),
+                'solid'    => __('Solid color', 'veloria'),
             ],
             'condition' => [
                 'highlight_appearance' => 'box',
@@ -232,8 +232,8 @@ class DualHeading extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography_highlight',
-                'label'    => __('Typography', 'elementrify'),
-                'selector' => '{{WRAPPER}} .elementrify-dual-heading__highlight-inner',
+                'label'    => __('Typography', 'veloria'),
+                'selector' => '{{WRAPPER}} .veloria-dual-heading__highlight-inner',
                 'fields_options' => [
                     'font_weight' => [
                         'default' => '800',
@@ -243,12 +243,12 @@ class DualHeading extends WidgetBase
         );
 
         $this->add_control('highlight_text_on_box', [
-            'label'     => __('Text on highlight', 'elementrify'),
+            'label'     => __('Text on highlight', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}}' => '--elementrify-dual-highlight-text: {{VALUE}};',
-                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight-inner' => 'color: {{VALUE}} !important; -webkit-text-fill-color: currentColor !important;',
+                '{{WRAPPER}}' => '--veloria-dual-highlight-text: {{VALUE}};',
+                '{{WRAPPER}}.veloria-dual-heading--hl-box .veloria-dual-heading__highlight-inner' => 'color: {{VALUE}} !important; -webkit-text-fill-color: currentColor !important;',
             ],
             'condition' => [
                 'highlight_appearance' => 'box',
@@ -256,7 +256,7 @@ class DualHeading extends WidgetBase
         ]);
 
         $this->add_control('highlight_box_solid_color', [
-            'label'      => __('Background color', 'elementrify'),
+            'label'      => __('Background color', 'veloria'),
             'type'       => Controls_Manager::COLOR,
             'default'    => '#845ef7',
             'conditions' => [
@@ -275,12 +275,12 @@ class DualHeading extends WidgetBase
                 ],
             ],
             'selectors'  => [
-                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'background-image: none; background-color: {{VALUE}};',
+                '{{WRAPPER}}.veloria-dual-heading--hl-box .veloria-dual-heading__highlight' => 'background-image: none; background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('highlight_padding', [
-            'label'      => __('Highlight padding', 'elementrify'),
+            'label'      => __('Highlight padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
@@ -292,7 +292,7 @@ class DualHeading extends WidgetBase
                 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}}.veloria-dual-heading--hl-box .veloria-dual-heading__highlight' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
             'condition'  => [
                 'highlight_appearance' => 'box',
@@ -300,7 +300,7 @@ class DualHeading extends WidgetBase
         ]);
 
         $this->add_responsive_control('highlight_radius', [
-            'label'      => __('Highlight radius', 'elementrify'),
+            'label'      => __('Highlight radius', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'default'    => [
@@ -311,7 +311,7 @@ class DualHeading extends WidgetBase
                 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}}.veloria-dual-heading--hl-box .veloria-dual-heading__highlight' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
             'condition'  => [
                 'highlight_appearance' => 'box',
@@ -345,29 +345,29 @@ class DualHeading extends WidgetBase
         ];
 
         $this->add_control('gradient_color_start', [
-            'label'      => __('Gradient start', 'elementrify'),
+            'label'      => __('Gradient start', 'veloria'),
             'type'       => Controls_Manager::COLOR,
             'default'    => '#d65db1',
             'conditions' => $gradientControlsConditions,
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-dual-heading__highlight' => '--elementrify-dual-gradient-start: {{VALUE}};',
-                '{{WRAPPER}} .elementrify-dual-heading__highlight-inner' => '--elementrify-dual-gradient-start: {{VALUE}};',
+                '{{WRAPPER}} .veloria-dual-heading__highlight' => '--veloria-dual-gradient-start: {{VALUE}};',
+                '{{WRAPPER}} .veloria-dual-heading__highlight-inner' => '--veloria-dual-gradient-start: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('gradient_color_end', [
-            'label'      => __('Gradient end', 'elementrify'),
+            'label'      => __('Gradient end', 'veloria'),
             'type'       => Controls_Manager::COLOR,
             'default'    => '#845ef7',
             'conditions' => $gradientControlsConditions,
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-dual-heading__highlight' => '--elementrify-dual-gradient-end: {{VALUE}};',
-                '{{WRAPPER}} .elementrify-dual-heading__highlight-inner' => '--elementrify-dual-gradient-end: {{VALUE}};',
+                '{{WRAPPER}} .veloria-dual-heading__highlight' => '--veloria-dual-gradient-end: {{VALUE}};',
+                '{{WRAPPER}} .veloria-dual-heading__highlight-inner' => '--veloria-dual-gradient-end: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('gradient_angle', [
-            'label'      => __('Gradient angle', 'elementrify'),
+            'label'      => __('Gradient angle', 'veloria'),
             'type'       => Controls_Manager::NUMBER,
             'min'        => 0,
             'max'        => 360,
@@ -375,8 +375,8 @@ class DualHeading extends WidgetBase
             'default'    => 90,
             'conditions' => $gradientControlsConditions,
             'selectors'  => [
-                '{{WRAPPER}}.elementrify-dual-heading--hl-box .elementrify-dual-heading__highlight' => 'background-color: transparent; background-image: linear-gradient({{VALUE}}deg, var(--elementrify-dual-gradient-start, #d65db1), var(--elementrify-dual-gradient-end, #845ef7));',
-                '{{WRAPPER}}.elementrify-dual-heading--hl-text .elementrify-dual-heading__highlight-inner' => 'background-color: transparent; background-image: linear-gradient({{VALUE}}deg, var(--elementrify-dual-gradient-start, #d65db1), var(--elementrify-dual-gradient-end, #845ef7));',
+                '{{WRAPPER}}.veloria-dual-heading--hl-box .veloria-dual-heading__highlight' => 'background-color: transparent; background-image: linear-gradient({{VALUE}}deg, var(--veloria-dual-gradient-start, #d65db1), var(--veloria-dual-gradient-end, #845ef7));',
+                '{{WRAPPER}}.veloria-dual-heading--hl-text .veloria-dual-heading__highlight-inner' => 'background-color: transparent; background-image: linear-gradient({{VALUE}}deg, var(--veloria-dual-gradient-start, #d65db1), var(--veloria-dual-gradient-end, #845ef7));',
             ],
         ]);
 
@@ -387,8 +387,8 @@ class DualHeading extends WidgetBase
                 'highlight_appearance' => 'text',
             ],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-dual-heading__highlight' => 'padding: 0 !important;',
-                '{{WRAPPER}} .elementrify-dual-heading__highlight-inner' => 'padding: 0 !important;',
+                '{{WRAPPER}} .veloria-dual-heading__highlight' => 'padding: 0 !important;',
+                '{{WRAPPER}} .veloria-dual-heading__highlight-inner' => 'padding: 0 !important;',
             ],
         ]);
 
@@ -397,7 +397,7 @@ class DualHeading extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/dual-heading/dual-heading.php';
+        $path = VELORIA_DIR . 'templates/dual-heading/dual-heading.php';
         if (is_readable($path)) {
             include $path;
         }

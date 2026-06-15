@@ -28,7 +28,7 @@
 
     function animateWidget(widget) {
         if (!widget || widget.getAttribute('data-counter-animated') === 'yes') return;
-        var numbers = widget.querySelectorAll('.elementrify-animated-counter__number[data-to]');
+        var numbers = widget.querySelectorAll('.veloria-animated-counter__number[data-to]');
         if (!numbers.length) return;
         widget.setAttribute('data-counter-animated', 'yes');
         numbers.forEach(function (el) {
@@ -53,7 +53,7 @@
         var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (!entry.isIntersecting) return;
-                var w = entry.target.closest('.elementrify-animated-counter');
+                var w = entry.target.closest('.veloria-animated-counter');
                 if (w) animateWidget(w);
                 observer.unobserve(entry.target);
             });
@@ -75,11 +75,11 @@
 
     function scan(root) {
         root = root || document;
-        var widgets = root.querySelectorAll('.elementrify-animated-counter');
+        var widgets = root.querySelectorAll('.veloria-animated-counter');
         widgets.forEach(function (widget) {
             if (widget.getAttribute('data-counter-setup') === 'yes') return;
             widget.setAttribute('data-counter-setup', 'yes');
-            var target = widget.querySelector('.elementrify-animated-counter__grid') || widget.querySelector('.elementrify-animated-counter__inner') || widget;
+            var target = widget.querySelector('.veloria-animated-counter__grid') || widget.querySelector('.veloria-animated-counter__inner') || widget;
             setupObserver(target, widget);
         });
     }
@@ -101,15 +101,15 @@
         function onWidgetReady($scope) {
             var widget = (typeof $scope !== 'undefined' && $scope && $scope[0]) ? $scope[0] : (typeof $scope !== 'undefined' && $scope && $scope.nodeType) ? $scope : null;
             if (!widget || !widget.querySelector) return;
-            var inner = widget.querySelector('.elementrify-animated-counter');
+            var inner = widget.querySelector('.veloria-animated-counter');
             var root = inner || widget;
             if (root.getAttribute('data-counter-setup') === 'yes') return;
             root.setAttribute('data-counter-setup', 'yes');
-            var target = root.querySelector('.elementrify-animated-counter__grid') || root.querySelector('.elementrify-animated-counter__inner') || root;
+            var target = root.querySelector('.veloria-animated-counter__grid') || root.querySelector('.veloria-animated-counter__inner') || root;
             setupObserver(target, root);
         }
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-animated-counter.default', onWidgetReady);
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-animated-counter', onWidgetReady);
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-animated-counter.default', onWidgetReady);
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-animated-counter', onWidgetReady);
     }
 
     if (typeof elementorFrontend !== 'undefined') {

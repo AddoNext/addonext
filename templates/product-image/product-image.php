@@ -12,13 +12,13 @@
 
 defined('ABSPATH') || exit;
 
-$uid = 'elementrify-pi-' . $this->get_id();
+$uid = 'veloria-pi-' . $this->get_id();
 $first = $gallery_images[0];
 $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
 ?>
 <div
     id="<?php echo esc_attr($uid); ?>"
-    class="elementrify-product-image elementor-clickable"
+    class="veloria-product-image elementor-clickable"
     data-zoom="<?php echo esc_attr($zoom_mode); ?>"
     data-pan-scale="<?php echo esc_attr((string) $pan_scale); ?>"
     data-images="<?php echo esc_attr($images_json); ?>"
@@ -26,13 +26,13 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
     <?php if ($zoom_mode === 'lightbox') : ?>
         <button
             type="button"
-            class="elementrify-pi__main elementrify-pi__main--clickable elementor-clickable"
-            aria-label="<?php echo esc_attr__('Open image in lightbox', 'elementrify'); ?>"
+            class="veloria-pi__main veloria-pi__main--clickable elementor-clickable"
+            aria-label="<?php echo esc_attr__('Open image in lightbox', 'veloria'); ?>"
         >
-            <span class="elementrify-pi__visual">
-                <span class="elementrify-pi__stage">
+            <span class="veloria-pi__visual">
+                <span class="veloria-pi__stage">
                     <img
-                        class="elementrify-pi__main-img"
+                        class="veloria-pi__main-img"
                         src="<?php echo esc_url($first['main']); ?>"
                         alt="<?php echo esc_attr($main_alt); ?>"
                         width="600"
@@ -44,16 +44,16 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
             </span>
         </button>
     <?php else : ?>
-        <div class="elementrify-pi__main elementrify-pi__main--pan-zoom">
-            <div class="elementrify-pi__visual">
+        <div class="veloria-pi__main veloria-pi__main--pan-zoom">
+            <div class="veloria-pi__visual">
                 <div
-                    class="elementrify-pi__stage elementor-clickable"
+                    class="veloria-pi__stage elementor-clickable"
                     role="button"
                     tabindex="0"
-                    aria-label="<?php echo esc_attr__('Click to zoom. When zoomed, drag to move.', 'elementrify'); ?>"
+                    aria-label="<?php echo esc_attr__('Click to zoom. When zoomed, drag to move.', 'veloria'); ?>"
                 >
                     <img
-                        class="elementrify-pi__main-img"
+                        class="veloria-pi__main-img"
                         src="<?php echo esc_url($first['main']); ?>"
                         alt="<?php echo esc_attr($main_alt); ?>"
                         width="600"
@@ -67,18 +67,18 @@ $main_alt = $first['alt'] !== '' ? $first['alt'] : $product->get_name();
     <?php endif; ?>
 
     <?php if ($show_thumb_row) : ?>
-        <div class="elementrify-pi__thumbs" aria-label="<?php echo esc_attr__('Product gallery', 'elementrify'); ?>">
+        <div class="veloria-pi__thumbs" aria-label="<?php echo esc_attr__('Product gallery', 'veloria'); ?>">
             <?php foreach ($gallery_images as $index => $row) : ?>
                 <?php
                 $thumb_alt = $row['alt'] !== '' ? $row['alt'] : sprintf(
                     /* translators: %d: image position */
-                    __('Product image %d', 'elementrify'),
+                    __('Product image %d', 'veloria'),
                     $index + 1
                 );
                 ?>
                 <button
                     type="button"
-                    class="elementrify-pi__thumb elementor-clickable<?php echo $index === 0 ? ' is-active' : ''; ?>"
+                    class="veloria-pi__thumb elementor-clickable<?php echo $index === 0 ? ' is-active' : ''; ?>"
                     aria-pressed="<?php echo $index === 0 ? 'true' : 'false'; ?>"
                     aria-label="<?php echo esc_attr($thumb_alt); ?>"
                     data-index="<?php echo esc_attr((string) $index); ?>"

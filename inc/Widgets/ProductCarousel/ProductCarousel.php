@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ProductCarousel;
+namespace Veloria\Widgets\ProductCarousel;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -17,18 +17,18 @@ class ProductCarousel extends WidgetBase
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('elementrify-product-carousel');
-        wp_enqueue_script('elementrify-product-carousel');
+        wp_enqueue_style('veloria-product-carousel');
+        wp_enqueue_script('veloria-product-carousel');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-slides elementrify-icon';
+        return 'eicon-slides veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-product-carousel';
+        return 'veloria-product-carousel';
     }
 
     public function get_admin_category(): string
@@ -38,12 +38,12 @@ class ProductCarousel extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Carousel', 'elementrify');
+        return __('Product Carousel', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Product slider widget', 'elementrify');
+        return __('Product slider widget', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -59,12 +59,12 @@ class ProductCarousel extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-product-carousel'];
+        return ['veloria-product-carousel'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart', 'elementrify-product-carousel'];
+        return ['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart', 'veloria-product-carousel'];
     }
 
     public function enqueue_assets(): void
@@ -73,17 +73,17 @@ class ProductCarousel extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         wp_register_style(
-            'elementrify-product-carousel',
-            ELEMENTRIFY_URL . 'assets/css/product-carousel.css',
+            'veloria-product-carousel',
+            VELORIA_URL . 'assets/css/product-carousel.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-product-carousel',
-            ELEMENTRIFY_URL . 'assets/js/product-carousel.js',
+            'veloria-product-carousel',
+            VELORIA_URL . 'assets/js/product-carousel.js',
             ['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
                 }
@@ -119,12 +119,12 @@ class ProductCarousel extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_query', [
-            'label' => __('Query', 'elementrify'),
+            'label' => __('Query', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('limit', [
-            'label'   => __('Products count', 'elementrify'),
+            'label'   => __('Products count', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 50,
@@ -132,7 +132,7 @@ class ProductCarousel extends WidgetBase
         ]);
 
         $this->add_control('categories', [
-            'label'       => __('Categories', 'elementrify'),
+            'label'       => __('Categories', 'veloria'),
             'type'        => Controls_Manager::SELECT2,
             'multiple'    => true,
             'label_block' => true,
@@ -140,182 +140,182 @@ class ProductCarousel extends WidgetBase
         ]);
 
         $this->add_control('include_ids', [
-            'label'       => __('Include product IDs', 'elementrify'),
+            'label'       => __('Include product IDs', 'veloria'),
             'type'        => Controls_Manager::TEXT,
             'placeholder' => '12, 43, 50',
-            'description' => __('Comma-separated IDs. Keeps only these products.', 'elementrify'),
+            'description' => __('Comma-separated IDs. Keeps only these products.', 'veloria'),
         ]);
 
         $this->add_control('exclude_ids', [
-            'label'       => __('Exclude product IDs', 'elementrify'),
+            'label'       => __('Exclude product IDs', 'veloria'),
             'type'        => Controls_Manager::TEXT,
             'placeholder' => '8, 16',
-            'description' => __('Comma-separated IDs to exclude.', 'elementrify'),
+            'description' => __('Comma-separated IDs to exclude.', 'veloria'),
         ]);
 
         $this->add_control('sale_only', [
-            'label'        => __('On sale only', 'elementrify'),
+            'label'        => __('On sale only', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('featured_only', [
-            'label'        => __('Featured only', 'elementrify'),
+            'label'        => __('Featured only', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('stock_status', [
-            'label'   => __('Stock status', 'elementrify'),
+            'label'   => __('Stock status', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'all',
             'options' => [
-                'all'         => __('All', 'elementrify'),
-                'instock'     => __('In stock', 'elementrify'),
-                'outofstock'  => __('Out of stock', 'elementrify'),
-                'onbackorder' => __('On backorder', 'elementrify'),
+                'all'         => __('All', 'veloria'),
+                'instock'     => __('In stock', 'veloria'),
+                'outofstock'  => __('Out of stock', 'veloria'),
+                'onbackorder' => __('On backorder', 'veloria'),
             ],
         ]);
 
         $this->add_control('orderby', [
-            'label'   => __('Order by', 'elementrify'),
+            'label'   => __('Order by', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'date',
             'options' => [
-                'date'       => __('Date', 'elementrify'),
-                'title'      => __('Title', 'elementrify'),
-                'price'      => __('Price', 'elementrify'),
-                'popularity' => __('Popularity', 'elementrify'),
-                'rating'     => __('Rating', 'elementrify'),
-                'rand'       => __('Random', 'elementrify'),
-                'menu_order' => __('Menu order', 'elementrify'),
+                'date'       => __('Date', 'veloria'),
+                'title'      => __('Title', 'veloria'),
+                'price'      => __('Price', 'veloria'),
+                'popularity' => __('Popularity', 'veloria'),
+                'rating'     => __('Rating', 'veloria'),
+                'rand'       => __('Random', 'veloria'),
+                'menu_order' => __('Menu order', 'veloria'),
             ],
         ]);
 
         $this->add_control('order', [
-            'label'   => __('Order', 'elementrify'),
+            'label'   => __('Order', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'DESC',
             'options' => [
-                'DESC' => __('Descending', 'elementrify'),
-                'ASC'  => __('Ascending', 'elementrify'),
+                'DESC' => __('Descending', 'veloria'),
+                'ASC'  => __('Ascending', 'veloria'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_layout', [
-            'label' => __('Carousel', 'elementrify'),
+            'label' => __('Carousel', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('per_view', [
-            'label'   => __('Slides (Desktop)', 'elementrify'),
+            'label'   => __('Slides (Desktop)', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 6,
             'default' => 4,
         ]);
         $this->add_control('per_view_tablet', [
-            'label'   => __('Slides (Tablet)', 'elementrify'),
+            'label'   => __('Slides (Tablet)', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 4,
             'default' => 2,
         ]);
         $this->add_control('per_view_mobile', [
-            'label'   => __('Slides (Mobile)', 'elementrify'),
+            'label'   => __('Slides (Mobile)', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 2,
             'default' => 1,
         ]);
         $this->add_control('space_between', [
-            'label'   => __('Space between', 'elementrify'),
+            'label'   => __('Space between', 'veloria'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 0,
             'max'     => 60,
             'default' => 16,
         ]);
         $this->add_control('show_nav', [
-            'label'        => __('Show arrows', 'elementrify'),
+            'label'        => __('Show arrows', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_dots', [
-            'label'        => __('Show dots', 'elementrify'),
+            'label'        => __('Show dots', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => '',
         ]);
         $this->add_control('loop', [
-            'label'        => __('Loop', 'elementrify'),
+            'label'        => __('Loop', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('show_rating', [
-            'label'        => __('Show rating', 'elementrify'),
+            'label'        => __('Show rating', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_short_desc', [
-            'label'        => __('Show short description', 'elementrify'),
+            'label'        => __('Show short description', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_old_price', [
-            'label'        => __('Show old price', 'elementrify'),
+            'label'        => __('Show old price', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_badges', [
-            'label'        => __('Show badges', 'elementrify'),
+            'label'        => __('Show badges', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_wishlist', [
-            'label'        => __('Show wishlist button', 'elementrify'),
+            'label'        => __('Show wishlist button', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_add_to_cart', [
-            'label'        => __('Show add to cart button', 'elementrify'),
+            'label'        => __('Show add to cart button', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('image_hover_effect', [
-            'label'   => __('Image hover effect', 'elementrify'),
+            'label'   => __('Image hover effect', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'zoom-out',
             'options' => [
-                'none'      => __('None', 'elementrify'),
-                'zoom-in'   => __('Zoom In', 'elementrify'),
-                'zoom-out'  => __('Zoom Out', 'elementrify'),
-                'jump'      => __('Jump', 'elementrify'),
-                'tilt'      => __('Tilt', 'elementrify'),
+                'none'      => __('None', 'veloria'),
+                'zoom-in'   => __('Zoom In', 'veloria'),
+                'zoom-out'  => __('Zoom Out', 'veloria'),
+                'jump'      => __('Jump', 'veloria'),
+                'tilt'      => __('Tilt', 'veloria'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_card', [
-            'label' => __('Card', 'elementrify'),
+            'label' => __('Card', 'veloria'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('card_padding', [
-            'label'      => __('Card padding', 'elementrify'),
+            'label'      => __('Card padding', 'veloria'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default'    => [
@@ -327,48 +327,48 @@ class ProductCarousel extends WidgetBase
                 'isLinked' => true,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-product-carousel__card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-product-carousel__card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
         $this->add_control('card_radius', [
-            'label'      => __('Card radius', 'elementrify'),
+            'label'      => __('Card radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 30]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-product-carousel__card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-product-carousel__card' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
         $this->add_control('card_bg', [
-            'label'     => __('Card background', 'elementrify'),
+            'label'     => __('Card background', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-carousel__card' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-carousel__card' => 'background-color: {{VALUE}};',
             ],
         ]);
         $this->add_control('title_color', [
-            'label'     => __('Title color', 'elementrify'),
+            'label'     => __('Title color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-carousel__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-carousel__title' => 'color: {{VALUE}};',
             ],
         ]);
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-product-carousel__title',
+                'selector' => '{{WRAPPER}} .veloria-product-carousel__title',
             ]
         );
         $this->add_control('price_color', [
-            'label'     => __('Price color', 'elementrify'),
+            'label'     => __('Price color', 'veloria'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-carousel__price-current' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-carousel__price-current' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -382,7 +382,7 @@ class ProductCarousel extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/product-carousel/product-carousel.php';
+        $path = VELORIA_DIR . 'templates/product-carousel/product-carousel.php';
         if (is_readable($path)) include $path;
                 }
         }

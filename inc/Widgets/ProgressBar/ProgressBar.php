@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ProgressBar;
+namespace Veloria\Widgets\ProgressBar;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class ProgressBar extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-bar-chart elementrify-icon';
+        return 'eicon-bar-chart veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-progress-bar';
+        return 'veloria-progress-bar';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ProgressBar extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Progress Bar', 'elementrify');
+        return __('Progress Bar', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Animated progress indicators', 'elementrify');
+        return __('Animated progress indicators', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -42,12 +42,12 @@ class ProgressBar extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-progress-bar'];
+        return ['veloria-progress-bar'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('elementrify-progress-bar', ELEMENTRIFY_URL . 'assets/css/progress-bar.css', [], ELEMENTRIFY_VERSION);
+        wp_register_style('veloria-progress-bar', VELORIA_URL . 'assets/css/progress-bar.css', [], VELORIA_VERSION);
     }
 
     public function register_controls(): void
@@ -55,7 +55,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -64,15 +64,15 @@ class ProgressBar extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Label', 'elementrify'),
+                'label'   => __('Label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Web Design', 'elementrify'),
+                'default' => __('Web Design', 'veloria'),
             ]
         );
         $repeater->add_control(
             'percent',
             [
-                'label'   => __('Percentage', 'elementrify'),
+                'label'   => __('Percentage', 'veloria'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['%'],
                 'range'   => ['%' => ['min' => 0, 'max' => 100]],
@@ -82,7 +82,7 @@ class ProgressBar extends WidgetBase
         $repeater->add_control(
             'bar_color',
             [
-                'label'   => __('Bar color', 'elementrify'),
+                'label'   => __('Bar color', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#4285F4',
             ]
@@ -91,13 +91,13 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Bars', 'elementrify'),
+                'label'       => __('Bars', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['title' => __('Web Design', 'elementrify'), 'percent' => ['size' => 90], 'bar_color' => '#4285F4'],
-                    ['title' => __('Development', 'elementrify'), 'percent' => ['size' => 85], 'bar_color' => '#8E24AA'],
-                    ['title' => __('Marketing', 'elementrify'), 'percent' => ['size' => 75], 'bar_color' => '#4CAF50'],
+                    ['title' => __('Web Design', 'veloria'), 'percent' => ['size' => 90], 'bar_color' => '#4285F4'],
+                    ['title' => __('Development', 'veloria'), 'percent' => ['size' => 85], 'bar_color' => '#8E24AA'],
+                    ['title' => __('Marketing', 'veloria'), 'percent' => ['size' => 75], 'bar_color' => '#4CAF50'],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -108,7 +108,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_style_bars',
             [
-                'label' => __('Bars', 'elementrify'),
+                'label' => __('Bars', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -116,13 +116,13 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'bar_height',
             [
-                'label'      => __('Bar height', 'elementrify'),
+                'label'      => __('Bar height', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 4, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-progress-bar__track' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-progress-bar__track' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -130,11 +130,11 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'track_color',
             [
-                'label'     => __('Track (unfilled) color', 'elementrify'),
+                'label'     => __('Track (unfilled) color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E0E0E0',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-progress-bar__track' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-progress-bar__track' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -142,13 +142,13 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'row_gap',
             [
-                'label'      => __('Gap between rows', 'elementrify'),
+                'label'      => __('Gap between rows', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'default'    => ['size' => 16],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-progress-bar__list' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-progress-bar__list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -158,7 +158,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_style_label',
             [
-                'label' => __('Label', 'elementrify'),
+                'label' => __('Label', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -167,7 +167,7 @@ class ProgressBar extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'label_typography',
-                'selector' => '{{WRAPPER}} .elementrify-progress-bar__title',
+                'selector' => '{{WRAPPER}} .veloria-progress-bar__title',
                 'default'  => ['font_size' => ['unit' => 'px', 'size' => 14]],
             ]
         );
@@ -175,11 +175,11 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'label_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-progress-bar__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-progress-bar__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -189,7 +189,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_style_percent',
             [
-                'label' => __('Percentage', 'elementrify'),
+                'label' => __('Percentage', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -198,7 +198,7 @@ class ProgressBar extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'percent_typography',
-                'selector' => '{{WRAPPER}} .elementrify-progress-bar__percent',
+                'selector' => '{{WRAPPER}} .veloria-progress-bar__percent',
                 'default'  => ['font_size' => ['unit' => 'px', 'size' => 14]],
             ]
         );
@@ -206,7 +206,7 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'percent_color_override',
             [
-                'label'        => __('Use bar color for percentage', 'elementrify'),
+                'label'        => __('Use bar color for percentage', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -216,11 +216,11 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'percent_color',
             [
-                'label'     => __('Color (when not bar color)', 'elementrify'),
+                'label'     => __('Color (when not bar color)', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-progress-bar__percent' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-progress-bar__percent' => 'color: {{VALUE}};',
                 ],
                 'condition' => ['percent_color_override' => ''],
             ]
@@ -231,7 +231,7 @@ class ProgressBar extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/progress-bar/progress-bar.php';
+        $path = VELORIA_DIR . 'templates/progress-bar/progress-bar.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -244,8 +244,8 @@ class ProgressBar extends WidgetBase
         var items = settings.items || [];
         var percentUseBarColor = settings.percent_color_override === 'yes';
         #>
-        <div class="elementrify-progress-bar">
-            <div class="elementrify-progress-bar__list">
+        <div class="veloria-progress-bar">
+            <div class="veloria-progress-bar__list">
                 <# _.each(items, function(item) {
                     var percentVal = (item.percent && item.percent.size != null) ? item.percent.size : (typeof item.percent === 'number' ? item.percent : 0);
                     var percent = Math.max(0, Math.min(100, parseInt(percentVal, 10) || 0));
@@ -253,13 +253,13 @@ class ProgressBar extends WidgetBase
                     var percentStyle = percentUseBarColor ? ('color: ' + barColor + ';') : '';
                     var fillStyle = 'width: ' + percent + '% !important; background-color: ' + barColor + ';';
                 #>
-                    <div class="elementrify-progress-bar__row">
-                        <div class="elementrify-progress-bar__header">
-                            <span class="elementrify-progress-bar__title">{{{ item.title }}}</span>
-                            <span class="elementrify-progress-bar__percent" style="{{ percentStyle }}">{{ percent }}%</span>
+                    <div class="veloria-progress-bar__row">
+                        <div class="veloria-progress-bar__header">
+                            <span class="veloria-progress-bar__title">{{{ item.title }}}</span>
+                            <span class="veloria-progress-bar__percent" style="{{ percentStyle }}">{{ percent }}%</span>
                         </div>
-                        <div class="elementrify-progress-bar__track">
-                            <div class="elementrify-progress-bar__fill" style="{{ fillStyle }}"></div>
+                        <div class="veloria-progress-bar__track">
+                            <div class="veloria-progress-bar__fill" style="{{ fillStyle }}"></div>
                         </div>
                     </div>
                 <# }); #>

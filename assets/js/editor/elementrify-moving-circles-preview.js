@@ -113,36 +113,36 @@
 		if (!el) {
 			return;
 		}
-		var host = el.querySelector('.elementrify-moving-circles__host');
+		var host = el.querySelector('.veloria-moving-circles__host');
 		if (host) {
 			host.remove();
 		}
-		el.classList.remove('elementrify-moving-circles');
-		el.removeAttribute('data-elementrify-moving-circles');
-		el.removeAttribute('data-elementrify-moving-circles-host-id');
-		el.removeAttribute('data-elementrify-moving-circles-count');
-		el.removeAttribute('data-elementrify-moving-circles-speed');
-		el.removeAttribute('data-elementrify-moving-circles-size');
-		el.removeAttribute('data-elementrify-moving-circles-color');
-		el.removeAttribute('data-elementrify-moving-circles-fp');
+		el.classList.remove('veloria-moving-circles');
+		el.removeAttribute('data-veloria-moving-circles');
+		el.removeAttribute('data-veloria-moving-circles-host-id');
+		el.removeAttribute('data-veloria-moving-circles-count');
+		el.removeAttribute('data-veloria-moving-circles-speed');
+		el.removeAttribute('data-veloria-moving-circles-size');
+		el.removeAttribute('data-veloria-moving-circles-color');
+		el.removeAttribute('data-veloria-moving-circles-fp');
 	}
 
 	function applyMovingCirclesMarkupFromPlainSettings(el, id, plain) {
 		if (!el || !plain || typeof plain !== 'object') {
 			return;
 		}
-		var enabled = plain.elementrify_moving_circles_enable;
+		var enabled = plain.veloria_moving_circles_enable;
 		if (enabled !== 'yes') {
 			clearMovingCirclesMarkup(el);
 			return;
 		}
-		var count = plain.elementrify_moving_circles_count;
+		var count = plain.veloria_moving_circles_count;
 		var countSize = 10;
 		if (count && typeof count === 'object' && count.size !== undefined && count.size !== null) {
 			countSize = count.size;
 		}
 		countSize = Math.max(3, Math.min(28, parseInt(countSize, 10) || 10));
-		var speed = plain.elementrify_moving_circles_speed;
+		var speed = plain.veloria_moving_circles_speed;
 		var speedSize = 100;
 		if (speed && typeof speed === 'object' && speed.size !== undefined && speed.size !== null) {
 			speedSize = speed.size;
@@ -150,22 +150,22 @@
 			speedSize = speed;
 		}
 		speedSize = Math.max(20, Math.min(200, parseInt(speedSize, 10) || 100));
-		var sizeCtrl = plain.elementrify_moving_circles_size;
+		var sizeCtrl = plain.veloria_moving_circles_size;
 		var sizePx = 48;
 		if (sizeCtrl && typeof sizeCtrl === 'object' && sizeCtrl.size !== undefined && sizeCtrl.size !== null) {
 			sizePx = sizeCtrl.size;
 		}
 		sizePx = Math.max(12, Math.min(140, parseInt(sizePx, 10) || 48));
-		var circleColor = normalizeElementorColor(plain.elementrify_moving_circles_color) || '#ffffff';
+		var circleColor = normalizeElementorColor(plain.veloria_moving_circles_color) || '#ffffff';
 
-		el.classList.add('elementrify-moving-circles');
-		el.setAttribute('data-elementrify-moving-circles', 'yes');
-		el.setAttribute('data-elementrify-moving-circles-host-id', id);
-		el.setAttribute('data-elementrify-moving-circles-count', String(countSize));
-		el.setAttribute('data-elementrify-moving-circles-speed', String(speedSize));
-		el.setAttribute('data-elementrify-moving-circles-size', String(sizePx));
-		el.setAttribute('data-elementrify-moving-circles-color', circleColor);
-		el.removeAttribute('data-elementrify-moving-circles-fp');
+		el.classList.add('veloria-moving-circles');
+		el.setAttribute('data-veloria-moving-circles', 'yes');
+		el.setAttribute('data-veloria-moving-circles-host-id', id);
+		el.setAttribute('data-veloria-moving-circles-count', String(countSize));
+		el.setAttribute('data-veloria-moving-circles-speed', String(speedSize));
+		el.setAttribute('data-veloria-moving-circles-size', String(sizePx));
+		el.setAttribute('data-veloria-moving-circles-color', circleColor);
+		el.removeAttribute('data-veloria-moving-circles-fp');
 	}
 
 	function resolveContainerId(container) {
@@ -205,11 +205,11 @@
 		}
 		if (typeof settings.get === 'function') {
 			[
-				'elementrify_moving_circles_enable',
-				'elementrify_moving_circles_count',
-				'elementrify_moving_circles_speed',
-				'elementrify_moving_circles_size',
-				'elementrify_moving_circles_color',
+				'veloria_moving_circles_enable',
+				'veloria_moving_circles_count',
+				'veloria_moving_circles_speed',
+				'veloria_moving_circles_size',
+				'veloria_moving_circles_color',
 			].forEach(function (key) {
 				var live = settings.get(key);
 				if (live !== undefined) {
@@ -310,11 +310,11 @@
 			return;
 		}
 		var win = frame.contentWindow;
-		if (typeof win.elementrifyMovingCirclesRescan !== 'function') {
+		if (typeof win.veloriaMovingCirclesRescan !== 'function') {
 			return;
 		}
 		try {
-			win.elementrifyMovingCirclesRescan(frame.contentDocument);
+			win.veloriaMovingCirclesRescan(frame.contentDocument);
 		} catch (e) {
 			/* ignore */
 		}

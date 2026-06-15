@@ -1,11 +1,11 @@
 'use strict';
 
-function elementrifyHeroSliderRunTyping(scope) {
+function veloriaHeroSliderRunTyping(scope) {
   if (!scope || !scope.querySelector) {
     return;
   }
-  var typing = scope.querySelector('.elementrify-hero-slider__title-typing');
-  var wrap = scope.querySelector('.elementrify-hero-slider__title-typing-wrap');
+  var typing = scope.querySelector('.veloria-hero-slider__title-typing');
+  var wrap = scope.querySelector('.veloria-hero-slider__title-typing-wrap');
   if (!typing || !wrap) {
     return;
   }
@@ -54,7 +54,7 @@ function elementrifyHeroSliderRunTyping(scope) {
   tick();
 }
 
-function elementrifyHeroSliderTypingTarget(root) {
+function veloriaHeroSliderTypingTarget(root) {
   var mode = root.getAttribute('data-mode') || 'both';
   if (mode === 'background') {
     return root;
@@ -63,12 +63,12 @@ function elementrifyHeroSliderTypingTarget(root) {
   return active || root;
 }
 
-function elementrifyHeroSliderInitTyping(root) {
-  elementrifyHeroSliderRunTyping(elementrifyHeroSliderTypingTarget(root));
+function veloriaHeroSliderInitTyping(root) {
+  veloriaHeroSliderRunTyping(veloriaHeroSliderTypingTarget(root));
 }
 
-function elementrifyHeroSliderDestroySwiper(root) {
-  var swEl = root.querySelector('.elementrify-hero-slider__bg-swiper, .elementrify-hero-slider__content-swiper, .elementrify-hero-slider__main-swiper');
+function veloriaHeroSliderDestroySwiper(root) {
+  var swEl = root.querySelector('.veloria-hero-slider__bg-swiper, .veloria-hero-slider__content-swiper, .veloria-hero-slider__main-swiper');
   if (swEl && swEl.swiper) {
     try {
       swEl.swiper.destroy(false, false);
@@ -79,15 +79,15 @@ function elementrifyHeroSliderDestroySwiper(root) {
   root.removeAttribute('data-hero-slider-inited');
 }
 
-function elementrifyHeroSliderInitRoot(root) {
+function veloriaHeroSliderInitRoot(root) {
   if (!root) {
     return;
   }
   if (typeof Swiper === 'undefined') {
     return;
   }
-  elementrifyHeroSliderDestroySwiper(root);
-  var swEl = root.querySelector('.elementrify-hero-slider__bg-swiper, .elementrify-hero-slider__content-swiper, .elementrify-hero-slider__main-swiper');
+  veloriaHeroSliderDestroySwiper(root);
+  var swEl = root.querySelector('.veloria-hero-slider__bg-swiper, .veloria-hero-slider__content-swiper, .veloria-hero-slider__main-swiper');
   if (!swEl || !swEl.querySelector('.swiper-wrapper')) {
     return;
   }
@@ -148,32 +148,32 @@ function elementrifyHeroSliderInitRoot(root) {
     var swiper = new Swiper(swEl, options);
     root.setAttribute('data-hero-slider-inited', 'yes');
     swiper.on('slideChangeTransitionEnd', function () {
-      elementrifyHeroSliderInitTyping(root);
+      veloriaHeroSliderInitTyping(root);
     });
-    elementrifyHeroSliderInitTyping(root);
+    veloriaHeroSliderInitTyping(root);
   } catch (err) {
     root.removeAttribute('data-hero-slider-inited');
   }
 }
 
-function elementrifyHeroSliderScan(root) {
+function veloriaHeroSliderScan(root) {
   root = root || document;
-  root.querySelectorAll('.elementrify-hero-slider').forEach(function (el) {
+  root.querySelectorAll('.veloria-hero-slider').forEach(function (el) {
     if (el.getAttribute('data-hero-slider-inited') !== 'yes') {
-      elementrifyHeroSliderInitRoot(el);
+      veloriaHeroSliderInitRoot(el);
     }
   });
 }
 
-function elementrifyHeroSliderInitScope($scope) {
+function veloriaHeroSliderInitScope($scope) {
   var wrap = $scope && $scope[0] ? $scope[0] : null;
   if (!wrap || !wrap.querySelector) {
     return;
   }
-  var root = wrap.querySelector('.elementrify-hero-slider');
+  var root = wrap.querySelector('.veloria-hero-slider');
   if (root) {
-    elementrifyHeroSliderDestroySwiper(root);
-    elementrifyHeroSliderInitRoot(root);
+    veloriaHeroSliderDestroySwiper(root);
+    veloriaHeroSliderInitRoot(root);
   }
 }
 
@@ -181,21 +181,21 @@ jQuery(window).on('elementor/frontend/init', function () {
   if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks) {
     return;
   }
-  elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-hero-slider.default', elementrifyHeroSliderInitScope);
-  elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-hero-slider', elementrifyHeroSliderInitScope);
+  elementorFrontend.hooks.addAction('frontend/element_ready/veloria-hero-slider.default', veloriaHeroSliderInitScope);
+  elementorFrontend.hooks.addAction('frontend/element_ready/veloria-hero-slider', veloriaHeroSliderInitScope);
 });
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function () {
-    elementrifyHeroSliderScan(document);
+    veloriaHeroSliderScan(document);
   });
 } else {
-  elementrifyHeroSliderScan(document);
+  veloriaHeroSliderScan(document);
 }
 setTimeout(function () {
-  document.querySelectorAll('.elementrify-hero-slider').forEach(function (el) {
+  document.querySelectorAll('.veloria-hero-slider').forEach(function (el) {
     if (el.getAttribute('data-hero-slider-inited') !== 'yes') {
-      elementrifyHeroSliderInitRoot(el);
+      veloriaHeroSliderInitRoot(el);
     }
   });
 }, 400);

@@ -2,7 +2,7 @@
 /**
  * Navigation Menu widget template.
  *
- * @var \Elementrify\Widgets\NavigationMenu\NavigationMenu $this
+ * @var \Veloria\Widgets\NavigationMenu\NavigationMenu $this
  */
 
 defined('ABSPATH') || exit;
@@ -10,8 +10,8 @@ defined('ABSPATH') || exit;
 $menu_id = isset($menu_id) ? (int) $menu_id : 0;
 
 if ($menu_id <= 0) {
-    if (\Elementrify\Widgets\NavigationMenu\NavigationMenu::is_elementor_edit_canvas()) {
-        echo '<p class="elementrify-nav-menu__placeholder">' . esc_html__('Select a WordPress menu in the widget settings.', 'elementrify') . '</p>';
+    if (\Veloria\Widgets\NavigationMenu\NavigationMenu::is_elementor_edit_canvas()) {
+        echo '<p class="veloria-nav-menu__placeholder">' . esc_html__('Select a WordPress menu in the widget settings.', 'veloria') . '</p>';
     }
 
     return;
@@ -19,18 +19,18 @@ if ($menu_id <= 0) {
 
 ?>
 <nav <?php $this->print_render_attribute_string('nav'); ?>>
-    <div class="elementrify-nav-menu__inner">
+    <div class="veloria-nav-menu__inner">
         <?php
         wp_nav_menu(
             [
                 'menu'           => $menu_id,
                 'container'      => false,
-                'menu_id'        => 'elementrify-nav-' . $this->get_id(),
-                'menu_class'     => 'menu elementrify-nav-menu__root',
+                'menu_id'        => 'veloria-nav-' . $this->get_id(),
+                'menu_class'     => 'menu veloria-nav-menu__root',
                 'fallback_cb'    => false,
                 'depth'          => 0,
                 'echo'           => true,
-                'walker'         => new \Elementrify\Widgets\NavigationMenu\Walker_Elementrify_Nav_Menu(),
+                'walker'         => new \Veloria\Widgets\NavigationMenu\Walker_Veloria_Nav_Menu(),
             ]
         );
         ?>

@@ -1,12 +1,12 @@
 <?php
-namespace Elementrify\Utils;
+namespace Veloria\Utils;
 
 defined('ABSPATH') or exit;
 
 /**
  * DataProcessor class
  *
- * @package Elementrify\Utils
+ * @package Veloria\Utils
  * @since 1.0.0
  */
 class DataProcessor
@@ -19,6 +19,6 @@ class DataProcessor
      */
     public static function get_category_name(string $category_slug): string
     {
-        return str_replace('elementrify-', '', $category_slug);
+        return str_replace('veloria-', '', $category_slug);
     }
 }

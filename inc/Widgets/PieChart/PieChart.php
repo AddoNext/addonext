@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\PieChart;
+namespace Veloria\Widgets\PieChart;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -18,18 +18,18 @@ class PieChart extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('elementrify-pie-chart');
-        wp_enqueue_script('elementrify-pie-chart');
+        wp_enqueue_style('veloria-pie-chart');
+        wp_enqueue_script('veloria-pie-chart');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-chart-pie elementrify-icon';
+        return 'eicon-chart-pie veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-pie-chart';
+        return 'veloria-pie-chart';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class PieChart extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Pie Chart', 'elementrify');
+        return __('Pie Chart', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Data distribution chart', 'elementrify');
+        return __('Data distribution chart', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -60,12 +60,12 @@ class PieChart extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-pie-chart'];
+        return ['veloria-pie-chart'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'elementrify-pie-chart'];
+        return ['elementor-frontend', 'veloria-pie-chart'];
     }
 
     public function register_controls(): void
@@ -76,7 +76,7 @@ class PieChart extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -84,9 +84,9 @@ class PieChart extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Chart title', 'elementrify'),
+                'label'   => __('Chart title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Device Usage Distribution', 'elementrify'),
+                'default' => __('Device Usage Distribution', 'veloria'),
             ]
         );
 
@@ -94,7 +94,7 @@ class PieChart extends WidgetBase
         $repeater->add_control(
             'label',
             [
-                'label'   => __('Label', 'elementrify'),
+                'label'   => __('Label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -102,7 +102,7 @@ class PieChart extends WidgetBase
         $repeater->add_control(
             'value',
             [
-                'label'   => __('Value (%)', 'elementrify'),
+                'label'   => __('Value (%)', 'veloria'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
                 'min'     => 0,
@@ -112,7 +112,7 @@ class PieChart extends WidgetBase
         $repeater->add_control(
             'color',
             [
-                'label'   => __('Color', 'elementrify'),
+                'label'   => __('Color', 'veloria'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#2563eb',
             ]
@@ -128,7 +128,7 @@ class PieChart extends WidgetBase
         $this->add_control(
             'data',
             [
-                'label'       => __('Data', 'elementrify'),
+                'label'       => __('Data', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => $default_data,
@@ -141,7 +141,7 @@ class PieChart extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -150,18 +150,18 @@ class PieChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pie-chart__title',
+                'selector' => '{{WRAPPER}} .veloria-pie-chart__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1e293b',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pie-chart__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pie-chart__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -169,16 +169,16 @@ class PieChart extends WidgetBase
         $this->add_control(
             'title_align',
             [
-                'label'   => __('Alignment', 'elementrify'),
+                'label'   => __('Alignment', 'veloria'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'elementrify'), 'icon' => 'eicon-text-align-left'],
-                    'center' => ['title' => __('Center', 'elementrify'), 'icon' => 'eicon-text-align-center'],
-                    'right'  => ['title' => __('Right', 'elementrify'), 'icon' => 'eicon-text-align-right'],
+                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
+                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pie-chart__title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pie-chart__title' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -188,7 +188,7 @@ class PieChart extends WidgetBase
         $this->start_controls_section(
             'section_style_legend',
             [
-                'label' => __('Legend', 'elementrify'),
+                'label' => __('Legend', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -197,18 +197,18 @@ class PieChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'legend_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pie-chart__legend-item',
+                'selector' => '{{WRAPPER}} .veloria-pie-chart__legend-item',
             ]
         );
 
         $this->add_control(
             'legend_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1e293b',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pie-chart__legend-item' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pie-chart__legend-item' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -223,7 +223,7 @@ class PieChart extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/pie-chart/pie-chart.php';
+        $path = VELORIA_DIR . 'templates/pie-chart/pie-chart.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -249,11 +249,11 @@ class PieChart extends WidgetBase
             colors.push(row.color || '#2563eb');
         });
         #>
-        <div class="elementrify-pie-chart" data-labels="{{ labels.join('|') }}" data-values="{{ values.join('|') }}" data-colors="{{ colors.join('|') }}">
-            <# if (title) { #><h3 class="elementrify-pie-chart__title">{{{ title }}}</h3><# } #>
-            <div class="elementrify-pie-chart__wrap">
-                <div class="elementrify-pie-chart__canvas" role="img" aria-label="{{ title }}"></div>
-                <div class="elementrify-pie-chart__legend"></div>
+        <div class="veloria-pie-chart" data-labels="{{ labels.join('|') }}" data-values="{{ values.join('|') }}" data-colors="{{ colors.join('|') }}">
+            <# if (title) { #><h3 class="veloria-pie-chart__title">{{{ title }}}</h3><# } #>
+            <div class="veloria-pie-chart__wrap">
+                <div class="veloria-pie-chart__canvas" role="img" aria-label="{{ title }}"></div>
+                <div class="veloria-pie-chart__legend"></div>
             </div>
         </div>
         <?php

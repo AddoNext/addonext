@@ -1,9 +1,9 @@
-.elementrify-off-canvas {
+.veloria-off-canvas {
     position: relative;
     display: inline-block;
 }
 
-.elementrify-off-canvas__trigger {
+.veloria-off-canvas__trigger {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -18,26 +18,26 @@
     transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.elementrify-off-canvas__trigger-icon {
+.veloria-off-canvas__trigger-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-.elementrify-off-canvas__trigger-icon svg,
-.elementrify-off-canvas__trigger-icon i {
+.veloria-off-canvas__trigger-icon svg,
+.veloria-off-canvas__trigger-icon i {
     width: 16px;
     height: 16px;
     font-size: 16px;
 }
 
-.elementrify-off-canvas__trigger:hover {
+.veloria-off-canvas__trigger:hover {
     background-color: #e5e7eb;
     border-color: #d1d5db;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
 }
 
-.elementrify-off-canvas__overlay {
+.veloria-off-canvas__overlay {
     position: fixed;
     inset: 0;
     background: rgba(15, 23, 42, 0.35);
@@ -47,14 +47,14 @@
     z-index: 1000;
 }
 
-.elementrify-off-canvas__panel {
+.veloria-off-canvas__panel {
     position: fixed;
     z-index: 1001;
     background: transparent;
     transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+.veloria-off-canvas--right .veloria-off-canvas__panel {
     top: 0;
     bottom: 0;
     right: 0;
@@ -64,7 +64,7 @@
     transform: translateX(100%);
 }
 
-.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+.veloria-off-canvas--left .veloria-off-canvas__panel {
     top: 0;
     bottom: 0;
     left: 0;
@@ -74,7 +74,7 @@
     transform: translateX(-100%);
 }
 
-.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+.veloria-off-canvas--top .veloria-off-canvas__panel {
     top: 0;
     right: 0;
     left: 0;
@@ -86,7 +86,7 @@
     transform: translateY(-100%);
 }
 
-.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     bottom: 0;
     right: 0;
     left: 0;
@@ -98,7 +98,7 @@
     transform: translateY(100%);
 }
 
-.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas--center .veloria-off-canvas__panel {
     top: 50%;
     left: 50%;
     right: auto;
@@ -113,7 +113,7 @@
     pointer-events: none;
 }
 
-.elementrify-off-canvas__panel-inner {
+.veloria-off-canvas__panel-inner {
     height: 100%;
     max-height: inherit;
     background-color: #ffffff;
@@ -121,31 +121,31 @@
     flex-direction: column;
 }
 
-.elementrify-off-canvas--right .elementrify-off-canvas__panel-inner {
+.veloria-off-canvas--right .veloria-off-canvas__panel-inner {
     box-shadow: -18px 0 40px rgba(15, 23, 42, 0.35);
 }
 
-.elementrify-off-canvas--left .elementrify-off-canvas__panel-inner {
+.veloria-off-canvas--left .veloria-off-canvas__panel-inner {
     box-shadow: 18px 0 40px rgba(15, 23, 42, 0.35);
 }
 
-.elementrify-off-canvas--top .elementrify-off-canvas__panel-inner {
+.veloria-off-canvas--top .veloria-off-canvas__panel-inner {
     border-radius: 0 0 12px 12px;
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
 }
 
-.elementrify-off-canvas--bottom .elementrify-off-canvas__panel-inner {
+.veloria-off-canvas--bottom .veloria-off-canvas__panel-inner {
     border-radius: 12px 12px 0 0;
     box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.25);
 }
 
-.elementrify-off-canvas--center .elementrify-off-canvas__panel-inner {
+.veloria-off-canvas--center .veloria-off-canvas__panel-inner {
     border-radius: 12px;
     box-shadow: 0 24px 64px rgba(15, 23, 42, 0.35);
     max-height: 85vh;
 }
 
-.elementrify-off-canvas__panel-header {
+.veloria-off-canvas__panel-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -155,7 +155,7 @@
     flex-shrink: 0;
 }
 
-.elementrify-off-canvas__panel-inner--close-only .elementrify-off-canvas__panel-header--close-only {
+.veloria-off-canvas__panel-inner--close-only .veloria-off-canvas__panel-header--close-only {
     position: absolute;
     top: 0;
     right: 0;
@@ -166,22 +166,22 @@
     background: transparent;
 }
 
-.elementrify-off-canvas__panel-inner--close-only {
+.veloria-off-canvas__panel-inner--close-only {
     position: relative;
 }
 
-.elementrify-off-canvas__panel-inner--close-only .elementrify-off-canvas__panel-body {
+.veloria-off-canvas__panel-inner--close-only .veloria-off-canvas__panel-body {
     padding-top: 48px;
 }
 
-.elementrify-off-canvas__panel-title {
+.veloria-off-canvas__panel-title {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
     color: #111827;
 }
 
-.elementrify-off-canvas__close {
+.veloria-off-canvas__close {
     border: none;
     background: transparent;
     font-size: 20px;
@@ -190,11 +190,11 @@
     color: #6b7280;
 }
 
-.elementrify-off-canvas__close:hover {
+.veloria-off-canvas__close:hover {
     color: #111827;
 }
 
-.elementrify-off-canvas__panel-body {
+.veloria-off-canvas__panel-body {
     padding: 20px;
     overflow-y: auto;
     font-size: 14px;
@@ -203,141 +203,141 @@
     min-height: 0;
 }
 
-.elementrify-off-canvas.is-open .elementrify-off-canvas__overlay {
+.veloria-off-canvas.is-open .veloria-off-canvas__overlay {
     opacity: 1;
     visibility: visible;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--right .veloria-off-canvas__panel {
     transform: translateX(0);
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--left .veloria-off-canvas__panel {
     transform: translateX(0);
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--top .veloria-off-canvas__panel {
     transform: translateY(0);
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     transform: translateY(0);
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-.elementrify-off-canvas__panel-inner *:last-child {
+.veloria-off-canvas__panel-inner *:last-child {
     margin-bottom: 0;
 }
 
-.elementrify-off-canvas--anim-slide.elementrify-off-canvas--right .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-slide.elementrify-off-canvas--left .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-slide.elementrify-off-canvas--top .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-slide.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-slide.veloria-off-canvas--right .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-slide.veloria-off-canvas--left .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-slide.veloria-off-canvas--top .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-slide.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-slide.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-slide.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(0.96);
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-slide.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--right .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--left .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--top .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-slide-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--right .veloria-off-canvas__panel,
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--left .veloria-off-canvas__panel,
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--top .veloria-off-canvas__panel,
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-slide-fade.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
-.elementrify-off-canvas--anim-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-fade.veloria-off-canvas--right .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-fade.veloria-off-canvas--left .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-fade.veloria-off-canvas--top .veloria-off-canvas__panel,
+.veloria-off-canvas--anim-fade.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--right .elementrify-off-canvas__panel,
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--left .elementrify-off-canvas__panel,
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--top .elementrify-off-canvas__panel,
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-fade.veloria-off-canvas--right .veloria-off-canvas__panel,
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-fade.veloria-off-canvas--left .veloria-off-canvas__panel,
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-fade.veloria-off-canvas--top .veloria-off-canvas__panel,
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-fade.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-fade.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-fade.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-fade.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-fade.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-zoom.veloria-off-canvas--right .veloria-off-canvas__panel {
     transform: translateX(100%) scale(0.94);
     transform-origin: center right;
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--right .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-zoom.veloria-off-canvas--right .veloria-off-canvas__panel {
     transform: translateX(0) scale(1);
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-zoom.veloria-off-canvas--left .veloria-off-canvas__panel {
     transform: translateX(-100%) scale(0.94);
     transform-origin: center left;
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--left .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-zoom.veloria-off-canvas--left .veloria-off-canvas__panel {
     transform: translateX(0) scale(1);
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-zoom.veloria-off-canvas--top .veloria-off-canvas__panel {
     transform: translateY(-100%) scale(0.94);
     transform-origin: top center;
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--top .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-zoom.veloria-off-canvas--top .veloria-off-canvas__panel {
     transform: translateY(0) scale(1);
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-zoom.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     transform: translateY(100%) scale(0.94);
     transform-origin: bottom center;
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--bottom .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-zoom.veloria-off-canvas--bottom .veloria-off-canvas__panel {
     transform: translateY(0) scale(1);
     opacity: 1;
 }
 
-.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas--anim-zoom.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(0.82);
     opacity: 0;
 }
 
-.elementrify-off-canvas.is-open.elementrify-off-canvas--anim-zoom.elementrify-off-canvas--center .elementrify-off-canvas__panel {
+.veloria-off-canvas.is-open.veloria-off-canvas--anim-zoom.veloria-off-canvas--center .veloria-off-canvas__panel {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }

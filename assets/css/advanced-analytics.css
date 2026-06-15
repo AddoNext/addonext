@@ -1,10 +1,10 @@
-.elementrify-advanced-analytics {
+.veloria-advanced-analytics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
-.elementrify-advanced-analytics__card {
+.veloria-advanced-analytics__card {
   background: var(--aa-card-bg, #dbeafe);
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 10px;
@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-.elementrify-advanced-analytics__top {
+.veloria-advanced-analytics__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +20,7 @@
   gap: 10px;
 }
 
-.elementrify-advanced-analytics__icon {
+.veloria-advanced-analytics__icon {
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -33,17 +33,17 @@
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
 }
 
-.elementrify-advanced-analytics__icon i {
+.veloria-advanced-analytics__icon i {
   font-size: 16px;
 }
 
-.elementrify-advanced-analytics__icon svg {
+.veloria-advanced-analytics__icon svg {
   width: 16px;
   height: 16px;
   fill: currentColor;
 }
 
-.elementrify-advanced-analytics__trend {
+.veloria-advanced-analytics__trend {
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -52,17 +52,17 @@
   white-space: nowrap;
 }
 
-.elementrify-advanced-analytics__trend--positive {
+.veloria-advanced-analytics__trend--positive {
   color: #16a34a;
   background: #dcfce7;
 }
 
-.elementrify-advanced-analytics__trend--negative {
+.veloria-advanced-analytics__trend--negative {
   color: #be123c;
   background: #ffe4e6;
 }
 
-.elementrify-advanced-analytics__value {
+.veloria-advanced-analytics__value {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
@@ -70,7 +70,7 @@
   color: #111827;
 }
 
-.elementrify-advanced-analytics__label {
+.veloria-advanced-analytics__label {
   margin-top: 2px;
   font-size: 14px;
   font-weight: 500;
@@ -79,13 +79,13 @@
 }
 
 @media (max-width: 1024px) {
-  .elementrify-advanced-analytics {
+  .veloria-advanced-analytics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 767px) {
-  .elementrify-advanced-analytics {
+  .veloria-advanced-analytics {
     grid-template-columns: 1fr;
   }
 }

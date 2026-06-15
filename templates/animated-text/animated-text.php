@@ -5,7 +5,7 @@ $s = $this->get_settings_for_display();
 
 $before        = isset($s['before_text']) ? (string) $s['before_text'] : '';
 $after         = isset($s['after_text']) ? (string) $s['after_text'] : '';
-$phrases       = \Elementrify\Widgets\AnimatedText\AnimatedText::get_phrases_from_settings($s);
+$phrases       = \Veloria\Widgets\AnimatedText\AnimatedText::get_phrases_from_settings($s);
 $animation     = isset($s['animation_type']) ? $s['animation_type'] : 'typewriter';
 $reveal_split  = isset($s['reveal_split']) ? $s['reveal_split'] : 'word';
 $fill          = isset($s['animated_fill']) ? $s['animated_fill'] : 'solid';
@@ -34,14 +34,14 @@ $phrase_list_loop = isset($s['phrase_list_loop']) && $s['phrase_list_loop'] === 
 
 $animated_first = $phrases[0] ?? '';
 
-$classes = ['elementrify-animated-text', 'elementrify-animated-text--' . sanitize_html_class($animation)];
+$classes = ['veloria-animated-text', 'veloria-animated-text--' . sanitize_html_class($animation)];
 if ($fill === 'gradient') {
-    $classes[] = 'elementrify-animated-text--gradient';
+    $classes[] = 'veloria-animated-text--gradient';
 }
 
 $inline_style = '';
 if ($animation === 'reveal') {
-    $inline_style = '--elementrify-at-stagger:' . max(0, $rev_stagger) . 'ms;--elementrify-at-duration:' . max(50, $rev_duration) . 'ms;';
+    $inline_style = '--veloria-at-stagger:' . max(0, $rev_stagger) . 'ms;--veloria-at-duration:' . max(50, $rev_duration) . 'ms;';
 }
 
 $phrases_json = wp_json_encode(array_values($phrases), JSON_UNESCAPED_UNICODE);
@@ -73,34 +73,34 @@ foreach ($attrs as $k => $v) {
 
 ?>
 <span class="<?php echo esc_attr(implode(' ', $classes)); ?>"<?php echo $attr_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $inline_style !== '' ? ' style="' . esc_attr($inline_style) . '"' : ''; ?> data-animated-phrases="<?php echo esc_attr($phrases_json); ?>">
-    <span class="elementrify-animated-text__before"><?php echo esc_html($before); ?></span><?php
+    <span class="veloria-animated-text__before"><?php echo esc_html($before); ?></span><?php
     if ($animation === 'typewriter') :
-        ?><span class="elementrify-animated-text__animated-wrap"><?php
-        ?><span class="elementrify-animated-text__animated"><span class="elementrify-animated-text__typed" aria-live="polite"></span></span><?php
+        ?><span class="veloria-animated-text__animated-wrap"><?php
+        ?><span class="veloria-animated-text__animated"><span class="veloria-animated-text__typed" aria-live="polite"></span></span><?php
         if ($tw_cursor) {
-            ?><span class="elementrify-animated-text__cursor" aria-hidden="true"><?php echo esc_html($tw_cursor_ch); ?></span><?php
+            ?><span class="veloria-animated-text__cursor" aria-hidden="true"><?php echo esc_html($tw_cursor_ch); ?></span><?php
         }
         ?></span><?php
     elseif ($animation === 'square_squeeze') :
-        ?><span class="elementrify-animated-text__squeeze"><?php
-        ?><span class="elementrify-animated-text__squeeze-frame"><?php
-        ?><span class="elementrify-animated-text__squeeze-inner"><?php
-        ?><span class="elementrify-animated-text__animated elementrify-animated-text__squeeze-sizer" aria-hidden="true"><?php echo esc_html($animated_first); ?></span><?php
-        ?><span class="elementrify-animated-text__animated elementrify-animated-text__squeeze-text"><?php echo esc_html($animated_first); ?></span><?php
+        ?><span class="veloria-animated-text__squeeze"><?php
+        ?><span class="veloria-animated-text__squeeze-frame"><?php
+        ?><span class="veloria-animated-text__squeeze-inner"><?php
+        ?><span class="veloria-animated-text__animated veloria-animated-text__squeeze-sizer" aria-hidden="true"><?php echo esc_html($animated_first); ?></span><?php
+        ?><span class="veloria-animated-text__animated veloria-animated-text__squeeze-text"><?php echo esc_html($animated_first); ?></span><?php
         ?></span><?php
-        ?><span class="elementrify-animated-text__squeeze-corner elementrify-animated-text__squeeze-corner--tl" aria-hidden="true"></span><?php
-        ?><span class="elementrify-animated-text__squeeze-corner elementrify-animated-text__squeeze-corner--tr" aria-hidden="true"></span><?php
-        ?><span class="elementrify-animated-text__squeeze-corner elementrify-animated-text__squeeze-corner--br" aria-hidden="true"></span><?php
-        ?><span class="elementrify-animated-text__squeeze-corner elementrify-animated-text__squeeze-corner--bl" aria-hidden="true"></span><?php
+        ?><span class="veloria-animated-text__squeeze-corner veloria-animated-text__squeeze-corner--tl" aria-hidden="true"></span><?php
+        ?><span class="veloria-animated-text__squeeze-corner veloria-animated-text__squeeze-corner--tr" aria-hidden="true"></span><?php
+        ?><span class="veloria-animated-text__squeeze-corner veloria-animated-text__squeeze-corner--br" aria-hidden="true"></span><?php
+        ?><span class="veloria-animated-text__squeeze-corner veloria-animated-text__squeeze-corner--bl" aria-hidden="true"></span><?php
         ?></span></span><?php
     else :
         $segments = '';
         if ($animated_first !== '') {
             $segments = $reveal_split === 'char'
-                ? \Elementrify\Widgets\AnimatedText\AnimatedText::build_reveal_segments_chars($animated_first)
-                : \Elementrify\Widgets\AnimatedText\AnimatedText::build_reveal_segments($animated_first);
+                ? \Veloria\Widgets\AnimatedText\AnimatedText::build_reveal_segments_chars($animated_first)
+                : \Veloria\Widgets\AnimatedText\AnimatedText::build_reveal_segments($animated_first);
         }
-        ?><span class="elementrify-animated-text__animated"><?php echo $segments; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php
+        ?><span class="veloria-animated-text__animated"><?php echo $segments; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php
     endif;
-    ?><span class="elementrify-animated-text__after"><?php echo esc_html($after); ?></span>
+    ?><span class="veloria-animated-text__after"><?php echo esc_html($after); ?></span>
 </span>

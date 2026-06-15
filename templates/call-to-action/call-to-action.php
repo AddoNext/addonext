@@ -10,13 +10,13 @@ $btn_external = !empty($settings['button_url']['is_external']);
 $btn_nofollow = !empty($settings['button_url']['nofollow']);
 
 ?>
-<div class="elementrify-cta">
-    <div class="elementrify-cta__inner">
+<div class="veloria-cta">
+    <div class="veloria-cta__inner">
         <?php if ($title !== '') : ?>
-            <h3 class="elementrify-cta__title"><?php echo esc_html($title); ?></h3>
+            <h3 class="veloria-cta__title"><?php echo esc_html($title); ?></h3>
         <?php endif; ?>
         <?php if ($desc !== '') : ?>
-            <p class="elementrify-cta__description"><?php echo esc_html($desc); ?></p>
+            <p class="veloria-cta__description"><?php echo esc_html($desc); ?></p>
         <?php endif; ?>
         <?php if ($btn_text !== '') : ?>
             <a href="<?php echo esc_url($btn_url); ?>"<?php
@@ -26,7 +26,7 @@ $btn_nofollow = !empty($settings['button_url']['nofollow']);
             if ($btn_nofollow) {
                 echo ' rel="nofollow"';
             }
-            ?> class="elementrify-cta__button"><?php echo esc_html($btn_text); ?></a>
+            ?> class="veloria-cta__button"><?php echo esc_html($btn_text); ?></a>
         <?php endif; ?>
     </div>
 </div>

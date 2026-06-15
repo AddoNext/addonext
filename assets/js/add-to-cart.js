@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var SHELL = '.elementrify-add-to-cart-shell';
+  var SHELL = '.veloria-add-to-cart-shell';
 
   function parseIntSafe(v, fallback) {
     var n = parseInt(v, 10);
@@ -21,11 +21,11 @@
   }
 
   function getQtyInput(shell) {
-    return shell ? shell.querySelector('.elementrify-add-to-cart__qty-input') : null;
+    return shell ? shell.querySelector('.veloria-add-to-cart__qty-input') : null;
   }
 
   function getCartButton(shell) {
-    return shell ? shell.querySelector('.elementrify-add-to-cart__cart-btn') : null;
+    return shell ? shell.querySelector('.veloria-add-to-cart__cart-btn') : null;
   }
 
   function readMaxFromInput(input) {
@@ -118,8 +118,8 @@
   function getButtonParts(buttonEl) {
     if (!buttonEl) return null;
     return {
-      iconEl: buttonEl.querySelector('.elementrify-add-to-cart__btn-icon i'),
-      labelEl: buttonEl.querySelector('.elementrify-add-to-cart__btn-label')
+      iconEl: buttonEl.querySelector('.veloria-add-to-cart__btn-icon i'),
+      labelEl: buttonEl.querySelector('.veloria-add-to-cart__btn-label')
     };
   }
 
@@ -157,7 +157,7 @@
 
   function clearCartButtonLoading(btn) {
     if (btn && btn.classList) {
-      btn.classList.remove('elementrify-add-to-cart__cart-btn--pending');
+      btn.classList.remove('veloria-add-to-cart__cart-btn--pending');
       btn.classList.remove('loading');
     }
   }
@@ -189,7 +189,7 @@
     if (!data.product_id) return false;
 
     btn.classList.add('loading');
-    btn.classList.add('elementrify-add-to-cart__cart-btn--pending');
+    btn.classList.add('veloria-add-to-cart__cart-btn--pending');
 
     jQuery.ajax({
       type: 'POST',
@@ -220,9 +220,9 @@
     shell.addEventListener('click', function (evt) {
       var t = evt.target;
       if (!t || !t.closest) return;
-      var minus = t.closest('.elementrify-add-to-cart__qty-btn--minus');
-      var plus = t.closest('.elementrify-add-to-cart__qty-btn--plus');
-      var cartBtn = t.closest('.elementrify-add-to-cart__cart-btn');
+      var minus = t.closest('.veloria-add-to-cart__qty-btn--minus');
+      var plus = t.closest('.veloria-add-to-cart__qty-btn--plus');
+      var cartBtn = t.closest('.veloria-add-to-cart__cart-btn');
       if (minus) {
         evt.preventDefault();
         adjustQuantity(shell, -1);
@@ -279,20 +279,20 @@
   if (typeof jQuery !== 'undefined') {
     jQuery(document.body).on('adding_to_cart', function (event, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (btn && btn.classList && btn.classList.contains('elementrify-add-to-cart__cart-btn')) {
-        btn.classList.add('elementrify-add-to-cart__cart-btn--pending');
+      if (btn && btn.classList && btn.classList.contains('veloria-add-to-cart__cart-btn')) {
+        btn.classList.add('veloria-add-to-cart__cart-btn--pending');
       }
     });
     jQuery(document.body).on('ajax_request_not_sent.adding_to_cart', function (event, a, b, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
       if (!btn || !btn.classList) return;
-      if (btn.classList.contains('elementrify-add-to-cart__cart-btn')) {
+      if (btn.classList.contains('veloria-add-to-cart__cart-btn')) {
         clearCartButtonLoading(btn);
       }
     });
     jQuery(document.body).on('added_to_cart', function (event, fragments, cartHash, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (!btn || !btn.classList || !btn.classList.contains('elementrify-add-to-cart__cart-btn')) return;
+      if (!btn || !btn.classList || !btn.classList.contains('veloria-add-to-cart__cart-btn')) return;
       clearCartButtonLoading(btn);
       setButtonVisual(btn, 'added');
       window.clearTimeout(btn.__atcModeTimer);
@@ -311,7 +311,7 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-add-to-cart.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-add-to-cart.default', function ($scope) {
       var el = $scope && $scope[0] ? $scope[0] : $scope;
       if (!el || !el.querySelectorAll) return;
       scan(el);

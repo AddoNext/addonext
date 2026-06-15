@@ -1,29 +1,29 @@
-.elementrify-contact-form {
+.veloria-contact-form {
     max-width: 100%;
 }
 
-.elementrify-contact-form__row {
+.veloria-contact-form__row {
     margin-bottom: 1rem;
 }
 
-.elementrify-contact-form__row:last-of-type {
+.veloria-contact-form__row:last-of-type {
     margin-bottom: 0;
 }
 
-.elementrify-contact-form__row--submit {
+.veloria-contact-form__row--submit {
     margin-top: 1.25rem;
 }
 
-.elementrify-contact-form__label {
+.veloria-contact-form__label {
     display: block;
     margin-bottom: 0.375rem;
     font-weight: 500;
     font-size: 14px;
 }
 
-.elementrify-contact-form__input,
-.elementrify-contact-form__textarea,
-.elementrify-contact-form__select {
+.veloria-contact-form__input,
+.veloria-contact-form__textarea,
+.veloria-contact-form__select {
     display: block;
     width: 100%;
     padding: 0.625rem 0.875rem;
@@ -36,28 +36,28 @@
     box-sizing: border-box;
 }
 
-.elementrify-contact-form__input::placeholder,
-.elementrify-contact-form__textarea::placeholder {
+.veloria-contact-form__input::placeholder,
+.veloria-contact-form__textarea::placeholder {
     font-size: 14px;
 }
 
-.elementrify-contact-form__input:focus,
-.elementrify-contact-form__textarea:focus,
-.elementrify-contact-form__select:focus {
+.veloria-contact-form__input:focus,
+.veloria-contact-form__textarea:focus,
+.veloria-contact-form__select:focus {
     outline: none;
     border-color: #2563eb;
 }
 
-.elementrify-contact-form__textarea {
+.veloria-contact-form__textarea {
     min-height: 120px;
     resize: vertical;
 }
 
-.elementrify-contact-form__input--file {
+.veloria-contact-form__input--file {
     padding: 0.5rem 0;
 }
 
-.elementrify-contact-form__submit {
+.veloria-contact-form__submit {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -72,48 +72,48 @@
     cursor: pointer;
 }
 
-.elementrify-contact-form__spinner {
+.veloria-contact-form__spinner {
     display: none;
     width: 1em;
     height: 1em;
     border: 2px solid currentColor;
     border-right-color: transparent;
     border-radius: 50%;
-    animation: elementrify-contact-form-spin 0.6s linear infinite;
+    animation: veloria-contact-form-spin 0.6s linear infinite;
 }
 
-.elementrify-contact-form__submit--loading .elementrify-contact-form__spinner {
+.veloria-contact-form__submit--loading .veloria-contact-form__spinner {
     display: block;
 }
 
-.elementrify-contact-form__submit--loading .elementrify-contact-form__submit-text {
+.veloria-contact-form__submit--loading .veloria-contact-form__submit-text {
     order: 1;
 }
 
-.elementrify-contact-form__submit--loading .elementrify-contact-form__spinner {
+.veloria-contact-form__submit--loading .veloria-contact-form__spinner {
     order: 0;
 }
 
-@keyframes elementrify-contact-form-spin {
+@keyframes veloria-contact-form-spin {
     to {
         transform: rotate(360deg);
     }
 }
 
-.elementrify-contact-form__submit:hover:not(:disabled) {
+.veloria-contact-form__submit:hover:not(:disabled) {
     background-color: #1d4ed8;
 }
 
-.elementrify-contact-form__submit:disabled {
+.veloria-contact-form__submit:disabled {
     opacity: 0.7;
     cursor: not-allowed;
 }
 
-.elementrify-contact-form__recaptcha {
+.veloria-contact-form__recaptcha {
     margin-bottom: 1rem;
 }
 
-.elementrify-contact-form__message {
+.veloria-contact-form__message {
     margin-top: 1rem;
     padding: 0.75rem;
     border-radius: 6px;
@@ -121,12 +121,12 @@
     line-height: 1.4;
 }
 
-.elementrify-contact-form__message--success {
+.veloria-contact-form__message--success {
     background-color: #d1fae5;
     color: #065f46;
 }
 
-.elementrify-contact-form__message--error {
+.veloria-contact-form__message--error {
     background-color: #fee2e2;
     color: #991b1b;
 }

@@ -18,36 +18,36 @@ $socialItems = isset($settings['social_items']) && is_array($settings['social_it
 $statItems = isset($settings['stat_items']) && is_array($settings['stat_items']) ? $settings['stat_items'] : [];
 $isEditor = Plugin::$instance->editor->is_edit_mode();
 
-$this->add_render_attribute('job_title', 'class', 'elementrify-author-box__job');
+$this->add_render_attribute('job_title', 'class', 'veloria-author-box__job');
 $this->add_inline_editing_attributes('job_title', 'basic');
-$this->add_render_attribute('bio', 'class', 'elementrify-author-box__bio');
+$this->add_render_attribute('bio', 'class', 'veloria-author-box__bio');
 $this->add_inline_editing_attributes('bio', 'advanced');
 
 if ($hasNameLink) {
-    $this->add_render_attribute('name', 'class', 'elementrify-author-box__name');
+    $this->add_render_attribute('name', 'class', 'veloria-author-box__name');
     $this->add_link_attributes('name', $profileLink);
     $this->add_inline_editing_attributes('name', 'basic');
 } else {
-    $this->add_render_attribute('name', 'class', 'elementrify-author-box__name');
+    $this->add_render_attribute('name', 'class', 'veloria-author-box__name');
     $this->add_inline_editing_attributes('name', 'basic');
 }
 ?>
-<div class="elementrify-author-box">
-    <div class="elementrify-author-box__card">
-        <div class="elementrify-author-box__top">
+<div class="veloria-author-box">
+    <div class="veloria-author-box__card">
+        <div class="veloria-author-box__top">
             <?php if (!empty($avatar['id']) || !empty($avatar['url'])) : ?>
-                <div class="elementrify-author-box__avatar-wrap">
+                <div class="veloria-author-box__avatar-wrap">
                     <?php
                     if (!empty($avatar['id'])) {
                         echo wp_get_attachment_image(
                             (int) $avatar['id'],
                             'medium',
                             false,
-                            ['class' => 'elementrify-author-box__avatar', 'alt' => esc_attr($name)]
+                            ['class' => 'veloria-author-box__avatar', 'alt' => esc_attr($name)]
                         );
                     } else {
                         printf(
-                            '<img src="%s" alt="%s" class="elementrify-author-box__avatar" />',
+                            '<img src="%s" alt="%s" class="veloria-author-box__avatar" />',
                             esc_url($avatar['url']),
                             esc_attr($name)
                         );
@@ -56,10 +56,10 @@ if ($hasNameLink) {
                 </div>
             <?php endif; ?>
 
-            <div class="elementrify-author-box__main">
+            <div class="veloria-author-box__main">
                 <?php if ($name !== '' || $isEditor) : ?>
                     <?php if ($hasNameLink) : ?>
-                        <h3 class="elementrify-author-box__name-heading">
+                        <h3 class="veloria-author-box__name-heading">
                             <a <?php $this->print_render_attribute_string('name'); ?>><?php echo esc_html($name); ?></a>
                         </h3>
                     <?php else : ?>
@@ -76,7 +76,7 @@ if ($hasNameLink) {
                 <?php endif; ?>
 
                 <?php if ($showSocial && !empty($socialItems)) : ?>
-                    <ul class="elementrify-author-box__social">
+                    <ul class="veloria-author-box__social">
                         <?php foreach ($socialItems as $socialIndex => $item) : ?>
                             <?php
                             $network = isset($item['network']) ? preg_replace('/[^a-z]/', '', (string) $item['network']) : 'twitter';
@@ -91,10 +91,10 @@ if ($hasNameLink) {
                             } else {
                                 $this->add_render_attribute($socialKey, 'href', '#');
                             }
-                            $this->add_render_attribute($socialKey, 'class', 'elementrify-author-box__social-link elementrify-author-box__social-link--' . $network);
+                            $this->add_render_attribute($socialKey, 'class', 'veloria-author-box__social-link veloria-author-box__social-link--' . $network);
                             $this->add_render_attribute($socialKey, 'aria-label', ucfirst($network));
                             ?>
-                            <li class="elementrify-author-box__social-item">
+                            <li class="veloria-author-box__social-item">
                                 <a <?php $this->print_render_attribute_string($socialKey); ?>>
                                     <?php
                                     if (!empty($iconData['value'])) {
@@ -110,21 +110,21 @@ if ($hasNameLink) {
         </div>
 
         <?php if ($showDivider && $showStats && !empty($statItems)) : ?>
-            <div class="elementrify-author-box__divider" aria-hidden="true"></div>
+            <div class="veloria-author-box__divider" aria-hidden="true"></div>
         <?php endif; ?>
 
         <?php if ($showStats && !empty($statItems)) : ?>
-            <div class="elementrify-author-box__stats">
+            <div class="veloria-author-box__stats">
                 <?php foreach ($statItems as $index => $st) : ?>
                     <?php
                     $valueKey = 'stat_items.' . $index . '.stat_value';
                     $labelKey = 'stat_items.' . $index . '.stat_label';
-                    $this->add_render_attribute($valueKey, 'class', 'elementrify-author-box__stat-value');
+                    $this->add_render_attribute($valueKey, 'class', 'veloria-author-box__stat-value');
                     $this->add_inline_editing_attributes($valueKey, 'basic');
-                    $this->add_render_attribute($labelKey, 'class', 'elementrify-author-box__stat-label');
+                    $this->add_render_attribute($labelKey, 'class', 'veloria-author-box__stat-label');
                     $this->add_inline_editing_attributes($labelKey, 'basic');
                     ?>
-                    <div class="elementrify-author-box__stat">
+                    <div class="veloria-author-box__stat">
                         <span <?php $this->print_render_attribute_string($valueKey); ?>><?php echo esc_html((string) ($st['stat_value'] ?? '')); ?></span>
                         <span <?php $this->print_render_attribute_string($labelKey); ?>><?php echo esc_html((string) ($st['stat_label'] ?? '')); ?></span>
                     </div>

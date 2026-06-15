@@ -1,14 +1,14 @@
 <?php
-namespace Elementrify\Extensions\ParticleEffects;
+namespace Veloria\Extensions\ParticleEffects;
 
-use Elementrify\Base\ExtensionBase;
+use Veloria\Base\ExtensionBase;
 
 defined('ABSPATH') or exit;
 
 /**
  * Optional canvas particle overlays on widgets and layout elements (Style tab).
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class ParticleEffects extends ExtensionBase
@@ -31,7 +31,7 @@ class ParticleEffects extends ExtensionBase
      */
     public function get_title(): string
     {
-        return __('Particle Effects', 'elementrify');
+        return __('Particle Effects', 'veloria');
     }
 
     /**
@@ -39,7 +39,7 @@ class ParticleEffects extends ExtensionBase
      */
     public function get_description(): string
     {
-        return __('Add animated particle backgrounds from the Style tab on widgets, sections, columns, and containers.', 'elementrify');
+        return __('Add animated particle backgrounds from the Style tab on widgets, sections, columns, and containers.', 'veloria');
     }
 
     /**
@@ -47,7 +47,7 @@ class ParticleEffects extends ExtensionBase
      */
     public function get_icon(): string
     {
-        return 'eicon-animation elementrify-icon';
+        return 'eicon-animation veloria-icon';
     }
 
     /**
@@ -141,22 +141,22 @@ class ParticleEffects extends ExtensionBase
 
         wp_register_style(
             'particle-effects',
-            ELEMENTRIFY_URL . 'assets/css/extensions/particle-effects.css',
+            VELORIA_URL . 'assets/css/extensions/particle-effects.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
             'particlesjs',
-            ELEMENTRIFY_URL . 'assets/js/lib/particles.min.js',
+            VELORIA_URL . 'assets/js/lib/particles.min.js',
             [],
             '2.0.0',
             true
         );
         wp_register_script(
             'particle-effects',
-            ELEMENTRIFY_URL . 'assets/js/extensions/particle-effects.js',
+            VELORIA_URL . 'assets/js/extensions/particle-effects.js',
             ['jquery', 'particlesjs', 'elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -192,20 +192,20 @@ class ParticleEffects extends ExtensionBase
                 $registered[$stack_name] = true;
 
                 $element->start_controls_section(
-            'section_elementrify_particles',
+            'section_veloria_particles',
             [
-                'label' => __('Particle effects', 'elementrify'),
+                'label' => __('Particle effects', 'veloria'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $element->add_control(
-            'elementrify_particles_enable',
+            'veloria_particles_enable',
             [
-                'label'              => __('Particle overlay', 'elementrify'),
+                'label'              => __('Particle overlay', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'           => __('Yes', 'elementrify'),
-                'label_off'          => __('No', 'elementrify'),
+                'label_on'           => __('Yes', 'veloria'),
+                'label_off'          => __('No', 'veloria'),
                 'return_value'       => 'yes',
                 'default'            => '',
                 'frontend_available' => true,
@@ -213,31 +213,31 @@ class ParticleEffects extends ExtensionBase
         );
 
         $element->add_control(
-            'elementrify_particles_preset',
+            'veloria_particles_preset',
             [
-                'label'              => __('Effect preset', 'elementrify'),
+                'label'              => __('Effect preset', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SELECT,
                 'default'            => 'default',
                 'frontend_available' => true,
                 'options'            => [
-                    'default'  => __('Default network', 'elementrify'),
-                    'snow'     => __('Snow', 'elementrify'),
-                    'bubbles'  => __('Bubbles', 'elementrify'),
-                    'stardust' => __('Stardust', 'elementrify'),
-                    'polygons' => __('Polygons', 'elementrify'),
-                    'links'    => __('Linked nodes', 'elementrify'),
-                    'nyan'     => __('Rainbow trail', 'elementrify'),
+                    'default'  => __('Default network', 'veloria'),
+                    'snow'     => __('Snow', 'veloria'),
+                    'bubbles'  => __('Bubbles', 'veloria'),
+                    'stardust' => __('Stardust', 'veloria'),
+                    'polygons' => __('Polygons', 'veloria'),
+                    'links'    => __('Linked nodes', 'veloria'),
+                    'nyan'     => __('Rainbow trail', 'veloria'),
                 ],
                 'condition'          => [
-                    'elementrify_particles_enable' => 'yes',
+                    'veloria_particles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_particles_density',
+            'veloria_particles_density',
             [
-                'label'              => __('Density', 'elementrify'),
+                'label'              => __('Density', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SLIDER,
                 'size_units'         => ['px'],
                 'range'              => [
@@ -252,15 +252,15 @@ class ParticleEffects extends ExtensionBase
                 ],
                 'frontend_available' => true,
                 'condition'          => [
-                    'elementrify_particles_enable' => 'yes',
+                    'veloria_particles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_particles_speed',
+            'veloria_particles_speed',
             [
-                'label'              => __('Animation speed', 'elementrify'),
+                'label'              => __('Animation speed', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::SLIDER,
                 'size_units'         => ['px'],
                 'range'              => [
@@ -274,36 +274,36 @@ class ParticleEffects extends ExtensionBase
                     'size' => 100,
                 ],
                 'frontend_available' => true,
-                'description'        => __('100% matches each preset’s default motion. Lower is slower, higher is faster.', 'elementrify'),
+                'description'        => __('100% matches each preset’s default motion. Lower is slower, higher is faster.', 'veloria'),
                 'condition'          => [
-                    'elementrify_particles_enable' => 'yes',
+                    'veloria_particles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_particles_node_color',
+            'veloria_particles_node_color',
             [
-                'label'              => __('Node color', 'elementrify'),
+                'label'              => __('Node color', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::COLOR,
                 'default'            => '#ffffff',
                 'frontend_available' => true,
                 'condition'          => [
-                    'elementrify_particles_enable' => 'yes',
+                    'veloria_particles_enable' => 'yes',
                 ],
             ]
         );
 
         $element->add_control(
-            'elementrify_particles_line_color',
+            'veloria_particles_line_color',
             [
-                'label'              => __('Line color', 'elementrify'),
-                'description'        => __('Used for linked presets (Default, Polygons, Linked). Leave empty to match node color.', 'elementrify'),
+                'label'              => __('Line color', 'veloria'),
+                'description'        => __('Used for linked presets (Default, Polygons, Linked). Leave empty to match node color.', 'veloria'),
                 'type'               => \Elementor\Controls_Manager::COLOR,
                 'default'            => '',
                 'frontend_available' => true,
                 'condition'          => [
-                    'elementrify_particles_enable' => 'yes',
+                    'veloria_particles_enable' => 'yes',
                 ],
             ]
         );
@@ -327,11 +327,11 @@ class ParticleEffects extends ExtensionBase
 
                 $settings = $element->get_settings_for_display();
 
-                if (empty($settings['elementrify_particles_enable']) || $settings['elementrify_particles_enable'] !== 'yes') {
+                if (empty($settings['veloria_particles_enable']) || $settings['veloria_particles_enable'] !== 'yes') {
                     return;
                 }
 
-                $preset = isset($settings['elementrify_particles_preset']) ? (string) $settings['elementrify_particles_preset'] : 'default';
+                $preset = isset($settings['veloria_particles_preset']) ? (string) $settings['veloria_particles_preset'] : 'default';
                 $allowed = ['default', 'snow', 'bubbles', 'stardust', 'polygons', 'links', 'nyan'];
 
                 if (!in_array($preset, $allowed, true)) {
@@ -340,9 +340,9 @@ class ParticleEffects extends ExtensionBase
 
                 $density = 80;
 
-                if (isset($settings['elementrify_particles_density']) && is_array($settings['elementrify_particles_density'])) {
-                    $density = isset($settings['elementrify_particles_density']['size'])
-                        ? (int) $settings['elementrify_particles_density']['size']
+                if (isset($settings['veloria_particles_density']) && is_array($settings['veloria_particles_density'])) {
+                    $density = isset($settings['veloria_particles_density']['size'])
+                        ? (int) $settings['veloria_particles_density']['size']
                         : 80;
                 }
 
@@ -350,31 +350,31 @@ class ParticleEffects extends ExtensionBase
 
                 $speedPercent = 100;
 
-                if (isset($settings['elementrify_particles_speed']) && is_array($settings['elementrify_particles_speed'])) {
-                    $speedPercent = isset($settings['elementrify_particles_speed']['size'])
-                        ? (int) $settings['elementrify_particles_speed']['size']
+                if (isset($settings['veloria_particles_speed']) && is_array($settings['veloria_particles_speed'])) {
+                    $speedPercent = isset($settings['veloria_particles_speed']['size'])
+                        ? (int) $settings['veloria_particles_speed']['size']
                         : 100;
                 }
 
                 $speedPercent = max(10, min(300, $speedPercent));
 
-                $nodeRaw = $this->extract_color_input($settings, 'elementrify_particles_node_color', 'elementrify_particles_color');
+                $nodeRaw = $this->extract_color_input($settings, 'veloria_particles_node_color', 'veloria_particles_color');
 
                 $nodeColor = $this->sanitize_color_value($nodeRaw, '#ffffff');
 
-                $lineRaw = $this->extract_color_input($settings, 'elementrify_particles_line_color', null);
+                $lineRaw = $this->extract_color_input($settings, 'veloria_particles_line_color', null);
                 $lineColor = $lineRaw !== '' ? $this->sanitize_color_value($lineRaw, '') : '';
 
-                $element->add_render_attribute('_wrapper', 'class', 'elementrify-particles');
-                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-host-id', esc_attr($element->get_id()));
-                $element->add_render_attribute('_wrapper', 'data-elementrify-particles', 'yes');
-                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-preset', $preset);
-                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-density', (string) $density);
-                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-speed', (string) $speedPercent);
-                $element->add_render_attribute('_wrapper', 'data-elementrify-particles-node', esc_attr($nodeColor));
+                $element->add_render_attribute('_wrapper', 'class', 'veloria-particles');
+                $element->add_render_attribute('_wrapper', 'data-veloria-particles-host-id', esc_attr($element->get_id()));
+                $element->add_render_attribute('_wrapper', 'data-veloria-particles', 'yes');
+                $element->add_render_attribute('_wrapper', 'data-veloria-particles-preset', $preset);
+                $element->add_render_attribute('_wrapper', 'data-veloria-particles-density', (string) $density);
+                $element->add_render_attribute('_wrapper', 'data-veloria-particles-speed', (string) $speedPercent);
+                $element->add_render_attribute('_wrapper', 'data-veloria-particles-node', esc_attr($nodeColor));
 
                 if ($lineColor !== '') {
-                    $element->add_render_attribute('_wrapper', 'data-elementrify-particles-line', esc_attr($lineColor));
+                    $element->add_render_attribute('_wrapper', 'data-veloria-particles-line', esc_attr($lineColor));
                 }
             }
         }

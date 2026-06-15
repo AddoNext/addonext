@@ -14,13 +14,13 @@ import { ConfirmProvider } from "./contexts/ConfirmContext/ConfirmContext";
 import { STORE_NAME } from "../store/admin";
 import styles from "./App.module.scss";
 
-const STORAGE_KEY = "elementrify-theme";
+const STORAGE_KEY = "veloria-theme";
 const DEFAULT_TAB_SLUG = "widgets";
-const WPBODY_DARK_CLASS = "elementrify-dark-mode";
+const WPBODY_DARK_CLASS = "veloria-dark-mode";
 
 declare global {
   interface Window {
-    elementrifyAdminData?: {
+    veloriaAdminData?: {
       isElementorActive?: boolean;
     };
   }
@@ -30,11 +30,11 @@ function readElementorActive(): boolean {
   if (typeof window === "undefined" || typeof document === "undefined") {
     return true;
   }
-  const localized = window.elementrifyAdminData?.isElementorActive;
+  const localized = window.veloriaAdminData?.isElementorActive;
   if (typeof localized === "boolean") {
     return localized;
   }
-  const root = document.getElementById("elementrify-admin");
+  const root = document.getElementById("veloria-admin");
   const attr = root?.getAttribute("data-elementor-active");
   if (attr === "1") {
     return true;
@@ -110,7 +110,7 @@ export const App = () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = result.backup_name ?? "elementrify-backup.json";
+        a.download = result.backup_name ?? "veloria-backup.json";
         a.click();
         URL.revokeObjectURL(url);
       }
@@ -139,7 +139,7 @@ export const App = () => {
                   </div>
                   <h2 className={styles.elementorRequiredTitle}>Elementor Plugin Required</h2>
                   <p className={styles.elementorRequiredText}>
-                    Elementrify needs Elementor to be active before it can load widgets, extensions, and settings.
+                    Veloria needs Elementor to be active before it can load widgets, extensions, and settings.
                     Please activate the Elementor plugin, then refresh this page.
                   </p>
                 </section>

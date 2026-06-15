@@ -1,18 +1,18 @@
-.elementrify-wty {
+.veloria-wty {
   box-sizing: border-box;
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.elementrify-wty *,
-.elementrify-wty *::before,
-.elementrify-wty *::after {
+.veloria-wty *,
+.veloria-wty *::before,
+.veloria-wty *::after {
   box-sizing: border-box;
 }
 
-.elementrify-wty--empty,
-.elementrify-wty--inactive {
+.veloria-wty--empty,
+.veloria-wty--inactive {
   padding: 1rem 1.25rem;
   border-radius: 12px;
   background: #f1f5f9;
@@ -21,7 +21,7 @@
   text-align: center;
 }
 
-.elementrify-wty__surface {
+.veloria-wty__surface {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,7 @@
   padding: 32px 28px;
 }
 
-.elementrify-wty__success-icon {
+.veloria-wty__success-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -44,12 +44,12 @@
   font-size: 1.5rem;
 }
 
-.elementrify-wty__success-icon svg {
+.veloria-wty__success-icon svg {
   width: 1em;
   height: 1em;
 }
 
-.elementrify-wty__heading {
+.veloria-wty__heading {
   margin: 0 0 0.75rem;
   font-size: 1.5rem;
   font-weight: 700;
@@ -57,7 +57,7 @@
   color: #0f172a;
 }
 
-.elementrify-wty__description {
+.veloria-wty__description {
   margin: 0 0 1.5rem;
   max-width: 36rem;
   font-size: 0.9375rem;
@@ -65,7 +65,7 @@
   color: #64748b;
 }
 
-.elementrify-wty__details {
+.veloria-wty__details {
   width: 100%;
   max-width: 28rem;
   display: grid;
@@ -78,26 +78,26 @@
   border-radius: 12px;
 }
 
-.elementrify-wty__detail {
+.veloria-wty__detail {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   min-width: 0;
 }
 
-.elementrify-wty__detail-label {
+.veloria-wty__detail-label {
   font-size: 0.8125rem;
   color: #64748b;
 }
 
-.elementrify-wty__detail-value {
+.veloria-wty__detail-value {
   font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
   word-break: break-word;
 }
 
-.elementrify-wty__actions {
+.veloria-wty__actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -106,7 +106,7 @@
   margin-top: 1.25rem;
 }
 
-.elementrify-wty-btn {
+.veloria-wty-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,72 +124,72 @@
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.elementrify-wty-btn:hover {
+.veloria-wty-btn:hover {
   opacity: 0.92;
   text-decoration: none;
 }
 
-.elementrify-wty-btn:focus-visible {
+.veloria-wty-btn:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.elementrify-wty-btn__icon {
+.veloria-wty-btn__icon {
   display: inline-flex;
   flex-shrink: 0;
   font-size: 1rem;
 }
 
-.elementrify-wty-btn__icon svg {
+.veloria-wty-btn__icon svg {
   width: 1em;
   height: 1em;
   display: block;
 }
 
-.elementrify-wty-btn--track {
+.veloria-wty-btn--track {
   background-color: #2563eb;
   border-color: #2563eb;
   color: #ffffff;
 }
 
-.elementrify-wty-btn--continue {
+.veloria-wty-btn--continue {
   background-color: #f1f5f9;
   border-color: #f1f5f9;
   color: #0f172a;
 }
 
-.elementrify-wty-btn--receipt {
+.veloria-wty-btn--receipt {
   background-color: #16a34a;
   border-color: #16a34a;
   color: #ffffff;
 }
 
-.elementrify-wty-btn--track .elementrify-wty-btn__icon,
-.elementrify-wty-btn--receipt .elementrify-wty-btn__icon {
+.veloria-wty-btn--track .veloria-wty-btn__icon,
+.veloria-wty-btn--receipt .veloria-wty-btn__icon {
   color: inherit;
 }
 
-.elementrify-wty-btn--track .elementrify-wty-btn__icon svg,
-.elementrify-wty-btn--receipt .elementrify-wty-btn__icon svg {
+.veloria-wty-btn--track .veloria-wty-btn__icon svg,
+.veloria-wty-btn--receipt .veloria-wty-btn__icon svg {
   fill: currentColor;
 }
 
-.elementrify-wty-btn--track .elementrify-wty-btn__icon svg path,
-.elementrify-wty-btn--receipt .elementrify-wty-btn__icon svg path {
+.veloria-wty-btn--track .veloria-wty-btn__icon svg path,
+.veloria-wty-btn--receipt .veloria-wty-btn__icon svg path {
   fill: currentColor;
 }
 
-.elementrify-wty-btn--track .elementrify-wty-btn__icon i,
-.elementrify-wty-btn--receipt .elementrify-wty-btn__icon i {
+.veloria-wty-btn--track .veloria-wty-btn__icon i,
+.veloria-wty-btn--receipt .veloria-wty-btn__icon i {
   color: inherit;
 }
 
 @media (max-width: 479px) {
-  .elementrify-wty__details {
+  .veloria-wty__details {
     grid-template-columns: 1fr;
   }
 
-  .elementrify-wty-btn {
+  .veloria-wty-btn {
     flex: 1 1 100%;
   }
 }

@@ -1,14 +1,14 @@
 <?php
-namespace Elementrify\Base;
+namespace Veloria\Base;
 
-use Elementrify\Utils\OptionsHelper;
+use Veloria\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
  * Base class for migrations
  *
- * @package Elementrify\Base
+ * @package Veloria\Base
  */
 abstract class MigrationBase
 {

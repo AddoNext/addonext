@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 if (!class_exists('WooCommerce')) {
-    echo '<div class="elementrify-product-tabs__placeholder">' . esc_html__('WooCommerce is required.', 'elementrify') . '</div>';
+    echo '<div class="veloria-product-tabs__placeholder">' . esc_html__('WooCommerce is required.', 'veloria') . '</div>';
     return;
 }
 
@@ -10,7 +10,7 @@ $settings = $this->get_settings_for_display();
 $tabs = isset($settings['tabs']) && is_array($settings['tabs']) ? $settings['tabs'] : [];
 
 if ($tabs === []) {
-    echo '<div class="elementrify-product-tabs__placeholder">' . esc_html__('Add tabs in the widget settings.', 'elementrify') . '</div>';
+    echo '<div class="veloria-product-tabs__placeholder">' . esc_html__('Add tabs in the widget settings.', 'veloria') . '</div>';
     return;
 }
 
@@ -45,7 +45,7 @@ if ($cart_base === '' || $cart_base === $home_base) {
 }
 
 $widget_uid = 'ept-' . preg_replace('/[^a-z0-9\-]/i', '', (string) $this->get_id());
-$prefix = 'elementrify-product-grid';
+$prefix = 'veloria-product-grid';
 $card_effect = preg_replace('/[^a-z\-]/', '', (string) $image_hover_effect);
 if ($card_effect === '') {
     $card_effect = 'none';
@@ -60,8 +60,8 @@ $tabs_grid_vars = sprintf(
     $row_gap
 );
 ?>
-<div class="elementrify-product-tabs" data-elementrify-product-tabs="1" style="<?php echo esc_attr($tabs_grid_vars); ?>">
-    <div class="elementrify-product-tabs__nav" role="tablist" aria-label="<?php esc_attr_e('Product collections', 'elementrify'); ?>">
+<div class="veloria-product-tabs" data-veloria-product-tabs="1" style="<?php echo esc_attr($tabs_grid_vars); ?>">
+    <div class="veloria-product-tabs__nav" role="tablist" aria-label="<?php esc_attr_e('Product collections', 'veloria'); ?>">
         <?php foreach ($tabs as $ti => $tab_row) : ?>
             <?php
             if (!is_array($tab_row)) {
@@ -69,7 +69,7 @@ $tabs_grid_vars = sprintf(
             }
             $tab_title = isset($tab_row['tab_title']) ? (string) $tab_row['tab_title'] : '';
             if (trim($tab_title) === '') {
-                $tab_title = sprintf(/* translators: %d: tab index */ __('Tab %d', 'elementrify'), (int) $ti + 1);
+                $tab_title = sprintf(/* translators: %d: tab index */ __('Tab %d', 'veloria'), (int) $ti + 1);
             }
             $tab_btn_id = $widget_uid . '-tab-' . (int) $ti;
             $tab_panel_id = $widget_uid . '-panel-' . (int) $ti;
@@ -77,7 +77,7 @@ $tabs_grid_vars = sprintf(
             ?>
             <button
                 type="button"
-                class="elementrify-product-tabs__tab elementor-clickable<?php echo $is_first ? ' is-active' : ''; ?>"
+                class="veloria-product-tabs__tab elementor-clickable<?php echo $is_first ? ' is-active' : ''; ?>"
                 role="tab"
                 id="<?php echo esc_attr($tab_btn_id); ?>"
                 aria-selected="<?php echo $is_first ? 'true' : 'false'; ?>"
@@ -87,13 +87,13 @@ $tabs_grid_vars = sprintf(
         <?php endforeach; ?>
     </div>
 
-    <div class="elementrify-product-tabs__panels">
+    <div class="veloria-product-tabs__panels">
         <?php foreach ($tabs as $ti => $tab_row) : ?>
             <?php
             if (!is_array($tab_row)) {
                 continue;
             }
-            $query_args = \Elementrify\Widgets\ProductTabs\ProductTabs::build_tab_row_query_args($tab_row);
+            $query_args = \Veloria\Widgets\ProductTabs\ProductTabs::build_tab_row_query_args($tab_row);
             $product_query = new \WP_Query($query_args);
 
             $tab_btn_id = $widget_uid . '-tab-' . (int) $ti;
@@ -113,18 +113,18 @@ $tabs_grid_vars = sprintf(
             }
             ?>
             <div
-                class="elementrify-product-tabs__panel<?php echo $is_first ? ' is-active' : ''; ?>"
+                class="veloria-product-tabs__panel<?php echo $is_first ? ' is-active' : ''; ?>"
                 id="<?php echo esc_attr($tab_panel_id); ?>"
                 role="tabpanel"
                 aria-labelledby="<?php echo esc_attr($tab_btn_id); ?>"
                 <?php echo $is_first ? '' : 'hidden'; ?>
             >
                 <div
-                    class="elementrify-product-tabs__grid-shell"
+                    class="veloria-product-tabs__grid-shell"
                     <?php echo $cart_url !== '' ? 'data-cart-url="' . esc_url($cart_url) . '"' : ''; ?>
                 >
                     <?php if ($product_query->have_posts()) : ?>
-                        <div class="elementrify-product-grid elementrify-product-tabs__grid">
+                        <div class="veloria-product-grid veloria-product-tabs__grid">
                             <?php
                             while ($product_query->have_posts()) :
                                 $product_query->the_post();
@@ -151,10 +151,10 @@ $tabs_grid_vars = sprintf(
                                         <?php if ($show_badges && ($is_on_sale || $is_featured)) : ?>
                                             <div class="<?php echo esc_attr($prefix); ?>__badges">
                                                 <?php if ($is_on_sale) : ?>
-                                                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--sale"><?php esc_html_e('Sale', 'elementrify'); ?></span>
+                                                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--sale"><?php esc_html_e('Sale', 'veloria'); ?></span>
                                                 <?php endif; ?>
                                                 <?php if ($is_featured) : ?>
-                                                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--new"><?php esc_html_e('Featured', 'elementrify'); ?></span>
+                                                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--new"><?php esc_html_e('Featured', 'veloria'); ?></span>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>
@@ -189,7 +189,7 @@ $tabs_grid_vars = sprintf(
                                             <?php if ($show_wishlist || $show_add_to_cart) : ?>
                                                 <span class="<?php echo esc_attr($prefix); ?>__actions">
                                                     <?php if ($show_wishlist) : ?>
-                                                        <a class="<?php echo esc_attr($prefix); ?>__icon-btn" href="<?php echo esc_url($permalink); ?>" aria-label="<?php esc_attr_e('View Product', 'elementrify'); ?>">
+                                                        <a class="<?php echo esc_attr($prefix); ?>__icon-btn" href="<?php echo esc_url($permalink); ?>" aria-label="<?php esc_attr_e('View Product', 'veloria'); ?>">
                                                             <i class="far fa-heart" aria-hidden="true"></i>
                                                         </a>
                                                     <?php endif; ?>
@@ -204,7 +204,7 @@ $tabs_grid_vars = sprintf(
                                                             aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>">
                                                             <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                                                         </a>
-                                                        <a class="<?php echo esc_attr($prefix); ?>__cart-tooltip" href="#"><?php esc_html_e('View cart', 'elementrify'); ?></a>
+                                                        <a class="<?php echo esc_attr($prefix); ?>__cart-tooltip" href="#"><?php esc_html_e('View cart', 'veloria'); ?></a>
                                                     <?php endif; ?>
                                                 </span>
                                             <?php endif; ?>
@@ -217,14 +217,14 @@ $tabs_grid_vars = sprintf(
                             ?>
                         </div>
                     <?php else : ?>
-                        <div class="elementrify-product-grid__placeholder"><?php esc_html_e('No products found for this tab.', 'elementrify'); ?></div>
+                        <div class="veloria-product-grid__placeholder"><?php esc_html_e('No products found for this tab.', 'veloria'); ?></div>
                     <?php endif; ?>
                 </div>
 
                 <?php if ($footer_text !== '') : ?>
-                    <div class="elementrify-product-tabs__footer">
+                    <div class="veloria-product-tabs__footer">
                         <?php if ($footer_url !== '') : ?>
-                            <a class="elementrify-product-tabs__cta" href="<?php echo esc_url($footer_url); ?>"<?php
+                            <a class="veloria-product-tabs__cta" href="<?php echo esc_url($footer_url); ?>"<?php
                             if (!empty($footer_link['is_external'])) {
                                 echo ' target="_blank"';
                             }
@@ -235,7 +235,7 @@ $tabs_grid_vars = sprintf(
                                 <?php echo esc_html($footer_text); ?>
                             </a>
                         <?php else : ?>
-                            <span class="elementrify-product-tabs__cta elementrify-product-tabs__cta--static"><?php echo esc_html($footer_text); ?></span>
+                            <span class="veloria-product-tabs__cta veloria-product-tabs__cta--static"><?php echo esc_html($footer_text); ?></span>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

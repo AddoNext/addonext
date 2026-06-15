@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ProductFilter;
+namespace Veloria\Widgets\ProductFilter;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -11,11 +11,11 @@ class ProductFilter extends WidgetBase
 {
     private static bool $min_rating_hooked = false;
 
-    public function get_icon(): string { return 'eicon-filter elementrify-icon'; }
-    public function get_name(): string { return 'elementrify-product-filter'; }
+    public function get_icon(): string { return 'eicon-filter veloria-icon'; }
+    public function get_name(): string { return 'veloria-product-filter'; }
     public function get_admin_category(): string { return 'woocommerce'; }
-    public function get_title(): string { return __('Product Filter', 'elementrify'); }
-    public function get_description(): string { return __('WooCommerce filter panel with price, taxonomies, and rating.', 'elementrify'); }
+    public function get_title(): string { return __('Product Filter', 'veloria'); }
+    public function get_description(): string { return __('WooCommerce filter panel with price, taxonomies, and rating.', 'veloria'); }
     public function get_brand_color(): string { return '#7f54b3'; }
     
     public function get_required_plan(): string
@@ -23,8 +23,8 @@ class ProductFilter extends WidgetBase
         return 'pro';
     }
 
-    public function get_style_depends(): array { return ['elementrify-product-filter']; }
-    public function get_script_depends(): array { return ['elementrify-product-filter']; }
+    public function get_style_depends(): array { return ['veloria-product-filter']; }
+    public function get_script_depends(): array { return ['veloria-product-filter']; }
 
     public function enqueue_assets(): void
     {
@@ -32,17 +32,17 @@ class ProductFilter extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         wp_register_style(
-            'elementrify-product-filter',
-            ELEMENTRIFY_URL . 'assets/css/product-filter.css',
+            'veloria-product-filter',
+            VELORIA_URL . 'assets/css/product-filter.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-product-filter',
-            ELEMENTRIFY_URL . 'assets/js/product-filter.js',
+            'veloria-product-filter',
+            VELORIA_URL . 'assets/js/product-filter.js',
             ['jquery'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
                 }
@@ -67,10 +67,10 @@ class ProductFilter extends WidgetBase
      */
     public static function disable_single_result_redirect_for_filter_form(bool $should_redirect): bool
     {
-        if (!$should_redirect || empty($_GET['elementrify_pf'])) {
+        if (!$should_redirect || empty($_GET['veloria_pf'])) {
             return $should_redirect;
         }
-        $marker = sanitize_text_field(wp_unslash((string) $_GET['elementrify_pf']));
+        $marker = sanitize_text_field(wp_unslash((string) $_GET['veloria_pf']));
 
         return $marker === '1' ? false : $should_redirect;
     }
@@ -88,10 +88,10 @@ class ProductFilter extends WidgetBase
         if (!function_exists('is_shop') || (!is_shop() && !is_product_taxonomy())) {
             return;
         }
-        if (!isset($_GET['elementrify_min_rating']) || $_GET['elementrify_min_rating'] === '') {
+        if (!isset($_GET['veloria_min_rating']) || $_GET['veloria_min_rating'] === '') {
             return;
         }
-        $min = (float) wp_unslash($_GET['elementrify_min_rating']);
+        $min = (float) wp_unslash($_GET['veloria_min_rating']);
         if ($min <= 0 || $min > 5) {
             return;
         }
@@ -134,14 +134,14 @@ class ProductFilter extends WidgetBase
                 : $slug;
         }
         if (!isset($options['product_brand'])) {
-            $options['product_brand'] = __('Brands (product_brand)', 'elementrify');
+            $options['product_brand'] = __('Brands (product_brand)', 'veloria');
         }
         if (!isset($options['pa_color'])) {
-            $options['pa_color'] = __('Color (pa_color)', 'elementrify');
+            $options['pa_color'] = __('Color (pa_color)', 'veloria');
         }
         ksort($options);
         if ($options === []) {
-            $options['pa_brand'] = __('Brand (pa_brand)', 'elementrify');
+            $options['pa_brand'] = __('Brand (pa_brand)', 'veloria');
         }
 
         return $options;
@@ -199,40 +199,40 @@ class ProductFilter extends WidgetBase
         $taxonomy_options = self::get_product_taxonomy_select_options();
 
         $this->start_controls_section('section_general', [
-            'label' => __('General', 'elementrify'),
+            'label' => __('General', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('panel_title', [
-            'label' => __('Panel title', 'elementrify'),
+            'label' => __('Panel title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Filter Products', 'elementrify'),
+            'default' => __('Filter Products', 'veloria'),
             'render_type' => 'template',
         ]);
 
         $this->add_control('clear_all_text', [
-            'label' => __('Clear link text', 'elementrify'),
+            'label' => __('Clear link text', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Clear All', 'elementrify'),
+            'default' => __('Clear All', 'veloria'),
             'render_type' => 'template',
         ]);
 
         $this->add_control('apply_text', [
-            'label' => __('Apply button text', 'elementrify'),
+            'label' => __('Apply button text', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Apply Filters', 'elementrify'),
+            'default' => __('Apply Filters', 'veloria'),
             'render_type' => 'template',
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_product_search', [
-            'label' => __('Product search', 'elementrify'),
+            'label' => __('Product search', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_product_search', [
-            'label' => __('Enable', 'elementrify'),
+            'label' => __('Enable', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -240,16 +240,16 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('search_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
             'default' => '',
-            'placeholder' => __('Optional — leave empty to hide the heading', 'elementrify'),
+            'placeholder' => __('Optional — leave empty to hide the heading', 'veloria'),
             'condition' => ['show_product_search' => 'yes'],
             'render_type' => 'template',
         ]);
 
         $this->add_control('show_product_search_label', [
-            'label' => __('Show label', 'elementrify'),
+            'label' => __('Show label', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
@@ -257,9 +257,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('product_search_label', [
-            'label' => __('Label text', 'elementrify'),
+            'label' => __('Label text', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Search products', 'elementrify'),
+            'default' => __('Search products', 'veloria'),
             'condition' => [
                 'show_product_search' => 'yes',
                 'show_product_search_label' => 'yes',
@@ -268,9 +268,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('product_search_placeholder', [
-            'label' => __('Placeholder', 'elementrify'),
+            'label' => __('Placeholder', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Search by name…', 'elementrify'),
+            'default' => __('Search by name…', 'veloria'),
             'condition' => ['show_product_search' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -278,40 +278,40 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_price_filter', [
-            'label' => __('Price filter', 'elementrify'),
+            'label' => __('Price filter', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('price_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Price Range', 'elementrify'),
+            'default' => __('Price Range', 'veloria'),
             'render_type' => 'template',
         ]);
 
         $this->add_control('max_price', [
-            'label' => __('Price upper limit', 'elementrify'),
+            'label' => __('Price upper limit', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'default' => 500,
             'min' => 1,
         ]);
 
         $this->add_control('min_price', [
-            'label' => __('Price lower limit', 'elementrify'),
+            'label' => __('Price lower limit', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'default' => 0,
             'min' => 0,
         ]);
 
         $this->add_control('default_min_price', [
-            'label' => __('Default minimum price', 'elementrify'),
+            'label' => __('Default minimum price', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'default' => 0,
             'min' => 0,
         ]);
 
         $this->add_control('default_max_price', [
-            'label' => __('Default maximum price', 'elementrify'),
+            'label' => __('Default maximum price', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'default' => 500,
             'min' => 1,
@@ -320,12 +320,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_category_filter', [
-            'label' => __('Category filter', 'elementrify'),
+            'label' => __('Category filter', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_category', [
-            'label' => __('Enable', 'elementrify'),
+            'label' => __('Enable', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -333,9 +333,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('category_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Categories', 'elementrify'),
+            'default' => __('Categories', 'veloria'),
             'condition' => ['show_category' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -343,12 +343,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_tag_filter', [
-            'label' => __('Tag filter', 'elementrify'),
+            'label' => __('Tag filter', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_tag', [
-            'label' => __('Enable', 'elementrify'),
+            'label' => __('Enable', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -356,9 +356,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('tag_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Tags', 'elementrify'),
+            'default' => __('Tags', 'veloria'),
             'condition' => ['show_tag' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -366,12 +366,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_brand_filter', [
-            'label' => __('Brand filter', 'elementrify'),
+            'label' => __('Brand filter', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_brand', [
-            'label' => __('Enable', 'elementrify'),
+            'label' => __('Enable', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -379,40 +379,40 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('brand_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Brand', 'elementrify'),
+            'default' => __('Brand', 'veloria'),
             'condition' => ['show_brand' => 'yes'],
             'render_type' => 'template',
         ]);
 
         $this->add_control('brand_taxonomy', [
-            'label' => __('Brand taxonomy', 'elementrify'),
+            'label' => __('Brand taxonomy', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'options' => $taxonomy_options,
             'default' => self::default_brand_taxonomy_slug($taxonomy_options),
-            'description' => __('Pick the taxonomy used for brands (e.g. product_brand, pa_brand, pwb-brand).', 'elementrify'),
+            'description' => __('Pick the taxonomy used for brands (e.g. product_brand, pa_brand, pwb-brand).', 'veloria'),
             'condition' => ['show_brand' => 'yes'],
         ]);
 
         $this->add_control('brand_hide_empty_terms', [
-            'label' => __('Hide brands with no products', 'elementrify'),
+            'label' => __('Hide brands with no products', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'no',
-            'description' => __('Turn off to list all brand terms.', 'elementrify'),
+            'description' => __('Turn off to list all brand terms.', 'veloria'),
             'condition' => ['show_brand' => 'yes'],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_rating_filter', [
-            'label' => __('Rating filter', 'elementrify'),
+            'label' => __('Rating filter', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_rating', [
-            'label' => __('Enable', 'elementrify'),
+            'label' => __('Enable', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -420,9 +420,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('rating_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Rating', 'elementrify'),
+            'default' => __('Rating', 'veloria'),
             'condition' => ['show_rating' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -430,12 +430,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_color_filter', [
-            'label' => __('Color filter', 'elementrify'),
+            'label' => __('Color filter', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_color', [
-            'label' => __('Enable', 'elementrify'),
+            'label' => __('Enable', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
@@ -443,24 +443,24 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('color_section_title', [
-            'label' => __('Section title', 'elementrify'),
+            'label' => __('Section title', 'veloria'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Color', 'elementrify'),
+            'default' => __('Color', 'veloria'),
             'condition' => ['show_color' => 'yes'],
             'render_type' => 'template',
         ]);
 
         $this->add_control('color_taxonomy', [
-            'label' => __('Color taxonomy', 'elementrify'),
+            'label' => __('Color taxonomy', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'options' => $taxonomy_options,
             'default' => self::default_color_taxonomy_slug($taxonomy_options),
-            'description' => __('Pick the attribute or taxonomy used for color swatches (usually pa_color).', 'elementrify'),
+            'description' => __('Pick the attribute or taxonomy used for color swatches (usually pa_color).', 'veloria'),
             'condition' => ['show_color' => 'yes'],
         ]);
 
         $this->add_control('color_hide_empty_terms', [
-            'label' => __('Hide colors with no products', 'elementrify'),
+            'label' => __('Hide colors with no products', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'no',
@@ -470,30 +470,30 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style', [
-            'label' => __('Card', 'elementrify'),
+            'label' => __('Card', 'veloria'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('card_bg', [
-            'label' => __('Background', 'elementrify'),
+            'label' => __('Background', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#f8fafc',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-filter' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-filter' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_border_color', [
-            'label' => __('Border color', 'elementrify'),
+            'label' => __('Border color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#e5e7eb',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-filter' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-product-filter' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_padding', [
-            'label' => __('Box padding', 'elementrify'),
+            'label' => __('Box padding', 'veloria'),
             'type' => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default' => [
@@ -504,7 +504,7 @@ class ProductFilter extends WidgetBase
                 'unit' => 'px',
             ],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-product-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-product-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -512,7 +512,7 @@ class ProductFilter extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name' => 'heading_typography',
-                'selector' => '{{WRAPPER}} .elementrify-product-filter__title, {{WRAPPER}} .elementrify-product-filter__section-title',
+                'selector' => '{{WRAPPER}} .veloria-product-filter__title, {{WRAPPER}} .veloria-product-filter__section-title',
             ]
         );
 
@@ -526,7 +526,7 @@ class ProductFilter extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/product-filter/product-filter.php';
+        $path = VELORIA_DIR . 'templates/product-filter/product-filter.php';
         if (is_readable($path)) include $path;
                 }
         }

@@ -1,14 +1,14 @@
 <?php
-namespace Elementrify\Common;
+namespace Veloria\Common;
 
-use Elementrify\Utils\OptionsHelper;
+use Veloria\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
  * Outputs Custom CSS and Custom JavaScript saved in plugin settings on the front end.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class GlobalCustomAssets
@@ -64,9 +64,9 @@ class GlobalCustomAssets
             return;
         }
 
-        wp_register_style('elementrify-global-custom-css', false, [], ELEMENTRIFY_VERSION);
-        wp_enqueue_style('elementrify-global-custom-css');
-        wp_add_inline_style('elementrify-global-custom-css', $custom_css);
+        wp_register_style('veloria-global-custom-css', false, [], VELORIA_VERSION);
+        wp_enqueue_style('veloria-global-custom-css');
+        wp_add_inline_style('veloria-global-custom-css', $custom_css);
     }
 
     /**
@@ -91,8 +91,8 @@ class GlobalCustomAssets
             $in_footer = $position !== 'header';
         }
 
-        wp_register_script('elementrify-global-custom-js', '', [], ELEMENTRIFY_VERSION, $in_footer);
-        wp_enqueue_script('elementrify-global-custom-js');
-        wp_add_inline_script('elementrify-global-custom-js', $custom_js);
+        wp_register_script('veloria-global-custom-js', '', [], VELORIA_VERSION, $in_footer);
+        wp_enqueue_script('veloria-global-custom-js');
+        wp_add_inline_script('veloria-global-custom-js', $custom_js);
     }
 }

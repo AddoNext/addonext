@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\AdvancedTabs;
+namespace Veloria\Widgets\AdvancedTabs;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Border;
@@ -20,17 +20,17 @@ class AdvancedTabs extends WidgetBase
     public function enqueue_script_in_preview(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_script('elementrify-advanced-tabs');
+        wp_enqueue_script('veloria-advanced-tabs');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-tabs elementrify-icon';
+        return 'eicon-tabs veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-advanced-tabs';
+        return 'veloria-advanced-tabs';
     }
 
     public function get_admin_category(): string
@@ -40,12 +40,12 @@ class AdvancedTabs extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Advanced Tabs', 'elementrify');
+        return __('Advanced Tabs', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Tabbed content display', 'elementrify');
+        return __('Tabbed content display', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -55,27 +55,27 @@ class AdvancedTabs extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-advanced-tabs'];
+        return ['veloria-advanced-tabs'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-advanced-tabs'];
+        return ['veloria-advanced-tabs'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-advanced-tabs',
-            ELEMENTRIFY_URL . 'assets/css/advanced-tabs.css',
+            'veloria-advanced-tabs',
+            VELORIA_URL . 'assets/css/advanced-tabs.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-advanced-tabs',
-            ELEMENTRIFY_URL . 'assets/js/advanced-tabs.js',
+            'veloria-advanced-tabs',
+            VELORIA_URL . 'assets/js/advanced-tabs.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -85,40 +85,40 @@ class AdvancedTabs extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $repeater = new Repeater();
         $repeater->add_control('tab_title', [
-            'label'   => __('Title', 'elementrify'),
+            'label'   => __('Title', 'veloria'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Tab', 'elementrify'),
+            'default' => __('Tab', 'veloria'),
         ]);
         $repeater->add_control('tab_content', [
-            'label'   => __('Content', 'elementrify'),
+            'label'   => __('Content', 'veloria'),
             'type'    => Controls_Manager::WYSIWYG,
-            'default' => '<p>' . __('Content for this tab.', 'elementrify') . '</p>',
+            'default' => '<p>' . __('Content for this tab.', 'veloria') . '</p>',
         ]);
 
         $this->add_control(
             'tabs',
             [
-                'label'       => __('Tabs', 'elementrify'),
+                'label'       => __('Tabs', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
                     [
-                        'tab_title'   => __('Features', 'elementrify'),
+                        'tab_title'   => __('Features', 'veloria'),
                         'tab_content' => '<h3>Amazing Features</h3><p>Discover all the powerful features that make AddoNext the best choice for your website.</p><ul><li>Drag &amp; Drop Builder</li><li>100+ Premium Widgets</li></ul>',
                     ],
                     [
-                        'tab_title'   => __('Pricing', 'elementrify'),
+                        'tab_title'   => __('Pricing', 'veloria'),
                         'tab_content' => '<h3>Simple Pricing</h3><p>Choose the plan that fits your needs.</p>',
                     ],
                     [
-                        'tab_title'   => __('Support', 'elementrify'),
+                        'tab_title'   => __('Support', 'veloria'),
                         'tab_content' => '<h3>We\'re Here to Help</h3><p>Get in touch with our support team anytime.</p>',
                     ],
                 ],
@@ -131,7 +131,7 @@ class AdvancedTabs extends WidgetBase
         $this->start_controls_section(
             'section_style_wrapper',
             [
-                'label' => __('Container', 'elementrify'),
+                'label' => __('Container', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -139,11 +139,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default'    => ['top' => 6, 'right' => 6, 'bottom' => 6, 'left' => 6, 'unit' => 'px'],
             ]
@@ -153,7 +153,7 @@ class AdvancedTabs extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'border',
-                'selector' => '{{WRAPPER}} .elementrify-advanced-tabs',
+                'selector' => '{{WRAPPER}} .veloria-advanced-tabs',
                 'fields_options' => [
                     'border' => ['default' => 'solid'],
                     'color'  => ['default' => '#e6e6e6'],
@@ -165,11 +165,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_responsive_control(
             'padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panels' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panels' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default'    => ['top' => 24, 'right' => 24, 'bottom' => 24, 'left' => 24, 'unit' => 'px'],
             ]
@@ -178,11 +178,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_responsive_control(
             'margin',
             [
-                'label'      => __('Margin', 'elementrify'),
+                'label'      => __('Margin', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -192,7 +192,7 @@ class AdvancedTabs extends WidgetBase
         $this->start_controls_section(
             'section_style_headers',
             [
-                'label' => __('Tab headers', 'elementrify'),
+                'label' => __('Tab headers', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -200,12 +200,12 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'header_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__headers' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-advanced-tabs__header'  => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__headers' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__header'  => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -213,12 +213,12 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'header_border_color',
             [
-                'label'     => __('Bottom border color', 'elementrify'),
+                'label'     => __('Bottom border color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e6e6e6',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__headers' => 'border-bottom-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panels'   => 'border-top-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__headers' => 'border-bottom-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panels'   => 'border-top-color: {{VALUE}};',
                 ],
             ]
         );
@@ -227,18 +227,18 @@ class AdvancedTabs extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'header_typography',
-                'selector' => '{{WRAPPER}} .elementrify-advanced-tabs__header',
+                'selector' => '{{WRAPPER}} .veloria-advanced-tabs__header',
             ]
         );
 
         $this->add_control(
             'header_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__header' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__header' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -246,11 +246,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'header_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default'    => ['top' => 12, 'right' => 20, 'bottom' => 12, 'left' => 20, 'unit' => 'px'],
             ]
@@ -261,7 +261,7 @@ class AdvancedTabs extends WidgetBase
         $this->start_controls_section(
             'section_style_active_tab',
             [
-                'label' => __('Active tab', 'elementrify'),
+                'label' => __('Active tab', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -269,11 +269,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'active_tab_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e6f0fa',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__header.is-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__header.is-active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -281,11 +281,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'active_tab_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__header.is-active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__header.is-active' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -293,11 +293,11 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'active_tab_underline_color',
             [
-                'label'     => __('Underline color', 'elementrify'),
+                'label'     => __('Underline color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__header.is-active' => 'border-bottom-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__header.is-active' => 'border-bottom-color: {{VALUE}};',
                 ],
             ]
         );
@@ -307,7 +307,7 @@ class AdvancedTabs extends WidgetBase
         $this->start_controls_section(
             'section_style_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -315,12 +315,12 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'content_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panels' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panels' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -329,20 +329,20 @@ class AdvancedTabs extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'content_typography',
-                'selector' => '{{WRAPPER}} .elementrify-advanced-tabs__panel',
+                'selector' => '{{WRAPPER}} .veloria-advanced-tabs__panel',
             ]
         );
 
         $this->add_control(
             'content_text_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel p' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel ul li' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel ul li' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -350,14 +350,14 @@ class AdvancedTabs extends WidgetBase
         $this->add_control(
             'content_heading_color',
             [
-                'label'     => __('Heading color', 'elementrify'),
+                'label'     => __('Heading color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel h1,' .
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel h2,' .
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel h3,' .
-                    '{{WRAPPER}} .elementrify-advanced-tabs__panel h4' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel h1,' .
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel h2,' .
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel h3,' .
+                    '{{WRAPPER}} .veloria-advanced-tabs__panel h4' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -367,7 +367,7 @@ class AdvancedTabs extends WidgetBase
 
     public function render(): void
     {
-        $template_path = ELEMENTRIFY_DIR . 'templates/advanced-tabs/advanced-tabs.php';
+        $template_path = VELORIA_DIR . 'templates/advanced-tabs/advanced-tabs.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -377,25 +377,25 @@ class AdvancedTabs extends WidgetBase
     {
         ?>
         <#
-        view.addRenderAttribute('wrapper', 'class', 'elementrify-advanced-tabs');
+        view.addRenderAttribute('wrapper', 'class', 'veloria-advanced-tabs');
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}>
-            <div class="elementrify-advanced-tabs__headers">
+            <div class="veloria-advanced-tabs__headers">
                 <# _.each(settings.tabs, function(item, index) {
                     var activeClass = index === 0 ? ' is-active' : '';
                     var headerKey = 'tabs.' + index + '.tab_title';
-                    view.addRenderAttribute(headerKey, 'class', 'elementrify-advanced-tabs__header' + activeClass);
+                    view.addRenderAttribute(headerKey, 'class', 'veloria-advanced-tabs__header' + activeClass);
                     view.addRenderAttribute(headerKey, 'data-tab', index);
                     view.addInlineEditingAttributes(headerKey, 'none');
                 #>
                 <div {{{ view.getRenderAttributeString(headerKey) }}}>{{{ item.tab_title }}}</div>
                 <# }); #>
             </div>
-            <div class="elementrify-advanced-tabs__panels">
+            <div class="veloria-advanced-tabs__panels">
                 <# _.each(settings.tabs, function(item, index) {
                     var activeClass = index === 0 ? ' is-active' : '';
                     var panelKey = 'tabs.' + index + '.tab_content';
-                    view.addRenderAttribute(panelKey, 'class', 'elementrify-advanced-tabs__panel' + activeClass);
+                    view.addRenderAttribute(panelKey, 'class', 'veloria-advanced-tabs__panel' + activeClass);
                     view.addRenderAttribute(panelKey, 'data-tab', index);
                     view.addInlineEditingAttributes(panelKey, 'advanced');
                 #>

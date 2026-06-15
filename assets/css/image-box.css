@@ -1,93 +1,93 @@
-.elementrify-image-box {
+.veloria-image-box {
     width: 100%;
 }
 
-.elementrify-image-box__image {
+.veloria-image-box__image {
     position: relative;
     overflow: hidden;
-    --elementrify-ib-grayscale: 0%;
-    --elementrify-ib-sepia: 0%;
-    --elementrify-ib-blur: 0px;
-    --elementrify-ib-brightness: 100%;
-    --elementrify-ib-contrast: 100%;
-    --elementrify-ib-saturate: 100%;
+    --veloria-ib-grayscale: 0%;
+    --veloria-ib-sepia: 0%;
+    --veloria-ib-blur: 0px;
+    --veloria-ib-brightness: 100%;
+    --veloria-ib-contrast: 100%;
+    --veloria-ib-saturate: 100%;
 }
 
-.elementrify-image-box--bw .elementrify-image-box__image {
-    --elementrify-ib-grayscale: 100%;
+.veloria-image-box--bw .veloria-image-box__image {
+    --veloria-ib-grayscale: 100%;
 }
 
-.elementrify-image-box__image img {
+.veloria-image-box__image img {
     display: block;
     max-width: 100%;
     height: auto;
     width: 100%;
     object-fit: cover;
     transition: filter 0.35s ease, transform 0.35s ease;
-    filter: grayscale(var(--elementrify-ib-grayscale, 0%))
-            sepia(var(--elementrify-ib-sepia, 0%))
-            blur(var(--elementrify-ib-blur, 0))
-            brightness(var(--elementrify-ib-brightness, 100%))
-            contrast(var(--elementrify-ib-contrast, 100%))
-            saturate(var(--elementrify-ib-saturate, 100%));
+    filter: grayscale(var(--veloria-ib-grayscale, 0%))
+            sepia(var(--veloria-ib-sepia, 0%))
+            blur(var(--veloria-ib-blur, 0))
+            brightness(var(--veloria-ib-brightness, 100%))
+            contrast(var(--veloria-ib-contrast, 100%))
+            saturate(var(--veloria-ib-saturate, 100%));
 }
 
-.elementrify-image-box__image a {
+.veloria-image-box__image a {
     display: block;
 }
 
-.elementrify-image-box__image a img {
+.veloria-image-box__image a img {
     display: block;
 }
 
-[class*="elementrify-ib-image-align-"] .elementrify-image-box__image img,
-[class*="elementrify-ib-image-align-"] .elementrify-image-box__image a {
+[class*="veloria-ib-image-align-"] .veloria-image-box__image img,
+[class*="veloria-ib-image-align-"] .veloria-image-box__image a {
     display: inline-block;
     width: auto;
     max-width: 100%;
 }
 
-.elementrify-image-box--hover-grayscale-off:hover .elementrify-image-box__image img {
-    filter: grayscale(0%) sepia(var(--elementrify-ib-sepia, 0%)) blur(var(--elementrify-ib-blur, 0))
-            brightness(var(--elementrify-ib-brightness, 100%)) contrast(var(--elementrify-ib-contrast, 100%))
-            saturate(var(--elementrify-ib-saturate, 100%));
+.veloria-image-box--hover-grayscale-off:hover .veloria-image-box__image img {
+    filter: grayscale(0%) sepia(var(--veloria-ib-sepia, 0%)) blur(var(--veloria-ib-blur, 0))
+            brightness(var(--veloria-ib-brightness, 100%)) contrast(var(--veloria-ib-contrast, 100%))
+            saturate(var(--veloria-ib-saturate, 100%));
 }
 
-.elementrify-image-box--hover-zoom:hover .elementrify-image-box__image img {
+.veloria-image-box--hover-zoom:hover .veloria-image-box__image img {
     transform: scale(1.08);
 }
 
-.elementrify-image-box--hover-grow:hover .elementrify-image-box__image img {
+.veloria-image-box--hover-grow:hover .veloria-image-box__image img {
     transform: scale(1.05);
 }
 
-.elementrify-image-box--hover-lift .elementrify-image-box__image {
+.veloria-image-box--hover-lift .veloria-image-box__image {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.elementrify-image-box--hover-lift:hover .elementrify-image-box__image {
+.veloria-image-box--hover-lift:hover .veloria-image-box__image {
     transform: translateY(-8px);
 }
 
-.elementrify-image-box--hover-tilt .elementrify-image-box__image {
+.veloria-image-box--hover-tilt .veloria-image-box__image {
     transition: transform 0.35s ease;
 }
 
-.elementrify-image-box--hover-tilt:hover .elementrify-image-box__image {
+.veloria-image-box--hover-tilt:hover .veloria-image-box__image {
     transform: perspective(800px) rotateX(5deg) rotateY(5deg);
 }
 
-.elementrify-image-box--hover-tilt-3d .elementrify-image-box__image {
+.veloria-image-box--hover-tilt-3d .veloria-image-box__image {
     transform-style: preserve-3d;
     perspective: 1000px;
 }
 
-.elementrify-image-box--hover-tilt-3d .elementrify-image-box__image img {
+.veloria-image-box--hover-tilt-3d .veloria-image-box__image img {
     transform-style: preserve-3d;
     transition: filter 0.35s ease, transform 0.15s ease;
 }
 
-.elementrify-image-box--hover-overlay .elementrify-image-box__image::after {
+.veloria-image-box--hover-overlay .veloria-image-box__image::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -96,24 +96,24 @@
     pointer-events: none;
 }
 
-.elementrify-image-box--hover-overlay:hover .elementrify-image-box__image::after {
+.veloria-image-box--hover-overlay:hover .veloria-image-box__image::after {
     opacity: 0.4;
 }
 
-.elementrify-image-box__content {
+.veloria-image-box__content {
     margin-top: 1rem;
 }
 
-.elementrify-image-box__title {
+.veloria-image-box__title {
     margin: 0 0 0.5em;
 }
 
-.elementrify-image-box__title a {
+.veloria-image-box__title a {
     color: inherit;
     text-decoration: none;
 }
 
-.elementrify-image-box__description {
+.veloria-image-box__description {
     margin: 0;
 }
 

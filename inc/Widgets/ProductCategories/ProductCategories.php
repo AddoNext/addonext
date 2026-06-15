@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ProductCategories;
+namespace Veloria\Widgets\ProductCategories;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
@@ -22,19 +22,19 @@ class ProductCategories extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         wp_enqueue_style('swiper');
-        wp_enqueue_style('elementrify-product-categories');
+        wp_enqueue_style('veloria-product-categories');
         wp_enqueue_script('swiper');
-        wp_enqueue_script('elementrify-product-categories');
+        wp_enqueue_script('veloria-product-categories');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-products elementrify-icon';
+        return 'eicon-products veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-product-categories';
+        return 'veloria-product-categories';
     }
 
     public function get_admin_category(): string
@@ -44,12 +44,12 @@ class ProductCategories extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Categories', 'elementrify');
+        return __('Product Categories', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Product category cards with icons, images, grid or slider.', 'elementrify');
+        return __('Product category cards with icons, images, grid or slider.', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -59,28 +59,28 @@ class ProductCategories extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'elementrify-product-categories'];
+        return ['swiper', 'veloria-product-categories'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'elementor-frontend', 'elementrify-product-categories'];
+        return ['swiper', 'elementor-frontend', 'veloria-product-categories'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-product-categories',
-            ELEMENTRIFY_URL . 'assets/css/product-categories.css',
+            'veloria-product-categories',
+            VELORIA_URL . 'assets/css/product-categories.css',
             ['swiper'],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
 
         wp_register_script(
-            'elementrify-product-categories',
-            ELEMENTRIFY_URL . 'assets/js/product-categories.js',
+            'veloria-product-categories',
+            VELORIA_URL . 'assets/js/product-categories.js',
             ['swiper', 'elementor-frontend'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -102,7 +102,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         if (is_wp_error($terms) || !is_array($terms)) {
-            return ['' => __('No categories found', 'elementrify')];
+            return ['' => __('No categories found', 'veloria')];
         }
 
         $options = [];
@@ -110,7 +110,7 @@ class ProductCategories extends WidgetBase
             $options[(string) (int) $term->term_id] = sprintf('%s (ID %d)', $term->name, (int) $term->term_id);
         }
 
-        return $options !== [] ? $options : ['' => __('No categories found', 'elementrify')];
+        return $options !== [] ? $options : ['' => __('No categories found', 'veloria')];
     }
 
     /**
@@ -179,22 +179,22 @@ class ProductCategories extends WidgetBase
         $category_options = $this->get_product_category_select_options();
 
         $this->start_controls_section('section_layout', [
-            'label' => __('Layout', 'elementrify'),
+            'label' => __('Layout', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('layout_mode', [
-            'label' => __('Layout', 'elementrify'),
+            'label' => __('Layout', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'grid',
             'options' => [
-                'grid' => __('Grid', 'elementrify'),
-                'slider' => __('Slider', 'elementrify'),
+                'grid' => __('Grid', 'veloria'),
+                'slider' => __('Slider', 'veloria'),
             ],
         ]);
 
         $this->add_control('grid_columns', [
-            'label' => __('Column count', 'elementrify'),
+            'label' => __('Column count', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'options' => [
                 '1' => '1',
@@ -205,12 +205,12 @@ class ProductCategories extends WidgetBase
                 '6' => '6',
             ],
             'default' => '4',
-            'description' => __('Number of cards per row in grid layout (wide screens).', 'elementrify'),
+            'description' => __('Number of cards per row in grid layout (wide screens).', 'veloria'),
             'condition' => ['layout_mode' => 'grid'],
         ]);
 
         $this->add_control('grid_gap', [
-            'label' => __('Gap', 'elementrify'),
+            'label' => __('Gap', 'veloria'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 0, 'max' => 64]],
@@ -219,7 +219,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slides_desktop', [
-            'label' => __('Slides per view (desktop)', 'elementrify'),
+            'label' => __('Slides per view (desktop)', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 6,
@@ -228,7 +228,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slides_tablet', [
-            'label' => __('Slides per view (tablet)', 'elementrify'),
+            'label' => __('Slides per view (tablet)', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 4,
@@ -237,7 +237,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slides_mobile', [
-            'label' => __('Slides per view (mobile)', 'elementrify'),
+            'label' => __('Slides per view (mobile)', 'veloria'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 3,
@@ -246,7 +246,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slide_gap', [
-            'label' => __('Space between slides', 'elementrify'),
+            'label' => __('Space between slides', 'veloria'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 0, 'max' => 48]],
@@ -255,20 +255,20 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slider_nav', [
-            'label' => __('Navigation', 'elementrify'),
+            'label' => __('Navigation', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'both',
             'options' => [
-                'none' => __('None', 'elementrify'),
-                'arrows' => __('Arrows', 'elementrify'),
-                'dots' => __('Dots', 'elementrify'),
-                'both' => __('Arrows & dots', 'elementrify'),
+                'none' => __('None', 'veloria'),
+                'arrows' => __('Arrows', 'veloria'),
+                'dots' => __('Dots', 'veloria'),
+                'both' => __('Arrows & dots', 'veloria'),
             ],
             'condition' => ['layout_mode' => 'slider'],
         ]);
 
         $this->add_control('slider_loop', [
-            'label' => __('Loop', 'elementrify'),
+            'label' => __('Loop', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -278,40 +278,40 @@ class ProductCategories extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_content', [
-            'label' => __('Categories', 'elementrify'),
+            'label' => __('Categories', 'veloria'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_count', [
-            'label' => __('Product count', 'elementrify'),
+            'label' => __('Product count', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
-            'label_on' => __('Show', 'elementrify'),
-            'label_off' => __('Hide', 'elementrify'),
-            'description' => __('Toggle the “X products” line under the category title.', 'elementrify'),
+            'label_on' => __('Show', 'veloria'),
+            'label_off' => __('Hide', 'veloria'),
+            'description' => __('Toggle the “X products” line under the category title.', 'veloria'),
         ]);
 
         $this->add_control('image_hover_effect', [
-            'label' => __('Image hover effect', 'elementrify'),
+            'label' => __('Image hover effect', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'default' => 'zoom-in',
             'options' => [
-                'none' => __('None', 'elementrify'),
-                'zoom-in' => __('Zoom in', 'elementrify'),
-                'zoom-out' => __('Zoom out', 'elementrify'),
-                'jump' => __('Jump', 'elementrify'),
-                'tilt' => __('Tilt', 'elementrify'),
+                'none' => __('None', 'veloria'),
+                'zoom-in' => __('Zoom in', 'veloria'),
+                'zoom-out' => __('Zoom out', 'veloria'),
+                'jump' => __('Jump', 'veloria'),
+                'tilt' => __('Tilt', 'veloria'),
             ],
         ]);
 
         $repeater = new Repeater();
 
         $repeater->add_control('row_name', [
-            'label' => __('List label (editor)', 'elementrify'),
+            'label' => __('List label (editor)', 'veloria'),
             'type' => Controls_Manager::TEXT,
             'default' => '',
-            'description' => __('Optional. Helps identify this row in the panel.', 'elementrify'),
+            'description' => __('Optional. Helps identify this row in the panel.', 'veloria'),
         ]);
 
         $first_cat = '';
@@ -321,14 +321,14 @@ class ProductCategories extends WidgetBase
         }
 
         $repeater->add_control('category_id', [
-            'label' => __('Category', 'elementrify'),
+            'label' => __('Category', 'veloria'),
             'type' => Controls_Manager::SELECT,
             'options' => $category_options,
             'default' => $first_cat,
         ]);
 
         $repeater->add_control('item_icon', [
-            'label' => __('Icon', 'elementrify'),
+            'label' => __('Icon', 'veloria'),
             'type' => Controls_Manager::ICONS,
             'default' => [
                 'value' => 'fas fa-folder',
@@ -337,35 +337,35 @@ class ProductCategories extends WidgetBase
         ]);
 
         $repeater->add_control('icon_color', [
-            'label' => __('Icon color', 'elementrify'),
+            'label' => __('Icon color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
 
         $repeater->add_control('override_image', [
-            'label' => __('Override category image', 'elementrify'),
+            'label' => __('Override category image', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
-            'description' => __('When off, the category thumbnail from WooCommerce is used.', 'elementrify'),
+            'description' => __('When off, the category thumbnail from WooCommerce is used.', 'veloria'),
         ]);
 
         $repeater->add_control('custom_image', [
-            'label' => __('Custom image', 'elementrify'),
+            'label' => __('Custom image', 'veloria'),
             'type' => Controls_Manager::MEDIA,
             'condition' => ['override_image' => 'yes'],
         ]);
 
         $repeater->add_control('hide_image', [
-            'label' => __('Hide background image', 'elementrify'),
+            'label' => __('Hide background image', 'veloria'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
-            'description' => __('Shows a colored underlay using the icon color instead.', 'elementrify'),
+            'description' => __('Shows a colored underlay using the icon color instead.', 'veloria'),
         ]);
 
         $this->add_control('category_items', [
-            'label' => __('Category cards', 'elementrify'),
+            'label' => __('Category cards', 'veloria'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
             'default' => self::get_default_category_repeater_items(),
@@ -375,72 +375,72 @@ class ProductCategories extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_card_style', [
-            'label' => __('Card', 'elementrify'),
+            'label' => __('Card', 'veloria'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('card_min_height', [
-            'label' => __('Min height', 'elementrify'),
+            'label' => __('Min height', 'veloria'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 120, 'max' => 400]],
             'default' => ['size' => 200, 'unit' => 'px'],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pc-card' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pc-card' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('card_radius', [
-            'label' => __('Border radius', 'elementrify'),
+            'label' => __('Border radius', 'veloria'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 0, 'max' => 32]],
             'default' => ['size' => 16, 'unit' => 'px'],
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pc-card' => 'border-radius: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .elementrify-pc-card__media' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pc-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-pc-card__media' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_title_style', [
-            'label' => __('Title', 'elementrify'),
+            'label' => __('Title', 'veloria'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
-            'selector' => '{{WRAPPER}} .elementrify-pc-card__title',
+            'selector' => '{{WRAPPER}} .veloria-pc-card__title',
         ]);
 
         $this->add_control('title_color', [
-            'label' => __('Color', 'elementrify'),
+            'label' => __('Color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pc-card__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-pc-card__title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_count_style', [
-            'label' => __('Count', 'elementrify'),
+            'label' => __('Count', 'veloria'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'count_typography',
-            'selector' => '{{WRAPPER}} .elementrify-pc-card__count',
+            'selector' => '{{WRAPPER}} .veloria-pc-card__count',
         ]);
 
         $this->add_control('count_color', [
-            'label' => __('Color', 'elementrify'),
+            'label' => __('Color', 'veloria'),
             'type' => Controls_Manager::COLOR,
             'default' => 'rgba(255,255,255,0.92)',
             'selectors' => [
-                '{{WRAPPER}} .elementrify-pc-card__count' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .veloria-pc-card__count' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -449,7 +449,7 @@ class ProductCategories extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/product-categories/product-categories.php';
+        $path = VELORIA_DIR . 'templates/product-categories/product-categories.php';
         if (is_readable($path)) {
             include $path;
         }

@@ -1,15 +1,15 @@
-.elementrify-mini-cart {
+.veloria-mini-cart {
   position: relative;
   display: block;
   width: 100%;
 }
 
-.elementrify-mini-cart__inner {
+.veloria-mini-cart__inner {
   display: flex;
   width: 100%;
 }
 
-.elementrify-mini-cart__trigger {
+.veloria-mini-cart__trigger {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -26,16 +26,16 @@
   box-sizing: border-box;
 }
 
-.elementrify-mini-cart__trigger:hover {
+.veloria-mini-cart__trigger:hover {
   opacity: 0.8;
 }
 
-.elementrify-mini-cart__trigger:focus-visible {
+.veloria-mini-cart__trigger:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
-.elementrify-mini-cart__icon {
+.veloria-mini-cart__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,21 +43,21 @@
   line-height: 1;
 }
 
-.elementrify-mini-cart__icon svg {
+.veloria-mini-cart__icon svg {
   width: 1em;
   height: 1em;
 }
 
-.elementrify-mini-cart__label {
+.veloria-mini-cart__label {
   font-weight: 600;
 }
 
-.elementrify-mini-cart__subtotal {
+.veloria-mini-cart__subtotal {
   font-size: 0.875rem;
   font-weight: 500;
 }
 
-.elementrify-mini-cart__count {
+.veloria-mini-cart__count {
   position: absolute;
   top: -2px;
   right: -2px;
@@ -72,11 +72,11 @@
   line-height: 1;
 }
 
-.elementrify-mini-cart__count--empty {
+.veloria-mini-cart__count--empty {
   opacity: 0.65;
 }
 
-.elementrify-mini-cart__placeholder {
+.veloria-mini-cart__placeholder {
   margin: 0;
   padding: 1rem;
   font-size: 0.875rem;

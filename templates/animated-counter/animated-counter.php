@@ -15,11 +15,11 @@ if (empty($items)) {
 $grid_style = 'display:grid;grid-template-columns:repeat(' . $columns . ',1fr);gap:24px;width:100%;';
 $item_style = 'display:flex;flex-direction:column;align-items:center;text-align:center;';
 
-$this->add_render_attribute('inner', 'class', 'elementrify-animated-counter__inner');
-$this->add_render_attribute('grid', 'class', 'elementrify-animated-counter__grid');
+$this->add_render_attribute('inner', 'class', 'veloria-animated-counter__inner');
+$this->add_render_attribute('grid', 'class', 'veloria-animated-counter__grid');
 $this->add_render_attribute('grid', 'style', $grid_style);
 ?>
-<div class="elementrify-animated-counter">
+<div class="veloria-animated-counter">
     <div <?php $this->print_render_attribute_string('inner'); ?>>
         <div <?php $this->print_render_attribute_string('grid'); ?>>
         <?php foreach ($items as $item) :
@@ -30,10 +30,10 @@ $this->add_render_attribute('grid', 'style', $grid_style);
             $title  = isset($item['title']) ? $item['title'] : '';
             $subtitle = isset($item['subtitle']) ? $item['subtitle'] : '';
         ?>
-            <div class="elementrify-animated-counter__item elementor-repeater-item-<?php echo esc_attr($item_id); ?>" style="<?php echo esc_attr($item_style); ?>">
-                <span class="elementrify-animated-counter__number" style="display:block;" data-to="<?php echo esc_attr($number); ?>" data-prefix="<?php echo esc_attr($prefix); ?>" data-suffix="<?php echo esc_attr($suffix); ?>"><?php echo esc_html($prefix . '0' . $suffix); ?></span>
-                <?php if ($title !== '') : ?><span class="elementrify-animated-counter__title" style="display:block;width:100%;"><?php echo esc_html($title); ?></span><?php endif; ?>
-                <?php if ($subtitle !== '') : ?><p class="elementrify-animated-counter__subtitle" style="display:block;width:100%;margin:0;"><?php echo esc_html($subtitle); ?></p><?php endif; ?>
+            <div class="veloria-animated-counter__item elementor-repeater-item-<?php echo esc_attr($item_id); ?>" style="<?php echo esc_attr($item_style); ?>">
+                <span class="veloria-animated-counter__number" style="display:block;" data-to="<?php echo esc_attr($number); ?>" data-prefix="<?php echo esc_attr($prefix); ?>" data-suffix="<?php echo esc_attr($suffix); ?>"><?php echo esc_html($prefix . '0' . $suffix); ?></span>
+                <?php if ($title !== '') : ?><span class="veloria-animated-counter__title" style="display:block;width:100%;"><?php echo esc_html($title); ?></span><?php endif; ?>
+                <?php if ($subtitle !== '') : ?><p class="veloria-animated-counter__subtitle" style="display:block;width:100%;margin:0;"><?php echo esc_html($subtitle); ?></p><?php endif; ?>
             </div>
         <?php endforeach; ?>
         </div>

@@ -7,8 +7,8 @@ if (emt_fs()->can_use_premium_code__premium_only()) {
 $settings = $this->get_settings_for_display();
 $title = isset($settings['title']) ? (string) $settings['title'] : '';
 $rows = isset($settings['data']) && is_array($settings['data']) ? $settings['data'] : [];
-$seriesA = isset($settings['series_a_name']) ? (string) $settings['series_a_name'] : __('Current Metrics', 'elementrify');
-$seriesB = isset($settings['series_b_name']) ? (string) $settings['series_b_name'] : __('Target Metrics', 'elementrify');
+$seriesA = isset($settings['series_a_name']) ? (string) $settings['series_a_name'] : __('Current Metrics', 'veloria');
+$seriesB = isset($settings['series_b_name']) ? (string) $settings['series_b_name'] : __('Target Metrics', 'veloria');
 $colorA = isset($settings['series_a_color']) ? (string) $settings['series_a_color'] : '#4285F4';
 $colorB = isset($settings['series_b_color']) ? (string) $settings['series_b_color'] : '#24B47E';
 $maxValue = isset($settings['max_value']) && $settings['max_value'] !== '' ? (float) $settings['max_value'] : 100;
@@ -22,7 +22,7 @@ foreach ($rows as $row) {
     $valuesB[] = isset($row['value_b']) ? (float) $row['value_b'] : 0;
 }
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-radar-chart');
+$this->add_render_attribute('wrapper', 'class', 'veloria-radar-chart');
 $this->add_render_attribute('wrapper', 'data-labels', implode('|', $labels));
 $this->add_render_attribute('wrapper', 'data-values-a', implode('|', $valuesA));
 $this->add_render_attribute('wrapper', 'data-values-b', implode('|', $valuesB));
@@ -34,11 +34,11 @@ $this->add_render_attribute('wrapper', 'data-max-value', (string) $maxValue);
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($title !== '') : ?>
-        <h3 class="elementrify-radar-chart__title"><?php echo esc_html($title); ?></h3>
+        <h3 class="veloria-radar-chart__title"><?php echo esc_html($title); ?></h3>
     <?php endif; ?>
-    <div class="elementrify-radar-chart__wrap">
-        <div class="elementrify-radar-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
-        <div class="elementrify-radar-chart__legend"></div>
+    <div class="veloria-radar-chart__wrap">
+        <div class="veloria-radar-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
+        <div class="veloria-radar-chart__legend"></div>
     </div>
 </div>
 

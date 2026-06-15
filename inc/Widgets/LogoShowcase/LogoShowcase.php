@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\LogoShowcase;
+namespace Veloria\Widgets\LogoShowcase;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -19,19 +19,19 @@ class LogoShowcase extends WidgetBase
     public function enqueue_preview_scripts(): void
     {
         wp_enqueue_style('swiper');
-        wp_enqueue_style('elementrify-logo-showcase');
+        wp_enqueue_style('veloria-logo-showcase');
         wp_enqueue_script('swiper');
-        wp_enqueue_script('elementrify-logo-showcase');
+        wp_enqueue_script('veloria-logo-showcase');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-logo elementrify-icon';
+        return 'eicon-logo veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-logo-showcase';
+        return 'veloria-logo-showcase';
     }
 
     public function get_admin_category(): string
@@ -41,12 +41,12 @@ class LogoShowcase extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Logo Showcase', 'elementrify');
+        return __('Logo Showcase', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Client logos in grid or slider', 'elementrify');
+        return __('Client logos in grid or slider', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -56,12 +56,12 @@ class LogoShowcase extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'elementrify-logo-showcase'];
+        return ['swiper', 'veloria-logo-showcase'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'elementrify-logo-showcase'];
+        return ['swiper', 'veloria-logo-showcase'];
     }
 
     public function register_controls(): void
@@ -69,7 +69,7 @@ class LogoShowcase extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -77,7 +77,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'show_title',
             [
-                'label'        => __('Show title', 'elementrify'),
+                'label'        => __('Show title', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -87,9 +87,9 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'     => __('Title', 'elementrify'),
+                'label'     => __('Title', 'veloria'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Trusted by Leading Companies', 'elementrify'),
+                'default'   => __('Trusted by Leading Companies', 'veloria'),
                 'condition' => ['show_title' => 'yes'],
             ]
         );
@@ -97,12 +97,12 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'view',
             [
-                'label'   => __('View', 'elementrify'),
+                'label'   => __('View', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
-                    'grid'   => __('Grid', 'elementrify'),
-                    'slider' => __('Slider', 'elementrify'),
+                    'grid'   => __('Grid', 'veloria'),
+                    'slider' => __('Slider', 'veloria'),
                 ],
             ]
         );
@@ -111,21 +111,21 @@ class LogoShowcase extends WidgetBase
         $repeater->add_control(
             'logo',
             [
-                'label' => __('Logo', 'elementrify'),
+                'label' => __('Logo', 'veloria'),
                 'type'  => Controls_Manager::MEDIA,
             ]
         );
         $repeater->add_control(
             'link',
             [
-                'label' => __('Link', 'elementrify'),
+                'label' => __('Link', 'veloria'),
                 'type'  => Controls_Manager::URL,
             ]
         );
         $repeater->add_control(
             'alt',
             [
-                'label'   => __('Alt text', 'elementrify'),
+                'label'   => __('Alt text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -134,7 +134,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'logos',
             [
-                'label'       => __('Logos', 'elementrify'),
+                'label'       => __('Logos', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [],
@@ -145,12 +145,12 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'columns_mode',
             [
-                'label'     => __('Columns', 'elementrify'),
+                'label'     => __('Columns', 'veloria'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'auto',
                 'options'   => [
-                    'auto'   => __('Auto (fit to width)', 'elementrify'),
-                    'custom' => __('Custom count', 'elementrify'),
+                    'auto'   => __('Auto (fit to width)', 'veloria'),
+                    'custom' => __('Custom count', 'veloria'),
                 ],
                 'condition' => ['view' => 'grid'],
             ]
@@ -159,7 +159,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'columns',
             [
-                'label'     => __('Column count', 'elementrify'),
+                'label'     => __('Column count', 'veloria'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 6,
@@ -171,7 +171,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'column_gap',
             [
-                'label'      => __('Gap between items', 'elementrify'),
+                'label'      => __('Gap between items', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48, 'step' => 4]],
@@ -183,14 +183,14 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'navigation',
             [
-                'label'     => __('Navigation', 'elementrify'),
+                'label'     => __('Navigation', 'veloria'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'none',
                 'options'   => [
-                    'both'   => __('Arrows and Dots', 'elementrify'),
-                    'arrows' => __('Arrows', 'elementrify'),
-                    'dots'   => __('Dots', 'elementrify'),
-                    'none'   => __('None', 'elementrify'),
+                    'both'   => __('Arrows and Dots', 'veloria'),
+                    'arrows' => __('Arrows', 'veloria'),
+                    'dots'   => __('Dots', 'veloria'),
+                    'none'   => __('None', 'veloria'),
                 ],
                 'condition' => ['view' => 'slider'],
             ]
@@ -199,13 +199,13 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'pagination_type',
             [
-                'label'     => __('Pagination type', 'elementrify'),
+                'label'     => __('Pagination type', 'veloria'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'bullets',
                 'options'   => [
-                    'bullets'     => __('Circle', 'elementrify'),
-                    'square'      => __('Square', 'elementrify'),
-                    'progressbar' => __('Bar', 'elementrify'),
+                    'bullets'     => __('Circle', 'veloria'),
+                    'square'      => __('Square', 'veloria'),
+                    'progressbar' => __('Bar', 'veloria'),
                 ],
                 'condition' => ['view' => 'slider'],
             ]
@@ -214,7 +214,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'autoplay',
             [
-                'label'        => __('Autoplay', 'elementrify'),
+                'label'        => __('Autoplay', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -225,7 +225,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'autoplay_delay',
             [
-                'label'     => __('Autoplay interval (seconds)', 'elementrify'),
+                'label'     => __('Autoplay interval (seconds)', 'veloria'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 30,
@@ -237,7 +237,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'loop',
             [
-                'label'        => __('Loop', 'elementrify'),
+                'label'        => __('Loop', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -248,7 +248,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'slides_per_view',
             [
-                'label'     => __('Logos per view', 'elementrify'),
+                'label'     => __('Logos per view', 'veloria'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 6,
@@ -260,7 +260,7 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'slide_gap',
             [
-                'label'      => __('Gap between items', 'elementrify'),
+                'label'      => __('Gap between items', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48, 'step' => 4]],
@@ -274,7 +274,7 @@ class LogoShowcase extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_title' => 'yes'],
             ]
@@ -284,18 +284,18 @@ class LogoShowcase extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-logo-showcase__title',
+                'selector' => '{{WRAPPER}} .veloria-logo-showcase__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6D6D7C',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-logo-showcase__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -303,13 +303,13 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'title_spacing',
             [
-                'label'      => __('Spacing below', 'elementrify'),
+                'label'      => __('Spacing below', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 32],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-logo-showcase__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -319,7 +319,7 @@ class LogoShowcase extends WidgetBase
         $this->start_controls_section(
             'section_style_cards',
             [
-                'label' => __('Logo cards', 'elementrify'),
+                'label' => __('Logo cards', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -327,13 +327,13 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'card_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 6],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-logo-showcase__card' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -341,11 +341,11 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'card_background',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-logo-showcase__card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -353,12 +353,12 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'logo_grayscale',
             [
-                'label'        => __('Grayscale logos', 'elementrify'),
+                'label'        => __('Grayscale logos', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
                 'selectors'    => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__img' => 'filter: grayscale(100%);',
+                    '{{WRAPPER}} .veloria-logo-showcase__img' => 'filter: grayscale(100%);',
                 ],
             ]
         );
@@ -366,11 +366,11 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'logo_color',
             [
-                'label'     => __('Logo tint', 'elementrify'),
+                'label'     => __('Logo tint', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6D6D7C',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__img' => 'filter: grayscale(100%) brightness(0) saturate(100%); opacity: 0.75;',
+                    '{{WRAPPER}} .veloria-logo-showcase__img' => 'filter: grayscale(100%) brightness(0) saturate(100%); opacity: 0.75;',
                 ],
                 'condition' => ['logo_grayscale' => ''],
             ]
@@ -379,13 +379,13 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'logo_max_height',
             [
-                'label'      => __('Logo max height', 'elementrify'),
+                'label'      => __('Logo max height', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 24, 'max' => 120]],
                 'default'    => ['size' => 48],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__img' => 'max-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-logo-showcase__img' => 'max-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -395,7 +395,7 @@ class LogoShowcase extends WidgetBase
         $this->start_controls_section(
             'section_style_slider_nav',
             [
-                'label'     => __('Slider navigation', 'elementrify'),
+                'label'     => __('Slider navigation', 'veloria'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['view' => 'slider'],
             ]
@@ -404,13 +404,13 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'arrows_size',
             [
-                'label'      => __('Arrows size', 'elementrify'),
+                'label'      => __('Arrows size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 24, 'max' => 56]],
                 'default'    => ['size' => 40],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-logo-showcase__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-logo-showcase__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -418,13 +418,13 @@ class LogoShowcase extends WidgetBase
         $this->add_control(
             'dots_gap',
             [
-                'label'      => __('Dots gap', 'elementrify'),
+                'label'      => __('Dots gap', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-logo-showcase--slider' => '--elementrify-dots-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-logo-showcase--slider' => '--veloria-dots-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -434,7 +434,7 @@ class LogoShowcase extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/logo-showcase/logo-showcase.php';
+        $path = VELORIA_DIR . 'templates/logo-showcase/logo-showcase.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -452,7 +452,7 @@ class LogoShowcase extends WidgetBase
         var columnsMode = (view === 'grid' && settings.columns_mode) ? settings.columns_mode : 'auto';
         var columns = (view === 'grid' && columnsMode === 'custom' && settings.columns) ? Math.max(1, Math.min(6, parseInt(settings.columns, 10) || 4)) : 4;
         var columnGap = (view === 'grid' && settings.column_gap && settings.column_gap.size != null) ? settings.column_gap.size : 24;
-        var gridAutoClass = (view === 'grid' && columnsMode === 'auto') ? ' elementrify-logo-showcase__grid--auto' : '';
+        var gridAutoClass = (view === 'grid' && columnsMode === 'auto') ? ' veloria-logo-showcase__grid--auto' : '';
         var nav = (view === 'slider' && settings.navigation) ? settings.navigation : 'none';
         var showArrows = view === 'slider' && (nav === 'both' || nav === 'arrows');
         var showDots = view === 'slider' && (nav === 'both' || nav === 'dots');
@@ -463,31 +463,31 @@ class LogoShowcase extends WidgetBase
         var slidesPerView = (view === 'slider' && settings.slides_per_view) ? Math.max(1, Math.min(6, parseInt(settings.slides_per_view, 10) || 4)) : 4;
         var slideGap = (view === 'slider' && settings.slide_gap && settings.slide_gap.size != null) ? settings.slide_gap.size : 24;
         var dotsGap = (settings.dots_gap && settings.dots_gap.size != null) ? settings.dots_gap.size : 8;
-        var paginationClass = (paginationType === 'square') ? ' elementrify-pagination-square' : ((paginationType === 'progressbar') ? ' elementrify-pagination-bar' : '');
-        var gridStyleVars = view === 'grid' ? ('--elementrify-logo-showcase-gap: ' + columnGap + 'px;' + (columnsMode === 'custom' ? ' --elementrify-logo-showcase-columns: ' + columns + ';' : '')) : '';
-        var sliderStyleVars = view === 'slider' ? ('--elementrify-dots-gap: ' + dotsGap + 'px;') : '';
+        var paginationClass = (paginationType === 'square') ? ' veloria-pagination-square' : ((paginationType === 'progressbar') ? ' veloria-pagination-bar' : '');
+        var gridStyleVars = view === 'grid' ? ('--veloria-logo-showcase-gap: ' + columnGap + 'px;' + (columnsMode === 'custom' ? ' --veloria-logo-showcase-columns: ' + columns + ';' : '')) : '';
+        var sliderStyleVars = view === 'slider' ? ('--veloria-dots-gap: ' + dotsGap + 'px;') : '';
         #>
         <?php if (true) : ?>
-        <div class="elementrify-logo-showcase">
+        <div class="veloria-logo-showcase">
             <# if (showTitle && title) { #>
-                <h3 class="elementrify-logo-showcase__title">{{{ title }}}</h3>
+                <h3 class="veloria-logo-showcase__title">{{{ title }}}</h3>
             <# } #>
             <# if (view === 'grid') { #>
-                <div class="elementrify-logo-showcase__grid{{ gridAutoClass }}" style="{{ gridStyleVars }}">
+                <div class="veloria-logo-showcase__grid{{ gridAutoClass }}" style="{{ gridStyleVars }}">
                     <# _.each(logos, function(item) {
                         var imgUrl = (item.logo && item.logo.url) ? item.logo.url : '<?php echo esc_url($placeholder); ?>';
                         var linkUrl = (item.link && item.link.url) ? item.link.url : '';
                         var alt = item.alt || '';
                     #>
-                        <div class="elementrify-logo-showcase__card">
-                            <# if (linkUrl) { #><a href="{{ linkUrl }}" class="elementrify-logo-showcase__link"><# } #>
-                                <img class="elementrify-logo-showcase__img" src="{{ imgUrl }}" alt="{{ alt }}">
+                        <div class="veloria-logo-showcase__card">
+                            <# if (linkUrl) { #><a href="{{ linkUrl }}" class="veloria-logo-showcase__link"><# } #>
+                                <img class="veloria-logo-showcase__img" src="{{ imgUrl }}" alt="{{ alt }}">
                             <# if (linkUrl) { #></a><# } #>
                         </div>
                     <# }); #>
                 </div>
             <# } else { #>
-                <div class="elementrify-logo-showcase--slider swiper{{ paginationClass }}" style="{{ sliderStyleVars }}" data-autoplay="{{ autoplay ? '1' : '0' }}" data-autoplay-delay="{{ autoplayDelay }}" data-loop="{{ loop ? '1' : '0' }}" data-pagination-type="{{ paginationType }}" data-slides-per-view="{{ slidesPerView }}" data-space-between="{{ slideGap }}">
+                <div class="veloria-logo-showcase--slider swiper{{ paginationClass }}" style="{{ sliderStyleVars }}" data-autoplay="{{ autoplay ? '1' : '0' }}" data-autoplay-delay="{{ autoplayDelay }}" data-loop="{{ loop ? '1' : '0' }}" data-pagination-type="{{ paginationType }}" data-slides-per-view="{{ slidesPerView }}" data-space-between="{{ slideGap }}">
                     <div class="swiper-wrapper">
                         <# _.each(logos, function(item) {
                             var imgUrl = (item.logo && item.logo.url) ? item.logo.url : '<?php echo esc_url($placeholder); ?>';
@@ -495,17 +495,17 @@ class LogoShowcase extends WidgetBase
                             var alt = item.alt || '';
                         #>
                             <div class="swiper-slide">
-                                <div class="elementrify-logo-showcase__card">
-                                    <# if (linkUrl) { #><a href="{{ linkUrl }}" class="elementrify-logo-showcase__link"><# } #>
-                                        <img class="elementrify-logo-showcase__img" src="{{ imgUrl }}" alt="{{ alt }}">
+                                <div class="veloria-logo-showcase__card">
+                                    <# if (linkUrl) { #><a href="{{ linkUrl }}" class="veloria-logo-showcase__link"><# } #>
+                                        <img class="veloria-logo-showcase__img" src="{{ imgUrl }}" alt="{{ alt }}">
                                     <# if (linkUrl) { #></a><# } #>
                                 </div>
                             </div>
                         <# }); #>
                     </div>
                     <# if (showArrows) { #>
-                        <div class="elementrify-logo-showcase__arrow elementrify-logo-showcase__arrow--prev swiper-button-prev" role="button" tabindex="0"></div>
-                        <div class="elementrify-logo-showcase__arrow elementrify-logo-showcase__arrow--next swiper-button-next" role="button" tabindex="0"></div>
+                        <div class="veloria-logo-showcase__arrow veloria-logo-showcase__arrow--prev swiper-button-prev" role="button" tabindex="0"></div>
+                        <div class="veloria-logo-showcase__arrow veloria-logo-showcase__arrow--next swiper-button-next" role="button" tabindex="0"></div>
                     <# } #>
                     <# if (showDots) { #><div class="swiper-pagination"></div><# } #>
                 </div>

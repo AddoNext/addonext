@@ -2,7 +2,7 @@
 /**
  * Animated SVG widget template.
  *
- * @var \Elementrify\Widgets\AnimatedSvg\AnimatedSvg $this
+ * @var \Veloria\Widgets\AnimatedSvg\AnimatedSvg $this
  * @var array{mode: string, markup: string, url: string} $payload
  * @var array<string, mixed> $settings
  */
@@ -21,16 +21,16 @@ $is_edit  = class_exists('\Elementor\Plugin')
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($has_link) : ?>
-        <a <?php $this->print_render_attribute_string('svg_link'); ?> class="elementrify-asvg__link">
+        <a <?php $this->print_render_attribute_string('svg_link'); ?> class="veloria-asvg__link">
     <?php endif; ?>
-    <span class="elementrify-asvg__inner">
+    <span class="veloria-asvg__inner">
         <?php
         if ($payload['mode'] === 'img' && $payload['url'] !== '') {
-            echo '<img class="elementrify-asvg__img" src="' . esc_url($payload['url']) . '" alt="" loading="lazy" decoding="async" />';
+            echo '<img class="veloria-asvg__img" src="' . esc_url($payload['url']) . '" alt="" loading="lazy" decoding="async" />';
         } elseif ($payload['mode'] === 'inline' && $payload['markup'] !== '') {
             echo $payload['markup']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitized in widget
         } elseif ($is_edit) {
-            echo '<p class="elementrify-asvg__placeholder">' . esc_html__('Choose a built-in icon, upload an SVG, or set a file URL.', 'elementrify') . '</p>';
+            echo '<p class="veloria-asvg__placeholder">' . esc_html__('Choose a built-in icon, upload an SVG, or set a file URL.', 'veloria') . '</p>';
         }
         ?>
     </span>

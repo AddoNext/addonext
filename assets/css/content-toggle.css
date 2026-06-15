@@ -1,4 +1,4 @@
-.elementrify-content-toggle {
+.veloria-content-toggle {
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
@@ -6,7 +6,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.elementrify-content-toggle__toggle-row {
+.veloria-content-toggle__toggle-row {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@
     flex-wrap: wrap;
 }
 
-.elementrify-content-toggle__labels {
+.veloria-content-toggle__labels {
     display: inline-flex;
     align-items: center;
     background: #f3f4f6;
@@ -24,7 +24,7 @@
     gap: 0;
 }
 
-.elementrify-content-toggle__label {
+.veloria-content-toggle__label {
     padding: 10px 24px;
     cursor: pointer;
     font-size: 15px;
@@ -36,16 +36,16 @@
     transition: color 0.2s, background 0.2s;
 }
 
-.elementrify-content-toggle__label:hover {
+.veloria-content-toggle__label:hover {
     color: #374151;
 }
 
-.elementrify-content-toggle__label.is-active {
+.veloria-content-toggle__label.is-active {
     color: #fff;
     background: #2563eb;
 }
 
-.elementrify-content-toggle__badge {
+.veloria-content-toggle__badge {
     display: inline-block;
     padding: 6px 12px;
     font-size: 12px;
@@ -55,11 +55,11 @@
     border-radius: 6px;
 }
 
-.elementrify-content-toggle__panels {
+.veloria-content-toggle__panels {
     padding: 0 24px 24px;
 }
 
-.elementrify-content-toggle__panel {
+.veloria-content-toggle__panel {
     display: none;
     font-size: 0.9375rem;
     line-height: 1.6;
@@ -67,19 +67,19 @@
     text-align: center;
 }
 
-.elementrify-content-toggle__panel.is-active {
+.veloria-content-toggle__panel.is-active {
     display: block;
 }
 
-.elementrify-content-toggle__panel :first-child {
+.veloria-content-toggle__panel :first-child {
     margin-top: 0;
 }
 
-.elementrify-content-toggle__panel :last-child {
+.veloria-content-toggle__panel :last-child {
     margin-bottom: 0;
 }
 
-.elementrify-content-toggle__panel .elementrify-content-toggle__price {
+.veloria-content-toggle__panel .veloria-content-toggle__price {
     font-size: 2.5rem;
     font-weight: 700;
     color: #111827;
@@ -87,20 +87,20 @@
     line-height: 1.2;
 }
 
-.elementrify-content-toggle__panel .elementrify-content-toggle__sub {
+.veloria-content-toggle__panel .veloria-content-toggle__sub {
     font-size: 0.875rem;
     color: #6b7280;
     margin: 0 0 24px;
 }
 
-.elementrify-content-toggle__panel ul {
+.veloria-content-toggle__panel ul {
     list-style: none;
     padding: 0;
     margin: 0 0 24px;
     text-align: left;
 }
 
-.elementrify-content-toggle__panel ul li {
+.veloria-content-toggle__panel ul li {
     position: relative;
     padding: 12px 0 12px 28px;
     margin: 0;
@@ -109,11 +109,11 @@
     border-bottom: 1px solid #f3f4f6;
 }
 
-.elementrify-content-toggle__panel ul li:last-child {
+.veloria-content-toggle__panel ul li:last-child {
     border-bottom: none;
 }
 
-.elementrify-content-toggle__panel ul li::before {
+.veloria-content-toggle__panel ul li::before {
     content: "";
     position: absolute;
     left: 0;
@@ -125,7 +125,7 @@
     background-size: contain;
 }
 
-.elementrify-content-toggle__panel .elementrify-content-toggle__cta {
+.veloria-content-toggle__panel .veloria-content-toggle__cta {
     display: inline-block;
     padding: 14px 32px;
     font-size: 14px;
@@ -140,21 +140,21 @@
     transition: opacity 0.2s;
 }
 
-.elementrify-content-toggle__panel .elementrify-content-toggle__cta:hover {
+.veloria-content-toggle__panel .veloria-content-toggle__cta:hover {
     opacity: 0.95;
 }
 
-.elementrify-content-toggle__panel h1,
-.elementrify-content-toggle__panel h2,
-.elementrify-content-toggle__panel h3,
-.elementrify-content-toggle__panel h4 {
+.veloria-content-toggle__panel h1,
+.veloria-content-toggle__panel h2,
+.veloria-content-toggle__panel h3,
+.veloria-content-toggle__panel h4 {
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
     margin: 0 0 12px;
 }
 
-.elementrify-content-toggle__panel p {
+.veloria-content-toggle__panel p {
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #374151;

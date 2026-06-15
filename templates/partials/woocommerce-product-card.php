@@ -5,7 +5,7 @@ defined('ABSPATH') || exit;
  * Product Grid card markup.
  *
  * @var \WC_Product $product
- * @var string      $prefix BEM prefix, e.g. elementrify-product-grid
+ * @var string      $prefix BEM prefix, e.g. veloria-product-grid
  * @var string      $image_hover_effect none|zoom-in|zoom-out|jump|tilt
  * @var bool        $show_rating
  * @var bool        $show_short_desc
@@ -19,9 +19,9 @@ if (!isset($product) || !($product instanceof \WC_Product)) {
     return;
 }
 
-$prefix = isset($prefix) ? preg_replace('/[^a-z0-9\-_]/', '', (string) $prefix) : 'elementrify-product-grid';
+$prefix = isset($prefix) ? preg_replace('/[^a-z0-9\-_]/', '', (string) $prefix) : 'veloria-product-grid';
 if ($prefix === '') {
-    $prefix = 'elementrify-product-grid';
+    $prefix = 'veloria-product-grid';
 }
 
 $effect = isset($image_hover_effect) ? (string) $image_hover_effect : 'zoom-out';
@@ -57,10 +57,10 @@ $permalink = $product->get_permalink();
         <?php if ($show_badges && ($is_on_sale || $is_featured)) : ?>
             <div class="<?php echo esc_attr($prefix); ?>__badges">
                 <?php if ($is_on_sale) : ?>
-                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--sale"><?php esc_html_e('Sale', 'elementrify'); ?></span>
+                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--sale"><?php esc_html_e('Sale', 'veloria'); ?></span>
                 <?php endif; ?>
                 <?php if ($is_featured) : ?>
-                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--new"><?php esc_html_e('Featured', 'elementrify'); ?></span>
+                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--new"><?php esc_html_e('Featured', 'veloria'); ?></span>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
@@ -95,7 +95,7 @@ $permalink = $product->get_permalink();
             <?php if ($show_wishlist || $show_add_to_cart) : ?>
                 <span class="<?php echo esc_attr($prefix); ?>__actions">
                     <?php if ($show_wishlist) : ?>
-                        <a class="<?php echo esc_attr($prefix); ?>__icon-btn" href="<?php echo esc_url($permalink); ?>" aria-label="<?php esc_attr_e('View Product', 'elementrify'); ?>">
+                        <a class="<?php echo esc_attr($prefix); ?>__icon-btn" href="<?php echo esc_url($permalink); ?>" aria-label="<?php esc_attr_e('View Product', 'veloria'); ?>">
                             <i class="far fa-heart" aria-hidden="true"></i>
                         </a>
                     <?php endif; ?>
@@ -110,7 +110,7 @@ $permalink = $product->get_permalink();
                             aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>">
                             <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         </a>
-                        <a class="<?php echo esc_attr($prefix); ?>__cart-tooltip" href="#"><?php esc_html_e('View cart', 'elementrify'); ?></a>
+                        <a class="<?php echo esc_attr($prefix); ?>__cart-tooltip" href="#"><?php esc_html_e('View cart', 'veloria'); ?></a>
                     <?php endif; ?>
                 </span>
             <?php endif; ?>

@@ -1,11 +1,11 @@
 <?php
-namespace Elementrify\Admin;
+namespace Veloria\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use Elementrify\Utils\OptionsHelper;
-use Elementrify\Utils\LicenseCapabilities;
-use Elementrify\Common\WidgetManager;
+use Veloria\Utils\OptionsHelper;
+use Veloria\Utils\LicenseCapabilities;
+use Veloria\Common\WidgetManager;
 
 defined('ABSPATH') or exit;
 
@@ -105,19 +105,19 @@ class WidgetController
 
     public function register_endpoints(): void
     {
-        register_rest_route('elementrify/v1', '/widgets', [
+        register_rest_route('veloria/v1', '/widgets', [
             'methods'  => 'GET',
             'callback' => [$this, 'rest_get_widgets'],
             'permission_callback' => '__return_true'
         ]);
 
-        register_rest_route('elementrify/v1', '/categories', [
+        register_rest_route('veloria/v1', '/categories', [
             'methods'  => 'GET',
             'callback' => [$this, 'rest_get_categories'],
             'permission_callback' => '__return_true'
         ]);
 
-        register_rest_route('elementrify/v1', '/update-widgets', [
+        register_rest_route('veloria/v1', '/update-widgets', [
             'methods'  => 'POST',
             'callback' => [$this, 'rest_update_widgets'],
             'permission_callback' => '__return_true'
@@ -142,7 +142,7 @@ class WidgetController
             return new WP_REST_Response(
                 [
                     'success' => false,
-                    'message' => __('Invalid widgets', 'elementrify')
+                    'message' => __('Invalid widgets', 'veloria')
                 ],
                 400
             );
@@ -154,7 +154,7 @@ class WidgetController
         return new WP_REST_Response(
             [
                 'success' => true,
-                'message' => __('Widgets updated successfully', 'elementrify')
+                'message' => __('Widgets updated successfully', 'veloria')
             ]
         );
     }

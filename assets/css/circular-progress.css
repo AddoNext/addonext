@@ -1,8 +1,8 @@
-.elementrify-circular-progress {
+.veloria-circular-progress {
     width: 100%;
 }
 
-.elementrify-circular-progress__list {
+.veloria-circular-progress__list {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -10,7 +10,7 @@
     gap: 32px;
 }
 
-.elementrify-circular-progress__item {
+.veloria-circular-progress__item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@
     flex: 0 0 auto;
 }
 
-.elementrify-circular-progress__circle-wrap {
+.veloria-circular-progress__circle-wrap {
     position: relative;
     display: flex;
     align-items: center;
@@ -26,25 +26,25 @@
     margin-bottom: 12px;
 }
 
-.elementrify-circular-progress__svg {
+.veloria-circular-progress__svg {
     width: 130px;
     height: 130px;
     display: block;
     vertical-align: middle;
 }
 
-.elementrify-circular-progress__bg {
+.veloria-circular-progress__bg {
     stroke: #E0E0E0;
     stroke-width: 3;
 }
 
-.elementrify-circular-progress__fill {
+.veloria-circular-progress__fill {
     stroke-width: 3;
     stroke-linecap: round;
     transition: stroke-dasharray 0.5s ease;
 }
 
-.elementrify-circular-progress__value {
+.veloria-circular-progress__value {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -55,7 +55,7 @@
     line-height: 1.2;
 }
 
-.elementrify-circular-progress__title {
+.veloria-circular-progress__title {
     font-size: 1rem;
     font-weight: 700;
     color: #1a1a1a;
@@ -63,7 +63,7 @@
     margin-bottom: 4px;
 }
 
-.elementrify-circular-progress__subtitle {
+.veloria-circular-progress__subtitle {
     font-size: 0.875rem;
     font-weight: 400;
     color: #666666;

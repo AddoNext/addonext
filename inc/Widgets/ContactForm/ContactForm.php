@@ -1,11 +1,11 @@
 <?php
-namespace Elementrify\Widgets\ContactForm;
+namespace Veloria\Widgets\ContactForm;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
-use Elementrify\Utils\OptionsHelper;
+use Veloria\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
@@ -18,18 +18,18 @@ class ContactForm extends WidgetBase
 
     public static function register_ajax_handlers(): void
     {
-        add_action('wp_ajax_elementrify_contact_form', [self::class, 'ajax_submit']);
-        add_action('wp_ajax_nopriv_elementrify_contact_form', [self::class, 'ajax_submit']);
+        add_action('wp_ajax_veloria_contact_form', [self::class, 'ajax_submit']);
+        add_action('wp_ajax_nopriv_veloria_contact_form', [self::class, 'ajax_submit']);
     }
 
     public function get_icon(): string
     {
-        return 'eicon-form-horizontal elementrify-icon';
+        return 'eicon-form-horizontal veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-contact-form';
+        return 'veloria-contact-form';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class ContactForm extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Contact Form', 'elementrify');
+        return __('Contact Form', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Advanced form builder', 'elementrify');
+        return __('Advanced form builder', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -54,12 +54,12 @@ class ContactForm extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-contact-form'];
+        return ['veloria-contact-form'];
     }
 
     public function get_script_depends(): array
     {
-        $depends = ['elementrify-contact-form'];
+        $depends = ['veloria-contact-form'];
         return $depends;
     }
 
@@ -68,7 +68,7 @@ class ContactForm extends WidgetBase
         $this->start_controls_section(
             'section_form',
             [
-                'label' => __('Form', 'elementrify'),
+                'label' => __('Form', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -77,23 +77,23 @@ class ContactForm extends WidgetBase
         $repeater->add_control(
             'field_type',
             [
-                'label'   => __('Type', 'elementrify'),
+                'label'   => __('Type', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'text',
                 'options' => [
-                    'text'     => __('Text', 'elementrify'),
-                    'email'    => __('Email', 'elementrify'),
-                    'textarea' => __('Textarea', 'elementrify'),
-                    'password' => __('Password', 'elementrify'),
-                    'select'   => __('Dropdown', 'elementrify'),
-                    'file'     => __('File', 'elementrify'),
+                    'text'     => __('Text', 'veloria'),
+                    'email'    => __('Email', 'veloria'),
+                    'textarea' => __('Textarea', 'veloria'),
+                    'password' => __('Password', 'veloria'),
+                    'select'   => __('Dropdown', 'veloria'),
+                    'file'     => __('File', 'veloria'),
                 ],
             ]
         );
         $repeater->add_control(
             'label',
             [
-                'label'   => __('Label', 'elementrify'),
+                'label'   => __('Label', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -101,7 +101,7 @@ class ContactForm extends WidgetBase
         $repeater->add_control(
             'placeholder',
             [
-                'label'   => __('Placeholder', 'elementrify'),
+                'label'   => __('Placeholder', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -109,7 +109,7 @@ class ContactForm extends WidgetBase
         $repeater->add_control(
             'required',
             [
-                'label'        => __('Required', 'elementrify'),
+                'label'        => __('Required', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -118,7 +118,7 @@ class ContactForm extends WidgetBase
         $repeater->add_control(
             'options',
             [
-                'label'     => __('Options (one per line)', 'elementrify'),
+                'label'     => __('Options (one per line)', 'veloria'),
                 'type'      => Controls_Manager::TEXTAREA,
                 'default'   => '',
                 'condition' => ['field_type' => 'select'],
@@ -127,7 +127,7 @@ class ContactForm extends WidgetBase
         $repeater->add_control(
             'accept',
             [
-                'label'     => __('Accept (e.g. .pdf,.jpg)', 'elementrify'),
+                'label'     => __('Accept (e.g. .pdf,.jpg)', 'veloria'),
                 'type'      => Controls_Manager::TEXT,
                 'default'   => '',
                 'condition' => ['field_type' => 'file'],
@@ -135,15 +135,15 @@ class ContactForm extends WidgetBase
         );
 
         $default_fields = [
-            ['field_type' => 'text', 'placeholder' => __('Your Name', 'elementrify'), 'required' => 'yes', 'label' => ''],
-            ['field_type' => 'email', 'placeholder' => __('Email Address', 'elementrify'), 'required' => 'yes', 'label' => ''],
-            ['field_type' => 'textarea', 'placeholder' => __('Your Message', 'elementrify'), 'required' => '', 'label' => ''],
+            ['field_type' => 'text', 'placeholder' => __('Your Name', 'veloria'), 'required' => 'yes', 'label' => ''],
+            ['field_type' => 'email', 'placeholder' => __('Email Address', 'veloria'), 'required' => 'yes', 'label' => ''],
+            ['field_type' => 'textarea', 'placeholder' => __('Your Message', 'veloria'), 'required' => '', 'label' => ''],
         ];
 
         $this->add_control(
             'fields',
             [
-                'label'       => __('Fields', 'elementrify'),
+                'label'       => __('Fields', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => $default_fields,
@@ -154,49 +154,49 @@ class ContactForm extends WidgetBase
         $this->add_control(
             'recipient_email',
             [
-                'label'       => __('Recipient email', 'elementrify'),
+                'label'       => __('Recipient email', 'veloria'),
                 'type'        => Controls_Manager::TEXT,
                 'default'     => get_option('admin_email'),
                 'placeholder' => get_option('admin_email'),
-                'description' => __('Where the form submissions will be sent.', 'elementrify'),
+                'description' => __('Where the form submissions will be sent.', 'veloria'),
             ]
         );
 
         $this->add_control(
             'enable_recaptcha',
             [
-                'label'        => __('Enable reCAPTCHA', 'elementrify'),
+                'label'        => __('Enable reCAPTCHA', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
-                'description'  => __('Requires Site Key and Secret Key in Elementrify → Settings → API Keys.', 'elementrify'),
+                'description'  => __('Requires Site Key and Secret Key in Veloria → Settings → API Keys.', 'veloria'),
             ]
         );
 
         $this->add_control(
             'submit_text',
             [
-                'label'   => __('Submit button text', 'elementrify'),
+                'label'   => __('Submit button text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Send Message', 'elementrify'),
+                'default' => __('Send Message', 'veloria'),
             ]
         );
 
         $this->add_control(
             'success_message',
             [
-                'label'   => __('Success message', 'elementrify'),
+                'label'   => __('Success message', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Thank you for your message. We will get back to you soon.', 'elementrify'),
+                'default' => __('Thank you for your message. We will get back to you soon.', 'veloria'),
             ]
         );
 
         $this->add_control(
             'error_message',
             [
-                'label'   => __('Error message', 'elementrify'),
+                'label'   => __('Error message', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Something went wrong. Please try again.', 'elementrify'),
+                'default' => __('Something went wrong. Please try again.', 'veloria'),
             ]
         );
 
@@ -205,7 +205,7 @@ class ContactForm extends WidgetBase
         $this->start_controls_section(
             'section_style_form',
             [
-                'label' => __('Form', 'elementrify'),
+                'label' => __('Form', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -214,8 +214,8 @@ class ContactForm extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'label_typography',
-                'label'          => __('Label', 'elementrify'),
-                'selector'       => '{{WRAPPER}} .elementrify-contact-form__label',
+                'label'          => __('Label', 'veloria'),
+                'selector'       => '{{WRAPPER}} .veloria-contact-form__label',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_size'   => ['default' => ['unit' => 'px', 'size' => 14]],
@@ -228,8 +228,8 @@ class ContactForm extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'input_typography',
-                'label'          => __('Input / Textarea', 'elementrify'),
-                'selector'       => '{{WRAPPER}} .elementrify-contact-form__input, {{WRAPPER}} .elementrify-contact-form__textarea, {{WRAPPER}} .elementrify-contact-form__select',
+                'label'          => __('Input / Textarea', 'veloria'),
+                'selector'       => '{{WRAPPER}} .veloria-contact-form__input, {{WRAPPER}} .veloria-contact-form__textarea, {{WRAPPER}} .veloria-contact-form__select',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_size'   => ['default' => ['unit' => 'px', 'size' => 14]],
@@ -241,8 +241,8 @@ class ContactForm extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'placeholder_typography',
-                'label'          => __('Placeholder', 'elementrify'),
-                'selector'       => '{{WRAPPER}} .elementrify-contact-form__input::placeholder, {{WRAPPER}} .elementrify-contact-form__textarea::placeholder',
+                'label'          => __('Placeholder', 'veloria'),
+                'selector'       => '{{WRAPPER}} .veloria-contact-form__input::placeholder, {{WRAPPER}} .veloria-contact-form__textarea::placeholder',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_size'   => ['default' => ['unit' => 'px', 'size' => 14]],
@@ -253,13 +253,13 @@ class ContactForm extends WidgetBase
         $this->add_control(
             'input_bg',
             [
-                'label'     => __('Input background', 'elementrify'),
+                'label'     => __('Input background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-contact-form__input' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-contact-form__textarea' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-contact-form__select' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__input' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__textarea' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__select' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -267,13 +267,13 @@ class ContactForm extends WidgetBase
         $this->add_control(
             'input_border_color',
             [
-                'label'     => __('Input border color', 'elementrify'),
+                'label'     => __('Input border color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#d1d5db',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-contact-form__input' => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-contact-form__textarea' => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-contact-form__select' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__input' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__textarea' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__select' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -281,13 +281,13 @@ class ContactForm extends WidgetBase
         $this->add_control(
             'input_text_color',
             [
-                'label'     => __('Input text color', 'elementrify'),
+                'label'     => __('Input text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-contact-form__input' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-contact-form__textarea' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-contact-form__select' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__input' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__textarea' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__select' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -297,7 +297,7 @@ class ContactForm extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'elementrify'),
+                'label' => __('Button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -306,18 +306,18 @@ class ContactForm extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .elementrify-contact-form__submit',
+                'selector' => '{{WRAPPER}} .veloria-contact-form__submit',
             ]
         );
 
         $this->add_control(
             'button_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-contact-form__submit' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__submit' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -325,11 +325,11 @@ class ContactForm extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-contact-form__submit' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-contact-form__submit' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -337,13 +337,13 @@ class ContactForm extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-contact-form__submit' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-contact-form__submit' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -351,11 +351,11 @@ class ContactForm extends WidgetBase
         $this->add_responsive_control(
             'button_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-contact-form__submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-contact-form__submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -365,9 +365,9 @@ class ContactForm extends WidgetBase
 
     public static function ajax_submit(): void
     {
-        $nonce = isset($_REQUEST['elementrify_contact_nonce']) ? sanitize_text_field(wp_unslash($_REQUEST['elementrify_contact_nonce'])) : '';
-        if (!wp_verify_nonce($nonce, 'elementrify_contact_form')) {
-            wp_send_json_error(['message' => __('Security check failed. Please refresh the page and try again.', 'elementrify')]);
+        $nonce = isset($_REQUEST['veloria_contact_nonce']) ? sanitize_text_field(wp_unslash($_REQUEST['veloria_contact_nonce'])) : '';
+        if (!wp_verify_nonce($nonce, 'veloria_contact_form')) {
+            wp_send_json_error(['message' => __('Security check failed. Please refresh the page and try again.', 'veloria')]);
         }
 
         $form_id = isset($_POST['form_id']) ? sanitize_text_field(wp_unslash($_POST['form_id'])) : '';
@@ -377,14 +377,14 @@ class ContactForm extends WidgetBase
         $use_recaptcha = isset($_POST['use_recaptcha']) && $_POST['use_recaptcha'] === '1';
 
         if (!$recipient || !is_email($recipient)) {
-            wp_send_json_error(['message' => __('Invalid recipient.', 'elementrify')]);
+            wp_send_json_error(['message' => __('Invalid recipient.', 'veloria')]);
         }
 
         if ($use_recaptcha) {
             $site_key = OptionsHelper::get_option('recaptcha_site_key', '');
             $secret_key = OptionsHelper::get_option('recaptcha_secret_key', '');
             if (!$secret_key || !$recaptcha_token) {
-                wp_send_json_error(['message' => __('reCAPTCHA verification failed.', 'elementrify')]);
+                wp_send_json_error(['message' => __('reCAPTCHA verification failed.', 'veloria')]);
             }
             $verify = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
                 'body' => [
@@ -393,11 +393,11 @@ class ContactForm extends WidgetBase
                 ],
             ]);
             if (is_wp_error($verify)) {
-                wp_send_json_error(['message' => __('reCAPTCHA check failed.', 'elementrify')]);
+                wp_send_json_error(['message' => __('reCAPTCHA check failed.', 'veloria')]);
             }
             $body = json_decode(wp_remote_retrieve_body($verify), true);
             if (empty($body['success'])) {
-                wp_send_json_error(['message' => __('reCAPTCHA verification failed.', 'elementrify')]);
+                wp_send_json_error(['message' => __('reCAPTCHA verification failed.', 'veloria')]);
             }
         }
 
@@ -424,7 +424,7 @@ class ContactForm extends WidgetBase
 
         $subject = sprintf(
             /* translators: %s: site title */
-            __('[%s] Contact form submission', 'elementrify'),
+            __('[%s] Contact form submission', 'veloria'),
             get_bloginfo('name')
         );
         $body_email = '';
@@ -438,14 +438,14 @@ class ContactForm extends WidgetBase
         $sent = wp_mail($recipient, $subject, $body_email, $headers);
 
         if ($sent) {
-            wp_send_json_success(['message' => __('Thank you for your message.', 'elementrify')]);
+            wp_send_json_success(['message' => __('Thank you for your message.', 'veloria')]);
         }
-        wp_send_json_error(['message' => __('Failed to send email.', 'elementrify')]);
+        wp_send_json_error(['message' => __('Failed to send email.', 'veloria')]);
     }
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/contact-form/contact-form.php';
+        $path = VELORIA_DIR . 'templates/contact-form/contact-form.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -458,35 +458,35 @@ class ContactForm extends WidgetBase
         var fields = settings.fields || [];
         var recipient = settings.recipient_email || '';
         var recaptcha = settings.enable_recaptcha === 'yes';
-        var submitText = settings.submit_text || '<?php echo esc_js(__('Send Message', 'elementrify')); ?>';
+        var submitText = settings.submit_text || '<?php echo esc_js(__('Send Message', 'veloria')); ?>';
         var successMsg = settings.success_message || '';
         var errorMsg = settings.error_message || '';
         #>
-        <form class="elementrify-contact-form" data-recipient="{{ recipient }}" data-recaptcha="{{ recaptcha ? '1' : '0' }}" data-success-msg="{{ successMsg }}" data-error-msg="{{ errorMsg }}" data-fields-config="">
+        <form class="veloria-contact-form" data-recipient="{{ recipient }}" data-recaptcha="{{ recaptcha ? '1' : '0' }}" data-success-msg="{{ successMsg }}" data-error-msg="{{ errorMsg }}" data-fields-config="">
             <# _.each(fields, function(f, i) {
                 var name = 'field_' + i;
                 var ph = f.placeholder || '';
                 var req = f.required === 'yes';
                 var type = f.field_type || 'text';
             #>
-            <div class="elementrify-contact-form__row">
-                <# if (f.label) { #><label class="elementrify-contact-form__label">{{{ f.label }}}</label><# } #>
+            <div class="veloria-contact-form__row">
+                <# if (f.label) { #><label class="veloria-contact-form__label">{{{ f.label }}}</label><# } #>
                 <# if (type === 'textarea') { #>
-                <textarea class="elementrify-contact-form__textarea" name="{{ name }}" placeholder="{{ ph }}" <# if (req) { #>required<# } #>></textarea>
+                <textarea class="veloria-contact-form__textarea" name="{{ name }}" placeholder="{{ ph }}" <# if (req) { #>required<# } #>></textarea>
                 <# } else if (type === 'select') { #>
-                <select class="elementrify-contact-form__select" name="{{ name }}" <# if (req) { #>required<# } #>><option value="">—</option></select>
+                <select class="veloria-contact-form__select" name="{{ name }}" <# if (req) { #>required<# } #>><option value="">—</option></select>
                 <# } else if (type === 'file') { #>
-                <input type="file" class="elementrify-contact-form__input" name="{{ name }}" <# if (req) { #>required<# } #>>
+                <input type="file" class="veloria-contact-form__input" name="{{ name }}" <# if (req) { #>required<# } #>>
                 <# } else { #>
-                <input type="{{ type }}" class="elementrify-contact-form__input" name="{{ name }}" placeholder="{{ ph }}" <# if (req) { #>required<# } #>>
+                <input type="{{ type }}" class="veloria-contact-form__input" name="{{ name }}" placeholder="{{ ph }}" <# if (req) { #>required<# } #>>
                 <# } #>
             </div>
             <# }); #>
-            <# if (recaptcha) { #><div class="elementrify-contact-form__recaptcha" data-sitekey=""></div><# } #>
-            <div class="elementrify-contact-form__row elementrify-contact-form__row--submit">
-                <button type="submit" class="elementrify-contact-form__submit"><span class="elementrify-contact-form__spinner" aria-hidden="true"></span><span class="elementrify-contact-form__submit-text">{{{ submitText }}}</span></button>
+            <# if (recaptcha) { #><div class="veloria-contact-form__recaptcha" data-sitekey=""></div><# } #>
+            <div class="veloria-contact-form__row veloria-contact-form__row--submit">
+                <button type="submit" class="veloria-contact-form__submit"><span class="veloria-contact-form__spinner" aria-hidden="true"></span><span class="veloria-contact-form__submit-text">{{{ submitText }}}</span></button>
             </div>
-            <div class="elementrify-contact-form__message" aria-live="polite"></div>
+            <div class="veloria-contact-form__message" aria-live="polite"></div>
         </form>
         <?php
     }

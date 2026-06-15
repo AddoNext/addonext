@@ -1,98 +1,98 @@
 <?php
-namespace Elementrify\Common;
+namespace Veloria\Common;
 
 defined('ABSPATH') || exit;
 
 use Elementor\Widgets_Manager;
-use Elementrify\Utils\OptionsHelper;
-use Elementrify\Utils\LicenseCapabilities;
-use Elementrify\Widgets\Accordion\Accordion;
-use Elementrify\Widgets\AdvancedGoogleMap\AdvancedGoogleMap;
-use Elementrify\Widgets\AdvancedHeading\AdvancedHeading;
-use Elementrify\Widgets\AdvancedTabs\AdvancedTabs;
-use Elementrify\Widgets\AnimatedText\AnimatedText;
-use Elementrify\Widgets\Badge\Badge;
-use Elementrify\Widgets\Blockquote\Blockquote;
-use Elementrify\Widgets\Button\Button;
-use Elementrify\Widgets\CodeSnippet\CodeSnippet;
-use Elementrify\Widgets\ContentToggle\ContentToggle;
-use Elementrify\Widgets\Divider\Divider;
-use Elementrify\Widgets\Dropcap\Dropcap;
-use Elementrify\Widgets\HeroBanner\HeroBanner;
-use Elementrify\Widgets\HeroSlider\HeroSlider;
-use Elementrify\Widgets\Highlight\Highlight;
-use Elementrify\Widgets\IconBox\IconBox;
-use Elementrify\Widgets\IconList\IconList;
-use Elementrify\Widgets\ImageBox\ImageBox;
-use Elementrify\Widgets\ModalPopup\ModalPopup;
-use Elementrify\Widgets\NavigationMenu\NavigationMenu;
-use Elementrify\Widgets\NewsTicker\NewsTicker;
-use Elementrify\Widgets\OffCanvasContent\OffCanvasContent;
-use Elementrify\Widgets\SmartPostList\SmartPostList;
-use Elementrify\Widgets\Spacer\Spacer;
-use Elementrify\Widgets\TableOfContents\TableOfContents;
-use Elementrify\Widgets\TextEditor\TextEditor;
-use Elementrify\Widgets\VideoGallery\VideoGallery;
-use Elementrify\Widgets\VideoPlayer\VideoPlayer;
-use Elementrify\Widgets\AnimatedCounter\AnimatedCounter;
-use Elementrify\Widgets\AnimatedGradient\AnimatedGradient;
-use Elementrify\Widgets\AnimatedSvg\AnimatedSvg;
-use Elementrify\Widgets\BeforeAfterSlider\BeforeAfterSlider;
-use Elementrify\Widgets\BentoGrid\BentoGrid;
-use Elementrify\Widgets\CircularProgress\CircularProgress;
-use Elementrify\Widgets\CountdownTimer\CountdownTimer;
-use Elementrify\Widgets\DualHeading\DualHeading;
-use Elementrify\Widgets\FlipBox\FlipBox;
-use Elementrify\Widgets\ImageCarousel\ImageCarousel;
-use Elementrify\Widgets\ImageGallery\ImageGallery;
-use Elementrify\Widgets\ImageHotspot\ImageHotspot;
-use Elementrify\Widgets\LottieAnimation\LottieAnimation;
-use Elementrify\Widgets\ProgressBar\ProgressBar;
-use Elementrify\Widgets\StarRating\StarRating;
-use Elementrify\Widgets\Timeline\Timeline;
-use Elementrify\Widgets\Tooltip\Tooltip;
-use Elementrify\Widgets\AuthorBox\AuthorBox;
-use Elementrify\Widgets\Banner\Banner;
-use Elementrify\Widgets\CallToAction\CallToAction;
-use Elementrify\Widgets\ComparisonTable\ComparisonTable;
-use Elementrify\Widgets\ContactForm\ContactForm;
-use Elementrify\Widgets\ContactForm7Styler\ContactForm7Styler;
-use Elementrify\Widgets\InstagramFeed\InstagramFeed;
-use Elementrify\Widgets\LogoShowcase\LogoShowcase;
-use Elementrify\Widgets\NoticeBoard\NoticeBoard;
-use Elementrify\Widgets\PriceList\PriceList;
-use Elementrify\Widgets\PricingTable\PricingTable;
-use Elementrify\Widgets\PromoBox\PromoBox;
-use Elementrify\Widgets\SocialShare\SocialShare;
-use Elementrify\Widgets\SubscribeForm\SubscribeForm;
-use Elementrify\Widgets\TeamMembers\TeamMembers;
-use Elementrify\Widgets\Testimonials\Testimonials;
-use Elementrify\Widgets\TwitterFeed\TwitterFeed;
-use Elementrify\Widgets\UspItems\UspItems;
-use Elementrify\Widgets\AdvancedAnalytics\AdvancedAnalytics;
-use Elementrify\Widgets\AreaChart\AreaChart;
-use Elementrify\Widgets\BarChart\BarChart;
-use Elementrify\Widgets\DataTable\DataTable;
-use Elementrify\Widgets\DonutChart\DonutChart;
-use Elementrify\Widgets\LineChart\LineChart;
-use Elementrify\Widgets\PieChart\PieChart;
-use Elementrify\Widgets\RadarChart\RadarChart;
-use Elementrify\Widgets\AddToCart\AddToCart;
-use Elementrify\Widgets\MiniCart\MiniCart;
-use Elementrify\Widgets\ProductCarousel\ProductCarousel;
-use Elementrify\Widgets\ProductCategories\ProductCategories;
-use Elementrify\Widgets\ProductFilter\ProductFilter;
-use Elementrify\Widgets\ProductGrid\ProductGrid;
-use Elementrify\Widgets\ProductImage\ProductImage;
-use Elementrify\Widgets\ProductTabs\ProductTabs;
-use Elementrify\Widgets\WooCheckout\WooCheckout;
-use Elementrify\Widgets\WooDashboard\WooDashboard;
-use Elementrify\Widgets\WooThankYou\WooThankYou;
+use Veloria\Utils\OptionsHelper;
+use Veloria\Utils\LicenseCapabilities;
+use Veloria\Widgets\Accordion\Accordion;
+use Veloria\Widgets\AdvancedGoogleMap\AdvancedGoogleMap;
+use Veloria\Widgets\AdvancedHeading\AdvancedHeading;
+use Veloria\Widgets\AdvancedTabs\AdvancedTabs;
+use Veloria\Widgets\AnimatedText\AnimatedText;
+use Veloria\Widgets\Badge\Badge;
+use Veloria\Widgets\Blockquote\Blockquote;
+use Veloria\Widgets\Button\Button;
+use Veloria\Widgets\CodeSnippet\CodeSnippet;
+use Veloria\Widgets\ContentToggle\ContentToggle;
+use Veloria\Widgets\Divider\Divider;
+use Veloria\Widgets\Dropcap\Dropcap;
+use Veloria\Widgets\HeroBanner\HeroBanner;
+use Veloria\Widgets\HeroSlider\HeroSlider;
+use Veloria\Widgets\Highlight\Highlight;
+use Veloria\Widgets\IconBox\IconBox;
+use Veloria\Widgets\IconList\IconList;
+use Veloria\Widgets\ImageBox\ImageBox;
+use Veloria\Widgets\ModalPopup\ModalPopup;
+use Veloria\Widgets\NavigationMenu\NavigationMenu;
+use Veloria\Widgets\NewsTicker\NewsTicker;
+use Veloria\Widgets\OffCanvasContent\OffCanvasContent;
+use Veloria\Widgets\SmartPostList\SmartPostList;
+use Veloria\Widgets\Spacer\Spacer;
+use Veloria\Widgets\TableOfContents\TableOfContents;
+use Veloria\Widgets\TextEditor\TextEditor;
+use Veloria\Widgets\VideoGallery\VideoGallery;
+use Veloria\Widgets\VideoPlayer\VideoPlayer;
+use Veloria\Widgets\AnimatedCounter\AnimatedCounter;
+use Veloria\Widgets\AnimatedGradient\AnimatedGradient;
+use Veloria\Widgets\AnimatedSvg\AnimatedSvg;
+use Veloria\Widgets\BeforeAfterSlider\BeforeAfterSlider;
+use Veloria\Widgets\BentoGrid\BentoGrid;
+use Veloria\Widgets\CircularProgress\CircularProgress;
+use Veloria\Widgets\CountdownTimer\CountdownTimer;
+use Veloria\Widgets\DualHeading\DualHeading;
+use Veloria\Widgets\FlipBox\FlipBox;
+use Veloria\Widgets\ImageCarousel\ImageCarousel;
+use Veloria\Widgets\ImageGallery\ImageGallery;
+use Veloria\Widgets\ImageHotspot\ImageHotspot;
+use Veloria\Widgets\LottieAnimation\LottieAnimation;
+use Veloria\Widgets\ProgressBar\ProgressBar;
+use Veloria\Widgets\StarRating\StarRating;
+use Veloria\Widgets\Timeline\Timeline;
+use Veloria\Widgets\Tooltip\Tooltip;
+use Veloria\Widgets\AuthorBox\AuthorBox;
+use Veloria\Widgets\Banner\Banner;
+use Veloria\Widgets\CallToAction\CallToAction;
+use Veloria\Widgets\ComparisonTable\ComparisonTable;
+use Veloria\Widgets\ContactForm\ContactForm;
+use Veloria\Widgets\ContactForm7Styler\ContactForm7Styler;
+use Veloria\Widgets\InstagramFeed\InstagramFeed;
+use Veloria\Widgets\LogoShowcase\LogoShowcase;
+use Veloria\Widgets\NoticeBoard\NoticeBoard;
+use Veloria\Widgets\PriceList\PriceList;
+use Veloria\Widgets\PricingTable\PricingTable;
+use Veloria\Widgets\PromoBox\PromoBox;
+use Veloria\Widgets\SocialShare\SocialShare;
+use Veloria\Widgets\SubscribeForm\SubscribeForm;
+use Veloria\Widgets\TeamMembers\TeamMembers;
+use Veloria\Widgets\Testimonials\Testimonials;
+use Veloria\Widgets\TwitterFeed\TwitterFeed;
+use Veloria\Widgets\UspItems\UspItems;
+use Veloria\Widgets\AdvancedAnalytics\AdvancedAnalytics;
+use Veloria\Widgets\AreaChart\AreaChart;
+use Veloria\Widgets\BarChart\BarChart;
+use Veloria\Widgets\DataTable\DataTable;
+use Veloria\Widgets\DonutChart\DonutChart;
+use Veloria\Widgets\LineChart\LineChart;
+use Veloria\Widgets\PieChart\PieChart;
+use Veloria\Widgets\RadarChart\RadarChart;
+use Veloria\Widgets\AddToCart\AddToCart;
+use Veloria\Widgets\MiniCart\MiniCart;
+use Veloria\Widgets\ProductCarousel\ProductCarousel;
+use Veloria\Widgets\ProductCategories\ProductCategories;
+use Veloria\Widgets\ProductFilter\ProductFilter;
+use Veloria\Widgets\ProductGrid\ProductGrid;
+use Veloria\Widgets\ProductImage\ProductImage;
+use Veloria\Widgets\ProductTabs\ProductTabs;
+use Veloria\Widgets\WooCheckout\WooCheckout;
+use Veloria\Widgets\WooDashboard\WooDashboard;
+use Veloria\Widgets\WooThankYou\WooThankYou;
 
 /**
  * WidgetManager class
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class WidgetManager
@@ -239,10 +239,10 @@ class WidgetManager
     public function enqueue_editor_badge_assets(): void
     {
         wp_enqueue_style(
-            'elementrify-editor-badge',
-            ELEMENTRIFY_URL . 'assets/css/editor-badge.css',
+            'veloria-editor-badge',
+            VELORIA_URL . 'assets/css/editor-badge.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
     }
 
@@ -263,16 +263,16 @@ class WidgetManager
         }
 
         wp_enqueue_script(
-            'elementrify-editor-custom-code',
-            ELEMENTRIFY_URL . 'assets/js/editor/elementrify-custom-code-preview.js',
+            'veloria-editor-custom-code',
+            VELORIA_URL . 'assets/js/editor/veloria-custom-code-preview.js',
             ['jquery', 'elementor-editor'],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
 
         wp_localize_script(
-            'elementrify-editor-custom-code',
-            'elementrifyEditorCustomCode',
+            'veloria-editor-custom-code',
+            'veloriaEditorCustomCode',
             [
                 'stylesActive'  => $stylesActive,
                 'scriptsActive' => $scriptsActive,
@@ -291,8 +291,8 @@ class WidgetManager
         $active = is_array($active) ? $active : [];
 
         $scripts = [
-            'particle-effects' => ELEMENTRIFY_URL . 'assets/js/editor/elementrify-particle-effects-preview.js',
-            'moving-circles'   => ELEMENTRIFY_URL . 'assets/js/editor/elementrify-moving-circles-preview.js',
+            'particle-effects' => VELORIA_URL . 'assets/js/editor/veloria-particle-effects-preview.js',
+            'moving-circles'   => VELORIA_URL . 'assets/js/editor/veloria-moving-circles-preview.js',
         ];
 
         foreach ($scripts as $slug => $src) {
@@ -301,26 +301,26 @@ class WidgetManager
             }
 
             wp_enqueue_script(
-                'elementrify-editor-ext-' . str_replace('-', '_', $slug),
+                'veloria-editor-ext-' . str_replace('-', '_', $slug),
                 $src,
                 ['jquery', 'elementor-editor'],
-                ELEMENTRIFY_VERSION,
+                VELORIA_VERSION,
                 true
             );
         }
     }
 
     /**
-     * Register the 'elementrify' Elementor widget category
+     * Register the 'veloria' Elementor widget category
      *
      * @param \Elementor\Elements_Manager $elements_manager
      */
     public function register_category($elements_manager)
     {
         $elements_manager->add_category(
-            'elementrify',
+            'veloria',
             [
-                'title' => 'Elementrify',
+                'title' => 'Veloria',
                 'icon'  => 'fa-layer-group'
             ]
         );

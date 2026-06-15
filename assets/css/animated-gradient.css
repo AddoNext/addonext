@@ -1,13 +1,13 @@
-.elementrify-animated-gradient {
+.veloria-animated-gradient {
     margin: 0;
 }
 
-.elementrify-animated-gradient__inner {
+.veloria-animated-gradient__inner {
     box-sizing: border-box;
     margin: 0;
 }
 
-.elementrify-animated-gradient__text {
+.veloria-animated-gradient__text {
     display: inline-block;
     width: 100%;
     max-width: 100%;
@@ -16,35 +16,35 @@
     white-space: pre-line;
 }
 
-.elementor-element.elementrify-animated-gradient--align-left .elementrify-animated-gradient__inner,
-.elementrify-animated-gradient--align-left .elementrify-animated-gradient__inner {
+.elementor-element.veloria-animated-gradient--align-left .veloria-animated-gradient__inner,
+.veloria-animated-gradient--align-left .veloria-animated-gradient__inner {
     text-align: left;
 }
 
-.elementor-element.elementrify-animated-gradient--align-center .elementrify-animated-gradient__inner,
-.elementrify-animated-gradient--align-center .elementrify-animated-gradient__inner {
+.elementor-element.veloria-animated-gradient--align-center .veloria-animated-gradient__inner,
+.veloria-animated-gradient--align-center .veloria-animated-gradient__inner {
     text-align: center;
 }
 
-.elementor-element.elementrify-animated-gradient--align-right .elementrify-animated-gradient__inner,
-.elementrify-animated-gradient--align-right .elementrify-animated-gradient__inner {
+.elementor-element.veloria-animated-gradient--align-right .veloria-animated-gradient__inner,
+.veloria-animated-gradient--align-right .veloria-animated-gradient__inner {
     text-align: right;
 }
 
-.elementrify-animated-gradient--bg.elementrify-animated-gradient__inner {
+.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
     background-color: transparent;
     background-repeat: no-repeat;
     background-image: linear-gradient(
         90deg,
-        var(--elementrify-ag-start, #d65db1),
-        var(--elementrify-ag-end, #845ef7),
-        var(--elementrify-ag-start, #d65db1)
+        var(--veloria-ag-start, #d65db1),
+        var(--veloria-ag-end, #845ef7),
+        var(--veloria-ag-start, #d65db1)
     );
     background-size: 300% 300%;
 }
 
-.elementrify-animated-gradient--text .elementrify-animated-gradient__inner,
-.elementor-element.elementrify-animated-gradient--text .elementrify-animated-gradient__inner {
+.veloria-animated-gradient--text .veloria-animated-gradient__inner,
+.elementor-element.veloria-animated-gradient--text .veloria-animated-gradient__inner {
     background-image: none !important;
     background-color: transparent !important;
     background-size: auto !important;
@@ -52,14 +52,14 @@
     animation: none !important;
 }
 
-.elementrify-animated-gradient--text .elementrify-animated-gradient__text {
+.veloria-animated-gradient--text .veloria-animated-gradient__text {
     background-color: transparent;
     background-repeat: no-repeat;
     background-image: linear-gradient(
         90deg,
-        var(--elementrify-ag-start, #d65db1),
-        var(--elementrify-ag-end, #845ef7),
-        var(--elementrify-ag-start, #d65db1)
+        var(--veloria-ag-start, #d65db1),
+        var(--veloria-ag-end, #845ef7),
+        var(--veloria-ag-start, #d65db1)
     );
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -68,31 +68,31 @@
     -webkit-text-fill-color: transparent !important;
 }
 
-.elementrify-animated-gradient--dir-h.elementrify-animated-gradient--bg.elementrify-animated-gradient__inner {
-    animation: elementrify-ag-shift-h var(--elementrify-ag-duration, 8s) var(--elementrify-ag-ease, ease-in-out) infinite;
+.veloria-animated-gradient--dir-h.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
+    animation: veloria-ag-shift-h var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
 }
 
-.elementrify-animated-gradient--dir-h.elementrify-animated-gradient--text .elementrify-animated-gradient__text {
-    animation: elementrify-ag-shift-h var(--elementrify-ag-duration, 8s) var(--elementrify-ag-ease, ease-in-out) infinite;
+.veloria-animated-gradient--dir-h.veloria-animated-gradient--text .veloria-animated-gradient__text {
+    animation: veloria-ag-shift-h var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
 }
 
-.elementrify-animated-gradient--dir-v.elementrify-animated-gradient--bg.elementrify-animated-gradient__inner {
-    animation: elementrify-ag-shift-v var(--elementrify-ag-duration, 8s) var(--elementrify-ag-ease, ease-in-out) infinite;
+.veloria-animated-gradient--dir-v.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
+    animation: veloria-ag-shift-v var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
 }
 
-.elementrify-animated-gradient--dir-v.elementrify-animated-gradient--text .elementrify-animated-gradient__text {
-    animation: elementrify-ag-shift-v var(--elementrify-ag-duration, 8s) var(--elementrify-ag-ease, ease-in-out) infinite;
+.veloria-animated-gradient--dir-v.veloria-animated-gradient--text .veloria-animated-gradient__text {
+    animation: veloria-ag-shift-v var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
 }
 
-.elementrify-animated-gradient--dir-d.elementrify-animated-gradient--bg.elementrify-animated-gradient__inner {
-    animation: elementrify-ag-shift-d var(--elementrify-ag-duration, 8s) var(--elementrify-ag-ease, ease-in-out) infinite;
+.veloria-animated-gradient--dir-d.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
+    animation: veloria-ag-shift-d var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
 }
 
-.elementrify-animated-gradient--dir-d.elementrify-animated-gradient--text .elementrify-animated-gradient__text {
-    animation: elementrify-ag-shift-d var(--elementrify-ag-duration, 8s) var(--elementrify-ag-ease, ease-in-out) infinite;
+.veloria-animated-gradient--dir-d.veloria-animated-gradient--text .veloria-animated-gradient__text {
+    animation: veloria-ag-shift-d var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
 }
 
-@keyframes elementrify-ag-shift-h {
+@keyframes veloria-ag-shift-h {
     0%,
     100% {
         background-position: 0% 50%;
@@ -103,7 +103,7 @@
     }
 }
 
-@keyframes elementrify-ag-shift-v {
+@keyframes veloria-ag-shift-v {
     0%,
     100% {
         background-position: 50% 0%;
@@ -114,7 +114,7 @@
     }
 }
 
-@keyframes elementrify-ag-shift-d {
+@keyframes veloria-ag-shift-d {
     0%,
     100% {
         background-position: 0% 0%;

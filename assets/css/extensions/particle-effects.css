@@ -1,9 +1,9 @@
-.elementrify-particles[data-elementrify-particles="yes"] {
+.veloria-particles[data-veloria-particles="yes"] {
 	position: relative;
 	isolation: isolate;
 }
 
-.elementrify-particles__host {
+.veloria-particles__host {
 	position: absolute;
 	inset: 0;
 	z-index: 0;

@@ -22,18 +22,18 @@ if (class_exists('\Elementor\Plugin')) {
 $has_visible_frontend_image = $has_attachment || ($url !== '' && !$is_placeholder_only);
 $show_image_wrapper         = $has_visible_frontend_image || $in_elementor_preview;
 
-$wrapper_class = 'elementrify-image-box';
+$wrapper_class = 'veloria-image-box';
 if (!empty($settings['image_bw_mode'])) {
-    $wrapper_class .= ' elementrify-image-box--bw';
+    $wrapper_class .= ' veloria-image-box--bw';
 }
 if (!empty($settings['hover_effect']) && $settings['hover_effect'] !== 'none') {
-    $wrapper_class .= ' elementrify-image-box--hover-' . esc_attr($settings['hover_effect']);
+    $wrapper_class .= ' veloria-image-box--hover-' . esc_attr($settings['hover_effect']);
 }
 if (!empty($settings['hover_grayscale_off'])) {
-    $wrapper_class .= ' elementrify-image-box--hover-grayscale-off';
+    $wrapper_class .= ' veloria-image-box--hover-grayscale-off';
 }
 if (!empty($settings['hover_overlay_color'])) {
-    $wrapper_class .= ' elementrify-image-box--hover-overlay';
+    $wrapper_class .= ' veloria-image-box--hover-overlay';
 }
 $this->add_render_attribute('wrapper', 'class', $wrapper_class);
 $this->add_inline_editing_attributes('title', 'none');
@@ -42,7 +42,7 @@ $has_link = !empty($settings['link']['url']);
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($show_image_wrapper) : ?>
-        <div class="elementrify-image-box__image">
+        <div class="veloria-image-box__image">
             <?php if ($has_link) : ?><a href="<?php echo esc_url($settings['link']['url']); ?>"><?php endif; ?>
             <?php
             if ($has_attachment) {
@@ -62,14 +62,14 @@ $has_link = !empty($settings['link']['url']);
             <?php if ($has_link) : ?></a><?php endif; ?>
         </div>
     <?php endif; ?>
-    <div class="elementrify-image-box__content">
+    <div class="veloria-image-box__content">
         <?php if (!empty($settings['show_title']) && $settings['show_title'] !== 'no') : ?>
             <?php if ($has_link) : ?><a href="<?php echo esc_url($settings['link']['url']); ?>"><?php endif; ?>
-            <h3 class="elementrify-image-box__title" <?php $this->print_render_attribute_string('title'); ?>><?php echo wp_kses_post($settings['title'] ?? ''); ?></h3>
+            <h3 class="veloria-image-box__title" <?php $this->print_render_attribute_string('title'); ?>><?php echo wp_kses_post($settings['title'] ?? ''); ?></h3>
             <?php if ($has_link) : ?></a><?php endif; ?>
         <?php endif; ?>
         <?php if (!empty($settings['show_description']) && $settings['show_description'] !== 'no') : ?>
-            <p class="elementrify-image-box__description" <?php $this->print_render_attribute_string('description'); ?>><?php echo wp_kses_post($settings['description'] ?? ''); ?></p>
+            <p class="veloria-image-box__description" <?php $this->print_render_attribute_string('description'); ?>><?php echo wp_kses_post($settings['description'] ?? ''); ?></p>
         <?php endif; ?>
     </div>
 </div>

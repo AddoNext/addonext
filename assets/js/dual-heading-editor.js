@@ -12,17 +12,17 @@
     }
 
     function bindHighlightInner(el) {
-        if (!el || el.getAttribute('data-elementrify-dual-hl-bound') === '1') {
+        if (!el || el.getAttribute('data-veloria-dual-hl-bound') === '1') {
             return;
         }
-        el.setAttribute('data-elementrify-dual-hl-bound', '1');
+        el.setAttribute('data-veloria-dual-hl-bound', '1');
         el.addEventListener('focusin', function () {
             if (isEditMode()) {
-                el.classList.add('elementrify-dual-heading__highlight-inner--is-editing');
+                el.classList.add('veloria-dual-heading__highlight-inner--is-editing');
             }
         });
         el.addEventListener('focusout', function () {
-            el.classList.remove('elementrify-dual-heading__highlight-inner--is-editing');
+            el.classList.remove('veloria-dual-heading__highlight-inner--is-editing');
         });
     }
 
@@ -31,7 +31,7 @@
             return;
         }
         var $root = scope ? $(scope) : $(document);
-        $root.find('.elementrify-dual-heading__highlight-inner').each(function () {
+        $root.find('.veloria-dual-heading__highlight-inner').each(function () {
             bindHighlightInner(this);
         });
     }
@@ -45,7 +45,7 @@
         }
         hooksBound = true;
         elementorFrontend.hooks.addAction(
-            'frontend/element_ready/elementrify-dual-heading.default',
+            'frontend/element_ready/veloria-dual-heading.default',
             function ($scope) {
                 if ($scope && $scope[0]) {
                     scan($scope[0]);

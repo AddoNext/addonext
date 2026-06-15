@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\ImageGallery;
+namespace Veloria\Widgets\ImageGallery;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -12,12 +12,12 @@ class ImageGallery extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-gallery-grid elementrify-icon';
+        return 'eicon-gallery-grid veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-image-gallery';
+        return 'veloria-image-gallery';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ImageGallery extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Image Gallery', 'elementrify');
+        return __('Image Gallery', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Grid and random-style image gallery layouts', 'elementrify');
+        return __('Grid and random-style image gallery layouts', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -42,27 +42,27 @@ class ImageGallery extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-image-gallery'];
+        return ['veloria-image-gallery'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-image-gallery'];
+        return ['veloria-image-gallery'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'elementrify-image-gallery',
-            ELEMENTRIFY_URL . 'assets/css/image-gallery.css',
+            'veloria-image-gallery',
+            VELORIA_URL . 'assets/css/image-gallery.css',
             [],
-            ELEMENTRIFY_VERSION
+            VELORIA_VERSION
         );
         wp_register_script(
-            'elementrify-image-gallery',
-            ELEMENTRIFY_URL . 'assets/js/image-gallery.js',
+            'veloria-image-gallery',
+            VELORIA_URL . 'assets/js/image-gallery.js',
             [],
-            ELEMENTRIFY_VERSION,
+            VELORIA_VERSION,
             true
         );
     }
@@ -70,44 +70,44 @@ class ImageGallery extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'elementrify'),
+            'label' => __('Content', 'veloria'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('view', [
-            'label'   => __('View', 'elementrify'),
+            'label'   => __('View', 'veloria'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'grid',
             'options' => [
-                'grid'   => __('Grid', 'elementrify'),
-                'random' => __('Random', 'elementrify'),
+                'grid'   => __('Grid', 'veloria'),
+                'random' => __('Random', 'veloria'),
             ],
         ]);
 
         $r = new Repeater();
         $r->add_control('image', [
-            'label'   => __('Image', 'elementrify'),
+            'label'   => __('Image', 'veloria'),
             'type'    => Controls_Manager::MEDIA,
             'default' => ['url' => Utils::get_placeholder_image_src()],
         ]);
         $r->add_control('caption', [
-            'label'   => __('Caption', 'elementrify'),
+            'label'   => __('Caption', 'veloria'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
         $r->add_control('title', [
-            'label'   => __('Title', 'elementrify'),
+            'label'   => __('Title', 'veloria'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
         $r->add_control('subtitle', [
-            'label'   => __('Subtitle', 'elementrify'),
+            'label'   => __('Subtitle', 'veloria'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
 
         $this->add_control('gallery', [
-            'label'       => __('Images', 'elementrify'),
+            'label'       => __('Images', 'veloria'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $r->get_controls(),
             'default'     => [
@@ -122,7 +122,7 @@ class ImageGallery extends WidgetBase
         ]);
 
         $this->add_control('columns', [
-            'label'     => __('Grid columns', 'elementrify'),
+            'label'     => __('Grid columns', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'default'   => '3',
             'options'   => [
@@ -136,7 +136,7 @@ class ImageGallery extends WidgetBase
         ]);
 
         $this->add_control('random_columns', [
-            'label'     => __('Random columns', 'elementrify'),
+            'label'     => __('Random columns', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'default'   => '5',
             'options'   => [
@@ -150,40 +150,40 @@ class ImageGallery extends WidgetBase
         ]);
 
         $this->add_control('enable_preview', [
-            'label'        => __('Enable image preview', 'elementrify'),
+            'label'        => __('Enable image preview', 'veloria'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Yes', 'elementrify'),
-            'label_off'    => __('No', 'elementrify'),
+            'label_on'     => __('Yes', 'veloria'),
+            'label_off'    => __('No', 'veloria'),
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('overlay_animation', [
-            'label'     => __('Overlay animation', 'elementrify'),
+            'label'     => __('Overlay animation', 'veloria'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'fade-in',
             'options'   => [
-                'fade-in'      => __('Fade in', 'elementrify'),
-                'fade-out'     => __('Fade out', 'elementrify'),
-                'slide-top'    => __('Slide top', 'elementrify'),
-                'slide-bottom' => __('Slide bottom', 'elementrify'),
+                'fade-in'      => __('Fade in', 'veloria'),
+                'fade-out'     => __('Fade out', 'veloria'),
+                'slide-top'    => __('Slide top', 'veloria'),
+                'slide-bottom' => __('Slide bottom', 'veloria'),
             ],
             'condition' => ['enable_preview' => 'yes'],
         ]);
 
         $this->add_responsive_control('gap', [
-            'label'      => __('Gap', 'elementrify'),
+            'label'      => __('Gap', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 40]],
             'default'    => ['size' => 10, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-image-gallery' => '--elementrify-image-gallery-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-image-gallery' => '--veloria-image-gallery-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('border_radius', [
-            'label'      => __('Image border radius', 'elementrify'),
+            'label'      => __('Image border radius', 'veloria'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => [
@@ -192,7 +192,7 @@ class ImageGallery extends WidgetBase
             ],
             'default'    => ['size' => 0, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .elementrify-image-gallery__image' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .veloria-image-gallery__image' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -201,7 +201,7 @@ class ImageGallery extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/image-gallery/image-gallery.php';
+        $path = VELORIA_DIR . 'templates/image-gallery/image-gallery.php';
         if (is_readable($path)) include $path;
     }
 
@@ -214,15 +214,15 @@ class ImageGallery extends WidgetBase
         var randomCols = settings.random_columns || '5';
         var enablePreview = settings.enable_preview === 'yes';
         var overlayAnimation = settings.overlay_animation || 'fade-in';
-        var classes = 'elementrify-image-gallery elementrify-image-gallery--' + view;
+        var classes = 'veloria-image-gallery veloria-image-gallery--' + view;
         if (view === 'grid') {
-            classes += ' elementrify-image-gallery--cols-' + cols;
+            classes += ' veloria-image-gallery--cols-' + cols;
         } else {
-            classes += ' elementrify-image-gallery--random-cols-' + randomCols;
+            classes += ' veloria-image-gallery--random-cols-' + randomCols;
         }
         if (enablePreview) {
-            classes += ' elementrify-image-gallery--preview-enabled';
-            classes += ' elementrify-image-gallery--overlay-' + overlayAnimation;
+            classes += ' veloria-image-gallery--preview-enabled';
+            classes += ' veloria-image-gallery--overlay-' + overlayAnimation;
         }
         var items = settings.gallery || [];
         var placeholder = '<?php echo esc_url(Utils::get_placeholder_image_src()); ?>';
@@ -241,18 +241,18 @@ class ImageGallery extends WidgetBase
                 });
                 #>
                 <# _.each(grouped, function(column) { #>
-                    <div class="elementrify-image-gallery__column">
+                    <div class="veloria-image-gallery__column">
                         <# _.each(column, function(item) { #>
                             <# var imageUrl = (item.image && item.image.url) ? item.image.url : placeholder; #>
-                            <div class="elementrify-image-gallery__item">
-                                <img class="elementrify-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
+                            <div class="veloria-image-gallery__item">
+                                <img class="veloria-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
                                 <# if (enablePreview) { #>
-                                    <button type="button" class="elementrify-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'elementrify'); ?>">
-                                        <span class="elementrify-image-gallery__overlay-content">
-                                            <# if (item.title) { #><span class="elementrify-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
-                                            <# if (item.subtitle) { #><span class="elementrify-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
+                                    <button type="button" class="veloria-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'veloria'); ?>">
+                                        <span class="veloria-image-gallery__overlay-content">
+                                            <# if (item.title) { #><span class="veloria-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
+                                            <# if (item.subtitle) { #><span class="veloria-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
                                         </span>
-                                        <span class="elementrify-image-gallery__preview-icon" aria-hidden="true">
+                                        <span class="veloria-image-gallery__preview-icon" aria-hidden="true">
                                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 12C4.3 8.4 7.8 6 12 6C16.2 6 19.7 8.4 21.5 12C19.7 15.6 16.2 18 12 18C7.8 18 4.3 15.6 2.5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"></circle></svg>
                                         </span>
                                     </button>
@@ -264,15 +264,15 @@ class ImageGallery extends WidgetBase
             <# } else { #>
                 <# _.each(items, function(item) { #>
                     <# var imageUrl = (item.image && item.image.url) ? item.image.url : placeholder; #>
-                    <div class="elementrify-image-gallery__item">
-                        <img class="elementrify-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
+                    <div class="veloria-image-gallery__item">
+                        <img class="veloria-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
                         <# if (enablePreview) { #>
-                            <button type="button" class="elementrify-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'elementrify'); ?>">
-                                <span class="elementrify-image-gallery__overlay-content">
-                                    <# if (item.title) { #><span class="elementrify-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
-                                    <# if (item.subtitle) { #><span class="elementrify-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
+                            <button type="button" class="veloria-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'veloria'); ?>">
+                                <span class="veloria-image-gallery__overlay-content">
+                                    <# if (item.title) { #><span class="veloria-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
+                                    <# if (item.subtitle) { #><span class="veloria-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
                                 </span>
-                                <span class="elementrify-image-gallery__preview-icon" aria-hidden="true">
+                                <span class="veloria-image-gallery__preview-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 12C4.3 8.4 7.8 6 12 6C16.2 6 19.7 8.4 21.5 12C19.7 15.6 16.2 18 12 18C7.8 18 4.3 15.6 2.5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"></circle></svg>
                                 </span>
                             </button>

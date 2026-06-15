@@ -1,5 +1,5 @@
 <?php
-namespace Elementrify\Widgets\WooCheckout;
+namespace Veloria\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
@@ -23,7 +23,7 @@ class CheckoutPaymentUi
             $available_gateways = [];
         }
 
-        echo '<ul class="wc_payment_methods payment_methods methods elementrify-co-payment-methods">';
+        echo '<ul class="wc_payment_methods payment_methods methods veloria-co-payment-methods">';
 
         if ($available_gateways !== []) {
             foreach ($available_gateways as $gateway) {
@@ -33,10 +33,10 @@ class CheckoutPaymentUi
             $msg = apply_filters(
                 'woocommerce_no_available_payment_methods_message',
                 WC()->customer->get_billing_country()
-                    ? esc_html__('Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'elementrify')
-                    : esc_html__('Please fill in your details above to see available payment methods.', 'elementrify')
+                    ? esc_html__('Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'veloria')
+                    : esc_html__('Please fill in your details above to see available payment methods.', 'veloria')
             );
-            echo '<li class="elementrify-co-payment-item elementrify-co-tpl-payment-empty"><p class="elementrify-co-tpl-payment-msg">' . wp_kses_post($msg) . '</p></li>';
+            echo '<li class="veloria-co-payment-item veloria-co-tpl-payment-empty"><p class="veloria-co-tpl-payment-msg">' . wp_kses_post($msg) . '</p></li>';
         }
 
         echo '</ul>';

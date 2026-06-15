@@ -6,8 +6,8 @@ $items   = isset($items) && is_array($items) ? $items : [];
 $layout  = isset($settings['layout']) ? $settings['layout'] : 'grid';
 $new_tab = !empty($settings['open_new_tab']) ? '_blank' : '_self';
 $overlay_links = !empty($settings['overlay_links']);
-$effect_class = isset($settings['image_effect']) && $settings['image_effect'] !== 'none' ? ' elementrify-instagram-feed__media-wrap--' . $settings['image_effect'] : '';
-$square_class = !empty($settings['force_square']) ? ' elementrify-instagram-feed__media-wrap--square' : '';
+$effect_class = isset($settings['image_effect']) && $settings['image_effect'] !== 'none' ? ' veloria-instagram-feed__media-wrap--' . $settings['image_effect'] : '';
+$square_class = !empty($settings['force_square']) ? ' veloria-instagram-feed__media-wrap--square' : '';
 
 if (empty($items)) {
     return;
@@ -25,18 +25,18 @@ $carousel_speed = isset($settings['carousel_speed']) ? (int) $settings['carousel
 $carousel_nav = !empty($settings['carousel_nav']);
 $carousel_pagination = !empty($settings['carousel_pagination']);
 ?>
-<div class="elementrify-instagram-feed elementrify-instagram-feed--<?php echo esc_attr($layout); ?>">
+<div class="veloria-instagram-feed veloria-instagram-feed--<?php echo esc_attr($layout); ?>">
     <?php if (!empty($settings['show_follow']) && !empty($settings['follow_url']['url'])) : ?>
-        <div class="elementrify-instagram-feed__follow-wrap">
-            <a href="<?php echo esc_url($settings['follow_url']['url']); ?>" class="elementrify-instagram-feed__follow" target="_blank" rel="noopener noreferrer">
-                <?php echo esc_html($settings['follow_text'] ?? __('Follow on Instagram', 'elementrify')); ?>
+        <div class="veloria-instagram-feed__follow-wrap">
+            <a href="<?php echo esc_url($settings['follow_url']['url']); ?>" class="veloria-instagram-feed__follow" target="_blank" rel="noopener noreferrer">
+                <?php echo esc_html($settings['follow_text'] ?? __('Follow on Instagram', 'veloria')); ?>
             </a>
         </div>
     <?php endif; ?>
 
-    <div class="elementrify-instagram-feed__wrap">
+    <div class="veloria-instagram-feed__wrap">
         <?php if ($is_carousel) : ?>
-            <div class="elementrify-instagram-feed__carousel swiper"
+            <div class="veloria-instagram-feed__carousel swiper"
                  data-slides="<?php echo esc_attr($carousel_slides); ?>"
                  data-slides-tablet="<?php echo esc_attr($carousel_slides_tablet); ?>"
                  data-slides-mobile="<?php echo esc_attr($carousel_slides_mobile); ?>"
@@ -55,17 +55,17 @@ $carousel_pagination = !empty($settings['carousel_pagination']);
                     <?php endforeach; ?>
                 </div>
                 <?php if ($carousel_nav) : ?>
-                    <div class="swiper-button-prev" aria-label="<?php esc_attr_e('Previous', 'elementrify'); ?>"></div>
-                    <div class="swiper-button-next" aria-label="<?php esc_attr_e('Next', 'elementrify'); ?>"></div>
+                    <div class="swiper-button-prev" aria-label="<?php esc_attr_e('Previous', 'veloria'); ?>"></div>
+                    <div class="swiper-button-next" aria-label="<?php esc_attr_e('Next', 'veloria'); ?>"></div>
                 <?php endif; ?>
                 <?php if ($carousel_pagination) : ?>
                     <div class="swiper-pagination"></div>
                 <?php endif; ?>
             </div>
         <?php else : ?>
-            <div class="elementrify-instagram-feed__grid">
+            <div class="veloria-instagram-feed__grid">
                 <?php foreach ($items as $item) : ?>
-                    <div class="elementrify-instagram-feed__item">
+                    <div class="veloria-instagram-feed__item">
                         <?php $this->render_instagram_item($item, $settings, $overlay_links, $new_tab, $effect_class . $square_class); ?>
                     </div>
                 <?php endforeach; ?>

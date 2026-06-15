@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\AnimatedCounter;
+namespace Veloria\Widgets\AnimatedCounter;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Background;
@@ -19,17 +19,17 @@ class AnimatedCounter extends WidgetBase
 
     public function enqueue_script_in_preview(): void
     {
-        wp_enqueue_script('elementrify-animated-counter');
+        wp_enqueue_script('veloria-animated-counter');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-counter elementrify-icon';
+        return 'eicon-counter veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-animated-counter';
+        return 'veloria-animated-counter';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class AnimatedCounter extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Animated Counter', 'elementrify');
+        return __('Animated Counter', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Count up number animations in a grid', 'elementrify');
+        return __('Count up number animations in a grid', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -60,12 +60,12 @@ class AnimatedCounter extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-animated-counter'];
+        return ['veloria-animated-counter'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementrify-animated-counter'];
+        return ['veloria-animated-counter'];
     }
 
     public function register_controls(): void
@@ -76,7 +76,7 @@ class AnimatedCounter extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -85,7 +85,7 @@ class AnimatedCounter extends WidgetBase
         $repeater->add_control(
             'number',
             [
-                'label'   => __('Number', 'elementrify'),
+                'label'   => __('Number', 'veloria'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 100,
                 'dynamic' => ['active' => true],
@@ -94,7 +94,7 @@ class AnimatedCounter extends WidgetBase
         $repeater->add_control(
             'prefix',
             [
-                'label'   => __('Prefix', 'elementrify'),
+                'label'   => __('Prefix', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
                 'dynamic' => ['active' => true],
@@ -103,7 +103,7 @@ class AnimatedCounter extends WidgetBase
         $repeater->add_control(
             'suffix',
             [
-                'label'   => __('Suffix', 'elementrify'),
+                'label'   => __('Suffix', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
                 'dynamic' => ['active' => true],
@@ -112,18 +112,18 @@ class AnimatedCounter extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Title', 'elementrify'),
+                'label'   => __('Title', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Counter Title', 'elementrify'),
+                'default' => __('Counter Title', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
         $repeater->add_control(
             'subtitle',
             [
-                'label'   => __('Subtitle / Description', 'elementrify'),
+                'label'   => __('Subtitle / Description', 'veloria'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Short description for this counter.', 'elementrify'),
+                'default' => __('Short description for this counter.', 'veloria'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -131,14 +131,14 @@ class AnimatedCounter extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Items', 'elementrify'),
+                'label'       => __('Items', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['number' => 250, 'prefix' => '', 'suffix' => '+', 'title' => __('Projects', 'elementrify'), 'subtitle' => ''],
-                    ['number' => 50, 'prefix' => '', 'suffix' => 'K+', 'title' => __('Users', 'elementrify'), 'subtitle' => ''],
-                    ['number' => 99, 'prefix' => '', 'suffix' => '%', 'title' => __('Satisfaction', 'elementrify'), 'subtitle' => ''],
-                    ['number' => 24, 'prefix' => '', 'suffix' => '/7', 'title' => __('Support', 'elementrify'), 'subtitle' => ''],
+                    ['number' => 250, 'prefix' => '', 'suffix' => '+', 'title' => __('Projects', 'veloria'), 'subtitle' => ''],
+                    ['number' => 50, 'prefix' => '', 'suffix' => 'K+', 'title' => __('Users', 'veloria'), 'subtitle' => ''],
+                    ['number' => 99, 'prefix' => '', 'suffix' => '%', 'title' => __('Satisfaction', 'veloria'), 'subtitle' => ''],
+                    ['number' => 24, 'prefix' => '', 'suffix' => '/7', 'title' => __('Support', 'veloria'), 'subtitle' => ''],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -149,7 +149,7 @@ class AnimatedCounter extends WidgetBase
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __('Layout', 'elementrify'),
+                'label' => __('Layout', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -157,7 +157,7 @@ class AnimatedCounter extends WidgetBase
         $this->add_responsive_control(
             'columns',
             [
-                'label'          => __('Columns', 'elementrify'),
+                'label'          => __('Columns', 'veloria'),
                 'type'           => Controls_Manager::SELECT,
                 'default'        => '4',
                 'tablet_default' => '2',
@@ -169,7 +169,7 @@ class AnimatedCounter extends WidgetBase
                     '4' => '4',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-animated-counter__grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .veloria-animated-counter__grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
                 ],
             ]
         );
@@ -177,7 +177,7 @@ class AnimatedCounter extends WidgetBase
         $this->add_responsive_control(
             'rows',
             [
-                'label'          => __('Rows', 'elementrify'),
+                'label'          => __('Rows', 'veloria'),
                 'type'           => Controls_Manager::SELECT,
                 'default'        => '1',
                 'tablet_default' => '2',
@@ -189,7 +189,7 @@ class AnimatedCounter extends WidgetBase
                     '4' => '4',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-animated-counter__grid' => 'grid-template-rows: repeat({{VALUE}}, auto);',
+                    '{{WRAPPER}} .veloria-animated-counter__grid' => 'grid-template-rows: repeat({{VALUE}}, auto);',
                 ],
             ]
         );
@@ -197,13 +197,13 @@ class AnimatedCounter extends WidgetBase
         $this->add_responsive_control(
             'gap',
             [
-                'label'      => __('Gap', 'elementrify'),
+                'label'      => __('Gap', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 24, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-animated-counter__grid' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-animated-counter__grid' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -213,7 +213,7 @@ class AnimatedCounter extends WidgetBase
         $this->start_controls_section(
             'section_style_container',
             [
-                'label' => __('Container', 'elementrify'),
+                'label' => __('Container', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -224,7 +224,7 @@ class AnimatedCounter extends WidgetBase
                 'name'     => 'container_background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .elementrify-animated-counter__inner',
+                'selector' => '{{WRAPPER}} .veloria-animated-counter__inner',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#3466e6'],
@@ -238,7 +238,7 @@ class AnimatedCounter extends WidgetBase
         $this->add_responsive_control(
             'container_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => [
@@ -246,7 +246,7 @@ class AnimatedCounter extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-animated-counter__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-animated-counter__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -254,7 +254,7 @@ class AnimatedCounter extends WidgetBase
         $this->add_responsive_control(
             'container_padding',
             [
-                'label'      => __('Padding', 'elementrify'),
+                'label'      => __('Padding', 'veloria'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => [
@@ -262,7 +262,7 @@ class AnimatedCounter extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-animated-counter__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-animated-counter__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -272,7 +272,7 @@ class AnimatedCounter extends WidgetBase
         $this->start_controls_section(
             'section_style_number',
             [
-                'label' => __('Number', 'elementrify'),
+                'label' => __('Number', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -280,11 +280,11 @@ class AnimatedCounter extends WidgetBase
         $this->add_control(
             'number_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-animated-counter__number' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-animated-counter__number' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -293,7 +293,7 @@ class AnimatedCounter extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'number_typography',
-                'selector' => '{{WRAPPER}} .elementrify-animated-counter__number',
+                'selector' => '{{WRAPPER}} .veloria-animated-counter__number',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_size'   => ['default' => ['size' => 42, 'unit' => 'px']],
@@ -307,7 +307,7 @@ class AnimatedCounter extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'elementrify'),
+                'label' => __('Title', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -315,11 +315,11 @@ class AnimatedCounter extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-animated-counter__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-animated-counter__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -328,7 +328,7 @@ class AnimatedCounter extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-animated-counter__title',
+                'selector' => '{{WRAPPER}} .veloria-animated-counter__title',
             ]
         );
 
@@ -337,7 +337,7 @@ class AnimatedCounter extends WidgetBase
         $this->start_controls_section(
             'section_style_subtitle',
             [
-                'label' => __('Subtitle', 'elementrify'),
+                'label' => __('Subtitle', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -345,11 +345,11 @@ class AnimatedCounter extends WidgetBase
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'elementrify'),
+                'label'     => __('Color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-animated-counter__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-animated-counter__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -358,7 +358,7 @@ class AnimatedCounter extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'selector' => '{{WRAPPER}} .elementrify-animated-counter__subtitle',
+                'selector' => '{{WRAPPER}} .veloria-animated-counter__subtitle',
             ]
         );
 
@@ -372,7 +372,7 @@ class AnimatedCounter extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = ELEMENTRIFY_DIR . 'templates/animated-counter/animated-counter.php';
+        $path = VELORIA_DIR . 'templates/animated-counter/animated-counter.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -390,18 +390,18 @@ class AnimatedCounter extends WidgetBase
         var columns = settings.columns ? Math.max(1, parseInt(settings.columns, 10)) : 4;
         var gridStyle = 'display:grid;grid-template-columns:repeat(' + columns + ',1fr);gap:24px;width:100%;';
         var itemStyle = 'display:flex;flex-direction:column;align-items:center;text-align:center;';
-        view.addRenderAttribute('inner', 'class', 'elementrify-animated-counter__inner');
-        view.addRenderAttribute('grid', 'class', 'elementrify-animated-counter__grid');
+        view.addRenderAttribute('inner', 'class', 'veloria-animated-counter__inner');
+        view.addRenderAttribute('grid', 'class', 'veloria-animated-counter__grid');
         view.addRenderAttribute('grid', 'style', gridStyle);
         #>
-        <div class="elementrify-animated-counter">
+        <div class="veloria-animated-counter">
             <div {{{ view.getRenderAttributeString('inner') }}}>
                 <div {{{ view.getRenderAttributeString('grid') }}}>
                 <# _.each(settings.items, function(item) { #>
-                    <div class="elementrify-animated-counter__item elementor-repeater-item-{{ item._id }}" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
-                        <span class="elementrify-animated-counter__number" style="display:block;" data-to="{{ item.number || 0 }}" data-prefix="{{ item.prefix || '' }}" data-suffix="{{ item.suffix || '' }}">{{{ item.prefix || '' }}}0{{{ item.suffix || '' }}}</span>
-                        <# if (item.title) { #><span class="elementrify-animated-counter__title" style="display:block;width:100%;">{{{ item.title }}}</span><# } #>
-                        <# if (item.subtitle) { #><p class="elementrify-animated-counter__subtitle" style="display:block;width:100%;margin:0;">{{{ item.subtitle }}}</p><# } #>
+                    <div class="veloria-animated-counter__item elementor-repeater-item-{{ item._id }}" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+                        <span class="veloria-animated-counter__number" style="display:block;" data-to="{{ item.number || 0 }}" data-prefix="{{ item.prefix || '' }}" data-suffix="{{ item.suffix || '' }}">{{{ item.prefix || '' }}}0{{{ item.suffix || '' }}}</span>
+                        <# if (item.title) { #><span class="veloria-animated-counter__title" style="display:block;width:100%;">{{{ item.title }}}</span><# } #>
+                        <# if (item.subtitle) { #><p class="veloria-animated-counter__subtitle" style="display:block;width:100%;margin:0;">{{{ item.subtitle }}}</p><# } #>
                     </div>
                 <# }); #>
                 </div>

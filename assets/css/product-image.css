@@ -2,30 +2,30 @@
  * Elementor canvas iframe: keep thumbnails / lightbox / zoom clickable (parent editor may not
  * add body.elementor-editor-active here; parent + iframe both covered).
  */
-.elementor-editor-active .elementor-widget-elementrify-product-image .elementor-clickable,
-.elementor-editor-active .elementor-widget-elementrify-product-image .elementrify-pi__thumb,
-.elementor-editor-active .elementor-widget-elementrify-product-image .elementrify-pi__main--clickable,
-.elementor-editor-active .elementor-widget-elementrify-product-image .elementrify-pi__stage,
-.elementor-widget-elementrify-product-image .elementor-clickable,
-.elementor-widget-elementrify-product-image .elementrify-pi__thumb,
-.elementor-widget-elementrify-product-image .elementrify-pi__main--clickable,
-.elementor-widget-elementrify-product-image .elementrify-pi__stage {
+.elementor-editor-active .elementor-widget-veloria-product-image .elementor-clickable,
+.elementor-editor-active .elementor-widget-veloria-product-image .veloria-pi__thumb,
+.elementor-editor-active .elementor-widget-veloria-product-image .veloria-pi__main--clickable,
+.elementor-editor-active .elementor-widget-veloria-product-image .veloria-pi__stage,
+.elementor-widget-veloria-product-image .elementor-clickable,
+.elementor-widget-veloria-product-image .veloria-pi__thumb,
+.elementor-widget-veloria-product-image .veloria-pi__main--clickable,
+.elementor-widget-veloria-product-image .veloria-pi__stage {
   pointer-events: auto;
 }
 
-.elementrify-product-image {
+.veloria-product-image {
   box-sizing: border-box;
   max-width: 100%;
 }
 
-.elementrify-product-image *,
-.elementrify-product-image *::before,
-.elementrify-product-image *::after {
+.veloria-product-image *,
+.veloria-product-image *::before,
+.veloria-product-image *::after {
   box-sizing: border-box;
 }
 
-.elementrify-pi--empty,
-.elementrify-pi--inactive {
+.veloria-pi--empty,
+.veloria-pi--inactive {
   padding: 1rem 1.25rem;
   border-radius: 12px;
   background: #f1f5f9;
@@ -34,7 +34,7 @@
   text-align: center;
 }
 
-.elementrify-pi__main {
+.veloria-pi__main {
   display: block;
   width: 100%;
   margin: 0;
@@ -45,21 +45,21 @@
   text-align: center;
 }
 
-.elementrify-pi__main--clickable {
+.veloria-pi__main--clickable {
   cursor: zoom-in;
   transition: opacity 0.15s ease;
 }
 
-.elementrify-pi__main--clickable:hover {
+.veloria-pi__main--clickable:hover {
   opacity: 0.97;
 }
 
-.elementrify-pi__main--clickable:focus-visible {
+.veloria-pi__main--clickable:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 3px;
 }
 
-.elementrify-pi__visual {
+.veloria-pi__visual {
   display: block;
   width: 100%;
   border-radius: 12px;
@@ -67,7 +67,7 @@
   overflow: hidden;
 }
 
-.elementrify-pi__stage {
+.veloria-pi__stage {
   position: relative;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
   background-color: #f8fafc;
 }
 
-.elementrify-pi__main-img {
+.veloria-pi__main-img {
   display: block;
   width: 100%;
   height: 100%!important;
@@ -94,28 +94,28 @@
   -webkit-user-drag: none;
 }
 
-.elementrify-pi__main--pan-zoom .elementrify-pi__stage {
+.veloria-pi__main--pan-zoom .veloria-pi__stage {
   cursor: zoom-in;
   outline: none;
 }
 
-.elementrify-pi__main--pan-zoom .elementrify-pi__stage:focus-visible {
+.veloria-pi__main--pan-zoom .veloria-pi__stage:focus-visible {
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2563eb;
 }
 
-.elementrify-pi__main--pan-zoom .elementrify-pi__stage.is-zoomed {
+.veloria-pi__main--pan-zoom .veloria-pi__stage.is-zoomed {
   cursor: grab;
 }
 
-.elementrify-pi__main--pan-zoom .elementrify-pi__stage.is-zoomed.is-dragging {
+.veloria-pi__main--pan-zoom .veloria-pi__stage.is-zoomed.is-dragging {
   cursor: grabbing;
 }
 
-.elementrify-pi__main--pan-zoom .elementrify-pi__stage.is-zoomed .elementrify-pi__main-img {
+.veloria-pi__main--pan-zoom .veloria-pi__stage.is-zoomed .veloria-pi__main-img {
   transition: none;
 }
 
-.elementrify-pi__thumbs {
+.veloria-pi__thumbs {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -124,7 +124,7 @@
   margin-top: 16px;
 }
 
-.elementrify-pi__thumb {
+.veloria-pi__thumb {
   position: relative;
   display: block;
   padding: 0;
@@ -140,27 +140,27 @@
   transition: border-color 0.15s ease, opacity 0.15s ease;
 }
 
-.elementrify-pi__thumb:hover {
+.veloria-pi__thumb:hover {
   opacity: 0.92;
 }
 
-.elementrify-pi__thumb:focus-visible {
+.veloria-pi__thumb:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.elementrify-pi__thumb.is-active {
+.veloria-pi__thumb.is-active {
   border-color: #2563eb;
 }
 
-.elementrify-pi__thumb img {
+.veloria-pi__thumb img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.elementrify-product-image-lightbox {
+.veloria-product-image-lightbox {
   position: fixed;
   inset: 0;
   z-index: 100000;
@@ -174,12 +174,12 @@
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.elementrify-product-image-lightbox.is-open {
+.veloria-product-image-lightbox.is-open {
   opacity: 1;
   visibility: visible;
 }
 
-.elementrify-product-image-lightbox__image {
+.veloria-product-image-lightbox__image {
   max-width: min(96vw, 1200px);
   max-height: 88vh;
   width: auto;
@@ -189,7 +189,7 @@
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
-.elementrify-product-image-lightbox__close {
+.veloria-product-image-lightbox__close {
   position: absolute;
   top: 16px;
   right: 20px;
@@ -205,11 +205,11 @@
   transition: background 0.15s ease;
 }
 
-.elementrify-product-image-lightbox__close:hover {
+.veloria-product-image-lightbox__close:hover {
   background: rgba(255, 255, 255, 0.22);
 }
 
-.elementrify-product-image-lightbox__nav {
+.veloria-product-image-lightbox__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -225,32 +225,32 @@
   transition: background 0.15s ease;
 }
 
-.elementrify-product-image-lightbox__nav:hover {
+.veloria-product-image-lightbox__nav:hover {
   background: rgba(255, 255, 255, 0.22);
 }
 
-.elementrify-product-image-lightbox__nav--prev {
+.veloria-product-image-lightbox__nav--prev {
   left: 16px;
 }
 
-.elementrify-product-image-lightbox__nav--next {
+.veloria-product-image-lightbox__nav--next {
   right: 16px;
 }
 
-.elementrify-product-image-lightbox.is-single .elementrify-product-image-lightbox__nav {
+.veloria-product-image-lightbox.is-single .veloria-product-image-lightbox__nav {
   display: none;
 }
 
 @media (max-width: 600px) {
-  .elementrify-product-image-lightbox {
+  .veloria-product-image-lightbox {
     padding: 56px 16px;
   }
 
-  .elementrify-product-image-lightbox__nav--prev {
+  .veloria-product-image-lightbox__nav--prev {
     left: 8px;
   }
 
-  .elementrify-product-image-lightbox__nav--next {
+  .veloria-product-image-lightbox__nav--next {
     right: 8px;
   }
 }

@@ -12,7 +12,7 @@ defined('ABSPATH') or exit;
  */
 function emty_get_img_url(string $filename = ''): string
 {
-    return ELEMENTRIFY_URL . 'src/img/' . $filename;
+    return VELORIA_URL . 'src/img/' . $filename;
 }
 
 /**
@@ -23,7 +23,7 @@ function emty_get_img_url(string $filename = ''): string
  */
 function emty_get_img_path(string $filename = ''): string
 {
-    return ELEMENTRIFY_DIR . 'src/img/' . $filename;
+    return VELORIA_DIR . 'src/img/' . $filename;
 }
 
 /**

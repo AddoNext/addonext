@@ -1,29 +1,29 @@
 (function () {
     'use strict';
 
-    var FORM_SEL = '.elementrify-subscribe-form__form';
+    var FORM_SEL = '.veloria-subscribe-form__form';
 
     function getMessageEl(form) {
-        return form.closest('.elementrify-subscribe-form').querySelector('.elementrify-subscribe-form__message');
+        return form.closest('.veloria-subscribe-form').querySelector('.veloria-subscribe-form__message');
     }
 
     function showMessage(form, text, isError) {
         var el = getMessageEl(form);
         if (!el) return;
         el.textContent = text;
-        el.classList.remove('elementrify-subscribe-form__message--success', 'elementrify-subscribe-form__message--error');
-        el.classList.add(isError ? 'elementrify-subscribe-form__message--error' : 'elementrify-subscribe-form__message--success');
+        el.classList.remove('veloria-subscribe-form__message--success', 'veloria-subscribe-form__message--error');
+        el.classList.add(isError ? 'veloria-subscribe-form__message--error' : 'veloria-subscribe-form__message--success');
         el.setAttribute('role', 'alert');
     }
 
     function setSubmitting(form, submitting) {
-        var btn = form.querySelector('.elementrify-subscribe-form__submit');
+        var btn = form.querySelector('.veloria-subscribe-form__submit');
         if (btn) {
             btn.disabled = submitting;
             if (submitting) {
-                btn.classList.add('elementrify-subscribe-form__submit--loading');
+                btn.classList.add('veloria-subscribe-form__submit--loading');
             } else {
-                btn.classList.remove('elementrify-subscribe-form__submit--loading');
+                btn.classList.remove('veloria-subscribe-form__submit--loading');
             }
         }
     }
@@ -41,7 +41,7 @@
             var ajaxUrl = form.getAttribute('data-ajax-url');
             var listId = form.getAttribute('data-list-id');
             var formData = new FormData(form);
-            formData.set('action', 'elementrify_subscribe_form');
+            formData.set('action', 'veloria_subscribe_form');
             formData.set('list_id', listId || '');
 
             fetch(ajaxUrl, {
@@ -84,7 +84,7 @@
     }
     if (typeof jQuery !== 'undefined') {
         jQuery(document).on('elementor/frontend/init', function () {
-            elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-subscribe-form.default', function ($scope) {
+            elementorFrontend.hooks.addAction('frontend/element_ready/veloria-subscribe-form.default', function ($scope) {
                 $scope.find(FORM_SEL).each(function () { initForm(this); });
             });
         });

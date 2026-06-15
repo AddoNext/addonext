@@ -15,7 +15,7 @@ foreach ($data as $row) {
     $values[] = isset($row['value']) ? (float) $row['value'] : 0;
 }
 
-$this->add_render_attribute('wrapper', 'class', 'elementrify-line-chart');
+$this->add_render_attribute('wrapper', 'class', 'veloria-line-chart');
 $this->add_render_attribute('wrapper', 'data-labels', implode('|', $labels));
 $this->add_render_attribute('wrapper', 'data-values', implode('|', $values));
 $this->add_render_attribute('wrapper', 'data-y-suffix', esc_attr($y_suffix));
@@ -24,7 +24,7 @@ $this->add_render_attribute('wrapper', 'data-y-max', $y_max !== '' ? $y_max : ''
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <?php if ($title !== '') : ?>
-        <h3 class="elementrify-line-chart__title"><?php echo esc_html($title); ?></h3>
+        <h3 class="veloria-line-chart__title"><?php echo esc_html($title); ?></h3>
     <?php endif; ?>
-    <div class="elementrify-line-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
+    <div class="veloria-line-chart__canvas" role="img" aria-label="<?php echo esc_attr($title); ?>"></div>
 </div>

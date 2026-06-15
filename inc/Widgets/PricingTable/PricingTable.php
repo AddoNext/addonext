@@ -1,7 +1,7 @@
 <?php
-namespace Elementrify\Widgets\PricingTable;
+namespace Veloria\Widgets\PricingTable;
 
-use Elementrify\Base\WidgetBase;
+use Veloria\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -14,12 +14,12 @@ class PricingTable extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-price-table elementrify-icon';
+        return 'eicon-price-table veloria-icon';
     }
 
     public function get_name(): string
     {
-        return 'elementrify-pricing-table';
+        return 'veloria-pricing-table';
     }
 
     public function get_admin_category(): string
@@ -29,12 +29,12 @@ class PricingTable extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Pricing Table', 'elementrify');
+        return __('Pricing Table', 'veloria');
     }
 
     public function get_description(): string
     {
-        return __('Pricing cards with features and CTA', 'elementrify');
+        return __('Pricing cards with features and CTA', 'veloria');
     }
 
     public function get_brand_color(): string
@@ -44,12 +44,12 @@ class PricingTable extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['elementrify-pricing-table'];
+        return ['veloria-pricing-table'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('elementrify-pricing-table', ELEMENTRIFY_URL . 'assets/css/pricing-table.css', [], ELEMENTRIFY_VERSION);
+        wp_register_style('veloria-pricing-table', VELORIA_URL . 'assets/css/pricing-table.css', [], VELORIA_VERSION);
     }
 
     public function register_controls(): void
@@ -57,7 +57,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'elementrify'),
+                'label' => __('Content', 'veloria'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -66,15 +66,15 @@ class PricingTable extends WidgetBase
         $features_repeater->add_control(
             'text',
             [
-                'label'   => __('Feature', 'elementrify'),
+                'label'   => __('Feature', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Feature item', 'elementrify'),
+                'default' => __('Feature item', 'veloria'),
             ]
         );
         $features_repeater->add_control(
             'included',
             [
-                'label'        => __('Included', 'elementrify'),
+                'label'        => __('Included', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -85,7 +85,7 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'icon',
             [
-                'label'   => __('Icon', 'elementrify'),
+                'label'   => __('Icon', 'veloria'),
                 'type'    => Controls_Manager::ICONS,
                 'default' => ['value' => 'eicon-star', 'library' => 'eicons'],
             ]
@@ -93,23 +93,23 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'title',
             [
-                'label'   => __('Plan name', 'elementrify'),
+                'label'   => __('Plan name', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Pro', 'elementrify'),
+                'default' => __('Pro', 'veloria'),
             ]
         );
         $plans_repeater->add_control(
             'description',
             [
-                'label'   => __('Description', 'elementrify'),
+                'label'   => __('Description', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('For professional designers', 'elementrify'),
+                'default' => __('For professional designers', 'veloria'),
             ]
         );
         $plans_repeater->add_control(
             'price',
             [
-                'label'   => __('Price', 'elementrify'),
+                'label'   => __('Price', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '$49',
             ]
@@ -117,7 +117,7 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'period',
             [
-                'label'   => __('Period', 'elementrify'),
+                'label'   => __('Period', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '/year',
             ]
@@ -125,7 +125,7 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'featured',
             [
-                'label'        => __('Featured (recommended)', 'elementrify'),
+                'label'        => __('Featured (recommended)', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -134,22 +134,22 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'button_text',
             [
-                'label'   => __('Button text', 'elementrify'),
+                'label'   => __('Button text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Get Started', 'elementrify'),
+                'default' => __('Get Started', 'veloria'),
             ]
         );
         $plans_repeater->add_control(
             'button_url',
             [
-                'label' => __('Button URL', 'elementrify'),
+                'label' => __('Button URL', 'veloria'),
                 'type'  => Controls_Manager::URL,
             ]
         );
         $plans_repeater->add_control(
             'button_primary',
             [
-                'label'        => __('Primary (gradient) button', 'elementrify'),
+                'label'        => __('Primary (gradient) button', 'veloria'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -158,12 +158,12 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'features',
             [
-                'label'       => __('Features', 'elementrify'),
+                'label'       => __('Features', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $features_repeater->get_controls(),
                 'default'     => [
-                    ['text' => __('50+ Premium Widgets', 'elementrify'), 'included' => 'yes'],
-                    ['text' => __('100+ Pro Templates', 'elementrify'), 'included' => 'yes'],
+                    ['text' => __('50+ Premium Widgets', 'veloria'), 'included' => 'yes'],
+                    ['text' => __('100+ Pro Templates', 'veloria'), 'included' => 'yes'],
                 ],
                 'title_field' => '{{{ text }}}',
             ]
@@ -172,66 +172,66 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'plans',
             [
-                'label'       => __('Plans', 'elementrify'),
+                'label'       => __('Plans', 'veloria'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $plans_repeater->get_controls(),
                 'default'     => [
                     [
                         'icon' => ['value' => 'eicon-star', 'library' => 'eicons'],
-                        'title' => __('Free', 'elementrify'),
-                        'description' => __('Perfect for getting started', 'elementrify'),
+                        'title' => __('Free', 'veloria'),
+                        'description' => __('Perfect for getting started', 'veloria'),
                         'price' => '$0',
                         'period' => '/month',
                         'featured' => '',
-                        'button_text' => __('Get Started Free', 'elementrify'),
+                        'button_text' => __('Get Started Free', 'veloria'),
                         'features' => [
-                            ['text' => __('20 Free Widgets', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Basic Templates', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Community Support', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Lifetime Updates', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('1 Website License', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Premium Widgets', 'elementrify'), 'included' => ''],
-                            ['text' => __('Priority Support', 'elementrify'), 'included' => ''],
-                            ['text' => __('Advanced Extensions', 'elementrify'), 'included' => ''],
+                            ['text' => __('20 Free Widgets', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Basic Templates', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Community Support', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Lifetime Updates', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('1 Website License', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Premium Widgets', 'veloria'), 'included' => ''],
+                            ['text' => __('Priority Support', 'veloria'), 'included' => ''],
+                            ['text' => __('Advanced Extensions', 'veloria'), 'included' => ''],
                         ],
                     ],
                     [
                         'icon' => ['value' => 'eicon-upgrade-crown', 'library' => 'eicons'],
-                        'title' => __('Pro', 'elementrify'),
-                        'description' => __('For professional designers', 'elementrify'),
+                        'title' => __('Pro', 'veloria'),
+                        'description' => __('For professional designers', 'veloria'),
                         'price' => '$49',
                         'period' => '/year',
                         'featured' => 'yes',
-                        'button_text' => __('Start Pro Plan', 'elementrify'),
+                        'button_text' => __('Start Pro Plan', 'veloria'),
                         'features' => [
-                            ['text' => __('50+ Premium Widgets', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('100+ Pro Templates', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Priority Email Support', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Lifetime Updates', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('3 Website Licenses', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Advanced Extensions', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Custom Integrations', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('White Label Option', 'elementrify'), 'included' => 'yes'],
+                            ['text' => __('50+ Premium Widgets', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('100+ Pro Templates', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Priority Email Support', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Lifetime Updates', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('3 Website Licenses', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Advanced Extensions', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Custom Integrations', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('White Label Option', 'veloria'), 'included' => 'yes'],
                         ],
                     ],
                     [
                         'icon' => ['value' => 'eicon-theme-builder', 'library' => 'eicons'],
-                        'title' => __('Agency', 'elementrify'),
-                        'description' => __('For teams and agencies', 'elementrify'),
+                        'title' => __('Agency', 'veloria'),
+                        'description' => __('For teams and agencies', 'veloria'),
                         'price' => '$149',
                         'period' => '/year',
                         'featured' => '',
-                        'button_text' => __('Start Agency Plan', 'elementrify'),
+                        'button_text' => __('Start Agency Plan', 'veloria'),
                         'button_primary' => 'yes',
                         'features' => [
-                            ['text' => __('All Pro Features', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Unlimited Websites', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('24/7 Priority Support', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Dedicated Account Manager', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Custom Development', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('API Access', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Team Collaboration Tools', 'elementrify'), 'included' => 'yes'],
-                            ['text' => __('Early Access to Features', 'elementrify'), 'included' => 'yes'],
+                            ['text' => __('All Pro Features', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Unlimited Websites', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('24/7 Priority Support', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Dedicated Account Manager', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Custom Development', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('API Access', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Team Collaboration Tools', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('Early Access to Features', 'veloria'), 'included' => 'yes'],
                         ],
                     ],
                 ],
@@ -244,7 +244,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_cards',
             [
-                'label' => __('Cards', 'elementrify'),
+                'label' => __('Cards', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -252,7 +252,7 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'columns',
             [
-                'label'   => __('Columns', 'elementrify'),
+                'label'   => __('Columns', 'veloria'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     '1' => '1',
@@ -262,7 +262,7 @@ class PricingTable extends WidgetBase
                 ],
                 'default' => '3',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__list' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .veloria-pricing-table__list' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
                 ],
             ]
         );
@@ -270,13 +270,13 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'gap',
             [
-                'label'      => __('Gap between cards', 'elementrify'),
+                'label'      => __('Gap between cards', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 60]],
                 'default'    => ['size' => 24],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-pricing-table__list' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-pricing-table__list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -284,14 +284,14 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'card_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'default'    => ['size' => 16],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card' => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementrify-pricing-table__badge' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-pricing-table__badge' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -299,11 +299,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'card_bg',
             [
-                'label'     => __('Card background', 'elementrify'),
+                'label'     => __('Card background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -311,11 +311,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'card_border_color',
             [
-                'label'     => __('Card border', 'elementrify'),
+                'label'     => __('Card border', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E5E7EB',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -325,7 +325,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_featured',
             [
-                'label' => __('Featured card', 'elementrify'),
+                'label' => __('Featured card', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -335,7 +335,7 @@ class PricingTable extends WidgetBase
             [
                 'name'     => 'featured_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__card--featured',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__card--featured',
                 'fields_options' => [
                     'background' => [
                         'default' => 'gradient',
@@ -349,20 +349,20 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'badge_text',
             [
-                'label'   => __('Badge text', 'elementrify'),
+                'label'   => __('Badge text', 'veloria'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('RECOMMENDED', 'elementrify'),
+                'default' => __('RECOMMENDED', 'veloria'),
             ]
         );
 
         $this->add_control(
             'badge_bg',
             [
-                'label'     => __('Badge background', 'elementrify'),
+                'label'     => __('Badge background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FBBF24',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__badge' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__badge' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -370,11 +370,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'badge_color',
             [
-                'label'     => __('Badge text color', 'elementrify'),
+                'label'     => __('Badge text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__badge' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__badge' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -384,7 +384,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_icon',
             [
-                'label' => __('Icon', 'elementrify'),
+                'label' => __('Icon', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -392,13 +392,13 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_box_size',
             [
-                'label'      => __('Icon box size', 'elementrify'),
+                'label'      => __('Icon box size', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 32, 'max' => 80]],
                 'default'    => ['size' => 48],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-pricing-table__icon-wrap' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-pricing-table__icon-wrap' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -406,11 +406,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_color',
             [
-                'label'     => __('Icon color', 'elementrify'),
+                'label'     => __('Icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card:not(.elementrify-pricing-table__card--featured):not(.elementrify-pricing-table__card--primary-btn) .elementrify-pricing-table__icon-wrap' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card:not(.veloria-pricing-table__card--featured):not(.veloria-pricing-table__card--primary-btn) .veloria-pricing-table__icon-wrap' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -418,11 +418,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_bg',
             [
-                'label'     => __('Icon background', 'elementrify'),
+                'label'     => __('Icon background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f3f4f6',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__icon-wrap' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__icon-wrap' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -430,11 +430,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_featured_bg',
             [
-                'label'     => __('Featured card icon background', 'elementrify'),
+                'label'     => __('Featured card icon background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(255,255,255,0.25)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card--featured .elementrify-pricing-table__icon-wrap' => 'background-color: {{VALUE}}; color: #ffffff;',
+                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__icon-wrap' => 'background-color: {{VALUE}}; color: #ffffff;',
                 ],
             ]
         );
@@ -442,11 +442,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_featured_color',
             [
-                'label'     => __('Featured card icon color', 'elementrify'),
+                'label'     => __('Featured card icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card--featured .elementrify-pricing-table__icon-wrap' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__icon-wrap' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -454,11 +454,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_primary_color',
             [
-                'label'     => __('Primary-button card icon color', 'elementrify'),
+                'label'     => __('Primary-button card icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#7c3aed',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card--primary-btn .elementrify-pricing-table__icon-wrap' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card--primary-btn .veloria-pricing-table__icon-wrap' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -468,7 +468,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title & description', 'elementrify'),
+                'label' => __('Title & description', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -477,18 +477,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__title',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Title color', 'elementrify'),
+                'label'     => __('Title color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -496,11 +496,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'desc_color',
             [
-                'label'     => __('Description color', 'elementrify'),
+                'label'     => __('Description color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -509,7 +509,7 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'desc_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__desc',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__desc',
             ]
         );
 
@@ -518,7 +518,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_price',
             [
-                'label' => __('Price', 'elementrify'),
+                'label' => __('Price', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -527,18 +527,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'price_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__price',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__price',
             ]
         );
 
         $this->add_control(
             'price_color',
             [
-                'label'     => __('Price color', 'elementrify'),
+                'label'     => __('Price color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__price' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__price' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -546,11 +546,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'period_color',
             [
-                'label'     => __('Period color', 'elementrify'),
+                'label'     => __('Period color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__period' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__period' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -560,7 +560,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'elementrify'),
+                'label' => __('Button', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -569,18 +569,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__button',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__button',
             ]
         );
 
         $this->add_control(
             'button_bg',
             [
-                'label'     => __('Background', 'elementrify'),
+                'label'     => __('Background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f3f4f6',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -588,11 +588,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'elementrify'),
+                'label'     => __('Text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -600,11 +600,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_featured_bg',
             [
-                'label'     => __('Featured card button background', 'elementrify'),
+                'label'     => __('Featured card button background', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card--featured .elementrify-pricing-table__button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -612,11 +612,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_featured_color',
             [
-                'label'     => __('Featured card button text', 'elementrify'),
+                'label'     => __('Featured card button text', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6366f1',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__card--featured .elementrify-pricing-table__button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -624,13 +624,13 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'elementrify'),
+                'label'      => __('Border radius', 'veloria'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementrify-pricing-table__button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .veloria-pricing-table__button' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -638,7 +638,7 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'heading_button_primary',
             [
-                'label'     => __('Primary (gradient) button', 'elementrify'),
+                'label'     => __('Primary (gradient) button', 'veloria'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -649,7 +649,7 @@ class PricingTable extends WidgetBase
             [
                 'name'     => 'button_primary_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__button--primary',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__button--primary',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color' => ['default' => '#6366f1'],
@@ -661,11 +661,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_primary_color',
             [
-                'label'     => __('Primary button text', 'elementrify'),
+                'label'     => __('Primary button text', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__button--primary' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__button--primary' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -675,7 +675,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_features',
             [
-                'label' => __('Features list', 'elementrify'),
+                'label' => __('Features list', 'veloria'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -684,18 +684,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'features_typography',
-                'selector' => '{{WRAPPER}} .elementrify-pricing-table__feature-text',
+                'selector' => '{{WRAPPER}} .veloria-pricing-table__feature-text',
             ]
         );
 
         $this->add_control(
             'feature_included_color',
             [
-                'label'     => __('Included text color', 'elementrify'),
+                'label'     => __('Included text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__feature--included .elementrify-pricing-table__feature-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__feature--included .veloria-pricing-table__feature-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -703,11 +703,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'feature_excluded_color',
             [
-                'label'     => __('Excluded text color', 'elementrify'),
+                'label'     => __('Excluded text color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#9ca3af',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__feature--excluded .elementrify-pricing-table__feature-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__feature--excluded .veloria-pricing-table__feature-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -715,12 +715,12 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'check_color',
             [
-                'label'     => __('Checkmark color', 'elementrify'),
+                'label'     => __('Checkmark color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#22c55e',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__feature--included .elementrify-pricing-table__feature-icon' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .elementrify-pricing-table__card--featured .elementrify-pricing-table__feature--included .elementrify-pricing-table__feature-icon' => 'color: #ffffff;',
+                    '{{WRAPPER}} .veloria-pricing-table__feature--included .veloria-pricing-table__feature-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__feature--included .veloria-pricing-table__feature-icon' => 'color: #ffffff;',
                 ],
             ]
         );
@@ -728,11 +728,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'cross_color',
             [
-                'label'     => __('Cross icon color', 'elementrify'),
+                'label'     => __('Cross icon color', 'veloria'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#d1d5db',
                 'selectors' => [
-                    '{{WRAPPER}} .elementrify-pricing-table__feature--excluded .elementrify-pricing-table__feature-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .veloria-pricing-table__feature--excluded .veloria-pricing-table__feature-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -742,7 +742,7 @@ class PricingTable extends WidgetBase
 
     public function render(): void
     {
-        $path = ELEMENTRIFY_DIR . 'templates/pricing-table/pricing-table.php';
+        $path = VELORIA_DIR . 'templates/pricing-table/pricing-table.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -755,8 +755,8 @@ class PricingTable extends WidgetBase
         var plans = settings.plans || [];
         var badgeText = settings.badge_text || 'RECOMMENDED';
         #>
-        <div class="elementrify-pricing-table">
-            <div class="elementrify-pricing-table__list">
+        <div class="veloria-pricing-table">
+            <div class="veloria-pricing-table__list">
                 <# var defaultIcons = ['eicon-star', 'eicon-upgrade-crown', 'eicon-theme-builder']; #>
                 <# _.each(plans, function(plan, index) {
                     var featured = plan.featured === 'yes';
@@ -771,29 +771,29 @@ class PricingTable extends WidgetBase
                         iconHtml = '<i class="eicon ' + iconValue.replace(/"/g, '') + '" aria-hidden="true"></i>';
                     }
                 #>
-                    <div class="elementrify-pricing-table__card<# if (featured) { #> elementrify-pricing-table__card--featured<# } #><# if (primaryBtn) { #> elementrify-pricing-table__card--primary-btn<# } #>">
+                    <div class="veloria-pricing-table__card<# if (featured) { #> veloria-pricing-table__card--featured<# } #><# if (primaryBtn) { #> veloria-pricing-table__card--primary-btn<# } #>">
                         <# if (featured && badgeText) { #>
-                            <div class="elementrify-pricing-table__badge">{{{ badgeText }}}</div>
+                            <div class="veloria-pricing-table__badge">{{{ badgeText }}}</div>
                         <# } #>
-                        <div class="elementrify-pricing-table__inner">
-                            <div class="elementrify-pricing-table__icon-wrap">
+                        <div class="veloria-pricing-table__inner">
+                            <div class="veloria-pricing-table__icon-wrap">
                                 {{{ iconHtml }}}
                             </div>
-                            <h3 class="elementrify-pricing-table__title">{{{ plan.title }}}</h3>
-                            <# if (plan.description) { #><p class="elementrify-pricing-table__desc">{{{ plan.description }}}</p><# } #>
-                            <div class="elementrify-pricing-table__price-wrap">
-                                <span class="elementrify-pricing-table__price">{{{ plan.price }}}</span><span class="elementrify-pricing-table__period">{{{ plan.period }}}</span>
+                            <h3 class="veloria-pricing-table__title">{{{ plan.title }}}</h3>
+                            <# if (plan.description) { #><p class="veloria-pricing-table__desc">{{{ plan.description }}}</p><# } #>
+                            <div class="veloria-pricing-table__price-wrap">
+                                <span class="veloria-pricing-table__price">{{{ plan.price }}}</span><span class="veloria-pricing-table__period">{{{ plan.period }}}</span>
                             </div>
-                            <a href="{{ btnUrl }}" class="elementrify-pricing-table__button<# if (plan.button_primary === 'yes') { #> elementrify-pricing-table__button--primary<# } #>">{{{ plan.button_text }}}</a>
-                            <ul class="elementrify-pricing-table__features">
+                            <a href="{{ btnUrl }}" class="veloria-pricing-table__button<# if (plan.button_primary === 'yes') { #> veloria-pricing-table__button--primary<# } #>">{{{ plan.button_text }}}</a>
+                            <ul class="veloria-pricing-table__features">
                                 <# _.each(plan.features || [], function(f) {
                                     var included = f.included === 'yes';
                                 #>
-                                    <li class="elementrify-pricing-table__feature elementrify-pricing-table__feature--<# print(included ? 'included' : 'excluded'); #>">
-                                        <span class="elementrify-pricing-table__feature-icon" aria-hidden="true">
-                                            <# if (included) { #><svg class="elementrify-pricing-table__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><# } else { #><svg class="elementrify-pricing-table__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><# } #>
+                                    <li class="veloria-pricing-table__feature veloria-pricing-table__feature--<# print(included ? 'included' : 'excluded'); #>">
+                                        <span class="veloria-pricing-table__feature-icon" aria-hidden="true">
+                                            <# if (included) { #><svg class="veloria-pricing-table__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><# } else { #><svg class="veloria-pricing-table__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><# } #>
                                         </span>
-                                        <span class="elementrify-pricing-table__feature-text">{{{ f.text }}}</span>
+                                        <span class="veloria-pricing-table__feature-text">{{{ f.text }}}</span>
                                     </li>
                                 <# }); #>
                             </ul>

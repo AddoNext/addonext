@@ -1,8 +1,8 @@
 <?php
-namespace Elementrify\Extensions\Duplicator;
+namespace Veloria\Extensions\Duplicator;
 
-use Elementrify\Base\ExtensionBase;
-use Elementrify\Utils\OptionsHelper;
+use Veloria\Base\ExtensionBase;
+use Veloria\Utils\OptionsHelper;
 use WP_Post;
 
 defined('ABSPATH') or exit;
@@ -10,7 +10,7 @@ defined('ABSPATH') or exit;
 /**
  * Duplicate posts and pages from the admin list tables.
  *
- * @package Elementrify
+ * @package Veloria
  * @since 1.0.0
  */
 class Duplicator extends ExtensionBase
@@ -28,7 +28,7 @@ class Duplicator extends ExtensionBase
      */
     public function get_title(): string
     {
-        return __('Duplicator', 'elementrify');
+        return __('Duplicator', 'veloria');
     }
 
     /**
@@ -36,7 +36,7 @@ class Duplicator extends ExtensionBase
      */
     public function get_description(): string
     {
-        return __('Duplicate posts and pages from the list screen.', 'elementrify');
+        return __('Duplicate posts and pages from the list screen.', 'veloria');
     }
 
     /**
@@ -44,7 +44,7 @@ class Duplicator extends ExtensionBase
      */
     public function get_icon(): string
     {
-        return 'eicon-copy elementrify-icon';
+        return 'eicon-copy veloria-icon';
     }
 
     /**
@@ -104,15 +104,15 @@ class Duplicator extends ExtensionBase
             [
                 'id'          => 'all_post_types',
                 'type'        => 'toggle',
-                'label'       => __('All post types', 'elementrify'),
-                'description' => __('Show Duplicate on every public post type that has an admin list screen.', 'elementrify'),
+                'label'       => __('All post types', 'veloria'),
+                'description' => __('Show Duplicate on every public post type that has an admin list screen.', 'veloria'),
                 'default'     => true,
             ],
             [
                 'id'          => 'post_types',
                 'type'        => 'checkbox_group',
-                'label'       => __('Post types', 'elementrify'),
-                'description' => __('Choose where the Duplicate row action appears.', 'elementrify'),
+                'label'       => __('Post types', 'veloria'),
+                'description' => __('Choose where the Duplicate row action appears.', 'veloria'),
                 'default'     => ['post', 'page'],
                 'options'     => $type_options,
                 'show_when'   => [
@@ -159,7 +159,7 @@ class Duplicator extends ExtensionBase
     public function register_hooks(): void
     {
         add_action('admin_init', [$this, 'register_row_action_filters']);
-        add_action('admin_action_elementrify_duplicate_post', [$this, 'handle_admin_duplicate']);
+        add_action('admin_action_veloria_duplicate_post', [$this, 'handle_admin_duplicate']);
     }
 
     /**
@@ -194,14 +194,14 @@ class Duplicator extends ExtensionBase
         }
 
         $url = wp_nonce_url(
-            admin_url('admin.php?action=elementrify_duplicate_post&post=' . $post_obj->ID),
-            'elementrify_duplicate_' . $post_obj->ID
+            admin_url('admin.php?action=veloria_duplicate_post&post=' . $post_obj->ID),
+            'veloria_duplicate_' . $post_obj->ID
         );
 
-        $actions['elementrify_duplicate'] = sprintf(
+        $actions['veloria_duplicate'] = sprintf(
             '<a href="%s" rel="noopener noreferrer">%s</a>',
             esc_url($url),
-            esc_html__('Duplicate', 'elementrify')
+            esc_html__('Duplicate', 'veloria')
         );
 
         return $actions;
@@ -213,35 +213,35 @@ class Duplicator extends ExtensionBase
     public function handle_admin_duplicate(): void
     {
         if (!isset($_GET['post'])) {
-            wp_die(esc_html__('Missing post.', 'elementrify'));
+            wp_die(esc_html__('Missing post.', 'veloria'));
         }
 
         $post_id = (int) $_GET['post'];
 
         if ($post_id <= 0) {
-            wp_die(esc_html__('Invalid post.', 'elementrify'));
+            wp_die(esc_html__('Invalid post.', 'veloria'));
         }
 
-        check_admin_referer('elementrify_duplicate_' . $post_id);
+        check_admin_referer('veloria_duplicate_' . $post_id);
 
         $post = get_post($post_id);
 
         if (!$post instanceof WP_Post) {
-            wp_die(esc_html__('Post not found.', 'elementrify'));
+            wp_die(esc_html__('Post not found.', 'veloria'));
         }
 
         if (!in_array($post->post_type, $this->get_applicable_post_types(), true)) {
-            wp_die(esc_html__('This post type cannot be duplicated.', 'elementrify'));
+            wp_die(esc_html__('This post type cannot be duplicated.', 'veloria'));
         }
 
         if (!current_user_can('edit_post', $post_id)) {
-            wp_die(esc_html__('You are not allowed to duplicate this post.', 'elementrify'));
+            wp_die(esc_html__('You are not allowed to duplicate this post.', 'veloria'));
         }
 
         $new_id = $this->clone_post($post);
 
         if (is_wp_error($new_id) || $new_id <= 0) {
-            wp_die(esc_html__('Duplication failed.', 'elementrify'));
+            wp_die(esc_html__('Duplication failed.', 'veloria'));
         }
 
         wp_safe_redirect(admin_url('post.php?action=edit&post=' . $new_id));
@@ -259,7 +259,7 @@ class Duplicator extends ExtensionBase
         $new_post = [
             'post_author'       => $current > 0 ? $current : (int) $post->post_author,
             'post_content'      => $post->post_content,
-            'post_title'        => $post->post_title . ' ' . __('(Copy)', 'elementrify'),
+            'post_title'        => $post->post_title . ' ' . __('(Copy)', 'veloria'),
             'post_excerpt'      => $post->post_excerpt,
             'post_status'       => 'draft',
             'post_type'         => $post->post_type,

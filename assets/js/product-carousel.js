@@ -1,11 +1,11 @@
 (function () {
   'use strict';
 
-  var SELECTOR = '.elementrify-product-carousel-shell';
+  var SELECTOR = '.veloria-product-carousel-shell';
 
   function initCarousel(shell) {
     if (!shell || typeof Swiper === 'undefined') return;
-    var el = shell.querySelector('.elementrify-product-carousel.swiper');
+    var el = shell.querySelector('.veloria-product-carousel.swiper');
     if (!el) return;
     if (el.getAttribute('data-carousel-inited') === 'yes') return;
     if (el.swiper) return;
@@ -45,8 +45,8 @@
       var swiper = new Swiper(el, options);
       el.setAttribute('data-carousel-inited', 'yes');
 
-      var nextBtn = shell.querySelector('.elementrify-product-carousel__nav-btn--next');
-      var prevBtn = shell.querySelector('.elementrify-product-carousel__nav-btn--prev');
+      var nextBtn = shell.querySelector('.veloria-product-carousel__nav-btn--next');
+      var prevBtn = shell.querySelector('.veloria-product-carousel__nav-btn--prev');
       if (showNav && nextBtn && prevBtn) {
         if (!nextBtn.getAttribute('data-aa-bound')) {
           nextBtn.setAttribute('data-aa-bound', 'yes');
@@ -106,12 +106,12 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-carousel.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-carousel.default', function ($scope) {
       var el = $scope && $scope[0] ? $scope[0] : $scope;
       if (!el || !el.querySelectorAll) return;
       var shells = el.querySelectorAll(SELECTOR);
       shells.forEach(function (shell) {
-        var carousel = shell.querySelector('.elementrify-product-carousel.swiper');
+        var carousel = shell.querySelector('.veloria-product-carousel.swiper');
         if (carousel) {
           carousel.removeAttribute('data-carousel-inited');
         }
@@ -122,7 +122,7 @@
 
   function showCartTooltip(buttonEl) {
     if (!buttonEl || !buttonEl.closest) return;
-    var actions = buttonEl.closest('.elementrify-product-carousel__actions');
+    var actions = buttonEl.closest('.veloria-product-carousel__actions');
     if (!actions) return;
 
     actions.classList.add('is-cart-tooltip-visible');
@@ -200,7 +200,7 @@
     if (typeof wc_add_to_cart_params !== 'undefined' && wc_add_to_cart_params.cart_url) {
       return wc_add_to_cart_params.cart_url;
     }
-    var shell = link && link.closest ? link.closest('.elementrify-product-carousel-shell') : null;
+    var shell = link && link.closest ? link.closest('.veloria-product-carousel-shell') : null;
     if (shell && shell.getAttribute('data-cart-url')) {
       return shell.getAttribute('data-cart-url');
     }
@@ -209,7 +209,7 @@
 
   function bindCartTooltipOpeners(root) {
     var scope = root || document;
-    var tooltipLinks = scope.querySelectorAll('.elementrify-product-carousel__cart-tooltip');
+    var tooltipLinks = scope.querySelectorAll('.veloria-product-carousel__cart-tooltip');
     tooltipLinks.forEach(function (link) {
       if (link.getAttribute('data-pc-bound') === 'yes') return;
       link.setAttribute('data-pc-bound', 'yes');
@@ -226,27 +226,27 @@
 
   function clearCartButtonLoading(btn) {
     if (btn && btn.classList) {
-      btn.classList.remove('elementrify-product-carousel__cart-btn--pending');
+      btn.classList.remove('veloria-product-carousel__cart-btn--pending');
     }
   }
 
   if (typeof jQuery !== 'undefined') {
     jQuery(document.body).on('adding_to_cart', function (event, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (btn && btn.classList && btn.classList.contains('elementrify-product-carousel__cart-btn')) {
-        btn.classList.add('elementrify-product-carousel__cart-btn--pending');
+      if (btn && btn.classList && btn.classList.contains('veloria-product-carousel__cart-btn')) {
+        btn.classList.add('veloria-product-carousel__cart-btn--pending');
       }
     });
     jQuery(document.body).on('ajax_request_not_sent.adding_to_cart', function (event, a, b, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
       if (!btn || !btn.classList) return;
-      if (btn.classList.contains('elementrify-product-carousel__cart-btn')) {
+      if (btn.classList.contains('veloria-product-carousel__cart-btn')) {
         clearCartButtonLoading(btn);
       }
     });
     jQuery(document.body).on('added_to_cart', function (event, fragments, cartHash, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (btn && btn.classList && btn.classList.contains('elementrify-product-carousel__cart-btn')) {
+      if (btn && btn.classList && btn.classList.contains('veloria-product-carousel__cart-btn')) {
         clearCartButtonLoading(btn);
         showCartTooltip(btn);
         showAddSuccess(btn);
@@ -261,7 +261,7 @@
     });
   }
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-product-carousel.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-carousel.default', function ($scope) {
       var el = $scope && $scope[0] ? $scope[0] : $scope;
       if (!el || !el.querySelectorAll) return;
       bindCartTooltipOpeners(el);

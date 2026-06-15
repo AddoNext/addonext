@@ -24,9 +24,9 @@
     }
 
     function updateMapIframes() {
-        var wrappers = document.querySelectorAll('.elementrify-advanced-google-map[data-map-source]');
+        var wrappers = document.querySelectorAll('.veloria-advanced-google-map[data-map-source]');
         wrappers.forEach(function (wrapper) {
-            var frame = wrapper.querySelector('.elementrify-advanced-google-map__frame');
+            var frame = wrapper.querySelector('.veloria-advanced-google-map__frame');
             if (!frame) return;
             var mapSrc = buildMapSrc(wrapper);
             if (mapSrc && frame.getAttribute('src') !== mapSrc) {
@@ -47,7 +47,7 @@
 
     if (typeof elementor !== 'undefined' && elementor.on) {
         elementor.on('frontend:init', function () {
-            elementor.hooks.addAction('frontend/element_ready/elementrify-advanced-google-map.default', function () {
+            elementor.hooks.addAction('frontend/element_ready/veloria-advanced-google-map.default', function () {
                 updateMapIframes();
             });
         });

@@ -4,7 +4,7 @@ services:
         ports:
             - 127.0.0.1:80:80
         networks:
-            - elementrify
+            - veloria
         command: --providers.docker
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
@@ -15,12 +15,12 @@ services:
         restart: always
         volumes:
             - wordpress:/var/www/html
-            - ./:/var/www/html/wp-content/plugins/elementrify
+            - ./:/var/www/html/wp-content/plugins/veloria
             - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins
             - ./configs/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
             - ./configs/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
         labels:
-            traefik.http.routers.wordpress.rule: Host(`elementrify.localhost`)
+            traefik.http.routers.wordpress.rule: Host(`veloria.localhost`)
             traefik.http.services.wordpress.loadbalancer.server.port: 80
         environment:
             - WORDPRESS_DB_HOST=mysql
@@ -36,7 +36,7 @@ services:
             npm:
                 condition: service_started
         networks:
-            - elementrify
+            - veloria
     composer:
         image: composer
         volumes:
@@ -44,7 +44,7 @@ services:
         working_dir: /var/www/html
         command: sh -c "rm -f composer.lock && composer install"
         networks:
-            - elementrify
+            - veloria
         labels:
             traefik.enable: "false"
     npm:
@@ -54,7 +54,7 @@ services:
         working_dir: /app
         command: sh -c "npm install && chmod +x node_modules/.bin/* && npm run build && npm run start"
         networks:
-            - elementrify
+            - veloria
         labels:
             traefik.enable: "false"
     mysql:
@@ -74,7 +74,7 @@ services:
             timeout: 5s
             retries: 5
         networks:
-            - elementrify
+            - veloria
     phpmyadmin:
         image: phpmyadmin
         environment:
@@ -85,7 +85,7 @@ services:
             mysql:
                 condition: service_healthy
         networks:
-            - elementrify
+            - veloria
         labels:
             traefik.http.routers.phpmyadmin.rule: Host(`phpmyadmin.localhost`)
             traefik.http.services.phpmyadmin.loadbalancer.server.port: 80
@@ -97,7 +97,7 @@ services:
             mysql:
                 condition: service_healthy
         networks:
-            - elementrify
+            - veloria
         labels:
             traefik.http.routers.adminer.rule: Host(`adminer.localhost`)
             traefik.http.services.adminer.loadbalancer.server.port: 8080
@@ -105,5 +105,5 @@ volumes:
     wordpress:
     db:
 networks:
-    elementrify:
+    veloria:
         driver: bridge

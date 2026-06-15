@@ -54,9 +54,9 @@
             counterEl._promoInterval = null;
         }
 
-        var valueDays = counterEl.querySelector('.elementrify-promo-box__counter-value[data-unit="days"]');
-        var valueHours = counterEl.querySelector('.elementrify-promo-box__counter-value[data-unit="hours"]');
-        var valueMinutes = counterEl.querySelector('.elementrify-promo-box__counter-value[data-unit="minutes"]');
+        var valueDays = counterEl.querySelector('.veloria-promo-box__counter-value[data-unit="days"]');
+        var valueHours = counterEl.querySelector('.veloria-promo-box__counter-value[data-unit="hours"]');
+        var valueMinutes = counterEl.querySelector('.veloria-promo-box__counter-value[data-unit="minutes"]');
         var expiredText = counterEl.getAttribute('data-expired-text') || '';
 
         function render(r) {
@@ -83,7 +83,7 @@
 
     function scan(root) {
         root = root || document;
-        var counters = root.querySelectorAll('.elementrify-promo-box__counter[data-due]');
+        var counters = root.querySelectorAll('.veloria-promo-box__counter[data-due]');
         counters.forEach(function (el) {
             runPromoCountdown(el);
         });
@@ -108,8 +108,8 @@
             if (!node || !node.querySelectorAll) return;
             scan(node);
         }
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-promo-box.default', onWidgetReady);
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-promo-box', onWidgetReady);
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-promo-box.default', onWidgetReady);
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-promo-box', onWidgetReady);
     }
 
     if (typeof elementorFrontend !== 'undefined') {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementrify\Utils;
+namespace Veloria\Utils;
 
 defined('ABSPATH') or exit;
 

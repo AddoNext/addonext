@@ -39,7 +39,7 @@
         }
         if (yTicks.indexOf(max) === -1) yTicks.push(max);
 
-        var canvas = container.querySelector('.elementrify-line-chart__canvas');
+        var canvas = container.querySelector('.veloria-line-chart__canvas');
         if (!canvas) return;
 
         var paddingTop = 16;
@@ -63,11 +63,11 @@
         var ns = 'http://www.w3.org/2000/svg';
         var svg = document.createElementNS(ns, 'svg');
         svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-        svg.setAttribute('class', 'elementrify-line-chart__svg');
+        svg.setAttribute('class', 'veloria-line-chart__svg');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
         var grid = document.createElementNS(ns, 'g');
-        grid.setAttribute('class', 'elementrify-line-chart__grid');
+        grid.setAttribute('class', 'veloria-line-chart__grid');
 
         var i;
         for (i = 0; i < yTicks.length; i++) {
@@ -91,7 +91,7 @@
         svg.appendChild(grid);
 
         var yLabels = document.createElementNS(ns, 'g');
-        yLabels.setAttribute('class', 'elementrify-line-chart__axis-labels elementrify-line-chart__axis-label');
+        yLabels.setAttribute('class', 'veloria-line-chart__axis-labels veloria-line-chart__axis-label');
         for (i = 0; i < yTicks.length; i++) {
             var text = document.createElementNS(ns, 'text');
             text.setAttribute('x', paddingLeft - 8);
@@ -103,7 +103,7 @@
         svg.appendChild(yLabels);
 
         var xLabels = document.createElementNS(ns, 'g');
-        xLabels.setAttribute('class', 'elementrify-line-chart__axis-labels elementrify-line-chart__axis-label');
+        xLabels.setAttribute('class', 'veloria-line-chart__axis-labels veloria-line-chart__axis-label');
         for (i = 0; i < labels.length; i++) {
             var xtext = document.createElementNS(ns, 'text');
             xtext.setAttribute('x', xScale(i));
@@ -118,7 +118,7 @@
             return (i === 0 ? 'M' : 'L') + xScale(i) + ',' + yScale(v);
         }).join(' ');
         var path = document.createElementNS(ns, 'path');
-        path.setAttribute('class', 'elementrify-line-chart__line');
+        path.setAttribute('class', 'veloria-line-chart__line');
         path.setAttribute('d', pathD);
         path.setAttribute('fill', 'none');
         path.setAttribute('stroke-width', '2');
@@ -127,10 +127,10 @@
         svg.appendChild(path);
 
         var points = document.createElementNS(ns, 'g');
-        points.setAttribute('class', 'elementrify-line-chart__points');
+        points.setAttribute('class', 'veloria-line-chart__points');
         for (i = 0; i < values.length; i++) {
             var circle = document.createElementNS(ns, 'circle');
-            circle.setAttribute('class', 'elementrify-line-chart__point');
+            circle.setAttribute('class', 'veloria-line-chart__point');
             circle.setAttribute('cx', xScale(i));
             circle.setAttribute('cy', yScale(values[i]));
             circle.setAttribute('r', '4');
@@ -145,10 +145,10 @@
 
     function run(root) {
         root = root || document;
-        var containers = root.querySelectorAll('.elementrify-line-chart');
+        var containers = root.querySelectorAll('.veloria-line-chart');
         containers.forEach(function (el) {
             if (el.getAttribute('data-chart-built') === '1') return;
-            var canvas = el.querySelector('.elementrify-line-chart__canvas');
+            var canvas = el.querySelector('.veloria-line-chart__canvas');
             var valuesStr = (el.getAttribute('data-values') || '').split('|');
             var hasData = valuesStr.length > 0 && valuesStr.some(function (v) { return v !== '' && !isNaN(parseFloat(v, 10)); });
             if (canvas && hasData) {
@@ -177,16 +177,16 @@
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
                     var containers = [];
-                    if (node.classList && node.classList.contains('elementrify-line-chart')) {
+                    if (node.classList && node.classList.contains('veloria-line-chart')) {
                         containers.push(node);
                     }
                     if (node.querySelectorAll) {
-                        var found = node.querySelectorAll('.elementrify-line-chart');
+                        var found = node.querySelectorAll('.veloria-line-chart');
                         for (var i = 0; i < found.length; i++) containers.push(found[i]);
                     }
                     containers.forEach(function (container) {
-                        var canvas = container.querySelector('.elementrify-line-chart__canvas');
-                        var needsBuild = canvas && !container.querySelector('.elementrify-line-chart__svg');
+                        var canvas = container.querySelector('.veloria-line-chart__canvas');
+                        var needsBuild = canvas && !container.querySelector('.veloria-line-chart__svg');
                         if (needsBuild) {
                             container.removeAttribute('data-chart-built');
                             buildChart(container);
@@ -205,10 +205,10 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/elementrify-line-chart.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-line-chart.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
-                var containers = el.querySelectorAll('.elementrify-line-chart');
+                var containers = el.querySelectorAll('.veloria-line-chart');
                 containers.forEach(function (c) {
                     c.removeAttribute('data-chart-built');
                 });

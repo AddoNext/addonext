@@ -1,39 +1,39 @@
-.elementrify-icon-list {
+.veloria-icon-list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.elementrify-icon-list__item {
+.veloria-icon-list__item {
     display: flex;
     align-items: center;
     gap: 0.5em;
 }
 
-.elementrify-icon-list__item:last-child {
+.veloria-icon-list__item:last-child {
     margin-bottom: 0;
 }
 
-.elementor-widget-elementrify-icon-list[class*="align-left"] .elementrify-icon-list__item {
+.elementor-widget-veloria-icon-list[class*="align-left"] .veloria-icon-list__item {
     justify-content: flex-start;
 }
 
-.elementor-widget-elementrify-icon-list[class*="align-center"] .elementrify-icon-list__item {
+.elementor-widget-veloria-icon-list[class*="align-center"] .veloria-icon-list__item {
     justify-content: center;
 }
 
-.elementor-widget-elementrify-icon-list[class*="align-right"] .elementrify-icon-list__item {
+.elementor-widget-veloria-icon-list[class*="align-right"] .veloria-icon-list__item {
     justify-content: flex-end;
 }
 
-.elementor-widget-elementrify-icon-list[class*="align-center"] .elementrify-icon-list__link,
-.elementor-widget-elementrify-icon-list[class*="align-center"] .elementrify-icon-list__text,
-.elementor-widget-elementrify-icon-list[class*="align-right"] .elementrify-icon-list__link,
-.elementor-widget-elementrify-icon-list[class*="align-right"] .elementrify-icon-list__text {
+.elementor-widget-veloria-icon-list[class*="align-center"] .veloria-icon-list__link,
+.elementor-widget-veloria-icon-list[class*="align-center"] .veloria-icon-list__text,
+.elementor-widget-veloria-icon-list[class*="align-right"] .veloria-icon-list__link,
+.elementor-widget-veloria-icon-list[class*="align-right"] .veloria-icon-list__text {
     flex: 0 1 auto;
 }
 
-.elementrify-icon-list__icon {
+.veloria-icon-list__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -44,23 +44,23 @@
     isolation: isolate;
 }
 
-.elementrify-icon-list__icon i,
-.elementrify-icon-list__icon svg {
+.veloria-icon-list__icon i,
+.veloria-icon-list__icon svg {
     display: block;
     width: 50%;
     height: 50%;
 }
 
-.elementrify-icon-list__icon i {
+.veloria-icon-list__icon i {
     font-size: 50%;
 }
 
-.elementrify-icon-list__icon svg {
+.veloria-icon-list__icon svg {
     width: 50%;
     height: 50%;
 }
 
-.elementrify-icon-list__link {
+.veloria-icon-list__link {
     display: inline-flex;
     align-items: center;
     gap: inherit;
@@ -70,7 +70,7 @@
     color: inherit;
 }
 
-.elementrify-icon-list__text {
+.veloria-icon-list__text {
     flex: 1;
     min-width: 0;
     font-size: 14px;

@@ -1,9 +1,9 @@
-.elementrify-moving-circles[data-elementrify-moving-circles="yes"] {
+.veloria-moving-circles[data-veloria-moving-circles="yes"] {
 	position: relative;
 	isolation: isolate;
 }
 
-.elementrify-moving-circles__host {
+.veloria-moving-circles__host {
 	position: absolute;
 	inset: 0;
 	z-index: 0;
@@ -13,211 +13,211 @@
 	pointer-events: none;
 }
 
-.elementrify-moving-circles__circle {
+.veloria-moving-circles__circle {
 	position: absolute;
-	width: var(--elementrify-mc-size, 48px);
-	height: var(--elementrify-mc-size, 48px);
+	width: var(--veloria-mc-size, 48px);
+	height: var(--veloria-mc-size, 48px);
 	margin: 0;
 	border-radius: 50%;
-	background: var(--elementrify-mc-fill, rgba(255, 255, 255, 0.35));
+	background: var(--veloria-mc-fill, rgba(255, 255, 255, 0.35));
 	opacity: 0.32;
 	transform: translate(-50%, -50%);
 	will-change: transform;
-	animation-name: elementrify-mc-drift;
+	animation-name: veloria-mc-drift;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
-	animation-duration: var(--elementrify-mc-dur, 22s);
+	animation-duration: var(--veloria-mc-dur, 22s);
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(5n + 1) {
-	animation-duration: calc(var(--elementrify-mc-dur, 22s) * 0.82);
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(5n + 1) {
+	animation-duration: calc(var(--veloria-mc-dur, 22s) * 0.82);
 	opacity: 0.28;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(5n + 2) {
-	animation-duration: calc(var(--elementrify-mc-dur, 22s) * 1.12);
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(5n + 2) {
+	animation-duration: calc(var(--veloria-mc-dur, 22s) * 1.12);
 	opacity: 0.38;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(5n + 3) {
-	animation-duration: calc(var(--elementrify-mc-dur, 22s) * 0.95);
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(5n + 3) {
+	animation-duration: calc(var(--veloria-mc-dur, 22s) * 0.95);
 	opacity: 0.26;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(5n + 4) {
-	animation-duration: calc(var(--elementrify-mc-dur, 22s) * 1.05);
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(5n + 4) {
+	animation-duration: calc(var(--veloria-mc-dur, 22s) * 1.05);
 	opacity: 0.34;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(1) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(1) {
 	left: 12%;
 	top: 20%;
 	animation-delay: -1s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(2) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(2) {
 	left: 82%;
 	top: 15%;
 	animation-delay: -4.2s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(3) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(3) {
 	left: 35%;
 	top: 8%;
 	animation-delay: -0.5s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(4) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(4) {
 	left: 68%;
 	top: 55%;
 	animation-delay: -2.1s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(5) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(5) {
 	left: 22%;
 	top: 72%;
 	animation-delay: -6s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(6) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(6) {
 	left: 50%;
 	top: 40%;
 	animation-delay: -1.8s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(7) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(7) {
 	left: 8%;
 	top: 48%;
 	animation-delay: -3s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(8) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(8) {
 	left: 90%;
 	top: 38%;
 	animation-delay: -0.2s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(9) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(9) {
 	left: 28%;
 	top: 88%;
 	animation-delay: -5s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(10) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(10) {
 	left: 72%;
 	top: 12%;
 	animation-delay: -2.7s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(11) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(11) {
 	left: 45%;
 	top: 62%;
 	animation-delay: -1.1s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(12) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(12) {
 	left: 15%;
 	top: 32%;
 	animation-delay: -4.5s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(13) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(13) {
 	left: 62%;
 	top: 28%;
 	animation-delay: -0.9s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(14) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(14) {
 	left: 38%;
 	top: 52%;
 	animation-delay: -3.8s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(15) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(15) {
 	left: 55%;
 	top: 18%;
 	animation-delay: -2.4s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(16) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(16) {
 	left: 92%;
 	top: 70%;
 	animation-delay: -6.5s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(17) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(17) {
 	left: 18%;
 	top: 62%;
 	animation-delay: -1.5s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(18) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(18) {
 	left: 75%;
 	top: 82%;
 	animation-delay: -0.7s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(19) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(19) {
 	left: 48%;
 	top: 35%;
 	animation-delay: -4s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(20) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(20) {
 	left: 32%;
 	top: 12%;
 	animation-delay: -2.9s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(21) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(21) {
 	left: 58%;
 	top: 75%;
 	animation-delay: -5.5s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(22) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(22) {
 	left: 6%;
 	top: 25%;
 	animation-delay: -3.3s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(23) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(23) {
 	left: 85%;
 	top: 50%;
 	animation-delay: -1.2s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(24) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(24) {
 	left: 25%;
 	top: 45%;
 	animation-delay: -0.4s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(25) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(25) {
 	left: 65%;
 	top: 8%;
 	animation-delay: -4.8s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(26) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(26) {
 	left: 42%;
 	top: 92%;
 	animation-delay: -2s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(27) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(27) {
 	left: 52%;
 	top: 65%;
 	animation-delay: -3.6s;
 }
 
-.elementrify-moving-circles__host .elementrify-moving-circles__circle:nth-child(28) {
+.veloria-moving-circles__host .veloria-moving-circles__circle:nth-child(28) {
 	left: 14%;
 	top: 85%;
 	animation-delay: -5.9s;
 }
 
-@keyframes elementrify-mc-drift {
+@keyframes veloria-mc-drift {
 	0% {
 		transform: translate3d(-50%, -50%, 0) scale(1);
 	}
