@@ -44,3 +44,13 @@ function emty_container(mixed $class): object
 
     return $container->get($class);
 }
+
+/**
+ * Whether this build ships the pro account/license REST API.
+ *
+ * @return bool
+ */
+function veloria_has_pro_account_api(): bool
+{
+    return is_readable(VELORIA_DIR . 'pro/inc/Pro/Admin/AccountController.php');
+}

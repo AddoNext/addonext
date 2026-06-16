@@ -22,6 +22,34 @@ import type {
 
 const STORE_NAME = 'veloria/admin';
 
+const EMPTY_LICENSE_DATA: LicenseData = {
+    is_active: false,
+    has_pro_plan: false,
+    status_label: 'Free',
+    plan_name: '',
+    plan_title: '',
+    sites_label: '',
+    expires_at: null,
+    expires_label: '',
+    time_left_label: '',
+    support_label: '',
+    support_sublabel: '',
+    license_key_masked: '',
+    license_id: '',
+    activation_date: '',
+    sites_used: 0,
+    sites_quota: null,
+    version: '',
+    email: '',
+    customer_id: '',
+    purchase_date: '',
+    auto_renewal: false,
+    upgrade_url: '',
+    account_url: '',
+    support_url: '',
+    docs_url: '',
+};
+
 const DEFAULT_STATE: AdminState = {
     widgets: [],
     categories: {},
@@ -431,16 +459,20 @@ const store = createReduxStore(STORE_NAME, {
         fetchLicense() {
             return async ({ dispatch }: { dispatch: (action: unknown) => void }) => {
                 dispatch({ type: SET_LICENSE_RESOLVING, payload: true });
+                dispatch({ type: SET_LICENSE_ERROR, payload: null });
                 try {
                     const res = await apiFetch({ path: '/veloria/v1/license' }) as LicenseGetResponse;
                     if (res?.success && res.data) {
                         dispatch({ type: SET_LICENSE_DATA, payload: res.data });
+                    } else {
+                        dispatch({ type: SET_LICENSE_DATA, payload: EMPTY_LICENSE_DATA });
                     }
                 } catch (err) {
                     dispatch({
                         type: SET_LICENSE_ERROR,
                         payload: (err as { message?: string })?.message ?? 'Failed to fetch license',
                     });
+                    dispatch({ type: SET_LICENSE_DATA, payload: EMPTY_LICENSE_DATA });
                 } finally {
                     dispatch({ type: SET_LICENSE_RESOLVING, payload: false });
                 }

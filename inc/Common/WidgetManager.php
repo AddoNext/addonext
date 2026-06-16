@@ -222,9 +222,12 @@ class WidgetManager
         $active = is_array($active) ? $active : [];
 
         $scripts = [
-            'particle-effects' => VELORIA_URL . 'assets/js/editor/veloria-particle-effects-preview.js',
-            'moving-circles'   => VELORIA_URL . 'assets/js/editor/veloria-moving-circles-preview.js',
+            'moving-circles' => VELORIA_URL . 'assets/js/editor/veloria-moving-circles-preview.js',
         ];
+
+        if (class_exists('\Veloria\Extensions\ParticleEffects\ParticleEffects')) {
+            $scripts['particle-effects'] = VELORIA_URL . 'assets/js/editor/veloria-particle-effects-preview.js';
+        }
 
         foreach ($scripts as $slug => $src) {
             if (!in_array($slug, $active, true)) {

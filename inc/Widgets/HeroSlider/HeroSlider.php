@@ -28,7 +28,8 @@ class HeroSlider extends WidgetBase
     {
         $list = self::DEMO_BG_IMAGE_FILES;
         $file = $list[$index % count($list)];
-        $url = VELORIA_URL . 'assets/images/demo/' . $file;
+        $path = VELORIA_DIR . 'assets/images/demo/' . $file;
+        $url  = is_readable($path) ? VELORIA_URL . 'assets/images/demo/' . $file : '';
 
         return [
             'url'  => $url,

@@ -70,6 +70,7 @@ class AdminAssets
             'veloriaAdminData',
             [
                 'isElementorActive' => self::is_elementor_plugin_active(),
+                'hasProAccountApi'  => function_exists('veloria_has_pro_account_api') && veloria_has_pro_account_api(),
             ]
         );
     }

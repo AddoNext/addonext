@@ -15,7 +15,6 @@ use Veloria\Widgets\Button\Button;
 use Veloria\Widgets\Spacer\Spacer;
 use Veloria\Admin\WidgetController;
 use Veloria\Utils\AssetPerformance;
-use Veloria\Utils\DebugModeManager;
 use Veloria\Common\ExtensionManager;
 use Veloria\Widgets\Divider\Divider;
 use Veloria\Widgets\Dropcap\Dropcap;
@@ -90,7 +89,6 @@ return [
     WidgetsAssetController::class => create(WidgetsAssetController::class),
     SettingsController::class     => create(SettingsController::class),
     OptionsHelper::class          => create(OptionsHelper::class),
-    DebugModeManager::class       => create(DebugModeManager::class),
     DataProcessor::class          => create(DataProcessor::class),
     WidgetBase::class             => create(WidgetBase::class),
     Accordion::class              => create(Accordion::class),

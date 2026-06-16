@@ -21,6 +21,8 @@ import {
 import { STORE_NAME } from "../../../store/admin";
 import type { LicenseData } from "../../../store/types";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import UpgradeOfferScreen from "../../components/UpgradeOfferScreen/UpgradeOfferScreen";
+import { readHasProAccountApi } from "../../utils/adminData";
 import styles from "./LicensePage.module.scss";
 
 const PREMIUM_FEATURES = [
@@ -111,6 +113,29 @@ const LicensePage: React.FC = () => {
   }
 
   const data = licenseData ?? ({} as LicenseData);
+  const hasProAccountApi = readHasProAccountApi();
+
+  if (!hasProAccountApi) {
+    return (
+      <div className={styles.page}>
+        <UpgradeOfferScreen
+          title="Upgrade to Veloria Pro"
+          description="Get additional widgets, templates, and priority support with the separate Pro version from Elementrify."
+          upgradeUrl={data.upgrade_url?.trim() ?? ""}
+        />
+      </div>
+    );
+  }
+
+  if (licenseError && !data.is_active && !data.upgrade_url) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.errorBanner} role="alert">
+          {licenseError}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.page}>
@@ -211,49 +236,51 @@ const LicensePage: React.FC = () => {
         </section>
       )}
 
+      {hasProAccountApi && (
+        <section className={`${styles.section} ${styles.activationSection}`}>
+          <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
+            <FontAwesomeIcon icon={faKey} className={styles.activationIcon} />
+            <div>
+              <h2 className={styles.sectionTitle}>License Activation</h2>
+              <p className={styles.sectionSubtitle}>Enter your license key to activate premium features</p>
+            </div>
+          </div>
+          <div className={styles.activationForm}>
+            <label className={styles.activationLabel} htmlFor="license-key-input">
+              License Key
+            </label>
+            <div className={styles.activationRow}>
+              <input
+                id="license-key-input"
+                type="text"
+                className={styles.activationInput}
+                placeholder="ANXT-XXXX-XXXX-XXXX-XXXX"
+                value={activationKey}
+                onChange={(e) => setActivationKey(e.target.value)}
+              />
+              <button
+                type="button"
+                className={styles.btnActivate}
+                onClick={handleActivate}
+                disabled={licenseActivating || !activationKey.trim()}
+              >
+                {licenseActivating ? (
+                  <FontAwesomeIcon icon={faCircleNotch} spin />
+                ) : (
+                  <FontAwesomeIcon icon={faKey} />
+                )}{" "}
+                Activate
+              </button>
+            </div>
+            <p className={styles.activationHint}>
+              You can find your license key in your purchase confirmation email or account dashboard
+            </p>
+          </div>
+        </section>
+      )}
+
       {!data.is_active && (
         <>
-          <section className={`${styles.section} ${styles.activationSection}`}>
-            <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
-              <FontAwesomeIcon icon={faKey} className={styles.activationIcon} />
-              <div>
-                <h2 className={styles.sectionTitle}>License Activation</h2>
-                <p className={styles.sectionSubtitle}>Enter your license key to activate premium features</p>
-              </div>
-            </div>
-            <div className={styles.activationForm}>
-              <label className={styles.activationLabel} htmlFor="license-key-input">
-                License Key
-              </label>
-              <div className={styles.activationRow}>
-                <input
-                  id="license-key-input"
-                  type="text"
-                  className={styles.activationInput}
-                  placeholder="ANXT-XXXX-XXXX-XXXX-XXXX"
-                  value={activationKey}
-                  onChange={(e) => setActivationKey(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className={styles.btnActivate}
-                  onClick={handleActivate}
-                  disabled={licenseActivating || !activationKey.trim()}
-                >
-                  {licenseActivating ? (
-                    <FontAwesomeIcon icon={faCircleNotch} spin />
-                  ) : (
-                    <FontAwesomeIcon icon={faKey} />
-                  )}{" "}
-                  Activate
-                </button>
-              </div>
-              <p className={styles.activationHint}>
-                You can find your license key in your purchase confirmation email or account dashboard
-              </p>
-            </div>
-          </section>
-
           <section className={styles.section}>
             <div className={`${styles.sectionTitleRow} ${styles.sectionTitleBlock}`}>
               <FontAwesomeIcon icon={faStar} className={styles.iconYellow} />

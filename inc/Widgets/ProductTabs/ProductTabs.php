@@ -2,6 +2,7 @@
 namespace Veloria\Widgets\ProductTabs;
 
 use Veloria\Base\WidgetBase;
+use Veloria\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -66,7 +67,12 @@ class ProductTabs extends WidgetBase
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'jquery', 'wc-add-to-cart', 'veloria-product-tabs'];
+        return WooCommerceAssets::script_dependencies([
+            'elementor-frontend',
+            'jquery',
+            'wc-add-to-cart',
+            'veloria-product-tabs',
+        ]);
     }
 
     public function enqueue_assets(): void
@@ -81,7 +87,7 @@ class ProductTabs extends WidgetBase
         wp_register_script(
             'veloria-product-tabs',
             VELORIA_URL . 'assets/js/product-tabs.js',
-            ['elementor-frontend', 'jquery', 'wc-add-to-cart'],
+            WooCommerceAssets::script_dependencies(['elementor-frontend', 'jquery', 'wc-add-to-cart']),
             VELORIA_VERSION,
             true
         );

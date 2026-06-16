@@ -2,6 +2,7 @@
 namespace Veloria\Widgets\WooCheckout;
 
 use Veloria\Base\WidgetBase;
+use Veloria\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -73,7 +74,12 @@ class WooCheckout extends WidgetBase
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'jquery', 'wc-checkout', 'veloria-woo-checkout'];
+        return WooCommerceAssets::script_dependencies([
+            'elementor-frontend',
+            'jquery',
+            'wc-checkout',
+            'veloria-woo-checkout',
+        ]);
     }
 
     public function enqueue_assets(): void
@@ -93,7 +99,7 @@ class WooCheckout extends WidgetBase
         wp_register_script(
             'veloria-woo-checkout',
             VELORIA_URL . 'assets/js/woo-checkout.js',
-            ['jquery', 'elementor-frontend', 'wc-checkout'],
+            WooCommerceAssets::script_dependencies(['jquery', 'elementor-frontend', 'wc-checkout']),
             VELORIA_VERSION,
             true
         );

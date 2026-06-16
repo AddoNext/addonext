@@ -37,7 +37,7 @@ const TemplatesPage: React.FC = () => {
           <LoadingSpinner screenReaderLabel="Loading license" />
         </div>
       ) : isPro ? (
-        <p className={styles.placeholder}>Templates screen</p>
+        <p className={styles.placeholder}>Templates are under development</p>
       ) : (
         <UpgradeOfferScreen
           title="Templates are a Pro feature"

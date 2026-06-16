@@ -1,6 +1,8 @@
 <?php
 namespace Veloria\Admin;
 
+use Veloria\Utils\WooCommerceAssets;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -616,6 +618,10 @@ class WidgetsAssetController
      */
     public function __construct()
     {
+        add_action('elementor/editor/before_enqueue_scripts', [WooCommerceAssets::class, 'ensure_frontend_scripts_registered'], 5);
+        add_action('elementor/frontend/after_register_scripts', [WooCommerceAssets::class, 'ensure_frontend_scripts_registered'], 5);
+        add_action('elementor/preview/enqueue_scripts', [WooCommerceAssets::class, 'ensure_frontend_scripts_registered'], 5);
+        add_action('wp_enqueue_scripts', [WooCommerceAssets::class, 'ensure_frontend_scripts_registered'], 4);
         add_action('elementor/frontend/after_register_styles', [$this, 'register_styles'], 20);
         add_action('elementor/editor/before_enqueue_scripts', [$this, 'register_styles'], 20);
         add_action('elementor/frontend/after_register_scripts', [$this, 'register_scripts'], 20);
@@ -648,11 +654,13 @@ class WidgetsAssetController
         if (!defined('VELORIA_URL') || !defined('VELORIA_VERSION')) {
             return;
         }
+        WooCommerceAssets::ensure_frontend_scripts_registered();
+
         foreach ($this->scripts as $asset) {
             wp_register_script(
                 $asset['handle'],
                 VELORIA_URL . $asset['file'],
-                $asset['deps'] ?? [],
+                WooCommerceAssets::script_dependencies($asset['deps'] ?? []),
                 VELORIA_VERSION,
                 $asset['footer'] ?? true
             );

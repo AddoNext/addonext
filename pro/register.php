@@ -85,12 +85,15 @@ function veloria_get_pro_extension_map(): array
  */
 function veloria_bootstrap_pro(): void
 {
+    if (veloria_has_pro_account_api() && !defined('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED')) {
+        new AccountController();
+        define('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED', true);
+    }
+
     if (emt_fs()->can_use_premium_code__premium_only()) {
         if (emt_fs()->is_plan('pro')) {
             add_action('init', [SubscribeForm::class, 'register_ajax_handlers'], 5);
             add_action('init', [WooDashboard::class, 'register_ajax_handlers'], 5);
-
-            new AccountController();
         }
     }
 }

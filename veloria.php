@@ -20,7 +20,6 @@ use Veloria\Common\WidgetManager;
 use Veloria\Admin\AdminController;
 use Veloria\Admin\WidgetController;
 use Veloria\Utils\AssetPerformance;
-use Veloria\Utils\DebugModeManager;
 use Veloria\Common\ExtensionManager;
 use Veloria\Admin\SettingsController;
 use Veloria\Admin\MigrationController;
@@ -29,25 +28,24 @@ use Veloria\Admin\WidgetsAssetController;
 
 require_once 'vendor/autoload.php';
 
-if (!function_exists('emt_fs')) {
+if ( ! function_exists( 'emt_fs' ) ) {
     // Create a helper function for easy SDK access.
-    function emt_fs()
-    {
+    function emt_fs() {
         global $emt_fs;
 
-        if (!isset($emt_fs)) {
+        if ( ! isset( $emt_fs ) ) {
             // Activate multisite network integration.
-            if (!defined('WP_FS__PRODUCT_19063_MULTISITE')) {
-                define('WP_FS__PRODUCT_19063_MULTISITE', true);
+            if ( ! defined( 'WP_FS__PRODUCT_19063_MULTISITE' ) ) {
+                define( 'WP_FS__PRODUCT_19063_MULTISITE', true );
             }
 
             // Include Freemius SDK.
             // SDK is auto-loaded through Composer
 
-            $emt_fs = fs_dynamic_init([
+            $emt_fs = fs_dynamic_init( array(
                 'id'                  => '19063',
                 'slug'                => 'veloria',
-                'premium_slug'        => 'dragnext-premium',
+                'premium_slug'        => 'veloria-pro',
                 'type'                => 'plugin',
                 'public_key'          => 'pk_213c59173633a027d6e134676b4ba',
                 'is_premium'          => true,
@@ -60,15 +58,15 @@ if (!function_exists('emt_fs')) {
                 // Automatically removed in the free version. If you're not using the
                 // auto-generated free version, delete this line before uploading to wp.org.
                 'wp_org_gatekeeper'   => 'OA7#BoRiBNqdf52FvzEf!!074aRLPs8fspif$7K1#4u4Csys1fQlCecVcUTOs2mcpeVHi#C2j9d09fOTvbC0HloPT7fFee5WdS3G',
-                'trial'               => [
+                'trial'               => array(
                     'days'               => 3,
-                    'is_require_payment' => true
-                ],
-                'menu'                => [
-                    'slug'       => 'veloria',
-                    'first-path' => 'admin.php?page=veloria&tab=setup-wizard'
-                ]
-            ]);
+                    'is_require_payment' => true,
+                ),
+                'menu'                => array(
+                    'slug'           => 'veloria',
+                    'first-path'     => 'admin.php?page=veloria&tab=setup-wizard',
+                ),
+            ) );
         }
 
         return $emt_fs;
@@ -77,7 +75,7 @@ if (!function_exists('emt_fs')) {
     // Init Freemius.
     emt_fs();
     // Signal that SDK was initiated.
-    do_action('emt_fs_loaded');
+    do_action( 'emt_fs_loaded' );
 }
 
 class Veloria
@@ -126,8 +124,6 @@ class Veloria
         $this->define_constants();
         emty_container(AdminController::class);
         emty_container(AssetPerformance::class);
-        emty_container(DebugModeManager::class);
-
         if (class_exists('\Elementor\Plugin')) {
             emty_container(WidgetManager::class);
             emty_container(WidgetController::class);
@@ -146,7 +142,7 @@ class Veloria
             }
         }
 
-        if (!class_exists('\Veloria\Pro\Admin\AccountController')) {
+        if (!defined('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED')) {
             emty_container(\Veloria\Admin\FreeAccountController::class);
         }
     }

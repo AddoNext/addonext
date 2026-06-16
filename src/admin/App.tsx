@@ -13,37 +13,11 @@ import { ToastProvider } from "./contexts/ToastContext/ToastContext";
 import { ConfirmProvider } from "./contexts/ConfirmContext/ConfirmContext";
 import { STORE_NAME } from "../store/admin";
 import styles from "./App.module.scss";
+import { readElementorActive, readHasProAccountApi } from "./utils/adminData";
 
 const STORAGE_KEY = "veloria-theme";
 const DEFAULT_TAB_SLUG = "widgets";
 const WPBODY_DARK_CLASS = "veloria-dark-mode";
-
-declare global {
-  interface Window {
-    veloriaAdminData?: {
-      isElementorActive?: boolean;
-    };
-  }
-}
-
-function readElementorActive(): boolean {
-  if (typeof window === "undefined" || typeof document === "undefined") {
-    return true;
-  }
-  const localized = window.veloriaAdminData?.isElementorActive;
-  if (typeof localized === "boolean") {
-    return localized;
-  }
-  const root = document.getElementById("veloria-admin");
-  const attr = root?.getAttribute("data-elementor-active");
-  if (attr === "1") {
-    return true;
-  }
-  if (attr === "0") {
-    return false;
-  }
-  return false;
-}
 
 export const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -52,6 +26,7 @@ export const App = () => {
     return (stored === "dark" || stored === "light") ? stored : "light";
   });
   const isElementorActive = readElementorActive();
+  const hasProAccountApi = readHasProAccountApi();
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, theme);
@@ -90,14 +65,29 @@ export const App = () => {
   const isLicenseActive = licenseData?.is_active === true;
 
   const tabs = useMemo(
-    () => [
-      { label: "Widgets", slug: "widgets", selected: true, screen: <WidgetsPage /> },
-      { label: "Extensions", slug: "extensions", screen: <ExtensionsPage /> },
-      { label: "Templates", slug: "templates", screen: <TemplatesPage /> },
-      { label: "Settings", slug: "settings", screen: <SettingsPage /> },
-      { label: isLicenseActive ? "License" : "Upgrade", slug: "license", screen: <LicensePage /> },
-    ],
-    [isLicenseActive]
+    () => {
+      const items = [
+        { label: "Widgets", slug: "widgets", selected: true, screen: <WidgetsPage /> },
+        { label: "Extensions", slug: "extensions", screen: <ExtensionsPage /> },
+        { label: "Settings", slug: "settings", screen: <SettingsPage /> },
+        {
+          label: isLicenseActive ? "License" : "Upgrade",
+          slug: "license",
+          screen: <LicensePage />,
+        },
+      ];
+
+      if (hasProAccountApi) {
+        items.splice(2, 0, {
+          label: "Templates",
+          slug: "templates",
+          screen: <TemplatesPage />,
+        });
+      }
+
+      return items;
+    },
+    [isLicenseActive, hasProAccountApi]
   );
 
   const values = useSelect((select) => (select(STORE_NAME) as { getSettingsValues: () => Record<string, unknown> }).getSettingsValues(), []);

@@ -2,6 +2,7 @@
 namespace Veloria\Widgets\ProductCarousel;
 
 use Veloria\Base\WidgetBase;
+use Veloria\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -64,7 +65,13 @@ class ProductCarousel extends WidgetBase
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart', 'veloria-product-carousel'];
+        return WooCommerceAssets::script_dependencies([
+            'swiper',
+            'elementor-frontend',
+            'jquery',
+            'wc-add-to-cart',
+            'veloria-product-carousel',
+        ]);
     }
 
     public function enqueue_assets(): void
@@ -82,7 +89,7 @@ class ProductCarousel extends WidgetBase
         wp_register_script(
             'veloria-product-carousel',
             VELORIA_URL . 'assets/js/product-carousel.js',
-            ['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart'],
+            WooCommerceAssets::script_dependencies(['swiper', 'elementor-frontend', 'jquery', 'wc-add-to-cart']),
             VELORIA_VERSION,
             true
         );

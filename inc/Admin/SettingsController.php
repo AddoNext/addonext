@@ -24,46 +24,6 @@ class SettingsController
             'icon'        => 'cog',
             'fields'      => [
                 [
-                    'id'          => 'debug_mode',
-                    'type'        => 'toggle',
-                    'optionKey'   => 'debug_mode',
-                    'label'       => 'Enable Debug Mode',
-                    'description' => 'Show detailed error messages and logs for troubleshooting',
-                    'default'     => false
-                ],
-                [
-                    'id'          => 'debug_display',
-                    'type'        => 'toggle',
-                    'optionKey'   => 'debug_display',
-                    'label'       => 'Display Debug Errors',
-                    'description' => 'Show PHP and WordPress debug errors on screen',
-                    'default'     => false,
-                    'dependsOn'   => [
-                        'optionKey' => 'debug_mode',
-                        'value'     => true
-                    ]
-                ],
-                [
-                    'id'          => 'debug_log',
-                    'type'        => 'toggle',
-                    'optionKey'   => 'debug_log',
-                    'label'       => 'Write Debug Log',
-                    'description' => 'Write debug messages to wp-content/debug.log',
-                    'default'     => true,
-                    'dependsOn'   => [
-                        'optionKey' => 'debug_mode',
-                        'value'     => true
-                    ]
-                ],
-                // [
-                //     'id'          => 'load_widgets_globally',
-                //     'type'        => 'toggle',
-                //     'optionKey'   => 'load_widgets_globally',
-                //     'label'       => 'Load Widgets Globally',
-                //     'description' => 'Load all widget assets on every page (not recommended)',
-                //     'default'     => false
-                // ],
-                [
                     'id'          => 'beta_features',
                     'type'        => 'toggle',
                     'optionKey'   => 'beta_features',
@@ -141,13 +101,6 @@ class SettingsController
             ]
         ],
         [
-            'id'          => 'integrations',
-            'title'       => 'Third-Party Integrations',
-            'description' => 'Connect with external services and APIs',
-            'icon'        => 'puzzle-piece',
-            'fields'      => []
-        ],
-        [
             'id'          => 'api',
             'title'       => 'API Keys & Credentials',
             'description' => 'Manage API keys for various services',
@@ -158,13 +111,6 @@ class SettingsController
                     'type'      => 'password',
                     'optionKey' => 'google_maps_api_key',
                     'label'     => 'Google Maps API Key',
-                    'default'   => ''
-                ],
-                [
-                    'id'        => 'mailchimp_api_key',
-                    'type'      => 'password',
-                    'optionKey' => 'mailchimp_api_key',
-                    'label'     => 'Mailchimp API Key',
                     'default'   => ''
                 ],
                 [
@@ -429,7 +375,7 @@ class SettingsController
 
         foreach ($values as $key => $value) {
             if (in_array($key, $keys, true)) {
-                OptionsHelper::set_option($key, $value);
+                OptionsHelper::set_option($key, self::sanitize_option_value($key, $value));
             }
         }
 
@@ -437,9 +383,16 @@ class SettingsController
             AssetPerformance::clear_asset_cache_dir();
         }
 
+        $sanitized = [];
+        foreach ($values as $key => $value) {
+            if (in_array($key, $keys, true)) {
+                $sanitized[$key] = self::sanitize_option_value($key, $value);
+            }
+        }
+
         return new WP_REST_Response([
             'success' => true,
-            'values'  => $values
+            'values'  => $sanitized,
         ]);
     }
 
@@ -497,6 +450,39 @@ class SettingsController
     public function check_permission(): bool
     {
         return current_user_can('manage_options');
+    }
+
+    /**
+     * Sanitize a settings option value before storage.
+     *
+     * @param string $key
+     * @param mixed  $value
+     * @return mixed
+     */
+    private static function sanitize_option_value(string $key, $value)
+    {
+        switch ($key) {
+            case 'beta_features':
+            case 'minify_assets':
+            case 'lazy_load_assets':
+            case 'asset_caching':
+                return (bool) $value;
+            case 'cache_lifetime':
+                $allowed = ['1h', '6h', '24h', '1w', '1m'];
+
+                return in_array((string) $value, $allowed, true) ? (string) $value : '24h';
+            case 'css_class_prefix':
+                $prefix = sanitize_key((string) $value);
+
+                return $prefix !== '' ? $prefix : 'veloria-';
+            case 'google_maps_api_key':
+            case 'instagram_access_token':
+            case 'recaptcha_site_key':
+            case 'recaptcha_secret_key':
+                return sanitize_text_field((string) $value);
+            default:
+                return sanitize_text_field(is_scalar($value) ? (string) $value : '');
+        }
     }
 
     /**
@@ -609,9 +595,11 @@ class SettingsController
         }
 
         foreach ($values as $key => $value) {
-            if (in_array($key, $keys, true)) {
-                OptionsHelper::set_option($key, $value);
+            if (!in_array($key, $keys, true)) {
+                continue;
             }
+
+            OptionsHelper::set_option($key, self::sanitize_option_value($key, $value));
         }
 
         $should_clear = false;
@@ -626,7 +614,7 @@ class SettingsController
         }
 
         return new WP_REST_Response([
-            'success' => true
+            'success' => true,
         ]);
     }
 }

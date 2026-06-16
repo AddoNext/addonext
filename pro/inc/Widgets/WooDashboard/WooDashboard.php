@@ -2,6 +2,7 @@
 namespace Veloria\Widgets\WooDashboard;
 
 use Veloria\Base\WidgetBase;
+use Veloria\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -75,7 +76,13 @@ class WooDashboard extends WidgetBase
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'jquery', 'veloria-woo-dashboard'];
+        return WooCommerceAssets::script_dependencies([
+            'elementor-frontend',
+            'jquery',
+            'wc-country-select',
+            'wc-address-i18n',
+            'veloria-woo-dashboard',
+        ]);
     }
 
     public function enqueue_assets(): void
@@ -93,7 +100,7 @@ class WooDashboard extends WidgetBase
         wp_register_script(
             'veloria-woo-dashboard',
             VELORIA_URL . 'assets/js/woo-dashboard.js',
-            ['elementor-frontend', 'jquery', 'wc-country-select', 'wc-address-i18n'],
+            WooCommerceAssets::script_dependencies(['elementor-frontend', 'jquery', 'wc-country-select', 'wc-address-i18n']),
             VELORIA_VERSION,
             true
         );
