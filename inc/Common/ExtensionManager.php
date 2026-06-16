@@ -276,7 +276,7 @@ class ExtensionManager
             return false;
         }
 
-        if (class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
+        if (veloria_pro_class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
             return \Veloria\Pro\Utils\PreviewAccess::is_preview_mode();
         }
 

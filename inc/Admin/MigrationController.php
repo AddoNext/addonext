@@ -37,7 +37,7 @@ class MigrationController
     public function run_migrations(): void
     {
         $migrations = $this->migrations;
-        if (class_exists('\Veloria\Pro\Migrations\ActivateProWidgets')) {
+        if (veloria_pro_class_exists('\Veloria\Pro\Migrations\ActivateProWidgets')) {
             $migrations[] = \Veloria\Pro\Migrations\ActivateProWidgets::class;
         }
 

@@ -225,7 +225,7 @@ class WidgetManager
             'moving-circles' => VELORIA_URL . 'assets/js/editor/veloria-moving-circles-preview.js',
         ];
 
-        if (class_exists('\Veloria\Extensions\ParticleEffects\ParticleEffects')) {
+        if (veloria_pro_class_exists('\Veloria\Extensions\ParticleEffects\ParticleEffects')) {
             $scripts['particle-effects'] = VELORIA_URL . 'assets/js/editor/veloria-particle-effects-preview.js';
         }
 
@@ -295,7 +295,7 @@ class WidgetManager
             return false;
         }
 
-        if (class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
+        if (veloria_pro_class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
             return \Veloria\Pro\Utils\PreviewAccess::is_preview_mode();
         }
 
