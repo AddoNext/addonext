@@ -15,10 +15,10 @@ defined('ABSPATH') || exit;
  */
 class HeroSlider extends WidgetBase
 {
-    private const DEMO_BG_IMAGES = [
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80',
-        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80',
-        'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80',
+    private const DEMO_BG_IMAGE_FILES = [
+        'hero-slide-1.jpg',
+        'hero-slide-2.jpg',
+        'hero-slide-3.jpg',
     ];
 
     /**
@@ -26,8 +26,9 @@ class HeroSlider extends WidgetBase
      */
     private static function demoBgImageField(int $index): array
     {
-        $list = self::DEMO_BG_IMAGES;
-        $url = $list[$index % count($list)];
+        $list = self::DEMO_BG_IMAGE_FILES;
+        $file = $list[$index % count($list)];
+        $url = VELORIA_URL . 'assets/images/demo/' . $file;
 
         return [
             'url'  => $url,

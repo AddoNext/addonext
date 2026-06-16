@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 $settings = $this->get_settings_for_display();
 $fields = isset($settings['fields']) && is_array($settings['fields']) ? $settings['fields'] : [];
-$recipient = isset($settings['recipient_email']) ? $settings['recipient_email'] : get_option('admin_email');
+$recipient = isset($settings['recipient_email']) ? sanitize_email((string) $settings['recipient_email']) : sanitize_email((string) get_option('admin_email'));
 $enable_recaptcha = !empty($settings['enable_recaptcha']) && $settings['enable_recaptcha'] === 'yes';
 $submit_text = isset($settings['submit_text']) ? $settings['submit_text'] : __('Send Message', 'veloria');
 $success_message = isset($settings['success_message']) ? $settings['success_message'] : __('Thank you for your message. We will get back to you soon.', 'veloria');
@@ -31,6 +31,8 @@ $recaptcha_site_key = $enable_recaptcha ? \Veloria\Utils\OptionsHelper::get_opti
       data-error-msg="<?php echo esc_attr($error_message); ?>"
       data-fields-config="<?php echo esc_attr(wp_json_encode($fields_config)); ?>"
       data-sitekey="<?php echo esc_attr($recaptcha_site_key); ?>">
+    <input type="hidden" name="post_id" value="<?php echo esc_attr((string) get_the_ID()); ?>">
+    <input type="hidden" name="element_id" value="<?php echo esc_attr($this->get_id()); ?>">
     <?php wp_nonce_field('veloria_contact_form', 'veloria_contact_nonce'); ?>
     <?php foreach ($fields as $i => $field) : ?>
         <?php

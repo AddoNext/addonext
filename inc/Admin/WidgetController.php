@@ -4,7 +4,6 @@ namespace Veloria\Admin;
 use WP_REST_Request;
 use WP_REST_Response;
 use Veloria\Utils\OptionsHelper;
-use Veloria\Utils\LicenseCapabilities;
 use Veloria\Common\WidgetManager;
 
 defined('ABSPATH') or exit;
@@ -12,34 +11,22 @@ defined('ABSPATH') or exit;
 class WidgetController
 {
     /**
-     * Drops pro-only widget ids when the site does not have an active pro license.
+     * Drops preview-only widget ids when pro access is not available.
      *
      * @param array<int, mixed> $widget_ids
      * @return array<int, string>
      */
     public static function sanitize_active_widget_ids(array $widget_ids): array
     {
-        $pro_access = LicenseCapabilities::site_has_active_pro_plan();
-        if ($pro_access) {
-            return array_values(
-                array_unique(
-                    array_map(
-                        static function ($id): string {
-                            return sanitize_text_field((string) $id);
-                        },
-                        $widget_ids
-                    )
-                )
-            );
-        }
+        $manager = emty_container(WidgetManager::class);
+        $allowed = [];
 
-        $manager  = emty_container(WidgetManager::class);
-        $allowed  = [];
         foreach ($manager->get_widgets() as $widget_class) {
             $instance = emty_container($widget_class);
-            if ($instance->get_required_plan() !== 'pro') {
-                $allowed[] = $instance->get_name();
+            if ($instance->is_preview_only() && self::widget_is_preview_gated($instance)) {
+                continue;
             }
+            $allowed[] = $instance->get_name();
         }
 
         $allowed_set = array_fill_keys($allowed, true);
@@ -53,6 +40,23 @@ class WidgetController
         }
 
         return array_values(array_unique($out));
+    }
+
+    /**
+     * @param object $instance
+     * @return bool
+     */
+    private static function widget_is_preview_gated(object $instance): bool
+    {
+        if (!method_exists($instance, 'is_preview_only') || !$instance->is_preview_only()) {
+            return false;
+        }
+
+        if (class_exists('\\Veloria\\Pro\\Utils\\PreviewAccess')) {
+            return \Veloria\Pro\Utils\PreviewAccess::is_preview_mode();
+        }
+
+        return true;
     }
 
     public function __construct()
@@ -73,24 +77,21 @@ class WidgetController
             $active_widgets = $sanitized;
         }
 
-        $pro_access = LicenseCapabilities::site_has_active_pro_plan();
-
         foreach ($widgets as $widget) {
             $widget_instance = emty_container($widget);
-            $required_plan   = $widget_instance->get_required_plan();
-            $is_locked       = ($required_plan === 'pro') && !$pro_access;
+            $preview_only    = $widget_instance->is_preview_only() && self::widget_is_preview_gated($widget_instance);
             $name            = $widget_instance->get_name();
             $stored_active   = in_array($name, $active_widgets, true);
             $data[]          = [
-                'id'             => $name,
-                'title'          => $widget_instance->get_title(),
-                'icon'           => $widget_instance->get_icon(),
-                'category'       => $widget_instance->get_admin_category(),
-                'active'         => $stored_active && !$is_locked,
-                'description'    => $widget_instance->get_description(),
-                'brand_color'    => $widget_instance->get_brand_color(),
-                'required_plan'  => $required_plan,
-                'is_locked'      => $is_locked,
+                'id'            => $name,
+                'title'         => $widget_instance->get_title(),
+                'icon'          => $widget_instance->get_icon(),
+                'category'      => $widget_instance->get_admin_category(),
+                'active'        => $stored_active && !$preview_only,
+                'description'   => $widget_instance->get_description(),
+                'brand_color'   => $widget_instance->get_brand_color(),
+                'preview_only'  => $preview_only,
+                'is_locked'     => $preview_only,
             ];
         }
 
@@ -106,22 +107,30 @@ class WidgetController
     public function register_endpoints(): void
     {
         register_rest_route('veloria/v1', '/widgets', [
-            'methods'  => 'GET',
-            'callback' => [$this, 'rest_get_widgets'],
-            'permission_callback' => '__return_true'
+            'methods'             => 'GET',
+            'callback'            => [$this, 'rest_get_widgets'],
+            'permission_callback' => [$this, 'check_permission'],
         ]);
 
         register_rest_route('veloria/v1', '/categories', [
-            'methods'  => 'GET',
-            'callback' => [$this, 'rest_get_categories'],
-            'permission_callback' => '__return_true'
+            'methods'             => 'GET',
+            'callback'            => [$this, 'rest_get_categories'],
+            'permission_callback' => [$this, 'check_permission'],
         ]);
 
         register_rest_route('veloria/v1', '/update-widgets', [
-            'methods'  => 'POST',
-            'callback' => [$this, 'rest_update_widgets'],
-            'permission_callback' => '__return_true'
+            'methods'             => 'POST',
+            'callback'            => [$this, 'rest_update_widgets'],
+            'permission_callback' => [$this, 'check_permission'],
         ]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function check_permission(): bool
+    {
+        return current_user_can('manage_options');
     }
 
     public function rest_get_categories(): WP_REST_Response

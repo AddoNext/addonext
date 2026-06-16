@@ -193,38 +193,6 @@ class SettingsController
             ]
         ],
         [
-            'id'          => 'advanced',
-            'title'       => 'Advanced Settings',
-            'description' => 'For advanced users and developers only',
-            'icon'        => 'code',
-            'fields'      => [
-                [
-                    'id'          => 'custom_css',
-                    'type'        => 'textarea',
-                    'optionKey'   => 'custom_css',
-                    'label'       => 'Custom CSS',
-                    'default'     => '',
-                    'placeholder' => '/* Add your custom CSS here */'
-                ],
-                [
-                    'id'          => 'custom_js',
-                    'type'        => 'textarea',
-                    'optionKey'   => 'custom_js',
-                    'label'       => 'Custom JavaScript',
-                    'default'     => '',
-                    'placeholder' => '// Add your custom JavaScript here'
-                ]
-                // [
-                //     'id'          => 'developer_mode',
-                //     'type'        => 'toggle',
-                //     'optionKey'   => 'developer_mode',
-                //     'label'       => 'Enable Developer Mode',
-                //     'description' => 'Unlock advanced features and debugging tools',
-                //     'default'     => false
-                // ]
-            ]
-        ],
-        [
             'id'          => 'backup',
             'title'       => 'Backup & Restore',
             'description' => 'Export and import your settings',
@@ -308,7 +276,7 @@ class SettingsController
      */
     private static function get_backup_dir(): string
     {
-        $dir = WP_CONTENT_DIR . '/veloria-backups';
+        $dir = trailingslashit(wp_upload_dir()['basedir']) . 'veloria/backups';
         if (!is_dir($dir)) {
             wp_mkdir_p($dir);
         }

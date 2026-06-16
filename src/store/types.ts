@@ -7,6 +7,7 @@ export interface Widget {
     description: string;
     brand_color: string;
     required_plan: string;
+    preview_only: boolean;
     is_locked: boolean;
 }
 

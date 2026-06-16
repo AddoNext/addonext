@@ -130,12 +130,12 @@ abstract class WidgetBase extends Widget_Base
     abstract public function get_brand_color(): string;
 
     /**
-     * Get the required plan for the widget
+     * Whether the widget is preview-only without pro access.
      *
-     * @return string
+     * @return bool
      */
-    public function get_required_plan(): string
+    public function is_preview_only(): bool
     {
-        return 'free';
+        return false;
     }
 }

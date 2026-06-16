@@ -1,5 +1,5 @@
-=== Veloria ===
-Contributors: addonext
+=== Veloria Widgets for Elementor ===
+Contributors: elementrify
 Tags: elementor, page builder, widgets, woocommerce, charts
 Requires at least: 6.0
 Tested up to: 7.0
@@ -16,7 +16,7 @@ Veloria extends the Elementor page builder with dozens of widgets grouped into c
 
 **Content widgets**
 
-Accordion, Advanced Google Map, Advanced Heading, Advanced Tabs, Animated Text, Badge, Blockquote, Button, Code Snippet, Content Toggle, Divider, Dropcap, Hero Banner, Hero Slider, Highlight, Icon Box, Icon List, Image Box, Modal Popup, Navigation Menu, News Ticker, Off Canvas Content, Smart Post List, Spacer, Table of Contents, Text Editor, Video Gallery, and Video Player.
+Accordion, Advanced Google Map, Advanced Heading, Advanced Tabs, Animated Text, Badge, Blockquote, Button, Code Snippet, Content Toggle, Divider, Dropcap, Hero Slider, Highlight, Icon Box, Icon List, Image Box, Modal Popup, Navigation Menu, Off Canvas Content, Smart Post List, Spacer, Text Editor, Video Gallery, and Video Player.
 
 **Creative widgets**
 
@@ -24,7 +24,7 @@ Animated Counter, Animated Gradient, Animated SVG, Before & After Slider, Bento 
 
 **Marketing widgets**
 
-Author Box, Banner, Call to Action, Comparison Table, Contact Form, Contact Form 7 Styler, Instagram Feed, Logo Showcase, Notice Board, Price List, Pricing Table, Promo Box, Social Share, Subscribe Form, Team Members, Testimonials, USP Items, and Twitter Feed.
+Author Box, Banner, Call to Action, Contact Form, Contact Form 7 Styler, Instagram Feed, Logo Showcase, Price List, Pricing Table, Promo Box, Social Share, Team Members, Testimonials, USP Items, and Twitter Feed.
 
 **Data and chart widgets**
 
@@ -36,7 +36,7 @@ Add to Cart, Mini Cart, Product Carousel, Product Categories, Product Filter, Pr
 
 **Extensions**
 
-Optional features such as smooth scrolling, layout duplication, custom CSS and JavaScript injection, a reading progress bar, scroll-to-top control, particle backgrounds, and moving circle effects—toggle them on or off from the plugin dashboard.
+Optional features such as smooth scrolling, layout duplication, a reading progress bar, scroll-to-top control, particle backgrounds, and moving circle effects—toggle them on or off from the plugin dashboard.
 
 **Requirements**
 
@@ -44,7 +44,7 @@ Optional features such as smooth scrolling, layout duplication, custom CSS and J
 * PHP 7.4 or newer
 * Elementor (free or Pro) must be installed and active
 
-WooCommerce-related widgets are available when WooCommerce is installed. Some Contact Form 7 styling options need Contact Form 7. A Pro license may be required for certain advanced widgets or capabilities; see the plugin’s license screen for details.
+WooCommerce-related widgets are available when WooCommerce is installed. Some Contact Form 7 styling options need Contact Form 7. Additional Pro widgets are available separately at https://elementrify.com/.
 
 == Installation ==
 
@@ -87,3 +87,15 @@ No. Veloria is built for the Elementor editor; Elementor Pro is optional unless 
 
 = 1.0.0 =
 Initial public release.
+
+== External services ==
+
+This plugin can connect to third-party services when the related widget or feature is configured.
+
+**Google reCAPTCHA** — Used by the Contact Form widget for spam protection when enabled in widget settings and API keys are saved under Veloria → Settings. Sends the reCAPTCHA response token and site verification request to Google when a form is submitted. Terms: https://policies.google.com/terms — Privacy: https://policies.google.com/privacy
+
+**Instagram Graph API** — Used by the Instagram Feed widget when an access token is configured. Sends the stored access token to Meta/Instagram servers to fetch media for display. Terms: https://www.facebook.com/terms.php — Privacy: https://www.facebook.com/privacy/policy
+
+**Twitter/X API** — Used by the Twitter Feed widget when a bearer token is configured. Sends API requests to api.twitter.com to fetch timeline data. Terms: https://x.com/en/tos — Privacy: https://x.com/en/privacy
+
+**Freemius** — Optional SDK used for plugin updates, licensing, and upgrade flows after the administrator accepts the Freemius connection prompt. Sends site URL, plugin version, and license-related data when connected. Terms: https://freemius.com/terms/ — Privacy: https://freemius.com/privacy/

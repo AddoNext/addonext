@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Veloria
+ * Plugin Name: Veloria Widgets for Elementor
  * Plugin URI: https://elementrify.com/
  * Description: A collection of Elementor page builder widgets and extensions for WordPress. Including a 360 image viewer, a 3D model viewer, a PDF viewer, a map widget and a more advanced version of the Elementor's Accordion widget.
  * Version: 1.0.0
@@ -21,11 +21,9 @@ use Veloria\Admin\AdminController;
 use Veloria\Admin\WidgetController;
 use Veloria\Utils\AssetPerformance;
 use Veloria\Utils\DebugModeManager;
-use Veloria\Admin\LicenseController;
 use Veloria\Common\ExtensionManager;
 use Veloria\Admin\SettingsController;
 use Veloria\Admin\MigrationController;
-use Veloria\Common\GlobalCustomAssets;
 use Veloria\Admin\ExtensionsController;
 use Veloria\Admin\WidgetsAssetController;
 
@@ -127,7 +125,6 @@ class Veloria
     {
         $this->define_constants();
         emty_container(AdminController::class);
-        emty_container(GlobalCustomAssets::class);
         emty_container(AssetPerformance::class);
         emty_container(DebugModeManager::class);
 
@@ -140,8 +137,18 @@ class Veloria
         }
 
         emty_container(SettingsController::class);
-        emty_container(LicenseController::class);
         emty_container(MigrationController::class);
+
+        if (file_exists(VELORIA_DIR . 'pro/register.php')) {
+            require_once VELORIA_DIR . 'pro/register.php';
+            if (function_exists('veloria_bootstrap_pro')) {
+                veloria_bootstrap_pro();
+            }
+        }
+
+        if (!class_exists('\Veloria\Pro\Admin\AccountController')) {
+            emty_container(\Veloria\Admin\FreeAccountController::class);
+        }
     }
 }
 

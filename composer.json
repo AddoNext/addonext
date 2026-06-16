@@ -23,7 +23,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Veloria\\": "./inc"
+            "Veloria\\": "./inc",
+            "Veloria\\Widgets\\": [
+                "inc/Widgets",
+                "pro/inc/Widgets"
+            ],
+            "Veloria\\Extensions\\": [
+                "inc/Extensions",
+                "pro/inc/Extensions"
+            ],
+            "Veloria\\Pro\\": "./pro/inc/Pro",
+            "Veloria\\Pro\\Migrations\\": "./pro/inc/Migrations"
         },
         "files": [
             "container.php",

@@ -3,13 +3,9 @@ namespace Veloria\Common;
 
 use Veloria\Base\ExtensionBase;
 use Veloria\Utils\OptionsHelper;
-use Veloria\Utils\LicenseCapabilities;
-use Veloria\Extensions\CustomScripts\CustomScripts;
-use Veloria\Extensions\CustomStyles\CustomStyles;
 use Veloria\Extensions\Duplicator\Duplicator;
 use Veloria\Extensions\ReadingProgressBar\ReadingProgressBar;
 use Veloria\Extensions\MovingCircles\MovingCircles;
-use Veloria\Extensions\ParticleEffects\ParticleEffects;
 use Veloria\Extensions\ScrollToTop\ScrollToTop;
 use Veloria\Extensions\SmoothScroll\SmoothScroll;
 
@@ -31,11 +27,8 @@ class ExtensionManager
     protected static $extensions = [
         'smooth-scroll'  => SmoothScroll::class,
         'duplicator'     => Duplicator::class,
-        'custom-scripts' => CustomScripts::class,
-        'custom-styles'  => CustomStyles::class,
         'reading-progress-bar' => ReadingProgressBar::class,
         'scroll-to-top'  => ScrollToTop::class,
-        'particle-effects' => ParticleEffects::class,
         'moving-circles'   => MovingCircles::class,
     ];
 
@@ -127,7 +120,7 @@ class ExtensionManager
      */
     public function get_extension_class_for_id(string $id): ?string
     {
-        return self::$extensions[$id] ?? null;
+        return $this->get_extension_registry()[$id] ?? null;
     }
 
     /**
@@ -187,7 +180,27 @@ class ExtensionManager
      */
     public function get_extensions(): array
     {
-        return array_values(self::$extensions);
+        $extensions = self::$extensions;
+
+        if (function_exists('veloria_get_pro_extension_map')) {
+            $extensions = array_merge($extensions, veloria_get_pro_extension_map());
+        }
+
+        return array_values($extensions);
+    }
+
+    /**
+     * @return array<string, class-string<ExtensionBase>>
+     */
+    public function get_extension_registry(): array
+    {
+        $extensions = self::$extensions;
+
+        if (function_exists('veloria_get_pro_extension_map')) {
+            $extensions = array_merge($extensions, veloria_get_pro_extension_map());
+        }
+
+        return $extensions;
     }
 
     /**
@@ -201,7 +214,7 @@ class ExtensionManager
         $active = is_array($active) ? $active : [];
         $items  = [];
 
-        foreach (self::$extensions as $slug => $class) {
+        foreach ($this->get_extension_registry() as $slug => $class) {
             $instance = emty_container($class);
             $items[]  = $this->serialize_extension($instance, $active);
         }
@@ -230,7 +243,7 @@ class ExtensionManager
 
         $allowed = [];
 
-        foreach (self::$extensions as $slug => $class) {
+        foreach ($this->get_extension_registry() as $slug => $class) {
             $instance = emty_container($class);
             if ($this->user_may_enable_extension($instance)) {
                 $allowed[] = $slug;
@@ -248,18 +261,35 @@ class ExtensionManager
      */
     private function user_may_enable_extension(ExtensionBase $extension): bool
     {
-        return $extension->required_plan() === 'free' || LicenseCapabilities::site_has_active_pro_plan();
+        return !$extension->is_preview_only() || !$this->extension_is_preview_gated($extension);
     }
 
     /**
-     * Whether premium-only UI should treat the extension as locked
+     * Whether preview-only extensions stay disabled in admin.
      *
+     * @param ExtensionBase $extension
+     * @return bool
+     */
+    private function extension_is_preview_gated(ExtensionBase $extension): bool
+    {
+        if (!$extension->is_preview_only()) {
+            return false;
+        }
+
+        if (class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
+            return \Veloria\Pro\Utils\PreviewAccess::is_preview_mode();
+        }
+
+        return true;
+    }
+
+    /**
      * @param ExtensionBase $extension
      * @return bool
      */
     private function extension_is_locked(ExtensionBase $extension): bool
     {
-        return $extension->required_plan() !== 'free' && !LicenseCapabilities::site_has_active_pro_plan();
+        return $extension->is_preview_only() && $this->extension_is_preview_gated($extension);
     }
 
     /**
@@ -341,7 +371,7 @@ class ExtensionManager
 
         $classes = [];
 
-        foreach (self::$extensions as $slug => $class) {
+        foreach ($this->get_extension_registry() as $slug => $class) {
             if (in_array($slug, $active_ids, true)) {
                 $classes[] = $class;
             }

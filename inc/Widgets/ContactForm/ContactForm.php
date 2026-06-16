@@ -363,6 +363,88 @@ class ContactForm extends WidgetBase
         $this->end_controls_section();
     }
 
+
+    /**
+     * Resolve saved Elementor widget settings for a contact form instance.
+     *
+     * @param int    $post_id
+     * @param string $element_id
+     * @return array<string, mixed>|null
+     */
+    public static function resolve_widget_settings(int $post_id, string $element_id): ?array
+    {
+        if ($post_id <= 0 || $element_id === '' || !class_exists('\Elementor\Plugin')) {
+            return null;
+        }
+
+        $document = \Elementor\Plugin::$instance->documents->get($post_id, false);
+        if (!$document) {
+            return null;
+        }
+
+        $elements = $document->get_elements_data();
+        if (!is_array($elements)) {
+            return null;
+        }
+
+        $found = self::find_element_settings($elements, $element_id);
+
+        return is_array($found) ? $found : null;
+    }
+
+    /**
+     * @param array<int, mixed> $elements
+     * @param string            $element_id
+     * @return array<string, mixed>|null
+     */
+    private static function find_element_settings(array $elements, string $element_id): ?array
+    {
+        foreach ($elements as $element) {
+            if (!is_array($element)) {
+                continue;
+            }
+
+            if (($element['id'] ?? '') === $element_id && ($element['widgetType'] ?? '') === 'veloria-contact-form') {
+                return isset($element['settings']) && is_array($element['settings']) ? $element['settings'] : [];
+            }
+
+            if (!empty($element['elements']) && is_array($element['elements'])) {
+                $nested = self::find_element_settings($element['elements'], $element_id);
+                if ($nested !== null) {
+                    return $nested;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array<string, mixed> $settings
+     * @return array<int, array<string, string>>
+     */
+    public static function build_fields_config_from_settings(array $settings): array
+    {
+        $fields = isset($settings['fields']) && is_array($settings['fields']) ? $settings['fields'] : [];
+        $config = [];
+
+        foreach ($fields as $i => $field) {
+            if (!is_array($field)) {
+                continue;
+            }
+            $label = isset($field['label']) ? sanitize_text_field((string) $field['label']) : '';
+            $placeholder = isset($field['placeholder']) ? sanitize_text_field((string) $field['placeholder']) : '';
+            $config[] = [
+                'name'  => 'field_' . (int) $i,
+                'type'  => isset($field['field_type']) ? sanitize_key((string) $field['field_type']) : 'text',
+                'label' => $label !== '' ? $label : ($placeholder !== '' ? $placeholder : 'field_' . (int) $i),
+            ];
+        }
+
+        return $config;
+    }
+
+
     public static function ajax_submit(): void
     {
         $nonce = isset($_REQUEST['veloria_contact_nonce']) ? sanitize_text_field(wp_unslash($_REQUEST['veloria_contact_nonce'])) : '';
@@ -370,15 +452,21 @@ class ContactForm extends WidgetBase
             wp_send_json_error(['message' => __('Security check failed. Please refresh the page and try again.', 'veloria')]);
         }
 
-        $form_id = isset($_POST['form_id']) ? sanitize_text_field(wp_unslash($_POST['form_id'])) : '';
-        $widget_id = isset($_POST['widget_id']) ? sanitize_text_field(wp_unslash($_POST['widget_id'])) : '';
-        $recipient = isset($_POST['recipient']) ? sanitize_email(wp_unslash($_POST['recipient'])) : '';
-        $recaptcha_token = isset($_POST['recaptcha_token']) ? sanitize_text_field(wp_unslash($_POST['recaptcha_token'])) : '';
-        $use_recaptcha = isset($_POST['use_recaptcha']) && $_POST['use_recaptcha'] === '1';
+        $post_id = isset($_POST['post_id']) ? absint(wp_unslash($_POST['post_id'])) : 0;
+        $element_id = isset($_POST['element_id']) ? sanitize_text_field(wp_unslash($_POST['element_id'])) : '';
+        $settings = self::resolve_widget_settings($post_id, $element_id);
 
-        if (!$recipient || !is_email($recipient)) {
-            wp_send_json_error(['message' => __('Invalid recipient.', 'veloria')]);
+        if ($settings === null) {
+            wp_send_json_error(['message' => __('Invalid form configuration.', 'veloria')]);
         }
+
+        $recipient = isset($settings['recipient_email']) ? sanitize_email((string) $settings['recipient_email']) : '';
+        if ($recipient === '' || !is_email($recipient)) {
+            $recipient = sanitize_email((string) get_option('admin_email'));
+        }
+
+        $recaptcha_token = isset($_POST['recaptcha_token']) ? sanitize_text_field(wp_unslash($_POST['recaptcha_token'])) : '';
+        $use_recaptcha = !empty($settings['enable_recaptcha']) && $settings['enable_recaptcha'] === 'yes';
 
         if ($use_recaptcha) {
             $site_key = OptionsHelper::get_option('recaptcha_site_key', '');
@@ -401,25 +489,34 @@ class ContactForm extends WidgetBase
             }
         }
 
-        $fields_config_raw = isset($_POST['fields_config']) ? wp_unslash($_POST['fields_config']) : '';
-        $fields_config = is_string($fields_config_raw) ? json_decode($fields_config_raw, true) : [];
-        $fields_config = is_array($fields_config) ? $fields_config : [];
+        $fields_config = self::build_fields_config_from_settings($settings);
+        $allowed_names = array_fill_keys(array_column($fields_config, 'name'), true);
         $data = [];
+
         foreach ($fields_config as $field) {
-            $name = isset($field['name']) ? $field['name'] : '';
-            $type = isset($field['type']) ? $field['type'] : 'text';
-            if ($name === '') continue;
+            $name = $field['name'];
+            $type = $field['type'];
             $value = '';
-            if ($type === 'file' && isset($_FILES[$name]) && !empty($_FILES[$name]['tmp_name'])) {
+
+            if ($type === 'file' && isset($_FILES[$name]) && is_array($_FILES[$name]) && !empty($_FILES[$name]['tmp_name'])) {
                 $file = $_FILES[$name];
                 if (is_uploaded_file($file['tmp_name'])) {
-                    $value = $file['name'] . ' (uploaded)';
+                    $value = sanitize_file_name((string) $file['name']) . ' (uploaded)';
                 }
             } else {
-                $raw = isset($_POST[$name]) ? $_POST[$name] : '';
-                $value = is_array($raw) ? implode(', ', array_map('sanitize_text_field', $raw)) : sanitize_textarea_field($raw);
+                $raw = isset($_POST[$name]) ? wp_unslash($_POST[$name]) : '';
+                $value = is_array($raw)
+                    ? implode(', ', array_map('sanitize_text_field', $raw))
+                    : sanitize_textarea_field((string) $raw);
             }
+
             $data[$name] = $value;
+        }
+
+        foreach (array_keys($_POST) as $posted_key) {
+            if (strpos((string) $posted_key, 'field_') === 0 && !isset($allowed_names[$posted_key])) {
+                wp_send_json_error(['message' => __('Invalid form field.', 'veloria')]);
+            }
         }
 
         $subject = sprintf(

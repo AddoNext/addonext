@@ -37,13 +37,5 @@ class DebugModeManager
         if (!$is_debug_mode_enabled) {
             return;
         }
-
-        error_reporting(E_ALL);
-        @ini_set('display_errors', $is_debug_display_enabled ? '1' : '0');
-        @ini_set('log_errors', $is_debug_log_enabled ? '1' : '0');
-
-        if ($is_debug_log_enabled) {
-            @ini_set('error_log', WP_CONTENT_DIR . '/debug.log');
-        }
     }
 }

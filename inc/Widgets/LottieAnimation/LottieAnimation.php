@@ -12,7 +12,7 @@ defined('ABSPATH') or exit;
  */
 class LottieAnimation extends WidgetBase
 {
-    public const DEFAULT_JSON_URL = 'https://assets3.lottiefiles.com/packages/lf20_ghs9bkkc.json';
+    public const DEFAULT_JSON_URL = VELORIA_URL . 'assets/lottie/default.json';
 
     public function __construct($data = [], $args = null)
     {

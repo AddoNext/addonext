@@ -82,8 +82,8 @@ const store = createReduxStore(STORE_NAME, {
                 const raw = (action.payload as Widget[]) ?? [];
                 const widgets = raw.map((w) => ({
                     ...w,
-                    required_plan: typeof w.required_plan === 'string' ? w.required_plan : 'free',
-                    is_locked: Boolean(w.is_locked),
+                    preview_only: Boolean(w.preview_only ?? w.is_locked),
+                    is_locked: Boolean(w.preview_only ?? w.is_locked),
                 }));
                 return {
                     ...state,

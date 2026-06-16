@@ -96,9 +96,8 @@
 
             var formData = new FormData(form);
             formData.set('action', 'veloria_contact_form');
-            formData.set('recipient', recipient || '');
-            formData.set('use_recaptcha', useRecaptcha ? '1' : '0');
-            formData.set('fields_config', JSON.stringify(fieldsConfig));
+            formData.set('post_id', form.querySelector('[name="post_id"]') ? form.querySelector('[name="post_id"]').value : '');
+            formData.set('element_id', form.querySelector('[name="element_id"]') ? form.querySelector('[name="element_id"]').value : '');
 
             var recaptchaDiv = form.querySelector('.veloria-contact-form__recaptcha');
             var widgetId = recaptchaDiv ? recaptchaDiv.getAttribute('data-widget-id') : null;

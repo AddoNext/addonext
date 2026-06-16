@@ -1,7 +1,6 @@
 <?php
 namespace Veloria\Admin;
 
-use Veloria\Migrations\ActivateProWidgets;
 use Veloria\Migrations\ActivateFreeWidgets;
 
 defined('ABSPATH') or exit;
@@ -20,7 +19,6 @@ class MigrationController
      */
     private $migrations = [
         ActivateFreeWidgets::class,
-        ActivateProWidgets::class
     ];
 
     /**
@@ -38,7 +36,12 @@ class MigrationController
      */
     public function run_migrations(): void
     {
-        foreach ($this->migrations as $migration) {
+        $migrations = $this->migrations;
+        if (class_exists('\Veloria\Pro\Migrations\ActivateProWidgets')) {
+            $migrations[] = \Veloria\Pro\Migrations\ActivateProWidgets::class;
+        }
+
+        foreach ($migrations as $migration) {
             $migration = emty_container($migration);
 
             if (!$migration->is_completed() && $migration->validate()) {

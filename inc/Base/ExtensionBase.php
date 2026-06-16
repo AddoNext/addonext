@@ -211,12 +211,12 @@ abstract class ExtensionBase
     abstract public function get_date_updated(): string;
 
     /**
-     * Get the required plan for the extension
+     * Whether the extension is preview-only without pro access.
      *
-     * @return string
+     * @return bool
      */
-    public function required_plan(): string
+    public function is_preview_only(): bool
     {
-        return 'free';
+        return false;
     }
 }
