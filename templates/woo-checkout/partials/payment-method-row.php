@@ -20,7 +20,7 @@ $id = $gateway->id;
 		data-order_button_text="<?php echo esc_attr($gateway->order_button_text); ?>"
 	/>
 	<label for="payment_method_<?php echo esc_attr($id); ?>" class="veloria-co-tpl-payment-label">
-		<?php echo wp_kses_post($gateway->get_title());
+		<?php echo wp_kses_post($gateway->get_title()); ?>
 		<?php echo $gateway->get_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</label>
 	<?php if ($gateway->has_fields() || $gateway->get_description()) : ?>
