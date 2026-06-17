@@ -49,7 +49,7 @@ class MigrationController
                     $migration->up();
                     $migration->mark_as_completed();
                 } catch (\Exception $e) {
-                    error_log($e->getMessage());
+                    continue;
                 }
             }
         }

@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A library of Elementor widgets plus site-wide extensions: content and layout blocks, creative effects, marketing tools, data visualizations, and WooCommerce components—all manageable from the Veloria admin.
+Elementor widgets and extensions: content, marketing, charts, and WooCommerce—managed from the Veloria admin.
 
 == Description ==
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Veloria Widgets for Elementor
  * Plugin URI: https://elementrify.com/
- * Description: A collection of Elementor page builder widgets and extensions for WordPress. Including a 360 image viewer, a 3D model viewer, a PDF viewer, a map widget and a more advanced version of the Elementor's Accordion widget.
+ * Description: Elementor widgets and extensions for WordPress: content blocks, maps, charts, marketing tools, and WooCommerce checkout components.
  * Version: 1.0.0
  * Author: Elementrify
  * Text Domain: veloria
@@ -58,13 +58,9 @@ if ( ! function_exists( 'emt_fs' ) ) {
                 // Automatically removed in the free version. If you're not using the
                 // auto-generated free version, delete this line before uploading to wp.org.
                 'wp_org_gatekeeper'   => 'OA7#BoRiBNqdf52FvzEf!!074aRLPs8fspif$7K1#4u4Csys1fQlCecVcUTOs2mcpeVHi#C2j9d09fOTvbC0HloPT7fFee5WdS3G',
-                'trial'               => array(
-                    'days'               => 3,
-                    'is_require_payment' => true,
-                ),
                 'menu'                => array(
                     'slug'           => 'veloria',
-                    'first-path'     => 'admin.php?page=veloria&tab=setup-wizard',
+                    'first-path'     => 'admin.php?page=veloria',
                 ),
             ) );
         }

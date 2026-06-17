@@ -190,10 +190,21 @@ class WooCheckout extends WidgetBase
         );
     }
 
+    private static function get_checkout_post_data(): string
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies checkout AJAX nonce.
+        if (!isset($_POST['post_data']) || !is_string($_POST['post_data'])) {
+            return '';
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- URL-encoded checkout form snapshot from WC.
+        return wp_unslash($_POST['post_data']);
+    }
+
     private static function is_veloria_checkout_post_data(): bool
     {
-        $raw = isset($_POST['post_data']) ? wp_unslash($_POST['post_data']) : '';
-        if (!is_string($raw) || $raw === '') {
+        $raw = self::get_checkout_post_data();
+        if ($raw === '') {
             return false;
         }
         parse_str($raw, $parsed);
@@ -244,8 +255,8 @@ class WooCheckout extends WidgetBase
                 && self::$renderSettings['show_payment_descriptions'] === 'yes';
         }
 
-        $raw = isset($_POST['post_data']) ? wp_unslash($_POST['post_data']) : '';
-        if (!is_string($raw) || $raw === '') {
+        $raw = self::get_checkout_post_data();
+        if ($raw === '') {
             return false;
         }
 
@@ -766,6 +777,7 @@ class WooCheckout extends WidgetBase
                 return;
             }
 
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Standard WooCommerce checkout POST handling.
             if (empty($_POST) && wc_notice_count('error') > 0) {
                 echo '<div class="veloria-wc-checkout">';
                 wc_get_template('checkout/cart-errors.php', ['checkout' => $checkout]);
@@ -775,6 +787,7 @@ class WooCheckout extends WidgetBase
                 return;
             }
 
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Standard WooCommerce checkout POST handling.
             if (wc_notice_count('error') === 0 && !empty($_POST['woocommerce_checkout_update_totals'])) {
                 wc_add_notice(__('The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'veloria'));
             }

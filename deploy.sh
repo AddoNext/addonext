@@ -18,14 +18,21 @@ echo "Preparing deployment for ${PLUGIN_SLUG}..."
 mkdir -p "${BUILD_ROOT}"
 rm -rf "${STAGING_DIR}"
 
+RSYNC_EXCLUDES=(
+    --exclude ".git"
+    --exclude "build"
+    --exclude "/wordpress/"
+    --exclude "/vendor/"
+    --exclude "/deploy.sh"
+    --exclude ".DS_Store"
+    --exclude "/bin/"
+    --exclude "/src/"
+    --exclude "phpcs.xml.dist"
+)
+
 echo "Creating staged copy in build directory..."
 rsync -a --delete \
-    --exclude ".git" \
-    --exclude "build" \
-    --exclude "/wordpress/" \
-    --exclude "/vendor/" \
-    --exclude "/deploy.sh" \
-    --exclude ".DS_Store" \
+    "${RSYNC_EXCLUDES[@]}" \
     "${PROJECT_ROOT}/" "${STAGING_DIR}/"
 
 VERSION="$(
@@ -46,12 +53,7 @@ echo "Building assets with npm..."
 
 echo "Refreshing staged copy with latest build output..."
 rsync -a --delete \
-    --exclude ".git" \
-    --exclude "build" \
-    --exclude "/wordpress/" \
-    --exclude "/vendor/" \
-    --exclude "/deploy.sh" \
-    --exclude ".DS_Store" \
+    "${RSYNC_EXCLUDES[@]}" \
     "${PROJECT_ROOT}/" "${STAGING_DIR}/"
 
 echo "Installing production-only Composer dependencies in staging..."
@@ -86,11 +88,14 @@ FILES_TO_REMOVE=(
     "package-lock.json"
     "node_modules"
     "configs"
+    "phpcs.xml.dist"
 )
 
 for file_to_remove in "${FILES_TO_REMOVE[@]}"; do
     rm -rf "${STAGING_DIR}/${file_to_remove}"
 done
+
+find "${STAGING_DIR}" -name ".DS_Store" -delete 2>/dev/null || true
 
 ZIP_NAME="${PLUGIN_SLUG}-${VERSION}.zip"
 ZIP_PATH="${BUILD_ROOT}/${ZIP_NAME}"

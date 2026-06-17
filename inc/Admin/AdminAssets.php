@@ -58,7 +58,7 @@ class AdminAssets
             return;
         }
 
-        wp_enqueue_style('veloria-admin', VELORIA_URL . 'dist/css/admin.min.css');
+        wp_enqueue_style('veloria-admin', VELORIA_URL . 'dist/css/admin.min.css', [], VELORIA_VERSION);
         wp_enqueue_script('veloria-admin', VELORIA_URL . 'dist/js/admin.min.js', [
             'wp-element',
             'wp-i18n',

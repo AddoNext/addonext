@@ -1,13 +1,16 @@
+#!/usr/bin/env php
 <?php
 
 /**
  * Regenerate Composer autoload for the wp.org free zip after pro/ is removed.
  *
- * Usage (from plugin root):
- *   php bin/dump-free-autoload.php
+ * Usage:
+ *   php bin/dump-free-autoload.php [plugin-root]
+ *
+ * When plugin-root is omitted, uses the parent directory of this script's folder.
  */
 
-$root = dirname(__DIR__);
+$root = isset($argv[1]) && is_dir($argv[1]) ? realpath($argv[1]) : dirname(__DIR__);
 $composerFile = $root . '/composer.json';
 $tempFile = $root . '/composer.free.json';
 

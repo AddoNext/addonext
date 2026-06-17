@@ -499,11 +499,13 @@ class ContactForm extends WidgetBase
             $value = '';
 
             if ($type === 'file' && isset($_FILES[$name]) && is_array($_FILES[$name]) && !empty($_FILES[$name]['tmp_name'])) {
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Validated with is_uploaded_file().
                 $file = $_FILES[$name];
                 if (is_uploaded_file($file['tmp_name'])) {
                     $value = sanitize_file_name((string) $file['name']) . ' (uploaded)';
                 }
             } else {
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized below.
                 $raw = isset($_POST[$name]) ? wp_unslash($_POST[$name]) : '';
                 $value = is_array($raw)
                     ? implode(', ', array_map('sanitize_text_field', $raw))

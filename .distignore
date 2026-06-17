@@ -10,6 +10,12 @@ composer.lock
 package-lock.json
 wordpress
 build
+bin
+src
+pro
+configs
+phpcs.xml.dist
+compose.yml
 *.map
 .env
 .env.*
