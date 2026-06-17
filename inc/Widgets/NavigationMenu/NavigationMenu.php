@@ -517,9 +517,9 @@ class NavigationMenu extends WidgetBase
         $settings = $this->get_settings_for_display();
         $raw_menu = isset($settings['nav_menu']) ? (string) $settings['nav_menu'] : '__none__';
         if ($raw_menu === '' || $raw_menu === '__none__') {
-            $menu_id = 0;
+            $veloria_menu_id = 0;
         } else {
-            $menu_id = (int) $raw_menu;
+            $veloria_menu_id = (int) $raw_menu;
         }
 
         $hover = isset($settings['hover_effect']) ? (string) $settings['hover_effect'] : 'gradient_border';

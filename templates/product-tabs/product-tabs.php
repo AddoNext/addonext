@@ -6,205 +6,205 @@ if (!class_exists('WooCommerce')) {
     return;
 }
 
-$settings = $this->get_settings_for_display();
-$tabs = isset($settings['tabs']) && is_array($settings['tabs']) ? $settings['tabs'] : [];
+$veloria_settings = $this->get_settings_for_display();
+$veloria_tabs = isset($veloria_settings['tabs']) && is_array($veloria_settings['tabs']) ? $veloria_settings['tabs'] : [];
 
-if ($tabs === []) {
+if ($veloria_tabs === []) {
     echo '<div class="veloria-product-tabs__placeholder">' . esc_html__('Add tabs in the widget settings.', 'veloria') . '</div>';
     return;
 }
 
-$columns = isset($settings['columns']) ? max(1, min(6, (int) $settings['columns'])) : 4;
-$columns_tablet = isset($settings['columns_tablet']) ? max(1, min(4, (int) $settings['columns_tablet'])) : 2;
-$columns_mobile = isset($settings['columns_mobile']) ? max(1, min(2, (int) $settings['columns_mobile'])) : 1;
-$column_gap = isset($settings['column_gap']) ? max(0, min(60, (int) $settings['column_gap'])) : 16;
-$row_gap = isset($settings['row_gap']) ? max(0, min(60, (int) $settings['row_gap'])) : 16;
+$veloria_columns = isset($veloria_settings['columns']) ? max(1, min(6, (int) $veloria_settings['columns'])) : 4;
+$veloria_columns_tablet = isset($veloria_settings['columns_tablet']) ? max(1, min(4, (int) $veloria_settings['columns_tablet'])) : 2;
+$veloria_columns_mobile = isset($veloria_settings['columns_mobile']) ? max(1, min(2, (int) $veloria_settings['columns_mobile'])) : 1;
+$veloria_column_gap = isset($veloria_settings['column_gap']) ? max(0, min(60, (int) $veloria_settings['column_gap'])) : 16;
+$veloria_row_gap = isset($veloria_settings['row_gap']) ? max(0, min(60, (int) $veloria_settings['row_gap'])) : 16;
 
-$show_rating = isset($settings['show_rating']) && $settings['show_rating'] === 'yes';
-$show_short_desc = isset($settings['show_short_desc']) && $settings['show_short_desc'] === 'yes';
-$show_old_price = isset($settings['show_old_price']) && $settings['show_old_price'] === 'yes';
-$show_badges = isset($settings['show_badges']) && $settings['show_badges'] === 'yes';
-$show_wishlist = isset($settings['show_wishlist']) && $settings['show_wishlist'] === 'yes';
-$show_add_to_cart = isset($settings['show_add_to_cart']) && $settings['show_add_to_cart'] === 'yes';
-$image_hover_effect = isset($settings['image_hover_effect']) ? (string) $settings['image_hover_effect'] : 'zoom-out';
+$veloria_show_rating = isset($veloria_settings['show_rating']) && $veloria_settings['show_rating'] === 'yes';
+$veloria_show_short_desc = isset($veloria_settings['show_short_desc']) && $veloria_settings['show_short_desc'] === 'yes';
+$veloria_show_old_price = isset($veloria_settings['show_old_price']) && $veloria_settings['show_old_price'] === 'yes';
+$veloria_show_badges = isset($veloria_settings['show_badges']) && $veloria_settings['show_badges'] === 'yes';
+$veloria_show_wishlist = isset($veloria_settings['show_wishlist']) && $veloria_settings['show_wishlist'] === 'yes';
+$veloria_show_add_to_cart = isset($veloria_settings['show_add_to_cart']) && $veloria_settings['show_add_to_cart'] === 'yes';
+$veloria_image_hover_effect = isset($veloria_settings['image_hover_effect']) ? (string) $veloria_settings['image_hover_effect'] : 'zoom-out';
 
-$cart_url = '';
+$veloria_cart_url = '';
 if (function_exists('wc_get_page_id')) {
-    $cart_page_id = (int) wc_get_page_id('cart');
-    if ($cart_page_id > 0) {
-        $cart_url = (string) get_permalink($cart_page_id);
+    $veloria_cart_page_id = (int) wc_get_page_id('cart');
+    if ($veloria_cart_page_id > 0) {
+        $veloria_cart_url = (string) get_permalink($veloria_cart_page_id);
     }
 }
-if ($cart_url === '' && function_exists('wc_get_cart_url')) {
-    $cart_url = (string) wc_get_cart_url();
+if ($veloria_cart_url === '' && function_exists('wc_get_cart_url')) {
+    $veloria_cart_url = (string) wc_get_cart_url();
 }
-$home_base = untrailingslashit(home_url());
-$cart_base = $cart_url !== '' ? untrailingslashit($cart_url) : '';
-if ($cart_base === '' || $cart_base === $home_base) {
-    $cart_url = '';
+$veloria_home_base = untrailingslashit(home_url());
+$veloria_cart_base = $veloria_cart_url !== '' ? untrailingslashit($veloria_cart_url) : '';
+if ($veloria_cart_base === '' || $veloria_cart_base === $veloria_home_base) {
+    $veloria_cart_url = '';
 }
 
-$widget_uid = 'ept-' . preg_replace('/[^a-z0-9\-]/i', '', (string) $this->get_id());
-$prefix = 'veloria-product-grid';
-$card_effect = preg_replace('/[^a-z\-]/', '', (string) $image_hover_effect);
-if ($card_effect === '') {
-    $card_effect = 'none';
+$veloria_widget_uid = 'ept-' . preg_replace('/[^a-z0-9\-]/i', '', (string) $this->get_id());
+$veloria_prefix = 'veloria-product-grid';
+$veloria_card_effect = preg_replace('/[^a-z\-]/', '', (string) $veloria_image_hover_effect);
+if ($veloria_card_effect === '') {
+    $veloria_card_effect = 'none';
 }
-$card_hover_class = $prefix . '__image-wrap--' . $card_effect;
-$tabs_grid_vars = sprintf(
+$veloria_card_hover_class = $veloria_prefix . '__image-wrap--' . $veloria_card_effect;
+$veloria_tabs_grid_vars = sprintf(
     '--ept-cols-desktop:%d;--ept-cols-tablet:%d;--ept-cols-mobile:%d;--ept-col-gap:%dpx;--ept-row-gap:%dpx',
-    $columns,
-    $columns_tablet,
-    $columns_mobile,
-    $column_gap,
-    $row_gap
+    $veloria_columns,
+    $veloria_columns_tablet,
+    $veloria_columns_mobile,
+    $veloria_column_gap,
+    $veloria_row_gap
 );
 ?>
-<div class="veloria-product-tabs" data-veloria-product-tabs="1" style="<?php echo esc_attr($tabs_grid_vars); ?>">
+<div class="veloria-product-tabs" data-veloria-product-tabs="1" style="<?php echo esc_attr($veloria_tabs_grid_vars); ?>">
     <div class="veloria-product-tabs__nav" role="tablist" aria-label="<?php esc_attr_e('Product collections', 'veloria'); ?>">
-        <?php foreach ($tabs as $ti => $tab_row) : ?>
+        <?php foreach ($veloria_tabs as $veloria_ti => $veloria_tab_row) : ?>
             <?php
-            if (!is_array($tab_row)) {
+            if (!is_array($veloria_tab_row)) {
                 continue;
             }
-            $tab_title = isset($tab_row['tab_title']) ? (string) $tab_row['tab_title'] : '';
-            if (trim($tab_title) === '') {
-                $tab_title = sprintf(/* translators: %d: tab index */ __('Tab %d', 'veloria'), (int) $ti + 1);
+            $veloria_tab_title = isset($veloria_tab_row['tab_title']) ? (string) $veloria_tab_row['tab_title'] : '';
+            if (trim($veloria_tab_title) === '') {
+                $veloria_tab_title = sprintf(/* translators: %d: tab index */ __('Tab %d', 'veloria'), (int) $veloria_ti + 1);
             }
-            $tab_btn_id = $widget_uid . '-tab-' . (int) $ti;
-            $tab_panel_id = $widget_uid . '-panel-' . (int) $ti;
-            $is_first = ((int) $ti === 0);
+            $veloria_tab_btn_id = $veloria_widget_uid . '-tab-' . (int) $veloria_ti;
+            $veloria_tab_panel_id = $veloria_widget_uid . '-panel-' . (int) $veloria_ti;
+            $veloria_is_first = ((int) $veloria_ti === 0);
             ?>
             <button
                 type="button"
-                class="veloria-product-tabs__tab elementor-clickable<?php echo $is_first ? ' is-active' : ''; ?>"
+                class="veloria-product-tabs__tab elementor-clickable<?php echo $veloria_is_first ? ' is-active' : ''; ?>"
                 role="tab"
-                id="<?php echo esc_attr($tab_btn_id); ?>"
-                aria-selected="<?php echo $is_first ? 'true' : 'false'; ?>"
-                aria-controls="<?php echo esc_attr($tab_panel_id); ?>"
-                tabindex="<?php echo $is_first ? '0' : '-1'; ?>"
-            ><?php echo esc_html($tab_title); ?></button>
+                id="<?php echo esc_attr($veloria_tab_btn_id); ?>"
+                aria-selected="<?php echo $veloria_is_first ? 'true' : 'false'; ?>"
+                aria-controls="<?php echo esc_attr($veloria_tab_panel_id); ?>"
+                tabindex="<?php echo $veloria_is_first ? '0' : '-1'; ?>"
+            ><?php echo esc_html($veloria_tab_title); ?></button>
         <?php endforeach; ?>
     </div>
 
     <div class="veloria-product-tabs__panels">
-        <?php foreach ($tabs as $ti => $tab_row) : ?>
+        <?php foreach ($veloria_tabs as $veloria_ti => $veloria_tab_row) : ?>
             <?php
-            if (!is_array($tab_row)) {
+            if (!is_array($veloria_tab_row)) {
                 continue;
             }
-            $query_args = \Veloria\Widgets\ProductTabs\ProductTabs::build_tab_row_query_args($tab_row);
-            $product_query = new \WP_Query($query_args);
+            $veloria_query_args = \Veloria\Widgets\ProductTabs\ProductTabs::build_tab_row_query_args($veloria_tab_row);
+            $veloria_product_query = new \WP_Query($veloria_query_args);
 
-            $tab_btn_id = $widget_uid . '-tab-' . (int) $ti;
-            $tab_panel_id = $widget_uid . '-panel-' . (int) $ti;
-            $is_first = ((int) $ti === 0);
+            $veloria_tab_btn_id = $veloria_widget_uid . '-tab-' . (int) $veloria_ti;
+            $veloria_tab_panel_id = $veloria_widget_uid . '-panel-' . (int) $veloria_ti;
+            $veloria_is_first = ((int) $veloria_ti === 0);
 
-            $footer_text = isset($tab_row['footer_button_text']) ? trim((string) $tab_row['footer_button_text']) : '';
-            $footer_link = isset($tab_row['footer_button_link']) && is_array($tab_row['footer_button_link']) ? $tab_row['footer_button_link'] : [];
-            $footer_url = isset($footer_link['url']) ? trim((string) $footer_link['url']) : '';
-            $rel_parts = [];
-            if (!empty($footer_link['nofollow'])) {
-                $rel_parts[] = 'nofollow';
+            $veloria_footer_text = isset($veloria_tab_row['footer_button_text']) ? trim((string) $veloria_tab_row['footer_button_text']) : '';
+            $veloria_footer_link = isset($veloria_tab_row['footer_button_link']) && is_array($veloria_tab_row['footer_button_link']) ? $veloria_tab_row['footer_button_link'] : [];
+            $veloria_footer_url = isset($veloria_footer_link['url']) ? trim((string) $veloria_footer_link['url']) : '';
+            $veloria_rel_parts = [];
+            if (!empty($veloria_footer_link['nofollow'])) {
+                $veloria_rel_parts[] = 'nofollow';
             }
-            if (!empty($footer_link['is_external'])) {
-                $rel_parts[] = 'noopener';
-                $rel_parts[] = 'noreferrer';
+            if (!empty($veloria_footer_link['is_external'])) {
+                $veloria_rel_parts[] = 'noopener';
+                $veloria_rel_parts[] = 'noreferrer';
             }
             ?>
             <div
-                class="veloria-product-tabs__panel<?php echo $is_first ? ' is-active' : ''; ?>"
-                id="<?php echo esc_attr($tab_panel_id); ?>"
+                class="veloria-product-tabs__panel<?php echo $veloria_is_first ? ' is-active' : ''; ?>"
+                id="<?php echo esc_attr($veloria_tab_panel_id); ?>"
                 role="tabpanel"
-                aria-labelledby="<?php echo esc_attr($tab_btn_id); ?>"
-                <?php echo $is_first ? '' : 'hidden'; ?>
+                aria-labelledby="<?php echo esc_attr($veloria_tab_btn_id); ?>"
+                <?php echo $veloria_is_first ? '' : 'hidden'; ?>
             >
                 <div
                     class="veloria-product-tabs__grid-shell"
-                    <?php echo $cart_url !== '' ? 'data-cart-url="' . esc_url($cart_url) . '"' : ''; ?>
+                    <?php echo $veloria_cart_url !== '' ? 'data-cart-url="' . esc_url($veloria_cart_url) . '"' : ''; ?>
                 >
-                    <?php if ($product_query->have_posts()) : ?>
+                    <?php if ($veloria_product_query->have_posts()) : ?>
                         <div class="veloria-product-grid veloria-product-tabs__grid">
                             <?php
-                            while ($product_query->have_posts()) :
-                                $product_query->the_post();
-                                $product = wc_get_product(get_the_ID());
-                                if (!$product) {
+                            while ($veloria_product_query->have_posts()) :
+                                $veloria_product_query->the_post();
+                                $veloria_product = wc_get_product(get_the_ID());
+                                if (!$veloria_product) {
                                     continue;
                                 }
-                                $is_on_sale = $product->is_on_sale();
-                                $is_featured = $product->is_featured();
-                                $card_short_desc = $product->get_short_description();
-                                $category_line = wc_get_product_category_list($product->get_id(), ' &bull; ', '', '');
-                                $regular_price = $product->get_regular_price();
-                                $sale_price = $product->get_sale_price();
-                                $current_price = ($sale_price !== '') ? $sale_price : $product->get_price();
-                                $rating = (float) $product->get_average_rating();
-                                $rating_count = (int) $product->get_rating_count();
-                                $permalink = $product->get_permalink();
+                                $veloria_is_on_sale = $veloria_product->is_on_sale();
+                                $veloria_is_featured = $veloria_product->is_featured();
+                                $veloria_card_short_desc = $veloria_product->get_short_description();
+                                $veloria_category_line = wc_get_product_category_list($veloria_product->get_id(), ' &bull; ', '', '');
+                                $veloria_regular_price = $veloria_product->get_regular_price();
+                                $veloria_sale_price = $veloria_product->get_sale_price();
+                                $veloria_current_price = ($veloria_sale_price !== '') ? $veloria_sale_price : $veloria_product->get_price();
+                                $veloria_rating = (float) $veloria_product->get_average_rating();
+                                $veloria_rating_count = (int) $veloria_product->get_rating_count();
+                                $veloria_permalink = $veloria_product->get_permalink();
                                 ?>
-                                <article class="<?php echo esc_attr($prefix); ?>__card">
-                                    <div class="<?php echo esc_attr($prefix); ?>__image-wrap <?php echo esc_attr($card_hover_class); ?>">
-                                        <a href="<?php echo esc_url($permalink); ?>" class="<?php echo esc_attr($prefix); ?>__image-link">
-                                            <?php echo wp_kses_post($product->get_image('woocommerce_thumbnail', ['class' => $prefix . '__image'])); ?>
+                                <article class="<?php echo esc_attr($veloria_prefix); ?>__card">
+                                    <div class="<?php echo esc_attr($veloria_prefix); ?>__image-wrap <?php echo esc_attr($veloria_card_hover_class); ?>">
+                                        <a href="<?php echo esc_url($veloria_permalink); ?>" class="<?php echo esc_attr($veloria_prefix); ?>__image-link">
+                                            <?php echo wp_kses_post($veloria_product->get_image('woocommerce_thumbnail', ['class' => $veloria_prefix . '__image'])); ?>
                                         </a>
-                                        <?php if ($show_badges && ($is_on_sale || $is_featured)) : ?>
-                                            <div class="<?php echo esc_attr($prefix); ?>__badges">
-                                                <?php if ($is_on_sale) : ?>
-                                                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--sale"><?php esc_html_e('Sale', 'veloria'); ?></span>
+                                        <?php if ($veloria_show_badges && ($veloria_is_on_sale || $veloria_is_featured)) : ?>
+                                            <div class="<?php echo esc_attr($veloria_prefix); ?>__badges">
+                                                <?php if ($veloria_is_on_sale) : ?>
+                                                    <span class="<?php echo esc_attr($veloria_prefix); ?>__badge <?php echo esc_attr($veloria_prefix); ?>__badge--sale"><?php esc_html_e('Sale', 'veloria'); ?></span>
                                                 <?php endif; ?>
-                                                <?php if ($is_featured) : ?>
-                                                    <span class="<?php echo esc_attr($prefix); ?>__badge <?php echo esc_attr($prefix); ?>__badge--new"><?php esc_html_e('Featured', 'veloria'); ?></span>
+                                                <?php if ($veloria_is_featured) : ?>
+                                                    <span class="<?php echo esc_attr($veloria_prefix); ?>__badge <?php echo esc_attr($veloria_prefix); ?>__badge--new"><?php esc_html_e('Featured', 'veloria'); ?></span>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="<?php echo esc_attr($prefix); ?>__card-body">
-                                        <?php if ($show_rating) : ?>
-                                            <div class="<?php echo esc_attr($prefix); ?>__rating">
-                                                <?php echo wp_kses_post(wc_get_rating_html($rating, $rating_count)); ?>
-                                                <span class="<?php echo esc_attr($prefix); ?>__rating-value">(<?php echo esc_html(number_format_i18n($rating, 1)); ?>)</span>
+                                    <div class="<?php echo esc_attr($veloria_prefix); ?>__card-body">
+                                        <?php if ($veloria_show_rating) : ?>
+                                            <div class="<?php echo esc_attr($veloria_prefix); ?>__rating">
+                                                <?php echo wp_kses_post(wc_get_rating_html($veloria_rating, $veloria_rating_count)); ?>
+                                                <span class="<?php echo esc_attr($veloria_prefix); ?>__rating-value">(<?php echo esc_html(number_format_i18n($veloria_rating, 1)); ?>)</span>
                                             </div>
                                         <?php endif; ?>
 
-                                        <h3 class="<?php echo esc_attr($prefix); ?>__title">
-                                            <a href="<?php echo esc_url($permalink); ?>"><?php echo esc_html($product->get_name()); ?></a>
+                                        <h3 class="<?php echo esc_attr($veloria_prefix); ?>__title">
+                                            <a href="<?php echo esc_url($veloria_permalink); ?>"><?php echo esc_html($veloria_product->get_name()); ?></a>
                                         </h3>
 
-                                        <?php if ($category_line !== '') : ?>
-                                            <div class="<?php echo esc_attr($prefix); ?>__meta"><?php echo wp_kses_post($category_line); ?></div>
+                                        <?php if ($veloria_category_line !== '') : ?>
+                                            <div class="<?php echo esc_attr($veloria_prefix); ?>__meta"><?php echo wp_kses_post($veloria_category_line); ?></div>
                                         <?php endif; ?>
 
-                                        <?php if ($show_short_desc && $card_short_desc !== '') : ?>
-                                            <div class="<?php echo esc_attr($prefix); ?>__desc"><?php echo esc_html(wp_trim_words(wp_strip_all_tags($card_short_desc), 7, '')); ?></div>
+                                        <?php if ($veloria_show_short_desc && $veloria_card_short_desc !== '') : ?>
+                                            <div class="<?php echo esc_attr($veloria_prefix); ?>__desc"><?php echo esc_html(wp_trim_words(wp_strip_all_tags($veloria_card_short_desc), 7, '')); ?></div>
                                         <?php endif; ?>
 
-                                        <div class="<?php echo esc_attr($prefix); ?>__price-row">
-                                            <span class="<?php echo esc_attr($prefix); ?>__price-main">
-                                                <span class="<?php echo esc_attr($prefix); ?>__price-current"><?php echo wp_kses_post(wc_price((float) $current_price)); ?></span>
-                                                <?php if ($show_old_price && $regular_price !== '' && $sale_price !== '' && (float) $regular_price > (float) $sale_price) : ?>
-                                                    <span class="<?php echo esc_attr($prefix); ?>__price-old"><?php echo wp_kses_post(wc_price((float) $regular_price)); ?></span>
+                                        <div class="<?php echo esc_attr($veloria_prefix); ?>__price-row">
+                                            <span class="<?php echo esc_attr($veloria_prefix); ?>__price-main">
+                                                <span class="<?php echo esc_attr($veloria_prefix); ?>__price-current"><?php echo wp_kses_post(wc_price((float) $veloria_current_price)); ?></span>
+                                                <?php if ($veloria_show_old_price && $veloria_regular_price !== '' && $veloria_sale_price !== '' && (float) $veloria_regular_price > (float) $veloria_sale_price) : ?>
+                                                    <span class="<?php echo esc_attr($veloria_prefix); ?>__price-old"><?php echo wp_kses_post(wc_price((float) $veloria_regular_price)); ?></span>
                                                 <?php endif; ?>
                                             </span>
-                                            <?php if ($show_wishlist || $show_add_to_cart) : ?>
-                                                <span class="<?php echo esc_attr($prefix); ?>__actions">
-                                                    <?php if ($show_wishlist) : ?>
-                                                        <a class="<?php echo esc_attr($prefix); ?>__icon-btn" href="<?php echo esc_url($permalink); ?>" aria-label="<?php esc_attr_e('View Product', 'veloria'); ?>">
+                                            <?php if ($veloria_show_wishlist || $veloria_show_add_to_cart) : ?>
+                                                <span class="<?php echo esc_attr($veloria_prefix); ?>__actions">
+                                                    <?php if ($veloria_show_wishlist) : ?>
+                                                        <a class="<?php echo esc_attr($veloria_prefix); ?>__icon-btn" href="<?php echo esc_url($veloria_permalink); ?>" aria-label="<?php esc_attr_e('View Product', 'veloria'); ?>">
                                                             <i class="far fa-heart" aria-hidden="true"></i>
                                                         </a>
                                                     <?php endif; ?>
-                                                    <?php if ($show_add_to_cart) : ?>
+                                                    <?php if ($veloria_show_add_to_cart) : ?>
                                                         <a
-                                                            class="<?php echo esc_attr($prefix); ?>__icon-btn <?php echo esc_attr($prefix); ?>__icon-btn--cart <?php echo esc_attr($prefix); ?>__cart-btn <?php echo esc_attr($product->supports('ajax_add_to_cart') ? 'add_to_cart_button ajax_add_to_cart' : ''); ?>"
-                                                            href="<?php echo esc_url($product->add_to_cart_url()); ?>"
-                                                            data-product_id="<?php echo esc_attr((string) $product->get_id()); ?>"
-                                                            data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
+                                                            class="<?php echo esc_attr($veloria_prefix); ?>__icon-btn <?php echo esc_attr($veloria_prefix); ?>__icon-btn--cart <?php echo esc_attr($veloria_prefix); ?>__cart-btn <?php echo esc_attr($veloria_product->supports('ajax_add_to_cart') ? 'add_to_cart_button ajax_add_to_cart' : ''); ?>"
+                                                            href="<?php echo esc_url($veloria_product->add_to_cart_url()); ?>"
+                                                            data-product_id="<?php echo esc_attr((string) $veloria_product->get_id()); ?>"
+                                                            data-product_sku="<?php echo esc_attr($veloria_product->get_sku()); ?>"
                                                             data-quantity="1"
                                                             rel="nofollow"
-                                                            aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>">
+                                                            aria-label="<?php echo esc_attr($veloria_product->add_to_cart_description()); ?>">
                                                             <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                                                         </a>
-                                                        <a class="<?php echo esc_attr($prefix); ?>__cart-tooltip" href="#"><?php esc_html_e('View cart', 'veloria'); ?></a>
+                                                        <a class="<?php echo esc_attr($veloria_prefix); ?>__cart-tooltip" href="#"><?php esc_html_e('View cart', 'veloria'); ?></a>
                                                     <?php endif; ?>
                                                 </span>
                                             <?php endif; ?>
@@ -221,21 +221,21 @@ $tabs_grid_vars = sprintf(
                     <?php endif; ?>
                 </div>
 
-                <?php if ($footer_text !== '') : ?>
+                <?php if ($veloria_footer_text !== '') : ?>
                     <div class="veloria-product-tabs__footer">
-                        <?php if ($footer_url !== '') : ?>
-                            <a class="veloria-product-tabs__cta" href="<?php echo esc_url($footer_url); ?>"<?php
-                            if (!empty($footer_link['is_external'])) {
+                        <?php if ($veloria_footer_url !== '') : ?>
+                            <a class="veloria-product-tabs__cta" href="<?php echo esc_url($veloria_footer_url); ?>"<?php
+                            if (!empty($veloria_footer_link['is_external'])) {
                                 echo ' target="_blank"';
                             }
-                            if ($rel_parts !== []) {
-                                echo ' rel="' . esc_attr(implode(' ', $rel_parts)) . '"';
+                            if ($veloria_rel_parts !== []) {
+                                echo ' rel="' . esc_attr(implode(' ', $veloria_rel_parts)) . '"';
                             }
                             ?>>
-                                <?php echo esc_html($footer_text); ?>
+                                <?php echo esc_html($veloria_footer_text); ?>
                             </a>
                         <?php else : ?>
-                            <span class="veloria-product-tabs__cta veloria-product-tabs__cta--static"><?php echo esc_html($footer_text); ?></span>
+                            <span class="veloria-product-tabs__cta veloria-product-tabs__cta--static"><?php echo esc_html($veloria_footer_text); ?></span>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

@@ -763,8 +763,8 @@ class InstagramFeed extends WidgetBase
             return;
         }
 
-        $items = $this->fetch_instagram_feed($token, $settings);
-        if (empty($items)) {
+        $veloria_items = $this->fetch_instagram_feed($token, $settings);
+        if (empty($veloria_items)) {
             if (current_user_can('manage_options')) {
                 echo '<div class="veloria-instagram-feed veloria-instagram-feed--empty"><p class="veloria-instagram-feed__notice">' . esc_html__('No posts found. Check your token and try again.', 'veloria') . '</p></div>';
             }

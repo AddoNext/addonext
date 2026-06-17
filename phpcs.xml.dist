@@ -8,8 +8,6 @@
 	<exclude-pattern>*/bin/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/build/*</exclude-pattern>
-	<exclude-pattern>*/templates/*</exclude-pattern>
-	<exclude-pattern>*/pro/templates/*</exclude-pattern>
 	<exclude-pattern>*/src/*</exclude-pattern>
 
 	<rule ref="PluginCheck"/>

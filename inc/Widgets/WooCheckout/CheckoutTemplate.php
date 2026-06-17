@@ -25,8 +25,13 @@ class CheckoutTemplate
             return;
         }
 
+        $prefixedVars = [];
+        foreach ($vars as $key => $value) {
+            $prefixedVars['veloria_' . $key] = $value;
+        }
+
         // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
-        extract($vars, EXTR_SKIP);
+        extract($prefixedVars, EXTR_SKIP);
 
         include $path;
     }

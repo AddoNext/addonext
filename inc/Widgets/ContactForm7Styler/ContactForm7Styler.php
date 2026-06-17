@@ -830,7 +830,7 @@ class ContactForm7Styler extends WidgetBase
     {
         $settings = $this->get_settings_for_display();
         $raw_id   = isset($settings['cf7_form_id']) ? (string) $settings['cf7_form_id'] : '__none__';
-        $form_id  = ($raw_id === '' || $raw_id === '__none__') ? 0 : (int) $raw_id;
+        $veloria_form_id = ($raw_id === '' || $raw_id === '__none__') ? 0 : (int) $raw_id;
 
         $label_pos = isset($settings['label_position']) ? (string) $settings['label_position'] : 'block';
         $classes   = ['veloria-cf7-styler'];

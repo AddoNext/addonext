@@ -1,72 +1,72 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings = $this->get_settings_for_display();
-$items   = isset($items) && is_array($items) ? $items : [];
-$layout  = isset($settings['layout']) ? $settings['layout'] : 'grid';
-$new_tab = !empty($settings['open_new_tab']) ? '_blank' : '_self';
-$overlay_links = !empty($settings['overlay_links']);
-$effect_class = isset($settings['image_effect']) && $settings['image_effect'] !== 'none' ? ' veloria-instagram-feed__media-wrap--' . $settings['image_effect'] : '';
-$square_class = !empty($settings['force_square']) ? ' veloria-instagram-feed__media-wrap--square' : '';
+$veloria_settings = $this->get_settings_for_display();
+$veloria_items   = isset($veloria_items) && is_array($veloria_items) ? $veloria_items : [];
+$veloria_layout  = isset($veloria_settings['layout']) ? $veloria_settings['layout'] : 'grid';
+$veloria_new_tab = !empty($veloria_settings['open_new_tab']) ? '_blank' : '_self';
+$veloria_overlay_links = !empty($veloria_settings['overlay_links']);
+$veloria_effect_class = isset($veloria_settings['image_effect']) && $veloria_settings['image_effect'] !== 'none' ? ' veloria-instagram-feed__media-wrap--' . $veloria_settings['image_effect'] : '';
+$veloria_square_class = !empty($veloria_settings['force_square']) ? ' veloria-instagram-feed__media-wrap--square' : '';
 
-if (empty($items)) {
+if (empty($veloria_items)) {
     return;
 }
 
-$is_carousel = $layout === 'carousel';
-$carousel_slides = isset($settings['carousel_slides']) ? (int) $settings['carousel_slides'] : 3;
-$carousel_slides_tablet = isset($settings['carousel_slides_tablet']) ? (int) $settings['carousel_slides_tablet'] : min(2, $carousel_slides);
-$carousel_slides_mobile = isset($settings['carousel_slides_mobile']) ? (int) $settings['carousel_slides_mobile'] : 1;
-$carousel_space = isset($settings['carousel_space']) ? (int) $settings['carousel_space'] : 10;
-$carousel_autoplay = !empty($settings['carousel_autoplay']);
-$carousel_autoplay_delay = isset($settings['carousel_autoplay_delay']) ? (int) $settings['carousel_autoplay_delay'] : 3000;
-$carousel_loop = !empty($settings['carousel_loop']);
-$carousel_speed = isset($settings['carousel_speed']) ? (int) $settings['carousel_speed'] : 500;
-$carousel_nav = !empty($settings['carousel_nav']);
-$carousel_pagination = !empty($settings['carousel_pagination']);
+$veloria_is_carousel = $veloria_layout === 'carousel';
+$veloria_carousel_slides = isset($veloria_settings['carousel_slides']) ? (int) $veloria_settings['carousel_slides'] : 3;
+$veloria_carousel_slides_tablet = isset($veloria_settings['carousel_slides_tablet']) ? (int) $veloria_settings['carousel_slides_tablet'] : min(2, $veloria_carousel_slides);
+$veloria_carousel_slides_mobile = isset($veloria_settings['carousel_slides_mobile']) ? (int) $veloria_settings['carousel_slides_mobile'] : 1;
+$veloria_carousel_space = isset($veloria_settings['carousel_space']) ? (int) $veloria_settings['carousel_space'] : 10;
+$veloria_carousel_autoplay = !empty($veloria_settings['carousel_autoplay']);
+$veloria_carousel_autoplay_delay = isset($veloria_settings['carousel_autoplay_delay']) ? (int) $veloria_settings['carousel_autoplay_delay'] : 3000;
+$veloria_carousel_loop = !empty($veloria_settings['carousel_loop']);
+$veloria_carousel_speed = isset($veloria_settings['carousel_speed']) ? (int) $veloria_settings['carousel_speed'] : 500;
+$veloria_carousel_nav = !empty($veloria_settings['carousel_nav']);
+$veloria_carousel_pagination = !empty($veloria_settings['carousel_pagination']);
 ?>
-<div class="veloria-instagram-feed veloria-instagram-feed--<?php echo esc_attr($layout); ?>">
-    <?php if (!empty($settings['show_follow']) && !empty($settings['follow_url']['url'])) : ?>
+<div class="veloria-instagram-feed veloria-instagram-feed--<?php echo esc_attr($veloria_layout); ?>">
+    <?php if (!empty($veloria_settings['show_follow']) && !empty($veloria_settings['follow_url']['url'])) : ?>
         <div class="veloria-instagram-feed__follow-wrap">
-            <a href="<?php echo esc_url($settings['follow_url']['url']); ?>" class="veloria-instagram-feed__follow" target="_blank" rel="noopener noreferrer">
-                <?php echo esc_html($settings['follow_text'] ?? __('Follow on Instagram', 'veloria')); ?>
+            <a href="<?php echo esc_url($veloria_settings['follow_url']['url']); ?>" class="veloria-instagram-feed__follow" target="_blank" rel="noopener noreferrer">
+                <?php echo esc_html($veloria_settings['follow_text'] ?? __('Follow on Instagram', 'veloria')); ?>
             </a>
         </div>
     <?php endif; ?>
 
     <div class="veloria-instagram-feed__wrap">
-        <?php if ($is_carousel) : ?>
+        <?php if ($veloria_is_carousel) : ?>
             <div class="veloria-instagram-feed__carousel swiper"
-                 data-slides="<?php echo esc_attr($carousel_slides); ?>"
-                 data-slides-tablet="<?php echo esc_attr($carousel_slides_tablet); ?>"
-                 data-slides-mobile="<?php echo esc_attr($carousel_slides_mobile); ?>"
-                 data-space="<?php echo esc_attr($carousel_space); ?>"
-                 data-autoplay="<?php echo $carousel_autoplay ? '1' : '0'; ?>"
-                 data-autoplay-delay="<?php echo esc_attr($carousel_autoplay_delay); ?>"
-                 data-loop="<?php echo $carousel_loop ? '1' : '0'; ?>"
-                 data-speed="<?php echo esc_attr($carousel_speed); ?>"
-                 data-nav="<?php echo $carousel_nav ? '1' : '0'; ?>"
-                 data-pagination="<?php echo $carousel_pagination ? '1' : '0'; ?>">
+                 data-slides="<?php echo esc_attr($veloria_carousel_slides); ?>"
+                 data-slides-tablet="<?php echo esc_attr($veloria_carousel_slides_tablet); ?>"
+                 data-slides-mobile="<?php echo esc_attr($veloria_carousel_slides_mobile); ?>"
+                 data-space="<?php echo esc_attr($veloria_carousel_space); ?>"
+                 data-autoplay="<?php echo $veloria_carousel_autoplay ? '1' : '0'; ?>"
+                 data-autoplay-delay="<?php echo esc_attr($veloria_carousel_autoplay_delay); ?>"
+                 data-loop="<?php echo $veloria_carousel_loop ? '1' : '0'; ?>"
+                 data-speed="<?php echo esc_attr($veloria_carousel_speed); ?>"
+                 data-nav="<?php echo $veloria_carousel_nav ? '1' : '0'; ?>"
+                 data-pagination="<?php echo $veloria_carousel_pagination ? '1' : '0'; ?>">
                 <div class="swiper-wrapper">
-                    <?php foreach ($items as $item) : ?>
+                    <?php foreach ($veloria_items as $veloria_item) : ?>
                         <div class="swiper-slide">
-                            <?php $this->render_instagram_item($item, $settings, $overlay_links, $new_tab, $effect_class . $square_class); ?>
+                            <?php $this->render_instagram_item($veloria_item, $veloria_settings, $veloria_overlay_links, $veloria_new_tab, $veloria_effect_class . $veloria_square_class); ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <?php if ($carousel_nav) : ?>
+                <?php if ($veloria_carousel_nav) : ?>
                     <div class="swiper-button-prev" aria-label="<?php esc_attr_e('Previous', 'veloria'); ?>"></div>
                     <div class="swiper-button-next" aria-label="<?php esc_attr_e('Next', 'veloria'); ?>"></div>
                 <?php endif; ?>
-                <?php if ($carousel_pagination) : ?>
+                <?php if ($veloria_carousel_pagination) : ?>
                     <div class="swiper-pagination"></div>
                 <?php endif; ?>
             </div>
         <?php else : ?>
             <div class="veloria-instagram-feed__grid">
-                <?php foreach ($items as $item) : ?>
+                <?php foreach ($veloria_items as $veloria_item) : ?>
                     <div class="veloria-instagram-feed__item">
-                        <?php $this->render_instagram_item($item, $settings, $overlay_links, $new_tab, $effect_class . $square_class); ?>
+                        <?php $this->render_instagram_item($veloria_item, $veloria_settings, $veloria_overlay_links, $veloria_new_tab, $veloria_effect_class . $veloria_square_class); ?>
                     </div>
                 <?php endforeach; ?>
             </div>

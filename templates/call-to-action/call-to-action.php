@@ -1,32 +1,32 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings = $this->get_settings_for_display();
-$title   = isset($settings['title']) ? $settings['title'] : '';
-$desc    = isset($settings['description']) ? $settings['description'] : '';
-$btn_text = isset($settings['button_text']) ? $settings['button_text'] : '';
-$btn_url  = isset($settings['button_url']['url']) ? $settings['button_url']['url'] : '#';
-$btn_external = !empty($settings['button_url']['is_external']);
-$btn_nofollow = !empty($settings['button_url']['nofollow']);
+$veloria_settings = $this->get_settings_for_display();
+$veloria_title   = isset($veloria_settings['title']) ? $veloria_settings['title'] : '';
+$veloria_desc    = isset($veloria_settings['description']) ? $veloria_settings['description'] : '';
+$veloria_btn_text = isset($veloria_settings['button_text']) ? $veloria_settings['button_text'] : '';
+$veloria_btn_url  = isset($veloria_settings['button_url']['url']) ? $veloria_settings['button_url']['url'] : '#';
+$veloria_btn_external = !empty($veloria_settings['button_url']['is_external']);
+$veloria_btn_nofollow = !empty($veloria_settings['button_url']['nofollow']);
 
 ?>
 <div class="veloria-cta">
     <div class="veloria-cta__inner">
-        <?php if ($title !== '') : ?>
-            <h3 class="veloria-cta__title"><?php echo esc_html($title); ?></h3>
+        <?php if ($veloria_title !== '') : ?>
+            <h3 class="veloria-cta__title"><?php echo esc_html($veloria_title); ?></h3>
         <?php endif; ?>
-        <?php if ($desc !== '') : ?>
-            <p class="veloria-cta__description"><?php echo esc_html($desc); ?></p>
+        <?php if ($veloria_desc !== '') : ?>
+            <p class="veloria-cta__description"><?php echo esc_html($veloria_desc); ?></p>
         <?php endif; ?>
-        <?php if ($btn_text !== '') : ?>
-            <a href="<?php echo esc_url($btn_url); ?>"<?php
-            if ($btn_external) {
+        <?php if ($veloria_btn_text !== '') : ?>
+            <a href="<?php echo esc_url($veloria_btn_url); ?>"<?php
+            if ($veloria_btn_external) {
                 echo ' target="_blank"';
             }
-            if ($btn_nofollow) {
+            if ($veloria_btn_nofollow) {
                 echo ' rel="nofollow"';
             }
-            ?> class="veloria-cta__button"><?php echo esc_html($btn_text); ?></a>
+            ?> class="veloria-cta__button"><?php echo esc_html($veloria_btn_text); ?></a>
         <?php endif; ?>
     </div>
 </div>

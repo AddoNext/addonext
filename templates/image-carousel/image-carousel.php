@@ -1,81 +1,81 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings = $this->get_settings_for_display();
-$slides   = isset($settings['slides']) && is_array($settings['slides']) ? $settings['slides'] : [];
-$nav      = isset($settings['navigation']) ? $settings['navigation'] : 'both';
-$show_arrows = ($nav === 'both' || $nav === 'arrows') && count($slides) > 1;
-$show_dots   = ($nav === 'both' || $nav === 'dots') && count($slides) > 1;
-$autoplay = !empty($settings['autoplay']) && $settings['autoplay'] === 'yes';
-$autoplay_delay = ($autoplay && isset($settings['autoplay_delay']) && (int) $settings['autoplay_delay'] > 0) ? (int) $settings['autoplay_delay'] : 5;
-$loop     = empty($settings['loop']) || $settings['loop'] === 'yes';
-$pagination_type = isset($settings['pagination_type']) ? $settings['pagination_type'] : 'bullets';
-$dots_gap = isset($settings['dots_gap']['size']) ? (int) $settings['dots_gap']['size'] : 8;
-$bar_width = ($pagination_type === 'progressbar' && isset($settings['bar_width']['size'])) ? (int) $settings['bar_width']['size'] : 28;
+$veloria_settings = $this->get_settings_for_display();
+$veloria_slides   = isset($veloria_settings['slides']) && is_array($veloria_settings['slides']) ? $veloria_settings['slides'] : [];
+$veloria_nav      = isset($veloria_settings['navigation']) ? $veloria_settings['navigation'] : 'both';
+$veloria_show_arrows = ($veloria_nav === 'both' || $veloria_nav === 'arrows') && count($veloria_slides) > 1;
+$veloria_show_dots   = ($veloria_nav === 'both' || $veloria_nav === 'dots') && count($veloria_slides) > 1;
+$veloria_autoplay = !empty($veloria_settings['autoplay']) && $veloria_settings['autoplay'] === 'yes';
+$veloria_autoplay_delay = ($veloria_autoplay && isset($veloria_settings['autoplay_delay']) && (int) $veloria_settings['autoplay_delay'] > 0) ? (int) $veloria_settings['autoplay_delay'] : 5;
+$veloria_loop     = empty($veloria_settings['loop']) || $veloria_settings['loop'] === 'yes';
+$veloria_pagination_type = isset($veloria_settings['pagination_type']) ? $veloria_settings['pagination_type'] : 'bullets';
+$veloria_dots_gap = isset($veloria_settings['dots_gap']['size']) ? (int) $veloria_settings['dots_gap']['size'] : 8;
+$veloria_bar_width = ($veloria_pagination_type === 'progressbar' && isset($veloria_settings['bar_width']['size'])) ? (int) $veloria_settings['bar_width']['size'] : 28;
 
-if (empty($slides)) {
+if (empty($veloria_slides)) {
     return;
 }
 
-$image_size_name = isset($settings['image_size_size']) ? $settings['image_size_size'] : 'large';
-$image_size_custom = isset($settings['image_size_custom_dimension']) ? $settings['image_size_custom_dimension'] : ['width' => '', 'height' => ''];
-$use_custom_size = ($image_size_name === 'custom' && (!empty($image_size_custom['width']) || !empty($image_size_custom['height'])));
+$veloria_image_size_name = isset($veloria_settings['image_size_size']) ? $veloria_settings['image_size_size'] : 'large';
+$veloria_image_size_custom = isset($veloria_settings['image_size_custom_dimension']) ? $veloria_settings['image_size_custom_dimension'] : ['width' => '', 'height' => ''];
+$veloria_use_custom_size = ($veloria_image_size_name === 'custom' && (!empty($veloria_image_size_custom['width']) || !empty($veloria_image_size_custom['height'])));
 
-$placeholder_src = \Elementor\Utils::get_placeholder_image_src();
-$autoplay_attr = $autoplay ? '1' : '0';
-$loop_attr     = $loop ? '1' : '0';
-$pagination_class = '';
-if ($pagination_type === 'square') {
-    $pagination_class = ' veloria-pagination-square';
-} elseif ($pagination_type === 'progressbar') {
-    $pagination_class = ' veloria-pagination-bar';
+$veloria_placeholder_src = \Elementor\Utils::get_placeholder_image_src();
+$veloria_autoplay_attr = $veloria_autoplay ? '1' : '0';
+$veloria_loop_attr     = $veloria_loop ? '1' : '0';
+$veloria_pagination_class = '';
+if ($veloria_pagination_type === 'square') {
+    $veloria_pagination_class = ' veloria-pagination-square';
+} elseif ($veloria_pagination_type === 'progressbar') {
+    $veloria_pagination_class = ' veloria-pagination-bar';
 }
-$inline_style = '--veloria-dots-gap: ' . $dots_gap . 'px;';
-if ($pagination_type === 'progressbar') {
-    $inline_style .= ' --veloria-bar-width: ' . $bar_width . 'px;';
+$veloria_inline_style = '--veloria-dots-gap: ' . $veloria_dots_gap . 'px;';
+if ($veloria_pagination_type === 'progressbar') {
+    $veloria_inline_style .= ' --veloria-bar-width: ' . $veloria_bar_width . 'px;';
 }
-$carousel_height = isset($settings['carousel_height']['size']) && $settings['carousel_height']['size'] !== '' ? (float) $settings['carousel_height']['size'] : 0;
-$carousel_height_unit = isset($settings['carousel_height']['unit']) ? $settings['carousel_height']['unit'] : 'px';
-if ($carousel_height > 0) {
-    $inline_style .= ' --veloria-carousel-height: ' . $carousel_height . $carousel_height_unit . ';';
+$veloria_carousel_height = isset($veloria_settings['carousel_height']['size']) && $veloria_settings['carousel_height']['size'] !== '' ? (float) $veloria_settings['carousel_height']['size'] : 0;
+$veloria_carousel_height_unit = isset($veloria_settings['carousel_height']['unit']) ? $veloria_settings['carousel_height']['unit'] : 'px';
+if ($veloria_carousel_height > 0) {
+    $veloria_inline_style .= ' --veloria-carousel-height: ' . $veloria_carousel_height . $veloria_carousel_height_unit . ';';
 }
 ?>
-<div class="veloria-image-carousel swiper swiper-autoheight<?php echo esc_attr($pagination_class); ?>" data-autoplay="<?php echo esc_attr($autoplay_attr); ?>" data-autoplay-delay="<?php echo esc_attr($autoplay_delay); ?>" data-loop="<?php echo esc_attr($loop_attr); ?>" data-pagination-type="<?php echo esc_attr($pagination_type); ?>" style="<?php echo esc_attr($inline_style); ?>">
+<div class="veloria-image-carousel swiper swiper-autoheight<?php echo esc_attr($veloria_pagination_class); ?>" data-autoplay="<?php echo esc_attr($veloria_autoplay_attr); ?>" data-autoplay-delay="<?php echo esc_attr($veloria_autoplay_delay); ?>" data-loop="<?php echo esc_attr($veloria_loop_attr); ?>" data-pagination-type="<?php echo esc_attr($veloria_pagination_type); ?>" style="<?php echo esc_attr($veloria_inline_style); ?>">
     <div class="veloria-image-carousel__wrapper swiper-wrapper">
-        <?php foreach ($slides as $slide) :
-            $img = isset($slide['image']) && is_array($slide['image']) ? $slide['image'] : [];
-            $id  = isset($img['id']) ? (int) $img['id'] : 0;
-            $caption = isset($slide['caption']) ? $slide['caption'] : '';
-            $url = isset($img['url']) ? trim((string) $img['url']) : '';
-            if ($id) {
-                if ($use_custom_size) {
-                    $img_src = \Elementor\Group_Control_Image_Size::get_attachment_image_src($id, 'image_size', $settings);
-                    if (!empty($img_src)) {
-                        $url = $img_src;
+        <?php foreach ($veloria_slides as $veloria_slide) :
+            $veloria_img = isset($veloria_slide['image']) && is_array($veloria_slide['image']) ? $veloria_slide['image'] : [];
+            $veloria_id  = isset($veloria_img['id']) ? (int) $veloria_img['id'] : 0;
+            $veloria_caption = isset($veloria_slide['caption']) ? $veloria_slide['caption'] : '';
+            $veloria_url = isset($veloria_img['url']) ? trim((string) $veloria_img['url']) : '';
+            if ($veloria_id) {
+                if ($veloria_use_custom_size) {
+                    $veloria_img_src = \Elementor\Group_Control_Image_Size::get_attachment_image_src($veloria_id, 'image_size', $veloria_settings);
+                    if (!empty($veloria_img_src)) {
+                        $veloria_url = $veloria_img_src;
                     }
                 } else {
-                    $img_src = wp_get_attachment_image_src($id, $image_size_name);
-                    if (!empty($img_src[0])) {
-                        $url = $img_src[0];
+                    $veloria_img_src = wp_get_attachment_image_src($veloria_id, $veloria_image_size_name);
+                    if (!empty($veloria_img_src[0])) {
+                        $veloria_url = $veloria_img_src[0];
                     }
                 }
-                if ($url === '' && $id) {
-                    $full = wp_get_attachment_image_src($id, 'full');
-                    if (!empty($full[0])) {
-                        $url = $full[0];
+                if ($veloria_url === '' && $veloria_id) {
+                    $veloria_full = wp_get_attachment_image_src($veloria_id, 'full');
+                    if (!empty($veloria_full[0])) {
+                        $veloria_url = $veloria_full[0];
                     }
                 }
             }
-            if ($url === '') {
-                $url = $placeholder_src;
+            if ($veloria_url === '') {
+                $veloria_url = $veloria_placeholder_src;
             }
         ?>
             <div class="veloria-image-carousel__slide swiper-slide">
-                <img src="<?php echo esc_url($url); ?>" alt="<?php echo esc_attr($caption); ?>">
+                <img src="<?php echo esc_url($veloria_url); ?>" alt="<?php echo esc_attr($veloria_caption); ?>">
             </div>
         <?php endforeach; ?>
     </div>
-    <?php if ($show_arrows) : ?>
+    <?php if ($veloria_show_arrows) : ?>
         <div class="veloria-image-carousel__arrow veloria-image-carousel__arrow--prev swiper-button-prev" role="button" tabindex="0" aria-label="<?php esc_attr_e('Previous', 'veloria'); ?>">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
         </div>
@@ -83,7 +83,7 @@ if ($carousel_height > 0) {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
         </div>
     <?php endif; ?>
-    <?php if ($show_dots) : ?>
+    <?php if ($veloria_show_dots) : ?>
         <div class="swiper-pagination"></div>
     <?php endif; ?>
 </div>

@@ -9,10 +9,10 @@ defined('ABSPATH') || exit;
 
 use Veloria\Widgets\VideoPlayer\VideoPlayer;
 
-$settings = $this->get_settings_for_display();
-$items    = isset($settings['items']) && is_array($settings['items']) ? $settings['items'] : [];
+$veloria_settings = $this->get_settings_for_display();
+$veloria_items    = isset($veloria_settings['items']) && is_array($veloria_settings['items']) ? $veloria_settings['items'] : [];
 
-if ($items === []) {
+if ($veloria_items === []) {
     return;
 }
 
@@ -21,57 +21,57 @@ $this->add_render_attribute('wrap', 'class', 'veloria-video-gallery');
 <div <?php $this->print_render_attribute_string('wrap'); ?>>
     <div class="veloria-video-gallery__grid">
         <?php
-        foreach ($items as $index => $item) {
-            $video_type = isset($item['video_type']) ? (string) $item['video_type'] : 'youtube';
-            $embed_url  = '';
-            $hosted_url = '';
+        foreach ($veloria_items as $veloria_index => $veloria_item) {
+            $veloria_video_type = isset($veloria_item['video_type']) ? (string) $veloria_item['video_type'] : 'youtube';
+            $veloria_embed_url  = '';
+            $veloria_hosted_url = '';
 
-            if ($video_type === 'youtube' && !empty($item['youtube_url']['url'])) {
-                $embed_url = VideoPlayer::get_embed_url('youtube', $item['youtube_url']['url']);
-            } elseif ($video_type === 'vimeo' && !empty($item['vimeo_url']['url'])) {
-                $embed_url = VideoPlayer::get_embed_url('vimeo', $item['vimeo_url']['url']);
-            } elseif ($video_type === 'dailymotion' && !empty($item['dailymotion_url']['url'])) {
-                $embed_url = VideoPlayer::get_embed_url('dailymotion', $item['dailymotion_url']['url']);
-            } elseif ($video_type === 'hosted' && !empty($item['hosted_url']['url'])) {
-                $hosted_url = $item['hosted_url']['url'];
+            if ($veloria_video_type === 'youtube' && !empty($veloria_item['youtube_url']['url'])) {
+                $veloria_embed_url = VideoPlayer::get_embed_url('youtube', $veloria_item['youtube_url']['url']);
+            } elseif ($veloria_video_type === 'vimeo' && !empty($veloria_item['vimeo_url']['url'])) {
+                $veloria_embed_url = VideoPlayer::get_embed_url('vimeo', $veloria_item['vimeo_url']['url']);
+            } elseif ($veloria_video_type === 'dailymotion' && !empty($veloria_item['dailymotion_url']['url'])) {
+                $veloria_embed_url = VideoPlayer::get_embed_url('dailymotion', $veloria_item['dailymotion_url']['url']);
+            } elseif ($veloria_video_type === 'hosted' && !empty($veloria_item['hosted_url']['url'])) {
+                $veloria_hosted_url = $veloria_item['hosted_url']['url'];
             }
 
-            $show_title    = !empty($item['show_title']);
-            $show_subtitle = !empty($item['show_subtitle']);
-            $title         = isset($item['title']) ? (string) $item['title'] : '';
-            $subtitle      = isset($item['subtitle']) ? (string) $item['subtitle'] : '';
-            $thumbnail_url = isset($item['thumbnail']['url']) ? trim((string) $item['thumbnail']['url']) : '';
+            $veloria_show_title    = !empty($veloria_item['show_title']);
+            $veloria_show_subtitle = !empty($veloria_item['show_subtitle']);
+            $veloria_title         = isset($veloria_item['title']) ? (string) $veloria_item['title'] : '';
+            $veloria_subtitle      = isset($veloria_item['subtitle']) ? (string) $veloria_item['subtitle'] : '';
+            $veloria_thumbnail_url = isset($veloria_item['thumbnail']['url']) ? trim((string) $veloria_item['thumbnail']['url']) : '';
 
-            $inner_class = 'veloria-video-player__inner';
-            if ($thumbnail_url !== '') {
-                $inner_class .= ' veloria-video-player--has-thumbnail';
+            $veloria_inner_class = 'veloria-video-player__inner';
+            if ($veloria_thumbnail_url !== '') {
+                $veloria_inner_class .= ' veloria-video-player--has-thumbnail';
             }
 
-            $item_id = isset($item['_id']) ? (string) $item['_id'] : (string) $index;
+            $veloria_item_id = isset($veloria_item['_id']) ? (string) $veloria_item['_id'] : (string) $veloria_index;
             ?>
-            <div class="veloria-video-gallery__cell elementor-repeater-item-<?php echo esc_attr($item_id); ?>">
+            <div class="veloria-video-gallery__cell elementor-repeater-item-<?php echo esc_attr($veloria_item_id); ?>">
                 <div class="veloria-video-player veloria-video-player--gallery-tile">
                     <div
-                        class="<?php echo esc_attr($inner_class); ?>"
-                        data-embed="<?php echo esc_attr($embed_url); ?>"
-                        data-hosted="<?php echo esc_attr($hosted_url); ?>"
-                        data-type="<?php echo esc_attr($video_type); ?>"
+                        class="<?php echo esc_attr($veloria_inner_class); ?>"
+                        data-embed="<?php echo esc_attr($veloria_embed_url); ?>"
+                        data-hosted="<?php echo esc_attr($veloria_hosted_url); ?>"
+                        data-type="<?php echo esc_attr($veloria_video_type); ?>"
                     >
                         <div class="veloria-video-player__overlay">
-                            <?php if ($thumbnail_url !== '') : ?>
-                                <img class="veloria-video-player__thumbnail" src="<?php echo esc_url($thumbnail_url); ?>" alt="" loading="lazy" decoding="async">
+                            <?php if ($veloria_thumbnail_url !== '') : ?>
+                                <img class="veloria-video-player__thumbnail" src="<?php echo esc_url($veloria_thumbnail_url); ?>" alt="" loading="lazy" decoding="async">
                                 <span class="veloria-video-player__overlay-shade" aria-hidden="true"></span>
                             <?php endif; ?>
                             <button type="button" class="veloria-video-gallery__play" aria-label="<?php esc_attr_e('Play video', 'veloria'); ?>">
                                 <span class="veloria-video-gallery__play-icon"></span>
                             </button>
-                            <?php if (($show_title && $title !== '') || ($show_subtitle && $subtitle !== '')) : ?>
+                            <?php if (($veloria_show_title && $veloria_title !== '') || ($veloria_show_subtitle && $veloria_subtitle !== '')) : ?>
                                 <div class="veloria-video-player__caption">
-                                    <?php if ($show_title && $title !== '') : ?>
-                                        <div class="veloria-video-player__title"><?php echo esc_html($title); ?></div>
+                                    <?php if ($veloria_show_title && $veloria_title !== '') : ?>
+                                        <div class="veloria-video-player__title"><?php echo esc_html($veloria_title); ?></div>
                                     <?php endif; ?>
-                                    <?php if ($show_subtitle && $subtitle !== '') : ?>
-                                        <div class="veloria-video-player__subtitle"><?php echo esc_html($subtitle); ?></div>
+                                    <?php if ($veloria_show_subtitle && $veloria_subtitle !== '') : ?>
+                                        <div class="veloria-video-player__subtitle"><?php echo esc_html($veloria_subtitle); ?></div>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>

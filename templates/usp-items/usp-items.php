@@ -9,15 +9,15 @@ defined('ABSPATH') || exit;
 
 use Elementor\Icons_Manager;
 
-$settings  = $this->get_settings_for_display();
-$items     = isset($settings['items']) && is_array($settings['items']) ? $settings['items'] : [];
-$title_tag = isset($settings['title_tag']) ? sanitize_key((string) $settings['title_tag']) : 'h3';
-$allowed   = ['h2', 'h3', 'h4', 'div', 'p'];
-if (!in_array($title_tag, $allowed, true)) {
-    $title_tag = 'h3';
+$veloria_settings  = $this->get_settings_for_display();
+$veloria_items     = isset($veloria_settings['items']) && is_array($veloria_settings['items']) ? $veloria_settings['items'] : [];
+$veloria_title_tag = isset($veloria_settings['title_tag']) ? sanitize_key((string) $veloria_settings['title_tag']) : 'h3';
+$veloria_allowed   = ['h2', 'h3', 'h4', 'div', 'p'];
+if (!in_array($veloria_title_tag, $veloria_allowed, true)) {
+    $veloria_title_tag = 'h3';
 }
 
-if ($items === []) {
+if ($veloria_items === []) {
     return;
 }
 
@@ -25,56 +25,56 @@ if ($items === []) {
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
     <div class="veloria-usp-items__grid">
         <?php
-        foreach ($items as $index => $item) {
-            $item_id = isset($item['_id']) ? (string) $item['_id'] : (string) $index;
-            $surface_key = 'usp_surface_' . $index;
-            $this->add_render_attribute($surface_key, 'class', 'veloria-usp-item__surface');
+        foreach ($veloria_items as $veloria_index => $veloria_item) {
+            $veloria_item_id = isset($veloria_item['_id']) ? (string) $veloria_item['_id'] : (string) $veloria_index;
+            $veloria_surface_key = 'usp_surface_' . $veloria_index;
+            $this->add_render_attribute($veloria_surface_key, 'class', 'veloria-usp-item__surface');
 
-            $circle_bg  = !empty($item['circle_bg']) ? (string) $item['circle_bg'] : '#e0e7ff';
-            $icon_color = !empty($item['icon_color']) ? (string) $item['icon_color'] : '#2563eb';
-            $title      = isset($item['item_title']) ? (string) $item['item_title'] : '';
-            $subtitle   = isset($item['item_subtitle']) ? (string) $item['item_subtitle'] : '';
-            $link       = isset($item['item_link']) && is_array($item['item_link']) ? $item['item_link'] : [];
-            $has_url    = !empty($link['url']);
+            $veloria_circle_bg  = !empty($veloria_item['circle_bg']) ? (string) $veloria_item['circle_bg'] : '#e0e7ff';
+            $veloria_icon_color = !empty($veloria_item['icon_color']) ? (string) $veloria_item['icon_color'] : '#2563eb';
+            $veloria_title      = isset($veloria_item['item_title']) ? (string) $veloria_item['item_title'] : '';
+            $veloria_subtitle   = isset($veloria_item['item_subtitle']) ? (string) $veloria_item['item_subtitle'] : '';
+            $veloria_link       = isset($veloria_item['item_link']) && is_array($veloria_item['item_link']) ? $veloria_item['item_link'] : [];
+            $veloria_has_url    = !empty($veloria_link['url']);
 
-            $article_class = 'veloria-usp-item elementor-repeater-item-' . esc_attr($item_id);
+            $veloria_article_class = 'veloria-usp-item elementor-repeater-item-' . esc_attr($veloria_item_id);
             ?>
-            <article class="<?php echo esc_attr($article_class); ?>">
-                <?php if ($has_url) : ?>
+            <article class="<?php echo esc_attr($veloria_article_class); ?>">
+                <?php if ($veloria_has_url) : ?>
                     <?php
-                    $link_key = 'usp_link_' . $index;
-                    $this->add_render_attribute($link_key, 'class', 'veloria-usp-item__link');
-                    $this->add_link_attributes($link_key, $link);
+                    $veloria_link_key = 'usp_link_' . $veloria_index;
+                    $this->add_render_attribute($veloria_link_key, 'class', 'veloria-usp-item__link');
+                    $this->add_link_attributes($veloria_link_key, $veloria_link);
                     ?>
-                    <a <?php $this->print_render_attribute_string($link_key); ?>>
-                        <div <?php $this->print_render_attribute_string($surface_key); ?>>
-                            <span class="veloria-usp-item__icon-ring" style="background-color: <?php echo esc_attr($circle_bg); ?>;">
-                                <span class="veloria-usp-item__icon" style="color: <?php echo esc_attr($icon_color); ?>;">
+                    <a <?php $this->print_render_attribute_string($veloria_link_key); ?>>
+                        <div <?php $this->print_render_attribute_string($veloria_surface_key); ?>>
+                            <span class="veloria-usp-item__icon-ring" style="background-color: <?php echo esc_attr($veloria_circle_bg); ?>;">
+                                <span class="veloria-usp-item__icon" style="color: <?php echo esc_attr($veloria_icon_color); ?>;">
                                     <?php
-                                    if (!empty($item['item_icon']['value'])) {
-                                        Icons_Manager::render_icon($item['item_icon'], ['aria-hidden' => 'true']);
+                                    if (!empty($veloria_item['item_icon']['value'])) {
+                                        Icons_Manager::render_icon($veloria_item['item_icon'], ['aria-hidden' => 'true']);
                                     }
                                     ?>
                                 </span>
                             </span>
-                            <<?php echo esc_attr($title_tag); ?> class="veloria-usp-item__title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
-                            <p class="veloria-usp-item__subtitle"><?php echo esc_html($subtitle); ?></p>
+                            <<?php echo esc_attr($veloria_title_tag); ?> class="veloria-usp-item__title"><?php echo esc_html($veloria_title); ?></<?php echo esc_attr($veloria_title_tag); ?>>
+                            <p class="veloria-usp-item__subtitle"><?php echo esc_html($veloria_subtitle); ?></p>
                         </div>
                     </a>
                 <?php else : ?>
                     <div class="veloria-usp-item__link veloria-usp-item__link--static" role="group">
-                        <div <?php $this->print_render_attribute_string($surface_key); ?>>
-                            <span class="veloria-usp-item__icon-ring" style="background-color: <?php echo esc_attr($circle_bg); ?>;">
-                                <span class="veloria-usp-item__icon" style="color: <?php echo esc_attr($icon_color); ?>;">
+                        <div <?php $this->print_render_attribute_string($veloria_surface_key); ?>>
+                            <span class="veloria-usp-item__icon-ring" style="background-color: <?php echo esc_attr($veloria_circle_bg); ?>;">
+                                <span class="veloria-usp-item__icon" style="color: <?php echo esc_attr($veloria_icon_color); ?>;">
                                     <?php
-                                    if (!empty($item['item_icon']['value'])) {
-                                        Icons_Manager::render_icon($item['item_icon'], ['aria-hidden' => 'true']);
+                                    if (!empty($veloria_item['item_icon']['value'])) {
+                                        Icons_Manager::render_icon($veloria_item['item_icon'], ['aria-hidden' => 'true']);
                                     }
                                     ?>
                                 </span>
                             </span>
-                            <<?php echo esc_attr($title_tag); ?> class="veloria-usp-item__title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
-                            <p class="veloria-usp-item__subtitle"><?php echo esc_html($subtitle); ?></p>
+                            <<?php echo esc_attr($veloria_title_tag); ?> class="veloria-usp-item__title"><?php echo esc_html($veloria_title); ?></<?php echo esc_attr($veloria_title_tag); ?>>
+                            <p class="veloria-usp-item__subtitle"><?php echo esc_html($veloria_subtitle); ?></p>
                         </div>
                     </div>
                 <?php endif; ?>

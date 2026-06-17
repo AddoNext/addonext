@@ -614,10 +614,10 @@ class AnimatedSvg extends WidgetBase
 
     public function render(): void
     {
-        $settings = $this->get_settings_for_display();
-        $payload  = self::build_svg_payload($settings);
+        $veloria_settings = $this->get_settings_for_display();
+        $veloria_payload  = self::build_svg_payload($veloria_settings);
 
-        $animation = isset($settings['animation']) ? (string) $settings['animation'] : 'none';
+        $animation = isset($veloria_settings['animation']) ? (string) $veloria_settings['animation'] : 'none';
         $animation = preg_replace('/[^a-z\-]/', '', $animation);
         $allowed   = ['none', 'draw', 'pulse', 'bounce', 'rotate', 'shake', 'float', 'heartbeat', 'spin', 'wiggle'];
         if ($animation === '' || !in_array($animation, $allowed, true)) {
@@ -629,19 +629,19 @@ class AnimatedSvg extends WidgetBase
             $classes[] = 'veloria-asvg--anim-' . $animation;
         }
 
-        $extra_style = self::animation_css_vars($settings);
+        $extra_style = self::animation_css_vars($veloria_settings);
         $this->add_render_attribute('wrapper', 'class', $classes);
         if ($extra_style !== '') {
             $this->add_render_attribute('wrapper', 'style', $extra_style);
         }
         if ($animation === 'draw') {
-            foreach (self::get_draw_data_attributes($settings) as $attr => $value) {
+            foreach (self::get_draw_data_attributes($veloria_settings) as $attr => $value) {
                 $this->add_render_attribute('wrapper', $attr, esc_attr($value));
             }
         }
 
-        if (!empty($settings['link']['url'])) {
-            $this->add_link_attributes('svg_link', $settings['link']);
+        if (!empty($veloria_settings['link']['url'])) {
+            $this->add_link_attributes('svg_link', $veloria_settings['link']);
         }
 
         $path = VELORIA_DIR . 'templates/animated-svg/animated-svg.php';

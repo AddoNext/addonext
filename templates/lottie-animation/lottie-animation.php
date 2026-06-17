@@ -1,60 +1,60 @@
 <?php
 defined('ABSPATH') || exit;
 
-$s = $this->get_settings_for_display();
+$veloria_s = $this->get_settings_for_display();
 
-$source = $s['source'] ?? 'url';
-if ($source === 'file') {
-    $file = $s['json_file'] ?? [];
-    $url  = is_array($file) && !empty($file['url']) ? (string) $file['url'] : '';
+$veloria_source = $veloria_s['source'] ?? 'url';
+if ($veloria_source === 'file') {
+    $veloria_file = $veloria_s['json_file'] ?? [];
+    $veloria_url  = is_array($veloria_file) && !empty($veloria_file['url']) ? (string) $veloria_file['url'] : '';
 } else {
-    $url = isset($s['json_url']) ? trim((string) $s['json_url']) : '';
+    $veloria_url = isset($veloria_s['json_url']) ? trim((string) $veloria_s['json_url']) : '';
 }
 
-if ($url === '') {
-    $url = \Veloria\Widgets\LottieAnimation\LottieAnimation::DEFAULT_JSON_URL;
+if ($veloria_url === '') {
+    $veloria_url = \Veloria\Widgets\LottieAnimation\LottieAnimation::DEFAULT_JSON_URL;
 }
 
-$jsonUrl = esc_url($url);
-if ($jsonUrl === '') {
+$veloria_jsonUrl = esc_url($veloria_url);
+if ($veloria_jsonUrl === '') {
     return;
 }
 
-$settingsJson = $this->build_lottie_settings_json($s);
+$veloria_settingsJson = $this->build_lottie_settings_json($veloria_s);
 
-$inner = sprintf(
+$veloria_inner = sprintf(
     '<div class="veloria-lottie-animation" data-settings="%s" data-json-url="%s"></div>',
-    esc_attr($settingsJson),
-    $jsonUrl
+    esc_attr($veloria_settingsJson),
+    $veloria_jsonUrl
 );
 
-$linkOn = !empty($s['link_switcher']) && $s['link_switcher'] === 'yes';
-$link   = $s['link'] ?? [];
+$veloria_linkOn = !empty($veloria_s['link_switcher']) && $veloria_s['link_switcher'] === 'yes';
+$veloria_link   = $veloria_s['link'] ?? [];
 
-if ($linkOn && is_array($link) && !empty($link['url'])) {
-    $href = esc_url($link['url']);
-    if ($href !== '') {
-        $target     = !empty($link['is_external']) ? ' target="_blank"' : '';
-        $relParts   = [];
-        if (!empty($link['is_external'])) {
-            $relParts[] = 'noopener';
-            $relParts[] = 'noreferrer';
+if ($veloria_linkOn && is_array($veloria_link) && !empty($veloria_link['url'])) {
+    $veloria_href = esc_url($veloria_link['url']);
+    if ($veloria_href !== '') {
+        $veloria_target     = !empty($veloria_link['is_external']) ? ' target="_blank"' : '';
+        $veloria_relParts   = [];
+        if (!empty($veloria_link['is_external'])) {
+            $veloria_relParts[] = 'noopener';
+            $veloria_relParts[] = 'noreferrer';
         }
-        if (!empty($link['nofollow'])) {
-            $relParts[] = 'nofollow';
+        if (!empty($veloria_link['nofollow'])) {
+            $veloria_relParts[] = 'nofollow';
         }
-        $relAttr = $relParts !== [] ? ' rel="' . esc_attr(implode(' ', $relParts)) . '"' : '';
-        $inner   = sprintf(
+        $veloria_relAttr = $veloria_relParts !== [] ? ' rel="' . esc_attr(implode(' ', $veloria_relParts)) . '"' : '';
+        $veloria_inner   = sprintf(
             '<a class="veloria-lottie-animation__link" href="%s"%s%s>%s</a>',
-            $href,
-            $target,
-            $relAttr,
-            $inner
+            $veloria_href,
+            $veloria_target,
+            $veloria_relAttr,
+            $veloria_inner
         );
     }
 }
 
 printf(
     '<div class="veloria-lottie-animation__wrapper">%s</div>',
-    $inner // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- href/attrs escaped above
+    $veloria_inner // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- href/attrs escaped above
 );

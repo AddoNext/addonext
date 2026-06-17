@@ -1,18 +1,18 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings = $this->get_settings_for_display();
-$class   = 'veloria-text-editor';
-if (!empty($settings['drop_cap'])) {
-    $class .= ' veloria-text-editor--drop-cap';
+$veloria_settings = $this->get_settings_for_display();
+$veloria_class   = 'veloria-text-editor';
+if (!empty($veloria_settings['drop_cap'])) {
+    $veloria_class .= ' veloria-text-editor--drop-cap';
 }
-if (!empty($settings['use_gradient'])) {
-    $class .= ' veloria-text-editor--gradient';
+if (!empty($veloria_settings['use_gradient'])) {
+    $veloria_class .= ' veloria-text-editor--gradient';
 }
-if (!empty($settings['text_3d'])) {
-    $class .= ' veloria-text-editor--3d';
+if (!empty($veloria_settings['text_3d'])) {
+    $veloria_class .= ' veloria-text-editor--3d';
 }
-$this->add_render_attribute('editor', 'class', $class);
+$this->add_render_attribute('editor', 'class', $veloria_class);
 $this->add_inline_editing_attributes('editor', 'advanced');
 ?>
-<div <?php $this->print_render_attribute_string('editor'); ?>><?php echo wp_kses_post($settings['editor'] ?? ''); ?></div>
+<div <?php $this->print_render_attribute_string('editor'); ?>><?php echo wp_kses_post($veloria_settings['editor'] ?? ''); ?></div>

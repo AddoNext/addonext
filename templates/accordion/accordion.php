@@ -1,51 +1,51 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings   = $this->get_settings_for_display();
-$tabs       = isset($settings['tabs']) ? $settings['tabs'] : [];
-$first_open = isset($settings['first_expanded']) && $settings['first_expanded'] === 'yes';
-$allow_multiple = isset($settings['allow_multiple']) && $settings['allow_multiple'] === 'yes';
-$title_tag  = isset($settings['title_html_tag']) ? $settings['title_html_tag'] : 'div';
-$title_tag  = \Elementor\Utils::validate_html_tag($title_tag);
-$has_icon   = !empty($settings['selected_icon']['value']);
+$veloria_settings   = $this->get_settings_for_display();
+$veloria_tabs       = isset($veloria_settings['tabs']) ? $veloria_settings['tabs'] : [];
+$veloria_first_open = isset($veloria_settings['first_expanded']) && $veloria_settings['first_expanded'] === 'yes';
+$veloria_allow_multiple = isset($veloria_settings['allow_multiple']) && $veloria_settings['allow_multiple'] === 'yes';
+$veloria_title_tag  = isset($veloria_settings['title_html_tag']) ? $veloria_settings['title_html_tag'] : 'div';
+$veloria_title_tag  = \Elementor\Utils::validate_html_tag($veloria_title_tag);
+$veloria_has_icon   = !empty($veloria_settings['selected_icon']['value']);
 
-if (empty($tabs)) {
+if (empty($veloria_tabs)) {
     return;
 }
 
-$accordion_id = 'veloria-accordion-' . $this->get_id();
-$this->add_render_attribute('wrapper', 'id', $accordion_id);
+$veloria_accordion_id = 'veloria-accordion-' . $this->get_id();
+$this->add_render_attribute('wrapper', 'id', $veloria_accordion_id);
 $this->add_render_attribute('wrapper', 'class', 'veloria-accordion');
-$this->add_render_attribute('wrapper', 'data-allow-multiple', $allow_multiple ? '1' : '0');
+$this->add_render_attribute('wrapper', 'data-allow-multiple', $veloria_allow_multiple ? '1' : '0');
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <?php foreach ($tabs as $index => $item) :
-        $is_open     = $first_open && $index === 0;
-        $item_class  = 'veloria-accordion__item' . ($is_open ? ' is-open' : '');
-        $item_key    = 'accordion_item_' . $index;
-        $content_key = $this->get_repeater_setting_key('tab_content', 'tabs', $index);
+    <?php foreach ($veloria_tabs as $veloria_index => $veloria_item) :
+        $veloria_is_open     = $veloria_first_open && $veloria_index === 0;
+        $veloria_item_class  = 'veloria-accordion__item' . ($veloria_is_open ? ' is-open' : '');
+        $veloria_item_key    = 'accordion_item_' . $veloria_index;
+        $veloria_content_key = $this->get_repeater_setting_key('tab_content', 'tabs', $veloria_index);
 
-        $this->add_render_attribute($item_key, 'class', $item_class);
-        $this->add_render_attribute($content_key, 'class', 'veloria-accordion__content');
-        $this->add_inline_editing_attributes($content_key, 'advanced');
+        $this->add_render_attribute($veloria_item_key, 'class', $veloria_item_class);
+        $this->add_render_attribute($veloria_content_key, 'class', 'veloria-accordion__content');
+        $this->add_inline_editing_attributes($veloria_content_key, 'advanced');
     ?>
-    <div <?php $this->print_render_attribute_string($item_key); ?>>
-        <<?php echo esc_attr($title_tag); ?> class="veloria-accordion__header" role="button" tabindex="0">
-            <?php if ($has_icon) : ?>
+    <div <?php $this->print_render_attribute_string($veloria_item_key); ?>>
+        <<?php echo esc_attr($veloria_title_tag); ?> class="veloria-accordion__header" role="button" tabindex="0">
+            <?php if ($veloria_has_icon) : ?>
                 <span class="veloria-accordion__icon veloria-accordion__icon--closed" aria-hidden="true">
-                    <?php \Elementor\Icons_Manager::render_icon($settings['selected_icon'], ['aria-hidden' => 'true']); ?>
+                    <?php \Elementor\Icons_Manager::render_icon($veloria_settings['selected_icon'], ['aria-hidden' => 'true']); ?>
                 </span>
                 <span class="veloria-accordion__icon veloria-accordion__icon--open" aria-hidden="true">
                     <?php
-                    $active_icon = isset($settings['selected_active_icon']['value']) ? $settings['selected_active_icon'] : $settings['selected_icon'];
-                    \Elementor\Icons_Manager::render_icon($active_icon, ['aria-hidden' => 'true']);
+                    $veloria_active_icon = isset($veloria_settings['selected_active_icon']['value']) ? $veloria_settings['selected_active_icon'] : $veloria_settings['selected_icon'];
+                    \Elementor\Icons_Manager::render_icon($veloria_active_icon, ['aria-hidden' => 'true']);
                     ?>
                 </span>
             <?php endif; ?>
-            <span class="veloria-accordion__title"><?php echo wp_kses_post($item['tab_title']); ?></span>
-        </<?php echo esc_attr($title_tag); ?>>
-        <div <?php $this->print_render_attribute_string($content_key); ?>>
-            <?php $this->print_text_editor($item['tab_content']); ?>
+            <span class="veloria-accordion__title"><?php echo wp_kses_post($veloria_item['tab_title']); ?></span>
+        </<?php echo esc_attr($veloria_title_tag); ?>>
+        <div <?php $this->print_render_attribute_string($veloria_content_key); ?>>
+            <?php $this->print_text_editor($veloria_item['tab_content']); ?>
         </div>
     </div>
     <?php endforeach; ?>

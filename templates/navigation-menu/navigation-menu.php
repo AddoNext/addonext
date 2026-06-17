@@ -7,9 +7,9 @@
 
 defined('ABSPATH') || exit;
 
-$menu_id = isset($menu_id) ? (int) $menu_id : 0;
+$veloria_menu_id = isset($veloria_menu_id) ? (int) $veloria_menu_id : 0;
 
-if ($menu_id <= 0) {
+if ($veloria_menu_id <= 0) {
     if (\Veloria\Widgets\NavigationMenu\NavigationMenu::is_elementor_edit_canvas()) {
         echo '<p class="veloria-nav-menu__placeholder">' . esc_html__('Select a WordPress menu in the widget settings.', 'veloria') . '</p>';
     }
@@ -23,7 +23,7 @@ if ($menu_id <= 0) {
         <?php
         wp_nav_menu(
             [
-                'menu'           => $menu_id,
+                'menu'           => $veloria_menu_id,
                 'container'      => false,
                 'menu_id'        => 'veloria-nav-' . $this->get_id(),
                 'menu_class'     => 'menu veloria-nav-menu__root',

@@ -444,28 +444,30 @@ class ProductImage extends WidgetBase
             return;
         }
 
-        $gallery_images = self::build_gallery_images($product);
-        $show_thumbnails = !isset($settings['show_thumbnails']) || $settings['show_thumbnails'] === 'yes';
-        $raw_zoom = isset($settings['zoom_mode']) ? (string) $settings['zoom_mode'] : 'lightbox';
-        $zoom_mode = ($raw_zoom === 'pan' || $raw_zoom === 'hover') ? 'pan' : 'lightbox';
-        $has_multiple = count($gallery_images) > 1;
-        $show_thumb_row = $show_thumbnails && $has_multiple;
+        $veloria_gallery_images = self::build_gallery_images($product);
+        $veloria_show_thumbnails = !isset($settings['show_thumbnails']) || $settings['show_thumbnails'] === 'yes';
+        $veloria_raw_zoom = isset($settings['zoom_mode']) ? (string) $settings['zoom_mode'] : 'lightbox';
+        $veloria_zoom_mode = ($veloria_raw_zoom === 'pan' || $veloria_raw_zoom === 'hover') ? 'pan' : 'lightbox';
+        $veloria_has_multiple = count($veloria_gallery_images) > 1;
+        $veloria_show_thumb_row = $veloria_show_thumbnails && $veloria_has_multiple;
 
-        $pan_scale = isset($settings['pan_zoom_scale']) ? (float) $settings['pan_zoom_scale'] : 2.25;
-        if ($pan_scale < 1.25) {
-            $pan_scale = 1.25;
+        $veloria_pan_scale = isset($settings['pan_zoom_scale']) ? (float) $settings['pan_zoom_scale'] : 2.25;
+        if ($veloria_pan_scale < 1.25) {
+            $veloria_pan_scale = 1.25;
         }
-        if ($pan_scale > 4) {
-            $pan_scale = 4;
+        if ($veloria_pan_scale > 4) {
+            $veloria_pan_scale = 4;
         }
 
-        $images_json = wp_json_encode(
-            $gallery_images,
+        $veloria_images_json = wp_json_encode(
+            $veloria_gallery_images,
             JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
         );
-        if (!is_string($images_json)) {
-            $images_json = '[]';
+        if (!is_string($veloria_images_json)) {
+            $veloria_images_json = '[]';
         }
+
+        $veloria_product = $product;
 
         $path = VELORIA_DIR . 'templates/product-image/product-image.php';
         if (!is_readable($path)) {

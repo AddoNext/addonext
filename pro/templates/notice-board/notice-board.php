@@ -4,63 +4,63 @@ defined('ABSPATH') || exit;
 if (emt_fs()->can_use_premium_code__premium_only()) {
     if (emt_fs()->is_plan('pro')) {
 
-$settings = $this->get_settings_for_display();
-$items = isset($settings['notice_items']) && is_array($settings['notice_items']) ? $settings['notice_items'] : [];
-$expand_all = !empty($settings['expand_all_initial']) && $settings['expand_all_initial'] === 'yes';
-$widget_id = $this->get_id();
-$root_class = 'veloria-notice-board' . ($expand_all ? ' veloria-notice-board--expand-all' : '');
+$veloria_settings = $this->get_settings_for_display();
+$veloria_items = isset($veloria_settings['notice_items']) && is_array($veloria_settings['notice_items']) ? $veloria_settings['notice_items'] : [];
+$veloria_expand_all = !empty($veloria_settings['expand_all_initial']) && $veloria_settings['expand_all_initial'] === 'yes';
+$veloria_widget_id = $this->get_id();
+$veloria_root_class = 'veloria-notice-board' . ($veloria_expand_all ? ' veloria-notice-board--expand-all' : '');
 ?>
-<div class="<?php echo esc_attr($root_class); ?>">
+<div class="<?php echo esc_attr($veloria_root_class); ?>">
     <div class="veloria-notice-board__frame">
         <div class="veloria-notice-board__header-bar" aria-hidden="true"></div>
         <div class="veloria-notice-board__surface">
-            <?php if ($items === []) : ?>
+            <?php if ($veloria_items === []) : ?>
                 <p class="veloria-notice-board__empty"><?php esc_html_e('Add notices in the widget panel.', 'veloria'); ?></p>
             <?php else : ?>
                 <div class="veloria-notice-board__list">
-                    <?php foreach ($items as $index => $item) : ?>
+                    <?php foreach ($veloria_items as $veloria_index => $veloria_item) : ?>
                         <?php
-                        if (!is_array($item)) {
+                        if (!is_array($veloria_item)) {
                             continue;
                         }
-                        $date = isset($item['item_date']) ? (string) $item['item_date'] : '';
-                        $title = isset($item['item_title']) ? (string) $item['item_title'] : '';
-                        $description = isset($item['item_description']) ? (string) $item['item_description'] : '';
-                        $head_id = 'nb-h-' . $widget_id . '-' . (int) $index;
-                        $panel_id = 'nb-p-' . $widget_id . '-' . (int) $index;
+                        $veloria_date = isset($veloria_item['item_date']) ? (string) $veloria_item['item_date'] : '';
+                        $veloria_title = isset($veloria_item['item_title']) ? (string) $veloria_item['item_title'] : '';
+                        $veloria_description = isset($veloria_item['item_description']) ? (string) $veloria_item['item_description'] : '';
+                        $veloria_head_id = 'nb-h-' . $veloria_widget_id . '-' . (int) $veloria_index;
+                        $veloria_panel_id = 'nb-p-' . $veloria_widget_id . '-' . (int) $veloria_index;
                         ?>
                         <div class="veloria-notice-board__item">
                             <div class="veloria-notice-board__item-inner">
                                 <span class="veloria-notice-board__pin" aria-hidden="true"></span>
-                                <?php if ($expand_all) : ?>
-                                    <div class="veloria-notice-board__heading" id="<?php echo esc_attr($head_id); ?>">
-                                        <?php if ($date !== '') : ?>
-                                            <span class="veloria-notice-board__date"><?php echo esc_html($date); ?></span>
+                                <?php if ($veloria_expand_all) : ?>
+                                    <div class="veloria-notice-board__heading" id="<?php echo esc_attr($veloria_head_id); ?>">
+                                        <?php if ($veloria_date !== '') : ?>
+                                            <span class="veloria-notice-board__date"><?php echo esc_html($veloria_date); ?></span>
                                         <?php endif; ?>
-                                        <?php if ($title !== '') : ?>
-                                            <span class="veloria-notice-board__title"><?php echo esc_html($title); ?></span>
+                                        <?php if ($veloria_title !== '') : ?>
+                                            <span class="veloria-notice-board__title"><?php echo esc_html($veloria_title); ?></span>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="veloria-notice-board__panel" id="<?php echo esc_attr($panel_id); ?>" role="region" aria-labelledby="<?php echo esc_attr($head_id); ?>">
+                                    <div class="veloria-notice-board__panel" id="<?php echo esc_attr($veloria_panel_id); ?>" role="region" aria-labelledby="<?php echo esc_attr($veloria_head_id); ?>">
                                         <div class="veloria-notice-board__description">
-                                            <?php echo wp_kses_post(wpautop($description)); ?>
+                                            <?php echo wp_kses_post(wpautop($veloria_description)); ?>
                                         </div>
                                     </div>
                                 <?php else : ?>
-                                    <button type="button" class="veloria-notice-board__trigger" id="<?php echo esc_attr($head_id); ?>"
-                                        aria-expanded="false" aria-controls="<?php echo esc_attr($panel_id); ?>">
-                                        <?php if ($date !== '') : ?>
-                                            <span class="veloria-notice-board__date"><?php echo esc_html($date); ?></span>
+                                    <button type="button" class="veloria-notice-board__trigger" id="<?php echo esc_attr($veloria_head_id); ?>"
+                                        aria-expanded="false" aria-controls="<?php echo esc_attr($veloria_panel_id); ?>">
+                                        <?php if ($veloria_date !== '') : ?>
+                                            <span class="veloria-notice-board__date"><?php echo esc_html($veloria_date); ?></span>
                                         <?php endif; ?>
-                                        <?php if ($title !== '') : ?>
-                                            <span class="veloria-notice-board__title"><?php echo esc_html($title); ?></span>
+                                        <?php if ($veloria_title !== '') : ?>
+                                            <span class="veloria-notice-board__title"><?php echo esc_html($veloria_title); ?></span>
                                         <?php endif; ?>
                                         <span class="veloria-notice-board__chevron" aria-hidden="true"></span>
                                     </button>
-                                    <div class="veloria-notice-board__panel" id="<?php echo esc_attr($panel_id); ?>" role="region"
-                                        aria-labelledby="<?php echo esc_attr($head_id); ?>" hidden>
+                                    <div class="veloria-notice-board__panel" id="<?php echo esc_attr($veloria_panel_id); ?>" role="region"
+                                        aria-labelledby="<?php echo esc_attr($veloria_head_id); ?>" hidden>
                                         <div class="veloria-notice-board__description">
-                                            <?php echo wp_kses_post(wpautop($description)); ?>
+                                            <?php echo wp_kses_post(wpautop($veloria_description)); ?>
                                         </div>
                                     </div>
                                 <?php endif; ?>

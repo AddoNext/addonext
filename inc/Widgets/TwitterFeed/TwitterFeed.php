@@ -381,10 +381,10 @@ class TwitterFeed extends WidgetBase
             return;
         }
 
-        $tweets = $this->fetch_tweets($username, $token, $settings);
-        $tweets = apply_filters('veloria_twitter_feed_tweets', $tweets, $settings, $username);
+        $veloria_tweets = $this->fetch_tweets($username, $token, $settings);
+        $veloria_tweets = apply_filters('veloria_twitter_feed_tweets', $veloria_tweets, $settings, $username);
 
-        if ($tweets === []) {
+        if ($veloria_tweets === []) {
             if (current_user_can('manage_options')) {
                 echo '<div class="veloria-twitter-feed veloria-twitter-feed--empty"><p class="veloria-twitter-feed__notice">';
                 echo esc_html__('No posts returned. Check the username, token, and API access (v2 user timeline).', 'veloria');
@@ -394,7 +394,8 @@ class TwitterFeed extends WidgetBase
             return;
         }
 
-        $display_username = self::normalize_username($username);
+        $veloria_display_username = self::normalize_username($username);
+        $veloria_settings = $settings;
         $path = VELORIA_DIR . 'templates/twitter-feed/twitter-feed.php';
         if (is_readable($path)) {
             include $path;

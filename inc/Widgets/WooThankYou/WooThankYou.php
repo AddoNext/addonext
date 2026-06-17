@@ -613,7 +613,7 @@ class WooThankYou extends WidgetBase
             return;
         }
 
-        $settings = $this->get_settings_for_display();
+        $veloria_settings = $this->get_settings_for_display();
         $order = $this->resolve_order();
         $use_preview = $this->is_elementor_design_context();
 
@@ -639,39 +639,39 @@ class WooThankYou extends WidgetBase
         }
 
         $track_link = $this->resolve_link(
-            isset($settings['track_url']) && is_array($settings['track_url']) ? $settings['track_url'] : [],
+            isset($veloria_settings['track_url']) && is_array($veloria_settings['track_url']) ? $veloria_settings['track_url'] : [],
             $view_order_fallback
         );
 
         $continue_link = $this->resolve_link(
-            isset($settings['continue_url']) && is_array($settings['continue_url']) ? $settings['continue_url'] : [],
+            isset($veloria_settings['continue_url']) && is_array($veloria_settings['continue_url']) ? $veloria_settings['continue_url'] : [],
             $fallback_shop
         );
 
         $receipt_link = $this->resolve_link(
-            isset($settings['receipt_url']) && is_array($settings['receipt_url']) ? $settings['receipt_url'] : [],
+            isset($veloria_settings['receipt_url']) && is_array($veloria_settings['receipt_url']) ? $veloria_settings['receipt_url'] : [],
             $view_order_fallback
         );
 
         if ($use_preview && !$order) {
-            $order_number = '#12848';
-            $order_date = date_i18n(get_option('date_format'), strtotime('2023-12-16'));
-            $order_total = function_exists('wc_price') ? wc_price(313.49) : '$313.49';
-            $payment_label = __('Credit Card', 'veloria');
+            $veloria_order_number = '#12848';
+            $veloria_order_date = date_i18n(get_option('date_format'), strtotime('2023-12-16'));
+            $veloria_order_total = function_exists('wc_price') ? wc_price(313.49) : '$313.49';
+            $veloria_payment_label = __('Credit Card', 'veloria');
         } elseif ($order instanceof \WC_Order) {
-            $order_number = '#' . $order->get_order_number();
+            $veloria_order_number = '#' . $order->get_order_number();
             $created = $order->get_date_created();
-            $order_date = $created ? wc_format_datetime($created) : '';
-            $order_total = wp_kses_post($order->get_formatted_order_total());
-            $payment_label = $order->get_payment_method_title();
-            if ($payment_label === '') {
-                $payment_label = __('N/A', 'veloria');
+            $veloria_order_date = $created ? wc_format_datetime($created) : '';
+            $veloria_order_total = wp_kses_post($order->get_formatted_order_total());
+            $veloria_payment_label = $order->get_payment_method_title();
+            if ($veloria_payment_label === '') {
+                $veloria_payment_label = __('N/A', 'veloria');
             }
         } else {
-            $order_number = '';
-            $order_date = '';
-            $order_total = '';
-            $payment_label = '';
+            $veloria_order_number = '';
+            $veloria_order_date = '';
+            $veloria_order_total = '';
+            $veloria_payment_label = '';
         }
 
         $this->add_link_attributes('veloria_wty_track', [

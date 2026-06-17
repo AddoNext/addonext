@@ -1,43 +1,43 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings   = $this->get_settings_for_display();
-$map_source = isset($settings['map_source']) ? $settings['map_source'] : 'address';
-$map_url    = '';
+$veloria_settings   = $this->get_settings_for_display();
+$veloria_map_source = isset($veloria_settings['map_source']) ? $veloria_settings['map_source'] : 'address';
+$veloria_map_url    = '';
 
-if ($map_source === 'url') {
-    $map_url = isset($settings['map_url']['url']) ? $settings['map_url']['url'] : '';
-} elseif ($map_source === 'coordinates') {
-    $lat  = isset($settings['latitude']) ? (float) $settings['latitude'] : 51.5074;
-    $lng  = isset($settings['longitude']) ? (float) $settings['longitude'] : -0.1278;
-    $zoom = isset($settings['zoom']['size']) ? (int) $settings['zoom']['size'] : 14;
-    $map_url = 'https://www.google.com/maps?q=' . $lat . ',' . $lng . '&output=embed&z=' . $zoom;
+if ($veloria_map_source === 'url') {
+    $veloria_map_url = isset($veloria_settings['map_url']['url']) ? $veloria_settings['map_url']['url'] : '';
+} elseif ($veloria_map_source === 'coordinates') {
+    $veloria_lat  = isset($veloria_settings['latitude']) ? (float) $veloria_settings['latitude'] : 51.5074;
+    $veloria_lng  = isset($veloria_settings['longitude']) ? (float) $veloria_settings['longitude'] : -0.1278;
+    $veloria_zoom = isset($veloria_settings['zoom']['size']) ? (int) $veloria_settings['zoom']['size'] : 14;
+    $veloria_map_url = 'https://www.google.com/maps?q=' . $veloria_lat . ',' . $veloria_lng . '&output=embed&z=' . $veloria_zoom;
 } else {
-    $address = isset($settings['address']) ? $settings['address'] : 'London, UK';
-    $zoom   = isset($settings['zoom']['size']) ? (int) $settings['zoom']['size'] : 14;
-    $map_url = 'https://www.google.com/maps?q=' . rawurlencode($address) . '&output=embed&z=' . $zoom;
+    $veloria_address = isset($veloria_settings['address']) ? $veloria_settings['address'] : 'London, UK';
+    $veloria_zoom   = isset($veloria_settings['zoom']['size']) ? (int) $veloria_settings['zoom']['size'] : 14;
+    $veloria_map_url = 'https://www.google.com/maps?q=' . rawurlencode($veloria_address) . '&output=embed&z=' . $veloria_zoom;
 }
 
-$show_address_block = !empty($settings['show_address_block']);
-$address_position   = isset($settings['address_position']) && $settings['address_position'] === 'top' ? 'top' : 'bottom';
-$position_class     = $address_position === 'top' ? 'is-top' : 'is-bottom';
+$veloria_show_address_block = !empty($veloria_settings['show_address_block']);
+$veloria_address_position   = isset($veloria_settings['address_position']) && $veloria_settings['address_position'] === 'top' ? 'top' : 'bottom';
+$veloria_position_class     = $veloria_address_position === 'top' ? 'is-top' : 'is-bottom';
 ?>
 <div class="veloria-advanced-google-map">
-    <?php if ($show_address_block && $address_position === 'top') : ?>
-        <div class="veloria-advanced-google-map__address <?php echo esc_attr($position_class); ?>">
-            <?php if (!empty($settings['address_title'])) : ?>
-                <div class="veloria-advanced-google-map__address-title"><?php echo esc_html($settings['address_title']); ?></div>
+    <?php if ($veloria_show_address_block && $veloria_address_position === 'top') : ?>
+        <div class="veloria-advanced-google-map__address <?php echo esc_attr($veloria_position_class); ?>">
+            <?php if (!empty($veloria_settings['address_title'])) : ?>
+                <div class="veloria-advanced-google-map__address-title"><?php echo esc_html($veloria_settings['address_title']); ?></div>
             <?php endif; ?>
-            <?php if (!empty($settings['address_description'])) : ?>
-                <div class="veloria-advanced-google-map__address-desc"><?php echo wp_kses_post($settings['address_description']); ?></div>
+            <?php if (!empty($veloria_settings['address_description'])) : ?>
+                <div class="veloria-advanced-google-map__address-desc"><?php echo wp_kses_post($veloria_settings['address_description']); ?></div>
             <?php endif; ?>
         </div>
     <?php endif; ?>
 
-    <?php if ($map_url !== '') : ?>
+    <?php if ($veloria_map_url !== '') : ?>
         <iframe
             class="veloria-advanced-google-map__frame"
-            src="<?php echo esc_url($map_url); ?>"
+            src="<?php echo esc_url($veloria_map_url); ?>"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen
@@ -46,13 +46,13 @@ $position_class     = $address_position === 'top' ? 'is-top' : 'is-bottom';
         <div class="veloria-advanced-google-map__placeholder"><?php esc_html_e('Set map source in widget settings.', 'veloria'); ?></div>
     <?php endif; ?>
 
-    <?php if ($show_address_block && $address_position === 'bottom') : ?>
-        <div class="veloria-advanced-google-map__address <?php echo esc_attr($position_class); ?>">
-            <?php if (!empty($settings['address_title'])) : ?>
-                <div class="veloria-advanced-google-map__address-title"><?php echo esc_html($settings['address_title']); ?></div>
+    <?php if ($veloria_show_address_block && $veloria_address_position === 'bottom') : ?>
+        <div class="veloria-advanced-google-map__address <?php echo esc_attr($veloria_position_class); ?>">
+            <?php if (!empty($veloria_settings['address_title'])) : ?>
+                <div class="veloria-advanced-google-map__address-title"><?php echo esc_html($veloria_settings['address_title']); ?></div>
             <?php endif; ?>
-            <?php if (!empty($settings['address_description'])) : ?>
-                <div class="veloria-advanced-google-map__address-desc"><?php echo wp_kses_post($settings['address_description']); ?></div>
+            <?php if (!empty($veloria_settings['address_description'])) : ?>
+                <div class="veloria-advanced-google-map__address-desc"><?php echo wp_kses_post($veloria_settings['address_description']); ?></div>
             <?php endif; ?>
         </div>
     <?php endif; ?>

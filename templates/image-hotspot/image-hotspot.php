@@ -1,60 +1,60 @@
 <?php
 defined('ABSPATH') || exit;
 
-$settings    = $this->get_settings_for_display();
-$image_arr   = isset($settings['image']) ? $settings['image'] : [];
-$hotspots    = isset($settings['hotspots']) && is_array($settings['hotspots']) ? $settings['hotspots'] : [];
-$trigger     = isset($settings['tooltip_trigger']) ? $settings['tooltip_trigger'] : 'hover';
-$tooltip_pos = isset($settings['tooltip_position']) ? $settings['tooltip_position'] : 'bottom';
-$pulse       = !empty($settings['hotspot_animation']) && $settings['hotspot_animation'] === 'yes';
+$veloria_settings    = $this->get_settings_for_display();
+$veloria_image_arr   = isset($veloria_settings['image']) ? $veloria_settings['image'] : [];
+$veloria_hotspots    = isset($veloria_settings['hotspots']) && is_array($veloria_settings['hotspots']) ? $veloria_settings['hotspots'] : [];
+$veloria_trigger     = isset($veloria_settings['tooltip_trigger']) ? $veloria_settings['tooltip_trigger'] : 'hover';
+$veloria_tooltip_pos = isset($veloria_settings['tooltip_position']) ? $veloria_settings['tooltip_position'] : 'bottom';
+$veloria_pulse       = !empty($veloria_settings['hotspot_animation']) && $veloria_settings['hotspot_animation'] === 'yes';
 
-$wrapper_classes = [
+$veloria_wrapper_classes = [
     'veloria-image-hotspot',
-    'veloria-image-hotspot--trigger-' . esc_attr($trigger),
-    'veloria-image-hotspot--tooltip-' . esc_attr($tooltip_pos),
+    'veloria-image-hotspot--trigger-' . esc_attr($veloria_trigger),
+    'veloria-image-hotspot--tooltip-' . esc_attr($veloria_tooltip_pos),
 ];
-if ($pulse) {
-    $wrapper_classes[] = 'veloria-image-hotspot--pulse';
+if ($veloria_pulse) {
+    $veloria_wrapper_classes[] = 'veloria-image-hotspot--pulse';
 }
-if ($trigger === 'click') {
-    $wrapper_classes[] = 'elementor-clickable';
+if ($veloria_trigger === 'click') {
+    $veloria_wrapper_classes[] = 'elementor-clickable';
 }
-$this->add_render_attribute('wrapper', 'class', $wrapper_classes);
-$this->add_render_attribute('wrapper', 'data-trigger', esc_attr($trigger));
+$this->add_render_attribute('wrapper', 'class', $veloria_wrapper_classes);
+$this->add_render_attribute('wrapper', 'data-trigger', esc_attr($veloria_trigger));
 
-$image_url = '';
-$image_alt = '';
-$image_id  = isset($image_arr['id']) ? (int) $image_arr['id'] : 0;
+$veloria_image_url = '';
+$veloria_image_alt = '';
+$veloria_image_id  = isset($veloria_image_arr['id']) ? (int) $veloria_image_arr['id'] : 0;
 
-if ($image_id) {
-    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
-    $image_url = wp_get_attachment_image_url($image_id, 'full');
+if ($veloria_image_id) {
+    $veloria_image_alt = get_post_meta($veloria_image_id, '_wp_attachment_image_alt', true);
+    $veloria_image_url = wp_get_attachment_image_url($veloria_image_id, 'full');
 }
-if ($image_url === '' && !empty($image_arr['url'])) {
-    $image_url = $image_arr['url'];
+if ($veloria_image_url === '' && !empty($veloria_image_arr['url'])) {
+    $veloria_image_url = $veloria_image_arr['url'];
 }
-if ($image_url === '') {
-    $image_url = \Elementor\Utils::get_placeholder_image_src();
+if ($veloria_image_url === '') {
+    $veloria_image_url = \Elementor\Utils::get_placeholder_image_src();
 }
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="veloria-image-hotspot__img" loading="lazy">
-    <?php foreach ($hotspots as $index => $h) :
-        $x = isset($h['x']['size']) ? (float) $h['x']['size'] : 50;
-        $y = isset($h['y']['size']) ? (float) $h['y']['size'] : 50;
-        $color = isset($h['hotspot_color']) ? esc_attr($h['hotspot_color']) : '#605BE5';
-        $point_style = sprintf('left:%s%%; top:%s%%; background-color:%s; --hotspot-color:%s;', $x, $y, $color, $color);
+    <img src="<?php echo esc_url($veloria_image_url); ?>" alt="<?php echo esc_attr($veloria_image_alt); ?>" class="veloria-image-hotspot__img" loading="lazy">
+    <?php foreach ($veloria_hotspots as $veloria_index => $veloria_h) :
+        $veloria_x = isset($veloria_h['x']['size']) ? (float) $veloria_h['x']['size'] : 50;
+        $veloria_y = isset($veloria_h['y']['size']) ? (float) $veloria_h['y']['size'] : 50;
+        $veloria_color = isset($veloria_h['hotspot_color']) ? esc_attr($veloria_h['hotspot_color']) : '#605BE5';
+        $veloria_point_style = sprintf('left:%s%%; top:%s%%; background-color:%s; --hotspot-color:%s;', $veloria_x, $veloria_y, $veloria_color, $veloria_color);
     ?>
-    <span class="veloria-image-hotspot__point elementor-repeater-item-<?php echo esc_attr($h['_id'] ?? $index); ?>" style="<?php echo esc_attr($point_style); ?>" data-index="<?php echo esc_attr($index); ?>">
-        <?php if ($pulse) : ?>
+    <span class="veloria-image-hotspot__point elementor-repeater-item-<?php echo esc_attr($veloria_h['_id'] ?? $veloria_index); ?>" style="<?php echo esc_attr($veloria_point_style); ?>" data-index="<?php echo esc_attr($veloria_index); ?>">
+        <?php if ($veloria_pulse) : ?>
         <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
         <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
         <span class="veloria-image-hotspot__pulse" aria-hidden="true"></span>
         <?php endif; ?>
         <span class="veloria-image-hotspot__tooltip">
-            <?php if (!empty($h['title'])) : ?><span class="veloria-image-hotspot__tooltip-title"><?php echo wp_kses_post($h['title']); ?></span><?php endif; ?>
-            <?php if (!empty($h['description'])) : ?><span class="veloria-image-hotspot__tooltip-desc"><?php echo wp_kses_post($h['description']); ?></span><?php endif; ?>
-            <?php if (!empty($h['price'])) : ?><span class="veloria-image-hotspot__tooltip-price"><?php echo wp_kses_post($h['price']); ?></span><?php endif; ?>
+            <?php if (!empty($veloria_h['title'])) : ?><span class="veloria-image-hotspot__tooltip-title"><?php echo wp_kses_post($veloria_h['title']); ?></span><?php endif; ?>
+            <?php if (!empty($veloria_h['description'])) : ?><span class="veloria-image-hotspot__tooltip-desc"><?php echo wp_kses_post($veloria_h['description']); ?></span><?php endif; ?>
+            <?php if (!empty($veloria_h['price'])) : ?><span class="veloria-image-hotspot__tooltip-price"><?php echo wp_kses_post($veloria_h['price']); ?></span><?php endif; ?>
         </span>
     </span>
     <?php endforeach; ?>
