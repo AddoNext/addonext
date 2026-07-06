@@ -4,6 +4,7 @@ import apiFetch from "@wordpress/api-fetch";
 import { STORE_NAME } from "../../../store/admin";
 import type { LicenseData } from "../../../store/types";
 import UpgradeToProModal from "../../components/UpgradeToProModal/UpgradeToProModal";
+import { readHasProAccountApi } from "../../utils/adminData";
 import { useToast } from "../../contexts/ToastContext/ToastContext";
 import { ExtensionSettingsProvider } from "../../contexts/ExtensionSettingsContext/ExtensionSettingsContext";
 import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
@@ -129,6 +130,7 @@ function normalizeExtension(raw: unknown): ExtensionItem | null {
 }
 
 const ExtensionsPage: React.FC = () => {
+  const hasProAccountApi = readHasProAccountApi();
   const { addToast } = useToast();
   const [extensions, setExtensions] = useState<ExtensionItem[]>([]);
   const [draftActiveIds, setDraftActiveIds] = useState<string[]>([]);
@@ -144,8 +146,12 @@ const ExtensionsPage: React.FC = () => {
   );
 
   useEffect(() => {
+    if (!hasProAccountApi) {
+      return;
+    }
+
     void fetchLicense();
-  }, [fetchLicense]);
+  }, [fetchLicense, hasProAccountApi]);
 
   const applyExtensionsFromServer = useCallback((list: ExtensionItem[]) => {
     setExtensions(list);
@@ -278,10 +284,25 @@ const ExtensionsPage: React.FC = () => {
     );
   }, []);
 
-  const handleLockedToggleAttempt = useCallback((extensionId: string) => {
-    setPreviewLockedExtensionId(extensionId);
+  const handleLockedToggleAttempt = useCallback(
+    (extensionId: string) => {
+      if (!hasProAccountApi) {
+        return;
+      }
+
+      setPreviewLockedExtensionId(extensionId);
+      setUpgradeOpen(true);
+    },
+    [hasProAccountApi]
+  );
+
+  const handleLockedUpgrade = useCallback(() => {
+    if (!hasProAccountApi) {
+      return;
+    }
+
     setUpgradeOpen(true);
-  }, []);
+  }, [hasProAccountApi]);
 
   const handleUpgradeModalClose = useCallback(() => {
     setUpgradeOpen(false);
@@ -299,15 +320,17 @@ const ExtensionsPage: React.FC = () => {
         unlockedLength={unlocked.length}
         onToggle={handleToggle}
         onEnableAll={handleEnableAll}
-        onLockedUpgrade={() => setUpgradeOpen(true)}
-        onLockedToggleAttempt={handleLockedToggleAttempt}
+        onLockedUpgrade={hasProAccountApi ? handleLockedUpgrade : undefined}
+        onLockedToggleAttempt={hasProAccountApi ? handleLockedToggleAttempt : undefined}
         previewLockedExtensionId={previewLockedExtensionId}
       />
-      <UpgradeToProModal
-        open={upgradeOpen}
-        onClose={handleUpgradeModalClose}
-        upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
-      />
+      {hasProAccountApi && (
+        <UpgradeToProModal
+          open={upgradeOpen}
+          onClose={handleUpgradeModalClose}
+          upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
+        />
+      )}
     </ExtensionSettingsProvider>
   );
 };

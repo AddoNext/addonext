@@ -9,9 +9,11 @@ import { useWidgetsState } from "../../contexts/WidgetsStateContext/WidgetsState
 import { useScreenSave } from "../../contexts/ScreenSaveContext/ScreenSaveContext";
 import type { LicenseData, Widget } from "../../../store/types";
 import type { WidgetFilter } from "./types";
+import { readHasProAccountApi } from "../../utils/adminData";
 import styles from "./WidgetsPage.module.scss";
 
 const WidgetsPage: React.FC = () => {
+  const hasProAccountApi = readHasProAccountApi();
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState<WidgetFilter>("all");
   const [upgradeOpen, setUpgradeOpen] = useState(false);
@@ -20,8 +22,12 @@ const WidgetsPage: React.FC = () => {
   const { fetchLicense } = useDispatch(STORE_NAME) as { fetchLicense: () => Promise<void> };
 
   useEffect(() => {
+    if (!hasProAccountApi) {
+      return;
+    }
+
     void fetchLicense();
-  }, [fetchLicense]);
+  }, [fetchLicense, hasProAccountApi]);
 
   const widgetsState = useWidgetsState();
   const getSaveHandler = useCallback(
@@ -100,10 +106,25 @@ const WidgetsPage: React.FC = () => {
     toggleCategory(slug, enable, categoryWidgetIds);
   };
 
-  const handleLockedToggleAttempt = useCallback((widgetId: string) => {
-    setPreviewLockedWidgetId(widgetId);
+  const handleLockedToggleAttempt = useCallback(
+    (widgetId: string) => {
+      if (!hasProAccountApi) {
+        return;
+      }
+
+      setPreviewLockedWidgetId(widgetId);
+      setUpgradeOpen(true);
+    },
+    [hasProAccountApi]
+  );
+
+  const handleLockedUpgrade = useCallback(() => {
+    if (!hasProAccountApi) {
+      return;
+    }
+
     setUpgradeOpen(true);
-  }, []);
+  }, [hasProAccountApi]);
 
   const handleUpgradeModalClose = useCallback(() => {
     setUpgradeOpen(false);
@@ -136,8 +157,8 @@ const WidgetsPage: React.FC = () => {
                 widgets={widgetsByCategory[slug] ?? []}
                 onToggle={toggleWidget}
                 onToggleAll={handleToggleCategory}
-                onLockedUpgrade={() => setUpgradeOpen(true)}
-                onLockedToggleAttempt={handleLockedToggleAttempt}
+                onLockedUpgrade={hasProAccountApi ? handleLockedUpgrade : undefined}
+                onLockedToggleAttempt={hasProAccountApi ? handleLockedToggleAttempt : undefined}
                 previewLockedWidgetId={previewLockedWidgetId}
               />
             ))}
@@ -150,11 +171,13 @@ const WidgetsPage: React.FC = () => {
         </>
       )}
 
-      <UpgradeToProModal
-        open={upgradeOpen}
-        onClose={handleUpgradeModalClose}
-        upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
-      />
+      {hasProAccountApi && (
+        <UpgradeToProModal
+          open={upgradeOpen}
+          onClose={handleUpgradeModalClose}
+          upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
+        />
+      )}
     </div>
   );
 };

@@ -138,7 +138,7 @@ class Veloria
             }
         }
 
-        if (!defined('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED')) {
+        if (!defined('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED') && veloria_has_pro_account_api()) {
             emty_container(\Veloria\Admin\FreeAccountController::class);
         }
     }

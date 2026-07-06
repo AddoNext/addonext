@@ -57,10 +57,14 @@ export const App = () => {
   };
 
   useEffect(() => {
+    if (!hasProAccountApi) {
+      return;
+    }
+
     if (licenseData === null && !licenseResolving) {
       void fetchLicense();
     }
-  }, [licenseData, licenseResolving, fetchLicense]);
+  }, [hasProAccountApi, licenseData, licenseResolving, fetchLicense]);
 
   const isLicenseActive = licenseData?.is_active === true;
 
@@ -70,11 +74,6 @@ export const App = () => {
         { label: "Widgets", slug: "widgets", selected: true, screen: <WidgetsPage /> },
         { label: "Extensions", slug: "extensions", screen: <ExtensionsPage /> },
         { label: "Settings", slug: "settings", screen: <SettingsPage /> },
-        {
-          label: isLicenseActive ? "License" : "Upgrade",
-          slug: "license",
-          screen: <LicensePage />,
-        },
       ];
 
       if (hasProAccountApi) {
@@ -82,6 +81,11 @@ export const App = () => {
           label: "Templates",
           slug: "templates",
           screen: <TemplatesPage />,
+        });
+        items.push({
+          label: isLicenseActive ? "License" : "Upgrade",
+          slug: "license",
+          screen: <LicensePage />,
         });
       }
 

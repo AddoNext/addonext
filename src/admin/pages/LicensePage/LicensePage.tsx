@@ -21,7 +21,6 @@ import {
 import { STORE_NAME } from "../../../store/admin";
 import type { LicenseData } from "../../../store/types";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import UpgradeOfferScreen from "../../components/UpgradeOfferScreen/UpgradeOfferScreen";
 import { readHasProAccountApi } from "../../utils/adminData";
 import styles from "./LicensePage.module.scss";
 
@@ -116,15 +115,7 @@ const LicensePage: React.FC = () => {
   const hasProAccountApi = readHasProAccountApi();
 
   if (!hasProAccountApi) {
-    return (
-      <div className={styles.page}>
-        <UpgradeOfferScreen
-          title="Upgrade to Veloria Pro"
-          description="Get additional widgets, templates, and priority support with the separate Pro version from Elementrify."
-          upgradeUrl={data.upgrade_url?.trim() ?? ""}
-        />
-      </div>
-    );
+    return null;
   }
 
   if (licenseError && !data.is_active && !data.upgrade_url) {
