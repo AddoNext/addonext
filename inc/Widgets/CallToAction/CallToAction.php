@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\CallToAction;
+namespace Addonext\Widgets\CallToAction;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
@@ -13,12 +13,12 @@ class CallToAction extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-call-to-action veloria-icon';
+        return 'eicon-call-to-action addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-call-to-action';
+        return 'addonext-call-to-action';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class CallToAction extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Call to Action', 'veloria');
+        return __('Call to Action', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Conversion focused CTAs', 'veloria');
+        return __('Conversion focused CTAs', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -43,16 +43,16 @@ class CallToAction extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-call-to-action'];
+        return ['addonext-call-to-action'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-call-to-action',
-            VELORIA_URL . 'assets/css/call-to-action.css',
+            'addonext-call-to-action',
+            ADDONEXT_URL . 'assets/css/call-to-action.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -61,7 +61,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -69,36 +69,36 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Title', 'veloria'),
+                'label'   => __('Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Ready to Get Started?', 'veloria'),
+                'default' => __('Ready to Get Started?', 'addonext'),
             ]
         );
 
         $this->add_control(
             'description',
             [
-                'label'   => __('Description', 'veloria'),
+                'label'   => __('Description', 'addonext'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Join thousands of satisfied customers today', 'veloria'),
+                'default' => __('Join thousands of satisfied customers today', 'addonext'),
             ]
         );
 
         $this->add_control(
             'button_text',
             [
-                'label'   => __('Button text', 'veloria'),
+                'label'   => __('Button text', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Start Free Trial', 'veloria'),
+                'default' => __('Start Free Trial', 'addonext'),
             ]
         );
 
         $this->add_control(
             'button_url',
             [
-                'label'       => __('Button URL', 'veloria'),
+                'label'       => __('Button URL', 'addonext'),
                 'type'        => Controls_Manager::URL,
-                'placeholder' => __('https://example.com', 'veloria'),
+                'placeholder' => __('https://example.com', 'addonext'),
             ]
         );
 
@@ -107,7 +107,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_background',
             [
-                'label' => __('Background', 'veloria'),
+                'label' => __('Background', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -117,7 +117,7 @@ class CallToAction extends WidgetBase
             [
                 'name'           => 'background',
                 'types'          => ['classic', 'gradient'],
-                'selector'       => '{{WRAPPER}} .veloria-cta',
+                'selector'       => '{{WRAPPER}} .addonext-cta',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#FF8300'],
@@ -129,7 +129,7 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'overlay_heading',
             [
-                'label'     => __('Overlay', 'veloria'),
+                'label'     => __('Overlay', 'addonext'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -138,12 +138,12 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'overlay_color',
             [
-                'label'     => __('Overlay color', 'veloria'),
+                'label'     => __('Overlay color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0)',
                 'alpha'     => true,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta::before' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-cta::before' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -151,13 +151,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'section_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', '%'],
                 'range'      => ['px' => ['min' => 0, 'max' => 100]],
                 'default'    => ['size' => 0],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-cta' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .addonext-cta' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
                 ],
             ]
         );
@@ -165,7 +165,7 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'default'    => [
@@ -175,7 +175,7 @@ class CallToAction extends WidgetBase
                     'left'     => '32px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-cta' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-cta' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -185,7 +185,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -194,7 +194,7 @@ class CallToAction extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'title_typography',
-                'selector'       => '{{WRAPPER}} .veloria-cta__title',
+                'selector'       => '{{WRAPPER}} .addonext-cta__title',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -206,11 +206,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-cta__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -218,13 +218,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'title_spacing',
             [
-                'label'     => __('Spacing below', 'veloria'),
+                'label'     => __('Spacing below', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'     => ['px' => ['min' => 0, 'max' => 60]],
                 'default'   => ['size' => 12, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-cta__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -234,7 +234,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_description',
             [
-                'label' => __('Description', 'veloria'),
+                'label' => __('Description', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,7 +243,7 @@ class CallToAction extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'description_typography',
-                'selector'       => '{{WRAPPER}} .veloria-cta__description',
+                'selector'       => '{{WRAPPER}} .addonext-cta__description',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '400'],
@@ -255,11 +255,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'description_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta__description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-cta__description' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -267,13 +267,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'description_spacing',
             [
-                'label'     => __('Spacing below', 'veloria'),
+                'label'     => __('Spacing below', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'     => ['px' => ['min' => 0, 'max' => 80]],
                 'default'   => ['size' => 24, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-cta__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -283,7 +283,7 @@ class CallToAction extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'veloria'),
+                'label' => __('Button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -292,7 +292,7 @@ class CallToAction extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'button_typography',
-                'selector'       => '{{WRAPPER}} .veloria-cta__button',
+                'selector'       => '{{WRAPPER}} .addonext-cta__button',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -304,11 +304,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta__button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-cta__button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -316,11 +316,11 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FF6400',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-cta__button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-cta__button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -328,13 +328,13 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 10],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-cta__button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-cta__button' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -342,7 +342,7 @@ class CallToAction extends WidgetBase
         $this->add_control(
             'button_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => [
@@ -352,7 +352,7 @@ class CallToAction extends WidgetBase
                     'left'     => '28px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-cta__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-cta__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -361,7 +361,7 @@ class CallToAction extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'           => 'button_box_shadow',
-                'selector'       => '{{WRAPPER}} .veloria-cta__button',
+                'selector'       => '{{WRAPPER}} .addonext-cta__button',
                 'fields_options' => [
                     'box_shadow_type' => ['default' => 'yes'],
                     'box_shadow'     => [
@@ -382,7 +382,7 @@ class CallToAction extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/call-to-action/call-to-action.php';
+        $path = ADDONEXT_DIR . 'templates/call-to-action/call-to-action.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -401,16 +401,16 @@ class CallToAction extends WidgetBase
             buttonAttrs += ' rel="nofollow"';
         }
         #>
-        <div class="veloria-cta">
-            <div class="veloria-cta__inner">
+        <div class="addonext-cta">
+            <div class="addonext-cta__inner">
                 <# if (settings.title) { #>
-                    <h3 class="veloria-cta__title">{{{ settings.title }}}</h3>
+                    <h3 class="addonext-cta__title">{{{ settings.title }}}</h3>
                 <# } #>
                 <# if (settings.description) { #>
-                    <p class="veloria-cta__description">{{{ settings.description }}}</p>
+                    <p class="addonext-cta__description">{{{ settings.description }}}</p>
                 <# } #>
                 <# if (settings.button_text) { #>
-                    <a href="{{ buttonUrl }}"{{ buttonAttrs }} class="veloria-cta__button">{{{ settings.button_text }}}</a>
+                    <a href="{{ buttonUrl }}"{{ buttonAttrs }} class="addonext-cta__button">{{{ settings.button_text }}}</a>
                 <# } #>
             </div>
         </div>

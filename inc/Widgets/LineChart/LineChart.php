@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\LineChart;
+namespace Addonext\Widgets\LineChart;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -18,18 +18,18 @@ class LineChart extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('veloria-line-chart');
-        wp_enqueue_script('veloria-line-chart');
+        wp_enqueue_style('addonext-line-chart');
+        wp_enqueue_script('addonext-line-chart');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-chart-line veloria-icon';
+        return 'eicon-chart-line addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-line-chart';
+        return 'addonext-line-chart';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class LineChart extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Line Chart', 'veloria');
+        return __('Line Chart', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Trend visualization', 'veloria');
+        return __('Trend visualization', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -54,12 +54,12 @@ class LineChart extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-line-chart'];
+        return ['addonext-line-chart'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'veloria-line-chart'];
+        return ['elementor-frontend', 'addonext-line-chart'];
     }
 
     public function register_controls(): void
@@ -67,7 +67,7 @@ class LineChart extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -75,9 +75,9 @@ class LineChart extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Chart title', 'veloria'),
+                'label'   => __('Chart title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Monthly Revenue Performance', 'veloria'),
+                'default' => __('Monthly Revenue Performance', 'addonext'),
             ]
         );
 
@@ -85,7 +85,7 @@ class LineChart extends WidgetBase
         $repeater->add_control(
             'label',
             [
-                'label'   => __('Label', 'veloria'),
+                'label'   => __('Label', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -93,7 +93,7 @@ class LineChart extends WidgetBase
         $repeater->add_control(
             'value',
             [
-                'label'   => __('Value (thousands)', 'veloria'),
+                'label'   => __('Value (thousands)', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
             ]
@@ -117,7 +117,7 @@ class LineChart extends WidgetBase
         $this->add_control(
             'data',
             [
-                'label'       => __('Data', 'veloria'),
+                'label'       => __('Data', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => $default_data,
@@ -128,7 +128,7 @@ class LineChart extends WidgetBase
         $this->add_control(
             'y_axis_suffix',
             [
-                'label'   => __('Y-axis suffix', 'veloria'),
+                'label'   => __('Y-axis suffix', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => 'k',
             ]
@@ -137,18 +137,18 @@ class LineChart extends WidgetBase
         $this->add_control(
             'y_min',
             [
-                'label'       => __('Y-axis min', 'veloria'),
+                'label'       => __('Y-axis min', 'addonext'),
                 'type'        => Controls_Manager::NUMBER,
-                'description' => __('Leave empty to auto-calculate from data.', 'veloria'),
+                'description' => __('Leave empty to auto-calculate from data.', 'addonext'),
             ]
         );
 
         $this->add_control(
             'y_max',
             [
-                'label'       => __('Y-axis max', 'veloria'),
+                'label'       => __('Y-axis max', 'addonext'),
                 'type'        => Controls_Manager::NUMBER,
-                'description' => __('Leave empty to auto-calculate from data.', 'veloria'),
+                'description' => __('Leave empty to auto-calculate from data.', 'addonext'),
             ]
         );
 
@@ -157,7 +157,7 @@ class LineChart extends WidgetBase
         $this->start_controls_section(
             'section_style_chart',
             [
-                'label' => __('Chart', 'veloria'),
+                'label' => __('Chart', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -165,12 +165,12 @@ class LineChart extends WidgetBase
         $this->add_control(
             'line_color',
             [
-                'label'   => __('Line & points color', 'veloria'),
+                'label'   => __('Line & points color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-line-chart__line' => 'stroke: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-line-chart__point' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-line-chart__line' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-line-chart__point' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
                 ],
             ]
         );
@@ -178,11 +178,11 @@ class LineChart extends WidgetBase
         $this->add_control(
             'grid_color',
             [
-                'label'   => __('Grid color', 'veloria'),
+                'label'   => __('Grid color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#e5e7eb',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-line-chart__grid line' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-line-chart__grid line' => 'stroke: {{VALUE}};',
                 ],
             ]
         );
@@ -192,7 +192,7 @@ class LineChart extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -201,18 +201,18 @@ class LineChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-line-chart__title',
+                'selector' => '{{WRAPPER}} .addonext-line-chart__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-line-chart__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-line-chart__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -220,16 +220,16 @@ class LineChart extends WidgetBase
         $this->add_control(
             'title_align',
             [
-                'label'   => __('Alignment', 'veloria'),
+                'label'   => __('Alignment', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
-                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
-                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
+                    'left'   => ['title' => __('Left', 'addonext'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'addonext'), 'icon' => 'eicon-text-align-center'],
+                    'right'  => ['title' => __('Right', 'addonext'), 'icon' => 'eicon-text-align-right'],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-line-chart__title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-line-chart__title' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -239,7 +239,7 @@ class LineChart extends WidgetBase
         $this->start_controls_section(
             'section_style_axes',
             [
-                'label' => __('Axes labels', 'veloria'),
+                'label' => __('Axes labels', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -248,18 +248,18 @@ class LineChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'axis_typography',
-                'selector' => '{{WRAPPER}} .veloria-line-chart__axis-label',
+                'selector' => '{{WRAPPER}} .addonext-line-chart__axis-label',
             ]
         );
 
         $this->add_control(
             'axis_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-line-chart__axis-label' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-line-chart__axis-label' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -269,7 +269,7 @@ class LineChart extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/line-chart/line-chart.php';
+        $path = ADDONEXT_DIR . 'templates/line-chart/line-chart.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -288,9 +288,9 @@ class LineChart extends WidgetBase
         var yMin = settings.y_min !== '' && settings.y_min !== undefined ? parseFloat(settings.y_min) : '';
         var yMax = settings.y_max !== '' && settings.y_max !== undefined ? parseFloat(settings.y_max) : '';
         #>
-        <div class="veloria-line-chart" data-labels="{{ labels.join('|') }}" data-values="{{ values.join('|') }}" data-y-suffix="{{ ySuffix }}" data-y-min="{{ yMin }}" data-y-max="{{ yMax }}">
-            <# if (title) { #><h3 class="veloria-line-chart__title">{{{ title }}}</h3><# } #>
-            <div class="veloria-line-chart__canvas" role="img" aria-label="{{ title }}"></div>
+        <div class="addonext-line-chart" data-labels="{{ labels.join('|') }}" data-values="{{ values.join('|') }}" data-y-suffix="{{ ySuffix }}" data-y-min="{{ yMin }}" data-y-max="{{ yMax }}">
+            <# if (title) { #><h3 class="addonext-line-chart__title">{{{ title }}}</h3><# } #>
+            <div class="addonext-line-chart__canvas" role="img" aria-label="{{ title }}"></div>
         </div>
         <?php
     }

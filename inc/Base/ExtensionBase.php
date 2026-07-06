@@ -1,15 +1,15 @@
 <?php
-namespace Veloria\Base;
+namespace Addonext\Base;
 
 defined('ABSPATH') or exit;
 
 /**
- * Base class for Veloria extensions.
+ * Base class for AddoNext extensions.
  *
  * Active extensions have {@see enqueue_assets()} wired on `wp_enqueue_scripts` by ExtensionManager only.
  *
  * @since 1.0.0
- * @package Veloria
+ * @package AddoNext
  */
 abstract class ExtensionBase
 {
@@ -77,15 +77,15 @@ abstract class ExtensionBase
     {
         wp_register_style(
             $this->get_id(),
-            VELORIA_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
+            ADDONEXT_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
             $this->get_id(),
-            VELORIA_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
+            ADDONEXT_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
             [],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }

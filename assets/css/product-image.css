@@ -2,30 +2,30 @@
  * Elementor canvas iframe: keep thumbnails / lightbox / zoom clickable (parent editor may not
  * add body.elementor-editor-active here; parent + iframe both covered).
  */
-.elementor-editor-active .elementor-widget-veloria-product-image .elementor-clickable,
-.elementor-editor-active .elementor-widget-veloria-product-image .veloria-pi__thumb,
-.elementor-editor-active .elementor-widget-veloria-product-image .veloria-pi__main--clickable,
-.elementor-editor-active .elementor-widget-veloria-product-image .veloria-pi__stage,
-.elementor-widget-veloria-product-image .elementor-clickable,
-.elementor-widget-veloria-product-image .veloria-pi__thumb,
-.elementor-widget-veloria-product-image .veloria-pi__main--clickable,
-.elementor-widget-veloria-product-image .veloria-pi__stage {
+.elementor-editor-active .elementor-widget-addonext-product-image .elementor-clickable,
+.elementor-editor-active .elementor-widget-addonext-product-image .addonext-pi__thumb,
+.elementor-editor-active .elementor-widget-addonext-product-image .addonext-pi__main--clickable,
+.elementor-editor-active .elementor-widget-addonext-product-image .addonext-pi__stage,
+.elementor-widget-addonext-product-image .elementor-clickable,
+.elementor-widget-addonext-product-image .addonext-pi__thumb,
+.elementor-widget-addonext-product-image .addonext-pi__main--clickable,
+.elementor-widget-addonext-product-image .addonext-pi__stage {
   pointer-events: auto;
 }
 
-.veloria-product-image {
+.addonext-product-image {
   box-sizing: border-box;
   max-width: 100%;
 }
 
-.veloria-product-image *,
-.veloria-product-image *::before,
-.veloria-product-image *::after {
+.addonext-product-image *,
+.addonext-product-image *::before,
+.addonext-product-image *::after {
   box-sizing: border-box;
 }
 
-.veloria-pi--empty,
-.veloria-pi--inactive {
+.addonext-pi--empty,
+.addonext-pi--inactive {
   padding: 1rem 1.25rem;
   border-radius: 12px;
   background: #f1f5f9;
@@ -34,7 +34,7 @@
   text-align: center;
 }
 
-.veloria-pi__main {
+.addonext-pi__main {
   display: block;
   width: 100%;
   margin: 0;
@@ -45,21 +45,21 @@
   text-align: center;
 }
 
-.veloria-pi__main--clickable {
+.addonext-pi__main--clickable {
   cursor: zoom-in;
   transition: opacity 0.15s ease;
 }
 
-.veloria-pi__main--clickable:hover {
+.addonext-pi__main--clickable:hover {
   opacity: 0.97;
 }
 
-.veloria-pi__main--clickable:focus-visible {
+.addonext-pi__main--clickable:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 3px;
 }
 
-.veloria-pi__visual {
+.addonext-pi__visual {
   display: block;
   width: 100%;
   border-radius: 12px;
@@ -67,7 +67,7 @@
   overflow: hidden;
 }
 
-.veloria-pi__stage {
+.addonext-pi__stage {
   position: relative;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
   background-color: #f8fafc;
 }
 
-.veloria-pi__main-img {
+.addonext-pi__main-img {
   display: block;
   width: 100%;
   height: 100%!important;
@@ -94,28 +94,28 @@
   -webkit-user-drag: none;
 }
 
-.veloria-pi__main--pan-zoom .veloria-pi__stage {
+.addonext-pi__main--pan-zoom .addonext-pi__stage {
   cursor: zoom-in;
   outline: none;
 }
 
-.veloria-pi__main--pan-zoom .veloria-pi__stage:focus-visible {
+.addonext-pi__main--pan-zoom .addonext-pi__stage:focus-visible {
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2563eb;
 }
 
-.veloria-pi__main--pan-zoom .veloria-pi__stage.is-zoomed {
+.addonext-pi__main--pan-zoom .addonext-pi__stage.is-zoomed {
   cursor: grab;
 }
 
-.veloria-pi__main--pan-zoom .veloria-pi__stage.is-zoomed.is-dragging {
+.addonext-pi__main--pan-zoom .addonext-pi__stage.is-zoomed.is-dragging {
   cursor: grabbing;
 }
 
-.veloria-pi__main--pan-zoom .veloria-pi__stage.is-zoomed .veloria-pi__main-img {
+.addonext-pi__main--pan-zoom .addonext-pi__stage.is-zoomed .addonext-pi__main-img {
   transition: none;
 }
 
-.veloria-pi__thumbs {
+.addonext-pi__thumbs {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -124,7 +124,7 @@
   margin-top: 16px;
 }
 
-.veloria-pi__thumb {
+.addonext-pi__thumb {
   position: relative;
   display: block;
   padding: 0;
@@ -140,27 +140,27 @@
   transition: border-color 0.15s ease, opacity 0.15s ease;
 }
 
-.veloria-pi__thumb:hover {
+.addonext-pi__thumb:hover {
   opacity: 0.92;
 }
 
-.veloria-pi__thumb:focus-visible {
+.addonext-pi__thumb:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.veloria-pi__thumb.is-active {
+.addonext-pi__thumb.is-active {
   border-color: #2563eb;
 }
 
-.veloria-pi__thumb img {
+.addonext-pi__thumb img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.veloria-product-image-lightbox {
+.addonext-product-image-lightbox {
   position: fixed;
   inset: 0;
   z-index: 100000;
@@ -174,12 +174,12 @@
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.veloria-product-image-lightbox.is-open {
+.addonext-product-image-lightbox.is-open {
   opacity: 1;
   visibility: visible;
 }
 
-.veloria-product-image-lightbox__image {
+.addonext-product-image-lightbox__image {
   max-width: min(96vw, 1200px);
   max-height: 88vh;
   width: auto;
@@ -189,7 +189,7 @@
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
-.veloria-product-image-lightbox__close {
+.addonext-product-image-lightbox__close {
   position: absolute;
   top: 16px;
   right: 20px;
@@ -205,11 +205,11 @@
   transition: background 0.15s ease;
 }
 
-.veloria-product-image-lightbox__close:hover {
+.addonext-product-image-lightbox__close:hover {
   background: rgba(255, 255, 255, 0.22);
 }
 
-.veloria-product-image-lightbox__nav {
+.addonext-product-image-lightbox__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -225,32 +225,32 @@
   transition: background 0.15s ease;
 }
 
-.veloria-product-image-lightbox__nav:hover {
+.addonext-product-image-lightbox__nav:hover {
   background: rgba(255, 255, 255, 0.22);
 }
 
-.veloria-product-image-lightbox__nav--prev {
+.addonext-product-image-lightbox__nav--prev {
   left: 16px;
 }
 
-.veloria-product-image-lightbox__nav--next {
+.addonext-product-image-lightbox__nav--next {
   right: 16px;
 }
 
-.veloria-product-image-lightbox.is-single .veloria-product-image-lightbox__nav {
+.addonext-product-image-lightbox.is-single .addonext-product-image-lightbox__nav {
   display: none;
 }
 
 @media (max-width: 600px) {
-  .veloria-product-image-lightbox {
+  .addonext-product-image-lightbox {
     padding: 56px 16px;
   }
 
-  .veloria-product-image-lightbox__nav--prev {
+  .addonext-product-image-lightbox__nav--prev {
     left: 8px;
   }
 
-  .veloria-product-image-lightbox__nav--next {
+  .addonext-product-image-lightbox__nav--next {
     right: 8px;
   }
 }

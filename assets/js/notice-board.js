@@ -1,21 +1,21 @@
 'use strict';
 
-function veloriaNoticeBoardInit() {
+function addonextNoticeBoardInit() {
   document.addEventListener('click', function (e) {
-    var trigger = e.target.closest('.veloria-notice-board__trigger');
+    var trigger = e.target.closest('.addonext-notice-board__trigger');
     if (!trigger) {
       return;
     }
-    var item = trigger.closest('.veloria-notice-board__item');
+    var item = trigger.closest('.addonext-notice-board__item');
     if (!item) {
       return;
     }
-    var board = item.closest('.veloria-notice-board');
-    if (board && board.classList.contains('veloria-notice-board--expand-all')) {
+    var board = item.closest('.addonext-notice-board');
+    if (board && board.classList.contains('addonext-notice-board--expand-all')) {
       return;
     }
     e.preventDefault();
-    var panel = item.querySelector('.veloria-notice-board__panel');
+    var panel = item.querySelector('.addonext-notice-board__panel');
     var nextOpen = !item.classList.contains('is-open');
     item.classList.toggle('is-open', nextOpen);
     trigger.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
@@ -29,7 +29,7 @@ function veloriaNoticeBoardInit() {
   });
 
   document.addEventListener('keydown', function (e) {
-    var trigger = e.target.closest('.veloria-notice-board__trigger');
+    var trigger = e.target.closest('.addonext-notice-board__trigger');
     if (!trigger) {
       return;
     }
@@ -41,7 +41,7 @@ function veloriaNoticeBoardInit() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', veloriaNoticeBoardInit);
+  document.addEventListener('DOMContentLoaded', addonextNoticeBoardInit);
 } else {
-  veloriaNoticeBoardInit();
+  addonextNoticeBoardInit();
 }

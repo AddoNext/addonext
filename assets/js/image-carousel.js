@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var CAROUSEL_SEL = '.veloria-image-carousel.swiper';
+    var CAROUSEL_SEL = '.addonext-image-carousel.swiper';
 
     function initCarousel(el) {
         if (!el) return;
@@ -101,7 +101,7 @@
 
     function bindElementor() {
         if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks || !elementorFrontend.hooks.addAction) return;
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-image-carousel.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-image-carousel.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
                 var carousel = el.querySelector(CAROUSEL_SEL);

@@ -1,18 +1,18 @@
-.veloria-bento-grid {
-    --veloria-bento-row-gap: 14px;
-    --veloria-bento-column-gap: 14px;
+.addonext-bento-grid {
+    --addonext-bento-row-gap: 14px;
+    --addonext-bento-column-gap: 14px;
     display: grid;
-    row-gap: var(--veloria-bento-row-gap);
+    row-gap: var(--addonext-bento-row-gap);
 }
 
-.veloria-bento-grid__row {
+.addonext-bento-grid__row {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--veloria-bento-column-gap);
-    row-gap: var(--veloria-bento-column-gap);
+    column-gap: var(--addonext-bento-column-gap);
+    row-gap: var(--addonext-bento-column-gap);
 }
 
-.veloria-bento-grid__tile {
+.addonext-bento-grid__tile {
     grid-column: span var(--er-bento-span-d, 6);
     min-height: 160px;
     border-radius: 12px;
@@ -24,22 +24,22 @@
     gap: 10px;
 }
 
-.veloria-bento-grid__icon {
+.addonext-bento-grid__icon {
     color: var(--er-bento-icon-color, #2563eb);
     line-height: 1;
 }
 
-.veloria-bento-grid__icon i {
+.addonext-bento-grid__icon i {
     font-size: 28px;
 }
 
-.veloria-bento-grid__icon svg {
+.addonext-bento-grid__icon svg {
     width: 28px;
     height: 28px;
     fill: currentColor;
 }
 
-.veloria-bento-grid__title {
+.addonext-bento-grid__title {
     margin: 0;
     font-size: 18px;
     font-weight: 700;
@@ -48,7 +48,7 @@
     color: #111827;
 }
 
-.veloria-bento-grid__subtitle {
+.addonext-bento-grid__subtitle {
     margin: 0;
     font-size: 14px;
     line-height: 1.5;
@@ -56,13 +56,13 @@
 }
 
 @media (max-width: 1024px) {
-    .veloria-bento-grid__tile {
+    .addonext-bento-grid__tile {
         grid-column: span var(--er-bento-span-t, 6);
     }
 }
 
 @media (max-width: 767px) {
-    .veloria-bento-grid__tile {
+    .addonext-bento-grid__tile {
         grid-column: span var(--er-bento-span-m, 12);
     }
 }

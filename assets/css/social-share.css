@@ -1,18 +1,18 @@
-.veloria-social-share {
+.addonext-social-share {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 12px;
 }
 
-.veloria-social-share__title {
+.addonext-social-share__title {
     font-size: 14px;
     font-weight: 500;
     margin: 0;
     margin-right: 12px;
 }
 
-.veloria-social-share__link {
+.addonext-social-share__link {
     position: relative;
     display: flex;
     align-items: center;
@@ -27,16 +27,16 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.veloria-social-share__link:hover {
+.addonext-social-share__link:hover {
     opacity: 0.9;
 }
 
-.veloria-social-share__link:focus {
+.addonext-social-share__link:focus {
     outline: 2px solid currentColor;
     outline-offset: 2px;
 }
 
-.veloria-social-share__tooltip {
+.addonext-social-share__tooltip {
     position: absolute;
     bottom: 100%;
     left: 50%;
@@ -55,11 +55,11 @@
     z-index: 2;
 }
 
-.veloria-social-share__link--facebook .veloria-social-share__tooltip::after,
-.veloria-social-share__link--twitter .veloria-social-share__tooltip::after,
-.veloria-social-share__link--instagram .veloria-social-share__tooltip::after,
-.veloria-social-share__link--linkedin .veloria-social-share__tooltip::after,
-.veloria-social-share__link--youtube .veloria-social-share__tooltip::after {
+.addonext-social-share__link--facebook .addonext-social-share__tooltip::after,
+.addonext-social-share__link--twitter .addonext-social-share__tooltip::after,
+.addonext-social-share__link--instagram .addonext-social-share__tooltip::after,
+.addonext-social-share__link--linkedin .addonext-social-share__tooltip::after,
+.addonext-social-share__link--youtube .addonext-social-share__tooltip::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -68,84 +68,84 @@
     border: 5px solid transparent;
 }
 
-.veloria-social-share__link--facebook .veloria-social-share__tooltip::after {
+.addonext-social-share__link--facebook .addonext-social-share__tooltip::after {
     border-top-color: #2C58E3;
 }
 
-.veloria-social-share__link--twitter .veloria-social-share__tooltip::after {
+.addonext-social-share__link--twitter .addonext-social-share__tooltip::after {
     border-top-color: #42AAEB;
 }
 
-.veloria-social-share__link--instagram .veloria-social-share__tooltip::after {
+.addonext-social-share__link--instagram .addonext-social-share__tooltip::after {
     border-top-color: #E32C89;
 }
 
-.veloria-social-share__link--linkedin .veloria-social-share__tooltip::after {
+.addonext-social-share__link--linkedin .addonext-social-share__tooltip::after {
     border-top-color: #3366CC;
 }
 
-.veloria-social-share__link--youtube .veloria-social-share__tooltip::after {
+.addonext-social-share__link--youtube .addonext-social-share__tooltip::after {
     border-top-color: #E32C2C;
 }
 
-.veloria-social-share__link:hover .veloria-social-share__tooltip,
-.veloria-social-share__link:focus .veloria-social-share__tooltip {
+.addonext-social-share__link:hover .addonext-social-share__tooltip,
+.addonext-social-share__link:focus .addonext-social-share__tooltip {
     opacity: 1;
 }
 
-.veloria-social-share__link--facebook .veloria-social-share__tooltip {
+.addonext-social-share__link--facebook .addonext-social-share__tooltip {
     background-color: #2C58E3;
 }
 
-.veloria-social-share__link--twitter .veloria-social-share__tooltip {
+.addonext-social-share__link--twitter .addonext-social-share__tooltip {
     background-color: #42AAEB;
 }
 
-.veloria-social-share__link--instagram .veloria-social-share__tooltip {
+.addonext-social-share__link--instagram .addonext-social-share__tooltip {
     background-color: #E32C89;
 }
 
-.veloria-social-share__link--linkedin .veloria-social-share__tooltip {
+.addonext-social-share__link--linkedin .addonext-social-share__tooltip {
     background-color: #3366CC;
 }
 
-.veloria-social-share__link--youtube .veloria-social-share__tooltip {
+.addonext-social-share__link--youtube .addonext-social-share__tooltip {
     background-color: #E32C2C;
 }
 
-.veloria-social-share__link--facebook {
+.addonext-social-share__link--facebook {
     background-color: #2C58E3;
 }
 
-.veloria-social-share__link--twitter {
+.addonext-social-share__link--twitter {
     background-color: #42AAEB;
 }
 
-.veloria-social-share__link--instagram {
+.addonext-social-share__link--instagram {
     background-color: #E32C89;
 }
 
-.veloria-social-share__link--linkedin {
+.addonext-social-share__link--linkedin {
     background-color: #3366CC;
 }
 
-.veloria-social-share__link--youtube {
+.addonext-social-share__link--youtube {
     background-color: #E32C2C;
 }
 
-.veloria-social-share__icon {
+.addonext-social-share__icon {
     width: 100%;
     height: 100%;
     flex-shrink: 0;
 }
 
-.veloria-social-share__icon--facebook,
-.veloria-social-share__icon--twitter,
-.veloria-social-share__icon--linkedin,
-.veloria-social-share__icon--youtube {
+.addonext-social-share__icon--facebook,
+.addonext-social-share__icon--twitter,
+.addonext-social-share__icon--linkedin,
+.addonext-social-share__icon--youtube {
     fill: #ffffff;
 }
 
-.veloria-social-share__icon--instagram {
+.addonext-social-share__icon--instagram {
     stroke: #ffffff;
 }

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\StarRating;
+namespace Addonext\Widgets\StarRating;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
@@ -12,12 +12,12 @@ class StarRating extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-star veloria-icon';
+        return 'eicon-star addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-star-rating';
+        return 'addonext-star-rating';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class StarRating extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Star Rating', 'veloria');
+        return __('Star Rating', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Display rating with star icons', 'veloria');
+        return __('Display rating with star icons', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,7 +42,7 @@ class StarRating extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-star-rating'];
+        return ['addonext-star-rating'];
     }
 
     public function register_controls(): void
@@ -50,7 +50,7 @@ class StarRating extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -58,7 +58,7 @@ class StarRating extends WidgetBase
         $this->add_control(
             'rating',
             [
-                'label'   => __('Rating', 'veloria'),
+                'label'   => __('Rating', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'min'     => 0,
                 'max'     => 10,
@@ -71,7 +71,7 @@ class StarRating extends WidgetBase
         $this->add_control(
             'max_stars',
             [
-                'label'   => __('Number of stars', 'veloria'),
+                'label'   => __('Number of stars', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'min'     => 1,
                 'max'     => 10,
@@ -82,7 +82,7 @@ class StarRating extends WidgetBase
         $this->add_control(
             'selected_icon',
             [
-                'label'   => __('Icon', 'veloria'),
+                'label'   => __('Icon', 'addonext'),
                 'type'    => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'label_block' => false,
@@ -96,19 +96,19 @@ class StarRating extends WidgetBase
         $this->add_control(
             'align',
             [
-                'label'   => __('Alignment', 'veloria'),
+                'label'   => __('Alignment', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
                     'left'   => [
-                        'title' => __('Left', 'veloria'),
+                        'title' => __('Left', 'addonext'),
                         'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'veloria'),
+                        'title' => __('Center', 'addonext'),
                         'icon'  => 'eicon-text-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'veloria'),
+                        'title' => __('Right', 'addonext'),
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],
@@ -119,7 +119,7 @@ class StarRating extends WidgetBase
                     'right'  => 'flex-end',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-star-rating' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-star-rating' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -127,10 +127,10 @@ class StarRating extends WidgetBase
         $this->add_control(
             'show_title',
             [
-                'label'        => __('Show title', 'veloria'),
+                'label'        => __('Show title', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => __('Yes', 'veloria'),
-                'label_off'    => __('No', 'veloria'),
+                'label_on'     => __('Yes', 'addonext'),
+                'label_off'    => __('No', 'addonext'),
                 'return_value' => 'yes',
                 'default'      => '',
             ]
@@ -139,7 +139,7 @@ class StarRating extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'     => __('Title', 'veloria'),
+                'label'     => __('Title', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
                 'default'   => '',
                 'dynamic'   => ['active' => true],
@@ -152,7 +152,7 @@ class StarRating extends WidgetBase
         $this->start_controls_section(
             'section_style_stars',
             [
-                'label' => __('Stars', 'veloria'),
+                'label' => __('Stars', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -160,11 +160,11 @@ class StarRating extends WidgetBase
         $this->add_control(
             'star_color',
             [
-                'label'     => __('Star color', 'veloria'),
+                'label'     => __('Star color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#eab308',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-star-rating__star-filled' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-star-rating__star-filled' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -172,11 +172,11 @@ class StarRating extends WidgetBase
         $this->add_control(
             'star_unfilled_color',
             [
-                'label'     => __('Unfilled color', 'veloria'),
+                'label'     => __('Unfilled color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e5e7eb',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-star-rating__star-empty' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-star-rating__star-empty' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -184,7 +184,7 @@ class StarRating extends WidgetBase
         $this->add_control(
             'star_size',
             [
-                'label'      => __('Size', 'veloria'),
+                'label'      => __('Size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -192,8 +192,8 @@ class StarRating extends WidgetBase
                 ],
                 'default'    => ['size' => 18],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-star-rating__star-empty' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-star-rating__star-filled' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-star-rating__star-empty' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-star-rating__star-filled' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -201,7 +201,7 @@ class StarRating extends WidgetBase
         $this->add_control(
             'gap',
             [
-                'label'      => __('Gap between stars', 'veloria'),
+                'label'      => __('Gap between stars', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -209,7 +209,7 @@ class StarRating extends WidgetBase
                 ],
                 'default'    => ['size' => 2],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-star-rating__stars' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-star-rating__stars' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -219,7 +219,7 @@ class StarRating extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label'     => __('Title', 'veloria'),
+                'label'     => __('Title', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_title' => 'yes'],
             ]
@@ -228,11 +228,11 @@ class StarRating extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-star-rating__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-star-rating__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -241,14 +241,14 @@ class StarRating extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-star-rating__title',
+                'selector' => '{{WRAPPER}} .addonext-star-rating__title',
             ]
         );
 
         $this->add_control(
             'title_spacing',
             [
-                'label'      => __('Spacing', 'veloria'),
+                'label'      => __('Spacing', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -256,7 +256,7 @@ class StarRating extends WidgetBase
                 ],
                 'default'    => ['size' => 6],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-star-rating__title' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-star-rating__title' => 'margin-left: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -266,15 +266,15 @@ class StarRating extends WidgetBase
 
     public function render(): void
     {
-        if (wp_style_is('veloria-star-rating', 'registered')) {
-            wp_enqueue_style('veloria-star-rating');
+        if (wp_style_is('addonext-star-rating', 'registered')) {
+            wp_enqueue_style('addonext-star-rating');
         }
-        $path = VELORIA_DIR . 'templates/star-rating/star-rating.php';
+        $path = ADDONEXT_DIR . 'templates/star-rating/star-rating.php';
         if (is_readable($path)) {
             include $path;
         } else {
-            echo '<div class="veloria-star-rating"><div class="veloria-star-rating__stars">';
-            echo '<span class="veloria-star-rating__star"><span class="veloria-star-rating__star-empty">★</span></span>';
+            echo '<div class="addonext-star-rating"><div class="addonext-star-rating__stars">';
+            echo '<span class="addonext-star-rating__star"><span class="addonext-star-rating__star-empty">★</span></span>';
             echo '</div></div>';
         }
     }
@@ -289,23 +289,23 @@ class StarRating extends WidgetBase
         var showTitle = settings.show_title === 'yes' && settings.title;
         var starSvg = <?php echo wp_json_encode($star_svg); ?>;
         #>
-        <div class="veloria-star-rating">
-            <div class="veloria-star-rating__stars">
+        <div class="addonext-star-rating">
+            <div class="addonext-star-rating__stars">
                 <# _.times(maxStars, function(i) {
                     var remainder = rating - i;
                     var fill = Math.min(1, Math.max(0, remainder));
                     var fillPercent = Math.round(fill * 100);
                 #>
-                    <span class="veloria-star-rating__star">
-                        <span class="veloria-star-rating__star-empty">{{{ starSvg }}}</span>
-                        <span class="veloria-star-rating__star-fill" style="width: {{ fillPercent }}%">
-                            <span class="veloria-star-rating__star-filled">{{{ starSvg }}}</span>
+                    <span class="addonext-star-rating__star">
+                        <span class="addonext-star-rating__star-empty">{{{ starSvg }}}</span>
+                        <span class="addonext-star-rating__star-fill" style="width: {{ fillPercent }}%">
+                            <span class="addonext-star-rating__star-filled">{{{ starSvg }}}</span>
                         </span>
                     </span>
                 <# }); #>
             </div>
             <# if (showTitle) { #>
-                <span class="veloria-star-rating__title">{{{ settings.title }}}</span>
+                <span class="addonext-star-rating__title">{{{ settings.title }}}</span>
             <# } #>
         </div>
         <?php

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Button;
+namespace Addonext\Widgets\Button;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -17,30 +17,30 @@ class Button extends WidgetBase
     public static function get_button_sizes(): array
     {
         return [
-            'xs' => __('Extra Small', 'veloria'),
-            'sm' => __('Small', 'veloria'),
-            'md' => __('Medium', 'veloria'),
-            'lg' => __('Large', 'veloria'),
-            'xl' => __('Extra Large', 'veloria'),
+            'xs' => __('Extra Small', 'addonext'),
+            'sm' => __('Small', 'addonext'),
+            'md' => __('Medium', 'addonext'),
+            'lg' => __('Large', 'addonext'),
+            'xl' => __('Extra Large', 'addonext'),
         ];
     }
 
     public static function get_variants(): array
     {
         return [
-            'primary'   => __('Primary', 'veloria'),
-            'secondary' => __('Secondary', 'veloria'),
+            'primary'   => __('Primary', 'addonext'),
+            'secondary' => __('Secondary', 'addonext'),
         ];
     }
 
     public function get_icon(): string
     {
-        return 'eicon-button veloria-icon';
+        return 'eicon-button addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-button';
+        return 'addonext-button';
     }
 
     public function get_admin_category(): string
@@ -50,12 +50,12 @@ class Button extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Button', 'veloria');
+        return __('Button', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Fully customizable button with variants, link, icon and styles', 'veloria');
+        return __('Fully customizable button with variants, link, icon and styles', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -65,16 +65,16 @@ class Button extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-button'];
+        return ['addonext-button'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-button',
-            VELORIA_URL . 'assets/css/button.css',
+            'addonext-button',
+            ADDONEXT_URL . 'assets/css/button.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -83,7 +83,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -91,7 +91,7 @@ class Button extends WidgetBase
         $this->add_control(
             'variant',
             [
-                'label'   => __('Variant', 'veloria'),
+                'label'   => __('Variant', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'primary',
                 'options' => self::get_variants(),
@@ -101,18 +101,18 @@ class Button extends WidgetBase
         $this->add_control(
             'text',
             [
-                'label'       => __('Text', 'veloria'),
+                'label'       => __('Text', 'addonext'),
                 'type'        => Controls_Manager::TEXT,
                 'dynamic'     => ['active' => true],
-                'default'     => __('Click Here', 'veloria'),
-                'placeholder' => __('Click Here', 'veloria'),
+                'default'     => __('Click Here', 'addonext'),
+                'placeholder' => __('Click Here', 'addonext'),
             ]
         );
 
         $this->add_control(
             'link',
             [
-                'label'   => __('Link', 'veloria'),
+                'label'   => __('Link', 'addonext'),
                 'type'    => Controls_Manager::URL,
                 'dynamic' => ['active' => true],
                 'default' => [
@@ -126,7 +126,7 @@ class Button extends WidgetBase
         $this->add_control(
             'size',
             [
-                'label'       => __('Size', 'veloria'),
+                'label'       => __('Size', 'addonext'),
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'md',
                 'options'     => self::get_button_sizes(),
@@ -137,7 +137,7 @@ class Button extends WidgetBase
         $this->add_control(
             'selected_icon',
             [
-                'label'            => __('Icon', 'veloria'),
+                'label'            => __('Icon', 'addonext'),
                 'type'             => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'label_block'      => false,
@@ -154,21 +154,21 @@ class Button extends WidgetBase
         $this->add_control(
             'icon_align',
             [
-                'label'   => __('Icon Position', 'veloria'),
+                'label'   => __('Icon Position', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'default' => is_rtl() ? 'row-reverse' : 'row',
                 'options' => [
                     'row'          => [
-                        'title' => __('Start', 'veloria'),
+                        'title' => __('Start', 'addonext'),
                         'icon'  => "eicon-h-align-{$start}",
                     ],
                     'row-reverse'  => [
-                        'title' => __('End', 'veloria'),
+                        'title' => __('End', 'addonext'),
                         'icon'  => "eicon-h-align-{$end}",
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button__content' => 'flex-direction: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button__content' => 'flex-direction: {{VALUE}};',
                 ],
                 'condition' => [
                     'text!' => '',
@@ -180,7 +180,7 @@ class Button extends WidgetBase
         $this->add_control(
             'icon_indent',
             [
-                'label'      => __('Icon Spacing', 'veloria'),
+                'label'      => __('Icon Spacing', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem'],
                 'range'      => [
@@ -189,7 +189,7 @@ class Button extends WidgetBase
                     'rem' => ['max' => 5],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button__content' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-button__content' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
                 'default'   => ['size' => 4, 'unit' => 'px'],
                 'condition' => [
@@ -202,11 +202,11 @@ class Button extends WidgetBase
         $this->add_control(
             'button_css_id',
             [
-                'label'       => __('Button ID', 'veloria'),
+                'label'       => __('Button ID', 'addonext'),
                 'type'        => Controls_Manager::TEXT,
                 'dynamic'     => ['active' => true],
                 'default'     => '',
-                'title'       => __('Add your custom id WITHOUT the Pound key. e.g: my-id', 'veloria'),
+                'title'       => __('Add your custom id WITHOUT the Pound key. e.g: my-id', 'addonext'),
                 'separator'   => 'before',
             ]
         );
@@ -216,7 +216,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_common',
             [
-                'label' => __('Alignment & typography', 'veloria'),
+                'label' => __('Alignment & typography', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -224,28 +224,28 @@ class Button extends WidgetBase
         $this->add_responsive_control(
             'align',
             [
-                'label'   => __('Alignment', 'veloria'),
+                'label'   => __('Alignment', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
                     'left'    => [
-                        'title' => __('Left', 'veloria'),
+                        'title' => __('Left', 'addonext'),
                         'icon'  => 'eicon-h-align-left',
                     ],
                     'center'  => [
-                        'title' => __('Center', 'veloria'),
+                        'title' => __('Center', 'addonext'),
                         'icon'  => 'eicon-h-align-center',
                     ],
                     'right'   => [
-                        'title' => __('Right', 'veloria'),
+                        'title' => __('Right', 'addonext'),
                         'icon'  => 'eicon-h-align-right',
                     ],
                     'justify' => [
-                        'title' => __('Stretch', 'veloria'),
+                        'title' => __('Stretch', 'addonext'),
                         'icon'  => 'eicon-h-align-stretch',
                     ],
                 ],
                 'default'      => 'left',
-                'prefix_class' => 'veloria-button-wrapper%s-align-',
+                'prefix_class' => 'addonext-button-wrapper%s-align-',
             ]
         );
 
@@ -253,7 +253,7 @@ class Button extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography',
-                'selector' => '{{WRAPPER}} .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-button',
                 'fields_options' => [
                     'font_size' => [
                         'default' => ['unit' => 'px', 'size' => 14],
@@ -266,7 +266,7 @@ class Button extends WidgetBase
             Group_Control_Text_Shadow::get_type(),
             [
                 'name'     => 'text_shadow',
-                'selector' => '{{WRAPPER}} .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-button',
             ]
         );
 
@@ -275,7 +275,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_primary',
             [
-                'label'     => __('Primary style', 'veloria'),
+                'label'     => __('Primary style', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['variant' => 'primary'],
             ]
@@ -283,16 +283,16 @@ class Button extends WidgetBase
 
         $this->start_controls_tabs('tabs_primary_style');
 
-        $this->start_controls_tab('tab_primary_normal', ['label' => __('Normal', 'veloria')]);
+        $this->start_controls_tab('tab_primary_normal', ['label' => __('Normal', 'addonext')]);
 
         $this->add_control(
             'button_text_color',
             [
-                'label'     => __('Text & icon color', 'veloria'),
+                'label'     => __('Text & icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -303,7 +303,7 @@ class Button extends WidgetBase
                 'name'     => 'background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-button',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'     => ['default' => '#5E42DA'],
@@ -318,21 +318,21 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'button_box_shadow',
-                'selector' => '{{WRAPPER}} .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-button',
             ]
         );
 
         $this->end_controls_tab();
 
-        $this->start_controls_tab('tab_primary_hover', ['label' => __('Hover', 'veloria')]);
+        $this->start_controls_tab('tab_primary_hover', ['label' => __('Hover', 'addonext')]);
 
         $this->add_control(
             'hover_text_color',
             [
-                'label'     => __('Text & icon color', 'veloria'),
+                'label'     => __('Text & icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -343,7 +343,7 @@ class Button extends WidgetBase
                 'name'     => 'background_hover',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus',
+                'selector' => '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus',
                 'fields_options' => ['background' => ['default' => 'classic']],
             ]
         );
@@ -352,7 +352,7 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'button_box_shadow_hover',
-                'selector' => '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus',
+                'selector' => '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus',
             ]
         );
 
@@ -364,7 +364,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_secondary',
             [
-                'label'     => __('Secondary style', 'veloria'),
+                'label'     => __('Secondary style', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['variant' => 'secondary'],
             ]
@@ -372,16 +372,16 @@ class Button extends WidgetBase
 
         $this->start_controls_tabs('tabs_secondary_style');
 
-        $this->start_controls_tab('tab_secondary_normal', ['label' => __('Normal', 'veloria')]);
+        $this->start_controls_tab('tab_secondary_normal', ['label' => __('Normal', 'addonext')]);
 
         $this->add_control(
             'secondary_text_color',
             [
-                'label'     => __('Text & icon color', 'veloria'),
+                'label'     => __('Text & icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#5E42DA',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -389,11 +389,11 @@ class Button extends WidgetBase
         $this->add_control(
             'secondary_bg_color',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'transparent',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -402,7 +402,7 @@ class Button extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'secondary_border',
-                'selector' => '{{WRAPPER}} .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-button',
                 'fields_options' => [
                     'border' => ['default' => 'solid'],
                     'width'  => [
@@ -420,21 +420,21 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'secondary_box_shadow',
-                'selector' => '{{WRAPPER}} .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-button',
             ]
         );
 
         $this->end_controls_tab();
 
-        $this->start_controls_tab('tab_secondary_hover', ['label' => __('Hover', 'veloria')]);
+        $this->start_controls_tab('tab_secondary_hover', ['label' => __('Hover', 'addonext')]);
 
         $this->add_control(
             'secondary_hover_text_color',
             [
-                'label'     => __('Text & icon color', 'veloria'),
+                'label'     => __('Text & icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -442,10 +442,10 @@ class Button extends WidgetBase
         $this->add_control(
             'secondary_hover_bg_color',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -453,10 +453,10 @@ class Button extends WidgetBase
         $this->add_control(
             'secondary_hover_border_color',
             [
-                'label'     => __('Border color', 'veloria'),
+                'label'     => __('Border color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -465,7 +465,7 @@ class Button extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'secondary_box_shadow_hover',
-                'selector' => '{{WRAPPER}} .veloria-button:hover, {{WRAPPER}} .veloria-button:focus',
+                'selector' => '{{WRAPPER}} .addonext-button:hover, {{WRAPPER}} .addonext-button:focus',
             ]
         );
 
@@ -477,7 +477,7 @@ class Button extends WidgetBase
         $this->start_controls_section(
             'section_style_shape',
             [
-                'label' => __('Shape & motion', 'veloria'),
+                'label' => __('Shape & motion', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -485,7 +485,7 @@ class Button extends WidgetBase
         $this->add_responsive_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default'    => [
@@ -493,7 +493,7 @@ class Button extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -501,7 +501,7 @@ class Button extends WidgetBase
         $this->add_responsive_control(
             'padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default'    => [
@@ -509,7 +509,7 @@ class Button extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -517,12 +517,12 @@ class Button extends WidgetBase
         $this->add_control(
             'hover_transition_duration',
             [
-                'label'      => __('Transition duration', 'veloria'),
+                'label'      => __('Transition duration', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['s', 'ms'],
                 'default'    => ['unit' => 's', 'size' => 0.3],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-button' => 'transition-duration: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-button' => 'transition-duration: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -530,7 +530,7 @@ class Button extends WidgetBase
         $this->add_control(
             'hover_animation',
             [
-                'label' => __('Hover animation', 'veloria'),
+                'label' => __('Hover animation', 'addonext'),
                 'type'  => Controls_Manager::HOVER_ANIMATION,
             ]
         );
@@ -541,7 +541,7 @@ class Button extends WidgetBase
     public function render(): void
     {
         $settings = $this->get_settings_for_display();
-        $template_path = VELORIA_DIR . 'templates/button/button.php';
+        $template_path = ADDONEXT_DIR . 'templates/button/button.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -555,25 +555,25 @@ class Button extends WidgetBase
         const hasIcon = settings.selected_icon && settings.selected_icon.value;
         if (! hasText && ! hasIcon) return;
 
-        view.addRenderAttribute('wrapper', 'class', 'veloria-button-wrapper');
-        view.addRenderAttribute('button', 'class', 'veloria-button');
-        view.addRenderAttribute('button', 'class', 'veloria-button--' + (settings.size || 'md'));
-        view.addRenderAttribute('button', 'class', 'veloria-button--' + settings.variant);
+        view.addRenderAttribute('wrapper', 'class', 'addonext-button-wrapper');
+        view.addRenderAttribute('button', 'class', 'addonext-button');
+        view.addRenderAttribute('button', 'class', 'addonext-button--' + (settings.size || 'md'));
+        view.addRenderAttribute('button', 'class', 'addonext-button--' + settings.variant);
 
         if (settings.hover_animation) {
             view.addRenderAttribute('button', 'class', 'elementor-animation-' + settings.hover_animation);
         }
         if (settings.link && settings.link.url) {
             view.addRenderAttribute('button', 'href', elementor.helpers.sanitizeUrl(settings.link.url));
-            view.addRenderAttribute('button', 'class', 'veloria-button-link');
+            view.addRenderAttribute('button', 'class', 'addonext-button-link');
         } else {
             view.addRenderAttribute('button', 'role', 'button');
         }
         if (settings.button_css_id) {
             view.addRenderAttribute('button', 'id', settings.button_css_id);
         }
-        view.addRenderAttribute('content', 'class', 'veloria-button__content');
-        view.addRenderAttribute('text', 'class', 'veloria-button__text');
+        view.addRenderAttribute('content', 'class', 'addonext-button__content');
+        view.addRenderAttribute('text', 'class', 'addonext-button__text');
         view.addInlineEditingAttributes('text', 'none');
 
         let iconHtml = '';
@@ -585,7 +585,7 @@ class Button extends WidgetBase
             <a {{{ view.getRenderAttributeString('button') }}}>
                 <span {{{ view.getRenderAttributeString('content') }}}>
                     <# if (hasIcon && iconHtml && iconHtml.rendered) { #>
-                        <span class="veloria-button__icon">{{{ iconHtml.value }}}</span>
+                        <span class="addonext-button__icon">{{{ iconHtml.value }}}</span>
                     <# } #>
                     <# if (hasText) { #>
                         <span {{{ view.getRenderAttributeString('text') }}}>{{{ settings.text }}}</span>

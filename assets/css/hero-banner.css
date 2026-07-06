@@ -1,4 +1,4 @@
-.veloria-hero-banner {
+.addonext-hero-banner {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-.veloria-hero-banner__bg {
+.addonext-hero-banner__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -15,7 +15,7 @@
     background-size: cover;
 }
 
-.veloria-hero-banner__video {
+.addonext-hero-banner__video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -24,13 +24,13 @@
     pointer-events: none;
 }
 
-.veloria-hero-banner__video--youtube,
-.veloria-hero-banner__video--vimeo {
+.addonext-hero-banner__video--youtube,
+.addonext-hero-banner__video--vimeo {
     overflow: hidden;
 }
 
-.veloria-hero-banner__video--youtube iframe,
-.veloria-hero-banner__video--vimeo iframe {
+.addonext-hero-banner__video--youtube iframe,
+.addonext-hero-banner__video--vimeo iframe {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,14 +42,14 @@
     pointer-events: none;
 }
 
-.veloria-hero-banner__overlay {
+.addonext-hero-banner__overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
 }
 
-.veloria-hero-banner__inner {
+.addonext-hero-banner__inner {
     position: relative;
     z-index: 2;
     display: flex;
@@ -62,37 +62,37 @@
     box-sizing: border-box;
 }
 
-.veloria-hero-banner__content {
+.addonext-hero-banner__content {
     width: 100%;
     text-align: left;
 }
 
-.veloria-hero-banner__tagline {
+.addonext-hero-banner__tagline {
     margin: 0;
 }
 
-.veloria-hero-banner__tagline-accent-text {
+.addonext-hero-banner__tagline-accent-text {
     background-image: linear-gradient(90deg, #5e42da 0%, #a542da 55%, #3b82f6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.veloria-hero-banner__title {
+.addonext-hero-banner__title {
     margin: 0;
     max-width: 100%;
 }
 
-.veloria-hero-banner__title-static {
+.addonext-hero-banner__title-static {
     display: inline;
 }
 
-.veloria-hero-banner__title-typing-wrap {
+.addonext-hero-banner__title-typing-wrap {
     display: inline;
     white-space: normal;
 }
 
-.veloria-hero-banner__title-typing {
+.addonext-hero-banner__title-typing {
     display: inline;
     background-image: linear-gradient(90deg, #5e42da 0%, #a542da 55%, #3b82f6 100%);
     -webkit-background-clip: text;
@@ -100,7 +100,7 @@
     color: transparent !important;
 }
 
-.veloria-hero-banner__title-cursor {
+.addonext-hero-banner__title-cursor {
     display: inline-block;
     width: 3px;
     height: 0.9em;
@@ -108,15 +108,15 @@
     vertical-align: -0.12em;
     background: linear-gradient(180deg, #5e42da, #3b82f6);
     border-radius: 1px;
-    animation: veloria-hero-banner-cursor 0.9s steps(1, end) infinite;
+    animation: addonext-hero-banner-cursor 0.9s steps(1, end) infinite;
 }
 
-.veloria-hero-banner__title-typing-wrap.is-done .veloria-hero-banner__title-cursor {
+.addonext-hero-banner__title-typing-wrap.is-done .addonext-hero-banner__title-cursor {
     animation: none;
     opacity: 0.35;
 }
 
-@keyframes veloria-hero-banner-cursor {
+@keyframes addonext-hero-banner-cursor {
     0%,
     49% {
         opacity: 1;
@@ -127,17 +127,17 @@
     }
 }
 
-.veloria-hero-banner__subrow-wrap {
+.addonext-hero-banner__subrow-wrap {
     width: 100%;
 }
 
-.veloria-hero-banner__subrow {
+.addonext-hero-banner__subrow {
     display: flex;
     flex-direction: row;
     align-items: stretch;
 }
 
-.veloria-hero-banner__accent-line {
+.addonext-hero-banner__accent-line {
     flex-shrink: 0;
     align-self: stretch;
     width: 4px;
@@ -146,7 +146,7 @@
     background: linear-gradient(180deg, #5e42da 0%, #3b82f6 100%);
 }
 
-.veloria-hero-banner__subtitle {
+.addonext-hero-banner__subtitle {
     margin: 0;
     flex: 1;
     min-width: 0;
@@ -165,20 +165,20 @@
     box-shadow: none !important;
 }
 
-.veloria-hero-banner__subtitle::before,
-.veloria-hero-banner__subtitle::after {
+.addonext-hero-banner__subtitle::before,
+.addonext-hero-banner__subtitle::after {
     content: none !important;
     display: none !important;
 }
 
-.veloria-hero-banner__actions {
+.addonext-hero-banner__actions {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.veloria-hero-banner__btn {
+.addonext-hero-banner__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -196,55 +196,55 @@
         opacity 0.2s ease;
 }
 
-.veloria-hero-banner__btn:hover {
+.addonext-hero-banner__btn:hover {
     transform: translateY(-2px);
     opacity: 0.96;
 }
 
-.veloria-hero-banner__btn--solid {
+.addonext-hero-banner__btn--solid {
     border: none;
 }
 
-.veloria-hero-banner__btn--solid:hover {
+.addonext-hero-banner__btn--solid:hover {
     box-shadow: 0 8px 24px rgba(30, 27, 75, 0.35);
 }
 
-.veloria-hero-banner__btn--outlined:hover {
+.addonext-hero-banner__btn--outlined:hover {
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
-.veloria-hero-banner__btn:focus-visible {
+.addonext-hero-banner__btn:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
 }
 
-.veloria-hero-banner__btn-inner {
+.addonext-hero-banner__btn-inner {
     display: inline-flex;
     align-items: center;
 }
 
-.veloria-hero-banner__btn-icon {
+.addonext-hero-banner__btn-icon {
     display: inline-flex;
     align-items: center;
     line-height: 0;
 }
 
-.veloria-hero-banner__btn-icon svg {
+.addonext-hero-banner__btn-icon svg {
     width: 1em;
     height: 1em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .veloria-hero-banner__btn {
+    .addonext-hero-banner__btn {
         transition-duration: 0.01ms;
     }
 
-    .veloria-hero-banner__btn:hover {
+    .addonext-hero-banner__btn:hover {
         transform: none;
     }
 
-    .veloria-hero-banner__title-cursor {
+    .addonext-hero-banner__title-cursor {
         animation: none;
         opacity: 0.5;
     }

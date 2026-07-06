@@ -1,14 +1,14 @@
 <?php
-namespace Veloria\Base;
+namespace Addonext\Base;
 
-use Veloria\Utils\OptionsHelper;
+use Addonext\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
  * Base class for migrations
  *
- * @package Veloria\Base
+ * @package AddoNext\Base
  */
 abstract class MigrationBase
 {

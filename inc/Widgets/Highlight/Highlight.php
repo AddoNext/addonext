@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Highlight;
+namespace Addonext\Widgets\Highlight;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -11,12 +11,12 @@ class Highlight extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-editor-underline veloria-icon';
+        return 'eicon-editor-underline addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-highlight';
+        return 'addonext-highlight';
     }
 
     public function get_admin_category(): string
@@ -26,12 +26,12 @@ class Highlight extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Highlight', 'veloria');
+        return __('Highlight', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Custom highlighted text styles within a paragraph.', 'veloria');
+        return __('Custom highlighted text styles within a paragraph.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -41,30 +41,30 @@ class Highlight extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-highlight'];
+        return ['addonext-highlight'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-highlight',
-            VELORIA_URL . 'assets/css/highlight.css',
+            'addonext-highlight',
+            ADDONEXT_URL . 'assets/css/highlight.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
-        $default_content = __('Our platform provides exceptional performance and industry-leading security for all your business needs. We ensure that every feature is carefully optimized to deliver the best user experience possible.', 'veloria');
+        $default_content = __('Our platform provides exceptional performance and industry-leading security for all your business needs. We ensure that every feature is carefully optimized to deliver the best user experience possible.', 'addonext');
 
         $this->add_control('content', [
-            'label'   => __('Paragraph', 'veloria'),
+            'label'   => __('Paragraph', 'addonext'),
             'type'    => Controls_Manager::TEXTAREA,
             'default' => $default_content,
             'rows'    => 4,
@@ -73,44 +73,44 @@ class Highlight extends WidgetBase
         $repeater = new \Elementor\Repeater();
 
         $repeater->add_control('phrase', [
-            'label'       => __('Text to highlight', 'veloria'),
+            'label'       => __('Text to highlight', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'placeholder' => __('e.g. exceptional performance', 'veloria'),
+            'placeholder' => __('e.g. exceptional performance', 'addonext'),
         ]);
 
         $repeater->add_control('style_type', [
-            'label'   => __('Background', 'veloria'),
+            'label'   => __('Background', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'solid',
             'options' => [
-                'solid'   => __('Solid color', 'veloria'),
-                'gradient' => __('Gradient', 'veloria'),
+                'solid'   => __('Solid color', 'addonext'),
+                'gradient' => __('Gradient', 'addonext'),
             ],
         ]);
 
         $repeater->add_control('bg_color', [
-            'label'     => __('Background color', 'veloria'),
+            'label'     => __('Background color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#fef08a',
             'condition' => ['style_type' => 'solid'],
         ]);
 
         $repeater->add_control('gradient_color_a', [
-            'label'     => __('Gradient start', 'veloria'),
+            'label'     => __('Gradient start', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#4a7cf8',
             'condition' => ['style_type' => 'gradient'],
         ]);
 
         $repeater->add_control('gradient_color_b', [
-            'label'     => __('Gradient end', 'veloria'),
+            'label'     => __('Gradient end', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#8b5cf6',
             'condition' => ['style_type' => 'gradient'],
         ]);
 
         $repeater->add_control('gradient_angle', [
-            'label'     => __('Gradient angle', 'veloria'),
+            'label'     => __('Gradient angle', 'addonext'),
             'type'      => Controls_Manager::SLIDER,
             'size_units' => ['deg'],
             'range'     => ['deg' => ['min' => 0, 'max' => 360]],
@@ -119,13 +119,13 @@ class Highlight extends WidgetBase
         ]);
 
         $repeater->add_control('text_color', [
-            'label'   => __('Text color', 'veloria'),
+            'label'   => __('Text color', 'addonext'),
             'type'    => Controls_Manager::COLOR,
             'default' => '',
         ]);
 
         $repeater->add_control('border_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
@@ -133,7 +133,7 @@ class Highlight extends WidgetBase
         ]);
 
         $repeater->add_control('padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
@@ -145,7 +145,7 @@ class Highlight extends WidgetBase
         ]);
 
         $this->add_control('highlights', [
-            'label'       => __('Highlights', 'veloria'),
+            'label'       => __('Highlights', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $repeater->get_controls(),
             'default'     => [
@@ -182,18 +182,18 @@ class Highlight extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_paragraph', [
-            'label' => __('Paragraph', 'veloria'),
+            'label' => __('Paragraph', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('paragraph_font_size', [
-            'label'      => __('Font size', 'veloria'),
+            'label'      => __('Font size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 10, 'max' => 72]],
             'default'    => ['unit' => 'px', 'size' => 16],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-highlight__content' => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-highlight__content' => 'font-size: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -201,17 +201,17 @@ class Highlight extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'paragraph_typography',
-                'selector' => '{{WRAPPER}} .veloria-highlight__content',
+                'selector' => '{{WRAPPER}} .addonext-highlight__content',
                 'exclude'  => ['font_size'],
             ]
         );
 
         $this->add_control('paragraph_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#374151',
             'selectors' => [
-                '{{WRAPPER}} .veloria-highlight__content' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-highlight__content' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -257,7 +257,7 @@ class Highlight extends WidgetBase
             $pl = isset($p['left']) ? $p['left'] : 6;
             $pu = isset($p['unit']) ? $p['unit'] : 'px';
             $styles[] = 'padding:' . $pt . $pu . ' ' . $pr . $pu . ' ' . $pb . $pu . ' ' . $pl . $pu;
-            $html = '<span class="veloria-highlight__mark" style="' . implode(';', $styles) . '">' . $phrase_escaped . '</span>';
+            $html = '<span class="addonext-highlight__mark" style="' . implode(';', $styles) . '">' . $phrase_escaped . '</span>';
             $ranges[] = ['start' => $idx, 'end' => $end, 'html' => $html];
         }
         usort($ranges, function ($a, $b) {
@@ -281,7 +281,7 @@ class Highlight extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/highlight/highlight.php';
+        $path = ADDONEXT_DIR . 'templates/highlight/highlight.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -322,7 +322,7 @@ class Highlight extends WidgetBase
             var pb = (p.bottom != null ? p.bottom : 2) + (p.unit || 'px');
             var pl = (p.left != null ? p.left : 6) + (p.unit || 'px');
             styles.push('padding:' + pt + ' ' + pr + ' ' + pb + ' ' + pl);
-            ranges.push({ start: idx, end: end, html: '<span class="veloria-highlight__mark" style="' + styles.join(';') + '">' + phraseEsc + '</span>' });
+            ranges.push({ start: idx, end: end, html: '<span class="addonext-highlight__mark" style="' + styles.join(';') + '">' + phraseEsc + '</span>' });
         }
         ranges.sort(function(a, b) { return a.start - b.start; });
         var pos = 0;
@@ -337,7 +337,7 @@ class Highlight extends WidgetBase
         if (pos < escaped.length) out += escaped.substring(pos);
         if (out === '') out = escaped;
         #>
-        <p class="veloria-highlight__content">{{{ out }}}</p>
+        <p class="addonext-highlight__content">{{{ out }}}</p>
         <?php
     }
 }

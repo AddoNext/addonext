@@ -1,38 +1,38 @@
-.veloria-promo-box {
-    --veloria-promo-start: #1f7bff;
-    --veloria-promo-end: #7a3cff;
-    --veloria-promo-angle: 112deg;
-    --veloria-promo-gradient-duration: 9s;
-    --veloria-promo-circles-duration: 7s;
-    --veloria-promo-circle-one: rgba(175, 120, 255, 0.35);
-    --veloria-promo-circle-two: rgba(130, 90, 255, 0.35);
+.addonext-promo-box {
+    --addonext-promo-start: #1f7bff;
+    --addonext-promo-end: #7a3cff;
+    --addonext-promo-angle: 112deg;
+    --addonext-promo-gradient-duration: 9s;
+    --addonext-promo-circles-duration: 7s;
+    --addonext-promo-circle-one: rgba(175, 120, 255, 0.35);
+    --addonext-promo-circle-two: rgba(130, 90, 255, 0.35);
     position: relative;
     overflow: hidden;
     border-radius: 12px;
     padding: 28px 30px;
     background-color: #3157f8;
-    background-image: linear-gradient(var(--veloria-promo-angle), var(--veloria-promo-start), var(--veloria-promo-end));
+    background-image: linear-gradient(var(--addonext-promo-angle), var(--addonext-promo-start), var(--addonext-promo-end));
     background-size: 220% 220%;
     color: #fff;
 }
 
-.veloria-promo-box--bg-gradient,
-.elementor-element.veloria-promo-box--bg-gradient .veloria-promo-box {
-    background-image: linear-gradient(var(--veloria-promo-angle), var(--veloria-promo-start), var(--veloria-promo-end));
+.addonext-promo-box--bg-gradient,
+.elementor-element.addonext-promo-box--bg-gradient .addonext-promo-box {
+    background-image: linear-gradient(var(--addonext-promo-angle), var(--addonext-promo-start), var(--addonext-promo-end));
 }
 
-.veloria-promo-box--bg-solid,
-.elementor-element.veloria-promo-box--bg-solid .veloria-promo-box {
+.addonext-promo-box--bg-solid,
+.elementor-element.addonext-promo-box--bg-solid .addonext-promo-box {
     background-image: none;
 }
 
-.veloria-promo-box__content {
+.addonext-promo-box__content {
     position: relative;
     z-index: 3;
     max-width: 76%;
 }
 
-.veloria-promo-box__badge-row {
+.addonext-promo-box__badge-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -40,7 +40,7 @@
     margin-bottom: 20px;
 }
 
-.veloria-promo-box__badge-pill {
+.addonext-promo-box__badge-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -53,14 +53,14 @@
     line-height: 1;
 }
 
-.veloria-promo-box__badge-secondary {
+.addonext-promo-box__badge-secondary {
     color: #f9fafb;
     font-size: 22px;
     font-weight: 700;
     line-height: 1.2;
 }
 
-.veloria-promo-box__title {
+.addonext-promo-box__title {
     margin: 0;
     color: #fff;
     font-size: 24px;
@@ -68,7 +68,7 @@
     font-weight: 700;
 }
 
-.veloria-promo-box__description {
+.addonext-promo-box__description {
     margin: 16px 0 0;
     color: #fff;
     font-size: 16px;
@@ -76,7 +76,7 @@
     max-width: 96%;
 }
 
-.veloria-promo-box__footer {
+.addonext-promo-box__footer {
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -85,7 +85,7 @@
     flex-wrap: wrap;
 }
 
-.veloria-promo-box__button {
+.addonext-promo-box__button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -100,18 +100,18 @@
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-.veloria-promo-box__button:hover {
+.addonext-promo-box__button:hover {
     color: #fff;
     background-color: #1d4ed8;
     transform: translateY(-1px);
 }
 
-.veloria-promo-box__counter {
+.addonext-promo-box__counter {
     display: inline-flex;
     align-items: flex-start;
 }
 
-.veloria-promo-box__counter-item {
+.addonext-promo-box__counter-item {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -121,7 +121,7 @@
     margin-right: 16px;
 }
 
-.veloria-promo-box__counter-item--separator::after {
+.addonext-promo-box__counter-item--separator::after {
     content: ':';
     position: absolute;
     right: -2px;
@@ -131,19 +131,19 @@
     font-weight: 600;
 }
 
-.veloria-promo-box__counter-item:last-child {
+.addonext-promo-box__counter-item:last-child {
     margin-right: 0;
     padding-right: 0;
 }
 
-.veloria-promo-box__counter-value {
+.addonext-promo-box__counter-value {
     color: #fff;
     font-size: 20px;
     line-height: 1;
     font-weight: 700;
 }
 
-.veloria-promo-box__counter-label {
+.addonext-promo-box__counter-label {
     margin-top: 8px;
     color: #dbeafe;
     font-size: 12px;
@@ -151,42 +151,42 @@
     font-weight: 500;
 }
 
-.veloria-promo-box__circle {
+.addonext-promo-box__circle {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
 }
 
-.veloria-promo-box__circle--one {
+.addonext-promo-box__circle--one {
     width: 210px;
     height: 210px;
     top: -84px;
     right: -58px;
-    background: var(--veloria-promo-circle-one);
+    background: var(--addonext-promo-circle-one);
 }
 
-.veloria-promo-box__circle--two {
+.addonext-promo-box__circle--two {
     width: 92px;
     height: 92px;
     bottom: -28px;
     right: 102px;
-    background: var(--veloria-promo-circle-two);
+    background: var(--addonext-promo-circle-two);
 }
 
-.elementor-element.veloria-promo-box--anim-yes .veloria-promo-box {
-    animation: veloria-promo-gradient-shift var(--veloria-promo-gradient-duration) ease-in-out infinite;
+.elementor-element.addonext-promo-box--anim-yes .addonext-promo-box {
+    animation: addonext-promo-gradient-shift var(--addonext-promo-gradient-duration) ease-in-out infinite;
 }
 
-.elementor-element.veloria-promo-box--anim-yes .veloria-promo-box__circle--one {
-    animation: veloria-promo-circle-drift var(--veloria-promo-circles-duration) ease-in-out infinite;
+.elementor-element.addonext-promo-box--anim-yes .addonext-promo-box__circle--one {
+    animation: addonext-promo-circle-drift var(--addonext-promo-circles-duration) ease-in-out infinite;
 }
 
-.elementor-element.veloria-promo-box--anim-yes .veloria-promo-box__circle--two {
-    animation: veloria-promo-circle-drift-reverse calc(var(--veloria-promo-circles-duration) * 1.2) ease-in-out infinite;
+.elementor-element.addonext-promo-box--anim-yes .addonext-promo-box__circle--two {
+    animation: addonext-promo-circle-drift-reverse calc(var(--addonext-promo-circles-duration) * 1.2) ease-in-out infinite;
 }
 
-@keyframes veloria-promo-gradient-shift {
+@keyframes addonext-promo-gradient-shift {
     0%,
     100% {
         background-position: 0% 50%;
@@ -197,7 +197,7 @@
     }
 }
 
-@keyframes veloria-promo-circle-drift {
+@keyframes addonext-promo-circle-drift {
     0%,
     100% {
         transform: translate3d(0, 0, 0);
@@ -208,7 +208,7 @@
     }
 }
 
-@keyframes veloria-promo-circle-drift-reverse {
+@keyframes addonext-promo-circle-drift-reverse {
     0%,
     100% {
         transform: translate3d(0, 0, 0);
@@ -220,95 +220,95 @@
 }
 
 @media (max-width: 1024px) {
-    .veloria-promo-box__content {
+    .addonext-promo-box__content {
         max-width: 100%;
     }
 
-    .veloria-promo-box__badge-secondary {
+    .addonext-promo-box__badge-secondary {
         font-size: 19px;
     }
 
-    .veloria-promo-box__title {
+    .addonext-promo-box__title {
         font-size: 22px;
     }
 
-    .veloria-promo-box__description {
+    .addonext-promo-box__description {
         font-size: 15px;
     }
 
-    .veloria-promo-box__button {
+    .addonext-promo-box__button {
         font-size: 14px;
     }
 
-    .veloria-promo-box__counter-value {
+    .addonext-promo-box__counter-value {
         font-size: 18px;
     }
 
-    .veloria-promo-box__counter-item {
+    .addonext-promo-box__counter-item {
         min-width: 84px;
     }
 }
 
 @media (max-width: 767px) {
-    .veloria-promo-box {
+    .addonext-promo-box {
         padding: 20px;
     }
 
-    .veloria-promo-box__badge-row {
+    .addonext-promo-box__badge-row {
         gap: 10px;
         margin-bottom: 14px;
     }
 
-    .veloria-promo-box__badge-pill {
+    .addonext-promo-box__badge-pill {
         font-size: 12px;
         padding: 7px 12px;
     }
 
-    .veloria-promo-box__badge-secondary {
+    .addonext-promo-box__badge-secondary {
         font-size: 18px;
     }
 
-    .veloria-promo-box__title {
+    .addonext-promo-box__title {
         font-size: 28px;
     }
 
-    .veloria-promo-box__description {
+    .addonext-promo-box__description {
         font-size: 18px;
         margin-top: 10px;
     }
 
-    .veloria-promo-box__button {
+    .addonext-promo-box__button {
         font-size: 16px;
         padding: 11px 22px;
     }
 
-    .veloria-promo-box__footer {
+    .addonext-promo-box__footer {
         margin-top: 18px;
         column-gap: 14px;
     }
 
-    .veloria-promo-box__counter {
+    .addonext-promo-box__counter {
         width: 100%;
         justify-content: flex-start;
     }
 
-    .veloria-promo-box__counter-item {
+    .addonext-promo-box__counter-item {
         min-width: 60px;
         margin-right: 10px;
         padding-right: 10px;
     }
 
-    .veloria-promo-box__counter-item--separator::after {
+    .addonext-promo-box__counter-item--separator::after {
         font-size: 22px;
         top: 0;
         right: -1px;
     }
 
-    .veloria-promo-box__counter-value {
+    .addonext-promo-box__counter-value {
         font-size: 22px;
     }
 
-    .veloria-promo-box__counter-label {
+    .addonext-promo-box__counter-label {
         font-size: 12px;
         margin-top: 5px;
     }

@@ -1,19 +1,19 @@
-.veloria-instagram-feed {
+.addonext-instagram-feed {
     width: 100%;
 }
 
-.veloria-instagram-feed--empty .veloria-instagram-feed__notice {
+.addonext-instagram-feed--empty .addonext-instagram-feed__notice {
     padding: 20px;
     text-align: center;
     color: #666;
     margin: 0;
 }
 
-.veloria-instagram-feed__follow-wrap {
+.addonext-instagram-feed__follow-wrap {
     margin-bottom: 16px;
 }
 
-.veloria-instagram-feed__follow {
+.addonext-instagram-feed__follow {
     display: inline-block;
     padding: 10px 20px;
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
@@ -23,33 +23,33 @@
     font-weight: 600;
 }
 
-.veloria-instagram-feed__grid {
+.addonext-instagram-feed__grid {
     display: grid;
     gap: 10px;
 }
 
-.veloria-instagram-feed__figure {
+.addonext-instagram-feed__figure {
     margin: 0;
     position: relative;
 }
 
-.veloria-instagram-feed__media-wrap {
+.addonext-instagram-feed__media-wrap {
     position: relative;
     overflow: hidden;
     background: #f0f0f0;
 }
 
-.veloria-instagram-feed__media-wrap--square {
+.addonext-instagram-feed__media-wrap--square {
     aspect-ratio: 1;
 }
 
-.veloria-instagram-feed__media-wrap--square .veloria-instagram-feed__img {
+.addonext-instagram-feed__media-wrap--square .addonext-instagram-feed__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.veloria-instagram-feed__img {
+.addonext-instagram-feed__img {
     display: block;
     width: 100%;
     height: auto;
@@ -57,33 +57,33 @@
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.veloria-instagram-feed__media-wrap--zoom-in:hover .veloria-instagram-feed__img {
+.addonext-instagram-feed__media-wrap--zoom-in:hover .addonext-instagram-feed__img {
     transform: scale(1.08);
 }
 
-.veloria-instagram-feed__media-wrap--zoom-out .veloria-instagram-feed__img {
+.addonext-instagram-feed__media-wrap--zoom-out .addonext-instagram-feed__img {
     transform: scale(1.1);
 }
 
-.veloria-instagram-feed__media-wrap--zoom-out:hover .veloria-instagram-feed__img {
+.addonext-instagram-feed__media-wrap--zoom-out:hover .addonext-instagram-feed__img {
     transform: scale(1);
 }
 
-.veloria-instagram-feed__media-wrap--grayscale .veloria-instagram-feed__img {
+.addonext-instagram-feed__media-wrap--grayscale .addonext-instagram-feed__img {
     filter: grayscale(100%);
 }
 
-.veloria-instagram-feed__media-wrap--grayscale:hover .veloria-instagram-feed__img {
+.addonext-instagram-feed__media-wrap--grayscale:hover .addonext-instagram-feed__img {
     filter: grayscale(0%);
 }
 
-.veloria-instagram-feed__overlay-link {
+.addonext-instagram-feed__overlay-link {
     position: absolute;
     inset: 0;
     z-index: 1;
 }
 
-.veloria-instagram-feed__overlay {
+.addonext-instagram-feed__overlay {
     position: absolute;
     inset: 0;
     display: flex;
@@ -94,48 +94,48 @@
     pointer-events: none;
 }
 
-.veloria-instagram-feed__overlay-link + .veloria-instagram-feed__overlay {
+.addonext-instagram-feed__overlay-link + .addonext-instagram-feed__overlay {
     pointer-events: none;
 }
 
-.veloria-instagram-feed__overlay .veloria-instagram-feed__el {
+.addonext-instagram-feed__overlay .addonext-instagram-feed__el {
     pointer-events: auto;
 }
 
-.veloria-instagram-feed__el {
+.addonext-instagram-feed__el {
     margin: 4px;
 }
 
-.veloria-instagram-feed__el--left {
+.addonext-instagram-feed__el--left {
     margin-right: auto;
     margin-left: 0;
 }
 
-.veloria-instagram-feed__el--right {
+.addonext-instagram-feed__el--right {
     margin-left: auto;
     margin-right: 0;
 }
 
-.veloria-instagram-feed__el--center {
+.addonext-instagram-feed__el--center {
     margin-left: auto;
     margin-right: auto;
 }
 
-.veloria-instagram-feed__username {
+.addonext-instagram-feed__username {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
-.veloria-instagram-feed__caption,
-.veloria-instagram-feed__date {
+.addonext-instagram-feed__caption,
+.addonext-instagram-feed__date {
     margin: 0;
     font-size: 13px;
 }
 
-.veloria-instagram-feed__icon a,
-.veloria-instagram-feed__lightbox {
+.addonext-instagram-feed__icon a,
+.addonext-instagram-feed__lightbox {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -147,58 +147,58 @@
     transition: transform 0.2s ease;
 }
 
-.veloria-instagram-feed__icon a:hover,
-.veloria-instagram-feed__lightbox:hover {
+.addonext-instagram-feed__icon a:hover,
+.addonext-instagram-feed__lightbox:hover {
     transform: scale(1.1);
 }
 
-.veloria-instagram-feed__below {
+.addonext-instagram-feed__below {
     margin: 0;
     padding: 10px 0 0;
 }
 
-.veloria-instagram-feed--list .veloria-instagram-feed__figure {
+.addonext-instagram-feed--list .addonext-instagram-feed__figure {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 16px;
 }
 
-.veloria-instagram-feed--list .veloria-instagram-feed__media-wrap {
+.addonext-instagram-feed--list .addonext-instagram-feed__media-wrap {
     flex-shrink: 0;
 }
 
-.veloria-instagram-feed--list .veloria-instagram-feed__below {
+.addonext-instagram-feed--list .addonext-instagram-feed__below {
     flex: 1;
     min-width: 0;
 }
 
-.veloria-instagram-feed__carousel {
+.addonext-instagram-feed__carousel {
     overflow: hidden;
     position: relative;
 }
 
-.veloria-instagram-feed__carousel .swiper-wrapper {
+.addonext-instagram-feed__carousel .swiper-wrapper {
     align-items: stretch;
 }
 
-.veloria-instagram-feed__carousel .swiper-slide {
+.addonext-instagram-feed__carousel .swiper-slide {
     height: auto;
 }
 
-.veloria-instagram-feed__carousel .swiper-slide .veloria-instagram-feed__figure {
+.addonext-instagram-feed__carousel .swiper-slide .addonext-instagram-feed__figure {
     height: 100%;
 }
 
-.veloria-instagram-feed__carousel .swiper-button-prev,
-.veloria-instagram-feed__carousel .swiper-button-next {
+.addonext-instagram-feed__carousel .swiper-button-prev,
+.addonext-instagram-feed__carousel .swiper-button-next {
     color: #333;
 }
 
-.veloria-instagram-feed__carousel .swiper-pagination-bullet {
+.addonext-instagram-feed__carousel .swiper-pagination-bullet {
     opacity: 0.5;
 }
 
-.veloria-instagram-feed__carousel .swiper-pagination-bullet-active {
+.addonext-instagram-feed__carousel .swiper-pagination-bullet-active {
     opacity: 1;
 }

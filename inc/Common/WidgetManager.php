@@ -1,78 +1,78 @@
 <?php
-namespace Veloria\Common;
+namespace Addonext\Common;
 
 defined('ABSPATH') || exit;
 
 use Elementor\Widgets_Manager;
-use Veloria\Utils\OptionsHelper;
-use Veloria\Widgets\Accordion\Accordion;
-use Veloria\Widgets\AdvancedGoogleMap\AdvancedGoogleMap;
-use Veloria\Widgets\AdvancedHeading\AdvancedHeading;
-use Veloria\Widgets\AdvancedTabs\AdvancedTabs;
-use Veloria\Widgets\AnimatedText\AnimatedText;
-use Veloria\Widgets\Badge\Badge;
-use Veloria\Widgets\Blockquote\Blockquote;
-use Veloria\Widgets\Button\Button;
-use Veloria\Widgets\CodeSnippet\CodeSnippet;
-use Veloria\Widgets\ContentToggle\ContentToggle;
-use Veloria\Widgets\Divider\Divider;
-use Veloria\Widgets\Dropcap\Dropcap;
-use Veloria\Widgets\HeroSlider\HeroSlider;
-use Veloria\Widgets\Highlight\Highlight;
-use Veloria\Widgets\IconBox\IconBox;
-use Veloria\Widgets\IconList\IconList;
-use Veloria\Widgets\ImageBox\ImageBox;
-use Veloria\Widgets\ModalPopup\ModalPopup;
-use Veloria\Widgets\NavigationMenu\NavigationMenu;
-use Veloria\Widgets\OffCanvasContent\OffCanvasContent;
-use Veloria\Widgets\SmartPostList\SmartPostList;
-use Veloria\Widgets\Spacer\Spacer;
-use Veloria\Widgets\TextEditor\TextEditor;
-use Veloria\Widgets\VideoGallery\VideoGallery;
-use Veloria\Widgets\VideoPlayer\VideoPlayer;
-use Veloria\Widgets\AnimatedSvg\AnimatedSvg;
-use Veloria\Widgets\DualHeading\DualHeading;
-use Veloria\Widgets\FlipBox\FlipBox;
-use Veloria\Widgets\ImageCarousel\ImageCarousel;
-use Veloria\Widgets\ImageGallery\ImageGallery;
-use Veloria\Widgets\ImageHotspot\ImageHotspot;
-use Veloria\Widgets\LottieAnimation\LottieAnimation;
-use Veloria\Widgets\ProgressBar\ProgressBar;
-use Veloria\Widgets\StarRating\StarRating;
-use Veloria\Widgets\Timeline\Timeline;
-use Veloria\Widgets\Tooltip\Tooltip;
-use Veloria\Widgets\AuthorBox\AuthorBox;
-use Veloria\Widgets\Banner\Banner;
-use Veloria\Widgets\CallToAction\CallToAction;
-use Veloria\Widgets\ContactForm\ContactForm;
-use Veloria\Widgets\ContactForm7Styler\ContactForm7Styler;
-use Veloria\Widgets\InstagramFeed\InstagramFeed;
-use Veloria\Widgets\LogoShowcase\LogoShowcase;
-use Veloria\Widgets\PriceList\PriceList;
-use Veloria\Widgets\PricingTable\PricingTable;
-use Veloria\Widgets\PromoBox\PromoBox;
-use Veloria\Widgets\SocialShare\SocialShare;
-use Veloria\Widgets\TeamMembers\TeamMembers;
-use Veloria\Widgets\Testimonials\Testimonials;
-use Veloria\Widgets\TwitterFeed\TwitterFeed;
-use Veloria\Widgets\UspItems\UspItems;
-use Veloria\Widgets\AdvancedAnalytics\AdvancedAnalytics;
-use Veloria\Widgets\BarChart\BarChart;
-use Veloria\Widgets\DataTable\DataTable;
-use Veloria\Widgets\LineChart\LineChart;
-use Veloria\Widgets\AddToCart\AddToCart;
-use Veloria\Widgets\MiniCart\MiniCart;
-use Veloria\Widgets\ProductCategories\ProductCategories;
-use Veloria\Widgets\ProductGrid\ProductGrid;
-use Veloria\Widgets\ProductImage\ProductImage;
-use Veloria\Widgets\ProductTabs\ProductTabs;
-use Veloria\Widgets\WooCheckout\WooCheckout;
-use Veloria\Widgets\WooThankYou\WooThankYou;
+use Addonext\Utils\OptionsHelper;
+use Addonext\Widgets\Accordion\Accordion;
+use Addonext\Widgets\AdvancedGoogleMap\AdvancedGoogleMap;
+use Addonext\Widgets\AdvancedHeading\AdvancedHeading;
+use Addonext\Widgets\AdvancedTabs\AdvancedTabs;
+use Addonext\Widgets\AnimatedText\AnimatedText;
+use Addonext\Widgets\Badge\Badge;
+use Addonext\Widgets\Blockquote\Blockquote;
+use Addonext\Widgets\Button\Button;
+use Addonext\Widgets\CodeSnippet\CodeSnippet;
+use Addonext\Widgets\ContentToggle\ContentToggle;
+use Addonext\Widgets\Divider\Divider;
+use Addonext\Widgets\Dropcap\Dropcap;
+use Addonext\Widgets\HeroSlider\HeroSlider;
+use Addonext\Widgets\Highlight\Highlight;
+use Addonext\Widgets\IconBox\IconBox;
+use Addonext\Widgets\IconList\IconList;
+use Addonext\Widgets\ImageBox\ImageBox;
+use Addonext\Widgets\ModalPopup\ModalPopup;
+use Addonext\Widgets\NavigationMenu\NavigationMenu;
+use Addonext\Widgets\OffCanvasContent\OffCanvasContent;
+use Addonext\Widgets\SmartPostList\SmartPostList;
+use Addonext\Widgets\Spacer\Spacer;
+use Addonext\Widgets\TextEditor\TextEditor;
+use Addonext\Widgets\VideoGallery\VideoGallery;
+use Addonext\Widgets\VideoPlayer\VideoPlayer;
+use Addonext\Widgets\AnimatedSvg\AnimatedSvg;
+use Addonext\Widgets\DualHeading\DualHeading;
+use Addonext\Widgets\FlipBox\FlipBox;
+use Addonext\Widgets\ImageCarousel\ImageCarousel;
+use Addonext\Widgets\ImageGallery\ImageGallery;
+use Addonext\Widgets\ImageHotspot\ImageHotspot;
+use Addonext\Widgets\LottieAnimation\LottieAnimation;
+use Addonext\Widgets\ProgressBar\ProgressBar;
+use Addonext\Widgets\StarRating\StarRating;
+use Addonext\Widgets\Timeline\Timeline;
+use Addonext\Widgets\Tooltip\Tooltip;
+use Addonext\Widgets\AuthorBox\AuthorBox;
+use Addonext\Widgets\Banner\Banner;
+use Addonext\Widgets\CallToAction\CallToAction;
+use Addonext\Widgets\ContactForm\ContactForm;
+use Addonext\Widgets\ContactForm7Styler\ContactForm7Styler;
+use Addonext\Widgets\InstagramFeed\InstagramFeed;
+use Addonext\Widgets\LogoShowcase\LogoShowcase;
+use Addonext\Widgets\PriceList\PriceList;
+use Addonext\Widgets\PricingTable\PricingTable;
+use Addonext\Widgets\PromoBox\PromoBox;
+use Addonext\Widgets\SocialShare\SocialShare;
+use Addonext\Widgets\TeamMembers\TeamMembers;
+use Addonext\Widgets\Testimonials\Testimonials;
+use Addonext\Widgets\TwitterFeed\TwitterFeed;
+use Addonext\Widgets\UspItems\UspItems;
+use Addonext\Widgets\AdvancedAnalytics\AdvancedAnalytics;
+use Addonext\Widgets\BarChart\BarChart;
+use Addonext\Widgets\DataTable\DataTable;
+use Addonext\Widgets\LineChart\LineChart;
+use Addonext\Widgets\AddToCart\AddToCart;
+use Addonext\Widgets\MiniCart\MiniCart;
+use Addonext\Widgets\ProductCategories\ProductCategories;
+use Addonext\Widgets\ProductGrid\ProductGrid;
+use Addonext\Widgets\ProductImage\ProductImage;
+use Addonext\Widgets\ProductTabs\ProductTabs;
+use Addonext\Widgets\WooCheckout\WooCheckout;
+use Addonext\Widgets\WooThankYou\WooThankYou;
 
 /**
  * WidgetManager class
  *
- * @package Veloria
+ * @package AddoNext
  * @since 1.0.0
  */
 class WidgetManager
@@ -197,10 +197,10 @@ class WidgetManager
     public function enqueue_editor_badge_assets(): void
     {
         wp_enqueue_style(
-            'veloria-editor-badge',
-            VELORIA_URL . 'assets/css/editor-badge.css',
+            'addonext-editor-badge',
+            ADDONEXT_URL . 'assets/css/editor-badge.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -222,11 +222,11 @@ class WidgetManager
         $active = is_array($active) ? $active : [];
 
         $scripts = [
-            'moving-circles' => VELORIA_URL . 'assets/js/editor/veloria-moving-circles-preview.js',
+            'moving-circles' => ADDONEXT_URL . 'assets/js/editor/addonext-moving-circles-preview.js',
         ];
 
-        if (veloria_pro_class_exists('\Veloria\Extensions\ParticleEffects\ParticleEffects')) {
-            $scripts['particle-effects'] = VELORIA_URL . 'assets/js/editor/veloria-particle-effects-preview.js';
+        if (addonext_pro_class_exists('\Addonext\Extensions\ParticleEffects\ParticleEffects')) {
+            $scripts['particle-effects'] = ADDONEXT_URL . 'assets/js/editor/addonext-particle-effects-preview.js';
         }
 
         foreach ($scripts as $slug => $src) {
@@ -235,26 +235,26 @@ class WidgetManager
             }
 
             wp_enqueue_script(
-                'veloria-editor-ext-' . str_replace('-', '_', $slug),
+                'addonext-editor-ext-' . str_replace('-', '_', $slug),
                 $src,
                 ['jquery', 'elementor-editor'],
-                VELORIA_VERSION,
+                ADDONEXT_VERSION,
                 true
             );
         }
     }
 
     /**
-     * Register the 'veloria' Elementor widget category
+     * Register the 'addonext' Elementor widget category
      *
      * @param \Elementor\Elements_Manager $elements_manager
      */
     public function register_category($elements_manager)
     {
         $elements_manager->add_category(
-            'veloria',
+            'addonext',
             [
-                'title' => 'Veloria',
+                'title' => 'AddoNext',
                 'icon'  => 'fa-layer-group'
             ]
         );
@@ -295,8 +295,8 @@ class WidgetManager
             return false;
         }
 
-        if (veloria_pro_class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
-            return \Veloria\Pro\Utils\PreviewAccess::is_preview_mode();
+        if (addonext_pro_class_exists('\Addonext\Pro\Utils\PreviewAccess')) {
+            return \Addonext\Pro\Utils\PreviewAccess::is_preview_mode();
         }
 
         return true;
@@ -311,8 +311,8 @@ class WidgetManager
     {
         $widgets = self::$widgets;
 
-        if (function_exists('veloria_get_pro_widget_classes')) {
-            $widgets = array_merge($widgets, veloria_get_pro_widget_classes());
+        if (function_exists('addonext_get_pro_widget_classes')) {
+            $widgets = array_merge($widgets, addonext_get_pro_widget_classes());
         }
 
         return $widgets;

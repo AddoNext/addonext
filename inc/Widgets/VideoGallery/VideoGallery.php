@@ -1,8 +1,8 @@
 <?php
-namespace Veloria\Widgets\VideoGallery;
+namespace Addonext\Widgets\VideoGallery;
 
-use Veloria\Base\WidgetBase;
-use Veloria\Widgets\VideoPlayer\VideoPlayer;
+use Addonext\Base\WidgetBase;
+use Addonext\Widgets\VideoPlayer\VideoPlayer;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Border;
@@ -28,19 +28,19 @@ class VideoGallery extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('veloria-video-player');
-        wp_enqueue_style('veloria-video-gallery');
-        wp_enqueue_script('veloria-video-gallery');
+        wp_enqueue_style('addonext-video-player');
+        wp_enqueue_style('addonext-video-gallery');
+        wp_enqueue_script('addonext-video-gallery');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-gallery-grid veloria-icon';
+        return 'eicon-gallery-grid addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-video-gallery';
+        return 'addonext-video-gallery';
     }
 
     public function get_admin_category(): string
@@ -50,12 +50,12 @@ class VideoGallery extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Video Gallery', 'veloria');
+        return __('Video Gallery', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Grid of YouTube, Vimeo, Dailymotion, or self-hosted clips with lightbox playback.', 'veloria');
+        return __('Grid of YouTube, Vimeo, Dailymotion, or self-hosted clips with lightbox playback.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -65,27 +65,27 @@ class VideoGallery extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-video-player', 'veloria-video-gallery'];
+        return ['addonext-video-player', 'addonext-video-gallery'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-video-gallery'];
+        return ['addonext-video-gallery'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-video-gallery',
-            VELORIA_URL . 'assets/css/video-gallery.css',
-            ['veloria-video-player'],
-            VELORIA_VERSION
+            'addonext-video-gallery',
+            ADDONEXT_URL . 'assets/css/video-gallery.css',
+            ['addonext-video-player'],
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-video-gallery',
-            VELORIA_URL . 'assets/js/video-gallery.js',
+            'addonext-video-gallery',
+            ADDONEXT_URL . 'assets/js/video-gallery.js',
             ['jquery', 'elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -95,7 +95,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Videos', 'veloria'),
+                'label' => __('Videos', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -105,14 +105,14 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'video_type',
             [
-                'label'   => __('Source', 'veloria'),
+                'label'   => __('Source', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'youtube',
                 'options' => [
-                    'youtube'     => __('YouTube', 'veloria'),
-                    'vimeo'       => __('Vimeo', 'veloria'),
-                    'dailymotion' => __('Dailymotion', 'veloria'),
-                    'hosted'      => __('Self hosted', 'veloria'),
+                    'youtube'     => __('YouTube', 'addonext'),
+                    'vimeo'       => __('Vimeo', 'addonext'),
+                    'dailymotion' => __('Dailymotion', 'addonext'),
+                    'hosted'      => __('Self hosted', 'addonext'),
                 ],
             ]
         );
@@ -120,7 +120,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'youtube_url',
             [
-                'label'     => __('YouTube URL', 'veloria'),
+                'label'     => __('YouTube URL', 'addonext'),
                 'type'      => Controls_Manager::URL,
                 'default'   => ['url' => 'https://www.youtube.com/watch?v=jNQXAC9IVRw'],
                 'condition' => ['video_type' => 'youtube'],
@@ -130,7 +130,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'vimeo_url',
             [
-                'label'     => __('Vimeo URL', 'veloria'),
+                'label'     => __('Vimeo URL', 'addonext'),
                 'type'      => Controls_Manager::URL,
                 'default'   => ['url' => 'https://vimeo.com/148751763'],
                 'condition' => ['video_type' => 'vimeo'],
@@ -140,7 +140,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'dailymotion_url',
             [
-                'label'     => __('Dailymotion URL', 'veloria'),
+                'label'     => __('Dailymotion URL', 'addonext'),
                 'type'      => Controls_Manager::URL,
                 'default'   => ['url' => 'https://www.dailymotion.com/video/x7tfyzb'],
                 'condition' => ['video_type' => 'dailymotion'],
@@ -150,7 +150,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'hosted_url',
             [
-                'label'      => __('Video file', 'veloria'),
+                'label'      => __('Video file', 'addonext'),
                 'type'       => Controls_Manager::MEDIA,
                 'media_type' => 'video',
                 'condition'  => ['video_type' => 'hosted'],
@@ -160,7 +160,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'thumbnail',
             [
-                'label'   => __('Custom thumbnail', 'veloria'),
+                'label'   => __('Custom thumbnail', 'addonext'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => ['url' => ''],
             ]
@@ -169,7 +169,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'show_title',
             [
-                'label'        => __('Show title', 'veloria'),
+                'label'        => __('Show title', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -179,9 +179,9 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'     => __('Title', 'veloria'),
+                'label'     => __('Title', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Video title', 'veloria'),
+                'default'   => __('Video title', 'addonext'),
                 'condition' => ['show_title' => 'yes'],
             ]
         );
@@ -189,7 +189,7 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'show_subtitle',
             [
-                'label'        => __('Show subtitle', 'veloria'),
+                'label'        => __('Show subtitle', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -199,9 +199,9 @@ class VideoGallery extends WidgetBase
         $repeater->add_control(
             'subtitle',
             [
-                'label'     => __('Subtitle', 'veloria'),
+                'label'     => __('Subtitle', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Short description', 'veloria'),
+                'default'   => __('Short description', 'addonext'),
                 'condition' => ['show_subtitle' => 'yes'],
             ]
         );
@@ -213,16 +213,16 @@ class VideoGallery extends WidgetBase
                 'video_type'  => 'youtube',
                 'youtube_url' => ['url' => 'https://www.youtube.com/watch?v=' . $id],
                 'show_title'  => 'yes',
-                'title'       => __('Sample video', 'veloria'),
+                'title'       => __('Sample video', 'addonext'),
                 'show_subtitle' => 'yes',
-                'subtitle'    => __('Tap play to watch', 'veloria'),
+                'subtitle'    => __('Tap play to watch', 'addonext'),
             ];
         }
 
         $this->add_control(
             'items',
             [
-                'label'       => __('Items', 'veloria'),
+                'label'       => __('Items', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => $default_items,
@@ -233,7 +233,7 @@ class VideoGallery extends WidgetBase
         $this->add_responsive_control(
             'columns',
             [
-                'label'          => __('Columns', 'veloria'),
+                'label'          => __('Columns', 'addonext'),
                 'type'           => Controls_Manager::NUMBER,
                 'min'            => 1,
                 'max'            => 8,
@@ -242,7 +242,7 @@ class VideoGallery extends WidgetBase
                 'tablet_default' => 2,
                 'mobile_default' => 1,
                 'selectors'      => [
-                    '{{WRAPPER}} .veloria-video-gallery__grid' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                    '{{WRAPPER}} .addonext-video-gallery__grid' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
                 ],
             ]
         );
@@ -250,13 +250,13 @@ class VideoGallery extends WidgetBase
         $this->add_responsive_control(
             'row_gap',
             [
-                'label'      => __('Row gap', 'veloria'),
+                'label'      => __('Row gap', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-video-gallery__grid' => 'row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-gallery__grid' => 'row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -264,13 +264,13 @@ class VideoGallery extends WidgetBase
         $this->add_responsive_control(
             'column_gap',
             [
-                'label'      => __('Column gap', 'veloria'),
+                'label'      => __('Column gap', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-video-gallery__grid' => 'column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-gallery__grid' => 'column-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -280,7 +280,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_style_cell',
             [
-                'label' => __('Tile', 'veloria'),
+                'label' => __('Tile', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -288,7 +288,7 @@ class VideoGallery extends WidgetBase
         $this->add_responsive_control(
             'aspect_ratio',
             [
-                'label'   => __('Aspect ratio', 'veloria'),
+                'label'   => __('Aspect ratio', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => '16/9',
                 'options' => [
@@ -297,7 +297,7 @@ class VideoGallery extends WidgetBase
                     '21/9' => '21:9',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__inner' => 'aspect-ratio: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__inner' => 'aspect-ratio: {{VALUE}};',
                 ],
             ]
         );
@@ -305,12 +305,12 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => ['top' => 12, 'right' => 12, 'bottom' => 12, 'left' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -319,8 +319,8 @@ class VideoGallery extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'tile_border',
-                'label'    => __('Border', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__inner',
+                'label'    => __('Border', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__inner',
             ]
         );
 
@@ -328,8 +328,8 @@ class VideoGallery extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'tile_shadow',
-                'label'    => __('Box shadow', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__inner',
+                'label'    => __('Box shadow', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__inner',
             ]
         );
 
@@ -338,7 +338,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_style_overlay',
             [
-                'label' => __('Overlay', 'veloria'),
+                'label' => __('Overlay', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -346,11 +346,11 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'overlay_gradient_start',
             [
-                'label'     => __('Gradient start', 'veloria'),
+                'label'     => __('Gradient start', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#312e81',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__overlay' => '--veloria-vp-overlay-start: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__overlay' => '--addonext-vp-overlay-start: {{VALUE}};',
                 ],
             ]
         );
@@ -358,11 +358,11 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'overlay_gradient_end',
             [
-                'label'     => __('Gradient end', 'veloria'),
+                'label'     => __('Gradient end', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4c1d95',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__overlay' => '--veloria-vp-overlay-end: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__overlay' => '--addonext-vp-overlay-end: {{VALUE}};',
                 ],
             ]
         );
@@ -372,7 +372,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_style_play',
             [
-                'label' => __('Play button', 'veloria'),
+                'label' => __('Play button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -380,11 +380,11 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'play_button_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__play' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__play' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -392,11 +392,11 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'play_button_icon_color',
             [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__play-icon' => 'border-left-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__play-icon' => 'border-left-color: {{VALUE}};',
                 ],
             ]
         );
@@ -405,20 +405,20 @@ class VideoGallery extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'play_button_shadow',
-                'selector' => '{{WRAPPER}} .veloria-video-gallery__play',
+                'selector' => '{{WRAPPER}} .addonext-video-gallery__play',
             ]
         );
 
         $this->add_responsive_control(
             'gallery_play_button_size',
             [
-                'label'      => __('Button size', 'veloria'),
+                'label'      => __('Button size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 32, 'max' => 88]],
                 'default'    => ['size' => 44, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}}' => '--veloria-vg-play: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}}' => '--addonext-vg-play: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -428,7 +428,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -437,18 +437,18 @@ class VideoGallery extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__title',
+                'selector' => '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -458,7 +458,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_style_subtitle',
             [
-                'label' => __('Subtitle', 'veloria'),
+                'label' => __('Subtitle', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -467,18 +467,18 @@ class VideoGallery extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'selector' => '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__subtitle',
+                'selector' => '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__subtitle',
             ]
         );
 
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__cell .veloria-video-player__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__cell .addonext-video-player__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -488,7 +488,7 @@ class VideoGallery extends WidgetBase
         $this->start_controls_section(
             'section_style_lightbox',
             [
-                'label' => __('Lightbox', 'veloria'),
+                'label' => __('Lightbox', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -496,11 +496,11 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'lightbox_backdrop',
             [
-                'label'     => __('Backdrop', 'veloria'),
+                'label'     => __('Backdrop', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(15, 23, 42, 0.82)',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-gallery__lightbox-backdrop' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-gallery__lightbox-backdrop' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -508,7 +508,7 @@ class VideoGallery extends WidgetBase
         $this->add_responsive_control(
             'lightbox_max_width',
             [
-                'label'      => __('Player max width', 'veloria'),
+                'label'      => __('Player max width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'vw'],
                 'range'      => [
@@ -518,7 +518,7 @@ class VideoGallery extends WidgetBase
                 ],
                 'default'    => ['size' => 960, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-video-gallery__lightbox-dialog' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-gallery__lightbox-dialog' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -526,13 +526,13 @@ class VideoGallery extends WidgetBase
         $this->add_control(
             'lightbox_radius',
             [
-                'label'      => __('Player corner radius', 'veloria'),
+                'label'      => __('Player corner radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-video-gallery__lightbox-stage' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-gallery__lightbox-stage' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -542,7 +542,7 @@ class VideoGallery extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/video-gallery/video-gallery.php';
+        $path = ADDONEXT_DIR . 'templates/video-gallery/video-gallery.php';
         if (is_readable($path)) {
             include $path;
         }

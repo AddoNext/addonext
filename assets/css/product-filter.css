@@ -1,4 +1,4 @@
-.veloria-product-filter {
+.addonext-product-filter {
   border: 1px solid #e5e7eb;
   border-radius: 18px;
   background: #f8fafc;
@@ -8,14 +8,14 @@
   gap: 26px;
 }
 
-.veloria-product-filter__head {
+.addonext-product-filter__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.veloria-product-filter__title {
+.addonext-product-filter__title {
   margin: 0;
   font-size: 16px;
   line-height: 1.1;
@@ -23,24 +23,24 @@
   color: #0f172a;
 }
 
-.veloria-product-filter__clear {
+.addonext-product-filter__clear {
   color: #2563eb;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
 }
 
-.veloria-product-filter__clear:hover {
+.addonext-product-filter__clear:hover {
   text-decoration: underline;
 }
 
-.veloria-product-filter__section {
+.addonext-product-filter__section {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.veloria-product-filter__section-title {
+.addonext-product-filter__section-title {
   margin: 0;
   font-size: 14px;
   font-weight: 700;
@@ -48,19 +48,19 @@
   color: #111827;
 }
 
-.veloria-product-filter__section--search .veloria-product-filter__search-fields {
+.addonext-product-filter__section--search .addonext-product-filter__search-fields {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.veloria-product-filter__search-label {
+.addonext-product-filter__search-label {
   font-size: 13px;
   font-weight: 600;
   color: #374151;
 }
 
-.veloria-product-filter__search-input {
+.addonext-product-filter__search-input {
   width: 100%;
   min-width: 0;
   border: 1px solid #d1d5db;
@@ -72,23 +72,23 @@
   box-sizing: border-box;
 }
 
-.veloria-product-filter__search-input::placeholder {
+.addonext-product-filter__search-input::placeholder {
   color: #9ca3af;
 }
 
-.veloria-product-filter__search-input:focus {
+.addonext-product-filter__search-input:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-.veloria-product-filter__dual-range {
+.addonext-product-filter__dual-range {
   position: relative;
   height: 32px;
   margin: 4px 0 8px;
 }
 
-.veloria-product-filter__range-rail {
+.addonext-product-filter__range-rail {
   position: absolute;
   left: 0;
   right: 0;
@@ -102,7 +102,7 @@
   box-sizing: border-box;
 }
 
-.veloria-product-filter__range-fill {
+.addonext-product-filter__range-fill {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -116,7 +116,7 @@
   box-sizing: border-box;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range {
+.addonext-product-filter__dual-range .addonext-product-filter__range {
   position: absolute;
   left: 0;
   right: 0;
@@ -132,22 +132,22 @@
   accent-color: transparent;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range--min {
+.addonext-product-filter__dual-range .addonext-product-filter__range--min {
   z-index: 3;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range--max {
+.addonext-product-filter__dual-range .addonext-product-filter__range--max {
   z-index: 4;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range::-webkit-slider-runnable-track {
+.addonext-product-filter__dual-range .addonext-product-filter__range::-webkit-slider-runnable-track {
   height: 6px;
   background: transparent;
   border: none;
   border-radius: 3px;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range::-webkit-slider-thumb {
+.addonext-product-filter__dual-range .addonext-product-filter__range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 18px;
@@ -161,23 +161,23 @@
   pointer-events: auto;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range:focus {
+.addonext-product-filter__dual-range .addonext-product-filter__range:focus {
   outline: none;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range:focus-visible::-webkit-slider-thumb {
+.addonext-product-filter__dual-range .addonext-product-filter__range:focus-visible::-webkit-slider-thumb {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range::-moz-range-track {
+.addonext-product-filter__dual-range .addonext-product-filter__range::-moz-range-track {
   height: 6px;
   background: transparent;
   border: none;
   border-radius: 3px;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range::-moz-range-thumb {
+.addonext-product-filter__dual-range .addonext-product-filter__range::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -188,18 +188,18 @@
   pointer-events: auto;
 }
 
-.veloria-product-filter__dual-range .veloria-product-filter__range:focus-visible::-moz-range-thumb {
+.addonext-product-filter__dual-range .addonext-product-filter__range:focus-visible::-moz-range-thumb {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.veloria-product-filter__price-inputs {
+.addonext-product-filter__price-inputs {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.veloria-product-filter__price-inputs input {
+.addonext-product-filter__price-inputs input {
   width: 100%;
   min-width: 0;
   border: 1px solid #d1d5db;
@@ -208,12 +208,12 @@
   font-size: 14px;
 }
 
-.veloria-product-filter__dash {
+.addonext-product-filter__dash {
   color: #4b5563;
   font-size: 18px;
 }
 
-.veloria-product-filter__option {
+.addonext-product-filter__option {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -222,26 +222,26 @@
   margin-bottom: 0!important;
 }
 
-.veloria-product-filter__option input[type='checkbox'] {
+.addonext-product-filter__option input[type='checkbox'] {
   width: 22px;
   height: 22px;
   accent-color: #2563eb;
 }
 
-.veloria-product-filter__rating-stars-wrap {
+.addonext-product-filter__rating-stars-wrap {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 12px;
 }
 
-.veloria-product-filter__rating-stars {
+.addonext-product-filter__rating-stars {
   display: inline-flex;
   align-items: center;
   gap: 5px;
 }
 
-.veloria-product-filter__star-pair {
+.addonext-product-filter__star-pair {
   position: relative;
   display: inline-block;
   width: 1.35em;
@@ -251,7 +251,7 @@
   vertical-align: middle;
 }
 
-.veloria-product-filter__star-skin {
+.addonext-product-filter__star-skin {
   position: absolute;
   left: 0;
   top: 0;
@@ -260,34 +260,34 @@
   pointer-events: none;
 }
 
-.veloria-product-filter__star-bg,
-.veloria-product-filter__star-fill {
+.addonext-product-filter__star-bg,
+.addonext-product-filter__star-fill {
   position: absolute;
   left: 0;
   top: 0;
   line-height: 1;
 }
 
-.veloria-product-filter__star-bg {
+.addonext-product-filter__star-bg {
   color: #e5e7eb;
 }
 
-.veloria-product-filter__star-fill {
+.addonext-product-filter__star-fill {
   color: #f59e0b;
   overflow: hidden;
   width: 0;
   white-space: nowrap;
 }
 
-.veloria-product-filter__star-pair.is-full .veloria-product-filter__star-fill {
+.addonext-product-filter__star-pair.is-full .addonext-product-filter__star-fill {
   width: 100%;
 }
 
-.veloria-product-filter__star-pair.is-half .veloria-product-filter__star-fill {
+.addonext-product-filter__star-pair.is-half .addonext-product-filter__star-fill {
   width: 50%;
 }
 
-.veloria-product-filter__star-half {
+.addonext-product-filter__star-half {
   position: absolute;
   top: 0;
   height: 100%;
@@ -301,24 +301,24 @@
   border-radius: 0;
 }
 
-.veloria-product-filter__star-half--left {
+.addonext-product-filter__star-half--left {
   left: 0;
 }
 
-.veloria-product-filter__star-half--right {
+.addonext-product-filter__star-half--right {
   left: 50%;
 }
 
-.veloria-product-filter__star-half:focus {
+.addonext-product-filter__star-half:focus {
   outline: none;
 }
 
-.veloria-product-filter__star-half:focus-visible {
+.addonext-product-filter__star-half:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.veloria-product-filter__rating-caption {
+.addonext-product-filter__rating-caption {
   font-size: 14px;
   color: #374151;
   line-height: 1.25;
@@ -326,24 +326,24 @@
   min-width: 0;
 }
 
-.veloria-product-filter__colors {
+.addonext-product-filter__colors {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.veloria-product-filter__color-option {
+.addonext-product-filter__color-option {
   position: relative;
 }
 
-.veloria-product-filter__color-option input {
+.addonext-product-filter__color-option input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.veloria-product-filter__color-option span {
+.addonext-product-filter__color-option span {
   display: block;
   width: 46px;
   height: 46px;
@@ -352,12 +352,12 @@
   background: #e5e7eb;
 }
 
-.veloria-product-filter__color-option input:checked + span {
+.addonext-product-filter__color-option input:checked + span {
   outline: 3px solid #2563eb;
   outline-offset: 2px;
 }
 
-.veloria-product-filter__apply {
+.addonext-product-filter__apply {
   border: 0;
   border-radius: 14px;
   background: #2563eb;
@@ -368,30 +368,30 @@
   cursor: pointer;
 }
 
-.veloria-product-filter__apply:hover {
+.addonext-product-filter__apply:hover {
   background: #1d4ed8;
 }
 
-.veloria-product-filter__placeholder {
+.addonext-product-filter__placeholder {
   margin: 0;
 }
 
-.veloria-product-filter__empty-note {
+.addonext-product-filter__empty-note {
   margin: 0;
   font-size: 14px;
   color: #6b7280;
 }
 
 @media (max-width: 767px) {
-  .veloria-product-filter {
+  .addonext-product-filter {
     padding: 18px;
     border-radius: 14px;
   }
 
-  .veloria-product-filter__title { font-size: 16px; }
-  .veloria-product-filter__clear { font-size: 14px; }
-  .veloria-product-filter__section-title { font-size: 14px; }
-  .veloria-product-filter__option { font-size: 14px; }
-  .veloria-product-filter__apply { font-size: 14px; }
-  .veloria-product-filter__price-inputs input { font-size: 14px; }
+  .addonext-product-filter__title { font-size: 16px; }
+  .addonext-product-filter__clear { font-size: 14px; }
+  .addonext-product-filter__section-title { font-size: 14px; }
+  .addonext-product-filter__option { font-size: 14px; }
+  .addonext-product-filter__apply { font-size: 14px; }
+  .addonext-product-filter__price-inputs input { font-size: 14px; }
 }

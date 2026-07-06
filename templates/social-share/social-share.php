@@ -1,36 +1,36 @@
 <?php
 defined('ABSPATH') || exit;
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_networks = isset($veloria_settings['networks']) && is_array($veloria_settings['networks']) ? $veloria_settings['networks'] : [];
-$veloria_title = isset($veloria_settings['title']) ? $veloria_settings['title'] : '';
+$addonext_settings = $this->get_settings_for_display();
+$addonext_networks = isset($addonext_settings['networks']) && is_array($addonext_settings['networks']) ? $addonext_settings['networks'] : [];
+$addonext_title = isset($addonext_settings['title']) ? $addonext_settings['title'] : '';
 
-$veloria_page_url = get_permalink();
-if ( ! is_string($veloria_page_url) || $veloria_page_url === '' ) {
-    $veloria_page_url = home_url( isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/' );
+$addonext_page_url = get_permalink();
+if ( ! is_string($addonext_page_url) || $addonext_page_url === '' ) {
+    $addonext_page_url = home_url( isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/' );
 }
 
-if ( empty( $veloria_networks ) ) {
+if ( empty( $addonext_networks ) ) {
     return;
 }
 ?>
-<div class="veloria-social-share">
-    <?php if ( $veloria_title !== '' ) : ?>
-        <span class="veloria-social-share__title"><?php echo esc_html( $veloria_title ); ?></span>
+<div class="addonext-social-share">
+    <?php if ( $addonext_title !== '' ) : ?>
+        <span class="addonext-social-share__title"><?php echo esc_html( $addonext_title ); ?></span>
     <?php endif; ?>
-    <?php foreach ( $veloria_networks as $veloria_n ) :
-        $veloria_network = $veloria_n['network'] ?? 'facebook';
-        $veloria_custom_url = isset( $veloria_n['custom_url']['url'] ) ? $veloria_n['custom_url']['url'] : '';
-        $veloria_href = \Veloria\Widgets\SocialShare\SocialShare::get_share_url( $veloria_network, $veloria_page_url, $veloria_custom_url );
-        $veloria_custom_color = isset( $veloria_n['custom_color'] ) ? $veloria_n['custom_color'] : '';
-        $veloria_platform_label = \Veloria\Widgets\SocialShare\SocialShare::get_network_label( $veloria_network );
-        $veloria_tooltip_text = sprintf( /* translators: %s: platform name */ __( 'Share on %s', 'veloria' ), $veloria_platform_label );
+    <?php foreach ( $addonext_networks as $addonext_n ) :
+        $addonext_network = $addonext_n['network'] ?? 'facebook';
+        $addonext_custom_url = isset( $addonext_n['custom_url']['url'] ) ? $addonext_n['custom_url']['url'] : '';
+        $addonext_href = \Addonext\Widgets\SocialShare\SocialShare::get_share_url( $addonext_network, $addonext_page_url, $addonext_custom_url );
+        $addonext_custom_color = isset( $addonext_n['custom_color'] ) ? $addonext_n['custom_color'] : '';
+        $addonext_platform_label = \Addonext\Widgets\SocialShare\SocialShare::get_network_label( $addonext_network );
+        $addonext_tooltip_text = sprintf( /* translators: %s: platform name */ __( 'Share on %s', 'addonext' ), $addonext_platform_label );
     ?>
-        <a href="<?php echo esc_url( $veloria_href ); ?>" target="_blank" rel="noopener noreferrer" class="veloria-social-share__link veloria-social-share__link--<?php echo esc_attr( $veloria_network ); ?>" aria-label="<?php echo esc_attr( $veloria_tooltip_text ); ?>"<?php echo $veloria_custom_color !== '' ? ' style="' . esc_attr( 'background-color:' . $veloria_custom_color ) . '"' : ''; ?>>
-            <span class="veloria-social-share__tooltip" role="tooltip"><?php echo esc_html( $veloria_tooltip_text ); ?></span>
+        <a href="<?php echo esc_url( $addonext_href ); ?>" target="_blank" rel="noopener noreferrer" class="addonext-social-share__link addonext-social-share__link--<?php echo esc_attr( $addonext_network ); ?>" aria-label="<?php echo esc_attr( $addonext_tooltip_text ); ?>"<?php echo $addonext_custom_color !== '' ? ' style="' . esc_attr( 'background-color:' . $addonext_custom_color ) . '"' : ''; ?>>
+            <span class="addonext-social-share__tooltip" role="tooltip"><?php echo esc_html( $addonext_tooltip_text ); ?></span>
             <?php
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG from get_icon_svg(); classes use esc_attr.
-            echo $this->get_icon_svg( $veloria_network );
+            echo $this->get_icon_svg( $addonext_network );
             ?>
         </a>
     <?php endforeach; ?>

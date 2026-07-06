@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\AdvancedAnalytics;
+namespace Addonext\Widgets\AdvancedAnalytics;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
@@ -19,17 +19,17 @@ class AdvancedAnalytics extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_script('veloria-advanced-analytics');
+        wp_enqueue_script('addonext-advanced-analytics');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-analytics veloria-icon';
+        return 'eicon-analytics addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-advanced-analytics';
+        return 'addonext-advanced-analytics';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class AdvancedAnalytics extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Advanced Analytics', 'veloria');
+        return __('Advanced Analytics', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Analytics KPI cards with trend indicators.', 'veloria');
+        return __('Analytics KPI cards with trend indicators.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -54,27 +54,27 @@ class AdvancedAnalytics extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-advanced-analytics'];
+        return ['addonext-advanced-analytics'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-advanced-analytics'];
+        return ['addonext-advanced-analytics'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-advanced-analytics',
-            VELORIA_URL . 'assets/css/advanced-analytics.css',
+            'addonext-advanced-analytics',
+            ADDONEXT_URL . 'assets/css/advanced-analytics.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-advanced-analytics',
-            VELORIA_URL . 'assets/js/advanced-analytics.js',
+            'addonext-advanced-analytics',
+            ADDONEXT_URL . 'assets/js/advanced-analytics.js',
             [],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -82,53 +82,53 @@ class AdvancedAnalytics extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $repeater = new Repeater();
         $repeater->add_control('icon', [
-            'label'   => __('Icon', 'veloria'),
+            'label'   => __('Icon', 'addonext'),
             'type'    => Controls_Manager::ICONS,
             'default' => ['value' => 'fas fa-users', 'library' => 'fa-solid'],
         ]);
         $repeater->add_control('icon_bg', [
-            'label'   => __('Icon background', 'veloria'),
+            'label'   => __('Icon background', 'addonext'),
             'type'    => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
         $repeater->add_control('value', [
-            'label'   => __('Value', 'veloria'),
+            'label'   => __('Value', 'addonext'),
             'type'    => Controls_Manager::TEXT,
             'default' => '24,583',
         ]);
         $repeater->add_control('label', [
-            'label'   => __('Label', 'veloria'),
+            'label'   => __('Label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Total Visitors', 'veloria'),
+            'default' => __('Total Visitors', 'addonext'),
         ]);
         $repeater->add_control('trend', [
-            'label'   => __('Trend text', 'veloria'),
+            'label'   => __('Trend text', 'addonext'),
             'type'    => Controls_Manager::TEXT,
             'default' => '+12.5%',
         ]);
         $repeater->add_control('trend_type', [
-            'label'   => __('Trend type', 'veloria'),
+            'label'   => __('Trend type', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'positive',
             'options' => [
-                'positive' => __('Positive', 'veloria'),
-                'negative' => __('Negative', 'veloria'),
+                'positive' => __('Positive', 'addonext'),
+                'negative' => __('Negative', 'addonext'),
             ],
         ]);
         $repeater->add_control('card_bg', [
-            'label'   => __('Card background', 'veloria'),
+            'label'   => __('Card background', 'addonext'),
             'type'    => Controls_Manager::COLOR,
             'default' => '#dbeafe',
         ]);
 
         $this->add_control('cards', [
-            'label'       => __('Cards', 'veloria'),
+            'label'       => __('Cards', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $repeater->get_controls(),
             'title_field' => '{{{ label }}}',
@@ -137,7 +137,7 @@ class AdvancedAnalytics extends WidgetBase
                     'icon'       => ['value' => 'fas fa-users', 'library' => 'fa-solid'],
                     'icon_bg'    => '#2563eb',
                     'value'      => '24,583',
-                    'label'      => __('Total Visitors', 'veloria'),
+                    'label'      => __('Total Visitors', 'addonext'),
                     'trend'      => '+12.5%',
                     'trend_type' => 'positive',
                     'card_bg'    => '#dbeafe',
@@ -146,7 +146,7 @@ class AdvancedAnalytics extends WidgetBase
                     'icon'       => ['value' => 'fas fa-shopping-cart', 'library' => 'fa-solid'],
                     'icon_bg'    => '#9333ea',
                     'value'      => '$45,892',
-                    'label'      => __('Total Revenue', 'veloria'),
+                    'label'      => __('Total Revenue', 'addonext'),
                     'trend'      => '+8.2%',
                     'trend_type' => 'positive',
                     'card_bg'    => '#f3e8ff',
@@ -155,7 +155,7 @@ class AdvancedAnalytics extends WidgetBase
                     'icon'       => ['value' => 'fas fa-chart-line', 'library' => 'fa-solid'],
                     'icon_bg'    => '#16a34a',
                     'value'      => '3.8%',
-                    'label'      => __('Conversion Rate', 'veloria'),
+                    'label'      => __('Conversion Rate', 'addonext'),
                     'trend'      => '+15.3%',
                     'trend_type' => 'positive',
                     'card_bg'    => '#dcfce7',
@@ -164,7 +164,7 @@ class AdvancedAnalytics extends WidgetBase
                     'icon'       => ['value' => 'fas fa-clock', 'library' => 'fa-solid'],
                     'icon_bg'    => '#ea580c',
                     'value'      => '4m 32s',
-                    'label'      => __('Avg. Session', 'veloria'),
+                    'label'      => __('Avg. Session', 'addonext'),
                     'trend'      => '-2.1%',
                     'trend_type' => 'negative',
                     'card_bg'    => '#fef3c7',
@@ -173,15 +173,15 @@ class AdvancedAnalytics extends WidgetBase
         ]);
 
         $this->add_control('enable_counter_animation', [
-            'label'        => __('Animate numbers', 'veloria'),
+            'label'        => __('Animate numbers', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Yes', 'veloria'),
-            'label_off'    => __('No', 'veloria'),
+            'label_on'     => __('Yes', 'addonext'),
+            'label_off'    => __('No', 'addonext'),
             'return_value' => 'yes',
             'default'      => '',
         ]);
         $this->add_control('counter_animation_duration', [
-            'label'     => __('Animation duration (ms)', 'veloria'),
+            'label'     => __('Animation duration (ms)', 'addonext'),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 300,
             'max'       => 10000,
@@ -193,7 +193,7 @@ class AdvancedAnalytics extends WidgetBase
         ]);
 
         $this->add_responsive_control('columns', [
-            'label'   => __('Columns', 'veloria'),
+            'label'   => __('Columns', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => '4',
             'options' => [
@@ -203,30 +203,30 @@ class AdvancedAnalytics extends WidgetBase
                 '4' => '4',
             ],
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                '{{WRAPPER}} .addonext-advanced-analytics' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_cards', [
-            'label' => __('Cards', 'veloria'),
+            'label' => __('Cards', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('cards_gap', [
-            'label'      => __('Gap', 'veloria'),
+            'label'      => __('Gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 60]],
             'default'    => ['size' => 14, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-advanced-analytics' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-advanced-analytics' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('card_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default'    => [
@@ -238,65 +238,65 @@ class AdvancedAnalytics extends WidgetBase
                 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-advanced-analytics__card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('card_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 30]],
             'default'    => ['size' => 10, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-advanced-analytics__card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__card' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_icon', [
-            'label' => __('Icon', 'veloria'),
+            'label' => __('Icon', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('icon_box_size', [
-            'label'      => __('Icon box size', 'veloria'),
+            'label'      => __('Icon box size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 26, 'max' => 80]],
             'default'    => ['size' => 40, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-advanced-analytics__icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('icon_size', [
-            'label'      => __('Icon size', 'veloria'),
+            'label'      => __('Icon size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 10, 'max' => 34]],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-advanced-analytics__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .veloria-advanced-analytics__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('icon_color', [
-            'label'     => __('Icon color', 'veloria'),
+            'label'     => __('Icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__icon' => 'color: {{VALUE}};',
-                '{{WRAPPER}} .veloria-advanced-analytics__icon svg' => 'fill: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__icon' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__icon svg' => 'fill: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_value', [
-            'label' => __('Value', 'veloria'),
+            'label' => __('Value', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -304,7 +304,7 @@ class AdvancedAnalytics extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'value_typography',
-                'selector' => '{{WRAPPER}} .veloria-advanced-analytics__value',
+                'selector' => '{{WRAPPER}} .addonext-advanced-analytics__value',
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 28, 'unit' => 'px']],
@@ -313,18 +313,18 @@ class AdvancedAnalytics extends WidgetBase
         );
 
         $this->add_control('value_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__value' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__value' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_label', [
-            'label' => __('Label', 'veloria'),
+            'label' => __('Label', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -332,23 +332,23 @@ class AdvancedAnalytics extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'label_typography',
-                'selector' => '{{WRAPPER}} .veloria-advanced-analytics__label',
+                'selector' => '{{WRAPPER}} .addonext-advanced-analytics__label',
             ]
         );
 
         $this->add_control('label_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#4b5563',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__label' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__label' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_trend', [
-            'label' => __('Trend Badge', 'veloria'),
+            'label' => __('Trend Badge', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -356,43 +356,43 @@ class AdvancedAnalytics extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'trend_typography',
-                'selector' => '{{WRAPPER}} .veloria-advanced-analytics__trend',
+                'selector' => '{{WRAPPER}} .addonext-advanced-analytics__trend',
             ]
         );
 
         $this->add_control('trend_positive_color', [
-            'label'     => __('Positive text', 'veloria'),
+            'label'     => __('Positive text', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#16a34a',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__trend--positive' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__trend--positive' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('trend_positive_bg', [
-            'label'     => __('Positive background', 'veloria'),
+            'label'     => __('Positive background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#dcfce7',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__trend--positive' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__trend--positive' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('trend_negative_color', [
-            'label'     => __('Negative text', 'veloria'),
+            'label'     => __('Negative text', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#be123c',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__trend--negative' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__trend--negative' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('trend_negative_bg', [
-            'label'     => __('Negative background', 'veloria'),
+            'label'     => __('Negative background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffe4e6',
             'selectors' => [
-                '{{WRAPPER}} .veloria-advanced-analytics__trend--negative' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-advanced-analytics__trend--negative' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -401,7 +401,7 @@ class AdvancedAnalytics extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/advanced-analytics/advanced-analytics.php';
+        $path = ADDONEXT_DIR . 'templates/advanced-analytics/advanced-analytics.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -415,7 +415,7 @@ class AdvancedAnalytics extends WidgetBase
         var animate = settings.enable_counter_animation === 'yes';
         var duration = settings.counter_animation_duration || 1400;
         #>
-        <div class="veloria-advanced-analytics" data-aa-animate="{{ animate ? 'yes' : 'no' }}" data-aa-duration="{{ duration }}">
+        <div class="addonext-advanced-analytics" data-aa-animate="{{ animate ? 'yes' : 'no' }}" data-aa-duration="{{ duration }}">
             <# _.each(cards, function(card, index) {
                 var cBg = card.card_bg || '#dbeafe';
                 var iBg = card.icon_bg || '#2563eb';
@@ -428,24 +428,24 @@ class AdvancedAnalytics extends WidgetBase
                 var labelAttr = 'aa_label_' + index;
                 var trendAttr = 'aa_trend_' + index;
 
-                view.addRenderAttribute(cardAttr, 'class', 'veloria-advanced-analytics__card');
+                view.addRenderAttribute(cardAttr, 'class', 'addonext-advanced-analytics__card');
                 view.addRenderAttribute(cardAttr, 'style', '--aa-card-bg:' + cBg + ';--aa-icon-bg:' + iBg + ';');
 
-                view.addRenderAttribute(valueAttr, 'class', 'veloria-advanced-analytics__value elementor-inline-editing');
+                view.addRenderAttribute(valueAttr, 'class', 'addonext-advanced-analytics__value elementor-inline-editing');
                 view.addRenderAttribute(valueAttr, 'data-elementor-setting-key', 'cards.' + index + '.value');
 
-                view.addRenderAttribute(labelAttr, 'class', 'veloria-advanced-analytics__label elementor-inline-editing');
+                view.addRenderAttribute(labelAttr, 'class', 'addonext-advanced-analytics__label elementor-inline-editing');
                 view.addRenderAttribute(labelAttr, 'data-elementor-setting-key', 'cards.' + index + '.label');
 
-                view.addRenderAttribute(trendAttr, 'class', 'veloria-advanced-analytics__trend veloria-advanced-analytics__trend--' + trendType + ' elementor-inline-editing');
+                view.addRenderAttribute(trendAttr, 'class', 'addonext-advanced-analytics__trend addonext-advanced-analytics__trend--' + trendType + ' elementor-inline-editing');
                 view.addRenderAttribute(trendAttr, 'data-elementor-setting-key', 'cards.' + index + '.trend');
             #>
                 <div {{{ view.getRenderAttributeString(cardAttr) }}}>
-                    <div class="veloria-advanced-analytics__top">
-                        <div class="veloria-advanced-analytics__icon"><# if (iconHtml) { #>{{{ iconHtml }}}<# } #></div>
+                    <div class="addonext-advanced-analytics__top">
+                        <div class="addonext-advanced-analytics__icon"><# if (iconHtml) { #>{{{ iconHtml }}}<# } #></div>
                         <span {{{ view.getRenderAttributeString(trendAttr) }}}>{{{ card.trend || '' }}}</span>
                     </div>
-                    <div class="veloria-advanced-analytics__bottom">
+                    <div class="addonext-advanced-analytics__bottom">
                         <div {{{ view.getRenderAttributeString(valueAttr) }}} data-aa-value="{{ card.value || '' }}">{{{ card.value || '' }}}</div>
                         <div {{{ view.getRenderAttributeString(labelAttr) }}}>{{{ card.label || '' }}}</div>
                     </div>

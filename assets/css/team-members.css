@@ -1,11 +1,11 @@
-.veloria-team-members--grid {
+.addonext-team-members--grid {
     display: grid;
-    grid-template-columns: repeat(var(--veloria-team-members-columns, 3), 1fr);
-    gap: var(--veloria-team-members-gap, 24px);
+    grid-template-columns: repeat(var(--addonext-team-members-columns, 3), 1fr);
+    gap: var(--addonext-team-members-gap, 24px);
     width: 100%;
 }
 
-.veloria-team-members-card {
+.addonext-team-members-card {
     padding: 1.25rem;
     border-radius: 8px;
     background: #ffffff;
@@ -16,14 +16,14 @@
     text-align: center;
 }
 
-.veloria-team-members-card__image {
+.addonext-team-members-card__image {
     border-radius: 50%!important;
     object-fit: cover;
     display: block;
     margin-bottom: 1rem;
 }
 
-.veloria-team-members-card__name {
+.addonext-team-members-card__name {
     margin: 0 0 2px;
     font-size: 1.125rem;
     font-weight: 700;
@@ -31,7 +31,7 @@
     line-height: 1.3;
 }
 
-.veloria-team-members-card__role {
+.addonext-team-members-card__role {
     margin: 0 0 1rem;
     font-size: 0.875rem;
     font-weight: 400;
@@ -39,7 +39,7 @@
     line-height: 1.4;
 }
 
-.veloria-team-members-card__social {
+.addonext-team-members-card__social {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@
     flex-wrap: wrap;
 }
 
-.veloria-team-members-card__social a {
+.addonext-team-members-card__social a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -57,17 +57,17 @@
     transition: opacity 0.2s;
 }
 
-.veloria-team-members-card__social a:hover {
+.addonext-team-members-card__social a:hover {
     opacity: 0.8;
 }
 
-.veloria-team-members-card__social svg {
+.addonext-team-members-card__social svg {
     width: 18px;
     height: 18px;
     fill: currentColor;
 }
 
-.veloria-team-members--slider {
+.addonext-team-members--slider {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -75,16 +75,16 @@
     flex-direction: column;
 }
 
-.veloria-team-members--slider .swiper-wrapper {
+.addonext-team-members--slider .swiper-wrapper {
     align-items: stretch;
 }
 
-.veloria-team-members--slider .swiper-slide {
+.addonext-team-members--slider .swiper-slide {
     height: auto;
     box-sizing: border-box;
 }
 
-.veloria-team-members__arrow {
+.addonext-team-members__arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -102,36 +102,36 @@
     transition: opacity 0.2s, box-shadow 0.2s;
 }
 
-.veloria-team-members__arrow::after {
+.addonext-team-members__arrow::after {
     content: none !important;
 }
 
-.veloria-team-members__arrow:hover {
+.addonext-team-members__arrow:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.veloria-team-members__arrow--prev {
+.addonext-team-members__arrow--prev {
     left: 12px;
 }
 
-.veloria-team-members__arrow--next {
+.addonext-team-members__arrow--next {
     right: 12px;
 }
 
-.veloria-team-members__arrow svg {
+.addonext-team-members__arrow svg {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
 }
 
-.veloria-team-members--slider .swiper-button-disabled {
+.addonext-team-members--slider .swiper-button-disabled {
     opacity: 0.35;
     cursor: default;
 }
 
-.veloria-team-members--slider .swiper-pagination,
-.veloria-team-members--slider .swiper-pagination-bullets,
-.veloria-team-members--slider .swiper-pagination-horizontal {
+.addonext-team-members--slider .swiper-pagination,
+.addonext-team-members--slider .swiper-pagination-bullets,
+.addonext-team-members--slider .swiper-pagination-horizontal {
     position: static;
     margin-top: 24px;
     left: auto;
@@ -140,12 +140,12 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    gap: var(--veloria-dots-gap, 8px);
+    gap: var(--addonext-dots-gap, 8px);
     opacity: 1 !important;
     pointer-events: auto;
 }
 
-.veloria-team-members--slider .swiper-pagination-bullet {
+.addonext-team-members--slider .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -155,28 +155,28 @@
     cursor: pointer;
 }
 
-.veloria-team-members--slider .swiper-pagination-bullet:hover {
+.addonext-team-members--slider .swiper-pagination-bullet:hover {
     opacity: 0.9;
 }
 
-.veloria-team-members--slider .swiper-pagination-bullet-active {
+.addonext-team-members--slider .swiper-pagination-bullet-active {
     background: rgba(0, 0, 0, 0.85);
     opacity: 1;
     transform: scale(1.2);
 }
 
-.veloria-team-members--slider.veloria-pagination-square .swiper-pagination-bullet {
+.addonext-team-members--slider.addonext-pagination-square .swiper-pagination-bullet {
     border-radius: 0;
 }
 
-.veloria-team-members--slider.veloria-pagination-bar .swiper-pagination-bullet {
+.addonext-team-members--slider.addonext-pagination-bar .swiper-pagination-bullet {
     width: 28px;
     height: 5px;
     border-radius: 3px;
     transform: none;
 }
 
-.veloria-team-members--slider.veloria-pagination-bar .swiper-pagination-bullet-active {
+.addonext-team-members--slider.addonext-pagination-bar .swiper-pagination-bullet-active {
     width: 39px;
     transform: none;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Veloria">
-	<description>PHPCS ruleset for Veloria Widgets for Elementor.</description>
+<ruleset name="AddoNext">
+	<description>PHPCS ruleset for AddoNext Widgets for Elementor.</description>
 
 	<file>.</file>
 

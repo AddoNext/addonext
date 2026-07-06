@@ -1,49 +1,49 @@
 <?php
 defined('ABSPATH') || exit;
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_cards = isset($veloria_settings['cards']) && is_array($veloria_settings['cards']) ? $veloria_settings['cards'] : [];
-$veloria_animate = isset($veloria_settings['enable_counter_animation']) && $veloria_settings['enable_counter_animation'] === 'yes' ? 'yes' : 'no';
-$veloria_duration = isset($veloria_settings['counter_animation_duration']) && $veloria_settings['counter_animation_duration'] !== '' ? (int) $veloria_settings['counter_animation_duration'] : 1400;
+$addonext_settings = $this->get_settings_for_display();
+$addonext_cards = isset($addonext_settings['cards']) && is_array($addonext_settings['cards']) ? $addonext_settings['cards'] : [];
+$addonext_animate = isset($addonext_settings['enable_counter_animation']) && $addonext_settings['enable_counter_animation'] === 'yes' ? 'yes' : 'no';
+$addonext_duration = isset($addonext_settings['counter_animation_duration']) && $addonext_settings['counter_animation_duration'] !== '' ? (int) $addonext_settings['counter_animation_duration'] : 1400;
 
 ?>
-<div class="veloria-advanced-analytics" data-aa-animate="<?php echo esc_attr($veloria_animate); ?>" data-aa-duration="<?php echo esc_attr((string) $veloria_duration); ?>">
-    <?php foreach ($veloria_cards as $veloria_index => $veloria_card) : ?>
+<div class="addonext-advanced-analytics" data-aa-animate="<?php echo esc_attr($addonext_animate); ?>" data-aa-duration="<?php echo esc_attr((string) $addonext_duration); ?>">
+    <?php foreach ($addonext_cards as $addonext_index => $addonext_card) : ?>
         <?php
-        $veloria_value = isset($veloria_card['value']) ? (string) $veloria_card['value'] : '';
-        $veloria_label = isset($veloria_card['label']) ? (string) $veloria_card['label'] : '';
-        $veloria_trend = isset($veloria_card['trend']) ? (string) $veloria_card['trend'] : '';
-        $veloria_trendType = isset($veloria_card['trend_type']) && $veloria_card['trend_type'] === 'negative' ? 'negative' : 'positive';
-        $veloria_iconBg = isset($veloria_card['icon_bg']) ? (string) $veloria_card['icon_bg'] : '#2563eb';
-        $veloria_cardBg = isset($veloria_card['card_bg']) ? (string) $veloria_card['card_bg'] : '#dbeafe';
-        $veloria_icon = $veloria_card['icon'] ?? $veloria_card['selected_icon'] ?? [];
+        $addonext_value = isset($addonext_card['value']) ? (string) $addonext_card['value'] : '';
+        $addonext_label = isset($addonext_card['label']) ? (string) $addonext_card['label'] : '';
+        $addonext_trend = isset($addonext_card['trend']) ? (string) $addonext_card['trend'] : '';
+        $addonext_trendType = isset($addonext_card['trend_type']) && $addonext_card['trend_type'] === 'negative' ? 'negative' : 'positive';
+        $addonext_iconBg = isset($addonext_card['icon_bg']) ? (string) $addonext_card['icon_bg'] : '#2563eb';
+        $addonext_cardBg = isset($addonext_card['card_bg']) ? (string) $addonext_card['card_bg'] : '#dbeafe';
+        $addonext_icon = $addonext_card['icon'] ?? $addonext_card['selected_icon'] ?? [];
 
-        $veloria_valueKey = 'cards.' . $veloria_index . '.value';
-        $veloria_labelKey = 'cards.' . $veloria_index . '.label';
-        $veloria_trendKey = 'cards.' . $veloria_index . '.trend';
+        $addonext_valueKey = 'cards.' . $addonext_index . '.value';
+        $addonext_labelKey = 'cards.' . $addonext_index . '.label';
+        $addonext_trendKey = 'cards.' . $addonext_index . '.trend';
 
-        $this->add_render_attribute($veloria_valueKey, 'class', 'veloria-advanced-analytics__value');
-        $this->add_inline_editing_attributes($veloria_valueKey, 'basic');
+        $this->add_render_attribute($addonext_valueKey, 'class', 'addonext-advanced-analytics__value');
+        $this->add_inline_editing_attributes($addonext_valueKey, 'basic');
 
-        $this->add_render_attribute($veloria_labelKey, 'class', 'veloria-advanced-analytics__label');
-        $this->add_inline_editing_attributes($veloria_labelKey, 'basic');
+        $this->add_render_attribute($addonext_labelKey, 'class', 'addonext-advanced-analytics__label');
+        $this->add_inline_editing_attributes($addonext_labelKey, 'basic');
 
-        $this->add_render_attribute($veloria_trendKey, 'class', 'veloria-advanced-analytics__trend veloria-advanced-analytics__trend--' . $veloria_trendType);
-        $this->add_inline_editing_attributes($veloria_trendKey, 'basic');
+        $this->add_render_attribute($addonext_trendKey, 'class', 'addonext-advanced-analytics__trend addonext-advanced-analytics__trend--' . $addonext_trendType);
+        $this->add_inline_editing_attributes($addonext_trendKey, 'basic');
         ?>
-        <div class="veloria-advanced-analytics__card" style="--aa-card-bg: <?php echo esc_attr($veloria_cardBg); ?>; --aa-icon-bg: <?php echo esc_attr($veloria_iconBg); ?>;">
-            <div class="veloria-advanced-analytics__top">
-                <div class="veloria-advanced-analytics__icon">
-                    <?php if (!empty($veloria_icon['value'])) {
-                        \Elementor\Icons_Manager::render_icon($veloria_icon, ['aria-hidden' => 'true']);
+        <div class="addonext-advanced-analytics__card" style="--aa-card-bg: <?php echo esc_attr($addonext_cardBg); ?>; --aa-icon-bg: <?php echo esc_attr($addonext_iconBg); ?>;">
+            <div class="addonext-advanced-analytics__top">
+                <div class="addonext-advanced-analytics__icon">
+                    <?php if (!empty($addonext_icon['value'])) {
+                        \Elementor\Icons_Manager::render_icon($addonext_icon, ['aria-hidden' => 'true']);
                     } ?>
                 </div>
-                <span <?php $this->print_render_attribute_string($veloria_trendKey); ?>><?php echo esc_html($veloria_trend); ?></span>
+                <span <?php $this->print_render_attribute_string($addonext_trendKey); ?>><?php echo esc_html($addonext_trend); ?></span>
             </div>
 
-            <div class="veloria-advanced-analytics__bottom">
-                <div <?php $this->print_render_attribute_string($veloria_valueKey); ?> data-aa-value="<?php echo esc_attr($veloria_value); ?>"><?php echo esc_html($veloria_value); ?></div>
-                <div <?php $this->print_render_attribute_string($veloria_labelKey); ?>><?php echo esc_html($veloria_label); ?></div>
+            <div class="addonext-advanced-analytics__bottom">
+                <div <?php $this->print_render_attribute_string($addonext_valueKey); ?> data-aa-value="<?php echo esc_attr($addonext_value); ?>"><?php echo esc_html($addonext_value); ?></div>
+                <div <?php $this->print_render_attribute_string($addonext_labelKey); ?>><?php echo esc_html($addonext_label); ?></div>
             </div>
         </div>
     <?php endforeach; ?>

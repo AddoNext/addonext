@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Spacer;
+namespace Addonext\Widgets\Spacer;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 
 defined('ABSPATH') or exit;
@@ -10,12 +10,12 @@ class Spacer extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-spacer veloria-icon';
+        return 'eicon-spacer addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-spacer';
+        return 'addonext-spacer';
     }
 
     public function get_admin_category(): string
@@ -25,12 +25,12 @@ class Spacer extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Spacer', 'veloria');
+        return __('Spacer', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Add vertical spacing', 'veloria');
+        return __('Add vertical spacing', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -40,16 +40,16 @@ class Spacer extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-spacer'];
+        return ['addonext-spacer'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-spacer',
-            VELORIA_URL . 'assets/css/spacer.css',
+            'addonext-spacer',
+            ADDONEXT_URL . 'assets/css/spacer.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -58,7 +58,7 @@ class Spacer extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -66,7 +66,7 @@ class Spacer extends WidgetBase
         $this->add_responsive_control(
             'space',
             [
-                'label'      => __('Space', 'veloria'),
+                'label'      => __('Space', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', 'rem', 'vh'],
                 'range'      => [
@@ -80,7 +80,7 @@ class Spacer extends WidgetBase
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-spacer' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-spacer' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -90,7 +90,7 @@ class Spacer extends WidgetBase
 
     public function render(): void
     {
-        $template_path = VELORIA_DIR . 'templates/spacer/spacer.php';
+        $template_path = ADDONEXT_DIR . 'templates/spacer/spacer.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -100,7 +100,7 @@ class Spacer extends WidgetBase
     {
         ?>
         <#
-        view.addRenderAttribute('wrapper', 'class', 'veloria-spacer');
+        view.addRenderAttribute('wrapper', 'class', 'addonext-spacer');
         #>
         <div {{{ view.getRenderAttributeString('wrapper') }}}></div>
         <?php

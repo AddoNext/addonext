@@ -1,12 +1,12 @@
 <?php
-namespace Veloria\Base;
+namespace Addonext\Base;
 
 use Elementor\Widget_Base;
 
 defined('ABSPATH') || die('No direct access allowed');
 
 /**
- * Base class for Veloria blocks
+ * Base class for AddoNext blocks
  */
 abstract class WidgetBase extends Widget_Base
 {
@@ -49,7 +49,7 @@ abstract class WidgetBase extends Widget_Base
      */
     public function get_categories(): array
     {
-        return ['veloria'];
+        return ['addonext'];
     }
 
     /**

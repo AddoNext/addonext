@@ -1,12 +1,12 @@
 <?php
-namespace Veloria\Utils;
+namespace Addonext\Utils;
 
 defined('ABSPATH') or exit;
 
 /**
  * DataProcessor class
  *
- * @package Veloria\Utils
+ * @package AddoNext\Utils
  * @since 1.0.0
  */
 class DataProcessor
@@ -19,6 +19,6 @@ class DataProcessor
      */
     public static function get_category_name(string $category_slug): string
     {
-        return str_replace('veloria-', '', $category_slug);
+        return str_replace('addonext-', '', $category_slug);
     }
 }

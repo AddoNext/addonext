@@ -1,8 +1,8 @@
 <?php
-namespace Veloria\Widgets\WooCheckout;
+namespace Addonext\Widgets\WooCheckout;
 
-use Veloria\Base\WidgetBase;
-use Veloria\Utils\WooCommerceAssets;
+use Addonext\Base\WidgetBase;
+use Addonext\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -12,7 +12,7 @@ use Elementor\Group_Control_Typography;
 defined('ABSPATH') or exit;
 
 /**
- * WooCommerce checkout for Elementor with Veloria-owned markup (WooCommerce checkout API).
+ * WooCommerce checkout for Elementor with AddoNext-owned markup (WooCommerce checkout API).
  */
 class WooCheckout extends WidgetBase
 {
@@ -27,24 +27,24 @@ class WooCheckout extends WidgetBase
     {
         parent::__construct($data, $args);
         add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_preview_assets']);
-        add_filter('woocommerce_gateway_description', [__CLASS__, 'filter_gateway_description_for_veloria'], 9999, 2);
+        add_filter('woocommerce_gateway_description', [__CLASS__, 'filter_gateway_description_for_addonext'], 9999, 2);
         add_filter('woocommerce_update_order_review_fragments', [__CLASS__, 'filter_checkout_fragments'], 20, 1);
         add_action('wp_footer', [__CLASS__, 'footer_patch_checkout_script_params'], 5);
     }
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('veloria-woo-checkout');
+        wp_enqueue_style('addonext-woo-checkout');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-cart veloria-icon';
+        return 'eicon-cart addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-woo-checkout';
+        return 'addonext-woo-checkout';
     }
 
     public function get_admin_category(): string
@@ -54,12 +54,12 @@ class WooCheckout extends WidgetBase
 
     public function get_title(): string
     {
-        return __('WooCommerce Checkout', 'veloria');
+        return __('WooCommerce Checkout', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Checkout layout built for Elementor with WooCommerce billing, payments, and order review.', 'veloria');
+        return __('Checkout layout built for Elementor with WooCommerce billing, payments, and order review.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -69,7 +69,7 @@ class WooCheckout extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-woo-checkout'];
+        return ['addonext-woo-checkout'];
     }
 
     public function get_script_depends(): array
@@ -78,29 +78,29 @@ class WooCheckout extends WidgetBase
             'elementor-frontend',
             'jquery',
             'wc-checkout',
-            'veloria-woo-checkout',
+            'addonext-woo-checkout',
         ]);
     }
 
     public function enqueue_assets(): void
     {
-        $checkoutCssPath = VELORIA_DIR . 'assets/css/woo-checkout.css';
+        $checkoutCssPath = ADDONEXT_DIR . 'assets/css/woo-checkout.css';
         $checkoutCssVer = is_readable($checkoutCssPath)
             ? (string) filemtime($checkoutCssPath)
-            : VELORIA_VERSION;
+            : ADDONEXT_VERSION;
 
         wp_register_style(
-            'veloria-woo-checkout',
-            VELORIA_URL . 'assets/css/woo-checkout.css',
+            'addonext-woo-checkout',
+            ADDONEXT_URL . 'assets/css/woo-checkout.css',
             [],
             $checkoutCssVer
         );
 
         wp_register_script(
-            'veloria-woo-checkout',
-            VELORIA_URL . 'assets/js/woo-checkout.js',
+            'addonext-woo-checkout',
+            ADDONEXT_URL . 'assets/js/woo-checkout.js',
             WooCommerceAssets::script_dependencies(['jquery', 'elementor-frontend', 'wc-checkout']),
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -156,12 +156,12 @@ class WooCheckout extends WidgetBase
      */
     public static function filter_checkout_fragments($fragments)
     {
-        if (!is_array($fragments) || !self::is_veloria_checkout_post_data()) {
+        if (!is_array($fragments) || !self::is_addonext_checkout_post_data()) {
             return $fragments;
         }
 
         if (isset($fragments['.woocommerce-checkout-review-order-table'])) {
-            $fragments['.veloria-co-order-review'] = CheckoutOrderUi::render();
+            $fragments['.addonext-co-order-review'] = CheckoutOrderUi::render();
             unset($fragments['.woocommerce-checkout-review-order-table']);
         }
 
@@ -169,10 +169,10 @@ class WooCheckout extends WidgetBase
             $split = CheckoutRenderer::split_payment_markup($fragments['.woocommerce-checkout-payment']);
             unset($fragments['.woocommerce-checkout-payment']);
 
-            $fragments['.veloria-wc-checkout__payment-methods-slot'] =
-                '<div id="payment" class="woocommerce-checkout-payment veloria-wc-checkout__payment-methods-slot veloria-wc-checkout__payment-outer veloria-co-payment-root">' . CheckoutPaymentUi::render_gateway_list() . '</div>';
-            $fragments['.veloria-wc-checkout__place-order-slot'] =
-                '<div class="veloria-wc-checkout__place-order-slot">' . $split['place_order'] . '</div>';
+            $fragments['.addonext-wc-checkout__payment-methods-slot'] =
+                '<div id="payment" class="woocommerce-checkout-payment addonext-wc-checkout__payment-methods-slot addonext-wc-checkout__payment-outer addonext-co-payment-root">' . CheckoutPaymentUi::render_gateway_list() . '</div>';
+            $fragments['.addonext-wc-checkout__place-order-slot'] =
+                '<div class="addonext-wc-checkout__place-order-slot">' . $split['place_order'] . '</div>';
         }
 
         return $fragments;
@@ -201,7 +201,7 @@ class WooCheckout extends WidgetBase
         return wp_unslash($_POST['post_data']);
     }
 
-    private static function is_veloria_checkout_post_data(): bool
+    private static function is_addonext_checkout_post_data(): bool
     {
         $raw = self::get_checkout_post_data();
         if ($raw === '') {
@@ -209,14 +209,14 @@ class WooCheckout extends WidgetBase
         }
         parse_str($raw, $parsed);
 
-        return !empty($parsed['veloria_checkout']);
+        return !empty($parsed['addonext_checkout']);
     }
 
     /**
      * @param string $description
      * @param string $gateway_id
      */
-    public static function filter_gateway_description_for_veloria($description, $gateway_id): string
+    public static function filter_gateway_description_for_addonext($description, $gateway_id): string
     {
         unset($gateway_id);
 
@@ -224,18 +224,18 @@ class WooCheckout extends WidgetBase
             $description = '';
         }
 
-        if (!self::is_veloria_gateway_description_context()) {
+        if (!self::is_addonext_gateway_description_context()) {
             return $description;
         }
 
-        if (self::payment_descriptions_visible_in_veloria_context()) {
+        if (self::payment_descriptions_visible_in_addonext_context()) {
             return $description;
         }
 
         return '';
     }
 
-    private static function is_veloria_gateway_description_context(): bool
+    private static function is_addonext_gateway_description_context(): bool
     {
         if (self::$renderHooksActive) {
             return true;
@@ -245,10 +245,10 @@ class WooCheckout extends WidgetBase
             return false;
         }
 
-        return self::is_veloria_checkout_post_data();
+        return self::is_addonext_checkout_post_data();
     }
 
-    private static function payment_descriptions_visible_in_veloria_context(): bool
+    private static function payment_descriptions_visible_in_addonext_context(): bool
     {
         if (self::$renderHooksActive) {
             return isset(self::$renderSettings['show_payment_descriptions'])
@@ -262,58 +262,58 @@ class WooCheckout extends WidgetBase
 
         parse_str($raw, $parsed);
 
-        return !empty($parsed['veloria_show_payment_descriptions'])
-            && (string) $parsed['veloria_show_payment_descriptions'] === '1';
+        return !empty($parsed['addonext_show_payment_descriptions'])
+            && (string) $parsed['addonext_show_payment_descriptions'] === '1';
     }
 
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_coupon_sidebar', [
-            'label'        => __('Coupon in sidebar', 'veloria'),
-            'description'  => __('Places the coupon field at the top of the order summary column. When off, WooCommerce shows the default coupon link above the form.', 'veloria'),
+            'label'        => __('Coupon in sidebar', 'addonext'),
+            'description'  => __('Places the coupon field at the top of the order summary column. When off, WooCommerce shows the default coupon link above the form.', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('coupon_section_title', [
-            'label'     => __('Coupon section title', 'veloria'),
+            'label'     => __('Coupon section title', 'addonext'),
             'type'      => Controls_Manager::TEXT,
-            'default'   => __('Coupon', 'veloria'),
+            'default'   => __('Coupon', 'addonext'),
             'condition' => ['show_coupon_sidebar' => 'yes'],
         ]);
 
         $this->add_control('billing_section_title', [
-            'label'   => __('Billing section title', 'veloria'),
+            'label'   => __('Billing section title', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Billing details', 'veloria'),
+            'default' => __('Billing details', 'addonext'),
         ]);
 
         $this->add_control('order_summary_title', [
-            'label'   => __('Order summary title', 'veloria'),
+            'label'   => __('Order summary title', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Order summary', 'veloria'),
+            'default' => __('Order summary', 'addonext'),
         ]);
 
         $this->add_control('payment_section_title', [
-            'label'   => __('Payment section title', 'veloria'),
+            'label'   => __('Payment section title', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Payment method', 'veloria'),
+            'default' => __('Payment method', 'addonext'),
         ]);
 
         $this->add_control('show_payment_descriptions', [
-            'label'        => __('Payment method descriptions', 'veloria'),
+            'label'        => __('Payment method descriptions', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Show', 'veloria'),
-            'label_off'    => __('Hide', 'veloria'),
+            'label_on'     => __('Show', 'addonext'),
+            'label_off'    => __('Hide', 'addonext'),
             'return_value' => 'yes',
             'default'      => '',
-            'description'  => __('Extra text some gateways output under the method name. Hidden by default.', 'veloria'),
+            'description'  => __('Extra text some gateways output under the method name. Hidden by default.', 'addonext'),
         ]);
 
         $this->end_controls_section();
@@ -323,39 +323,39 @@ class WooCheckout extends WidgetBase
 
     private function register_style_controls(): void
     {
-        $w = '{{WRAPPER}} .veloria-wc-checkout';
+        $w = '{{WRAPPER}} .addonext-wc-checkout';
 
         $this->start_controls_section('style_layout', [
-            'label' => __('Layout', 'veloria'),
+            'label' => __('Layout', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('layout_gap', [
-            'label'      => __('Column gap', 'veloria'),
+            'label'      => __('Column gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['size' => 24, 'unit' => 'px'],
             'selectors'  => [
-                $w . ' .veloria-wc-checkout__layout' => 'gap: {{SIZE}}{{UNIT}};',
+                $w . ' .addonext-wc-checkout__layout' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('layout_sidebar_min', [
-            'label'      => __('Sidebar minimum width', 'veloria'),
+            'label'      => __('Sidebar minimum width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => ['px' => ['min' => 240, 'max' => 480]],
             'default'    => ['size' => 320, 'unit' => 'px'],
             'selectors'  => [
-                $w . ' .veloria-wc-checkout__col--sidebar' => 'flex-basis: {{SIZE}}{{UNIT}}; min-width: min(100%, {{SIZE}}{{UNIT}});',
+                $w . ' .addonext-wc-checkout__col--sidebar' => 'flex-basis: {{SIZE}}{{UNIT}}; min-width: min(100%, {{SIZE}}{{UNIT}});',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('style_sections', [
-            'label' => __('Checkout sections', 'veloria'),
+            'label' => __('Checkout sections', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -364,7 +364,7 @@ class WooCheckout extends WidgetBase
             [
                 'name'     => 'section_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => $w . ' .veloria-wc-checkout__card--billing, ' . $w . ' .veloria-wc-checkout__card--additional, ' . $w . ' .veloria-wc-checkout__card--summary',
+                'selector' => $w . ' .addonext-wc-checkout__card--billing, ' . $w . ' .addonext-wc-checkout__card--additional, ' . $w . ' .addonext-wc-checkout__card--summary',
             ]
         );
 
@@ -372,25 +372,25 @@ class WooCheckout extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'section_border',
-                'selector' => $w . ' .veloria-wc-checkout__card--billing, ' . $w . ' .veloria-wc-checkout__card--additional, ' . $w . ' .veloria-wc-checkout__card--summary',
+                'selector' => $w . ' .addonext-wc-checkout__card--billing, ' . $w . ' .addonext-wc-checkout__card--additional, ' . $w . ' .addonext-wc-checkout__card--summary',
             ]
         );
 
         $this->add_responsive_control('section_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                $w . ' .veloria-wc-checkout__card--billing, ' . $w . ' .veloria-wc-checkout__card--additional, ' . $w . ' .veloria-wc-checkout__card--summary' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                $w . ' .addonext-wc-checkout__card--billing, ' . $w . ' .addonext-wc-checkout__card--additional, ' . $w . ' .addonext-wc-checkout__card--summary' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('section_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'selectors'  => [
-                $w . ' .veloria-wc-checkout__card--billing, ' . $w . ' .veloria-wc-checkout__card--additional, ' . $w . ' .veloria-wc-checkout__card--summary' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                $w . ' .addonext-wc-checkout__card--billing, ' . $w . ' .addonext-wc-checkout__card--additional, ' . $w . ' .addonext-wc-checkout__card--summary' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -398,14 +398,14 @@ class WooCheckout extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'section_shadow',
-                'selector' => $w . ' .veloria-wc-checkout__card--billing, ' . $w . ' .veloria-wc-checkout__card--additional, ' . $w . ' .veloria-wc-checkout__card--summary',
+                'selector' => $w . ' .addonext-wc-checkout__card--billing, ' . $w . ' .addonext-wc-checkout__card--additional, ' . $w . ' .addonext-wc-checkout__card--summary',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section('style_headings', [
-            'label' => __('Section titles', 'veloria'),
+            'label' => __('Section titles', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -413,32 +413,32 @@ class WooCheckout extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'heading_typo',
-                'selector' => $w . ' .veloria-wc-checkout__section-title, ' . $w . ' .woocommerce-billing-fields > h3, ' . $w . ' .woocommerce-shipping-fields > h3, ' . $w . ' .veloria-wc-checkout__coupon-title',
+                'selector' => $w . ' .addonext-wc-checkout__section-title, ' . $w . ' .woocommerce-billing-fields > h3, ' . $w . ' .woocommerce-shipping-fields > h3, ' . $w . ' .addonext-wc-checkout__coupon-title',
             ]
         );
 
         $this->add_control('heading_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                $w . ' .veloria-wc-checkout__section-title, ' . $w . ' .woocommerce-billing-fields > h3, ' . $w . ' .woocommerce-shipping-fields > h3, ' . $w . ' .veloria-wc-checkout__coupon-title' => 'color: {{VALUE}};',
+                $w . ' .addonext-wc-checkout__section-title, ' . $w . ' .woocommerce-billing-fields > h3, ' . $w . ' .woocommerce-shipping-fields > h3, ' . $w . ' .addonext-wc-checkout__coupon-title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('heading_spacing', [
-            'label'      => __('Bottom spacing', 'veloria'),
+            'label'      => __('Bottom spacing', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'selectors'  => [
-                $w . ' .veloria-wc-checkout__section-title, ' . $w . ' .woocommerce-billing-fields > h3, ' . $w . ' .woocommerce-shipping-fields > h3, ' . $w . ' .veloria-wc-checkout__coupon-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                $w . ' .addonext-wc-checkout__section-title, ' . $w . ' .woocommerce-billing-fields > h3, ' . $w . ' .woocommerce-shipping-fields > h3, ' . $w . ' .addonext-wc-checkout__coupon-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('style_inputs', [
-            'label' => __('Inputs & selects', 'veloria'),
+            'label' => __('Inputs & selects', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -446,23 +446,23 @@ class WooCheckout extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'input_typo',
-                'selector' => $w . ' input.veloria-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea',
+                'selector' => $w . ' input.addonext-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea',
             ]
         );
 
         $this->add_control('input_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                $w . ' input.veloria-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'color: {{VALUE}};',
+                $w . ' input.addonext-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('input_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                $w . ' input.veloria-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'background-color: {{VALUE}};',
+                $w . ' input.addonext-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -470,30 +470,30 @@ class WooCheckout extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'input_border',
-                'selector' => $w . ' input.veloria-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea',
+                'selector' => $w . ' input.addonext-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea',
             ]
         );
 
         $this->add_responsive_control('input_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                $w . ' input.veloria-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                $w . ' input.addonext-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('input_padding_dim', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'selectors'  => [
-                $w . ' input.veloria-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                $w . ' input.addonext-co-input, ' . $w . ' input.input-text, ' . $w . ' select, ' . $w . ' textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('label_heading', [
-            'label'     => __('Labels', 'veloria'),
+            'label'     => __('Labels', 'addonext'),
             'type'      => Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
@@ -507,7 +507,7 @@ class WooCheckout extends WidgetBase
         );
 
         $this->add_control('label_color', [
-            'label'     => __('Label color', 'veloria'),
+            'label'     => __('Label color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
                 $w . ' label, ' . $w . ' .woocommerce form .form-row label' => 'color: {{VALUE}};',
@@ -517,7 +517,7 @@ class WooCheckout extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('style_primary_btn', [
-            'label' => __('Place order button', 'veloria'),
+            'label' => __('Place order button', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -539,7 +539,7 @@ class WooCheckout extends WidgetBase
         );
 
         $this->add_control('place_order_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
                 $w . ' #place_order' => 'color: {{VALUE}};',
@@ -555,7 +555,7 @@ class WooCheckout extends WidgetBase
         );
 
         $this->add_responsive_control('place_order_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
@@ -564,7 +564,7 @@ class WooCheckout extends WidgetBase
         ]);
 
         $this->add_responsive_control('place_order_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'selectors'  => [
@@ -575,7 +575,7 @@ class WooCheckout extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('style_secondary_btn', [
-            'label' => __('Secondary buttons', 'veloria'),
+            'label' => __('Secondary buttons', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -583,7 +583,7 @@ class WooCheckout extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'secondary_btn_typo',
-                'selector' => $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon button.button, ' . $w . ' .veloria-co-tpl-coupon__apply, ' . $w . ' button[name="woocommerce_checkout_update_totals"]',
+                'selector' => $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon button.button, ' . $w . ' .addonext-co-tpl-coupon__apply, ' . $w . ' button[name="woocommerce_checkout_update_totals"]',
             ]
         );
 
@@ -592,31 +592,31 @@ class WooCheckout extends WidgetBase
             [
                 'name'     => 'secondary_btn_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon .button, ' . $w . ' .veloria-co-tpl-coupon__apply',
+                'selector' => $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon .button, ' . $w . ' .addonext-co-tpl-coupon__apply',
             ]
         );
 
         $this->add_control('secondary_btn_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon .button, ' . $w . ' .veloria-co-tpl-coupon__apply' => 'color: {{VALUE}};',
+                $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon .button, ' . $w . ' .addonext-co-tpl-coupon__apply' => 'color: {{VALUE}};',
             ]
         ]);
 
         $this->add_responsive_control('secondary_btn_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon .button, ' . $w . ' .veloria-co-tpl-coupon__apply' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                $w . ' .woocommerce-form-coupon button.button, ' . $w . ' .checkout_coupon .button, ' . $w . ' .addonext-co-tpl-coupon__apply' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ]
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('style_payment', [
-            'label' => __('Payment methods', 'veloria'),
+            'label' => __('Payment methods', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -638,7 +638,7 @@ class WooCheckout extends WidgetBase
         );
 
         $this->add_responsive_control('payment_item_radius', [
-            'label'      => __('Item radius', 'veloria'),
+            'label'      => __('Item radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
@@ -647,7 +647,7 @@ class WooCheckout extends WidgetBase
         ]);
 
         $this->add_responsive_control('payment_item_padding', [
-            'label'      => __('Item padding', 'veloria'),
+            'label'      => __('Item padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'selectors'  => [
@@ -656,7 +656,7 @@ class WooCheckout extends WidgetBase
         ]);
 
         $this->add_responsive_control('payment_item_gap', [
-            'label'      => __('Space between methods', 'veloria'),
+            'label'      => __('Space between methods', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
@@ -668,7 +668,7 @@ class WooCheckout extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('style_order_table', [
-            'label' => __('Order summary table', 'veloria'),
+            'label' => __('Order summary table', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -676,31 +676,31 @@ class WooCheckout extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'order_table_typo',
-                'selector' => $w . ' .veloria-co-order-review',
+                'selector' => $w . ' .addonext-co-order-review',
             ]
         );
 
         $this->add_control('order_table_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                $w . ' .veloria-co-order-review' => 'color: {{VALUE}};',
+                $w . ' .addonext-co-order-review' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('order_table_border_color', [
-            'label'     => __('Divider color', 'veloria'),
+            'label'     => __('Divider color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                $w . ' .veloria-co-line' => 'border-bottom-color: {{VALUE}};',
-                $w . ' .veloria-co-totals__table tr' => 'border-top-color: {{VALUE}};',
+                $w . ' .addonext-co-line' => 'border-bottom-color: {{VALUE}};',
+                $w . ' .addonext-co-totals__table tr' => 'border-top-color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('style_coupon', [
-            'label'     => __('Coupon box', 'veloria'),
+            'label'     => __('Coupon box', 'addonext'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_coupon_sidebar' => 'yes'],
         ]);
@@ -709,8 +709,8 @@ class WooCheckout extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'coupon_toggle_typo',
-                'label'    => __('Toggle text', 'veloria'),
-                'selector' => $w . ' .veloria-co-coupon-prompt, ' . $w . ' .veloria-co-coupon-prompt .veloria-co-coupon-link',
+                'label'    => __('Toggle text', 'addonext'),
+                'selector' => $w . ' .addonext-co-coupon-prompt, ' . $w . ' .addonext-co-coupon-prompt .addonext-co-coupon-link',
             ]
         );
 
@@ -722,7 +722,7 @@ class WooCheckout extends WidgetBase
         $settings = $this->get_settings_for_display();
 
         if (!class_exists('WooCommerce')) {
-            echo '<p class="veloria-wc-checkout__notice">' . esc_html__('WooCommerce is required.', 'veloria') . '</p>';
+            echo '<p class="addonext-wc-checkout__notice">' . esc_html__('WooCommerce is required.', 'addonext') . '</p>';
 
             return;
         }
@@ -747,7 +747,7 @@ class WooCheckout extends WidgetBase
             }
 
             if (!function_exists('WC') || !WC()->cart) {
-                echo '<p class="veloria-wc-checkout__notice">' . esc_html__('Cart is not available.', 'veloria') . '</p>';
+                echo '<p class="addonext-wc-checkout__notice">' . esc_html__('Cart is not available.', 'addonext') . '</p>';
 
                 return;
             }
@@ -761,17 +761,17 @@ class WooCheckout extends WidgetBase
             $checkout = WC()->checkout();
 
             if (WC()->cart->is_empty() && !is_customize_preview() && apply_filters('woocommerce_checkout_redirect_empty_cart', true)) {
-                echo '<div class="veloria-wc-checkout">';
-                wc_print_notice(__('Your cart is currently empty.', 'veloria'), 'notice');
-                echo '<p><a class="button wc-forward" href="' . esc_url(wc_get_page_permalink('shop')) . '">' . esc_html__('Return to shop', 'veloria') . '</a></p>';
+                echo '<div class="addonext-wc-checkout">';
+                wc_print_notice(__('Your cart is currently empty.', 'addonext'), 'notice');
+                echo '<p><a class="button wc-forward" href="' . esc_url(wc_get_page_permalink('shop')) . '">' . esc_html__('Return to shop', 'addonext') . '</a></p>';
                 echo '</div>';
 
                 return;
             }
 
             if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) {
-                echo '<div class="veloria-wc-checkout">';
-                echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'veloria')));
+                echo '<div class="addonext-wc-checkout">';
+                echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'addonext')));
                 echo '</div>';
 
                 return;
@@ -779,7 +779,7 @@ class WooCheckout extends WidgetBase
 
             // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Standard WooCommerce checkout POST handling.
             if (empty($_POST) && wc_notice_count('error') > 0) {
-                echo '<div class="veloria-wc-checkout">';
+                echo '<div class="addonext-wc-checkout">';
                 wc_get_template('checkout/cart-errors.php', ['checkout' => $checkout]);
                 wc_clear_notices();
                 echo '</div>';
@@ -789,18 +789,18 @@ class WooCheckout extends WidgetBase
 
             // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Standard WooCommerce checkout POST handling.
             if (wc_notice_count('error') === 0 && !empty($_POST['woocommerce_checkout_update_totals'])) {
-                wc_add_notice(__('The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'veloria'));
+                wc_add_notice(__('The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'addonext'));
             }
 
             $showCoupon = isset($settings['show_coupon_sidebar']) && $settings['show_coupon_sidebar'] === 'yes';
-            $classes = ['veloria-wc-checkout'];
+            $classes = ['addonext-wc-checkout'];
             if (!$showCoupon) {
-                $classes[] = 'veloria-wc-checkout--no-coupon';
+                $classes[] = 'addonext-wc-checkout--no-coupon';
             }
 
             self::$checkoutWidgetRenderedThisRequest = true;
 
-            wp_enqueue_style('veloria-woo-checkout');
+            wp_enqueue_style('addonext-woo-checkout');
 
             do_action('woocommerce_before_checkout_form', $checkout);
 

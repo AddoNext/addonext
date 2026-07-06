@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Badge;
+namespace Addonext\Widgets\Badge;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -14,12 +14,12 @@ class Badge extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-tags veloria-icon';
+        return 'eicon-tags addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-badge';
+        return 'addonext-badge';
     }
 
     public function get_admin_category(): string
@@ -29,12 +29,12 @@ class Badge extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Badge', 'veloria');
+        return __('Badge', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Labels and tags', 'veloria');
+        return __('Labels and tags', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -44,16 +44,16 @@ class Badge extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-badge'];
+        return ['addonext-badge'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-badge',
-            VELORIA_URL . 'assets/css/badge.css',
+            'addonext-badge',
+            ADDONEXT_URL . 'assets/css/badge.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -62,7 +62,7 @@ class Badge extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -70,9 +70,9 @@ class Badge extends WidgetBase
         $this->add_control(
             'text',
             [
-                'label'   => __('Text', 'veloria'),
+                'label'   => __('Text', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Best Seller', 'veloria'),
+                'default' => __('Best Seller', 'addonext'),
                 'dynamic' => ['active' => true],
             ]
         );
@@ -80,7 +80,7 @@ class Badge extends WidgetBase
         $this->add_control(
             'selected_icon',
             [
-                'label'   => __('Icon', 'veloria'),
+                'label'   => __('Icon', 'addonext'),
                 'type'    => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'label_block' => false,
@@ -94,7 +94,7 @@ class Badge extends WidgetBase
         $this->add_control(
             'html_tag',
             [
-                'label'   => __('HTML tag', 'veloria'),
+                'label'   => __('HTML tag', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'span',
                 'options' => [
@@ -107,13 +107,13 @@ class Badge extends WidgetBase
         $this->add_responsive_control(
             'icon_spacing',
             [
-                'label'      => __('Space between icon and text', 'veloria'),
+                'label'      => __('Space between icon and text', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48], 'em' => ['min' => 0, 'max' => 3]],
                 'default'    => ['size' => 8, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-badge--has-icon .veloria-badge__text' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-badge--has-icon .addonext-badge__text' => 'margin-left: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -123,7 +123,7 @@ class Badge extends WidgetBase
         $this->start_controls_section(
             'section_style',
             [
-                'label' => __('Style', 'veloria'),
+                'label' => __('Style', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -131,12 +131,12 @@ class Badge extends WidgetBase
         $this->add_control(
             'text_color',
             [
-                'label'     => __('Text & icon color', 'veloria'),
+                'label'     => __('Text & icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-badge' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-badge__icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-badge' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-badge__icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
                 ],
             ]
         );
@@ -145,7 +145,7 @@ class Badge extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography',
-                'selector' => '{{WRAPPER}} .veloria-badge',
+                'selector' => '{{WRAPPER}} .addonext-badge',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_size'   => ['default' => ['size' => 14, 'unit' => 'px']],
@@ -160,7 +160,7 @@ class Badge extends WidgetBase
                 'name'     => 'background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .veloria-badge',
+                'selector' => '{{WRAPPER}} .addonext-badge',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#F37548'],
@@ -175,14 +175,14 @@ class Badge extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'border',
-                'selector' => '{{WRAPPER}} .veloria-badge',
+                'selector' => '{{WRAPPER}} .addonext-badge',
             ]
         );
 
         $this->add_responsive_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => [
@@ -190,7 +190,7 @@ class Badge extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -199,7 +199,7 @@ class Badge extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'box_shadow',
-                'selector' => '{{WRAPPER}} .veloria-badge',
+                'selector' => '{{WRAPPER}} .addonext-badge',
                 'fields_options' => [
                     'box_shadow_type' => ['default' => 'yes'],
                     'box_shadow' => [
@@ -218,7 +218,7 @@ class Badge extends WidgetBase
         $this->add_responsive_control(
             'padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => [
@@ -226,7 +226,7 @@ class Badge extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -234,11 +234,11 @@ class Badge extends WidgetBase
         $this->add_responsive_control(
             'margin',
             [
-                'label'      => __('Margin', 'veloria'),
+                'label'      => __('Margin', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -248,7 +248,7 @@ class Badge extends WidgetBase
 
     public function render(): void
     {
-        $template_path = VELORIA_DIR . 'templates/badge/badge.php';
+        $template_path = ADDONEXT_DIR . 'templates/badge/badge.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -259,16 +259,16 @@ class Badge extends WidgetBase
         ?>
         <#
         var tag = elementor.helpers.validateHTMLTag(settings.html_tag) || 'span';
-        view.addRenderAttribute('wrap', 'class', 'veloria-badge__wrap');
-        view.addRenderAttribute('badge', 'class', 'veloria-badge veloria-badge--has-icon');
-        view.addRenderAttribute('text', 'class', 'veloria-badge__text');
+        view.addRenderAttribute('wrap', 'class', 'addonext-badge__wrap');
+        view.addRenderAttribute('badge', 'class', 'addonext-badge addonext-badge--has-icon');
+        view.addRenderAttribute('text', 'class', 'addonext-badge__text');
         view.addInlineEditingAttributes('text', 'none');
         var iconData = (settings.selected_icon && settings.selected_icon.value) ? settings.selected_icon : { value: 'fas fa-crown', library: 'fa-solid' };
         var iconHtml = elementor.helpers.renderIcon(view, iconData, { 'aria-hidden': 'true', 'width': 16 }, 'i', 'object').value;
         #>
         <div {{{ view.getRenderAttributeString('wrap') }}}>
         <{{{ tag }}} {{{ view.getRenderAttributeString('badge') }}}>
-            <span class="veloria-badge__icon" aria-hidden="true">{{{ iconHtml }}}</span>
+            <span class="addonext-badge__icon" aria-hidden="true">{{{ iconHtml }}}</span>
             <span {{{ view.getRenderAttributeString('text') }}}>{{{ settings.text }}}</span>
         </{{{ tag }}}>
         </div>

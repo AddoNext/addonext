@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\FlipBox;
+namespace Addonext\Widgets\FlipBox;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
@@ -13,12 +13,12 @@ class FlipBox extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-flip-box veloria-icon';
+        return 'eicon-flip-box addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-flip-box';
+        return 'addonext-flip-box';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class FlipBox extends WidgetBase
 
     public function get_title(): string
     {
-        return __('3D Flip Box', 'veloria');
+        return __('3D Flip Box', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Interactive flip animations', 'veloria');
+        return __('Interactive flip animations', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -43,21 +43,21 @@ class FlipBox extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-flip-box'];
+        return ['addonext-flip-box'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-flip-box'];
+        return ['addonext-flip-box'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-flip-box',
-            VELORIA_URL . 'assets/css/flip-box.css',
+            'addonext-flip-box',
+            ADDONEXT_URL . 'assets/css/flip-box.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -66,7 +66,7 @@ class FlipBox extends WidgetBase
         $this->start_controls_section(
             'section_front',
             [
-                'label' => __('Front', 'veloria'),
+                'label' => __('Front', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -74,7 +74,7 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'front_icon',
             [
-                'label'   => __('Icon', 'veloria'),
+                'label'   => __('Icon', 'addonext'),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'eicon-cube',
@@ -86,18 +86,18 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'front_title',
             [
-                'label'   => __('Title', 'veloria'),
+                'label'   => __('Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('3D Design', 'veloria'),
+                'default' => __('3D Design', 'addonext'),
             ]
         );
 
         $this->add_control(
             'front_description',
             [
-                'label'   => __('Description', 'veloria'),
+                'label'   => __('Description', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Hover to explore', 'veloria'),
+                'default' => __('Hover to explore', 'addonext'),
             ]
         );
 
@@ -106,7 +106,7 @@ class FlipBox extends WidgetBase
         $this->start_controls_section(
             'section_back',
             [
-                'label' => __('Back', 'veloria'),
+                'label' => __('Back', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -114,25 +114,25 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'back_title',
             [
-                'label'   => __('Title', 'veloria'),
+                'label'   => __('Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Back', 'veloria'),
+                'default' => __('Back', 'addonext'),
             ]
         );
 
         $this->add_control(
             'back_description',
             [
-                'label'   => __('Description', 'veloria'),
+                'label'   => __('Description', 'addonext'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Add your back content here.', 'veloria'),
+                'default' => __('Add your back content here.', 'addonext'),
             ]
         );
 
         $this->add_control(
             'back_button_text',
             [
-                'label'   => __('Button text', 'veloria'),
+                'label'   => __('Button text', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -141,9 +141,9 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'back_button_url',
             [
-                'label'       => __('Button URL', 'veloria'),
+                'label'       => __('Button URL', 'addonext'),
                 'type'        => Controls_Manager::URL,
-                'placeholder' => __('https://example.com', 'veloria'),
+                'placeholder' => __('https://example.com', 'addonext'),
             ]
         );
 
@@ -152,7 +152,7 @@ class FlipBox extends WidgetBase
         $this->start_controls_section(
             'section_effect',
             [
-                'label' => __('Hover effect', 'veloria'),
+                'label' => __('Hover effect', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -160,19 +160,19 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'hover_effect',
             [
-                'label'   => __('Effect', 'veloria'),
+                'label'   => __('Effect', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'flip-horizontal',
                 'options' => [
-                    'flip-horizontal' => __('Flip horizontal', 'veloria'),
-                    'flip-vertical'   => __('Flip vertical', 'veloria'),
-                    'flip-3d'         => __('Flip 3D (rotate Y)', 'veloria'),
-                    'tilt-3d'         => __('Tilt 3D', 'veloria'),
-                    'lift'            => __('Lift up', 'veloria'),
-                    'zoom'            => __('Zoom in', 'veloria'),
-                    'zoom-out'        => __('Zoom out', 'veloria'),
-                    'fade-in'         => __('Fade in', 'veloria'),
-                    'fade-out'        => __('Fade out', 'veloria'),
+                    'flip-horizontal' => __('Flip horizontal', 'addonext'),
+                    'flip-vertical'   => __('Flip vertical', 'addonext'),
+                    'flip-3d'         => __('Flip 3D (rotate Y)', 'addonext'),
+                    'tilt-3d'         => __('Tilt 3D', 'addonext'),
+                    'lift'            => __('Lift up', 'addonext'),
+                    'zoom'            => __('Zoom in', 'addonext'),
+                    'zoom-out'        => __('Zoom out', 'addonext'),
+                    'fade-in'         => __('Fade in', 'addonext'),
+                    'fade-out'        => __('Fade out', 'addonext'),
                 ],
             ]
         );
@@ -180,12 +180,12 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'trigger',
             [
-                'label'   => __('Animate on', 'veloria'),
+                'label'   => __('Animate on', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'hover',
                 'options' => [
-                    'hover' => __('Hover', 'veloria'),
-                    'click' => __('Click', 'veloria'),
+                    'hover' => __('Hover', 'addonext'),
+                    'click' => __('Click', 'addonext'),
                 ],
             ]
         );
@@ -195,7 +195,7 @@ class FlipBox extends WidgetBase
         $this->start_controls_section(
             'section_style_box',
             [
-                'label' => __('Box', 'veloria'),
+                'label' => __('Box', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -203,13 +203,13 @@ class FlipBox extends WidgetBase
         $this->add_responsive_control(
             'height',
             [
-                'label'      => __('Height', 'veloria'),
+                'label'      => __('Height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 120, 'max' => 500]],
                 'default'    => ['size' => 220, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-flip-box' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -217,15 +217,15 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 10],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-flip-box__inner'           => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-flip-box__front'           => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-flip-box__back'            => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box__inner'           => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box__front'           => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box__back'            => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -235,7 +235,7 @@ class FlipBox extends WidgetBase
         $this->start_controls_section(
             'section_style_front',
             [
-                'label' => __('Front', 'veloria'),
+                'label' => __('Front', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -245,7 +245,7 @@ class FlipBox extends WidgetBase
             [
                 'name'           => 'front_background',
                 'types'          => ['classic', 'gradient'],
-                'selector'       => '{{WRAPPER}} .veloria-flip-box__front',
+                'selector'       => '{{WRAPPER}} .addonext-flip-box__front',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#4a8efb'],
@@ -257,14 +257,14 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'front_icon_size',
             [
-                'label'      => __('Icon size', 'veloria'),
+                'label'      => __('Icon size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 24, 'max' => 80]],
                 'default'    => ['size' => 48],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-flip-box__front-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-flip-box__front-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box__front-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box__front-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -272,12 +272,12 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'front_icon_color',
             [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__front-icon' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-flip-box__front-icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__front-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__front-icon svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -286,7 +286,7 @@ class FlipBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'front_title_typography',
-                'selector' => '{{WRAPPER}} .veloria-flip-box__front-title',
+                'selector' => '{{WRAPPER}} .addonext-flip-box__front-title',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -298,11 +298,11 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'front_title_color',
             [
-                'label'     => __('Title color', 'veloria'),
+                'label'     => __('Title color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__front-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__front-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -311,7 +311,7 @@ class FlipBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'front_desc_typography',
-                'selector' => '{{WRAPPER}} .veloria-flip-box__front-desc',
+                'selector' => '{{WRAPPER}} .addonext-flip-box__front-desc',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '400'],
@@ -323,11 +323,11 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'front_desc_color',
             [
-                'label'     => __('Description color', 'veloria'),
+                'label'     => __('Description color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__front-desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__front-desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -337,7 +337,7 @@ class FlipBox extends WidgetBase
         $this->start_controls_section(
             'section_style_back',
             [
-                'label' => __('Back', 'veloria'),
+                'label' => __('Back', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -347,7 +347,7 @@ class FlipBox extends WidgetBase
             [
                 'name'     => 'back_background',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .veloria-flip-box__back',
+                'selector' => '{{WRAPPER}} .addonext-flip-box__back',
                 'fields_options' => [
                     'color' => ['default' => '#1e293b'],
                 ],
@@ -358,18 +358,18 @@ class FlipBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'back_title_typography',
-                'selector' => '{{WRAPPER}} .veloria-flip-box__back-title',
+                'selector' => '{{WRAPPER}} .addonext-flip-box__back-title',
             ]
         );
 
         $this->add_control(
             'back_title_color',
             [
-                'label'     => __('Title color', 'veloria'),
+                'label'     => __('Title color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__back-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__back-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -378,18 +378,18 @@ class FlipBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'back_desc_typography',
-                'selector' => '{{WRAPPER}} .veloria-flip-box__back-desc',
+                'selector' => '{{WRAPPER}} .addonext-flip-box__back-desc',
             ]
         );
 
         $this->add_control(
             'back_desc_color',
             [
-                'label'     => __('Description color', 'veloria'),
+                'label'     => __('Description color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e2e8f0',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__back-desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__back-desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -397,7 +397,7 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'back_button_heading',
             [
-                'label'     => __('Button', 'veloria'),
+                'label'     => __('Button', 'addonext'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -407,17 +407,17 @@ class FlipBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'back_button_typography',
-                'selector' => '{{WRAPPER}} .veloria-flip-box__back-button',
+                'selector' => '{{WRAPPER}} .addonext-flip-box__back-button',
             ]
         );
 
         $this->add_control(
             'back_button_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__back-button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__back-button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -425,10 +425,10 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'back_button_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-flip-box__back-button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-flip-box__back-button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -436,12 +436,12 @@ class FlipBox extends WidgetBase
         $this->add_control(
             'back_button_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-flip-box__back-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-flip-box__back-button' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -456,7 +456,7 @@ class FlipBox extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/flip-box/flip-box.php';
+        $path = ADDONEXT_DIR . 'templates/flip-box/flip-box.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -481,20 +481,20 @@ class FlipBox extends WidgetBase
         if (settings.back_button_url && settings.back_button_url.is_external) backBtnAttrs += ' target="_blank"';
         if (settings.back_button_url && settings.back_button_url.nofollow) backBtnAttrs += ' rel="nofollow"';
         #>
-        <div class="veloria-flip-box veloria-flip-box--{{ effect }} veloria-flip-box--trigger-{{ trigger }}">
-            <div class="veloria-flip-box__inner">
-                <div class="veloria-flip-box__front">
-                    <div class="veloria-flip-box__front-content">
-                        <div class="veloria-flip-box__front-icon">{{{ frontIconHtml }}}</div>
-                        <# if (settings.front_title) { #><h3 class="veloria-flip-box__front-title">{{{ settings.front_title }}}</h3><# } #>
-                        <# if (settings.front_description) { #><p class="veloria-flip-box__front-desc">{{{ settings.front_description }}}</p><# } #>
+        <div class="addonext-flip-box addonext-flip-box--{{ effect }} addonext-flip-box--trigger-{{ trigger }}">
+            <div class="addonext-flip-box__inner">
+                <div class="addonext-flip-box__front">
+                    <div class="addonext-flip-box__front-content">
+                        <div class="addonext-flip-box__front-icon">{{{ frontIconHtml }}}</div>
+                        <# if (settings.front_title) { #><h3 class="addonext-flip-box__front-title">{{{ settings.front_title }}}</h3><# } #>
+                        <# if (settings.front_description) { #><p class="addonext-flip-box__front-desc">{{{ settings.front_description }}}</p><# } #>
                     </div>
                 </div>
-                <div class="veloria-flip-box__back">
-                    <div class="veloria-flip-box__back-content">
-                        <# if (settings.back_title) { #><h3 class="veloria-flip-box__back-title">{{{ settings.back_title }}}</h3><# } #>
-                        <# if (settings.back_description) { #><p class="veloria-flip-box__back-desc">{{{ settings.back_description }}}</p><# } #>
-                        <# if (settings.back_button_text) { #><a href="{{ backUrl }}"{{ backBtnAttrs }} class="veloria-flip-box__back-button">{{{ settings.back_button_text }}}</a><# } #>
+                <div class="addonext-flip-box__back">
+                    <div class="addonext-flip-box__back-content">
+                        <# if (settings.back_title) { #><h3 class="addonext-flip-box__back-title">{{{ settings.back_title }}}</h3><# } #>
+                        <# if (settings.back_description) { #><p class="addonext-flip-box__back-desc">{{{ settings.back_description }}}</p><# } #>
+                        <# if (settings.back_button_text) { #><a href="{{ backUrl }}"{{ backBtnAttrs }} class="addonext-flip-box__back-button">{{{ settings.back_button_text }}}</a><# } #>
                     </div>
                 </div>
             </div>

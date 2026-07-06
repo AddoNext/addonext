@@ -1,5 +1,5 @@
 <?php
-namespace Veloria\Utils;
+namespace Addonext\Utils;
 
 use DOMNode;
 use WP_Error;
@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
  */
 class AssetPerformance
 {
-    public const REST_NAMESPACE = 'veloria/v1';
+    public const REST_NAMESPACE = 'addonext/v1';
 
     public const OPTION_KEYS = [
         'minify_assets',
@@ -43,7 +43,7 @@ class AssetPerformance
             return;
         }
 
-        $dir = $uploads['basedir'] . '/veloria-assets';
+        $dir = $uploads['basedir'] . '/addonext-assets';
         if (!is_dir($dir)) {
             return;
         }
@@ -161,7 +161,7 @@ class AssetPerformance
             return $content;
         }
 
-        return $this->add_lazy_to_veloria_images($content);
+        return $this->add_lazy_to_addonext_images($content);
     }
 
     private function is_elementor_edit_or_preview(): bool
@@ -219,12 +219,12 @@ class AssetPerformance
 
     private function build_file_key(string $absolute_path, string $asset_type): string
     {
-        $plugin_dir    = defined('VELORIA_DIR') ? (string) constant('VELORIA_DIR') : '';
-        $version       = defined('VELORIA_VERSION') ? (string) constant('VELORIA_VERSION') : '1.0.0';
+        $plugin_dir    = defined('ADDONEXT_DIR') ? (string) constant('ADDONEXT_DIR') : '';
+        $version       = defined('ADDONEXT_VERSION') ? (string) constant('ADDONEXT_VERSION') : '1.0.0';
         $relative_path = ltrim(str_replace($plugin_dir, '', $absolute_path), '/\\');
         $modified_at   = (string) (int) @filemtime($absolute_path);
 
-        return hash('sha256', 'veloria|' . $version . '|' . $modified_at . '|' . $asset_type . '|' . $relative_path);
+        return hash('sha256', 'addonext|' . $version . '|' . $modified_at . '|' . $asset_type . '|' . $relative_path);
     }
 
     private function cache_file_path(string $key, string $extension): string
@@ -244,7 +244,7 @@ class AssetPerformance
             return '';
         }
 
-        $path = $uploads['basedir'] . '/veloria-assets';
+        $path = $uploads['basedir'] . '/addonext-assets';
         if (!is_dir($path) && !wp_mkdir_p($path)) {
             return '';
         }
@@ -347,7 +347,7 @@ class AssetPerformance
             return '';
         }
 
-        return rtrim((string) $uploads['baseurl'], '/') . '/veloria-assets/' . $key . '.' . $extension;
+        return rtrim((string) $uploads['baseurl'], '/') . '/addonext-assets/' . $key . '.' . $extension;
     }
 
     private function rest_url_for_key(string $key, string $extension): string
@@ -357,15 +357,15 @@ class AssetPerformance
 
     private function url_to_local_plugin_path(string $asset_url, string $expected_type): ?string
     {
-        if (!defined('VELORIA_URL') || !defined('VELORIA_DIR')) {
+        if (!defined('ADDONEXT_URL') || !defined('ADDONEXT_DIR')) {
             return null;
         }
 
         $clean_url = (string) strtok((string) strtok($asset_url, '?'), '#');
         $base_urls = array_values(array_unique([
-            untrailingslashit((string) VELORIA_URL),
-            untrailingslashit((string) str_replace('http://', 'https://', (string) VELORIA_URL)),
-            untrailingslashit((string) str_replace('https://', 'http://', (string) VELORIA_URL))
+            untrailingslashit((string) ADDONEXT_URL),
+            untrailingslashit((string) str_replace('http://', 'https://', (string) ADDONEXT_URL)),
+            untrailingslashit((string) str_replace('https://', 'http://', (string) ADDONEXT_URL))
         ]));
 
         $relative_path = null;
@@ -381,7 +381,7 @@ class AssetPerformance
             return null;
         }
 
-        $plugin_dir      = rtrim((string) VELORIA_DIR, '/\\') . '/';
+        $plugin_dir      = rtrim((string) ADDONEXT_DIR, '/\\') . '/';
         $normalized_path = wp_normalize_path($plugin_dir . $relative_path);
         $real_path       = realpath($normalized_path);
         if ($real_path === false || !is_file($real_path) || !is_readable($real_path)) {
@@ -409,7 +409,7 @@ class AssetPerformance
         return null;
     }
 
-    private function add_lazy_to_veloria_images(string $html): string
+    private function add_lazy_to_addonext_images(string $html): string
     {
         if (!class_exists(DOMDocument::class)) {
             return $html;
@@ -432,7 +432,7 @@ class AssetPerformance
                 continue;
             }
 
-            if (!$this->node_in_veloria_context($img)) {
+            if (!$this->node_in_addonext_context($img)) {
                 continue;
             }
 
@@ -467,12 +467,12 @@ class AssetPerformance
         return $output;
     }
 
-    private function node_in_veloria_context(DOMNode $node): bool
+    private function node_in_addonext_context(DOMNode $node): bool
     {
         for ($cursor = $node, $depth = 0; $cursor && $depth < 200; $depth++) {
             if ($cursor instanceof DOMElement && $cursor->hasAttribute('data-widget_type')) {
                 $widget_type = (string) $cursor->getAttribute('data-widget_type');
-                if (strpos($widget_type, 'veloria-') === 0) {
+                if (strpos($widget_type, 'addonext-') === 0) {
                     return true;
                 }
             }

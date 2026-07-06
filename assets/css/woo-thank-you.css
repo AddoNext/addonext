@@ -1,18 +1,18 @@
-.veloria-wty {
+.addonext-wty {
   box-sizing: border-box;
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.veloria-wty *,
-.veloria-wty *::before,
-.veloria-wty *::after {
+.addonext-wty *,
+.addonext-wty *::before,
+.addonext-wty *::after {
   box-sizing: border-box;
 }
 
-.veloria-wty--empty,
-.veloria-wty--inactive {
+.addonext-wty--empty,
+.addonext-wty--inactive {
   padding: 1rem 1.25rem;
   border-radius: 12px;
   background: #f1f5f9;
@@ -21,7 +21,7 @@
   text-align: center;
 }
 
-.veloria-wty__surface {
+.addonext-wty__surface {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,7 @@
   padding: 32px 28px;
 }
 
-.veloria-wty__success-icon {
+.addonext-wty__success-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -44,12 +44,12 @@
   font-size: 1.5rem;
 }
 
-.veloria-wty__success-icon svg {
+.addonext-wty__success-icon svg {
   width: 1em;
   height: 1em;
 }
 
-.veloria-wty__heading {
+.addonext-wty__heading {
   margin: 0 0 0.75rem;
   font-size: 1.5rem;
   font-weight: 700;
@@ -57,7 +57,7 @@
   color: #0f172a;
 }
 
-.veloria-wty__description {
+.addonext-wty__description {
   margin: 0 0 1.5rem;
   max-width: 36rem;
   font-size: 0.9375rem;
@@ -65,7 +65,7 @@
   color: #64748b;
 }
 
-.veloria-wty__details {
+.addonext-wty__details {
   width: 100%;
   max-width: 28rem;
   display: grid;
@@ -78,26 +78,26 @@
   border-radius: 12px;
 }
 
-.veloria-wty__detail {
+.addonext-wty__detail {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   min-width: 0;
 }
 
-.veloria-wty__detail-label {
+.addonext-wty__detail-label {
   font-size: 0.8125rem;
   color: #64748b;
 }
 
-.veloria-wty__detail-value {
+.addonext-wty__detail-value {
   font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
   word-break: break-word;
 }
 
-.veloria-wty__actions {
+.addonext-wty__actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -106,7 +106,7 @@
   margin-top: 1.25rem;
 }
 
-.veloria-wty-btn {
+.addonext-wty-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,72 +124,72 @@
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.veloria-wty-btn:hover {
+.addonext-wty-btn:hover {
   opacity: 0.92;
   text-decoration: none;
 }
 
-.veloria-wty-btn:focus-visible {
+.addonext-wty-btn:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-.veloria-wty-btn__icon {
+.addonext-wty-btn__icon {
   display: inline-flex;
   flex-shrink: 0;
   font-size: 1rem;
 }
 
-.veloria-wty-btn__icon svg {
+.addonext-wty-btn__icon svg {
   width: 1em;
   height: 1em;
   display: block;
 }
 
-.veloria-wty-btn--track {
+.addonext-wty-btn--track {
   background-color: #2563eb;
   border-color: #2563eb;
   color: #ffffff;
 }
 
-.veloria-wty-btn--continue {
+.addonext-wty-btn--continue {
   background-color: #f1f5f9;
   border-color: #f1f5f9;
   color: #0f172a;
 }
 
-.veloria-wty-btn--receipt {
+.addonext-wty-btn--receipt {
   background-color: #16a34a;
   border-color: #16a34a;
   color: #ffffff;
 }
 
-.veloria-wty-btn--track .veloria-wty-btn__icon,
-.veloria-wty-btn--receipt .veloria-wty-btn__icon {
+.addonext-wty-btn--track .addonext-wty-btn__icon,
+.addonext-wty-btn--receipt .addonext-wty-btn__icon {
   color: inherit;
 }
 
-.veloria-wty-btn--track .veloria-wty-btn__icon svg,
-.veloria-wty-btn--receipt .veloria-wty-btn__icon svg {
+.addonext-wty-btn--track .addonext-wty-btn__icon svg,
+.addonext-wty-btn--receipt .addonext-wty-btn__icon svg {
   fill: currentColor;
 }
 
-.veloria-wty-btn--track .veloria-wty-btn__icon svg path,
-.veloria-wty-btn--receipt .veloria-wty-btn__icon svg path {
+.addonext-wty-btn--track .addonext-wty-btn__icon svg path,
+.addonext-wty-btn--receipt .addonext-wty-btn__icon svg path {
   fill: currentColor;
 }
 
-.veloria-wty-btn--track .veloria-wty-btn__icon i,
-.veloria-wty-btn--receipt .veloria-wty-btn__icon i {
+.addonext-wty-btn--track .addonext-wty-btn__icon i,
+.addonext-wty-btn--receipt .addonext-wty-btn__icon i {
   color: inherit;
 }
 
 @media (max-width: 479px) {
-  .veloria-wty__details {
+  .addonext-wty__details {
     grid-template-columns: 1fr;
   }
 
-  .veloria-wty-btn {
+  .addonext-wty-btn {
     flex: 1 1 100%;
   }
 }

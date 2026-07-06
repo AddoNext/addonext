@@ -75,7 +75,7 @@
 
     var durationRaw = parseInt(widget.getAttribute('data-aa-duration') || '1400', 10);
     var duration = isNaN(durationRaw) ? 1400 : Math.max(200, durationRaw);
-    var values = widget.querySelectorAll('.veloria-advanced-analytics__value[data-aa-value]');
+    var values = widget.querySelectorAll('.addonext-advanced-analytics__value[data-aa-value]');
     values.forEach(function (el) {
       animateElement(el, duration);
     });
@@ -132,7 +132,7 @@
 
   function run(root) {
     var scope = root || document;
-    var widgets = scope.querySelectorAll('.veloria-advanced-analytics[data-aa-animate="yes"]');
+    var widgets = scope.querySelectorAll('.addonext-advanced-analytics[data-aa-animate="yes"]');
     setupVisibilityTrigger(Array.prototype.slice.call(widgets));
   }
 
@@ -143,14 +143,14 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-advanced-analytics.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/addonext-advanced-analytics.default', function ($scope) {
       var el = $scope && $scope[0] ? $scope[0] : $scope;
       if (!el || !el.querySelectorAll) {
         return;
       }
-      var values = el.querySelectorAll('.veloria-advanced-analytics__value[data-aa-value]');
+      var values = el.querySelectorAll('.addonext-advanced-analytics__value[data-aa-value]');
       values.forEach(function (node) { node.removeAttribute('data-aa-animated'); });
-      var widgets = el.querySelectorAll('.veloria-advanced-analytics[data-aa-animate="yes"]');
+      var widgets = el.querySelectorAll('.addonext-advanced-analytics[data-aa-animate="yes"]');
       widgets.forEach(function (widget) { widget.removeAttribute('data-aa-animated-widget'); });
       run(el);
     });

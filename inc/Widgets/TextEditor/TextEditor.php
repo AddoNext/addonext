@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\TextEditor;
+namespace Addonext\Widgets\TextEditor;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
@@ -12,12 +12,12 @@ class TextEditor extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-text veloria-icon';
+        return 'eicon-text addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-text-editor';
+        return 'addonext-text-editor';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class TextEditor extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Text Editor', 'veloria');
+        return __('Text Editor', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Rich text with gradient, 3D, shadows and animations', 'veloria');
+        return __('Rich text with gradient, 3D, shadows and animations', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,7 +42,7 @@ class TextEditor extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-text-editor'];
+        return ['addonext-text-editor'];
     }
 
     public function __construct($data = [], $args = null)
@@ -53,7 +53,7 @@ class TextEditor extends WidgetBase
 
     public function enqueue_preview_styles(): void
     {
-        wp_enqueue_style('veloria-text-editor');
+        wp_enqueue_style('addonext-text-editor');
     }
 
     public function register_controls(): void
@@ -61,7 +61,7 @@ class TextEditor extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -69,31 +69,31 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'editor',
             [
-                'label'   => __('Content', 'veloria'),
+                'label'   => __('Content', 'addonext'),
                 'type'    => Controls_Manager::WYSIWYG,
-                'default' => __('Welcome to WordPress. This is your first post. Edit or delete it, then start writing!', 'veloria'),
+                'default' => __('Welcome to WordPress. This is your first post. Edit or delete it, then start writing!', 'addonext'),
             ]
         );
 
         $this->add_control(
             'align',
             [
-                'label'   => __('Alignment', 'veloria'),
+                'label'   => __('Alignment', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-h-align-left'],
-                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-h-align-center'],
-                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-h-align-right'],
+                    'left'   => ['title' => __('Left', 'addonext'), 'icon' => 'eicon-h-align-left'],
+                    'center' => ['title' => __('Center', 'addonext'), 'icon' => 'eicon-h-align-center'],
+                    'right'  => ['title' => __('Right', 'addonext'), 'icon' => 'eicon-h-align-right'],
                 ],
                 'default'      => 'left',
-                'prefix_class' => 'veloria-text-editor--align-',
+                'prefix_class' => 'addonext-text-editor--align-',
             ]
         );
 
         $this->add_control(
             'drop_cap',
             [
-                'label'        => __('Drop cap', 'veloria'),
+                'label'        => __('Drop cap', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => '',
@@ -105,7 +105,7 @@ class TextEditor extends WidgetBase
         $this->start_controls_section(
             'section_style',
             [
-                'label' => __('Typography', 'veloria'),
+                'label' => __('Typography', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -114,7 +114,7 @@ class TextEditor extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'typography',
-                'selector' => '{{WRAPPER}} .veloria-text-editor',
+                'selector' => '{{WRAPPER}} .addonext-text-editor',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_size'   => ['default' => ['unit' => 'px', 'size' => 16]],
@@ -127,11 +127,11 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'text_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#555555',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-text-editor' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -139,10 +139,10 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'link_color',
             [
-                'label'     => __('Link color', 'veloria'),
+                'label'     => __('Link color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-text-editor a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -152,7 +152,7 @@ class TextEditor extends WidgetBase
         $this->start_controls_section(
             'section_style_gradient',
             [
-                'label' => __('Gradient text', 'veloria'),
+                'label' => __('Gradient text', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -160,7 +160,7 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'use_gradient',
             [
-                'label'        => __('Use gradient', 'veloria'),
+                'label'        => __('Use gradient', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => '',
@@ -170,12 +170,12 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'gradient_color_start',
             [
-                'label'     => __('Gradient start', 'veloria'),
+                'label'     => __('Gradient start', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'condition' => ['use_gradient' => 'yes'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor--gradient' => '--veloria-te-gradient-start: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-text-editor--gradient' => '--addonext-te-gradient-start: {{VALUE}};',
                 ],
             ]
         );
@@ -183,12 +183,12 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'gradient_color_end',
             [
-                'label'     => __('Gradient end', 'veloria'),
+                'label'     => __('Gradient end', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#7c3aed',
                 'condition' => ['use_gradient' => 'yes'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor--gradient' => '--veloria-te-gradient-end: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-text-editor--gradient' => '--addonext-te-gradient-end: {{VALUE}};',
                 ],
             ]
         );
@@ -196,14 +196,14 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'gradient_angle',
             [
-                'label'     => __('Angle', 'veloria'),
+                'label'     => __('Angle', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['deg'],
                 'range'     => ['deg' => ['min' => 0, 'max' => 360]],
                 'default'   => ['unit' => 'deg', 'size' => 90],
                 'condition' => ['use_gradient' => 'yes'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor--gradient' => '--veloria-te-gradient-angle: {{SIZE}}deg;',
+                    '{{WRAPPER}} .addonext-text-editor--gradient' => '--addonext-te-gradient-angle: {{SIZE}}deg;',
                 ],
             ]
         );
@@ -213,7 +213,7 @@ class TextEditor extends WidgetBase
         $this->start_controls_section(
             'section_style_text_shadow',
             [
-                'label' => __('Text shadow', 'veloria'),
+                'label' => __('Text shadow', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -222,7 +222,7 @@ class TextEditor extends WidgetBase
             Group_Control_Text_Shadow::get_type(),
             [
                 'name'     => 'text_shadow',
-                'selector' => '{{WRAPPER}} .veloria-text-editor',
+                'selector' => '{{WRAPPER}} .addonext-text-editor',
             ]
         );
 
@@ -231,7 +231,7 @@ class TextEditor extends WidgetBase
         $this->start_controls_section(
             'section_style_3d',
             [
-                'label' => __('3D text', 'veloria'),
+                'label' => __('3D text', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -239,7 +239,7 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'text_3d',
             [
-                'label'        => __('Enable 3D', 'veloria'),
+                'label'        => __('Enable 3D', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => '',
@@ -249,14 +249,14 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'text_3d_depth',
             [
-                'label'     => __('Depth', 'veloria'),
+                'label'     => __('Depth', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'     => ['px' => ['min' => 1, 'max' => 15]],
                 'default'   => ['unit' => 'px', 'size' => 1],
                 'condition' => ['text_3d' => 'yes'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor--3d' => '--veloria-te-3d-depth: {{SIZE}}px;',
+                    '{{WRAPPER}} .addonext-text-editor--3d' => '--addonext-te-3d-depth: {{SIZE}}px;',
                 ],
             ]
         );
@@ -264,12 +264,12 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'text_3d_color',
             [
-                'label'     => __('Shadow color', 'veloria'),
+                'label'     => __('Shadow color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0.3)',
                 'condition' => ['text_3d' => 'yes'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-text-editor--3d' => '--veloria-te-3d-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-text-editor--3d' => '--addonext-te-3d-color: {{VALUE}};',
                 ],
             ]
         );
@@ -279,7 +279,7 @@ class TextEditor extends WidgetBase
         $this->start_controls_section(
             'section_style_animation',
             [
-                'label' => __('Animation', 'veloria'),
+                'label' => __('Animation', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -287,7 +287,7 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'entrance_animation',
             [
-                'label'   => __('Entrance animation', 'veloria'),
+                'label'   => __('Entrance animation', 'addonext'),
                 'type'    => Controls_Manager::ANIMATION,
                 'default' => '',
             ]
@@ -296,13 +296,13 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'animation_duration',
             [
-                'label'     => __('Duration', 'veloria'),
+                'label'     => __('Duration', 'addonext'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'normal',
                 'options'   => [
-                    'slow'   => __('Slow', 'veloria'),
-                    'normal' => __('Normal', 'veloria'),
-                    'fast'   => __('Fast', 'veloria'),
+                    'slow'   => __('Slow', 'addonext'),
+                    'normal' => __('Normal', 'addonext'),
+                    'fast'   => __('Fast', 'addonext'),
                 ],
                 'condition' => ['entrance_animation!' => ''],
             ]
@@ -311,7 +311,7 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'animation_delay',
             [
-                'label'     => __('Delay (ms)', 'veloria'),
+                'label'     => __('Delay (ms)', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 0,
                 'max'       => 3000,
@@ -323,7 +323,7 @@ class TextEditor extends WidgetBase
         $this->add_control(
             'hover_animation',
             [
-                'label'   => __('Hover animation', 'veloria'),
+                'label'   => __('Hover animation', 'addonext'),
                 'type'    => Controls_Manager::HOVER_ANIMATION,
                 'default' => '',
             ]
@@ -348,7 +348,7 @@ class TextEditor extends WidgetBase
         if (!empty($settings['hover_animation'])) {
             $this->add_render_attribute('_wrapper', 'class', 'elementor-animation-' . esc_attr($settings['hover_animation']));
         }
-        $template_path = VELORIA_DIR . 'templates/text-editor/text-editor.php';
+        $template_path = ADDONEXT_DIR . 'templates/text-editor/text-editor.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -364,10 +364,10 @@ class TextEditor extends WidgetBase
             if (settings.animation_delay) view.addRenderAttribute('_wrapper', 'data-animation-delay', settings.animation_delay);
         }
         if (settings.hover_animation) view.addRenderAttribute('_wrapper', 'class', 'elementor-animation-' + settings.hover_animation);
-        var innerClass = 'veloria-text-editor';
-        if (settings.drop_cap === 'yes') innerClass += ' veloria-text-editor--drop-cap';
-        if (settings.use_gradient === 'yes') innerClass += ' veloria-text-editor--gradient';
-        if (settings.text_3d === 'yes') innerClass += ' veloria-text-editor--3d';
+        var innerClass = 'addonext-text-editor';
+        if (settings.drop_cap === 'yes') innerClass += ' addonext-text-editor--drop-cap';
+        if (settings.use_gradient === 'yes') innerClass += ' addonext-text-editor--gradient';
+        if (settings.text_3d === 'yes') innerClass += ' addonext-text-editor--3d';
         view.addRenderAttribute('editor', 'class', innerClass);
         view.addInlineEditingAttributes('editor', 'advanced');
         #>

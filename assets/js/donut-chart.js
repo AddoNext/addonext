@@ -39,8 +39,8 @@
 
         if (values.length === 0) return;
 
-        var canvas = container.querySelector('.veloria-donut-chart__canvas');
-        var legendEl = container.querySelector('.veloria-donut-chart__legend');
+        var canvas = container.querySelector('.addonext-donut-chart__canvas');
+        var legendEl = container.querySelector('.addonext-donut-chart__legend');
         if (!canvas) return;
 
         var size = 360;
@@ -56,11 +56,11 @@
         var ns = 'http://www.w3.org/2000/svg';
         var svg = document.createElementNS(ns, 'svg');
         svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
-        svg.setAttribute('class', 'veloria-donut-chart__svg');
+        svg.setAttribute('class', 'addonext-donut-chart__svg');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
         var slices = document.createElementNS(ns, 'g');
-        slices.setAttribute('class', 'veloria-donut-chart__slices');
+        slices.setAttribute('class', 'addonext-donut-chart__slices');
 
         var startAngle = -Math.PI / 2;
 
@@ -96,7 +96,7 @@
                 label.setAttribute('y', ty);
                 label.setAttribute('text-anchor', 'middle');
                 label.setAttribute('dominant-baseline', 'middle');
-                label.setAttribute('class', 'veloria-donut-chart__slice-label');
+                label.setAttribute('class', 'addonext-donut-chart__slice-label');
                 label.textContent = Math.round(pct * 100) + '%';
                 slices.appendChild(label);
             }
@@ -107,13 +107,13 @@
         svg.appendChild(slices);
 
         var center = document.createElementNS(ns, 'g');
-        center.setAttribute('class', 'veloria-donut-chart__center');
+        center.setAttribute('class', 'addonext-donut-chart__center');
 
         var centerValue = document.createElementNS(ns, 'text');
         centerValue.setAttribute('x', cx);
         centerValue.setAttribute('y', cy - 6);
         centerValue.setAttribute('text-anchor', 'middle');
-        centerValue.setAttribute('class', 'veloria-donut-chart__center-value');
+        centerValue.setAttribute('class', 'addonext-donut-chart__center-value');
         centerValue.textContent = centerPrefix + formatNumber(total) + centerSuffix;
         center.appendChild(centerValue);
 
@@ -122,7 +122,7 @@
             centerCaption.setAttribute('x', cx);
             centerCaption.setAttribute('y', cy + 22);
             centerCaption.setAttribute('text-anchor', 'middle');
-            centerCaption.setAttribute('class', 'veloria-donut-chart__center-label');
+            centerCaption.setAttribute('class', 'addonext-donut-chart__center-label');
             centerCaption.textContent = centerLabel;
             center.appendChild(centerCaption);
         }
@@ -141,14 +141,14 @@
                 legendEl.innerHTML = '';
                 for (i = 0; i < labels.length; i++) {
                     var item = document.createElement('div');
-                    item.setAttribute('class', 'veloria-donut-chart__legend-item');
+                    item.setAttribute('class', 'addonext-donut-chart__legend-item');
 
                     var swatch = document.createElement('span');
-                    swatch.setAttribute('class', 'veloria-donut-chart__legend-swatch');
+                    swatch.setAttribute('class', 'addonext-donut-chart__legend-swatch');
                     swatch.style.backgroundColor = colors[i];
 
                     var labelText = document.createElement('span');
-                    labelText.setAttribute('class', 'veloria-donut-chart__legend-text');
+                    labelText.setAttribute('class', 'addonext-donut-chart__legend-text');
                     labelText.textContent = labels[i];
 
                     item.appendChild(swatch);
@@ -161,10 +161,10 @@
 
     function run(root) {
         root = root || document;
-        var containers = root.querySelectorAll('.veloria-donut-chart');
+        var containers = root.querySelectorAll('.addonext-donut-chart');
         containers.forEach(function (el) {
             if (el.getAttribute('data-chart-built') === '1') return;
-            var canvas = el.querySelector('.veloria-donut-chart__canvas');
+            var canvas = el.querySelector('.addonext-donut-chart__canvas');
             var valuesStr = (el.getAttribute('data-values') || '').split('|');
             var hasData = valuesStr.length > 0 && valuesStr.some(function (v) { return v !== '' && !isNaN(parseFloat(v, 10)); });
             if (canvas && hasData) {
@@ -193,16 +193,16 @@
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
                     var containers = [];
-                    if (node.classList && node.classList.contains('veloria-donut-chart')) {
+                    if (node.classList && node.classList.contains('addonext-donut-chart')) {
                         containers.push(node);
                     }
                     if (node.querySelectorAll) {
-                        var found = node.querySelectorAll('.veloria-donut-chart');
+                        var found = node.querySelectorAll('.addonext-donut-chart');
                         for (var i = 0; i < found.length; i++) containers.push(found[i]);
                     }
                     containers.forEach(function (container) {
-                        var canvas = container.querySelector('.veloria-donut-chart__canvas');
-                        var needsBuild = canvas && !container.querySelector('.veloria-donut-chart__svg');
+                        var canvas = container.querySelector('.addonext-donut-chart__canvas');
+                        var needsBuild = canvas && !container.querySelector('.addonext-donut-chart__svg');
                         if (needsBuild) {
                             container.removeAttribute('data-chart-built');
                             buildChart(container);
@@ -221,10 +221,10 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-donut-chart.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-donut-chart.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
-                var containers = el.querySelectorAll('.veloria-donut-chart');
+                var containers = el.querySelectorAll('.addonext-donut-chart');
                 containers.forEach(function (c) {
                     c.removeAttribute('data-chart-built');
                 });

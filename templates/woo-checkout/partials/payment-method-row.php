@@ -2,30 +2,30 @@
 /**
  * Single payment gateway row (checkout.js compatible).
  *
- * @var \WC_Payment_Gateway $veloria_gateway
+ * @var \WC_Payment_Gateway $addonext_gateway
  */
 
 defined('ABSPATH') or exit;
 
-$veloria_id = $veloria_gateway->id;
+$addonext_id = $addonext_gateway->id;
 ?>
-<li class="wc_payment_method payment_method_<?php echo esc_attr($veloria_id); ?> veloria-co-payment-item veloria-co-tpl-payment-item">
+<li class="wc_payment_method payment_method_<?php echo esc_attr($addonext_id); ?> addonext-co-payment-item addonext-co-tpl-payment-item">
 	<input
-		id="payment_method_<?php echo esc_attr($veloria_id); ?>"
+		id="payment_method_<?php echo esc_attr($addonext_id); ?>"
 		type="radio"
 		class="input-radio"
 		name="payment_method"
-		value="<?php echo esc_attr($veloria_id); ?>"
-		<?php checked($veloria_gateway->chosen, true); ?>
-		data-order_button_text="<?php echo esc_attr($veloria_gateway->order_button_text); ?>"
+		value="<?php echo esc_attr($addonext_id); ?>"
+		<?php checked($addonext_gateway->chosen, true); ?>
+		data-order_button_text="<?php echo esc_attr($addonext_gateway->order_button_text); ?>"
 	/>
-	<label for="payment_method_<?php echo esc_attr($veloria_id); ?>" class="veloria-co-tpl-payment-label">
-		<?php echo wp_kses_post($veloria_gateway->get_title()); ?>
-		<?php echo $veloria_gateway->get_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<label for="payment_method_<?php echo esc_attr($addonext_id); ?>" class="addonext-co-tpl-payment-label">
+		<?php echo wp_kses_post($addonext_gateway->get_title()); ?>
+		<?php echo $addonext_gateway->get_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</label>
-	<?php if ($veloria_gateway->has_fields() || $veloria_gateway->get_description()) : ?>
-		<div class="payment_box payment_method_<?php echo esc_attr($veloria_id); ?> veloria-co-tpl-payment-box"<?php echo $veloria_gateway->chosen ? '' : ' style="display:none;"'; ?>>
-			<?php $veloria_gateway->payment_fields(); ?>
+	<?php if ($addonext_gateway->has_fields() || $addonext_gateway->get_description()) : ?>
+		<div class="payment_box payment_method_<?php echo esc_attr($addonext_id); ?> addonext-co-tpl-payment-box"<?php echo $addonext_gateway->chosen ? '' : ' style="display:none;"'; ?>>
+			<?php $addonext_gateway->payment_fields(); ?>
 		</div>
 	<?php endif; ?>
 </li>

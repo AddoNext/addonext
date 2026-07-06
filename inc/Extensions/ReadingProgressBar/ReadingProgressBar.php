@@ -1,15 +1,15 @@
 <?php
-namespace Veloria\Extensions\ReadingProgressBar;
+namespace Addonext\Extensions\ReadingProgressBar;
 
-use Veloria\Base\ExtensionBase;
-use Veloria\Common\ExtensionManager;
+use Addonext\Base\ExtensionBase;
+use Addonext\Common\ExtensionManager;
 
 defined('ABSPATH') or exit;
 
 /**
  * Displays a fixed reading progress bar based on scroll depth.
  *
- * @package Veloria
+ * @package AddoNext
  * @since 1.0.0
  */
 class ReadingProgressBar extends ExtensionBase
@@ -21,17 +21,17 @@ class ReadingProgressBar extends ExtensionBase
 
     public function get_title(): string
     {
-        return __('Reading Progress Bar', 'veloria');
+        return __('Reading Progress Bar', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Show a top progress indicator based on current scroll position.', 'veloria');
+        return __('Show a top progress indicator based on current scroll position.', 'addonext');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-skill-bar veloria-icon';
+        return 'eicon-skill-bar addonext-icon';
     }
 
     public function get_category(): string
@@ -58,24 +58,24 @@ class ReadingProgressBar extends ExtensionBase
             [
                 'id'          => 'progress_color',
                 'type'        => 'color',
-                'label'       => __('Progress color', 'veloria'),
-                'description' => __('Bar fill color (hex), e.g. #4f46e5', 'veloria'),
+                'label'       => __('Progress color', 'addonext'),
+                'description' => __('Bar fill color (hex), e.g. #4f46e5', 'addonext'),
                 'default'     => '#4f46e5',
                 'placeholder' => '#4f46e5',
             ],
             [
                 'id'          => 'track_color',
                 'type'        => 'color',
-                'label'       => __('Track color', 'veloria'),
-                'description' => __('Background color behind the progress bar.', 'veloria'),
+                'label'       => __('Track color', 'addonext'),
+                'description' => __('Background color behind the progress bar.', 'addonext'),
                 'default'     => '#e5e7eb',
                 'placeholder' => '#e5e7eb',
             ],
             [
                 'id'          => 'height_px',
                 'type'        => 'range',
-                'label'       => __('Bar height (px)', 'veloria'),
-                'description' => __('Thickness of the progress bar.', 'veloria'),
+                'label'       => __('Bar height (px)', 'addonext'),
+                'description' => __('Thickness of the progress bar.', 'addonext'),
                 'default'     => 4,
                 'min'         => 2,
                 'max'         => 16,
@@ -85,8 +85,8 @@ class ReadingProgressBar extends ExtensionBase
             [
                 'id'          => 'offset_top_px',
                 'type'        => 'range',
-                'label'       => __('Top offset (px)', 'veloria'),
-                'description' => __('Distance from top edge, useful with sticky notices.', 'veloria'),
+                'label'       => __('Top offset (px)', 'addonext'),
+                'description' => __('Distance from top edge, useful with sticky notices.', 'addonext'),
                 'default'     => 0,
                 'min'         => 0,
                 'max'         => 120,
@@ -143,23 +143,23 @@ class ReadingProgressBar extends ExtensionBase
 
         wp_register_style(
             $this->get_id(),
-            VELORIA_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
+            ADDONEXT_URL . 'assets/css/extensions/' . $this->get_id() . '.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
             $this->get_id(),
-            VELORIA_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
+            ADDONEXT_URL . 'assets/js/extensions/' . $this->get_id() . '.js',
             [],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
 
         wp_add_inline_style(
             $this->get_id(),
             sprintf(
-                ':root{--veloria-rpb-color:%1$s;--veloria-rpb-track:%2$s;--veloria-rpb-height:%3$dpx;--veloria-rpb-top:%4$dpx;}',
+                ':root{--addonext-rpb-color:%1$s;--addonext-rpb-track:%2$s;--addonext-rpb-height:%3$dpx;--addonext-rpb-top:%4$dpx;}',
                 $progress,
                 $track,
                 $height,

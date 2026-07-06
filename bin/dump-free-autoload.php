@@ -22,9 +22,9 @@ if (!is_readable($composerFile)) {
 $config = json_decode((string) file_get_contents($composerFile), true, 512, JSON_THROW_ON_ERROR);
 $psr4 = $config['autoload']['psr-4'] ?? [];
 
-unset($psr4['Veloria\\Pro\\'], $psr4['Veloria\\Pro\\Migrations\\']);
+unset($psr4['Addonext\\Pro\\'], $psr4['Addonext\\Pro\\Migrations\\']);
 
-foreach (['Veloria\\Widgets\\', 'Veloria\\Extensions\\'] as $namespace) {
+foreach (['Addonext\\Widgets\\', 'Addonext\\Extensions\\'] as $namespace) {
     if (!isset($psr4[$namespace])) {
         continue;
     }

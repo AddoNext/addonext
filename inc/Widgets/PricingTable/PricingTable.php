@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\PricingTable;
+namespace Addonext\Widgets\PricingTable;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -14,12 +14,12 @@ class PricingTable extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-price-table veloria-icon';
+        return 'eicon-price-table addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-pricing-table';
+        return 'addonext-pricing-table';
     }
 
     public function get_admin_category(): string
@@ -29,12 +29,12 @@ class PricingTable extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Pricing Table', 'veloria');
+        return __('Pricing Table', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Pricing cards with features and CTA', 'veloria');
+        return __('Pricing cards with features and CTA', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -44,12 +44,12 @@ class PricingTable extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-pricing-table'];
+        return ['addonext-pricing-table'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('veloria-pricing-table', VELORIA_URL . 'assets/css/pricing-table.css', [], VELORIA_VERSION);
+        wp_register_style('addonext-pricing-table', ADDONEXT_URL . 'assets/css/pricing-table.css', [], ADDONEXT_VERSION);
     }
 
     public function register_controls(): void
@@ -57,7 +57,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -66,15 +66,15 @@ class PricingTable extends WidgetBase
         $features_repeater->add_control(
             'text',
             [
-                'label'   => __('Feature', 'veloria'),
+                'label'   => __('Feature', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Feature item', 'veloria'),
+                'default' => __('Feature item', 'addonext'),
             ]
         );
         $features_repeater->add_control(
             'included',
             [
-                'label'        => __('Included', 'veloria'),
+                'label'        => __('Included', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -85,7 +85,7 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'icon',
             [
-                'label'   => __('Icon', 'veloria'),
+                'label'   => __('Icon', 'addonext'),
                 'type'    => Controls_Manager::ICONS,
                 'default' => ['value' => 'eicon-star', 'library' => 'eicons'],
             ]
@@ -93,23 +93,23 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'title',
             [
-                'label'   => __('Plan name', 'veloria'),
+                'label'   => __('Plan name', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Pro', 'veloria'),
+                'default' => __('Pro', 'addonext'),
             ]
         );
         $plans_repeater->add_control(
             'description',
             [
-                'label'   => __('Description', 'veloria'),
+                'label'   => __('Description', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('For professional designers', 'veloria'),
+                'default' => __('For professional designers', 'addonext'),
             ]
         );
         $plans_repeater->add_control(
             'price',
             [
-                'label'   => __('Price', 'veloria'),
+                'label'   => __('Price', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '$49',
             ]
@@ -117,7 +117,7 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'period',
             [
-                'label'   => __('Period', 'veloria'),
+                'label'   => __('Period', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '/year',
             ]
@@ -125,7 +125,7 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'featured',
             [
-                'label'        => __('Featured (recommended)', 'veloria'),
+                'label'        => __('Featured (recommended)', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -134,22 +134,22 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'button_text',
             [
-                'label'   => __('Button text', 'veloria'),
+                'label'   => __('Button text', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Get Started', 'veloria'),
+                'default' => __('Get Started', 'addonext'),
             ]
         );
         $plans_repeater->add_control(
             'button_url',
             [
-                'label' => __('Button URL', 'veloria'),
+                'label' => __('Button URL', 'addonext'),
                 'type'  => Controls_Manager::URL,
             ]
         );
         $plans_repeater->add_control(
             'button_primary',
             [
-                'label'        => __('Primary (gradient) button', 'veloria'),
+                'label'        => __('Primary (gradient) button', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -158,12 +158,12 @@ class PricingTable extends WidgetBase
         $plans_repeater->add_control(
             'features',
             [
-                'label'       => __('Features', 'veloria'),
+                'label'       => __('Features', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $features_repeater->get_controls(),
                 'default'     => [
-                    ['text' => __('50+ Premium Widgets', 'veloria'), 'included' => 'yes'],
-                    ['text' => __('100+ Pro Templates', 'veloria'), 'included' => 'yes'],
+                    ['text' => __('50+ Premium Widgets', 'addonext'), 'included' => 'yes'],
+                    ['text' => __('100+ Pro Templates', 'addonext'), 'included' => 'yes'],
                 ],
                 'title_field' => '{{{ text }}}',
             ]
@@ -172,66 +172,66 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'plans',
             [
-                'label'       => __('Plans', 'veloria'),
+                'label'       => __('Plans', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $plans_repeater->get_controls(),
                 'default'     => [
                     [
                         'icon' => ['value' => 'eicon-star', 'library' => 'eicons'],
-                        'title' => __('Free', 'veloria'),
-                        'description' => __('Perfect for getting started', 'veloria'),
+                        'title' => __('Free', 'addonext'),
+                        'description' => __('Perfect for getting started', 'addonext'),
                         'price' => '$0',
                         'period' => '/month',
                         'featured' => '',
-                        'button_text' => __('Get Started Free', 'veloria'),
+                        'button_text' => __('Get Started Free', 'addonext'),
                         'features' => [
-                            ['text' => __('20 Free Widgets', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Basic Templates', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Community Support', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Lifetime Updates', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('1 Website License', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Premium Widgets', 'veloria'), 'included' => ''],
-                            ['text' => __('Priority Support', 'veloria'), 'included' => ''],
-                            ['text' => __('Advanced Extensions', 'veloria'), 'included' => ''],
+                            ['text' => __('20 Free Widgets', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Basic Templates', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Community Support', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Lifetime Updates', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('1 Website License', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Premium Widgets', 'addonext'), 'included' => ''],
+                            ['text' => __('Priority Support', 'addonext'), 'included' => ''],
+                            ['text' => __('Advanced Extensions', 'addonext'), 'included' => ''],
                         ],
                     ],
                     [
                         'icon' => ['value' => 'eicon-upgrade-crown', 'library' => 'eicons'],
-                        'title' => __('Pro', 'veloria'),
-                        'description' => __('For professional designers', 'veloria'),
+                        'title' => __('Pro', 'addonext'),
+                        'description' => __('For professional designers', 'addonext'),
                         'price' => '$49',
                         'period' => '/year',
                         'featured' => 'yes',
-                        'button_text' => __('Start Pro Plan', 'veloria'),
+                        'button_text' => __('Start Pro Plan', 'addonext'),
                         'features' => [
-                            ['text' => __('50+ Premium Widgets', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('100+ Pro Templates', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Priority Email Support', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Lifetime Updates', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('3 Website Licenses', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Advanced Extensions', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Custom Integrations', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('White Label Option', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('50+ Premium Widgets', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('100+ Pro Templates', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Priority Email Support', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Lifetime Updates', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('3 Website Licenses', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Advanced Extensions', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Custom Integrations', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('White Label Option', 'addonext'), 'included' => 'yes'],
                         ],
                     ],
                     [
                         'icon' => ['value' => 'eicon-theme-builder', 'library' => 'eicons'],
-                        'title' => __('Agency', 'veloria'),
-                        'description' => __('For teams and agencies', 'veloria'),
+                        'title' => __('Agency', 'addonext'),
+                        'description' => __('For teams and agencies', 'addonext'),
                         'price' => '$149',
                         'period' => '/year',
                         'featured' => '',
-                        'button_text' => __('Start Agency Plan', 'veloria'),
+                        'button_text' => __('Start Agency Plan', 'addonext'),
                         'button_primary' => 'yes',
                         'features' => [
-                            ['text' => __('All Pro Features', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Unlimited Websites', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('24/7 Priority Support', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Dedicated Account Manager', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Custom Development', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('API Access', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Team Collaboration Tools', 'veloria'), 'included' => 'yes'],
-                            ['text' => __('Early Access to Features', 'veloria'), 'included' => 'yes'],
+                            ['text' => __('All Pro Features', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Unlimited Websites', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('24/7 Priority Support', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Dedicated Account Manager', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Custom Development', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('API Access', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Team Collaboration Tools', 'addonext'), 'included' => 'yes'],
+                            ['text' => __('Early Access to Features', 'addonext'), 'included' => 'yes'],
                         ],
                     ],
                 ],
@@ -244,7 +244,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_cards',
             [
-                'label' => __('Cards', 'veloria'),
+                'label' => __('Cards', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -252,7 +252,7 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'columns',
             [
-                'label'   => __('Columns', 'veloria'),
+                'label'   => __('Columns', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     '1' => '1',
@@ -262,7 +262,7 @@ class PricingTable extends WidgetBase
                 ],
                 'default' => '3',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__list' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .addonext-pricing-table__list' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
                 ],
             ]
         );
@@ -270,13 +270,13 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'gap',
             [
-                'label'      => __('Gap between cards', 'veloria'),
+                'label'      => __('Gap between cards', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 60]],
                 'default'    => ['size' => 24],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-pricing-table__list' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-pricing-table__list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -284,14 +284,14 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'card_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'default'    => ['size' => 16],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-pricing-table__card' => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-pricing-table__badge' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-pricing-table__badge' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -299,11 +299,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'card_bg',
             [
-                'label'     => __('Card background', 'veloria'),
+                'label'     => __('Card background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -311,11 +311,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'card_border_color',
             [
-                'label'     => __('Card border', 'veloria'),
+                'label'     => __('Card border', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E5E7EB',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -325,7 +325,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_featured',
             [
-                'label' => __('Featured card', 'veloria'),
+                'label' => __('Featured card', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -335,7 +335,7 @@ class PricingTable extends WidgetBase
             [
                 'name'     => 'featured_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__card--featured',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__card--featured',
                 'fields_options' => [
                     'background' => [
                         'default' => 'gradient',
@@ -349,20 +349,20 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'badge_text',
             [
-                'label'   => __('Badge text', 'veloria'),
+                'label'   => __('Badge text', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('RECOMMENDED', 'veloria'),
+                'default' => __('RECOMMENDED', 'addonext'),
             ]
         );
 
         $this->add_control(
             'badge_bg',
             [
-                'label'     => __('Badge background', 'veloria'),
+                'label'     => __('Badge background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FBBF24',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__badge' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__badge' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -370,11 +370,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'badge_color',
             [
-                'label'     => __('Badge text color', 'veloria'),
+                'label'     => __('Badge text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__badge' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__badge' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -384,7 +384,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_icon',
             [
-                'label' => __('Icon', 'veloria'),
+                'label' => __('Icon', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -392,13 +392,13 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_box_size',
             [
-                'label'      => __('Icon box size', 'veloria'),
+                'label'      => __('Icon box size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 32, 'max' => 80]],
                 'default'    => ['size' => 48],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-pricing-table__icon-wrap' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-pricing-table__icon-wrap' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -406,11 +406,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_color',
             [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card:not(.veloria-pricing-table__card--featured):not(.veloria-pricing-table__card--primary-btn) .veloria-pricing-table__icon-wrap' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card:not(.addonext-pricing-table__card--featured):not(.addonext-pricing-table__card--primary-btn) .addonext-pricing-table__icon-wrap' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -418,11 +418,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_bg',
             [
-                'label'     => __('Icon background', 'veloria'),
+                'label'     => __('Icon background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f3f4f6',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__icon-wrap' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__icon-wrap' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -430,11 +430,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_featured_bg',
             [
-                'label'     => __('Featured card icon background', 'veloria'),
+                'label'     => __('Featured card icon background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(255,255,255,0.25)',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__icon-wrap' => 'background-color: {{VALUE}}; color: #ffffff;',
+                    '{{WRAPPER}} .addonext-pricing-table__card--featured .addonext-pricing-table__icon-wrap' => 'background-color: {{VALUE}}; color: #ffffff;',
                 ],
             ]
         );
@@ -442,11 +442,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_featured_color',
             [
-                'label'     => __('Featured card icon color', 'veloria'),
+                'label'     => __('Featured card icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__icon-wrap' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card--featured .addonext-pricing-table__icon-wrap' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -454,11 +454,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'icon_primary_color',
             [
-                'label'     => __('Primary-button card icon color', 'veloria'),
+                'label'     => __('Primary-button card icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#7c3aed',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card--primary-btn .veloria-pricing-table__icon-wrap' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card--primary-btn .addonext-pricing-table__icon-wrap' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -468,7 +468,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title & description', 'veloria'),
+                'label' => __('Title & description', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -477,18 +477,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__title',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Title color', 'veloria'),
+                'label'     => __('Title color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -496,11 +496,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'desc_color',
             [
-                'label'     => __('Description color', 'veloria'),
+                'label'     => __('Description color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -509,7 +509,7 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'desc_typography',
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__desc',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__desc',
             ]
         );
 
@@ -518,7 +518,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_price',
             [
-                'label' => __('Price', 'veloria'),
+                'label' => __('Price', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -527,18 +527,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'price_typography',
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__price',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__price',
             ]
         );
 
         $this->add_control(
             'price_color',
             [
-                'label'     => __('Price color', 'veloria'),
+                'label'     => __('Price color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__price' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__price' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -546,11 +546,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'period_color',
             [
-                'label'     => __('Period color', 'veloria'),
+                'label'     => __('Period color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__period' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__period' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -560,7 +560,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'veloria'),
+                'label' => __('Button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -569,18 +569,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__button',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__button',
             ]
         );
 
         $this->add_control(
             'button_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f3f4f6',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -588,11 +588,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -600,11 +600,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_featured_bg',
             [
-                'label'     => __('Featured card button background', 'veloria'),
+                'label'     => __('Featured card button background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card--featured .addonext-pricing-table__button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -612,11 +612,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_featured_color',
             [
-                'label'     => __('Featured card button text', 'veloria'),
+                'label'     => __('Featured card button text', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6366f1',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card--featured .addonext-pricing-table__button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -624,13 +624,13 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-pricing-table__button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-pricing-table__button' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -638,7 +638,7 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'heading_button_primary',
             [
-                'label'     => __('Primary (gradient) button', 'veloria'),
+                'label'     => __('Primary (gradient) button', 'addonext'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -649,7 +649,7 @@ class PricingTable extends WidgetBase
             [
                 'name'     => 'button_primary_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__button--primary',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__button--primary',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color' => ['default' => '#6366f1'],
@@ -661,11 +661,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'button_primary_color',
             [
-                'label'     => __('Primary button text', 'veloria'),
+                'label'     => __('Primary button text', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__button--primary' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__button--primary' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -675,7 +675,7 @@ class PricingTable extends WidgetBase
         $this->start_controls_section(
             'section_style_features',
             [
-                'label' => __('Features list', 'veloria'),
+                'label' => __('Features list', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -684,18 +684,18 @@ class PricingTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'features_typography',
-                'selector' => '{{WRAPPER}} .veloria-pricing-table__feature-text',
+                'selector' => '{{WRAPPER}} .addonext-pricing-table__feature-text',
             ]
         );
 
         $this->add_control(
             'feature_included_color',
             [
-                'label'     => __('Included text color', 'veloria'),
+                'label'     => __('Included text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__feature--included .veloria-pricing-table__feature-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__feature--included .addonext-pricing-table__feature-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -703,11 +703,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'feature_excluded_color',
             [
-                'label'     => __('Excluded text color', 'veloria'),
+                'label'     => __('Excluded text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#9ca3af',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__feature--excluded .veloria-pricing-table__feature-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__feature--excluded .addonext-pricing-table__feature-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -715,12 +715,12 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'check_color',
             [
-                'label'     => __('Checkmark color', 'veloria'),
+                'label'     => __('Checkmark color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#22c55e',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__feature--included .veloria-pricing-table__feature-icon' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-pricing-table__card--featured .veloria-pricing-table__feature--included .veloria-pricing-table__feature-icon' => 'color: #ffffff;',
+                    '{{WRAPPER}} .addonext-pricing-table__feature--included .addonext-pricing-table__feature-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__card--featured .addonext-pricing-table__feature--included .addonext-pricing-table__feature-icon' => 'color: #ffffff;',
                 ],
             ]
         );
@@ -728,11 +728,11 @@ class PricingTable extends WidgetBase
         $this->add_control(
             'cross_color',
             [
-                'label'     => __('Cross icon color', 'veloria'),
+                'label'     => __('Cross icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#d1d5db',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-pricing-table__feature--excluded .veloria-pricing-table__feature-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-pricing-table__feature--excluded .addonext-pricing-table__feature-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -742,7 +742,7 @@ class PricingTable extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/pricing-table/pricing-table.php';
+        $path = ADDONEXT_DIR . 'templates/pricing-table/pricing-table.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -755,8 +755,8 @@ class PricingTable extends WidgetBase
         var plans = settings.plans || [];
         var badgeText = settings.badge_text || 'RECOMMENDED';
         #>
-        <div class="veloria-pricing-table">
-            <div class="veloria-pricing-table__list">
+        <div class="addonext-pricing-table">
+            <div class="addonext-pricing-table__list">
                 <# var defaultIcons = ['eicon-star', 'eicon-upgrade-crown', 'eicon-theme-builder']; #>
                 <# _.each(plans, function(plan, index) {
                     var featured = plan.featured === 'yes';
@@ -771,29 +771,29 @@ class PricingTable extends WidgetBase
                         iconHtml = '<i class="eicon ' + iconValue.replace(/"/g, '') + '" aria-hidden="true"></i>';
                     }
                 #>
-                    <div class="veloria-pricing-table__card<# if (featured) { #> veloria-pricing-table__card--featured<# } #><# if (primaryBtn) { #> veloria-pricing-table__card--primary-btn<# } #>">
+                    <div class="addonext-pricing-table__card<# if (featured) { #> addonext-pricing-table__card--featured<# } #><# if (primaryBtn) { #> addonext-pricing-table__card--primary-btn<# } #>">
                         <# if (featured && badgeText) { #>
-                            <div class="veloria-pricing-table__badge">{{{ badgeText }}}</div>
+                            <div class="addonext-pricing-table__badge">{{{ badgeText }}}</div>
                         <# } #>
-                        <div class="veloria-pricing-table__inner">
-                            <div class="veloria-pricing-table__icon-wrap">
+                        <div class="addonext-pricing-table__inner">
+                            <div class="addonext-pricing-table__icon-wrap">
                                 {{{ iconHtml }}}
                             </div>
-                            <h3 class="veloria-pricing-table__title">{{{ plan.title }}}</h3>
-                            <# if (plan.description) { #><p class="veloria-pricing-table__desc">{{{ plan.description }}}</p><# } #>
-                            <div class="veloria-pricing-table__price-wrap">
-                                <span class="veloria-pricing-table__price">{{{ plan.price }}}</span><span class="veloria-pricing-table__period">{{{ plan.period }}}</span>
+                            <h3 class="addonext-pricing-table__title">{{{ plan.title }}}</h3>
+                            <# if (plan.description) { #><p class="addonext-pricing-table__desc">{{{ plan.description }}}</p><# } #>
+                            <div class="addonext-pricing-table__price-wrap">
+                                <span class="addonext-pricing-table__price">{{{ plan.price }}}</span><span class="addonext-pricing-table__period">{{{ plan.period }}}</span>
                             </div>
-                            <a href="{{ btnUrl }}" class="veloria-pricing-table__button<# if (plan.button_primary === 'yes') { #> veloria-pricing-table__button--primary<# } #>">{{{ plan.button_text }}}</a>
-                            <ul class="veloria-pricing-table__features">
+                            <a href="{{ btnUrl }}" class="addonext-pricing-table__button<# if (plan.button_primary === 'yes') { #> addonext-pricing-table__button--primary<# } #>">{{{ plan.button_text }}}</a>
+                            <ul class="addonext-pricing-table__features">
                                 <# _.each(plan.features || [], function(f) {
                                     var included = f.included === 'yes';
                                 #>
-                                    <li class="veloria-pricing-table__feature veloria-pricing-table__feature--<# print(included ? 'included' : 'excluded'); #>">
-                                        <span class="veloria-pricing-table__feature-icon" aria-hidden="true">
-                                            <# if (included) { #><svg class="veloria-pricing-table__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><# } else { #><svg class="veloria-pricing-table__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><# } #>
+                                    <li class="addonext-pricing-table__feature addonext-pricing-table__feature--<# print(included ? 'included' : 'excluded'); #>">
+                                        <span class="addonext-pricing-table__feature-icon" aria-hidden="true">
+                                            <# if (included) { #><svg class="addonext-pricing-table__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><# } else { #><svg class="addonext-pricing-table__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><# } #>
                                         </span>
-                                        <span class="veloria-pricing-table__feature-text">{{{ f.text }}}</span>
+                                        <span class="addonext-pricing-table__feature-text">{{{ f.text }}}</span>
                                     </li>
                                 <# }); #>
                             </ul>

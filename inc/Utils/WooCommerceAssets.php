@@ -1,10 +1,10 @@
 <?php
-namespace Veloria\Utils;
+namespace Addonext\Utils;
 
 defined('ABSPATH') or exit;
 
 /**
- * Ensures WooCommerce frontend scripts are registered before Veloria widgets enqueue them.
+ * Ensures WooCommerce frontend scripts are registered before AddoNext widgets enqueue them.
  */
 class WooCommerceAssets
 {

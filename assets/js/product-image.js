@@ -10,8 +10,8 @@
     var currentIndex = -1;
 
     function i18n(key, fallback) {
-        if (typeof window.veloriaProductImage !== 'undefined' && window.veloriaProductImage[key]) {
-            return String(window.veloriaProductImage[key]);
+        if (typeof window.addonextProductImage !== 'undefined' && window.addonextProductImage[key]) {
+            return String(window.addonextProductImage[key]);
         }
         return fallback;
     }
@@ -21,17 +21,17 @@
             return;
         }
         lightbox = document.createElement('div');
-        lightbox.className = 'veloria-product-image-lightbox';
+        lightbox.className = 'addonext-product-image-lightbox';
         lightbox.innerHTML =
-            '<button type="button" class="veloria-product-image-lightbox__nav veloria-product-image-lightbox__nav--prev">&#8249;</button>' +
-            '<button type="button" class="veloria-product-image-lightbox__nav veloria-product-image-lightbox__nav--next">&#8250;</button>' +
-            '<button type="button" class="veloria-product-image-lightbox__close">&times;</button>' +
-            '<img class="veloria-product-image-lightbox__image" alt="">';
+            '<button type="button" class="addonext-product-image-lightbox__nav addonext-product-image-lightbox__nav--prev">&#8249;</button>' +
+            '<button type="button" class="addonext-product-image-lightbox__nav addonext-product-image-lightbox__nav--next">&#8250;</button>' +
+            '<button type="button" class="addonext-product-image-lightbox__close">&times;</button>' +
+            '<img class="addonext-product-image-lightbox__image" alt="">';
         document.body.appendChild(lightbox);
-        imageEl = lightbox.querySelector('.veloria-product-image-lightbox__image');
-        closeEl = lightbox.querySelector('.veloria-product-image-lightbox__close');
-        prevEl = lightbox.querySelector('.veloria-product-image-lightbox__nav--prev');
-        nextEl = lightbox.querySelector('.veloria-product-image-lightbox__nav--next');
+        imageEl = lightbox.querySelector('.addonext-product-image-lightbox__image');
+        closeEl = lightbox.querySelector('.addonext-product-image-lightbox__close');
+        prevEl = lightbox.querySelector('.addonext-product-image-lightbox__nav--prev');
+        nextEl = lightbox.querySelector('.addonext-product-image-lightbox__nav--next');
 
         prevEl.setAttribute('aria-label', i18n('prevLabel', 'Previous image'));
         nextEl.setAttribute('aria-label', i18n('nextLabel', 'Next image'));
@@ -74,18 +74,18 @@
         if (event.key !== 'Escape') {
             return;
         }
-        var stages = document.querySelectorAll('.veloria-product-image .veloria-pi__stage.is-zoomed');
+        var stages = document.querySelectorAll('.addonext-product-image .addonext-pi__stage.is-zoomed');
         for (var i = 0; i < stages.length; i += 1) {
             var st = stages[i];
-            var root = st.closest('.veloria-product-image');
-            if (root && typeof root.veloriaPiResetPan === 'function') {
-                root.veloriaPiResetPan();
+            var root = st.closest('.addonext-product-image');
+            if (root && typeof root.addonextPiResetPan === 'function') {
+                root.addonextPiResetPan();
             }
         }
     }
 
-    if (!document.veloriaPiEscapeBound) {
-        document.veloriaPiEscapeBound = true;
+    if (!document.addonextPiEscapeBound) {
+        document.addonextPiEscapeBound = true;
         document.addEventListener('keydown', onPanEscapeKeydown);
     }
 
@@ -151,11 +151,11 @@
     }
 
     function getMainImg(root) {
-        return root.querySelector('.veloria-pi__main-img');
+        return root.querySelector('.addonext-pi__main-img');
     }
 
     function setActiveThumb(root, index) {
-        var thumbs = root.querySelectorAll('.veloria-pi__thumb');
+        var thumbs = root.querySelectorAll('.addonext-pi__thumb');
         for (var i = 0; i < thumbs.length; i += 1) {
             var t = thumbs[i];
             var isOn = parseInt(t.getAttribute('data-index'), 10) === index;
@@ -169,8 +169,8 @@
         if (!images[index]) {
             return;
         }
-        if (typeof root.veloriaPiResetPan === 'function') {
-            root.veloriaPiResetPan();
+        if (typeof root.addonextPiResetPan === 'function') {
+            root.addonextPiResetPan();
         }
         var main = getMainImg(root);
         if (!main) {
@@ -183,12 +183,12 @@
     }
 
     function bindPanZoom(root) {
-        var mainEl = root.querySelector('.veloria-pi__main--pan-zoom');
+        var mainEl = root.querySelector('.addonext-pi__main--pan-zoom');
         if (!mainEl) {
             return;
         }
-        var stage = mainEl.querySelector('.veloria-pi__stage');
-        var img = root.querySelector('.veloria-pi__main-img');
+        var stage = mainEl.querySelector('.addonext-pi__stage');
+        var img = root.querySelector('.addonext-pi__main-img');
         if (!stage || !img) {
             return;
         }
@@ -253,7 +253,7 @@
             stage.classList.remove('is-zoomed', 'is-dragging');
         }
 
-        root.veloriaPiResetPan = resetPanZoom;
+        root.addonextPiResetPan = resetPanZoom;
 
         function onMouseMove(ev) {
             if (!state.pointerDown || !state.zoomed) {
@@ -382,10 +382,10 @@
     }
 
     function bindRoot(root) {
-        if (!root || root.getAttribute('data-veloria-pi-bound') === '1') {
+        if (!root || root.getAttribute('data-addonext-pi-bound') === '1') {
             return;
         }
-        root.setAttribute('data-veloria-pi-bound', '1');
+        root.setAttribute('data-addonext-pi-bound', '1');
 
         var images = parseImages(root);
         var zoom = root.getAttribute('data-zoom') || 'lightbox';
@@ -394,7 +394,7 @@
         }
         root.setAttribute('data-active-index', '0');
 
-        var mainClickable = root.querySelector('.veloria-pi__main--clickable');
+        var mainClickable = root.querySelector('.addonext-pi__main--clickable');
         if (mainClickable && zoom === 'lightbox') {
             mainClickable.addEventListener('click', function () {
                 var idx = parseInt(root.getAttribute('data-active-index'), 10);
@@ -413,7 +413,7 @@
         }
 
         root.addEventListener('click', function (event) {
-            var thumb = event.target.closest('.veloria-pi__thumb');
+            var thumb = event.target.closest('.addonext-pi__thumb');
             if (!thumb || !root.contains(thumb)) {
                 return;
             }
@@ -427,16 +427,16 @@
     }
 
     function scan(scope) {
-        var roots = (scope || document).querySelectorAll('.veloria-product-image');
+        var roots = (scope || document).querySelectorAll('.addonext-product-image');
         for (var i = 0; i < roots.length; i += 1) {
             bindRoot(roots[i]);
         }
     }
 
     function bindUnboundProductImages() {
-        var nodes = document.querySelectorAll('.veloria-product-image');
+        var nodes = document.querySelectorAll('.addonext-product-image');
         for (var i = 0; i < nodes.length; i += 1) {
-            if (nodes[i].getAttribute('data-veloria-pi-bound') !== '1') {
+            if (nodes[i].getAttribute('data-addonext-pi-bound') !== '1') {
                 bindRoot(nodes[i]);
             }
         }
@@ -465,8 +465,8 @@
             scan(el);
         }
 
-        window.elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-image.default', onWidgetReady);
-        window.elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-image', onWidgetReady);
+        window.elementorFrontend.hooks.addAction('frontend/element_ready/addonext-product-image.default', onWidgetReady);
+        window.elementorFrontend.hooks.addAction('frontend/element_ready/addonext-product-image', onWidgetReady);
     }
 
     var mutationDebounceTimer;

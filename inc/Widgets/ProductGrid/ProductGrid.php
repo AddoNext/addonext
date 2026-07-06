@@ -1,8 +1,8 @@
 <?php
-namespace Veloria\Widgets\ProductGrid;
+namespace Addonext\Widgets\ProductGrid;
 
-use Veloria\Base\WidgetBase;
-use Veloria\Utils\WooCommerceAssets;
+use Addonext\Base\WidgetBase;
+use Addonext\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -18,18 +18,18 @@ class ProductGrid extends WidgetBase
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('veloria-product-grid');
-        wp_enqueue_script('veloria-product-grid');
+        wp_enqueue_style('addonext-product-grid');
+        wp_enqueue_script('addonext-product-grid');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-products veloria-icon';
+        return 'eicon-products addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-product-grid';
+        return 'addonext-product-grid';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class ProductGrid extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Grid', 'veloria');
+        return __('Product Grid', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Display products in grid', 'veloria');
+        return __('Display products in grid', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -54,7 +54,7 @@ class ProductGrid extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-product-grid'];
+        return ['addonext-product-grid'];
     }
 
     public function get_script_depends(): array
@@ -63,24 +63,24 @@ class ProductGrid extends WidgetBase
             'elementor-frontend',
             'jquery',
             'wc-add-to-cart',
-            'veloria-product-grid',
+            'addonext-product-grid',
         ]);
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-product-grid',
-            VELORIA_URL . 'assets/css/product-grid.css',
+            'addonext-product-grid',
+            ADDONEXT_URL . 'assets/css/product-grid.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-product-grid',
-            VELORIA_URL . 'assets/js/product-grid.js',
+            'addonext-product-grid',
+            ADDONEXT_URL . 'assets/js/product-grid.js',
             WooCommerceAssets::script_dependencies(['elementor-frontend', 'jquery', 'wc-add-to-cart']),
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -111,12 +111,12 @@ class ProductGrid extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_query', [
-            'label' => __('Query', 'veloria'),
+            'label' => __('Query', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('limit', [
-            'label'   => __('Products count', 'veloria'),
+            'label'   => __('Products count', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 50,
@@ -124,7 +124,7 @@ class ProductGrid extends WidgetBase
         ]);
 
         $this->add_control('categories', [
-            'label'       => __('Categories', 'veloria'),
+            'label'       => __('Categories', 'addonext'),
             'type'        => Controls_Manager::SELECT2,
             'multiple'    => true,
             'label_block' => true,
@@ -132,107 +132,107 @@ class ProductGrid extends WidgetBase
         ]);
 
         $this->add_control('include_ids', [
-            'label'       => __('Include product IDs', 'veloria'),
+            'label'       => __('Include product IDs', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'placeholder' => '12, 43, 50',
-            'description' => __('Comma-separated IDs. Keeps only these products.', 'veloria'),
+            'description' => __('Comma-separated IDs. Keeps only these products.', 'addonext'),
         ]);
 
         $this->add_control('exclude_ids', [
-            'label'       => __('Exclude product IDs', 'veloria'),
+            'label'       => __('Exclude product IDs', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'placeholder' => '8, 16',
-            'description' => __('Comma-separated IDs to exclude.', 'veloria'),
+            'description' => __('Comma-separated IDs to exclude.', 'addonext'),
         ]);
 
         $this->add_control('sale_only', [
-            'label'        => __('On sale only', 'veloria'),
+            'label'        => __('On sale only', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('featured_only', [
-            'label'        => __('Featured only', 'veloria'),
+            'label'        => __('Featured only', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('stock_status', [
-            'label'   => __('Stock status', 'veloria'),
+            'label'   => __('Stock status', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'all',
             'options' => [
-                'all'         => __('All', 'veloria'),
-                'instock'     => __('In stock', 'veloria'),
-                'outofstock'  => __('Out of stock', 'veloria'),
-                'onbackorder' => __('On backorder', 'veloria'),
+                'all'         => __('All', 'addonext'),
+                'instock'     => __('In stock', 'addonext'),
+                'outofstock'  => __('Out of stock', 'addonext'),
+                'onbackorder' => __('On backorder', 'addonext'),
             ],
         ]);
 
         $this->add_control('orderby', [
-            'label'   => __('Order by', 'veloria'),
+            'label'   => __('Order by', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'date',
             'options' => [
-                'date'       => __('Date', 'veloria'),
-                'title'      => __('Title', 'veloria'),
-                'price'      => __('Price', 'veloria'),
-                'popularity' => __('Popularity', 'veloria'),
-                'rating'     => __('Rating', 'veloria'),
-                'rand'       => __('Random', 'veloria'),
-                'menu_order' => __('Menu order', 'veloria'),
+                'date'       => __('Date', 'addonext'),
+                'title'      => __('Title', 'addonext'),
+                'price'      => __('Price', 'addonext'),
+                'popularity' => __('Popularity', 'addonext'),
+                'rating'     => __('Rating', 'addonext'),
+                'rand'       => __('Random', 'addonext'),
+                'menu_order' => __('Menu order', 'addonext'),
             ],
         ]);
 
         $this->add_control('order', [
-            'label'   => __('Order', 'veloria'),
+            'label'   => __('Order', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'DESC',
             'options' => [
-                'DESC' => __('Descending', 'veloria'),
-                'ASC'  => __('Ascending', 'veloria'),
+                'DESC' => __('Descending', 'addonext'),
+                'ASC'  => __('Ascending', 'addonext'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_layout', [
-            'label' => __('Grid', 'veloria'),
+            'label' => __('Grid', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('columns', [
-            'label'   => __('Columns (Desktop)', 'veloria'),
+            'label'   => __('Columns (Desktop)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 6,
             'default' => 4,
         ]);
         $this->add_control('columns_tablet', [
-            'label'   => __('Columns (Tablet)', 'veloria'),
+            'label'   => __('Columns (Tablet)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 4,
             'default' => 2,
         ]);
         $this->add_control('columns_mobile', [
-            'label'   => __('Columns (Mobile)', 'veloria'),
+            'label'   => __('Columns (Mobile)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 2,
             'default' => 1,
         ]);
         $this->add_control('column_gap', [
-            'label'   => __('Column gap', 'veloria'),
+            'label'   => __('Column gap', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 0,
             'max'     => 60,
             'default' => 16,
         ]);
         $this->add_control('row_gap', [
-            'label'   => __('Row gap', 'veloria'),
+            'label'   => __('Row gap', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 0,
             'max'     => 60,
@@ -240,63 +240,63 @@ class ProductGrid extends WidgetBase
         ]);
 
         $this->add_control('show_rating', [
-            'label'        => __('Show rating', 'veloria'),
+            'label'        => __('Show rating', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_short_desc', [
-            'label'        => __('Show short description', 'veloria'),
+            'label'        => __('Show short description', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_old_price', [
-            'label'        => __('Show old price', 'veloria'),
+            'label'        => __('Show old price', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_badges', [
-            'label'        => __('Show badges', 'veloria'),
+            'label'        => __('Show badges', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_wishlist', [
-            'label'        => __('Show wishlist button', 'veloria'),
+            'label'        => __('Show wishlist button', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('show_add_to_cart', [
-            'label'        => __('Show add to cart button', 'veloria'),
+            'label'        => __('Show add to cart button', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('image_hover_effect', [
-            'label'   => __('Image hover effect', 'veloria'),
+            'label'   => __('Image hover effect', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'zoom-out',
             'options' => [
-                'none'      => __('None', 'veloria'),
-                'zoom-in'   => __('Zoom In', 'veloria'),
-                'zoom-out'  => __('Zoom Out', 'veloria'),
-                'jump'      => __('Jump', 'veloria'),
-                'tilt'      => __('Tilt', 'veloria'),
+                'none'      => __('None', 'addonext'),
+                'zoom-in'   => __('Zoom In', 'addonext'),
+                'zoom-out'  => __('Zoom Out', 'addonext'),
+                'jump'      => __('Jump', 'addonext'),
+                'tilt'      => __('Tilt', 'addonext'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_card', [
-            'label' => __('Card', 'veloria'),
+            'label' => __('Card', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('card_padding', [
-            'label'      => __('Card padding', 'veloria'),
+            'label'      => __('Card padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default'    => [
@@ -308,48 +308,48 @@ class ProductGrid extends WidgetBase
                 'isLinked' => true,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-product-grid__card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-product-grid__card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
         $this->add_control('card_radius', [
-            'label'      => __('Card radius', 'veloria'),
+            'label'      => __('Card radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 30]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-product-grid__card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-product-grid__card' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
         $this->add_control('card_bg', [
-            'label'     => __('Card background', 'veloria'),
+            'label'     => __('Card background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-product-grid__card' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-product-grid__card' => 'background-color: {{VALUE}};',
             ],
         ]);
         $this->add_control('title_color', [
-            'label'     => __('Title color', 'veloria'),
+            'label'     => __('Title color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .veloria-product-grid__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-product-grid__title' => 'color: {{VALUE}};',
             ],
         ]);
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-product-grid__title',
+                'selector' => '{{WRAPPER}} .addonext-product-grid__title',
             ]
         );
         $this->add_control('price_color', [
-            'label'     => __('Price color', 'veloria'),
+            'label'     => __('Price color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .veloria-product-grid__price-current' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-product-grid__price-current' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -358,7 +358,7 @@ class ProductGrid extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/product-grid/product-grid.php';
+        $path = ADDONEXT_DIR . 'templates/product-grid/product-grid.php';
         if (is_readable($path)) include $path;
     }
 }

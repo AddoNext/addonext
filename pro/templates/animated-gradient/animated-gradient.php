@@ -4,31 +4,31 @@ defined('ABSPATH') || exit;
 if (emt_fs()->can_use_premium_code__premium_only()) {
     if (emt_fs()->is_plan('pro')) {
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_raw      = isset($veloria_settings['text']) && $veloria_settings['text'] !== ''
-    ? (string) $veloria_settings['text']
-    : (isset($veloria_settings['content']) ? (string) $veloria_settings['content'] : '');
-$veloria_allowedTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'p', 'span'];
-$veloria_tag       = isset($veloria_settings['html_tag']) && in_array($veloria_settings['html_tag'], $veloria_allowedTags, true)
-    ? $veloria_settings['html_tag']
+$addonext_settings = $this->get_settings_for_display();
+$addonext_raw      = isset($addonext_settings['text']) && $addonext_settings['text'] !== ''
+    ? (string) $addonext_settings['text']
+    : (isset($addonext_settings['content']) ? (string) $addonext_settings['content'] : '');
+$addonext_allowedTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'p', 'span'];
+$addonext_tag       = isset($addonext_settings['html_tag']) && in_array($addonext_settings['html_tag'], $addonext_allowedTags, true)
+    ? $addonext_settings['html_tag']
     : 'h2';
 
-$veloria_mode = isset($veloria_settings['gradient_mode']) && $veloria_settings['gradient_mode'] === 'text' ? 'text' : 'bg';
-$veloria_dir  = isset($veloria_settings['animation_direction']) && in_array($veloria_settings['animation_direction'], ['h', 'v', 'd'], true)
-    ? $veloria_settings['animation_direction']
+$addonext_mode = isset($addonext_settings['gradient_mode']) && $addonext_settings['gradient_mode'] === 'text' ? 'text' : 'bg';
+$addonext_dir  = isset($addonext_settings['animation_direction']) && in_array($addonext_settings['animation_direction'], ['h', 'v', 'd'], true)
+    ? $addonext_settings['animation_direction']
     : 'h';
-$veloria_align = isset($veloria_settings['align']) && in_array($veloria_settings['align'], ['left', 'center', 'right'], true)
-    ? $veloria_settings['align']
+$addonext_align = isset($addonext_settings['align']) && in_array($addonext_settings['align'], ['left', 'center', 'right'], true)
+    ? $addonext_settings['align']
     : 'left';
 
-$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient veloria-animated-gradient__inner');
-$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient--' . $veloria_mode);
-$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient--dir-' . $veloria_dir);
-$this->add_render_attribute('inner', 'class', 'veloria-animated-gradient--align-' . $veloria_align);
-$this->add_render_attribute('text', 'class', 'veloria-animated-gradient__text');
+$this->add_render_attribute('inner', 'class', 'addonext-animated-gradient addonext-animated-gradient__inner');
+$this->add_render_attribute('inner', 'class', 'addonext-animated-gradient--' . $addonext_mode);
+$this->add_render_attribute('inner', 'class', 'addonext-animated-gradient--dir-' . $addonext_dir);
+$this->add_render_attribute('inner', 'class', 'addonext-animated-gradient--align-' . $addonext_align);
+$this->add_render_attribute('text', 'class', 'addonext-animated-gradient__text');
 ?>
 <div <?php $this->print_render_attribute_string('inner'); ?>>
-    <<?php echo esc_attr($veloria_tag); ?> <?php $this->print_render_attribute_string('text'); ?>><?php echo esc_html($veloria_raw); ?></<?php echo esc_attr($veloria_tag); ?>>
+    <<?php echo esc_attr($addonext_tag); ?> <?php $this->print_render_attribute_string('text'); ?>><?php echo esc_html($addonext_raw); ?></<?php echo esc_attr($addonext_tag); ?>>
 </div>
 
 <?php

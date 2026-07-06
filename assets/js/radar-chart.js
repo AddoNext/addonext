@@ -59,8 +59,8 @@
         var colorA = container.getAttribute('data-color-a') || '#4285F4';
         var colorB = container.getAttribute('data-color-b') || '#24B47E';
 
-        var canvas = container.querySelector('.veloria-radar-chart__canvas');
-        var legend = container.querySelector('.veloria-radar-chart__legend');
+        var canvas = container.querySelector('.addonext-radar-chart__canvas');
+        var legend = container.querySelector('.addonext-radar-chart__legend');
         if (!canvas) return;
 
         var size = 420;
@@ -72,20 +72,20 @@
         var ns = 'http://www.w3.org/2000/svg';
         var svg = document.createElementNS(ns, 'svg');
         svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
-        svg.setAttribute('class', 'veloria-radar-chart__svg');
+        svg.setAttribute('class', 'addonext-radar-chart__svg');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
         var grid = document.createElementNS(ns, 'g');
-        grid.setAttribute('class', 'veloria-radar-chart__grid');
+        grid.setAttribute('class', 'addonext-radar-chart__grid');
 
         var axisLines = document.createElementNS(ns, 'g');
-        axisLines.setAttribute('class', 'veloria-radar-chart__axes');
+        axisLines.setAttribute('class', 'addonext-radar-chart__axes');
 
         var labelsG = document.createElementNS(ns, 'g');
-        labelsG.setAttribute('class', 'veloria-radar-chart__axis-label');
+        labelsG.setAttribute('class', 'addonext-radar-chart__axis-label');
 
         var valueLabelsG = document.createElementNS(ns, 'g');
-        valueLabelsG.setAttribute('class', 'veloria-radar-chart__tick-label');
+        valueLabelsG.setAttribute('class', 'addonext-radar-chart__tick-label');
 
         var i;
         for (i = 1; i <= steps; i++) {
@@ -153,11 +153,11 @@
         var bPts = seriesPoints(valuesB);
 
         var seriesGroup = document.createElementNS(ns, 'g');
-        seriesGroup.setAttribute('class', 'veloria-radar-chart__series');
+        seriesGroup.setAttribute('class', 'addonext-radar-chart__series');
 
         function drawSeries(points, color, cls) {
             var poly = document.createElementNS(ns, 'path');
-            poly.setAttribute('class', cls + ' veloria-radar-chart__series-fill');
+            poly.setAttribute('class', cls + ' addonext-radar-chart__series-fill');
             poly.setAttribute('d', pointsToPath(points));
             poly.setAttribute('fill', color);
             poly.setAttribute('fill-opacity', '0.28');
@@ -167,7 +167,7 @@
 
             for (var p = 0; p < points.length; p++) {
                 var c = document.createElementNS(ns, 'circle');
-                c.setAttribute('class', cls + ' veloria-radar-chart__point');
+                c.setAttribute('class', cls + ' addonext-radar-chart__point');
                 c.setAttribute('cx', points[p].x);
                 c.setAttribute('cy', points[p].y);
                 c.setAttribute('r', '4');
@@ -178,8 +178,8 @@
             }
         }
 
-        drawSeries(aPts, colorA, 'veloria-radar-chart__series-a');
-        drawSeries(bPts, colorB, 'veloria-radar-chart__series-b');
+        drawSeries(aPts, colorA, 'addonext-radar-chart__series-a');
+        drawSeries(bPts, colorB, 'addonext-radar-chart__series-b');
 
         svg.appendChild(seriesGroup);
         svg.appendChild(labelsG);
@@ -195,14 +195,14 @@
             ];
             items.forEach(function (item) {
                 var el = document.createElement('div');
-                el.setAttribute('class', 'veloria-radar-chart__legend-item');
+                el.setAttribute('class', 'addonext-radar-chart__legend-item');
 
                 var swatch = document.createElement('span');
-                swatch.setAttribute('class', 'veloria-radar-chart__legend-line');
+                swatch.setAttribute('class', 'addonext-radar-chart__legend-line');
                 swatch.style.setProperty('--er-radar-legend-color', item.color);
 
                 var txt = document.createElement('span');
-                txt.setAttribute('class', 'veloria-radar-chart__legend-text');
+                txt.setAttribute('class', 'addonext-radar-chart__legend-text');
                 txt.textContent = item.label;
 
                 el.appendChild(swatch);
@@ -214,10 +214,10 @@
 
     function run(root) {
         root = root || document;
-        var containers = root.querySelectorAll('.veloria-radar-chart');
+        var containers = root.querySelectorAll('.addonext-radar-chart');
         containers.forEach(function (el) {
             if (el.getAttribute('data-chart-built') === '1') return;
-            var canvas = el.querySelector('.veloria-radar-chart__canvas');
+            var canvas = el.querySelector('.addonext-radar-chart__canvas');
             if (canvas) buildChart(el);
         });
     }
@@ -242,9 +242,9 @@
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
                     var containers = [];
-                    if (node.classList && node.classList.contains('veloria-radar-chart')) containers.push(node);
+                    if (node.classList && node.classList.contains('addonext-radar-chart')) containers.push(node);
                     if (node.querySelectorAll) {
-                        var found = node.querySelectorAll('.veloria-radar-chart');
+                        var found = node.querySelectorAll('.addonext-radar-chart');
                         for (var i = 0; i < found.length; i++) containers.push(found[i]);
                     }
                     containers.forEach(function (container) {
@@ -264,10 +264,10 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-radar-chart.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-radar-chart.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
-                var containers = el.querySelectorAll('.veloria-radar-chart');
+                var containers = el.querySelectorAll('.addonext-radar-chart');
                 containers.forEach(function (c) {
                     c.removeAttribute('data-chart-built');
                 });

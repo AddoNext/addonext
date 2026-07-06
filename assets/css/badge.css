@@ -1,4 +1,4 @@
-.veloria-badge__wrap {
+.addonext-badge__wrap {
     display: inline-block;
     width: fit-content;
     max-width: 100%;
@@ -6,7 +6,7 @@
     flex: 0 0 auto;
 }
 
-.veloria-badge {
+.addonext-badge {
     display: inline-flex;
     align-items: center;
     width: fit-content;
@@ -18,7 +18,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.veloria-badge__icon {
+.addonext-badge__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -30,8 +30,8 @@
     line-height: 1;
 }
 
-.veloria-badge__icon i,
-.veloria-badge__icon svg {
+.addonext-badge__icon i,
+.addonext-badge__icon svg {
     width: 1em;
     height: auto;
     max-width: 100%;
@@ -39,18 +39,18 @@
     vertical-align: middle;
 }
 
-.veloria-badge__icon i {
+.addonext-badge__icon i {
     font-size: inherit;
     line-height: 1;
     height: 1em;
 }
 
-.veloria-badge__icon svg {
+.addonext-badge__icon svg {
     fill: currentColor;
     vertical-align: middle;
 }
 
-.veloria-badge__text {
+.addonext-badge__text {
     display: inline-block;
     min-width: 0;
     align-self: center;

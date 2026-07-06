@@ -1,8 +1,8 @@
 <?php
-namespace Veloria\Widgets\WooDashboard;
+namespace Addonext\Widgets\WooDashboard;
 
-use Veloria\Base\WidgetBase;
-use Veloria\Utils\WooCommerceAssets;
+use Addonext\Base\WidgetBase;
+use Addonext\Utils\WooCommerceAssets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -16,7 +16,7 @@ defined('ABSPATH') or exit;
 /**
  * WooDashboard widget.
  *
- * @package Veloria
+ * @package AddoNext
  * @since 1.0.0
  */
 class WooDashboard extends WidgetBase
@@ -29,18 +29,18 @@ class WooDashboard extends WidgetBase
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('veloria-woo-dashboard');
-        wp_enqueue_script('veloria-woo-dashboard');
+        wp_enqueue_style('addonext-woo-dashboard');
+        wp_enqueue_script('addonext-woo-dashboard');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-user-circle-o veloria-icon';
+        return 'eicon-user-circle-o addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-woo-dashboard';
+        return 'addonext-woo-dashboard';
     }
 
     public function get_admin_category(): string
@@ -50,12 +50,12 @@ class WooDashboard extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Woo Dashboard', 'veloria');
+        return __('Woo Dashboard', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Customer dashboard summary with orders and shortcuts.', 'veloria');
+        return __('Customer dashboard summary with orders and shortcuts.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -71,7 +71,7 @@ class WooDashboard extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-woo-dashboard'];
+        return ['addonext-woo-dashboard'];
     }
 
     public function get_script_depends(): array
@@ -81,7 +81,7 @@ class WooDashboard extends WidgetBase
             'jquery',
             'wc-country-select',
             'wc-address-i18n',
-            'veloria-woo-dashboard',
+            'addonext-woo-dashboard',
         ]);
     }
 
@@ -91,32 +91,32 @@ class WooDashboard extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         wp_register_style(
-            'veloria-woo-dashboard',
-            VELORIA_URL . 'assets/css/woo-dashboard.css',
+            'addonext-woo-dashboard',
+            ADDONEXT_URL . 'assets/css/woo-dashboard.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-woo-dashboard',
-            VELORIA_URL . 'assets/js/woo-dashboard.js',
+            'addonext-woo-dashboard',
+            ADDONEXT_URL . 'assets/js/woo-dashboard.js',
             WooCommerceAssets::script_dependencies(['elementor-frontend', 'jquery', 'wc-country-select', 'wc-address-i18n']),
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
 
         wp_localize_script(
-            'veloria-woo-dashboard',
-            'veloriaWooDashboard',
+            'addonext-woo-dashboard',
+            'addonextWooDashboard',
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),
-                'nonce'   => wp_create_nonce('veloria_woo_dashboard_account'),
-                'nonceAddress' => wp_create_nonce('veloria_woo_dashboard_address'),
+                'nonce'   => wp_create_nonce('addonext_woo_dashboard_account'),
+                'nonceAddress' => wp_create_nonce('addonext_woo_dashboard_address'),
                 'i18n'    => [
-                    'editAddress'  => __('Edit %s', 'veloria'),
-                    'addAddress'   => __('Add %s', 'veloria'),
-                    'addressSaved' => __('Address saved.', 'veloria'),
-                    'addressEmpty' => __('You have not set up this type of address yet.', 'veloria'),
+                    'editAddress'  => __('Edit %s', 'addonext'),
+                    'addAddress'   => __('Add %s', 'addonext'),
+                    'addressSaved' => __('Address saved.', 'addonext'),
+                    'addressEmpty' => __('You have not set up this type of address yet.', 'addonext'),
                 ],
             ]
         );
@@ -129,9 +129,9 @@ class WooDashboard extends WidgetBase
      */
     public static function register_ajax_handlers(): void
     {
-        add_action('wp_ajax_veloria_woo_dashboard_save_account', [__CLASS__, 'ajax_save_account']);
-        add_action('wp_ajax_veloria_woo_dashboard_save_address', [__CLASS__, 'ajax_save_address']);
-        add_action('wp_ajax_veloria_woo_dashboard_get_address_form', [__CLASS__, 'ajax_get_address_form']);
+        add_action('wp_ajax_addonext_woo_dashboard_save_account', [__CLASS__, 'ajax_save_account']);
+        add_action('wp_ajax_addonext_woo_dashboard_save_address', [__CLASS__, 'ajax_save_address']);
+        add_action('wp_ajax_addonext_woo_dashboard_get_address_form', [__CLASS__, 'ajax_get_address_form']);
     }
 
     /**
@@ -140,16 +140,16 @@ class WooDashboard extends WidgetBase
     public static function ajax_get_address_form(): void
     {
         if (!isset($_POST['address_nonce'])
-            || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'veloria_woo_dashboard_address')) {
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'addonext_woo_dashboard_address')) {
             wp_send_json_error(
-                ['messages' => [__('Invalid session. Please refresh the page.', 'veloria')]],
+                ['messages' => [__('Invalid session. Please refresh the page.', 'addonext')]],
                 403
             );
         }
 
         if (!is_user_logged_in() || !class_exists('WooCommerce')) {
             wp_send_json_error(
-                ['messages' => [__('You cannot perform this action.', 'veloria')]],
+                ['messages' => [__('You cannot perform this action.', 'addonext')]],
                 403
             );
         }
@@ -160,18 +160,18 @@ class WooDashboard extends WidgetBase
             : sanitize_key($typeRaw);
 
         if (!in_array($address_type, ['billing', 'shipping'], true)) {
-            wp_send_json_error(['messages' => [__('Invalid address type.', 'veloria')]], 400);
+            wp_send_json_error(['messages' => [__('Invalid address type.', 'addonext')]], 400);
         }
 
         if ($address_type === 'shipping' && (wc_ship_to_billing_address_only() || !wc_shipping_enabled())) {
-            wp_send_json_error(['messages' => [__('Shipping address is not available.', 'veloria')]], 400);
+            wp_send_json_error(['messages' => [__('Shipping address is not available.', 'addonext')]], 400);
         }
 
         $vars = self::get_address_edit_template_vars($address_type);
         ob_start();
         wc_get_template('myaccount/form-edit-address.php', $vars);
         $html = ob_get_clean();
-        $html = preg_replace('/<form\b/', '<form class="veloria-wd-addresses__wc-form"', $html, 1);
+        $html = preg_replace('/<form\b/', '<form class="addonext-wd-addresses__wc-form"', $html, 1);
 
         wp_send_json_success(['html' => $html]);
     }
@@ -181,16 +181,16 @@ class WooDashboard extends WidgetBase
      */
     public static function ajax_save_account(): void
     {
-        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['nonce'])), 'veloria_woo_dashboard_account')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['nonce'])), 'addonext_woo_dashboard_account')) {
             wp_send_json_error(
-                ['messages' => [__('Invalid session. Please refresh the page.', 'veloria')]],
+                ['messages' => [__('Invalid session. Please refresh the page.', 'addonext')]],
                 403
             );
         }
 
         if (!is_user_logged_in() || !class_exists('WooCommerce')) {
             wp_send_json_error(
-                ['messages' => [__('You cannot perform this action.', 'veloria')]],
+                ['messages' => [__('You cannot perform this action.', 'addonext')]],
                 403
             );
         }
@@ -214,18 +214,18 @@ class WooDashboard extends WidgetBase
     public static function ajax_save_address(): void
     {
         $nonceOk = isset($_POST['address_nonce'])
-            && wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'veloria_woo_dashboard_address');
+            && wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['address_nonce'])), 'addonext_woo_dashboard_address');
 
         if (!$nonceOk) {
             wp_send_json_error(
-                ['messages' => [__('Invalid session. Please refresh the page.', 'veloria')]],
+                ['messages' => [__('Invalid session. Please refresh the page.', 'addonext')]],
                 403
             );
         }
 
         if (!is_user_logged_in() || !class_exists('WooCommerce')) {
             wp_send_json_error(
-                ['messages' => [__('You cannot perform this action.', 'veloria')]],
+                ['messages' => [__('You cannot perform this action.', 'addonext')]],
                 403
             );
         }
@@ -321,7 +321,7 @@ class WooDashboard extends WidgetBase
 
         $user_id = get_current_user_id();
         if ($user_id <= 0) {
-            return $fail([__('You must be logged in.', 'veloria')]);
+            return $fail([__('You must be logged in.', 'addonext')]);
         }
 
         $address_type = function_exists('wc_edit_address_i18n')
@@ -329,15 +329,15 @@ class WooDashboard extends WidgetBase
             : sanitize_key($address_type_raw);
 
         if (!in_array($address_type, ['billing', 'shipping'], true)) {
-            return $fail([__('Invalid address type.', 'veloria')]);
+            return $fail([__('Invalid address type.', 'addonext')]);
         }
 
         if ($address_type === 'shipping' && (wc_ship_to_billing_address_only() || !wc_shipping_enabled())) {
-            return $fail([__('Shipping address is not available.', 'veloria')]);
+            return $fail([__('Shipping address is not available.', 'addonext')]);
         }
 
         if (!isset($_POST[$address_type . '_country'])) {
-            return $fail([__('Please select a country.', 'veloria')]);
+            return $fail([__('Please select a country.', 'addonext')]);
         }
 
         $customer = new \WC_Customer($user_id);
@@ -364,7 +364,7 @@ class WooDashboard extends WidgetBase
             if (!empty($field['required']) && empty($value)) {
                 $messages[] = sprintf(
                     /* translators: %s: Field name. */
-                    __('%s is a required field.', 'veloria'),
+                    __('%s is a required field.', 'addonext'),
                     wp_strip_all_tags((string) $field['label'])
                 );
                 $field_invalid = true;
@@ -378,8 +378,8 @@ class WooDashboard extends WidgetBase
                             $value = wc_format_postcode($value, $postcode_country);
                             if ($value !== '' && !\WC_Validation::is_postcode($value, $postcode_country)) {
                                 $postcode_notice = ('IE' === $postcode_country)
-                                    ? __('Please enter a valid Eircode.', 'veloria')
-                                    : __('Please enter a valid postcode / ZIP.', 'veloria');
+                                    ? __('Please enter a valid Eircode.', 'addonext')
+                                    : __('Please enter a valid postcode / ZIP.', 'addonext');
                                 $messages[] = $postcode_notice;
                                 $field_invalid = true;
                             }
@@ -388,7 +388,7 @@ class WooDashboard extends WidgetBase
                             if ($value !== '' && !\WC_Validation::is_phone($value)) {
                                 $messages[] = sprintf(
                                     /* translators: %s: Field name. */
-                                    __('%s is not a valid phone number.', 'veloria'),
+                                    __('%s is not a valid phone number.', 'addonext'),
                                     wp_strip_all_tags((string) $field['label'])
                                 );
                                 $field_invalid = true;
@@ -399,7 +399,7 @@ class WooDashboard extends WidgetBase
                             if (!is_email($value)) {
                                 $messages[] = sprintf(
                                     /* translators: %s: Field name. */
-                                    __('%s is not a valid email address.', 'veloria'),
+                                    __('%s is not a valid email address.', 'addonext'),
                                     wp_strip_all_tags((string) $field['label'])
                                 );
                                 $field_invalid = true;
@@ -448,7 +448,7 @@ class WooDashboard extends WidgetBase
         return [
             'success'      => true,
             'messages'     => [],
-            'message'      => __('Address changed successfully.', 'veloria'),
+            'message'      => __('Address changed successfully.', 'addonext'),
             'formatted'    => $formatted,
             'has_address'  => $has_address,
             'address_type' => $address_type,
@@ -473,7 +473,7 @@ class WooDashboard extends WidgetBase
 
         $userId = get_current_user_id();
         if ($userId <= 0) {
-            return $fail([__('You must be logged in.', 'veloria')]);
+            return $fail([__('You must be logged in.', 'addonext')]);
         }
 
         $accountFirstName = !empty($_POST['account_first_name']) ? wc_clean(wp_unslash((string) $_POST['account_first_name'])) : '';
@@ -487,7 +487,7 @@ class WooDashboard extends WidgetBase
 
         $currentUser = get_user_by('id', $userId);
         if (!$currentUser instanceof \WP_User) {
-            return $fail([__('Could not load your profile.', 'veloria')]);
+            return $fail([__('Could not load your profile.', 'addonext')]);
         }
 
         $currentFirstName = $currentUser->first_name;
@@ -503,16 +503,16 @@ class WooDashboard extends WidgetBase
         $messages = [];
 
         if (is_email($accountDisplayName)) {
-            $messages[] = __('Display name cannot be changed to email address due to privacy concern.', 'veloria');
+            $messages[] = __('Display name cannot be changed to email address due to privacy concern.', 'addonext');
         }
 
         $requiredFields = apply_filters(
             'woocommerce_save_account_details_required_fields',
             [
-                'account_first_name'   => __('First name', 'veloria'),
-                'account_last_name'    => __('Last name', 'veloria'),
-                'account_display_name' => __('Display name', 'veloria'),
-                'account_email'        => __('Email address', 'veloria'),
+                'account_first_name'   => __('First name', 'addonext'),
+                'account_last_name'    => __('Last name', 'addonext'),
+                'account_display_name' => __('Display name', 'addonext'),
+                'account_email'        => __('Email address', 'addonext'),
             ]
         );
 
@@ -520,7 +520,7 @@ class WooDashboard extends WidgetBase
             if (empty($_POST[$fieldKey])) {
                 $messages[] = sprintf(
                     /* translators: %s: Field name. */
-                    __('%s is a required field.', 'veloria'),
+                    __('%s is a required field.', 'addonext'),
                     $fieldName
                 );
             }
@@ -530,28 +530,28 @@ class WooDashboard extends WidgetBase
         if ($accountEmailRaw !== '') {
             $accountEmail = sanitize_email($accountEmailRaw);
             if (!is_email($accountEmail)) {
-                $messages[] = __('Please provide a valid email address.', 'veloria');
+                $messages[] = __('Please provide a valid email address.', 'addonext');
             } elseif (email_exists($accountEmail) && $accountEmail !== $currentUser->user_email) {
-                $messages[] = __('This email address is already registered.', 'veloria');
+                $messages[] = __('This email address is already registered.', 'addonext');
             } elseif (is_email($accountEmail)) {
                 $userObj->user_email = $accountEmail;
             }
         }
 
         if ($passCur !== '' && $pass1 === '' && $pass2 === '') {
-            $messages[] = __('Please fill out all password fields.', 'veloria');
+            $messages[] = __('Please fill out all password fields.', 'addonext');
             $savePass = false;
         } elseif ($pass1 !== '' && $passCur === '') {
-            $messages[] = __('Please enter your current password.', 'veloria');
+            $messages[] = __('Please enter your current password.', 'addonext');
             $savePass = false;
         } elseif ($pass1 !== '' && $pass2 === '') {
-            $messages[] = __('Please re-enter your password.', 'veloria');
+            $messages[] = __('Please re-enter your password.', 'addonext');
             $savePass = false;
         } elseif (($pass1 !== '' || $pass2 !== '') && $pass1 !== $pass2) {
-            $messages[] = __('New passwords do not match.', 'veloria');
+            $messages[] = __('New passwords do not match.', 'addonext');
             $savePass = false;
         } elseif ($pass1 !== '' && !wp_check_password($passCur, $currentUser->user_pass, $currentUser->ID)) {
-            $messages[] = __('Your current password is incorrect.', 'veloria');
+            $messages[] = __('Your current password is incorrect.', 'addonext');
             $savePass = false;
         }
 
@@ -606,7 +606,7 @@ class WooDashboard extends WidgetBase
                 [
                     sprintf(
                         /* translators: %s: Error message. */
-                        __('An error occurred while saving account details: %s', 'veloria'),
+                        __('An error occurred while saving account details: %s', 'addonext'),
                         $e->getMessage()
                     ),
                 ]
@@ -621,7 +621,7 @@ class WooDashboard extends WidgetBase
         return [
             'success'      => true,
             'messages'     => [],
-            'message'      => __('Account details changed successfully.', 'veloria'),
+            'message'      => __('Account details changed successfully.', 'addonext'),
             'display_name' => $displayName,
         ];
     }
@@ -636,69 +636,69 @@ class WooDashboard extends WidgetBase
             : '';
 
         $this->start_controls_section('section_visibility', [
-            'label' => __('Sections', 'veloria'),
+            'label' => __('Sections', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_sidebar', [
-            'label'        => __('Sidebar', 'veloria'),
+            'label'        => __('Sidebar', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_stats', [
-            'label'        => __('Summary cards (top)', 'veloria'),
+            'label'        => __('Summary cards (top)', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_recent_orders', [
-            'label'        => __('Recent orders card', 'veloria'),
+            'label'        => __('Recent orders card', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_quick_actions', [
-            'label'        => __('Quick actions', 'veloria'),
+            'label'        => __('Quick actions', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_panel_orders', [
-            'label'       => __('Orders panel & menu', 'veloria'),
-            'description' => __('Hides the orders screen and its sidebar link.', 'veloria'),
+            'label'       => __('Orders panel & menu', 'addonext'),
+            'description' => __('Hides the orders screen and its sidebar link.', 'addonext'),
             'type'        => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'     => 'yes',
         ]);
 
         $this->add_control('show_panel_wishlist', [
-            'label'        => __('Wishlist panel & menu', 'veloria'),
+            'label'        => __('Wishlist panel & menu', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_panel_account', [
-            'label'        => __('Account details panel & menu', 'veloria'),
+            'label'        => __('Account details panel & menu', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_panel_addresses', [
-            'label'        => __('Addresses panel & menu', 'veloria'),
+            'label'        => __('Addresses panel & menu', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_logout_nav', [
-            'label'        => __('Logout in sidebar', 'veloria'),
+            'label'        => __('Logout in sidebar', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -707,45 +707,45 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_stats_content', [
-            'label'     => __('Summary cards', 'veloria'),
+            'label'     => __('Summary cards', 'addonext'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['show_stats' => 'yes'],
         ]);
 
         $this->add_control('stat_label_orders', [
-            'label'   => __('Orders card label', 'veloria'),
+            'label'   => __('Orders card label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Total Orders', 'veloria'),
+            'default' => __('Total Orders', 'addonext'),
         ]);
 
         $this->add_control('stat_icon_orders', [
-            'label'            => __('Orders card icon', 'veloria'),
+            'label'            => __('Orders card icon', 'addonext'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'stat_icon_orders_legacy',
             'default'          => ['value' => 'fas fa-shopping-bag', 'library' => 'fa-solid'],
         ]);
 
         $this->add_control('stat_label_spent', [
-            'label'   => __('Spent card label', 'veloria'),
+            'label'   => __('Spent card label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Total Spent', 'veloria'),
+            'default' => __('Total Spent', 'addonext'),
         ]);
 
         $this->add_control('stat_icon_spent', [
-            'label'            => __('Spent card icon', 'veloria'),
+            'label'            => __('Spent card icon', 'addonext'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'stat_icon_spent_legacy',
             'default'          => ['value' => 'fas fa-dollar-sign', 'library' => 'fa-solid'],
         ]);
 
         $this->add_control('stat_label_wishlist', [
-            'label'   => __('Wishlist card label', 'veloria'),
+            'label'   => __('Wishlist card label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Wishlist Items', 'veloria'),
+            'default' => __('Wishlist Items', 'addonext'),
         ]);
 
         $this->add_control('stat_icon_wishlist', [
-            'label'            => __('Wishlist card icon', 'veloria'),
+            'label'            => __('Wishlist card icon', 'addonext'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'stat_icon_wishlist_legacy',
             'default'          => ['value' => 'fas fa-heart', 'library' => 'fa-solid'],
@@ -754,93 +754,93 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_quick_actions_content', [
-            'label'     => __('Quick actions', 'veloria'),
+            'label'     => __('Quick actions', 'addonext'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['show_quick_actions' => 'yes'],
         ]);
 
         $this->add_control('quick_actions_title', [
-            'label'   => __('Title', 'veloria'),
+            'label'   => __('Title', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Quick Actions', 'veloria'),
+            'default' => __('Quick Actions', 'addonext'),
         ]);
 
         $qaRepeater = new Repeater();
         $qaRepeater->add_control('item_label', [
-            'label'   => __('Label', 'veloria'),
+            'label'   => __('Label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Action', 'veloria'),
+            'default' => __('Action', 'addonext'),
         ]);
         $qaRepeater->add_control('item_icon', [
-            'label'            => __('Icon', 'veloria'),
+            'label'            => __('Icon', 'addonext'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'item_icon_legacy',
             'default'          => ['value' => 'fas fa-circle', 'library' => 'fa-solid'],
         ]);
         $qaRepeater->add_control('item_icon_color', [
-            'label'   => __('Icon color', 'veloria'),
+            'label'   => __('Icon color', 'addonext'),
             'type'    => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
         $qaRepeater->add_control('item_action', [
-            'label'   => __('Action', 'veloria'),
+            'label'   => __('Action', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'panel',
             'options' => [
-                'panel' => __('Open dashboard panel', 'veloria'),
-                'url'   => __('Custom link', 'veloria'),
+                'panel' => __('Open dashboard panel', 'addonext'),
+                'url'   => __('Custom link', 'addonext'),
             ],
         ]);
         $qaRepeater->add_control('item_panel', [
-            'label'     => __('Panel', 'veloria'),
+            'label'     => __('Panel', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'orders',
             'options'   => [
-                'dashboard'    => __('Dashboard', 'veloria'),
-                'orders'       => __('Orders', 'veloria'),
-                'wishlist'     => __('Wishlist', 'veloria'),
-                'edit-account' => __('Account details', 'veloria'),
-                'edit-address' => __('Addresses', 'veloria'),
+                'dashboard'    => __('Dashboard', 'addonext'),
+                'orders'       => __('Orders', 'addonext'),
+                'wishlist'     => __('Wishlist', 'addonext'),
+                'edit-account' => __('Account details', 'addonext'),
+                'edit-address' => __('Addresses', 'addonext'),
             ],
             'condition' => ['item_action' => 'panel'],
         ]);
         $qaRepeater->add_control('item_link', [
-            'label'       => __('Link', 'veloria'),
+            'label'       => __('Link', 'addonext'),
             'type'        => Controls_Manager::URL,
             'dynamic'     => ['active' => true],
-            'placeholder' => __('https://', 'veloria'),
+            'placeholder' => __('https://', 'addonext'),
             'condition'   => ['item_action' => 'url'],
         ]);
 
         $this->add_control('quick_actions_items', [
-            'label'       => __('Actions', 'veloria'),
+            'label'       => __('Actions', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $qaRepeater->get_controls(),
             'title_field' => '{{{ item_label }}}',
             'default'     => [
                 [
-                    'item_label'      => __('Reorder', 'veloria'),
+                    'item_label'      => __('Reorder', 'addonext'),
                     'item_icon'       => ['value' => 'fas fa-sync-alt', 'library' => 'fa-solid'],
                     'item_icon_color' => '#2563eb',
                     'item_action'     => 'panel',
                     'item_panel'      => 'orders',
                 ],
                 [
-                    'item_label'      => __('Track Order', 'veloria'),
+                    'item_label'      => __('Track Order', 'addonext'),
                     'item_icon'       => ['value' => 'fas fa-truck', 'library' => 'fa-solid'],
                     'item_icon_color' => '#16a34a',
                     'item_action'     => 'panel',
                     'item_panel'      => 'orders',
                 ],
                 [
-                    'item_label'      => __('Support', 'veloria'),
+                    'item_label'      => __('Support', 'addonext'),
                     'item_icon'       => ['value' => 'fas fa-headset', 'library' => 'fa-solid'],
                     'item_icon_color' => '#7c3aed',
                     'item_action'     => 'panel',
                     'item_panel'      => 'edit-account',
                 ],
                 [
-                    'item_label'      => __('Downloads', 'veloria'),
+                    'item_label'      => __('Downloads', 'addonext'),
                     'item_icon'       => ['value' => 'fas fa-file-download', 'library' => 'fa-solid'],
                     'item_icon_color' => '#ea580c',
                     'item_action'     => 'url',
@@ -856,12 +856,12 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_orders', [
-            'label' => __('Orders', 'veloria'),
+            'label' => __('Orders', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('orders_limit', [
-            'label'   => __('Recent orders limit', 'veloria'),
+            'label'   => __('Recent orders limit', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 20,
@@ -869,7 +869,7 @@ class WooDashboard extends WidgetBase
         ]);
 
         $this->add_control('orders_list_limit', [
-            'label'   => __('Orders screen limit', 'veloria'),
+            'label'   => __('Orders screen limit', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 50,
@@ -879,22 +879,22 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_guest', [
-            'label' => __('Guest', 'veloria'),
+            'label' => __('Guest', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('guest_message', [
-            'label'       => __('Guest message', 'veloria'),
+            'label'       => __('Guest message', 'addonext'),
             'type'        => Controls_Manager::TEXTAREA,
-            'default'     => __('Please log in to view your dashboard.', 'veloria'),
+            'default'     => __('Please log in to view your dashboard.', 'addonext'),
             'rows'        => 3,
-            'placeholder' => __('Message shown to logged-out visitors.', 'veloria'),
+            'placeholder' => __('Message shown to logged-out visitors.', 'addonext'),
         ]);
 
         $this->add_control('guest_button_label', [
-            'label'   => __('Guest button label', 'veloria'),
+            'label'   => __('Guest button label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Log in', 'veloria'),
+            'default' => __('Log in', 'addonext'),
         ]);
 
         $this->end_controls_section();
@@ -910,35 +910,35 @@ class WooDashboard extends WidgetBase
     private function register_style_controls(): void
     {
         $this->start_controls_section('section_stats_style', [
-            'label'     => __('Summary cards', 'veloria'),
+            'label'     => __('Summary cards', 'addonext'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_stats' => 'yes'],
         ]);
 
         $this->add_responsive_control('stats_row_gap', [
-            'label'      => __('Column gap', 'veloria'),
+            'label'      => __('Column gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'default'    => ['size' => 14, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-woo-dashboard__stats' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__stats' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('stats_row_margin_bottom', [
-            'label'      => __('Bottom spacing', 'veloria'),
+            'label'      => __('Bottom spacing', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['size' => 18, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-woo-dashboard__stats' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__stats' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('stats_columns', [
-            'label'          => __('Columns', 'veloria'),
+            'label'          => __('Columns', 'addonext'),
             'type'           => Controls_Manager::SELECT,
             'default'        => '3',
             'tablet_default' => '3',
@@ -949,7 +949,7 @@ class WooDashboard extends WidgetBase
                 '3' => '3',
             ],
             'selectors'      => [
-                '{{WRAPPER}} .veloria-woo-dashboard__stats' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                '{{WRAPPER}} .addonext-woo-dashboard__stats' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
             ],
         ]);
 
@@ -957,9 +957,9 @@ class WooDashboard extends WidgetBase
 
         foreach (
             [
-                'orders'   => ['label' => __('Orders card', 'veloria'), 'sel' => '{{WRAPPER}} .veloria-woo-dashboard__stat--orders'],
-                'spent'    => ['label' => __('Spent card', 'veloria'), 'sel' => '{{WRAPPER}} .veloria-woo-dashboard__stat--spent'],
-                'wishlist' => ['label' => __('Wishlist card', 'veloria'), 'sel' => '{{WRAPPER}} .veloria-woo-dashboard__stat--wishlist'],
+                'orders'   => ['label' => __('Orders card', 'addonext'), 'sel' => '{{WRAPPER}} .addonext-woo-dashboard__stat--orders'],
+                'spent'    => ['label' => __('Spent card', 'addonext'), 'sel' => '{{WRAPPER}} .addonext-woo-dashboard__stat--spent'],
+                'wishlist' => ['label' => __('Wishlist card', 'addonext'), 'sel' => '{{WRAPPER}} .addonext-woo-dashboard__stat--wishlist'],
             ] as $key => $meta
         ) {
             $this->start_controls_tab('tab_stat_' . $key, ['label' => $meta['label']]);
@@ -983,7 +983,7 @@ class WooDashboard extends WidgetBase
             );
 
             $this->add_responsive_control('stat_radius_' . $key, [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
@@ -992,7 +992,7 @@ class WooDashboard extends WidgetBase
             ]);
 
             $this->add_responsive_control('stat_padding_' . $key, [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -1001,7 +1001,7 @@ class WooDashboard extends WidgetBase
             ]);
 
             $this->add_responsive_control('stat_min_height_' . $key, [
-                'label'      => __('Min height', 'veloria'),
+                'label'      => __('Min height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 300]],
@@ -1019,7 +1019,7 @@ class WooDashboard extends WidgetBase
             );
 
             $this->add_control('stat_text_color_' . $key, [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
@@ -1031,8 +1031,8 @@ class WooDashboard extends WidgetBase
                 Group_Control_Typography::get_type(),
                 [
                     'name'     => 'stat_label_typo_' . $key,
-                    'label'    => __('Label typography', 'veloria'),
-                    'selector' => $sel . ' .veloria-woo-dashboard__stat-label',
+                    'label'    => __('Label typography', 'addonext'),
+                    'selector' => $sel . ' .addonext-woo-dashboard__stat-label',
                 ]
             );
 
@@ -1040,40 +1040,40 @@ class WooDashboard extends WidgetBase
                 Group_Control_Typography::get_type(),
                 [
                     'name'     => 'stat_value_typo_' . $key,
-                    'label'    => __('Value typography', 'veloria'),
-                    'selector' => $sel . ' .veloria-woo-dashboard__stat-value',
+                    'label'    => __('Value typography', 'addonext'),
+                    'selector' => $sel . ' .addonext-woo-dashboard__stat-value',
                 ]
             );
 
             $this->add_responsive_control('stat_icon_size_' . $key, [
-                'label'      => __('Icon size', 'veloria'),
+                'label'      => __('Icon size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 8, 'max' => 64]],
                 'selectors'  => [
-                    $sel . ' .veloria-woo-dashboard__stat-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
-                    $sel . ' .veloria-woo-dashboard__stat-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    $sel . ' .addonext-woo-dashboard__stat-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
+                    $sel . ' .addonext-woo-dashboard__stat-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]);
 
             $this->add_control('stat_icon_color_' . $key, [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $sel . ' .veloria-woo-dashboard__stat-icon'     => 'color: {{VALUE}}; opacity: 1;',
-                    $sel . ' .veloria-woo-dashboard__stat-icon i'   => 'color: {{VALUE}};',
-                    $sel . ' .veloria-woo-dashboard__stat-icon svg' => 'fill: {{VALUE}};',
+                    $sel . ' .addonext-woo-dashboard__stat-icon'     => 'color: {{VALUE}}; opacity: 1;',
+                    $sel . ' .addonext-woo-dashboard__stat-icon i'   => 'color: {{VALUE}};',
+                    $sel . ' .addonext-woo-dashboard__stat-icon svg' => 'fill: {{VALUE}};',
                 ],
             ]);
 
             $this->add_responsive_control('stat_icon_position_' . $key, [
-                'label'      => __('Icon offset', 'veloria'),
+                'label'      => __('Icon offset', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48]],
                 'default'    => ['size' => 14, 'unit' => 'px'],
                 'selectors'  => [
-                    $sel . ' .veloria-woo-dashboard__stat-icon' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
+                    $sel . ' .addonext-woo-dashboard__stat-icon' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
                 ],
             ]);
 
@@ -1085,13 +1085,13 @@ class WooDashboard extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_quick_actions_style', [
-            'label'     => __('Quick actions', 'veloria'),
+            'label'     => __('Quick actions', 'addonext'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_quick_actions' => 'yes'],
         ]);
 
         $this->add_control('qa_title_heading', [
-            'label' => __('Title', 'veloria'),
+            'label' => __('Title', 'addonext'),
             'type'  => Controls_Manager::HEADING,
         ]);
 
@@ -1099,26 +1099,26 @@ class WooDashboard extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'qa_title_typo',
-                'selector' => '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__card-title',
+                'selector' => '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__card-title',
             ]
         );
 
         $this->add_control('qa_title_color', [
-            'label'     => __('Title color', 'veloria'),
+            'label'     => __('Title color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__card-title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__card-title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('qa_grid_heading', [
-            'label'     => __('Grid', 'veloria'),
+            'label'     => __('Grid', 'addonext'),
             'type'      => Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
 
         $this->add_responsive_control('qa_columns', [
-            'label'          => __('Columns', 'veloria'),
+            'label'          => __('Columns', 'addonext'),
             'type'           => Controls_Manager::SELECT,
             'default'        => '2',
             'tablet_default' => '2',
@@ -1130,33 +1130,33 @@ class WooDashboard extends WidgetBase
                 '4' => '4',
             ],
             'selectors'      => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__actions' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__actions' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
             ],
         ]);
 
         $this->add_responsive_control('qa_grid_gap', [
-            'label'      => __('Gap', 'veloria'),
+            'label'      => __('Gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 40]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__actions' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__actions' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('qa_item_heading', [
-            'label'     => __('Action button', 'veloria'),
+            'label'     => __('Action button', 'addonext'),
             'type'      => Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
 
         $this->add_control('qa_item_bg_color', [
-            'label'     => __('Background color', 'veloria'),
+            'label'     => __('Background color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -1164,37 +1164,37 @@ class WooDashboard extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'qa_item_border',
-                'selector' => '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action',
+                'selector' => '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action',
             ]
         );
 
         $this->add_responsive_control('qa_item_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('qa_item_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('qa_icon_size', [
-            'label'      => __('Icon size', 'veloria'),
+            'label'      => __('Icon size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 16, 'max' => 48]],
             'default'    => ['size' => 28, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -1202,16 +1202,16 @@ class WooDashboard extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'qa_label_typo',
-                'label'    => __('Label typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-label',
+                'label'    => __('Label typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action-label',
             ]
         );
 
         $this->add_control('qa_label_color', [
-            'label'     => __('Label color', 'veloria'),
+            'label'     => __('Label color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .veloria-woo-dashboard__card--quick-actions .veloria-woo-dashboard__action-label' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-woo-dashboard__card--quick-actions .addonext-woo-dashboard__action-label' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -1290,7 +1290,7 @@ class WooDashboard extends WidgetBase
     {
         $roles = $user->roles;
         if (empty($roles)) {
-            return __('Member', 'veloria');
+            return __('Member', 'addonext');
         }
 
         $roleKey = $roles[0];
@@ -1323,7 +1323,7 @@ class WooDashboard extends WidgetBase
             wp_enqueue_script('wc-country-select');
             wp_enqueue_script('wc-address-i18n');
         }
-        $path = VELORIA_DIR . 'pro/templates/woo-dashboard/woo-dashboard.php';
+        $path = ADDONEXT_DIR . 'pro/templates/woo-dashboard/woo-dashboard.php';
         if (is_readable($path)) {
             include $path;
         }

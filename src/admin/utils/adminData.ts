@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    veloriaAdminData?: {
+    addonextAdminData?: {
       isElementorActive?: boolean | string | number;
       hasProAccountApi?: boolean | string | number;
     };
@@ -16,7 +16,7 @@ export function readHasProAccountApi(): boolean {
     return false;
   }
 
-  return readLocalizedBoolean(window.veloriaAdminData?.hasProAccountApi);
+  return readLocalizedBoolean(window.addonextAdminData?.hasProAccountApi);
 }
 
 export function readElementorActive(): boolean {
@@ -24,7 +24,7 @@ export function readElementorActive(): boolean {
     return true;
   }
 
-  const localized = window.veloriaAdminData?.isElementorActive;
+  const localized = window.addonextAdminData?.isElementorActive;
   if (typeof localized === "boolean") {
     return localized;
   }
@@ -32,7 +32,7 @@ export function readElementorActive(): boolean {
     return true;
   }
 
-  const root = document.getElementById("veloria-admin");
+  const root = document.getElementById("addonext-admin");
   const attr = root?.getAttribute("data-elementor-active");
   if (attr === "1") {
     return true;

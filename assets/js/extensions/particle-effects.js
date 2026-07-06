@@ -1,5 +1,5 @@
 /**
- * particles.js overlays for Elementor (data-veloria-particles on the wrapper).
+ * particles.js overlays for Elementor (data-addonext-particles on the wrapper).
  */
 (function ($) {
 	'use strict';
@@ -195,7 +195,7 @@
 	};
 
 	function resolveParticleHostId($el) {
-		var fromAttr = ($el.attr('data-veloria-particles-host-id') || '').trim();
+		var fromAttr = ($el.attr('data-addonext-particles-host-id') || '').trim();
 		if (fromAttr) {
 			return fromAttr;
 		}
@@ -213,20 +213,20 @@
 
 	function buildFingerprint($el) {
 		return [
-			$el.attr('data-veloria-particles-preset') || '',
-			$el.attr('data-veloria-particles-density') || '',
-			$el.attr('data-veloria-particles-speed') || '100',
-			$el.attr('data-veloria-particles-node') || '',
-			$el.attr('data-veloria-particles-line') || '',
+			$el.attr('data-addonext-particles-preset') || '',
+			$el.attr('data-addonext-particles-density') || '',
+			$el.attr('data-addonext-particles-speed') || '100',
+			$el.attr('data-addonext-particles-node') || '',
+			$el.attr('data-addonext-particles-line') || '',
 		].join('|');
 	}
 
 	function buildConfig($el) {
-		var preset = $el.attr('data-veloria-particles-preset') || 'default';
-		var density = $el.attr('data-veloria-particles-density') || '80';
-		var speedPct = $el.attr('data-veloria-particles-speed') || '100';
-		var nodeColor = normalizeColorValue($el.attr('data-veloria-particles-node')) || '#ffffff';
-		var lineColor = normalizeColorValue($el.attr('data-veloria-particles-line'));
+		var preset = $el.attr('data-addonext-particles-preset') || 'default';
+		var density = $el.attr('data-addonext-particles-density') || '80';
+		var speedPct = $el.attr('data-addonext-particles-speed') || '100';
+		var nodeColor = normalizeColorValue($el.attr('data-addonext-particles-node')) || '#ffffff';
+		var lineColor = normalizeColorValue($el.attr('data-addonext-particles-line'));
 		var count = particleCount(density);
 		var fn = PRESETS[preset] || PRESETS.default;
 		var cfg = fn(nodeColor, lineColor, count);
@@ -234,7 +234,7 @@
 	}
 
 	function initElement($el) {
-		if ($el.attr('data-veloria-particles') !== 'yes') {
+		if ($el.attr('data-addonext-particles') !== 'yes') {
 			return;
 		}
 		if (typeof window.particlesJS !== 'function') {
@@ -245,22 +245,22 @@
 			return;
 		}
 		var fp = buildFingerprint($el);
-		var prevFp = $el.attr('data-veloria-particles-fp');
-		var hasCanvas = $el.find('.veloria-particles__host canvas').length > 0;
+		var prevFp = $el.attr('data-addonext-particles-fp');
+		var hasCanvas = $el.find('.addonext-particles__host canvas').length > 0;
 		if (prevFp === fp && hasCanvas) {
 			return;
 		}
 
 		var safeId = String(rawId).replace(/[^a-zA-Z0-9_-]/g, '');
-		var domId = 'veloria-particles-host-' + safeId;
-		$el.find('.veloria-particles__host').remove();
-		var $host = $('<div class="veloria-particles__host"></div>').attr('id', domId);
+		var domId = 'addonext-particles-host-' + safeId;
+		$el.find('.addonext-particles__host').remove();
+		var $host = $('<div class="addonext-particles__host"></div>').attr('id', domId);
 		$el.prepend($host);
 		window.particlesJS(domId, buildConfig($el));
-		$el.attr('data-veloria-particles-fp', fp);
+		$el.attr('data-addonext-particles-fp', fp);
 	}
 
-	var PARTICLE_ATTR_SEL = '[data-veloria-particles="yes"]';
+	var PARTICLE_ATTR_SEL = '[data-addonext-particles="yes"]';
 
 	function collectParticleElements($root) {
 		if (!$root || !$root.length) {
@@ -279,7 +279,7 @@
 		});
 	}
 
-	window.veloriaParticlesRescan = function (doc) {
+	window.addonextParticlesRescan = function (doc) {
 		var d = doc || document;
 		if (!d.body) {
 			return;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Veloria\Utils;
+namespace Addonext\Utils;
 
 defined('ABSPATH') or exit;
 

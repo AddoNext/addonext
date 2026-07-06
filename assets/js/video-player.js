@@ -1,13 +1,13 @@
 (function () {
     document.addEventListener('click', function (e) {
-        var playBtn = e.target.closest('.veloria-video-player__play');
+        var playBtn = e.target.closest('.addonext-video-player__play');
         if (!playBtn) return;
         e.preventDefault();
-        var inner = playBtn.closest('.veloria-video-player__inner');
+        var inner = playBtn.closest('.addonext-video-player__inner');
         if (!inner) return;
         if (inner.classList.contains('is-playing')) return;
 
-        var embedEl = inner.querySelector('.veloria-video-player__embed');
+        var embedEl = inner.querySelector('.addonext-video-player__embed');
         if (!embedEl) return;
 
         var embedUrl = inner.getAttribute('data-embed');

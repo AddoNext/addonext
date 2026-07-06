@@ -1,36 +1,36 @@
 <?php
 defined('ABSPATH') || exit;
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_items = isset($veloria_settings['items']) && is_array($veloria_settings['items']) ? $veloria_settings['items'] : [];
-$veloria_percent_use_bar_color = !empty($veloria_settings['percent_color_override']) && $veloria_settings['percent_color_override'] === 'yes';
+$addonext_settings = $this->get_settings_for_display();
+$addonext_items = isset($addonext_settings['items']) && is_array($addonext_settings['items']) ? $addonext_settings['items'] : [];
+$addonext_percent_use_bar_color = !empty($addonext_settings['percent_color_override']) && $addonext_settings['percent_color_override'] === 'yes';
 
-if (empty($veloria_items)) {
+if (empty($addonext_items)) {
     return;
 }
 ?>
-<div class="veloria-progress-bar">
-    <div class="veloria-progress-bar__list">
-        <?php foreach ($veloria_items as $veloria_item) :
-            $veloria_title = isset($veloria_item['title']) ? $veloria_item['title'] : '';
-            if (isset($veloria_item['percent']['size']) && is_numeric($veloria_item['percent']['size'])) {
-                $veloria_percent = max(0, min(100, (int) $veloria_item['percent']['size']));
-            } elseif (isset($veloria_item['percent']) && is_numeric($veloria_item['percent'])) {
-                $veloria_percent = max(0, min(100, (int) $veloria_item['percent']));
+<div class="addonext-progress-bar">
+    <div class="addonext-progress-bar__list">
+        <?php foreach ($addonext_items as $addonext_item) :
+            $addonext_title = isset($addonext_item['title']) ? $addonext_item['title'] : '';
+            if (isset($addonext_item['percent']['size']) && is_numeric($addonext_item['percent']['size'])) {
+                $addonext_percent = max(0, min(100, (int) $addonext_item['percent']['size']));
+            } elseif (isset($addonext_item['percent']) && is_numeric($addonext_item['percent'])) {
+                $addonext_percent = max(0, min(100, (int) $addonext_item['percent']));
             } else {
-                $veloria_percent = 0;
+                $addonext_percent = 0;
             }
-            $veloria_bar_color = !empty($veloria_item['bar_color']) ? $veloria_item['bar_color'] : '#4285F4';
-            $veloria_percent_style = $veloria_percent_use_bar_color ? ' color: ' . esc_attr($veloria_bar_color) . ';' : '';
-            $veloria_fill_style = 'width: ' . $veloria_percent . '% !important; background-color: ' . esc_attr($veloria_bar_color) . ';';
+            $addonext_bar_color = !empty($addonext_item['bar_color']) ? $addonext_item['bar_color'] : '#4285F4';
+            $addonext_percent_style = $addonext_percent_use_bar_color ? ' color: ' . esc_attr($addonext_bar_color) . ';' : '';
+            $addonext_fill_style = 'width: ' . $addonext_percent . '% !important; background-color: ' . esc_attr($addonext_bar_color) . ';';
         ?>
-            <div class="veloria-progress-bar__row">
-                <div class="veloria-progress-bar__header">
-                    <span class="veloria-progress-bar__title"><?php echo esc_html($veloria_title); ?></span>
-                    <span class="veloria-progress-bar__percent" style="<?php echo esc_attr(trim($veloria_percent_style)); ?>"><?php echo (int) $veloria_percent; ?>%</span>
+            <div class="addonext-progress-bar__row">
+                <div class="addonext-progress-bar__header">
+                    <span class="addonext-progress-bar__title"><?php echo esc_html($addonext_title); ?></span>
+                    <span class="addonext-progress-bar__percent" style="<?php echo esc_attr(trim($addonext_percent_style)); ?>"><?php echo (int) $addonext_percent; ?>%</span>
                 </div>
-                <div class="veloria-progress-bar__track">
-                    <div class="veloria-progress-bar__fill" style="<?php echo esc_attr($veloria_fill_style); ?>"></div>
+                <div class="addonext-progress-bar__track">
+                    <div class="addonext-progress-bar__fill" style="<?php echo esc_attr($addonext_fill_style); ?>"></div>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -1,12 +1,12 @@
 <?php
-namespace Veloria\Admin\Interfaces;
+namespace Addonext\Admin\Interfaces;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
 /**
  * Widget Interface
  * 
- * @package Veloria
+ * @package AddoNext
  */
 interface WidgetInterface {
     public function get_slug(): string;

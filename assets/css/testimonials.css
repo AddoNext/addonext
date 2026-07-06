@@ -1,11 +1,11 @@
-.veloria-testimonials--grid {
+.addonext-testimonials--grid {
     display: grid;
-    grid-template-columns: repeat(var(--veloria-testimonials-columns, 3), 1fr);
-    gap: var(--veloria-testimonials-gap, 16px);
+    grid-template-columns: repeat(var(--addonext-testimonials-columns, 3), 1fr);
+    gap: var(--addonext-testimonials-gap, 16px);
     width: 100%;
 }
 
-.veloria-testimonial-card {
+.addonext-testimonial-card {
     padding: 24px;
     border-radius: 12px;
     border: 1px solid transparent;
@@ -16,33 +16,33 @@
     gap: 12px;
 }
 
-.veloria-testimonial__stars {
+.addonext-testimonial__stars {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     gap: 2px;
 }
 
-.veloria-testimonial__star {
+.addonext-testimonial__star {
     position: relative;
     display: inline-block;
     line-height: 1;
 }
 
-.veloria-testimonial__star-empty {
+.addonext-testimonial__star-empty {
     display: block;
     color: #e5e7eb;
     font-size: 18px;
 }
 
-.veloria-testimonial__star-empty svg {
+.addonext-testimonial__star-empty svg {
     width: 1em;
     height: 1em;
     vertical-align: top;
     display: block;
 }
 
-.veloria-testimonial__star-fill {
+.addonext-testimonial__star-fill {
     position: absolute;
     left: 0;
     top: 0;
@@ -50,34 +50,34 @@
     height: 100%;
 }
 
-.veloria-testimonial__star-filled {
+.addonext-testimonial__star-filled {
     display: block;
     color: #eab308;
     font-size: 18px;
 }
 
-.veloria-testimonial__star-filled svg {
+.addonext-testimonial__star-filled svg {
     width: 1em;
     height: 1em;
     vertical-align: top;
     display: block;
 }
 
-.veloria-testimonial-card__quote {
+.addonext-testimonial-card__quote {
     margin: 0;
     font-size: 15px;
     line-height: 1.5;
     color: #374151;
 }
 
-.veloria-testimonial-card__footer {
+.addonext-testimonial-card__footer {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-top: auto;
 }
 
-.veloria-testimonial-card__avatar {
+.addonext-testimonial-card__avatar {
     width: 48px!important;
     height: 48px!important;
     border-radius: 50%!important;
@@ -85,39 +85,39 @@
     flex-shrink: 0;
 }
 
-.veloria-testimonial-card__meta {
+.addonext-testimonial-card__meta {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.veloria-testimonial-card__name {
+.addonext-testimonial-card__name {
     font-weight: 600;
     font-size: 15px;
     color: #111827;
 }
 
-.veloria-testimonial-card__role {
+.addonext-testimonial-card__role {
     font-size: 13px;
     color: #6b7280;
 }
 
-.veloria-testimonials--slider {
+.addonext-testimonials--slider {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
-.veloria-testimonials--slider .swiper-wrapper {
+.addonext-testimonials--slider .swiper-wrapper {
     align-items: stretch;
 }
 
-.veloria-testimonials--slider .swiper-slide {
+.addonext-testimonials--slider .swiper-slide {
     height: auto;
     box-sizing: border-box;
 }
 
-.veloria-testimonials__arrow {
+.addonext-testimonials__arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -135,36 +135,36 @@
     transition: opacity 0.2s, box-shadow 0.2s;
 }
 
-.veloria-testimonials__arrow::after {
+.addonext-testimonials__arrow::after {
     content: none !important;
 }
 
-.veloria-testimonials__arrow:hover {
+.addonext-testimonials__arrow:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.veloria-testimonials__arrow--prev {
+.addonext-testimonials__arrow--prev {
     left: 12px;
 }
 
-.veloria-testimonials__arrow--next {
+.addonext-testimonials__arrow--next {
     right: 12px;
 }
 
-.veloria-testimonials__arrow svg {
+.addonext-testimonials__arrow svg {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
 }
 
-.veloria-testimonials--slider .swiper-button-disabled {
+.addonext-testimonials--slider .swiper-button-disabled {
     opacity: 0.35;
     cursor: default;
 }
 
-.veloria-testimonials--slider .swiper-pagination,
-.veloria-testimonials--slider .swiper-pagination-bullets,
-.veloria-testimonials--slider .swiper-pagination-horizontal {
+.addonext-testimonials--slider .swiper-pagination,
+.addonext-testimonials--slider .swiper-pagination-bullets,
+.addonext-testimonials--slider .swiper-pagination-horizontal {
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -173,12 +173,12 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    gap: var(--veloria-dots-gap, 8px);
+    gap: var(--addonext-dots-gap, 8px);
     opacity: 1 !important;
     pointer-events: auto;
 }
 
-.veloria-testimonials--slider .swiper-pagination-bullet {
+.addonext-testimonials--slider .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -189,28 +189,28 @@
     cursor: pointer;
 }
 
-.veloria-testimonials--slider .swiper-pagination-bullet:hover {
+.addonext-testimonials--slider .swiper-pagination-bullet:hover {
     opacity: 0.9;
 }
 
-.veloria-testimonials--slider .swiper-pagination-bullet-active {
+.addonext-testimonials--slider .swiper-pagination-bullet-active {
     background: rgba(0, 0, 0, 0.85);
     opacity: 1;
     transform: scale(1.2);
 }
 
-.veloria-testimonials--slider.veloria-pagination-square .swiper-pagination-bullet {
+.addonext-testimonials--slider.addonext-pagination-square .swiper-pagination-bullet {
     border-radius: 0;
 }
 
-.veloria-testimonials--slider.veloria-pagination-bar .swiper-pagination-bullet {
-    width: var(--veloria-bar-width, 28px);
+.addonext-testimonials--slider.addonext-pagination-bar .swiper-pagination-bullet {
+    width: var(--addonext-bar-width, 28px);
     height: 5px;
     border-radius: 3px;
     transform: none;
 }
 
-.veloria-testimonials--slider.veloria-pagination-bar .swiper-pagination-bullet-active {
-    width: calc(var(--veloria-bar-width, 28px) * 1.4);
+.addonext-testimonials--slider.addonext-pagination-bar .swiper-pagination-bullet-active {
+    width: calc(var(--addonext-bar-width, 28px) * 1.4);
     transform: none;
 }

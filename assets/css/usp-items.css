@@ -1,17 +1,17 @@
-.veloria-usp-items {
+.addonext-usp-items {
     --usp-hover-card-bg: #f9fafb;
     --usp-hover-glow: rgba(79, 70, 229, 0.22);
     --usp-lift: 8px;
     width: 100%;
 }
 
-.veloria-usp-items__grid {
+.addonext-usp-items__grid {
     display: grid;
     align-items: stretch;
     width: 100%;
 }
 
-.veloria-usp-item {
+.addonext-usp-item {
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     background-color: #ffffff;
@@ -24,7 +24,7 @@
     flex-direction: column;
 }
 
-.veloria-usp-item__link {
+.addonext-usp-item__link {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -34,16 +34,16 @@
     border-radius: inherit;
 }
 
-.veloria-usp-item__link--static {
+.addonext-usp-item__link--static {
     cursor: default;
 }
 
-.veloria-usp-item__link:focus-visible {
+.addonext-usp-item__link:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
 }
 
-.veloria-usp-item__surface {
+.addonext-usp-item__surface {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,7 +53,7 @@
     box-sizing: border-box;
 }
 
-.veloria-usp-item__icon-ring {
+.addonext-usp-item__icon-ring {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +63,7 @@
     flex-shrink: 0;
 }
 
-.veloria-usp-item__icon {
+.addonext-usp-item__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -74,13 +74,13 @@
     transition-duration: 220ms;
 }
 
-.veloria-usp-item__icon svg {
+.addonext-usp-item__icon svg {
     width: 1em;
     height: 1em;
     fill: currentColor;
 }
 
-.veloria-usp-item__title {
+.addonext-usp-item__title {
     margin: 0;
     font-size: 16px;
     font-weight: 700;
@@ -88,47 +88,47 @@
     color: #111827;
 }
 
-.veloria-usp-item__subtitle {
+.addonext-usp-item__subtitle {
     margin: 0;
     font-size: 14px;
     line-height: 1.45;
     color: #6b7280;
 }
 
-.veloria-usp-items--hover-none .veloria-usp-item:hover {
+.addonext-usp-items--hover-none .addonext-usp-item:hover {
     transform: none;
     box-shadow: none;
 }
 
-.veloria-usp-items--hover-lift_glow .veloria-usp-item:hover {
+.addonext-usp-items--hover-lift_glow .addonext-usp-item:hover {
     transform: translateY(calc(-1 * var(--usp-lift, 8px)));
     box-shadow:
         0 12px 28px var(--usp-hover-glow, rgba(79, 70, 229, 0.22)),
         0 4px 10px rgba(15, 23, 42, 0.06);
 }
 
-.veloria-usp-items--hover-bg .veloria-usp-item:hover {
-    /* Beat Elementor Style tab background selectors on .veloria-usp-item */
+.addonext-usp-items--hover-bg .addonext-usp-item:hover {
+    /* Beat Elementor Style tab background selectors on .addonext-usp-item */
     background-color: var(--usp-hover-card-bg, #f9fafb) !important;
 }
 
-.veloria-usp-items--hover-zoom .veloria-usp-item:hover {
+.addonext-usp-items--hover-zoom .addonext-usp-item:hover {
     transform: scale(1.04);
 }
 
-.veloria-usp-items--hover-zoom .veloria-usp-item:hover .veloria-usp-item__icon {
+.addonext-usp-items--hover-zoom .addonext-usp-item:hover .addonext-usp-item__icon {
     transform: scale(1.1);
 }
 
-.veloria-usp-items--hover-zoom_out .veloria-usp-item {
+.addonext-usp-items--hover-zoom_out .addonext-usp-item {
     transform: scale(1.02);
 }
 
-.veloria-usp-items--hover-zoom_out .veloria-usp-item:hover {
+.addonext-usp-items--hover-zoom_out .addonext-usp-item:hover {
     transform: scale(0.97);
 }
 
-@keyframes veloria-usp-jump {
+@keyframes addonext-usp-jump {
     0% {
         transform: translateY(0);
     }
@@ -146,6 +146,6 @@
     }
 }
 
-.veloria-usp-items--hover-jump .veloria-usp-item:hover {
-    animation: veloria-usp-jump 0.55s ease;
+.addonext-usp-items--hover-jump .addonext-usp-item:hover {
+    animation: addonext-usp-jump 0.55s ease;
 }

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\MiniCart;
+namespace Addonext\Widgets\MiniCart;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -19,18 +19,18 @@ class MiniCart extends WidgetBase
 
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('veloria-mini-cart');
-        wp_enqueue_script('veloria-mini-cart');
+        wp_enqueue_style('addonext-mini-cart');
+        wp_enqueue_script('addonext-mini-cart');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-cart veloria-icon';
+        return 'eicon-cart addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-mini-cart';
+        return 'addonext-mini-cart';
     }
 
     public function get_admin_category(): string
@@ -40,12 +40,12 @@ class MiniCart extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Mini Cart', 'veloria');
+        return __('Mini Cart', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('WooCommerce cart link with icon and item count.', 'veloria');
+        return __('WooCommerce cart link with icon and item count.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -55,28 +55,28 @@ class MiniCart extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-mini-cart'];
+        return ['addonext-mini-cart'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-mini-cart'];
+        return ['addonext-mini-cart'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-mini-cart',
-            VELORIA_URL . 'assets/css/mini-cart.css',
+            'addonext-mini-cart',
+            ADDONEXT_URL . 'assets/css/mini-cart.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-mini-cart',
-            VELORIA_URL . 'assets/js/mini-cart.js',
+            'addonext-mini-cart',
+            ADDONEXT_URL . 'assets/js/mini-cart.js',
             ['jquery'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -105,11 +105,11 @@ class MiniCart extends WidgetBase
         }
 
         $count = (string) WC()->cart->get_cart_contents_count();
-        $empty_class = $count === '0' ? ' veloria-mini-cart__count--empty' : '';
-        $fragments['span.veloria-mini-cart__count'] =
-            '<span class="veloria-mini-cart__count' . $empty_class . '">' . esc_html($count) . '</span>';
-        $fragments['span.veloria-mini-cart__subtotal'] =
-            '<span class="veloria-mini-cart__subtotal">' . WC()->cart->get_cart_subtotal() . '</span>';
+        $empty_class = $count === '0' ? ' addonext-mini-cart__count--empty' : '';
+        $fragments['span.addonext-mini-cart__count'] =
+            '<span class="addonext-mini-cart__count' . $empty_class . '">' . esc_html($count) . '</span>';
+        $fragments['span.addonext-mini-cart__subtotal'] =
+            '<span class="addonext-mini-cart__subtotal">' . WC()->cart->get_cart_subtotal() . '</span>';
 
         return $fragments;
     }
@@ -117,12 +117,12 @@ class MiniCart extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('icon', [
-            'label'       => __('Cart icon', 'veloria'),
+            'label'       => __('Cart icon', 'addonext'),
             'type'        => Controls_Manager::ICONS,
             'default'     => [
                 'value'   => 'eicon-cart',
@@ -132,7 +132,7 @@ class MiniCart extends WidgetBase
         ]);
 
         $this->add_control('show_count', [
-            'label'        => __('Show item count', 'veloria'),
+            'label'        => __('Show item count', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -140,7 +140,7 @@ class MiniCart extends WidgetBase
         ]);
 
         $this->add_control('show_subtotal', [
-            'label'        => __('Show subtotal', 'veloria'),
+            'label'        => __('Show subtotal', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'no',
@@ -148,7 +148,7 @@ class MiniCart extends WidgetBase
         ]);
 
         $this->add_control('show_cart_label', [
-            'label'        => __('Show label', 'veloria'),
+            'label'        => __('Show label', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'no',
@@ -156,9 +156,9 @@ class MiniCart extends WidgetBase
         ]);
 
         $this->add_control('cart_label', [
-            'label'       => __('Label', 'veloria'),
+            'label'       => __('Label', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => __('Cart', 'veloria'),
+            'default'     => __('Cart', 'addonext'),
             'condition'   => ['show_cart_label' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -166,48 +166,48 @@ class MiniCart extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_trigger', [
-            'label' => __('Trigger', 'veloria'),
+            'label' => __('Trigger', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('trigger_align', [
-            'label'     => __('Alignment', 'veloria'),
+            'label'     => __('Alignment', 'addonext'),
             'type'      => Controls_Manager::CHOOSE,
             'options'   => [
                 'flex-start' => [
-                    'title' => __('Left', 'veloria'),
+                    'title' => __('Left', 'addonext'),
                     'icon'  => 'eicon-text-align-left',
                 ],
                 'center'     => [
-                    'title' => __('Center', 'veloria'),
+                    'title' => __('Center', 'addonext'),
                     'icon'  => 'eicon-text-align-center',
                 ],
                 'flex-end'   => [
-                    'title' => __('Right', 'veloria'),
+                    'title' => __('Right', 'addonext'),
                     'icon'  => 'eicon-text-align-right',
                 ],
             ],
             'default'   => 'flex-end',
             'selectors' => [
-                '{{WRAPPER}} .veloria-mini-cart__inner' => 'justify-content: {{VALUE}};',
+                '{{WRAPPER}} .addonext-mini-cart__inner' => 'justify-content: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('trigger_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#0f172a',
             'selectors' => [
-                '{{WRAPPER}} .veloria-mini-cart__trigger' => 'color: {{VALUE}};',
-                '{{WRAPPER}} .veloria-mini-cart__trigger .eicon' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-mini-cart__trigger' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-mini-cart__trigger .eicon' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('trigger_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .veloria-mini-cart__trigger' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-mini-cart__trigger' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -215,67 +215,67 @@ class MiniCart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'trigger_typography',
-                'selector' => '{{WRAPPER}} .veloria-mini-cart__label, {{WRAPPER}} .veloria-mini-cart__subtotal',
+                'selector' => '{{WRAPPER}} .addonext-mini-cart__label, {{WRAPPER}} .addonext-mini-cart__subtotal',
             ]
         );
 
         $this->add_control('trigger_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default'    => [
                 'top' => '8', 'right' => '12', 'bottom' => '8', 'left' => '12', 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-mini-cart__trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-mini-cart__trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('trigger_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 40]],
             'default'    => ['size' => 8, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-mini-cart__trigger' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-mini-cart__trigger' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_badge', [
-            'label'     => __('Count badge', 'veloria'),
+            'label'     => __('Count badge', 'addonext'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_count' => 'yes'],
         ]);
 
         $this->add_control('badge_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#7f54b3',
             'selectors' => [
-                '{{WRAPPER}} .veloria-mini-cart__count' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-mini-cart__count' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('badge_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-mini-cart__count' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-mini-cart__count' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('badge_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
             'default'    => ['size' => 10, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-mini-cart__count' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-mini-cart__count' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -284,7 +284,7 @@ class MiniCart extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/mini-cart/mini-cart.php';
+        $path = ADDONEXT_DIR . 'templates/mini-cart/mini-cart.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -299,10 +299,10 @@ class MiniCart extends WidgetBase
         var showLabel = settings.show_cart_label === 'yes';
         var iconHTML = elementor.helpers.renderIcon( view, settings.icon, { 'aria-hidden': true }, 'i', 'object' );
         #>
-        <div class="veloria-mini-cart">
-            <div class="veloria-mini-cart__inner">
-                <a href="#" class="veloria-mini-cart__trigger" onclick="event.preventDefault();">
-                    <span class="veloria-mini-cart__icon" aria-hidden="true">
+        <div class="addonext-mini-cart">
+            <div class="addonext-mini-cart__inner">
+                <a href="#" class="addonext-mini-cart__trigger" onclick="event.preventDefault();">
+                    <span class="addonext-mini-cart__icon" aria-hidden="true">
                         <# if ( iconHTML && iconHTML.rendered ) { #>
                             {{{ elementor.helpers.sanitize( iconHTML.value ) }}}
                         <# } else { #>
@@ -310,13 +310,13 @@ class MiniCart extends WidgetBase
                         <# } #>
                     </span>
                     <# if ( showLabel ) { #>
-                        <span class="veloria-mini-cart__label">{{{ settings.cart_label }}}</span>
+                        <span class="addonext-mini-cart__label">{{{ settings.cart_label }}}</span>
                     <# } #>
                     <# if ( showSubtotal ) { #>
-                        <span class="veloria-mini-cart__subtotal"><?php echo esc_html__('$0.00', 'veloria'); ?></span>
+                        <span class="addonext-mini-cart__subtotal"><?php echo esc_html__('$0.00', 'addonext'); ?></span>
                     <# } #>
                     <# if ( showCount ) { #>
-                        <span class="veloria-mini-cart__count">0</span>
+                        <span class="addonext-mini-cart__count">0</span>
                     <# } #>
                 </a>
             </div>

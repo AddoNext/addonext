@@ -31,7 +31,7 @@ $skipVars = [
 /**
  * @param string $name Variable name without leading $.
  */
-function veloria_should_skip_template_var(string $name): bool
+function addonext_should_skip_template_var(string $name): bool
 {
     global $skipVars;
 
@@ -39,13 +39,13 @@ function veloria_should_skip_template_var(string $name): bool
         return true;
     }
 
-    return strncmp($name, 'veloria_', 8) === 0;
+    return strncmp($name, 'addonext_', 8) === 0;
 }
 
 /**
  * @return list<string>
  */
-function veloria_collect_template_files(string $directory): array
+function addonext_collect_template_files(string $directory): array
 {
     if (!is_dir($directory)) {
         return [];
@@ -71,7 +71,7 @@ function veloria_collect_template_files(string $directory): array
 /**
  * @param list<int|string> $tokens
  */
-function veloria_is_static_property_variable(array $tokens, int $index): bool
+function addonext_is_static_property_variable(array $tokens, int $index): bool
 {
     for ($cursor = $index - 1; $cursor >= 0; $cursor--) {
         $token = $tokens[$cursor];
@@ -97,7 +97,7 @@ function veloria_is_static_property_variable(array $tokens, int $index): bool
     return false;
 }
 
-function veloria_prefix_template_file(string $path): bool
+function addonext_prefix_template_file(string $path): bool
 {
     $code = file_get_contents($path);
     if ($code === false) {
@@ -113,16 +113,16 @@ function veloria_prefix_template_file(string $path): bool
             continue;
         }
 
-        if (veloria_is_static_property_variable($tokens, (int) $index)) {
+        if (addonext_is_static_property_variable($tokens, (int) $index)) {
             continue;
         }
 
         $name = substr($token[1], 1);
-        if (veloria_should_skip_template_var($name)) {
+        if (addonext_should_skip_template_var($name)) {
             continue;
         }
 
-        $renameMap[$name] = 'veloria_' . $name;
+        $renameMap[$name] = 'addonext_' . $name;
     }
 
     if ($renameMap === []) {
@@ -162,8 +162,8 @@ function veloria_prefix_template_file(string $path): bool
 $changed = 0;
 
 foreach ($targets as $target) {
-    foreach (veloria_collect_template_files($target) as $file) {
-        if (veloria_prefix_template_file($file)) {
+    foreach (addonext_collect_template_files($target) as $file) {
+        if (addonext_prefix_template_file($file)) {
             ++$changed;
             echo "Prefixed variables in {$file}\n";
         }

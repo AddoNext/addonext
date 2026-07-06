@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ImageBox;
+namespace Addonext\Widgets\ImageBox;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Typography;
@@ -15,12 +15,12 @@ class ImageBox extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-image-box veloria-icon';
+        return 'eicon-image-box addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-image-box';
+        return 'addonext-image-box';
     }
 
     public function get_admin_category(): string
@@ -30,12 +30,12 @@ class ImageBox extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Image Box', 'veloria');
+        return __('Image Box', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Image with filters, effects, animations and hover', 'veloria');
+        return __('Image with filters, effects, animations and hover', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -45,12 +45,12 @@ class ImageBox extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-image-box'];
+        return ['addonext-image-box'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-image-box'];
+        return ['addonext-image-box'];
     }
 
     public function __construct($data = [], $args = null)
@@ -61,8 +61,8 @@ class ImageBox extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('veloria-image-box');
-        wp_enqueue_script('veloria-image-box');
+        wp_enqueue_style('addonext-image-box');
+        wp_enqueue_script('addonext-image-box');
     }
 
     public function register_controls(): void
@@ -70,7 +70,7 @@ class ImageBox extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -78,7 +78,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image',
             [
-                'label'   => __('Image', 'veloria'),
+                'label'   => __('Image', 'addonext'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -98,12 +98,12 @@ class ImageBox extends WidgetBase
         $this->add_responsive_control(
             'image_width',
             [
-                'label'      => __('Width', 'veloria'),
+                'label'      => __('Width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 1200], '%' => ['min' => 0, 'max' => 100]],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-image-box__image img' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-box__image img' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -111,12 +111,12 @@ class ImageBox extends WidgetBase
         $this->add_responsive_control(
             'image_height',
             [
-                'label'      => __('Height', 'veloria'),
+                'label'      => __('Height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 800]],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-image-box__image img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-box__image img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -124,17 +124,17 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_object_fit',
             [
-                'label'   => __('Object fit', 'veloria'),
+                'label'   => __('Object fit', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover'   => __('Cover', 'veloria'),
-                    'contain' => __('Contain', 'veloria'),
-                    'fill'    => __('Fill', 'veloria'),
-                    'none'    => __('None', 'veloria'),
+                    'cover'   => __('Cover', 'addonext'),
+                    'contain' => __('Contain', 'addonext'),
+                    'fill'    => __('Fill', 'addonext'),
+                    'none'    => __('None', 'addonext'),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image img' => 'object-fit: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-box__image img' => 'object-fit: {{VALUE}};',
                 ],
             ]
         );
@@ -142,26 +142,26 @@ class ImageBox extends WidgetBase
         $this->add_responsive_control(
             'image_align',
             [
-                'label'   => __('Image alignment', 'veloria'),
+                'label'   => __('Image alignment', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
                     'left'   => [
-                        'title' => __('Left', 'veloria'),
+                        'title' => __('Left', 'addonext'),
                         'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'veloria'),
+                        'title' => __('Center', 'addonext'),
                         'icon'  => 'eicon-text-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'veloria'),
+                        'title' => __('Right', 'addonext'),
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],
                 'default'      => 'left',
-                'prefix_class' => 'veloria-ib-image-align%s-',
+                'prefix_class' => 'addonext-ib-image-align%s-',
                 'selectors'    => [
-                    '{{WRAPPER}} .veloria-image-box__image' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-box__image' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -169,7 +169,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'show_title',
             [
-                'label'        => __('Show title', 'veloria'),
+                'label'        => __('Show title', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -180,9 +180,9 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'     => __('Title', 'veloria'),
+                'label'     => __('Title', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Image Box Title', 'veloria'),
+                'default'   => __('Image Box Title', 'addonext'),
                 'dynamic'   => ['active' => true],
                 'condition' => ['show_title' => 'yes'],
             ]
@@ -191,7 +191,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'show_description',
             [
-                'label'        => __('Show description', 'veloria'),
+                'label'        => __('Show description', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -202,9 +202,9 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'description',
             [
-                'label'     => __('Description', 'veloria'),
+                'label'     => __('Description', 'addonext'),
                 'type'      => Controls_Manager::TEXTAREA,
-                'default'   => __('Description text here.', 'veloria'),
+                'default'   => __('Description text here.', 'addonext'),
                 'dynamic'   => ['active' => true],
                 'condition' => ['show_description' => 'yes'],
             ]
@@ -213,7 +213,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'link',
             [
-                'label'   => __('Link', 'veloria'),
+                'label'   => __('Link', 'addonext'),
                 'type'    => Controls_Manager::URL,
                 'dynamic' => ['active' => true],
             ]
@@ -224,7 +224,7 @@ class ImageBox extends WidgetBase
         $this->start_controls_section(
             'section_style_image',
             [
-                'label' => __('Image', 'veloria'),
+                'label' => __('Image', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -232,7 +232,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_bw_mode',
             [
-                'label'        => __('Black & white', 'veloria'),
+                'label'        => __('Black & white', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => '',
@@ -242,13 +242,13 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_grayscale',
             [
-                'label'     => __('Grayscale (%)', 'veloria'),
+                'label'     => __('Grayscale (%)', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 100]],
                 'default'   => ['unit' => '%', 'size' => 0],
                 'condition' => ['image_bw_mode' => ''],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image' => '--veloria-ib-grayscale: {{SIZE}}%;',
+                    '{{WRAPPER}} .addonext-image-box__image' => '--addonext-ib-grayscale: {{SIZE}}%;',
                 ],
             ]
         );
@@ -256,12 +256,12 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_sepia',
             [
-                'label'   => __('Sepia (%)', 'veloria'),
+                'label'   => __('Sepia (%)', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'range'   => ['px' => ['min' => 0, 'max' => 100]],
                 'default' => ['unit' => '%', 'size' => 0],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image' => '--veloria-ib-sepia: {{SIZE}}%;',
+                    '{{WRAPPER}} .addonext-image-box__image' => '--addonext-ib-sepia: {{SIZE}}%;',
                 ],
             ]
         );
@@ -269,12 +269,12 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_blur',
             [
-                'label'   => __('Blur (px)', 'veloria'),
+                'label'   => __('Blur (px)', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'range'   => ['px' => ['min' => 0, 'max' => 20]],
                 'default' => ['unit' => 'px', 'size' => 0],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image' => '--veloria-ib-blur: {{SIZE}}px;',
+                    '{{WRAPPER}} .addonext-image-box__image' => '--addonext-ib-blur: {{SIZE}}px;',
                 ],
             ]
         );
@@ -282,12 +282,12 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_brightness',
             [
-                'label'   => __('Brightness (%)', 'veloria'),
+                'label'   => __('Brightness (%)', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'range'   => ['px' => ['min' => 0, 'max' => 200]],
                 'default' => ['unit' => '%', 'size' => 100],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image' => '--veloria-ib-brightness: {{SIZE}}%;',
+                    '{{WRAPPER}} .addonext-image-box__image' => '--addonext-ib-brightness: {{SIZE}}%;',
                 ],
             ]
         );
@@ -295,12 +295,12 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_contrast',
             [
-                'label'   => __('Contrast (%)', 'veloria'),
+                'label'   => __('Contrast (%)', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'range'   => ['px' => ['min' => 0, 'max' => 200]],
                 'default' => ['unit' => '%', 'size' => 100],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image' => '--veloria-ib-contrast: {{SIZE}}%;',
+                    '{{WRAPPER}} .addonext-image-box__image' => '--addonext-ib-contrast: {{SIZE}}%;',
                 ],
             ]
         );
@@ -308,12 +308,12 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'image_saturate',
             [
-                'label'   => __('Saturate (%)', 'veloria'),
+                'label'   => __('Saturate (%)', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'range'   => ['px' => ['min' => 0, 'max' => 200]],
                 'default' => ['unit' => '%', 'size' => 100],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image' => '--veloria-ib-saturate: {{SIZE}}%;',
+                    '{{WRAPPER}} .addonext-image-box__image' => '--addonext-ib-saturate: {{SIZE}}%;',
                 ],
             ]
         );
@@ -321,12 +321,12 @@ class ImageBox extends WidgetBase
         $this->add_responsive_control(
             'image_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-image-box__image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-image-box__image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-box__image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-box__image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -335,7 +335,7 @@ class ImageBox extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'image_border',
-                'selector' => '{{WRAPPER}} .veloria-image-box__image',
+                'selector' => '{{WRAPPER}} .addonext-image-box__image',
             ]
         );
 
@@ -343,19 +343,19 @@ class ImageBox extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'image_shadow',
-                'selector' => '{{WRAPPER}} .veloria-image-box__image',
+                'selector' => '{{WRAPPER}} .addonext-image-box__image',
             ]
         );
 
         $this->add_control(
             'image_transition_duration',
             [
-                'label'   => __('Transition (s)', 'veloria'),
+                'label'   => __('Transition (s)', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'range'   => ['px' => ['min' => 0.1, 'max' => 2, 'step' => 0.1]],
                 'default' => ['unit' => 'px', 'size' => 0.35],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__image img' => 'transition-duration: {{SIZE}}s;',
+                    '{{WRAPPER}} .addonext-image-box__image img' => 'transition-duration: {{SIZE}}s;',
                 ],
             ]
         );
@@ -365,7 +365,7 @@ class ImageBox extends WidgetBase
         $this->start_controls_section(
             'section_style_image_hover',
             [
-                'label' => __('Image hover', 'veloria'),
+                'label' => __('Image hover', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -373,16 +373,16 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'hover_effect',
             [
-                'label'   => __('Hover effect', 'veloria'),
+                'label'   => __('Hover effect', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
-                    'none'     => __('None', 'veloria'),
-                    'zoom'     => __('Zoom in', 'veloria'),
-                    'grow'     => __('Grow', 'veloria'),
-                    'lift'     => __('Lift', 'veloria'),
-                    'tilt'     => __('Tilt', 'veloria'),
-                    'tilt-3d'  => __('3D tilt (follow mouse)', 'veloria'),
+                    'none'     => __('None', 'addonext'),
+                    'zoom'     => __('Zoom in', 'addonext'),
+                    'grow'     => __('Grow', 'addonext'),
+                    'lift'     => __('Lift', 'addonext'),
+                    'tilt'     => __('Tilt', 'addonext'),
+                    'tilt-3d'  => __('3D tilt (follow mouse)', 'addonext'),
                 ],
             ]
         );
@@ -390,7 +390,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'hover_grayscale_off',
             [
-                'label'        => __('Remove grayscale on hover', 'veloria'),
+                'label'        => __('Remove grayscale on hover', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => '',
@@ -400,10 +400,10 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'hover_overlay_color',
             [
-                'label'   => __('Overlay color on hover', 'veloria'),
+                'label'   => __('Overlay color on hover', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}}.veloria-image-box--hover-overlay .veloria-image-box__image::after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.addonext-image-box--hover-overlay .addonext-image-box__image::after' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -412,7 +412,7 @@ class ImageBox extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'      => 'image_shadow_hover',
-                'selector'  => '{{WRAPPER}} .veloria-image-box__image:hover',
+                'selector'  => '{{WRAPPER}} .addonext-image-box__image:hover',
                 'condition' => ['hover_effect!' => 'none'],
             ]
         );
@@ -422,7 +422,7 @@ class ImageBox extends WidgetBase
         $this->start_controls_section(
             'section_style_animation',
             [
-                'label' => __('Animation', 'veloria'),
+                'label' => __('Animation', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -430,7 +430,7 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'entrance_animation',
             [
-                'label'   => __('Entrance animation', 'veloria'),
+                'label'   => __('Entrance animation', 'addonext'),
                 'type'    => Controls_Manager::ANIMATION,
                 'default' => '',
             ]
@@ -439,13 +439,13 @@ class ImageBox extends WidgetBase
         $this->add_control(
             'animation_duration',
             [
-                'label'     => __('Duration', 'veloria'),
+                'label'     => __('Duration', 'addonext'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'normal',
                 'options'   => [
-                    'slow'   => __('Slow', 'veloria'),
-                    'normal' => __('Normal', 'veloria'),
-                    'fast'   => __('Fast', 'veloria'),
+                    'slow'   => __('Slow', 'addonext'),
+                    'normal' => __('Normal', 'addonext'),
+                    'fast'   => __('Fast', 'addonext'),
                 ],
                 'condition' => ['entrance_animation!' => ''],
             ]
@@ -456,7 +456,7 @@ class ImageBox extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -465,17 +465,17 @@ class ImageBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-image-box__title',
+                'selector' => '{{WRAPPER}} .addonext-image-box__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-box__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -485,7 +485,7 @@ class ImageBox extends WidgetBase
         $this->start_controls_section(
             'section_style_description',
             [
-                'label' => __('Description', 'veloria'),
+                'label' => __('Description', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -494,17 +494,17 @@ class ImageBox extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'description_typography',
-                'selector' => '{{WRAPPER}} .veloria-image-box__description',
+                'selector' => '{{WRAPPER}} .addonext-image-box__description',
             ]
         );
 
         $this->add_control(
             'description_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-box__description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-box__description' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -515,18 +515,18 @@ class ImageBox extends WidgetBase
     public function render(): void
     {
         $settings = $this->get_settings_for_display();
-        $wrapper_class = 'veloria-image-box';
+        $wrapper_class = 'addonext-image-box';
         if (!empty($settings['image_bw_mode'])) {
-            $wrapper_class .= ' veloria-image-box--bw';
+            $wrapper_class .= ' addonext-image-box--bw';
         }
         if (!empty($settings['hover_effect']) && $settings['hover_effect'] !== 'none') {
-            $wrapper_class .= ' veloria-image-box--hover-' . esc_attr($settings['hover_effect']);
+            $wrapper_class .= ' addonext-image-box--hover-' . esc_attr($settings['hover_effect']);
         }
         if (!empty($settings['hover_grayscale_off'])) {
-            $wrapper_class .= ' veloria-image-box--hover-grayscale-off';
+            $wrapper_class .= ' addonext-image-box--hover-grayscale-off';
         }
         if (!empty($settings['hover_overlay_color'])) {
-            $wrapper_class .= ' veloria-image-box--hover-overlay';
+            $wrapper_class .= ' addonext-image-box--hover-overlay';
         }
         if (!empty($settings['entrance_animation'])) {
             $wrapper_class .= ' elementor-invisible elementor-animation-' . esc_attr($settings['entrance_animation']);
@@ -535,7 +535,7 @@ class ImageBox extends WidgetBase
             }
         }
         $this->add_render_attribute('wrapper', 'class', $wrapper_class);
-        $template_path = VELORIA_DIR . 'templates/image-box/image-box.php';
+        $template_path = ADDONEXT_DIR . 'templates/image-box/image-box.php';
         if (is_readable($template_path)) {
             include $template_path;
         }
@@ -545,11 +545,11 @@ class ImageBox extends WidgetBase
     {
         ?>
         <#
-        var wrapperClass = 'veloria-image-box';
-        if (settings.image_bw_mode === 'yes') wrapperClass += ' veloria-image-box--bw';
-        if (settings.hover_effect && settings.hover_effect !== 'none') wrapperClass += ' veloria-image-box--hover-' + settings.hover_effect;
-        if (settings.hover_grayscale_off === 'yes') wrapperClass += ' veloria-image-box--hover-grayscale-off';
-        if (settings.hover_overlay_color) wrapperClass += ' veloria-image-box--hover-overlay';
+        var wrapperClass = 'addonext-image-box';
+        if (settings.image_bw_mode === 'yes') wrapperClass += ' addonext-image-box--bw';
+        if (settings.hover_effect && settings.hover_effect !== 'none') wrapperClass += ' addonext-image-box--hover-' + settings.hover_effect;
+        if (settings.hover_grayscale_off === 'yes') wrapperClass += ' addonext-image-box--hover-grayscale-off';
+        if (settings.hover_overlay_color) wrapperClass += ' addonext-image-box--hover-overlay';
         if (settings.entrance_animation) {
             wrapperClass += ' elementor-invisible elementor-animation-' + settings.entrance_animation;
             if (settings.animation_duration) view.addRenderAttribute('_wrapper', 'data-animation-duration', settings.animation_duration);
@@ -571,20 +571,20 @@ class ImageBox extends WidgetBase
             var showImageCol = (settings.image && settings.image.id) || editorImgSrc;
             #>
             <# if (showImageCol) { #>
-                <div class="veloria-image-box__image">
+                <div class="addonext-image-box__image">
                     <# if (hasLink) { #><a href="{{ settings.link.url }}"><# } #>
                     <img src="{{ editorImgSrc }}" alt="{{ settings.image && settings.image.alt ? settings.image.alt : settings.title }}">
                     <# if (hasLink) { #></a><# } #>
                 </div>
             <# } #>
-            <div class="veloria-image-box__content">
+            <div class="addonext-image-box__content">
                 <# if (showTitle && settings.title) { #>
                     <# if (hasLink) { #><a href="{{ settings.link.url }}"><# } #>
-                    <h3 class="veloria-image-box__title" {{{ view.getRenderAttributeString('title') }}}>{{{ settings.title }}}</h3>
+                    <h3 class="addonext-image-box__title" {{{ view.getRenderAttributeString('title') }}}>{{{ settings.title }}}</h3>
                     <# if (hasLink) { #></a><# } #>
                 <# } #>
                 <# if (showDescription && settings.description) { #>
-                    <p class="veloria-image-box__description" {{{ view.getRenderAttributeString('description') }}}>{{{ settings.description }}}</p>
+                    <p class="addonext-image-box__description" {{{ view.getRenderAttributeString('description') }}}>{{{ settings.description }}}</p>
                 <# } #>
             </div>
         </div>

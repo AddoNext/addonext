@@ -1,4 +1,4 @@
-.veloria-countdown {
+.addonext-countdown {
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -7,7 +7,7 @@
     gap: 12px;
 }
 
-.veloria-countdown__segment {
+.addonext-countdown__segment {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,14 +16,14 @@
     flex: 1 1 0;
 }
 
-.veloria-countdown__value {
+.addonext-countdown__value {
     display: block;
     font-weight: 700;
     line-height: 1.2;
     color: #fff;
 }
 
-.veloria-countdown__label {
+.addonext-countdown__label {
     display: block;
     text-transform: uppercase;
     font-size: 12px;
@@ -33,52 +33,52 @@
     margin-top: 4px;
 }
 
-.veloria-countdown--blocks .veloria-countdown__segment[data-unit="days"] {
+.addonext-countdown--blocks .addonext-countdown__segment[data-unit="days"] {
     background-color: #E74C3C;
 }
 
-.veloria-countdown--blocks .veloria-countdown__segment[data-unit="hours"] {
+.addonext-countdown--blocks .addonext-countdown__segment[data-unit="hours"] {
     background-color: #F39C12;
 }
 
-.veloria-countdown--blocks .veloria-countdown__segment[data-unit="minutes"] {
+.addonext-countdown--blocks .addonext-countdown__segment[data-unit="minutes"] {
     background-color: #F1C40F;
 }
 
-.veloria-countdown--blocks .veloria-countdown__segment[data-unit="seconds"] {
+.addonext-countdown--blocks .addonext-countdown__segment[data-unit="seconds"] {
     background-color: #2ECC71;
 }
 
-.veloria-countdown--cards {
+.addonext-countdown--cards {
     padding: 16px;
     border-radius: 12px;
 }
 
-.veloria-countdown--cards .veloria-countdown__segment {
+.addonext-countdown--cards .addonext-countdown__segment {
     background-color: #BF90FF;
 }
 
-.veloria-countdown--cards .veloria-countdown__label {
+.addonext-countdown--cards .addonext-countdown__label {
     text-transform: none;
     font-weight: 400;
 }
 
-.veloria-countdown--minimal .veloria-countdown__segment {
+.addonext-countdown--minimal .addonext-countdown__segment {
     background: none;
 }
 
-.veloria-countdown--minimal .veloria-countdown__value,
-.veloria-countdown--minimal .veloria-countdown__label,
-.elementor-widget-veloria-countdown-timer .veloria-countdown--minimal .veloria-countdown__value,
-.elementor-widget-veloria-countdown-timer .veloria-countdown--minimal .veloria-countdown__label {
+.addonext-countdown--minimal .addonext-countdown__value,
+.addonext-countdown--minimal .addonext-countdown__label,
+.elementor-widget-addonext-countdown-timer .addonext-countdown--minimal .addonext-countdown__value,
+.elementor-widget-addonext-countdown-timer .addonext-countdown--minimal .addonext-countdown__label {
     color: #000000 !important;
 }
 
-.veloria-countdown--minimal .veloria-countdown__label {
+.addonext-countdown--minimal .addonext-countdown__label {
     text-transform: uppercase;
 }
 
-.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__value-box {
+.addonext-countdown[data-shutter-flip="1"] .addonext-countdown__value-box {
     position: relative;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@
     background: inherit;
 }
 
-.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__shutter {
+.addonext-countdown[data-shutter-flip="1"] .addonext-countdown__shutter {
     position: absolute;
     top: 0;
     left: 0;
@@ -101,25 +101,25 @@
     backface-visibility: hidden;
 }
 
-.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__shutter-value {
+.addonext-countdown[data-shutter-flip="1"] .addonext-countdown__shutter-value {
     font-weight: 700;
     line-height: 1.2;
     color: #fff;
 }
 
-.veloria-countdown[data-shutter-flip="1"] {
+.addonext-countdown[data-shutter-flip="1"] {
     perspective: 600px;
 }
 
-.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__segment {
+.addonext-countdown[data-shutter-flip="1"] .addonext-countdown__segment {
     transform-style: preserve-3d;
 }
 
-.veloria-countdown[data-shutter-flip="1"] .veloria-countdown__shutter.shutter-flip {
-    animation: veloria-shutter-flip 0.45s ease-in-out forwards;
+.addonext-countdown[data-shutter-flip="1"] .addonext-countdown__shutter.shutter-flip {
+    animation: addonext-shutter-flip 0.45s ease-in-out forwards;
 }
 
-@keyframes veloria-shutter-flip {
+@keyframes addonext-shutter-flip {
     0% {
         transform: rotateX(0deg);
     }

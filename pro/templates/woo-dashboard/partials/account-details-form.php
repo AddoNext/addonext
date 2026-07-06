@@ -4,130 +4,130 @@ defined('ABSPATH') || exit;
 if (emt_fs()->can_use_premium_code__premium_only()) {
     if (emt_fs()->is_plan('pro')) {
 
-if (!isset($veloria_user) || !$veloria_user instanceof \WP_User) {
+if (!isset($addonext_user) || !$addonext_user instanceof \WP_User) {
     return;
 }
 
-$veloria_wd_uid = isset($veloria_wd_uid) ? (string) $veloria_wd_uid : '';
+$addonext_wd_uid = isset($addonext_wd_uid) ? (string) $addonext_wd_uid : '';
 ?>
-<form class="veloria-wd-account__form" method="post" autocomplete="off" novalidate>
-    <div class="veloria-wd-account__row">
-        <label class="veloria-wd-account__label" for="veloria-wd-account-first-<?php echo esc_attr($veloria_wd_uid); ?>">
-            <?php echo esc_html__('First name', 'veloria'); ?><span class="veloria-wd-account__required" aria-hidden="true">*</span>
+<form class="addonext-wd-account__form" method="post" autocomplete="off" novalidate>
+    <div class="addonext-wd-account__row">
+        <label class="addonext-wd-account__label" for="addonext-wd-account-first-<?php echo esc_attr($addonext_wd_uid); ?>">
+            <?php echo esc_html__('First name', 'addonext'); ?><span class="addonext-wd-account__required" aria-hidden="true">*</span>
         </label>
-        <div class="veloria-wd-account__field">
+        <div class="addonext-wd-account__field">
             <input
-                class="veloria-wd-account__input"
+                class="addonext-wd-account__input"
                 type="text"
                 name="account_first_name"
-                id="veloria-wd-account-first-<?php echo esc_attr($veloria_wd_uid); ?>"
-                value="<?php echo esc_attr($veloria_user->first_name); ?>"
+                id="addonext-wd-account-first-<?php echo esc_attr($addonext_wd_uid); ?>"
+                value="<?php echo esc_attr($addonext_user->first_name); ?>"
                 autocomplete="given-name"
                 required
             >
         </div>
     </div>
 
-    <div class="veloria-wd-account__row">
-        <label class="veloria-wd-account__label" for="veloria-wd-account-last-<?php echo esc_attr($veloria_wd_uid); ?>">
-            <?php echo esc_html__('Last name', 'veloria'); ?><span class="veloria-wd-account__required" aria-hidden="true">*</span>
+    <div class="addonext-wd-account__row">
+        <label class="addonext-wd-account__label" for="addonext-wd-account-last-<?php echo esc_attr($addonext_wd_uid); ?>">
+            <?php echo esc_html__('Last name', 'addonext'); ?><span class="addonext-wd-account__required" aria-hidden="true">*</span>
         </label>
-        <div class="veloria-wd-account__field">
+        <div class="addonext-wd-account__field">
             <input
-                class="veloria-wd-account__input"
+                class="addonext-wd-account__input"
                 type="text"
                 name="account_last_name"
-                id="veloria-wd-account-last-<?php echo esc_attr($veloria_wd_uid); ?>"
-                value="<?php echo esc_attr($veloria_user->last_name); ?>"
+                id="addonext-wd-account-last-<?php echo esc_attr($addonext_wd_uid); ?>"
+                value="<?php echo esc_attr($addonext_user->last_name); ?>"
                 autocomplete="family-name"
                 required
             >
         </div>
     </div>
 
-    <div class="veloria-wd-account__row veloria-wd-account__row--wide">
-        <label class="veloria-wd-account__label" for="veloria-wd-account-display-<?php echo esc_attr($veloria_wd_uid); ?>">
-            <?php echo esc_html__('Display name', 'veloria'); ?><span class="veloria-wd-account__required" aria-hidden="true">*</span>
+    <div class="addonext-wd-account__row addonext-wd-account__row--wide">
+        <label class="addonext-wd-account__label" for="addonext-wd-account-display-<?php echo esc_attr($addonext_wd_uid); ?>">
+            <?php echo esc_html__('Display name', 'addonext'); ?><span class="addonext-wd-account__required" aria-hidden="true">*</span>
         </label>
-        <div class="veloria-wd-account__field">
+        <div class="addonext-wd-account__field">
             <input
-                class="veloria-wd-account__input"
+                class="addonext-wd-account__input"
                 type="text"
                 name="account_display_name"
-                id="veloria-wd-account-display-<?php echo esc_attr($veloria_wd_uid); ?>"
-                value="<?php echo esc_attr($veloria_user->display_name); ?>"
+                id="addonext-wd-account-display-<?php echo esc_attr($addonext_wd_uid); ?>"
+                value="<?php echo esc_attr($addonext_user->display_name); ?>"
                 autocomplete="nickname"
                 required
-                aria-describedby="veloria-wd-account-display-hint-<?php echo esc_attr($veloria_wd_uid); ?>"
+                aria-describedby="addonext-wd-account-display-hint-<?php echo esc_attr($addonext_wd_uid); ?>"
             >
-            <p class="veloria-wd-account__hint" id="veloria-wd-account-display-hint-<?php echo esc_attr($veloria_wd_uid); ?>">
-                <?php echo esc_html__('This will be how your name will be displayed in the account section and in reviews', 'veloria'); ?>
+            <p class="addonext-wd-account__hint" id="addonext-wd-account-display-hint-<?php echo esc_attr($addonext_wd_uid); ?>">
+                <?php echo esc_html__('This will be how your name will be displayed in the account section and in reviews', 'addonext'); ?>
             </p>
         </div>
     </div>
 
-    <div class="veloria-wd-account__row">
-        <label class="veloria-wd-account__label" for="veloria-wd-account-email-<?php echo esc_attr($veloria_wd_uid); ?>">
-            <?php echo esc_html__('Email address', 'veloria'); ?><span class="veloria-wd-account__required" aria-hidden="true">*</span>
+    <div class="addonext-wd-account__row">
+        <label class="addonext-wd-account__label" for="addonext-wd-account-email-<?php echo esc_attr($addonext_wd_uid); ?>">
+            <?php echo esc_html__('Email address', 'addonext'); ?><span class="addonext-wd-account__required" aria-hidden="true">*</span>
         </label>
-        <div class="veloria-wd-account__field">
+        <div class="addonext-wd-account__field">
             <input
-                class="veloria-wd-account__input"
+                class="addonext-wd-account__input"
                 type="email"
                 name="account_email"
-                id="veloria-wd-account-email-<?php echo esc_attr($veloria_wd_uid); ?>"
-                value="<?php echo esc_attr($veloria_user->user_email); ?>"
+                id="addonext-wd-account-email-<?php echo esc_attr($addonext_wd_uid); ?>"
+                value="<?php echo esc_attr($addonext_user->user_email); ?>"
                 autocomplete="email"
                 required
             >
         </div>
     </div>
 
-    <fieldset class="veloria-wd-account__fieldset">
-        <legend class="veloria-wd-account__legend"><?php echo esc_html__('Password change', 'veloria'); ?></legend>
+    <fieldset class="addonext-wd-account__fieldset">
+        <legend class="addonext-wd-account__legend"><?php echo esc_html__('Password change', 'addonext'); ?></legend>
 
-        <div class="veloria-wd-account__row">
-            <label class="veloria-wd-account__label" for="veloria-wd-account-pass-cur-<?php echo esc_attr($veloria_wd_uid); ?>">
-                <?php echo esc_html__('Current password (leave blank to leave unchanged)', 'veloria'); ?>
+        <div class="addonext-wd-account__row">
+            <label class="addonext-wd-account__label" for="addonext-wd-account-pass-cur-<?php echo esc_attr($addonext_wd_uid); ?>">
+                <?php echo esc_html__('Current password (leave blank to leave unchanged)', 'addonext'); ?>
             </label>
-            <div class="veloria-wd-account__field">
+            <div class="addonext-wd-account__field">
                 <input
-                    class="veloria-wd-account__input"
+                    class="addonext-wd-account__input"
                     type="password"
                     name="password_current"
-                    id="veloria-wd-account-pass-cur-<?php echo esc_attr($veloria_wd_uid); ?>"
+                    id="addonext-wd-account-pass-cur-<?php echo esc_attr($addonext_wd_uid); ?>"
                     value=""
                     autocomplete="current-password"
                 >
             </div>
         </div>
 
-        <div class="veloria-wd-account__row">
-            <label class="veloria-wd-account__label" for="veloria-wd-account-pass-1-<?php echo esc_attr($veloria_wd_uid); ?>">
-                <?php echo esc_html__('New password (leave blank to leave unchanged)', 'veloria'); ?>
+        <div class="addonext-wd-account__row">
+            <label class="addonext-wd-account__label" for="addonext-wd-account-pass-1-<?php echo esc_attr($addonext_wd_uid); ?>">
+                <?php echo esc_html__('New password (leave blank to leave unchanged)', 'addonext'); ?>
             </label>
-            <div class="veloria-wd-account__field">
+            <div class="addonext-wd-account__field">
                 <input
-                    class="veloria-wd-account__input"
+                    class="addonext-wd-account__input"
                     type="password"
                     name="password_1"
-                    id="veloria-wd-account-pass-1-<?php echo esc_attr($veloria_wd_uid); ?>"
+                    id="addonext-wd-account-pass-1-<?php echo esc_attr($addonext_wd_uid); ?>"
                     value=""
                     autocomplete="new-password"
                 >
             </div>
         </div>
 
-        <div class="veloria-wd-account__row">
-            <label class="veloria-wd-account__label" for="veloria-wd-account-pass-2-<?php echo esc_attr($veloria_wd_uid); ?>">
-                <?php echo esc_html__('Confirm new password', 'veloria'); ?>
+        <div class="addonext-wd-account__row">
+            <label class="addonext-wd-account__label" for="addonext-wd-account-pass-2-<?php echo esc_attr($addonext_wd_uid); ?>">
+                <?php echo esc_html__('Confirm new password', 'addonext'); ?>
             </label>
-            <div class="veloria-wd-account__field">
+            <div class="addonext-wd-account__field">
                 <input
-                    class="veloria-wd-account__input"
+                    class="addonext-wd-account__input"
                     type="password"
                     name="password_2"
-                    id="veloria-wd-account-pass-2-<?php echo esc_attr($veloria_wd_uid); ?>"
+                    id="addonext-wd-account-pass-2-<?php echo esc_attr($addonext_wd_uid); ?>"
                     value=""
                     autocomplete="new-password"
                 >
@@ -135,13 +135,13 @@ $veloria_wd_uid = isset($veloria_wd_uid) ? (string) $veloria_wd_uid : '';
         </div>
     </fieldset>
 
-    <div class="veloria-wd-account__actions">
-        <button type="submit" class="veloria-wd-account__submit">
-            <?php echo esc_html__('Save changes', 'veloria'); ?>
+    <div class="addonext-wd-account__actions">
+        <button type="submit" class="addonext-wd-account__submit">
+            <?php echo esc_html__('Save changes', 'addonext'); ?>
         </button>
     </div>
 
-    <div class="veloria-wd-account__message" role="status" aria-live="polite" hidden></div>
+    <div class="addonext-wd-account__message" role="status" aria-live="polite" hidden></div>
 </form>
 
 <?php

@@ -1,4 +1,4 @@
-.veloria-text-editor {
+.addonext-text-editor {
     margin: 0;
     font-size: 16px;
     font-weight: 400;
@@ -6,27 +6,27 @@
     color: #555555;
 }
 
-.veloria-text-editor p {
+.addonext-text-editor p {
     margin: 0 0 1em;
 }
 
-.veloria-text-editor p:last-child {
+.addonext-text-editor p:last-child {
     margin-bottom: 0;
 }
 
-.veloria-text-editor--align-left .veloria-text-editor {
+.addonext-text-editor--align-left .addonext-text-editor {
     text-align: left;
 }
 
-.veloria-text-editor--align-center .veloria-text-editor {
+.addonext-text-editor--align-center .addonext-text-editor {
     text-align: center;
 }
 
-.veloria-text-editor--align-right .veloria-text-editor {
+.addonext-text-editor--align-right .addonext-text-editor {
     text-align: right;
 }
 
-.veloria-text-editor--drop-cap .veloria-text-editor > p:first-child::first-letter {
+.addonext-text-editor--drop-cap .addonext-text-editor > p:first-child::first-letter {
     float: left;
     font-size: 3.5em;
     line-height: 0.85;
@@ -34,26 +34,26 @@
     font-weight: 700;
 }
 
-.veloria-text-editor.veloria-text-editor--gradient {
+.addonext-text-editor.addonext-text-editor--gradient {
     background: linear-gradient(
-        var(--veloria-te-gradient-angle, 90deg),
-        var(--veloria-te-gradient-start, #2563eb),
-        var(--veloria-te-gradient-end, #7c3aed)
+        var(--addonext-te-gradient-angle, 90deg),
+        var(--addonext-te-gradient-start, #2563eb),
+        var(--addonext-te-gradient-end, #7c3aed)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent !important;
 }
 
-.veloria-text-editor.veloria-text-editor--gradient a {
+.addonext-text-editor.addonext-text-editor--gradient a {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.veloria-text-editor.veloria-text-editor--3d {
-    --te-d: var(--veloria-te-3d-depth, 4px);
-    --te-c: var(--veloria-te-3d-color, rgba(0,0,0,0.3));
+.addonext-text-editor.addonext-text-editor--3d {
+    --te-d: var(--addonext-te-3d-depth, 4px);
+    --te-c: var(--addonext-te-3d-color, rgba(0,0,0,0.3));
     text-shadow:
         var(--te-d) 0 0 var(--te-c),
         calc(var(--te-d) * 0.94) calc(var(--te-d) * 0.34) 0 var(--te-c),
@@ -66,7 +66,7 @@
         calc(var(--te-d) * -1) 0 0 var(--te-c);
 }
 
-.veloria-text-editor.veloria-text-editor--3d.veloria-text-editor--gradient {
+.addonext-text-editor.addonext-text-editor--3d.addonext-text-editor--gradient {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent !important;

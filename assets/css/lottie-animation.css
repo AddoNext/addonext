@@ -1,16 +1,16 @@
-.veloria-lottie-animation__wrapper {
+.addonext-lottie-animation__wrapper {
     display: flex;
     width: 100%;
     min-height: 1px;
 }
 
-.veloria-lottie-animation {
+.addonext-lottie-animation {
     display: block;
     max-width: 100%;
     line-height: 0;
 }
 
-.veloria-lottie-animation__link {
+.addonext-lottie-animation__link {
     display: inline-flex;
     max-width: 100%;
     line-height: 0;

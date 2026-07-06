@@ -1,13 +1,13 @@
 (function () {
     document.addEventListener("click", function (e) {
-        var header = e.target.closest(".veloria-advanced-tabs__header");
+        var header = e.target.closest(".addonext-advanced-tabs__header");
         if (!header) return;
         e.preventDefault();
         e.stopPropagation();
-        var wrapper = header.closest(".veloria-advanced-tabs");
+        var wrapper = header.closest(".addonext-advanced-tabs");
         if (!wrapper) return;
-        var headers = wrapper.querySelectorAll(".veloria-advanced-tabs__header");
-        var panels = wrapper.querySelectorAll(".veloria-advanced-tabs__panel");
+        var headers = wrapper.querySelectorAll(".addonext-advanced-tabs__header");
+        var panels = wrapper.querySelectorAll(".addonext-advanced-tabs__panel");
         var index = Array.prototype.indexOf.call(headers, header);
         headers.forEach(function (h) {
             h.classList.remove("is-active");

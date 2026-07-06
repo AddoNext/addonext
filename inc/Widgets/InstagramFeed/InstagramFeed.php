@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\InstagramFeed;
+namespace Addonext\Widgets\InstagramFeed;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -14,12 +14,12 @@ class InstagramFeed extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-instagram-gallery veloria-icon';
+        return 'eicon-instagram-gallery addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-instagram-feed';
+        return 'addonext-instagram-feed';
     }
 
     public function get_admin_category(): string
@@ -29,12 +29,12 @@ class InstagramFeed extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Instagram Feed', 'veloria');
+        return __('Instagram Feed', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Display Instagram posts', 'veloria');
+        return __('Display Instagram posts', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -44,12 +44,12 @@ class InstagramFeed extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'veloria-instagram-feed'];
+        return ['swiper', 'addonext-instagram-feed'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'veloria-instagram-feed'];
+        return ['swiper', 'addonext-instagram-feed'];
     }
 
     public function enqueue_assets(): void
@@ -57,16 +57,16 @@ class InstagramFeed extends WidgetBase
         wp_enqueue_style('swiper');
         wp_enqueue_script('swiper');
         wp_register_style(
-            'veloria-instagram-feed',
-            VELORIA_URL . 'assets/css/instagram-feed.css',
+            'addonext-instagram-feed',
+            ADDONEXT_URL . 'assets/css/instagram-feed.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-instagram-feed',
-            VELORIA_URL . 'assets/js/instagram-feed.js',
+            'addonext-instagram-feed',
+            ADDONEXT_URL . 'assets/js/instagram-feed.js',
             ['swiper'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -85,7 +85,7 @@ class InstagramFeed extends WidgetBase
     public function fetch_instagram_feed(string $access_token, array $settings): array
     {
         $limit = isset($settings['limit']) ? max(1, min(12, (int) $settings['limit'])) : 6;
-        $key   = 'veloria_instagram_feed_' . $this->get_id() . '_' . md5($access_token . (string) ($settings['cache_timeout'] ?? 'hour'));
+        $key   = 'addonext_instagram_feed_' . $this->get_id() . '_' . md5($access_token . (string) ($settings['cache_timeout'] ?? 'hour'));
 
         $cached = get_transient($key);
         if (is_array($cached) && !empty($cached)) {
@@ -130,7 +130,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_api',
             [
-                'label' => __('Integration', 'veloria'),
+                'label' => __('Integration', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -138,25 +138,25 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'access_token',
             [
-                'label'       => __('Access Token', 'veloria'),
+                'label'       => __('Access Token', 'addonext'),
                 'type'        => Controls_Manager::TEXTAREA,
-                'placeholder' => __('Paste your Instagram Graph API access token', 'veloria'),
-                'description' => __('Get token via Facebook for Developers (Instagram Basic Display or Graph API).', 'veloria'),
+                'placeholder' => __('Paste your Instagram Graph API access token', 'addonext'),
+                'description' => __('Get token via Facebook for Developers (Instagram Basic Display or Graph API).', 'addonext'),
             ]
         );
 
         $this->add_control(
             'cache_timeout',
             [
-                'label'       => __('Cache Timeout', 'veloria'),
+                'label'       => __('Cache Timeout', 'addonext'),
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'hour',
                 'options'     => [
-                    'none'   => __('None', 'veloria'),
-                    'minute' => __('Minute', 'veloria'),
-                    'hour'   => __('Hour', 'veloria'),
-                    'day'    => __('Day', 'veloria'),
-                    'week'   => __('Week', 'veloria'),
+                    'none'   => __('None', 'addonext'),
+                    'minute' => __('Minute', 'addonext'),
+                    'hour'   => __('Hour', 'addonext'),
+                    'day'    => __('Day', 'addonext'),
+                    'week'   => __('Week', 'addonext'),
                 ],
             ]
         );
@@ -164,7 +164,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'limit',
             [
-                'label'   => __('Number of Posts', 'veloria'),
+                'label'   => __('Number of Posts', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 6,
                 'min'     => 1,
@@ -180,7 +180,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __('Layout', 'veloria'),
+                'label' => __('Layout', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -188,22 +188,22 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'layout',
             [
-                'label'        => __('Layout', 'veloria'),
+                'label'        => __('Layout', 'addonext'),
                 'type'         => Controls_Manager::SELECT,
                 'default'      => 'grid',
                 'options'      => [
-                    'grid'     => __('Grid', 'veloria'),
-                    'list'     => __('List', 'veloria'),
-                    'carousel' => __('Carousel', 'veloria'),
+                    'grid'     => __('Grid', 'addonext'),
+                    'list'     => __('List', 'addonext'),
+                    'carousel' => __('Carousel', 'addonext'),
                 ],
-                'prefix_class' => 'veloria-instagram-feed--',
+                'prefix_class' => 'addonext-instagram-feed--',
             ]
         );
 
         $this->add_responsive_control(
             'columns',
             [
-                'label'     => __('Columns', 'veloria'),
+                'label'     => __('Columns', 'addonext'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => '3',
                 'options'   => [
@@ -215,7 +215,7 @@ class InstagramFeed extends WidgetBase
                     '6' => '6',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed__grid' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                    '{{WRAPPER}} .addonext-instagram-feed__grid' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
                 ],
                 'condition' => [
                     'layout' => ['grid', 'list'],
@@ -226,13 +226,13 @@ class InstagramFeed extends WidgetBase
         $this->add_responsive_control(
             'gutter',
             [
-                'label'      => __('Gutter', 'veloria'),
+                'label'      => __('Gutter', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 50]],
                 'default'    => ['size' => 10],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-instagram-feed__grid' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-instagram-feed__grid' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
                 'condition'  => [
                     'layout' => ['grid', 'list'],
@@ -243,7 +243,7 @@ class InstagramFeed extends WidgetBase
         $this->add_responsive_control(
             'carousel_slides',
             [
-                'label'     => __('Slides to Show', 'veloria'),
+                'label'     => __('Slides to Show', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'default'   => 3,
                 'min'       => 1,
@@ -255,7 +255,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_space',
             [
-                'label'     => __('Space Between', 'veloria'),
+                'label'     => __('Space Between', 'addonext'),
                 'type'     => Controls_Manager::NUMBER,
                 'default'  => 10,
                 'min'      => 0,
@@ -266,7 +266,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_nav',
             [
-                'label'        => __('Navigation Arrows', 'veloria'),
+                'label'        => __('Navigation Arrows', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => 'yes',
                 'condition'    => ['layout' => 'carousel'],
@@ -276,7 +276,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_pagination',
             [
-                'label'        => __('Pagination Dots', 'veloria'),
+                'label'        => __('Pagination Dots', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => 'yes',
                 'condition'    => ['layout' => 'carousel'],
@@ -286,7 +286,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_autoplay',
             [
-                'label'     => __('Autoplay', 'veloria'),
+                'label'     => __('Autoplay', 'addonext'),
                 'type'      => Controls_Manager::SWITCHER,
                 'condition' => ['layout' => 'carousel'],
             ]
@@ -295,7 +295,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_autoplay_delay',
             [
-                'label'     => __('Autoplay Delay (ms)', 'veloria'),
+                'label'     => __('Autoplay Delay (ms)', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'default'   => 3000,
                 'condition' => [
@@ -308,7 +308,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_loop',
             [
-                'label'     => __('Loop', 'veloria'),
+                'label'     => __('Loop', 'addonext'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => 'yes',
                 'condition' => ['layout' => 'carousel'],
@@ -318,7 +318,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'carousel_speed',
             [
-                'label'     => __('Transition Speed (ms)', 'veloria'),
+                'label'     => __('Transition Speed (ms)', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'default'   => 500,
                 'condition' => ['layout' => 'carousel'],
@@ -328,7 +328,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'force_square',
             [
-                'label'     => __('Force Square Images', 'veloria'),
+                'label'     => __('Force Square Images', 'addonext'),
                 'type'      => Controls_Manager::SWITCHER,
                 'default'   => '',
                 'condition' => ['layout!' => 'list'],
@@ -338,7 +338,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'open_new_tab',
             [
-                'label'   => __('Open Links in New Tab', 'veloria'),
+                'label'   => __('Open Links in New Tab', 'addonext'),
                 'type'    => Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -347,7 +347,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'overlay_links',
             [
-                'label'   => __('Overlay Links to Post', 'veloria'),
+                'label'   => __('Overlay Links to Post', 'addonext'),
                 'type'    => Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -361,7 +361,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_elements',
             [
-                'label' => __('Content Elements', 'veloria'),
+                'label' => __('Content Elements', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -370,39 +370,39 @@ class InstagramFeed extends WidgetBase
         $repeater->add_control(
             'element',
             [
-                'label'   => __('Element', 'veloria'),
+                'label'   => __('Element', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'icon',
                 'options' => [
-                    'username' => __('Username', 'veloria'),
-                    'caption'  => __('Caption', 'veloria'),
-                    'date'     => __('Date', 'veloria'),
-                    'icon'     => __('Instagram Icon', 'veloria'),
-                    'lightbox' => __('Lightbox', 'veloria'),
+                    'username' => __('Username', 'addonext'),
+                    'caption'  => __('Caption', 'addonext'),
+                    'date'     => __('Date', 'addonext'),
+                    'icon'     => __('Instagram Icon', 'addonext'),
+                    'lightbox' => __('Lightbox', 'addonext'),
                 ],
             ]
         );
         $repeater->add_control(
             'location',
             [
-                'label'   => __('Location', 'veloria'),
+                'label'   => __('Location', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'over',
                 'options' => [
-                    'over'   => __('Over Media', 'veloria'),
-                    'below'  => __('Below Media', 'veloria'),
+                    'over'   => __('Over Media', 'addonext'),
+                    'below'  => __('Below Media', 'addonext'),
                 ],
             ]
         );
         $repeater->add_control(
             'align',
             [
-                'label'   => __('Align', 'veloria'),
+                'label'   => __('Align', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
-                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
-                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
+                    'left'   => ['title' => __('Left', 'addonext'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'addonext'), 'icon' => 'eicon-text-align-center'],
+                    'right'  => ['title' => __('Right', 'addonext'), 'icon' => 'eicon-text-align-right'],
                 ],
                 'default' => 'center',
             ]
@@ -411,7 +411,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'elements',
             [
-                'label'       => __('Elements', 'veloria'),
+                'label'       => __('Elements', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
@@ -426,7 +426,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'caption_words',
             [
-                'label'   => __('Caption Word Count', 'veloria'),
+                'label'   => __('Caption Word Count', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 15,
                 'min'     => 1,
@@ -441,7 +441,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_follow',
             [
-                'label' => __('Follow Button', 'veloria'),
+                'label' => __('Follow Button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -449,7 +449,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'show_follow',
             [
-                'label'   => __('Show Follow Button', 'veloria'),
+                'label'   => __('Show Follow Button', 'addonext'),
                 'type'    => Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -458,9 +458,9 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'follow_text',
             [
-                'label'     => __('Button Text', 'veloria'),
+                'label'     => __('Button Text', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Follow on Instagram', 'veloria'),
+                'default'   => __('Follow on Instagram', 'addonext'),
                 'condition' => ['show_follow' => 'yes'],
             ]
         );
@@ -468,7 +468,7 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'follow_url',
             [
-                'label'       => __('Button URL', 'veloria'),
+                'label'       => __('Button URL', 'addonext'),
                 'type'        => Controls_Manager::URL,
                 'placeholder' => 'https://instagram.com/',
                 'condition'   => ['show_follow' => 'yes'],
@@ -483,7 +483,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_style_layout',
             [
-                'label' => __('Layout', 'veloria'),
+                'label' => __('Layout', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -491,13 +491,13 @@ class InstagramFeed extends WidgetBase
         $this->add_responsive_control(
             'list_media_width',
             [
-                'label'      => __('List Media Width (%)', 'veloria'),
+                'label'      => __('List Media Width (%)', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['%'],
                 'range'      => ['%' => ['min' => 20, 'max' => 60]],
                 'default'    => ['size' => 35],
                 'selectors'  => [
-                    '{{WRAPPER}}.veloria-instagram-feed--list .veloria-instagram-feed__media-wrap' => 'width: {{SIZE}}%;',
+                    '{{WRAPPER}}.addonext-instagram-feed--list .addonext-instagram-feed__media-wrap' => 'width: {{SIZE}}%;',
                 ],
                 'condition'  => ['layout' => 'list'],
             ]
@@ -511,7 +511,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_style_image',
             [
-                'label' => __('Image', 'veloria'),
+                'label' => __('Image', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -519,14 +519,14 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'image_effect',
             [
-                'label'   => __('Hover Effect', 'veloria'),
+                'label'   => __('Hover Effect', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'zoom-in',
                 'options' => [
-                    'none'      => __('None', 'veloria'),
-                    'zoom-in'   => __('Zoom In', 'veloria'),
-                    'zoom-out'  => __('Zoom Out', 'veloria'),
-                    'grayscale' => __('Grayscale', 'veloria'),
+                    'none'      => __('None', 'addonext'),
+                    'zoom-in'   => __('Zoom In', 'addonext'),
+                    'zoom-out'  => __('Zoom Out', 'addonext'),
+                    'grayscale' => __('Grayscale', 'addonext'),
                 ],
             ]
         );
@@ -534,13 +534,13 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'image_border_radius',
             [
-                'label'      => __('Border Radius', 'veloria'),
+                'label'      => __('Border Radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => ['px' => ['min' => 0, 'max' => 50]],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-instagram-feed__media-wrap' => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-instagram-feed__media-wrap img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-instagram-feed__media-wrap' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-instagram-feed__media-wrap img' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -553,7 +553,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_style_overlay',
             [
-                'label' => __('Overlay', 'veloria'),
+                'label' => __('Overlay', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -563,7 +563,7 @@ class InstagramFeed extends WidgetBase
             [
                 'name'     => 'overlay_bg',
                 'types'    => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .veloria-instagram-feed__overlay',
+                'selector' => '{{WRAPPER}} .addonext-instagram-feed__overlay',
                 'fields_options' => [
                     'color' => ['default' => 'rgba(0,0,0,0.35)'],
                 ],
@@ -573,17 +573,17 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'overlay_blend',
             [
-                'label'   => __('Blend Mode', 'veloria'),
+                'label'   => __('Blend Mode', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'normal',
                 'options' => [
-                    'normal' => __('Normal', 'veloria'),
-                    'multiply' => __('Multiply', 'veloria'),
-                    'screen' => __('Screen', 'veloria'),
-                    'overlay' => __('Overlay', 'veloria'),
+                    'normal' => __('Normal', 'addonext'),
+                    'multiply' => __('Multiply', 'addonext'),
+                    'screen' => __('Screen', 'addonext'),
+                    'overlay' => __('Overlay', 'addonext'),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed__overlay' => 'mix-blend-mode: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-instagram-feed__overlay' => 'mix-blend-mode: {{VALUE}};',
                 ],
             ]
         );
@@ -596,7 +596,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_style_caption',
             [
-                'label' => __('Caption & Date', 'veloria'),
+                'label' => __('Caption & Date', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -605,17 +605,17 @@ class InstagramFeed extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'caption_typography',
-                'selector' => '{{WRAPPER}} .veloria-instagram-feed__caption',
+                'selector' => '{{WRAPPER}} .addonext-instagram-feed__caption',
             ]
         );
 
         $this->add_control(
             'caption_color',
             [
-                'label'     => __('Caption Color', 'veloria'),
+                'label'     => __('Caption Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed__caption' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-instagram-feed__caption' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -623,10 +623,10 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'date_color',
             [
-                'label'     => __('Date Color', 'veloria'),
+                'label'     => __('Date Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed__date' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-instagram-feed__date' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -639,7 +639,7 @@ class InstagramFeed extends WidgetBase
         $this->start_controls_section(
             'section_style_carousel',
             [
-                'label'     => __('Carousel', 'veloria'),
+                'label'     => __('Carousel', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['layout' => 'carousel'],
             ]
@@ -648,10 +648,10 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'nav_color',
             [
-                'label'     => __('Arrows Color', 'veloria'),
+                'label'     => __('Arrows Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed .swiper-button-next, {{WRAPPER}} .veloria-instagram-feed .swiper-button-prev' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-instagram-feed .swiper-button-next, {{WRAPPER}} .addonext-instagram-feed .swiper-button-prev' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -659,10 +659,10 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'pagination_color',
             [
-                'label'     => __('Pagination Color', 'veloria'),
+                'label'     => __('Pagination Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed .swiper-pagination-bullet' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-instagram-feed .swiper-pagination-bullet' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -670,10 +670,10 @@ class InstagramFeed extends WidgetBase
         $this->add_control(
             'pagination_active_color',
             [
-                'label'     => __('Pagination Active', 'veloria'),
+                'label'     => __('Pagination Active', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-instagram-feed .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-instagram-feed .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -692,17 +692,17 @@ class InstagramFeed extends WidgetBase
             return;
         }
         ?>
-        <figure class="veloria-instagram-feed__figure">
-            <div class="veloria-instagram-feed__media-wrap<?php echo esc_attr($extra_class); ?>">
+        <figure class="addonext-instagram-feed__figure">
+            <div class="addonext-instagram-feed__media-wrap<?php echo esc_attr($extra_class); ?>">
                 <?php if ($overlay_links) : ?>
-                    <a href="<?php echo esc_url($permalink); ?>" target="<?php echo esc_attr($new_tab); ?>" rel="noopener noreferrer" class="veloria-instagram-feed__overlay-link" aria-label="<?php esc_attr_e('View post', 'veloria'); ?>"></a>
+                    <a href="<?php echo esc_url($permalink); ?>" target="<?php echo esc_attr($new_tab); ?>" rel="noopener noreferrer" class="addonext-instagram-feed__overlay-link" aria-label="<?php esc_attr_e('View post', 'addonext'); ?>"></a>
                 <?php endif; ?>
-                <img src="<?php echo esc_url($img_src); ?>" alt="" class="veloria-instagram-feed__img" loading="lazy" />
-                <div class="veloria-instagram-feed__overlay">
+                <img src="<?php echo esc_url($img_src); ?>" alt="" class="addonext-instagram-feed__img" loading="lazy" />
+                <div class="addonext-instagram-feed__overlay">
                     <?php $this->render_elements_at_location('over', $settings, $item); ?>
                 </div>
             </div>
-            <figcaption class="veloria-instagram-feed__below">
+            <figcaption class="addonext-instagram-feed__below">
                 <?php $this->render_elements_at_location('below', $settings, $item); ?>
             </figcaption>
         </figure>
@@ -729,21 +729,21 @@ class InstagramFeed extends WidgetBase
             }
             $align = $el['align'] ?? 'center';
             $type = $el['element'] ?? '';
-            $class = 'veloria-instagram-feed__el veloria-instagram-feed__el--' . esc_attr($type) . ' veloria-instagram-feed__el--' . esc_attr($align);
+            $class = 'addonext-instagram-feed__el addonext-instagram-feed__el--' . esc_attr($type) . ' addonext-instagram-feed__el--' . esc_attr($align);
             echo '<div class="' . esc_attr($class) . '">';
             if ($type === 'username' && $username !== '') {
-                echo '<a href="' . esc_url($permalink) . '" target="' . esc_attr($new_tab) . '" rel="noopener noreferrer" class="veloria-instagram-feed__username">' . esc_html($username) . '</a>';
+                echo '<a href="' . esc_url($permalink) . '" target="' . esc_attr($new_tab) . '" rel="noopener noreferrer" class="addonext-instagram-feed__username">' . esc_html($username) . '</a>';
             } elseif ($type === 'caption' && $caption !== '') {
-                echo '<p class="veloria-instagram-feed__caption">' . esc_html(wp_trim_words($caption, $caption_words)) . '</p>';
+                echo '<p class="addonext-instagram-feed__caption">' . esc_html(wp_trim_words($caption, $caption_words)) . '</p>';
             } elseif ($type === 'date' && $timestamp !== '') {
-                echo '<span class="veloria-instagram-feed__date">' . esc_html(date_i18n(get_option('date_format'), strtotime($timestamp))) . '</span>';
+                echo '<span class="addonext-instagram-feed__date">' . esc_html(date_i18n(get_option('date_format'), strtotime($timestamp))) . '</span>';
             } elseif ($type === 'icon') {
-                echo '<a href="' . esc_url($permalink) . '" target="' . esc_attr($new_tab) . '" rel="noopener noreferrer" class="veloria-instagram-feed__icon" aria-label="Instagram">';
+                echo '<a href="' . esc_url($permalink) . '" target="' . esc_attr($new_tab) . '" rel="noopener noreferrer" class="addonext-instagram-feed__icon" aria-label="Instagram">';
                 echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>';
                 echo '</a>';
             } elseif ($type === 'lightbox') {
                 $src = ($media_type === 'VIDEO') ? $thumbnail_url : $media_url;
-                echo '<a href="' . esc_url($src) . '" class="veloria-instagram-feed__lightbox" data-elementor-lightbox="single" data-elementor-lightbox-title="' . esc_attr(wp_trim_words($caption, 10)) . '" aria-label="' . esc_attr__('View', 'veloria') . '">';
+                echo '<a href="' . esc_url($src) . '" class="addonext-instagram-feed__lightbox" data-elementor-lightbox="single" data-elementor-lightbox-title="' . esc_attr(wp_trim_words($caption, 10)) . '" aria-label="' . esc_attr__('View', 'addonext') . '">';
                 echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>';
                 echo '</a>';
             }
@@ -758,20 +758,20 @@ class InstagramFeed extends WidgetBase
 
         if ($token === '') {
             if (current_user_can('manage_options')) {
-                echo '<div class="veloria-instagram-feed veloria-instagram-feed--empty"><p class="veloria-instagram-feed__notice">' . esc_html__('Please add an Instagram Access Token in the widget settings.', 'veloria') . '</p></div>';
+                echo '<div class="addonext-instagram-feed addonext-instagram-feed--empty"><p class="addonext-instagram-feed__notice">' . esc_html__('Please add an Instagram Access Token in the widget settings.', 'addonext') . '</p></div>';
             }
             return;
         }
 
-        $veloria_items = $this->fetch_instagram_feed($token, $settings);
-        if (empty($veloria_items)) {
+        $addonext_items = $this->fetch_instagram_feed($token, $settings);
+        if (empty($addonext_items)) {
             if (current_user_can('manage_options')) {
-                echo '<div class="veloria-instagram-feed veloria-instagram-feed--empty"><p class="veloria-instagram-feed__notice">' . esc_html__('No posts found. Check your token and try again.', 'veloria') . '</p></div>';
+                echo '<div class="addonext-instagram-feed addonext-instagram-feed--empty"><p class="addonext-instagram-feed__notice">' . esc_html__('No posts found. Check your token and try again.', 'addonext') . '</p></div>';
             }
             return;
         }
 
-        $path = VELORIA_DIR . 'templates/instagram-feed/instagram-feed.php';
+        $path = ADDONEXT_DIR . 'templates/instagram-feed/instagram-feed.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -781,12 +781,12 @@ class InstagramFeed extends WidgetBase
     {
         ?>
         <# if (!settings.access_token || settings.access_token.trim() === '') { #>
-            <div class="veloria-instagram-feed veloria-instagram-feed--empty">
-                <p class="veloria-instagram-feed__notice"><?php echo esc_html__('Please add an Instagram Access Token in the widget settings.', 'veloria'); ?></p>
+            <div class="addonext-instagram-feed addonext-instagram-feed--empty">
+                <p class="addonext-instagram-feed__notice"><?php echo esc_html__('Please add an Instagram Access Token in the widget settings.', 'addonext'); ?></p>
             </div>
         <# } else { #>
-            <div class="veloria-instagram-feed veloria-instagram-feed--grid">
-                <p class="veloria-instagram-feed__notice"><?php echo esc_html__('Preview: Connect API to show posts.', 'veloria'); ?></p>
+            <div class="addonext-instagram-feed addonext-instagram-feed--grid">
+                <p class="addonext-instagram-feed__notice"><?php echo esc_html__('Preview: Connect API to show posts.', 'addonext'); ?></p>
             </div>
         <# } #>
         <?php

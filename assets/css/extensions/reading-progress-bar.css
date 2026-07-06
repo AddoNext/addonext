@@ -1,17 +1,17 @@
-#veloria-reading-progress {
+#addonext-reading-progress {
   position: fixed;
-  top: var(--veloria-rpb-top, 0);
+  top: var(--addonext-rpb-top, 0);
   left: 0;
   width: 100%;
-  height: var(--veloria-rpb-height, 4px);
-  background: var(--veloria-rpb-track, #e5e7eb);
+  height: var(--addonext-rpb-height, 4px);
+  background: var(--addonext-rpb-track, #e5e7eb);
   z-index: 99999;
   pointer-events: none;
 }
 
-#veloria-reading-progress .veloria-reading-progress__fill {
+#addonext-reading-progress .addonext-reading-progress__fill {
   height: 100%;
   width: 0%;
-  background: var(--veloria-rpb-color, #4f46e5);
+  background: var(--addonext-rpb-color, #4f46e5);
   transition: width 0.1s linear;
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Veloria\Widgets\WooCheckout;
+namespace Addonext\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
@@ -15,8 +15,8 @@ class CheckoutTemplate
     {
         $relative = 'templates/woo-checkout/partials/' . $name . '.php';
         $path = apply_filters(
-            'veloria_checkout_partial_path',
-            VELORIA_DIR . $relative,
+            'addonext_checkout_partial_path',
+            ADDONEXT_DIR . $relative,
             $name,
             $vars
         );
@@ -27,7 +27,7 @@ class CheckoutTemplate
 
         $prefixedVars = [];
         foreach ($vars as $key => $value) {
-            $prefixedVars['veloria_' . $key] = $value;
+            $prefixedVars['addonext_' . $key] = $value;
         }
 
         // phpcs:ignore WordPress.PHP.DontExtract.extract_extract

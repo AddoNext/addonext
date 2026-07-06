@@ -1,14 +1,14 @@
-.veloria-highlight__content {
+.addonext-highlight__content {
     margin: 0 0 1em;
     font-size: 16px;
     line-height: 1.6;
 }
 
-.veloria-highlight__content:last-child {
+.addonext-highlight__content:last-child {
     margin-bottom: 0;
 }
 
-.veloria-highlight__mark {
+.addonext-highlight__mark {
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Veloria\Admin;
+namespace Addonext\Admin;
 
 defined('ABSPATH') or exit;
 
@@ -8,7 +8,7 @@ defined('ABSPATH') or exit;
  * Class AdminAssets
  * Enqueue admin assets
  * 
- * @package Veloria
+ * @package AddoNext
  */
 class AdminAssets
 {
@@ -54,23 +54,23 @@ class AdminAssets
      */
     public function enqueue(string $hook_suffix): void
     {
-        if ($hook_suffix !== 'toplevel_page_veloria') {
+        if ($hook_suffix !== 'toplevel_page_addonext') {
             return;
         }
 
-        wp_enqueue_style('veloria-admin', VELORIA_URL . 'dist/css/admin.min.css', [], VELORIA_VERSION);
-        wp_enqueue_script('veloria-admin', VELORIA_URL . 'dist/js/admin.min.js', [
+        wp_enqueue_style('addonext-admin', ADDONEXT_URL . 'dist/css/admin.min.css', [], ADDONEXT_VERSION);
+        wp_enqueue_script('addonext-admin', ADDONEXT_URL . 'dist/js/admin.min.js', [
             'wp-element',
             'wp-i18n',
             'wp-api-fetch',
             'wp-data'
-        ], VELORIA_VERSION, true);
+        ], ADDONEXT_VERSION, true);
         wp_localize_script(
-            'veloria-admin',
-            'veloriaAdminData',
+            'addonext-admin',
+            'addonextAdminData',
             [
                 'isElementorActive' => self::is_elementor_plugin_active(),
-                'hasProAccountApi'  => function_exists('veloria_has_pro_account_api') && veloria_has_pro_account_api(),
+                'hasProAccountApi'  => function_exists('addonext_has_pro_account_api') && addonext_has_pro_account_api(),
             ]
         );
     }

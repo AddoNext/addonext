@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ComparisonTable;
+namespace Addonext\Widgets\ComparisonTable;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class ComparisonTable extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-table veloria-icon';
+        return 'eicon-table addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-comparison-table';
+        return 'addonext-comparison-table';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ComparisonTable extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Comparison Table', 'veloria');
+        return __('Comparison Table', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Feature comparison across plans', 'veloria');
+        return __('Feature comparison across plans', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -48,12 +48,12 @@ class ComparisonTable extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-comparison-table'];
+        return ['addonext-comparison-table'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('veloria-comparison-table', VELORIA_URL . 'assets/css/comparison-table.css', [], VELORIA_VERSION);
+        wp_register_style('addonext-comparison-table', ADDONEXT_URL . 'assets/css/comparison-table.css', [], ADDONEXT_VERSION);
     }
 
     public function register_controls(): void
@@ -64,7 +64,7 @@ class ComparisonTable extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -72,9 +72,9 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'first_column_header',
             [
-                'label'   => __('First column header', 'veloria'),
+                'label'   => __('First column header', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Features', 'veloria'),
+                'default' => __('Features', 'addonext'),
             ]
         );
 
@@ -82,15 +82,15 @@ class ComparisonTable extends WidgetBase
         $columns_repeater->add_control(
             'header',
             [
-                'label'   => __('Column header', 'veloria'),
+                'label'   => __('Column header', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Plan', 'veloria'),
+                'default' => __('Plan', 'addonext'),
             ]
         );
         $columns_repeater->add_control(
             'highlighted',
             [
-                'label'        => __('Highlighted column', 'veloria'),
+                'label'        => __('Highlighted column', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -101,20 +101,20 @@ class ComparisonTable extends WidgetBase
         $cells_repeater->add_control(
             'type',
             [
-                'label'   => __('Type', 'veloria'),
+                'label'   => __('Type', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'text',
                 'options' => [
-                    'text'  => __('Text', 'veloria'),
-                    'check' => __('Checkmark', 'veloria'),
-                    'cross' => __('Cross', 'veloria'),
+                    'text'  => __('Text', 'addonext'),
+                    'check' => __('Checkmark', 'addonext'),
+                    'cross' => __('Cross', 'addonext'),
                 ],
             ]
         );
         $cells_repeater->add_control(
             'content',
             [
-                'label'     => __('Content', 'veloria'),
+                'label'     => __('Content', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
                 'default'   => '',
                 'condition' => ['type' => 'text'],
@@ -123,7 +123,7 @@ class ComparisonTable extends WidgetBase
         $cells_repeater->add_control(
             'bold',
             [
-                'label'        => __('Bold', 'veloria'),
+                'label'        => __('Bold', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -135,15 +135,15 @@ class ComparisonTable extends WidgetBase
         $rows_repeater->add_control(
             'row_label',
             [
-                'label'   => __('Row label (for list)', 'veloria'),
+                'label'   => __('Row label (for list)', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Row', 'veloria'),
+                'default' => __('Row', 'addonext'),
             ]
         );
         $rows_repeater->add_control(
             'feature',
             [
-                'label'   => __('Feature name', 'veloria'),
+                'label'   => __('Feature name', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -151,7 +151,7 @@ class ComparisonTable extends WidgetBase
         $rows_repeater->add_control(
             'cells',
             [
-                'label'       => __('Cells', 'veloria'),
+                'label'       => __('Cells', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $cells_repeater->get_controls(),
                 'default'     => [
@@ -166,13 +166,13 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'columns',
             [
-                'label'       => __('Plan columns', 'veloria'),
+                'label'       => __('Plan columns', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $columns_repeater->get_controls(),
                 'default'     => [
-                    ['header' => __('Free', 'veloria'), 'highlighted' => ''],
-                    ['header' => __('Pro', 'veloria'), 'highlighted' => 'yes'],
-                    ['header' => __('Agency', 'veloria'), 'highlighted' => ''],
+                    ['header' => __('Free', 'addonext'), 'highlighted' => ''],
+                    ['header' => __('Pro', 'addonext'), 'highlighted' => 'yes'],
+                    ['header' => __('Agency', 'addonext'), 'highlighted' => ''],
                 ],
                 'title_field' => '{{{ header }}}',
             ]
@@ -181,13 +181,13 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'rows',
             [
-                'label'       => __('Rows', 'veloria'),
+                'label'       => __('Rows', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $rows_repeater->get_controls(),
                 'default'     => [
                     [
-                        'row_label' => __('Number of Widgets', 'veloria'),
-                        'feature'   => __('Number of Widgets', 'veloria'),
+                        'row_label' => __('Number of Widgets', 'addonext'),
+                        'feature'   => __('Number of Widgets', 'addonext'),
                         'cells'     => [
                             ['type' => 'text', 'content' => '20', 'bold' => ''],
                             ['type' => 'text', 'content' => '50+', 'bold' => 'yes'],
@@ -195,8 +195,8 @@ class ComparisonTable extends WidgetBase
                         ],
                     ],
                     [
-                        'row_label' => __('Templates', 'veloria'),
-                        'feature'   => __('Templates', 'veloria'),
+                        'row_label' => __('Templates', 'addonext'),
+                        'feature'   => __('Templates', 'addonext'),
                         'cells'     => [
                             ['type' => 'text', 'content' => '10 Basic', 'bold' => ''],
                             ['type' => 'text', 'content' => '100+ Pro', 'bold' => 'yes'],
@@ -204,26 +204,26 @@ class ComparisonTable extends WidgetBase
                         ],
                     ],
                     [
-                        'row_label' => __('Website Licenses', 'veloria'),
-                        'feature'   => __('Website Licenses', 'veloria'),
+                        'row_label' => __('Website Licenses', 'addonext'),
+                        'feature'   => __('Website Licenses', 'addonext'),
                         'cells'     => [
                             ['type' => 'text', 'content' => '1', 'bold' => ''],
                             ['type' => 'text', 'content' => '3', 'bold' => ''],
-                            ['type' => 'text', 'content' => __('Unlimited', 'veloria'), 'bold' => ''],
+                            ['type' => 'text', 'content' => __('Unlimited', 'addonext'), 'bold' => ''],
                         ],
                     ],
                     [
-                        'row_label' => __('Support', 'veloria'),
-                        'feature'   => __('Support', 'veloria'),
+                        'row_label' => __('Support', 'addonext'),
+                        'feature'   => __('Support', 'addonext'),
                         'cells'     => [
-                            ['type' => 'text', 'content' => __('Community', 'veloria'), 'bold' => ''],
-                            ['type' => 'text', 'content' => __('Priority Email', 'veloria'), 'bold' => 'yes'],
+                            ['type' => 'text', 'content' => __('Community', 'addonext'), 'bold' => ''],
+                            ['type' => 'text', 'content' => __('Priority Email', 'addonext'), 'bold' => 'yes'],
                             ['type' => 'text', 'content' => '24/7 Priority', 'bold' => 'yes'],
                         ],
                     ],
                     [
-                        'row_label' => __('Advanced Extensions', 'veloria'),
-                        'feature'   => __('Advanced Extensions', 'veloria'),
+                        'row_label' => __('Advanced Extensions', 'addonext'),
+                        'feature'   => __('Advanced Extensions', 'addonext'),
                         'cells'     => [
                             ['type' => 'cross', 'content' => '', 'bold' => ''],
                             ['type' => 'check', 'content' => '', 'bold' => ''],
@@ -231,8 +231,8 @@ class ComparisonTable extends WidgetBase
                         ],
                     ],
                     [
-                        'row_label' => __('White Label', 'veloria'),
-                        'feature'   => __('White Label', 'veloria'),
+                        'row_label' => __('White Label', 'addonext'),
+                        'feature'   => __('White Label', 'addonext'),
                         'cells'     => [
                             ['type' => 'cross', 'content' => '', 'bold' => ''],
                             ['type' => 'check', 'content' => '', 'bold' => ''],
@@ -240,8 +240,8 @@ class ComparisonTable extends WidgetBase
                         ],
                     ],
                     [
-                        'row_label' => __('Custom Development', 'veloria'),
-                        'feature'   => __('Custom Development', 'veloria'),
+                        'row_label' => __('Custom Development', 'addonext'),
+                        'feature'   => __('Custom Development', 'addonext'),
                         'cells'     => [
                             ['type' => 'cross', 'content' => '', 'bold' => ''],
                             ['type' => 'cross', 'content' => '', 'bold' => ''],
@@ -249,8 +249,8 @@ class ComparisonTable extends WidgetBase
                         ],
                     ],
                     [
-                        'row_label' => __('API Access', 'veloria'),
-                        'feature'   => __('API Access', 'veloria'),
+                        'row_label' => __('API Access', 'addonext'),
+                        'feature'   => __('API Access', 'addonext'),
                         'cells'     => [
                             ['type' => 'cross', 'content' => '', 'bold' => ''],
                             ['type' => 'cross', 'content' => '', 'bold' => ''],
@@ -258,8 +258,8 @@ class ComparisonTable extends WidgetBase
                         ],
                     ],
                     [
-                        'row_label' => __('Lifetime Updates', 'veloria'),
-                        'feature'   => __('Lifetime Updates', 'veloria'),
+                        'row_label' => __('Lifetime Updates', 'addonext'),
+                        'feature'   => __('Lifetime Updates', 'addonext'),
                         'cells'     => [
                             ['type' => 'check', 'content' => '', 'bold' => ''],
                             ['type' => 'check', 'content' => '', 'bold' => ''],
@@ -276,7 +276,7 @@ class ComparisonTable extends WidgetBase
         $this->start_controls_section(
             'section_style_table',
             [
-                'label' => __('Table', 'veloria'),
+                'label' => __('Table', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -284,13 +284,13 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'table_border_color',
             [
-                'label'     => __('Border color', 'veloria'),
+                'label'     => __('Border color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#e9ecef',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__table' => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-comparison-table__th,' .
-                    '{{WRAPPER}} .veloria-comparison-table__td' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__table' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__th,' .
+                    '{{WRAPPER}} .addonext-comparison-table__td' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -298,13 +298,13 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'table_bg',
             [
-                'label'     => __('Default background', 'veloria'),
+                'label'     => __('Default background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__table,' .
-                    '{{WRAPPER}} .veloria-comparison-table__td.veloria-comparison-table__cell--feature,' .
-                    '{{WRAPPER}} .veloria-comparison-table__td.veloria-comparison-table__cell--default' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__table,' .
+                    '{{WRAPPER}} .addonext-comparison-table__td.addonext-comparison-table__cell--feature,' .
+                    '{{WRAPPER}} .addonext-comparison-table__td.addonext-comparison-table__cell--default' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -312,11 +312,11 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'highlighted_bg',
             [
-                'label'     => __('Highlighted column background', 'veloria'),
+                'label'     => __('Highlighted column background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f6f7ff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__cell--highlighted' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__cell--highlighted' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -326,7 +326,7 @@ class ComparisonTable extends WidgetBase
         $this->start_controls_section(
             'section_style_header',
             [
-                'label' => __('Header', 'veloria'),
+                'label' => __('Header', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -335,18 +335,18 @@ class ComparisonTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'header_typography',
-                'selector' => '{{WRAPPER}} .veloria-comparison-table__th',
+                'selector' => '{{WRAPPER}} .addonext-comparison-table__th',
             ]
         );
 
         $this->add_control(
             'header_bg',
             [
-                'label'     => __('Header background', 'veloria'),
+                'label'     => __('Header background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f8fafc',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__table thead .veloria-comparison-table__th' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__table thead .addonext-comparison-table__th' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -354,11 +354,11 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'header_highlighted_bg',
             [
-                'label'     => __('Highlighted column header background', 'veloria'),
+                'label'     => __('Highlighted column header background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f6f7ff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__table thead .veloria-comparison-table__th.veloria-comparison-table__cell--highlighted' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__table thead .addonext-comparison-table__th.addonext-comparison-table__cell--highlighted' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -366,11 +366,11 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'header_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#343a40',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__th' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__th' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -378,11 +378,11 @@ class ComparisonTable extends WidgetBase
         $this->add_responsive_control(
             'header_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-comparison-table__th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-comparison-table__th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -392,7 +392,7 @@ class ComparisonTable extends WidgetBase
         $this->start_controls_section(
             'section_style_cells',
             [
-                'label' => __('Cells', 'veloria'),
+                'label' => __('Cells', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -401,18 +401,18 @@ class ComparisonTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'cell_typography',
-                'selector' => '{{WRAPPER}} .veloria-comparison-table__td',
+                'selector' => '{{WRAPPER}} .addonext-comparison-table__td',
             ]
         );
 
         $this->add_control(
             'cell_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#343a40',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__td' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -420,11 +420,11 @@ class ComparisonTable extends WidgetBase
         $this->add_responsive_control(
             'cell_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-comparison-table__td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-comparison-table__td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -432,11 +432,11 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'check_color',
             [
-                'label'     => __('Checkmark color', 'veloria'),
+                'label'     => __('Checkmark color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#28a745',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__icon--check' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__icon--check' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -444,11 +444,11 @@ class ComparisonTable extends WidgetBase
         $this->add_control(
             'cross_color',
             [
-                'label'     => __('Cross color', 'veloria'),
+                'label'     => __('Cross color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#adb5bd',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-comparison-table__icon--cross' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-comparison-table__icon--cross' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -463,7 +463,7 @@ class ComparisonTable extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = VELORIA_DIR . 'pro/templates/comparison-table/comparison-table.php';
+        $path = ADDONEXT_DIR . 'pro/templates/comparison-table/comparison-table.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -482,13 +482,13 @@ class ComparisonTable extends WidgetBase
         var columns = settings.columns || [];
         var rows = settings.rows || [];
         #>
-        <div class="veloria-comparison-table">
-            <table class="veloria-comparison-table__table">
+        <div class="addonext-comparison-table">
+            <table class="addonext-comparison-table__table">
                 <thead>
                     <tr>
-                        <th class="veloria-comparison-table__th veloria-comparison-table__cell--feature">{{{ firstHeader }}}</th>
+                        <th class="addonext-comparison-table__th addonext-comparison-table__cell--feature">{{{ firstHeader }}}</th>
                         <# _.each(columns, function(col) { #>
-                            <th class="veloria-comparison-table__th veloria-comparison-table__cell--<# print(col.highlighted === 'yes' ? 'highlighted' : 'default'); #>">{{{ col.header }}}</th>
+                            <th class="addonext-comparison-table__th addonext-comparison-table__cell--<# print(col.highlighted === 'yes' ? 'highlighted' : 'default'); #>">{{{ col.header }}}</th>
                         <# }); #>
                     </tr>
                 </thead>
@@ -497,21 +497,21 @@ class ComparisonTable extends WidgetBase
                         var cells = row.cells || [];
                         #>
                         <tr>
-                            <td class="veloria-comparison-table__td veloria-comparison-table__cell--feature">{{{ row.feature }}}</td>
+                            <td class="addonext-comparison-table__td addonext-comparison-table__cell--feature">{{{ row.feature }}}</td>
                             <# _.each(columns, function(col, colIndex) {
                                 var cell = cells[colIndex] || {};
                                 var type = cell.type || 'text';
                                 var content = cell.content || '';
                                 var bold = cell.bold === 'yes';
-                                var cellClass = 'veloria-comparison-table__td veloria-comparison-table__cell--' + (col.highlighted === 'yes' ? 'highlighted' : 'default');
+                                var cellClass = 'addonext-comparison-table__td addonext-comparison-table__cell--' + (col.highlighted === 'yes' ? 'highlighted' : 'default');
                             #>
                                 <td class="{{ cellClass }}">
                                     <# if (type === 'check') { #>
-                                        <span class="veloria-comparison-table__icon veloria-comparison-table__icon--check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                        <span class="addonext-comparison-table__icon addonext-comparison-table__icon--check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                                     <# } else if (type === 'cross') { #>
-                                        <span class="veloria-comparison-table__icon veloria-comparison-table__icon--cross" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                                        <span class="addonext-comparison-table__icon addonext-comparison-table__icon--cross" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
                                     <# } else { #>
-                                        <span class="veloria-comparison-table__cell-text<# if (bold) { #> veloria-comparison-table__cell-text--bold<# } #>">{{{ content }}}</span>
+                                        <span class="addonext-comparison-table__cell-text<# if (bold) { #> addonext-comparison-table__cell-text--bold<# } #>">{{{ content }}}</span>
                                     <# } #>
                                 </td>
                             <# }); #>

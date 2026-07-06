@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ProductImage;
+namespace Addonext\Widgets\ProductImage;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 
 defined('ABSPATH') || exit;
@@ -22,18 +22,18 @@ class ProductImage extends WidgetBase
      */
     public function enqueue_preview_assets(): void
     {
-        wp_enqueue_style('veloria-product-image');
-        wp_enqueue_script('veloria-product-image');
+        wp_enqueue_style('addonext-product-image');
+        wp_enqueue_script('addonext-product-image');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-product-images veloria-icon';
+        return 'eicon-product-images addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-product-image';
+        return 'addonext-product-image';
     }
 
     public function get_admin_category(): string
@@ -43,12 +43,12 @@ class ProductImage extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Image', 'veloria');
+        return __('Product Image', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Main product image with optional gallery thumbnails, lightbox, or hover zoom.', 'veloria');
+        return __('Main product image with optional gallery thumbnails, lightbox, or hover zoom.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -58,38 +58,38 @@ class ProductImage extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-product-image'];
+        return ['addonext-product-image'];
     }
 
     public function get_script_depends(): array
     {
-        return ['jquery', 'elementor-frontend', 'veloria-product-image'];
+        return ['jquery', 'elementor-frontend', 'addonext-product-image'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-product-image',
-            VELORIA_URL . 'assets/css/product-image.css',
+            'addonext-product-image',
+            ADDONEXT_URL . 'assets/css/product-image.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-product-image',
-            VELORIA_URL . 'assets/js/product-image.js',
+            'addonext-product-image',
+            ADDONEXT_URL . 'assets/js/product-image.js',
             ['jquery', 'elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
 
         wp_localize_script(
-            'veloria-product-image',
-            'veloriaProductImage',
+            'addonext-product-image',
+            'addonextProductImage',
             [
-                'prevLabel'  => __('Previous image', 'veloria'),
-                'nextLabel'  => __('Next image', 'veloria'),
-                'closeLabel' => __('Close preview', 'veloria'),
+                'prevLabel'  => __('Previous image', 'addonext'),
+                'nextLabel'  => __('Next image', 'addonext'),
+                'closeLabel' => __('Close preview', 'addonext'),
             ]
         );
     }
@@ -210,49 +210,49 @@ class ProductImage extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_product', [
-            'label' => __('Product', 'veloria'),
+            'label' => __('Product', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('product_id', [
-            'label'       => __('Product ID', 'veloria'),
+            'label'       => __('Product ID', 'addonext'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 0,
-            'description' => __('Leave empty on single product pages or inside a product loop to use the current product.', 'veloria'),
+            'description' => __('Leave empty on single product pages or inside a product loop to use the current product.', 'addonext'),
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_gallery', [
-            'label' => __('Gallery', 'veloria'),
+            'label' => __('Gallery', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_thumbnails', [
-            'label'        => __('Show gallery thumbnails', 'veloria'),
+            'label'        => __('Show gallery thumbnails', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('zoom_mode', [
-            'label'   => __('Zoom / preview', 'veloria'),
+            'label'   => __('Zoom / preview', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'lightbox',
             'options' => [
-                'lightbox' => __('Lightbox on click', 'veloria'),
-                'pan'      => __('Click to zoom & drag to pan', 'veloria'),
+                'lightbox' => __('Lightbox on click', 'addonext'),
+                'pan'      => __('Click to zoom & drag to pan', 'addonext'),
             ],
         ]);
 
         $this->add_control('pan_zoom_scale', [
-            'label'       => __('Click zoom level', 'veloria'),
+            'label'       => __('Click zoom level', 'addonext'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 1.5,
             'max'         => 3.5,
             'step'        => 0.05,
             'default'     => 2.25,
-            'description' => __('Used when “Click to zoom & drag to pan” is selected.', 'veloria'),
+            'description' => __('Used when “Click to zoom & drag to pan” is selected.', 'addonext'),
             'condition'   => [
                 'zoom_mode!' => 'lightbox',
             ],
@@ -261,45 +261,45 @@ class ProductImage extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_main', [
-            'label' => __('Main image', 'veloria'),
+            'label' => __('Main image', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('main_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#f1f5f9',
             'selectors' => [
-                '{{WRAPPER}} .veloria-pi__main' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-pi__main' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('main_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'default'    => [
                 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'unit' => 'px',
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__main' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__main' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('main_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__main' => 'border-radius: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .veloria-pi__visual' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__main' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__visual' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('main_box_ratio', [
-            'label'     => __('Image box ratio', 'veloria'),
+            'label'     => __('Image box ratio', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'options'   => [
                 '1 / 1'  => '1:1',
@@ -309,12 +309,12 @@ class ProductImage extends WidgetBase
             ],
             'default'   => '1 / 1',
             'selectors' => [
-                '{{WRAPPER}} .veloria-pi__stage' => 'aspect-ratio: {{VALUE}};',
+                '{{WRAPPER}} .addonext-pi__stage' => 'aspect-ratio: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('main_box_max_height', [
-            'label'      => __('Image box max height', 'veloria'),
+            'label'      => __('Image box max height', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh'],
             'range'      => [
@@ -326,88 +326,88 @@ class ProductImage extends WidgetBase
                 'size' => 560,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__stage' => 'max-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__stage' => 'max-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('main_img_radius', [
-            'label'      => __('Image radius', 'veloria'),
+            'label'      => __('Image radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 32]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__main-img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__main-img' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_thumbs', [
-            'label'     => __('Thumbnails', 'veloria'),
+            'label'     => __('Thumbnails', 'addonext'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_thumbnails' => 'yes'],
         ]);
 
         $this->add_responsive_control('thumbs_gap', [
-            'label'      => __('Gap', 'veloria'),
+            'label'      => __('Gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 32]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__thumbs' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__thumbs' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('thumb_width', [
-            'label'      => __('Width', 'veloria'),
+            'label'      => __('Width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 48, 'max' => 160]],
             'default'    => ['size' => 80, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__thumb' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__thumb' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('thumb_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
             'default'    => ['size' => 10, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__thumb' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__thumb' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('thumb_border_color', [
-            'label'     => __('Border', 'veloria'),
+            'label'     => __('Border', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e2e8f0',
             'selectors' => [
-                '{{WRAPPER}} .veloria-pi__thumb' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-pi__thumb' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('thumb_border_active', [
-            'label'     => __('Active border', 'veloria'),
+            'label'     => __('Active border', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#2563eb',
             'selectors' => [
-                '{{WRAPPER}} .veloria-pi__thumb.is-active' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-pi__thumb.is-active' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('thumb_border_width', [
-            'label'      => __('Border width', 'veloria'),
+            'label'      => __('Border width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 1, 'max' => 4]],
             'default'    => ['size' => 2, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-pi__thumb' => 'border-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pi__thumb' => 'border-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -417,8 +417,8 @@ class ProductImage extends WidgetBase
     public function render(): void
     {
         if (!class_exists('WooCommerce')) {
-            echo '<div class="veloria-pi veloria-pi--inactive">';
-            echo esc_html__('WooCommerce is required for this widget.', 'veloria');
+            echo '<div class="addonext-pi addonext-pi--inactive">';
+            echo esc_html__('WooCommerce is required for this widget.', 'addonext');
             echo '</div>';
 
             return;
@@ -428,8 +428,8 @@ class ProductImage extends WidgetBase
         $product_id = $this->resolve_product_id($settings);
 
         if ($product_id <= 0) {
-            echo '<div class="veloria-pi veloria-pi--empty">';
-            echo esc_html__('Set a product ID, or place this widget on a product page or inside a product loop.', 'veloria');
+            echo '<div class="addonext-pi addonext-pi--empty">';
+            echo esc_html__('Set a product ID, or place this widget on a product page or inside a product loop.', 'addonext');
             echo '</div>';
 
             return;
@@ -437,39 +437,39 @@ class ProductImage extends WidgetBase
 
         $product = wc_get_product($product_id);
         if (!$product || !is_a($product, 'WC_Product')) {
-            echo '<div class="veloria-pi veloria-pi--empty">';
-            echo esc_html__('Product not found.', 'veloria');
+            echo '<div class="addonext-pi addonext-pi--empty">';
+            echo esc_html__('Product not found.', 'addonext');
             echo '</div>';
 
             return;
         }
 
-        $veloria_gallery_images = self::build_gallery_images($product);
-        $veloria_show_thumbnails = !isset($settings['show_thumbnails']) || $settings['show_thumbnails'] === 'yes';
-        $veloria_raw_zoom = isset($settings['zoom_mode']) ? (string) $settings['zoom_mode'] : 'lightbox';
-        $veloria_zoom_mode = ($veloria_raw_zoom === 'pan' || $veloria_raw_zoom === 'hover') ? 'pan' : 'lightbox';
-        $veloria_has_multiple = count($veloria_gallery_images) > 1;
-        $veloria_show_thumb_row = $veloria_show_thumbnails && $veloria_has_multiple;
+        $addonext_gallery_images = self::build_gallery_images($product);
+        $addonext_show_thumbnails = !isset($settings['show_thumbnails']) || $settings['show_thumbnails'] === 'yes';
+        $addonext_raw_zoom = isset($settings['zoom_mode']) ? (string) $settings['zoom_mode'] : 'lightbox';
+        $addonext_zoom_mode = ($addonext_raw_zoom === 'pan' || $addonext_raw_zoom === 'hover') ? 'pan' : 'lightbox';
+        $addonext_has_multiple = count($addonext_gallery_images) > 1;
+        $addonext_show_thumb_row = $addonext_show_thumbnails && $addonext_has_multiple;
 
-        $veloria_pan_scale = isset($settings['pan_zoom_scale']) ? (float) $settings['pan_zoom_scale'] : 2.25;
-        if ($veloria_pan_scale < 1.25) {
-            $veloria_pan_scale = 1.25;
+        $addonext_pan_scale = isset($settings['pan_zoom_scale']) ? (float) $settings['pan_zoom_scale'] : 2.25;
+        if ($addonext_pan_scale < 1.25) {
+            $addonext_pan_scale = 1.25;
         }
-        if ($veloria_pan_scale > 4) {
-            $veloria_pan_scale = 4;
+        if ($addonext_pan_scale > 4) {
+            $addonext_pan_scale = 4;
         }
 
-        $veloria_images_json = wp_json_encode(
-            $veloria_gallery_images,
+        $addonext_images_json = wp_json_encode(
+            $addonext_gallery_images,
             JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
         );
-        if (!is_string($veloria_images_json)) {
-            $veloria_images_json = '[]';
+        if (!is_string($addonext_images_json)) {
+            $addonext_images_json = '[]';
         }
 
-        $veloria_product = $product;
+        $addonext_product = $product;
 
-        $path = VELORIA_DIR . 'templates/product-image/product-image.php';
+        $path = ADDONEXT_DIR . 'templates/product-image/product-image.php';
         if (!is_readable($path)) {
             return;
         }

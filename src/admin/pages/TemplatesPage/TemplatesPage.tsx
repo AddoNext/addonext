@@ -41,7 +41,7 @@ const TemplatesPage: React.FC = () => {
       ) : (
         <UpgradeOfferScreen
           title="Templates are a Pro feature"
-          description="Upgrade to import and manage premium Elementor templates from Veloria."
+          description="Upgrade to import and manage premium Elementor templates from AddoNext."
           upgradeUrl={licenseData?.upgrade_url?.trim() ?? ""}
         />
       )}

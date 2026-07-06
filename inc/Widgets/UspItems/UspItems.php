@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\UspItems;
+namespace Addonext\Widgets\UspItems;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -27,17 +27,17 @@ class UspItems extends WidgetBase
     public function enqueue_assets_in_preview(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('veloria-usp-items');
+        wp_enqueue_style('addonext-usp-items');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-bullet-list veloria-icon';
+        return 'eicon-bullet-list addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-usp-items';
+        return 'addonext-usp-items';
     }
 
     public function get_admin_category(): string
@@ -47,12 +47,12 @@ class UspItems extends WidgetBase
 
     public function get_title(): string
     {
-        return __('USP Items', 'veloria');
+        return __('USP Items', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Feature cards with icon, title, and short line in a responsive grid.', 'veloria');
+        return __('Feature cards with icon, title, and short line in a responsive grid.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -62,16 +62,16 @@ class UspItems extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-usp-items'];
+        return ['addonext-usp-items'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-usp-items',
-            VELORIA_URL . 'assets/css/usp-items.css',
+            'addonext-usp-items',
+            ADDONEXT_URL . 'assets/css/usp-items.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -80,7 +80,7 @@ class UspItems extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -90,7 +90,7 @@ class UspItems extends WidgetBase
         $repeater->add_control(
             'item_icon',
             [
-                'label'            => __('Icon', 'veloria'),
+                'label'            => __('Icon', 'addonext'),
                 'type'             => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default'          => [
@@ -103,7 +103,7 @@ class UspItems extends WidgetBase
         $repeater->add_control(
             'circle_bg',
             [
-                'label'   => __('Icon circle background', 'veloria'),
+                'label'   => __('Icon circle background', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#e0e7ff',
             ]
@@ -112,7 +112,7 @@ class UspItems extends WidgetBase
         $repeater->add_control(
             'icon_color',
             [
-                'label'   => __('Icon color', 'veloria'),
+                'label'   => __('Icon color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#2563eb',
             ]
@@ -121,9 +121,9 @@ class UspItems extends WidgetBase
         $repeater->add_control(
             'item_title',
             [
-                'label'       => __('Title', 'veloria'),
+                'label'       => __('Title', 'addonext'),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __('Feature title', 'veloria'),
+                'default'     => __('Feature title', 'addonext'),
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
             ]
@@ -132,9 +132,9 @@ class UspItems extends WidgetBase
         $repeater->add_control(
             'item_subtitle',
             [
-                'label'       => __('Subtitle', 'veloria'),
+                'label'       => __('Subtitle', 'addonext'),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __('Short supporting line', 'veloria'),
+                'default'     => __('Short supporting line', 'addonext'),
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
             ]
@@ -143,7 +143,7 @@ class UspItems extends WidgetBase
         $repeater->add_control(
             'item_link',
             [
-                'label'   => __('Link', 'veloria'),
+                'label'   => __('Link', 'addonext'),
                 'type'    => Controls_Manager::URL,
                 'dynamic' => ['active' => true],
             ]
@@ -152,7 +152,7 @@ class UspItems extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Items', 'veloria'),
+                'label'       => __('Items', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
@@ -160,29 +160,29 @@ class UspItems extends WidgetBase
                         'item_icon'     => ['value' => 'fas fa-rocket', 'library' => 'fa-solid'],
                         'circle_bg'     => '#e0e7ff',
                         'icon_color'    => '#2563eb',
-                        'item_title'    => __('Fast Performance', 'veloria'),
-                        'item_subtitle' => __('Lightning speed', 'veloria'),
+                        'item_title'    => __('Fast Performance', 'addonext'),
+                        'item_subtitle' => __('Lightning speed', 'addonext'),
                     ],
                     [
                         'item_icon'     => ['value' => 'fas fa-lock', 'library' => 'fa-solid'],
                         'circle_bg'     => '#ede9fe',
                         'icon_color'    => '#7c3aed',
-                        'item_title'    => __('Secure & Safe', 'veloria'),
-                        'item_subtitle' => __('Protected data', 'veloria'),
+                        'item_title'    => __('Secure & Safe', 'addonext'),
+                        'item_subtitle' => __('Protected data', 'addonext'),
                     ],
                     [
                         'item_icon'     => ['value' => 'fas fa-headset', 'library' => 'fa-solid'],
                         'circle_bg'     => '#d1fae5',
                         'icon_color'    => '#059669',
-                        'item_title'    => __('24/7 Support', 'veloria'),
-                        'item_subtitle' => __('Always available', 'veloria'),
+                        'item_title'    => __('24/7 Support', 'addonext'),
+                        'item_subtitle' => __('Always available', 'addonext'),
                     ],
                     [
                         'item_icon'     => ['value' => 'fas fa-star', 'library' => 'fa-solid'],
                         'circle_bg'     => '#fef3c7',
                         'icon_color'    => '#d97706',
-                        'item_title'    => __('Proven quality', 'veloria'),
-                        'item_subtitle' => __('Trusted by teams', 'veloria'),
+                        'item_title'    => __('Proven quality', 'addonext'),
+                        'item_subtitle' => __('Trusted by teams', 'addonext'),
                     ],
                 ],
                 'title_field' => '{{{ item_title }}}',
@@ -192,7 +192,7 @@ class UspItems extends WidgetBase
         $this->add_control(
             'title_tag',
             [
-                'label'   => __('Title HTML tag', 'veloria'),
+                'label'   => __('Title HTML tag', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'h3',
                 'options' => [
@@ -208,7 +208,7 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'columns',
             [
-                'label'          => __('Columns', 'veloria'),
+                'label'          => __('Columns', 'addonext'),
                 'type'           => Controls_Manager::NUMBER,
                 'min'            => 1,
                 'max'            => 6,
@@ -217,7 +217,7 @@ class UspItems extends WidgetBase
                 'tablet_default' => 2,
                 'mobile_default' => 1,
                 'selectors'      => [
-                    '{{WRAPPER}} .veloria-usp-items__grid' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                    '{{WRAPPER}} .addonext-usp-items__grid' => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));',
                 ],
             ]
         );
@@ -225,13 +225,13 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'row_gap',
             [
-                'label'      => __('Row gap', 'veloria'),
+                'label'      => __('Row gap', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-items__grid' => 'row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-items__grid' => 'row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -239,13 +239,13 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'column_gap',
             [
-                'label'      => __('Column gap', 'veloria'),
+                'label'      => __('Column gap', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-items__grid' => 'column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-items__grid' => 'column-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -255,7 +255,7 @@ class UspItems extends WidgetBase
         $this->start_controls_section(
             'section_card',
             [
-                'label' => __('Card', 'veloria'),
+                'label' => __('Card', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -263,11 +263,11 @@ class UspItems extends WidgetBase
         $this->add_control(
             'card_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-usp-item' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-usp-item' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -276,8 +276,8 @@ class UspItems extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'card_shadow',
-                'label'    => __('Box shadow', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-usp-item',
+                'label'    => __('Box shadow', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-usp-item',
             ]
         );
 
@@ -285,21 +285,21 @@ class UspItems extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'card_border',
-                'label'    => __('Border', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-usp-item',
+                'label'    => __('Border', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-usp-item',
             ]
         );
 
         $this->add_responsive_control(
             'card_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => ['px' => ['min' => 0, 'max' => 40]],
                 'default'    => ['size' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -307,7 +307,7 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'card_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => [
@@ -315,7 +315,7 @@ class UspItems extends WidgetBase
                     'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item__surface' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item__surface' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -323,12 +323,12 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'card_min_height',
             [
-                'label'      => __('Min height', 'veloria'),
+                'label'      => __('Min height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 400]],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item' => 'min-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item' => 'min-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -338,7 +338,7 @@ class UspItems extends WidgetBase
         $this->start_controls_section(
             'section_icon_ring',
             [
-                'label' => __('Icon circle', 'veloria'),
+                'label' => __('Icon circle', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -346,13 +346,13 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'icon_ring_size',
             [
-                'label'      => __('Circle size', 'veloria'),
+                'label'      => __('Circle size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 40, 'max' => 120]],
                 'default'    => ['size' => 56, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item__icon-ring' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item__icon-ring' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -360,13 +360,13 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'icon_inner_size',
             [
-                'label'      => __('Icon size', 'veloria'),
+                'label'      => __('Icon size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 16, 'max' => 56]],
                 'default'    => ['size' => 22, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item__icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item__icon' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -374,13 +374,13 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'icon_ring_margin_bottom',
             [
-                'label'      => __('Space below circle', 'veloria'),
+                'label'      => __('Space below circle', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48]],
                 'default'    => ['size' => 14, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item__icon-ring' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item__icon-ring' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -390,7 +390,7 @@ class UspItems extends WidgetBase
         $this->start_controls_section(
             'section_title_style',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -399,8 +399,8 @@ class UspItems extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'label'    => __('Typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-usp-item__title',
+                'label'    => __('Typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-usp-item__title',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_weight' => ['default' => '700'],
@@ -412,11 +412,11 @@ class UspItems extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-usp-item__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-usp-item__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -424,13 +424,13 @@ class UspItems extends WidgetBase
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label'      => __('Space below title', 'veloria'),
+                'label'      => __('Space below title', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'default'    => ['size' => 4, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-item__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -440,7 +440,7 @@ class UspItems extends WidgetBase
         $this->start_controls_section(
             'section_subtitle_style',
             [
-                'label' => __('Subtitle', 'veloria'),
+                'label' => __('Subtitle', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -449,8 +449,8 @@ class UspItems extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'label'    => __('Typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-usp-item__subtitle',
+                'label'    => __('Typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-usp-item__subtitle',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_weight' => ['default' => '400'],
@@ -462,11 +462,11 @@ class UspItems extends WidgetBase
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-usp-item__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-usp-item__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -476,7 +476,7 @@ class UspItems extends WidgetBase
         $this->start_controls_section(
             'section_hover',
             [
-                'label' => __('Hover', 'veloria'),
+                'label' => __('Hover', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -484,16 +484,16 @@ class UspItems extends WidgetBase
         $this->add_control(
             'card_hover_effect',
             [
-                'label'   => __('Effect', 'veloria'),
+                'label'   => __('Effect', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'lift_glow',
                 'options' => [
-                    'none'      => __('None', 'veloria'),
-                    'lift_glow' => __('Lift and glow shadow', 'veloria'),
-                    'bg'        => __('Background color', 'veloria'),
-                    'zoom'      => __('Zoom in', 'veloria'),
-                    'zoom_out'  => __('Zoom out', 'veloria'),
-                    'jump'      => __('Jump', 'veloria'),
+                    'none'      => __('None', 'addonext'),
+                    'lift_glow' => __('Lift and glow shadow', 'addonext'),
+                    'bg'        => __('Background color', 'addonext'),
+                    'zoom'      => __('Zoom in', 'addonext'),
+                    'zoom_out'  => __('Zoom out', 'addonext'),
+                    'jump'      => __('Jump', 'addonext'),
                 ],
             ]
         );
@@ -501,12 +501,12 @@ class UspItems extends WidgetBase
         $this->add_control(
             'hover_bg_color',
             [
-                'label'     => __('Hover background', 'veloria'),
+                'label'     => __('Hover background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f9fafb',
                 'condition' => ['card_hover_effect' => 'bg'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-usp-items' => '--usp-hover-card-bg: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-usp-items' => '--usp-hover-card-bg: {{VALUE}};',
                 ],
             ]
         );
@@ -514,12 +514,12 @@ class UspItems extends WidgetBase
         $this->add_control(
             'hover_shadow_color',
             [
-                'label'     => __('Glow shadow', 'veloria'),
+                'label'     => __('Glow shadow', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(79, 70, 229, 0.2)',
                 'condition' => ['card_hover_effect' => 'lift_glow'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-usp-items' => '--usp-hover-glow: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-usp-items' => '--usp-hover-glow: {{VALUE}};',
                 ],
             ]
         );
@@ -527,14 +527,14 @@ class UspItems extends WidgetBase
         $this->add_control(
             'hover_lift_distance',
             [
-                'label'      => __('Lift distance (px)', 'veloria'),
+                'label'      => __('Lift distance (px)', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24]],
                 'default'    => ['size' => 8, 'unit' => 'px'],
                 'condition'  => ['card_hover_effect' => 'lift_glow'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-items' => '--usp-lift: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-usp-items' => '--usp-lift: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -542,15 +542,15 @@ class UspItems extends WidgetBase
         $this->add_control(
             'hover_transition_ms',
             [
-                'label'      => __('Transition (ms)', 'veloria'),
+                'label'      => __('Transition (ms)', 'addonext'),
                 'type'       => Controls_Manager::NUMBER,
                 'min'        => 0,
                 'max'        => 800,
                 'step'       => 10,
                 'default'    => 220,
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-usp-item' => 'transition-duration: {{VALUE}}ms;',
-                    '{{WRAPPER}} .veloria-usp-item__icon' => 'transition-duration: {{VALUE}}ms;',
+                    '{{WRAPPER}} .addonext-usp-item' => 'transition-duration: {{VALUE}}ms;',
+                    '{{WRAPPER}} .addonext-usp-item__icon' => 'transition-duration: {{VALUE}}ms;',
                 ],
             ]
         );
@@ -568,11 +568,11 @@ class UspItems extends WidgetBase
         }
 
         $this->add_render_attribute('wrapper', 'class', [
-            'veloria-usp-items',
-            'veloria-usp-items--hover-' . sanitize_html_class($effect),
+            'addonext-usp-items',
+            'addonext-usp-items--hover-' . sanitize_html_class($effect),
         ]);
 
-        $path = VELORIA_DIR . 'templates/usp-items/usp-items.php';
+        $path = ADDONEXT_DIR . 'templates/usp-items/usp-items.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -585,23 +585,23 @@ class UspItems extends WidgetBase
         var effect = settings.card_hover_effect || 'lift_glow';
         var tag = settings.title_tag || 'h3';
         #>
-        <div class="veloria-usp-items veloria-usp-items--hover-{{ effect }}">
-            <div class="veloria-usp-items__grid">
+        <div class="addonext-usp-items addonext-usp-items--hover-{{ effect }}">
+            <div class="addonext-usp-items__grid">
                 <# _.each( settings.items, function( item ) {
                     var circleBg = String( item.circle_bg || '#e0e7ff' ).replace( /"/g, '' );
                     var iconColor = String( item.icon_color || '#2563eb' ).replace( /"/g, '' );
                 #>
-                    <article class="veloria-usp-item elementor-repeater-item-{{ item._id }}">
-                        <div class="veloria-usp-item__surface">
-                            <# print( '<span class="veloria-usp-item__icon-ring" style="background-color:' + circleBg + ';">' ); #>
-                                <# print( '<span class="veloria-usp-item__icon" style="color:' + iconColor + ';">' ); #>
+                    <article class="addonext-usp-item elementor-repeater-item-{{ item._id }}">
+                        <div class="addonext-usp-item__surface">
+                            <# print( '<span class="addonext-usp-item__icon-ring" style="background-color:' + circleBg + ';">' ); #>
+                                <# print( '<span class="addonext-usp-item__icon" style="color:' + iconColor + ';">' ); #>
                                     <# if ( item.item_icon && item.item_icon.value ) { #>
                                         {{{ elementor.helpers.renderIcon( view, item.item_icon, { 'aria-hidden': 'true' }, 'i', 'object' ).value }}}
                                     <# } #>
                                 </span>
                             </span>
-                            <# print( '<' + tag + ' class="veloria-usp-item__title">' ); #>{{{ item.item_title }}}<# print( '</' + tag + '>' ); #>
-                            <p class="veloria-usp-item__subtitle">{{{ item.item_subtitle }}}</p>
+                            <# print( '<' + tag + ' class="addonext-usp-item__title">' ); #>{{{ item.item_title }}}<# print( '</' + tag + '>' ); #>
+                            <p class="addonext-usp-item__subtitle">{{{ item.item_subtitle }}}</p>
                         </div>
                     </article>
                 <# } ); #>

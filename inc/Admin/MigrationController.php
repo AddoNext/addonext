@@ -1,14 +1,14 @@
 <?php
-namespace Veloria\Admin;
+namespace Addonext\Admin;
 
-use Veloria\Migrations\ActivateFreeWidgets;
+use Addonext\Migrations\ActivateFreeWidgets;
 
 defined('ABSPATH') or exit;
 
 /**
  * Controller for running migrations
  *
- * @package Veloria\Admin
+ * @package AddoNext\Admin
  */
 class MigrationController
 {
@@ -37,8 +37,8 @@ class MigrationController
     public function run_migrations(): void
     {
         $migrations = $this->migrations;
-        if (veloria_pro_class_exists('\Veloria\Pro\Migrations\ActivateProWidgets')) {
-            $migrations[] = \Veloria\Pro\Migrations\ActivateProWidgets::class;
+        if (addonext_pro_class_exists('\Addonext\Pro\Migrations\ActivateProWidgets')) {
+            $migrations[] = \Addonext\Pro\Migrations\ActivateProWidgets::class;
         }
 
         foreach ($migrations as $migration) {

@@ -1,17 +1,17 @@
 <?php
-namespace Veloria\Admin;
+namespace Addonext\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use Veloria\Utils\OptionsHelper;
-use Veloria\Common\ExtensionManager;
+use Addonext\Utils\OptionsHelper;
+use Addonext\Common\ExtensionManager;
 
 defined('ABSPATH') or exit;
 
 /**
  * Extensions Controller: REST API for extensions data and actions
  *
- * @package Veloria
+ * @package AddoNext
  * @since 1.0.0
  */
 class ExtensionsController
@@ -31,20 +31,20 @@ class ExtensionsController
      */
     public function register_endpoints(): void
     {
-        register_rest_route('veloria/v1', '/extensions', [
+        register_rest_route('addonext/v1', '/extensions', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_get_extensions'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
-        register_rest_route('veloria/v1', '/extensions', [
+        register_rest_route('addonext/v1', '/extensions', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_update_extensions'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
         register_rest_route(
-            'veloria/v1',
+            'addonext/v1',
             '/extensions/(?P<id>[a-z0-9\\-]+)/settings',
             [
                 'methods'             => ['GET', 'POST'],
@@ -108,7 +108,7 @@ class ExtensionsController
             return new WP_REST_Response(
                 [
                     'success' => false,
-                    'message' => __('Invalid extensions', 'veloria')
+                    'message' => __('Invalid extensions', 'addonext')
                 ],
                 400
             );
@@ -121,7 +121,7 @@ class ExtensionsController
 
         return new WP_REST_Response([
             'success'    => true,
-            'message'    => __('Extensions updated successfully', 'veloria'),
+            'message'    => __('Extensions updated successfully', 'addonext'),
             'extensions' => $manager->get_extensions_catalog()
         ]);
     }
@@ -139,13 +139,13 @@ class ExtensionsController
         $class   = $manager->get_extension_class_for_id($id);
 
         if ($class === null) {
-            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'veloria')], 404);
+            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'addonext')], 404);
         }
 
         $instance = emty_container($class);
 
         if (!$instance->has_settings()) {
-            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'veloria')], 400);
+            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'addonext')], 400);
         }
 
         return new WP_REST_Response([
@@ -169,20 +169,20 @@ class ExtensionsController
         $class   = $manager->get_extension_class_for_id($id);
 
         if ($class === null) {
-            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'veloria')], 404);
+            return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'addonext')], 404);
         }
 
         $instance = emty_container($class);
 
         if (!$instance->has_settings()) {
-            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'veloria')], 400);
+            return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'addonext')], 400);
         }
 
         $raw = $request->get_param('settings');
 
         if (!is_array($raw)) {
             return new WP_REST_Response(
-                ['success' => false, 'message' => __('Invalid settings', 'veloria')],
+                ['success' => false, 'message' => __('Invalid settings', 'addonext')],
                 400
             );
         }
@@ -192,7 +192,7 @@ class ExtensionsController
 
         return new WP_REST_Response([
             'success'  => true,
-            'message'  => __('Settings saved', 'veloria'),
+            'message'  => __('Settings saved', 'addonext'),
             'id'       => $id,
             'settings' => $manager->get_extension_settings_payload($id),
         ]);

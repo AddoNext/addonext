@@ -1,4 +1,4 @@
-=== Veloria Widgets for Elementor ===
+=== AddoNext Widgets for Elementor ===
 Contributors: elementrify
 Tags: elementor, page builder, widgets, woocommerce, charts
 Requires at least: 6.0
@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Elementor widgets and extensions: content, marketing, charts, and WooCommerce—managed from the Veloria admin.
+Elementor widgets and extensions: content, marketing, charts, and WooCommerce—managed from the AddoNext admin.
 
 == Description ==
 
-Veloria extends the Elementor page builder with widgets grouped into clear categories, optional extensions that apply across your site, and a dedicated settings area to enable only what you need.
+AddoNext extends the Elementor page builder with widgets grouped into clear categories, optional extensions that apply across your site, and a dedicated settings area to enable only what you need.
 
 **Content widgets**
 
@@ -48,16 +48,16 @@ WooCommerce-related widgets are available when WooCommerce is installed. Some Co
 
 == Installation ==
 
-1. Upload the `veloria` folder to `/wp-content/plugins/`, or install the ZIP from the Plugins → Add New screen.
+1. Upload the `addonext` folder to `/wp-content/plugins/`, or install the ZIP from the Plugins → Add New screen.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Ensure **Elementor** is installed and activated.
-4. Open **Veloria** in the admin menu to configure active widgets and extensions, then edit any page with Elementor and find **Veloria** widgets in the panel.
+4. Open **AddoNext** in the admin menu to configure active widgets and extensions, then edit any page with Elementor and find **AddoNext** widgets in the panel.
 
 == Frequently Asked Questions ==
 
-= Does Veloria work without Elementor? =
+= Does AddoNext work without Elementor? =
 
-No. Veloria registers widgets for Elementor. Install and activate Elementor first.
+No. AddoNext registers widgets for Elementor. Install and activate Elementor first.
 
 = Do I need WooCommerce? =
 
@@ -65,15 +65,15 @@ Only if you want to use the WooCommerce-specific widgets. All other widgets work
 
 = Where do I enable or disable individual widgets? =
 
-Use the Veloria admin screens to control which widgets and extensions are active for your site.
+Use the AddoNext admin screens to control which widgets and extensions are active for your site.
 
 = Is Elementor Pro required? =
 
-No. Veloria is built for the Elementor editor; Elementor Pro is optional unless your own layout relies on Pro-only Elementor features.
+No. AddoNext is built for the Elementor editor; Elementor Pro is optional unless your own layout relies on Pro-only Elementor features.
 
 == Screenshots ==
 
-1. Veloria widgets in the Elementor panel under the Veloria category.
+1. AddoNext widgets in the Elementor panel under the AddoNext category.
 2. Admin area for managing widgets and extensions.
 3. Example: charts and data widgets on the front end.
 4. Example: WooCommerce widgets in a store layout.
@@ -92,7 +92,7 @@ Initial public release.
 
 This plugin can connect to third-party services when the related widget or feature is configured.
 
-**Google reCAPTCHA** — Used by the Contact Form widget for spam protection when enabled in widget settings and API keys are saved under Veloria → Settings. Sends the reCAPTCHA response token and site verification request to Google when a form is submitted. Terms: https://policies.google.com/terms — Privacy: https://policies.google.com/privacy
+**Google reCAPTCHA** — Used by the Contact Form widget for spam protection when enabled in widget settings and API keys are saved under AddoNext → Settings. Sends the reCAPTCHA response token and site verification request to Google when a form is submitted. Terms: https://policies.google.com/terms — Privacy: https://policies.google.com/privacy
 
 **Google Maps** — Used by the Advanced Google Map widget when an embed URL or map coordinates are configured. Loads map content from Google when the widget is displayed on the front end. Terms: https://policies.google.com/terms — Privacy: https://policies.google.com/privacy
 
@@ -102,4 +102,4 @@ This plugin can connect to third-party services when the related widget or featu
 
 **Freemius** — Optional SDK used for plugin updates and upgrade links after the administrator accepts the Freemius connection prompt. Sends site URL, plugin version, and related account data when connected. Terms: https://freemius.com/terms/ — Privacy: https://freemius.com/privacy/
 
-**Asset cache endpoint** — When asset caching is enabled, minified CSS and JavaScript may be served through a public read-only REST endpoint on your site (`/wp-json/veloria/v1/asset/{hash}.css` or `.js`). Only plugin-generated cache files are served; no user data is exposed.
+**Asset cache endpoint** — When asset caching is enabled, minified CSS and JavaScript may be served through a public read-only REST endpoint on your site (`/wp-json/addonext/v1/asset/{hash}.css` or `.js`). Only plugin-generated cache files are served; no user data is exposed.

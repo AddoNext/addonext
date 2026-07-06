@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ProgressBar;
+namespace Addonext\Widgets\ProgressBar;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class ProgressBar extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-bar-chart veloria-icon';
+        return 'eicon-bar-chart addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-progress-bar';
+        return 'addonext-progress-bar';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ProgressBar extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Progress Bar', 'veloria');
+        return __('Progress Bar', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Animated progress indicators', 'veloria');
+        return __('Animated progress indicators', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,12 +42,12 @@ class ProgressBar extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-progress-bar'];
+        return ['addonext-progress-bar'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('veloria-progress-bar', VELORIA_URL . 'assets/css/progress-bar.css', [], VELORIA_VERSION);
+        wp_register_style('addonext-progress-bar', ADDONEXT_URL . 'assets/css/progress-bar.css', [], ADDONEXT_VERSION);
     }
 
     public function register_controls(): void
@@ -55,7 +55,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -64,15 +64,15 @@ class ProgressBar extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Label', 'veloria'),
+                'label'   => __('Label', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Web Design', 'veloria'),
+                'default' => __('Web Design', 'addonext'),
             ]
         );
         $repeater->add_control(
             'percent',
             [
-                'label'   => __('Percentage', 'veloria'),
+                'label'   => __('Percentage', 'addonext'),
                 'type'    => Controls_Manager::SLIDER,
                 'size_units' => ['%'],
                 'range'   => ['%' => ['min' => 0, 'max' => 100]],
@@ -82,7 +82,7 @@ class ProgressBar extends WidgetBase
         $repeater->add_control(
             'bar_color',
             [
-                'label'   => __('Bar color', 'veloria'),
+                'label'   => __('Bar color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#4285F4',
             ]
@@ -91,13 +91,13 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Bars', 'veloria'),
+                'label'       => __('Bars', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
-                    ['title' => __('Web Design', 'veloria'), 'percent' => ['size' => 90], 'bar_color' => '#4285F4'],
-                    ['title' => __('Development', 'veloria'), 'percent' => ['size' => 85], 'bar_color' => '#8E24AA'],
-                    ['title' => __('Marketing', 'veloria'), 'percent' => ['size' => 75], 'bar_color' => '#4CAF50'],
+                    ['title' => __('Web Design', 'addonext'), 'percent' => ['size' => 90], 'bar_color' => '#4285F4'],
+                    ['title' => __('Development', 'addonext'), 'percent' => ['size' => 85], 'bar_color' => '#8E24AA'],
+                    ['title' => __('Marketing', 'addonext'), 'percent' => ['size' => 75], 'bar_color' => '#4CAF50'],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -108,7 +108,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_style_bars',
             [
-                'label' => __('Bars', 'veloria'),
+                'label' => __('Bars', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -116,13 +116,13 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'bar_height',
             [
-                'label'      => __('Bar height', 'veloria'),
+                'label'      => __('Bar height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 4, 'max' => 24]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-progress-bar__track' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-progress-bar__track' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -130,11 +130,11 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'track_color',
             [
-                'label'     => __('Track (unfilled) color', 'veloria'),
+                'label'     => __('Track (unfilled) color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E0E0E0',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-progress-bar__track' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-progress-bar__track' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -142,13 +142,13 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'row_gap',
             [
-                'label'      => __('Gap between rows', 'veloria'),
+                'label'      => __('Gap between rows', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 32]],
                 'default'    => ['size' => 16],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-progress-bar__list' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-progress-bar__list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -158,7 +158,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_style_label',
             [
-                'label' => __('Label', 'veloria'),
+                'label' => __('Label', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -167,7 +167,7 @@ class ProgressBar extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'label_typography',
-                'selector' => '{{WRAPPER}} .veloria-progress-bar__title',
+                'selector' => '{{WRAPPER}} .addonext-progress-bar__title',
                 'default'  => ['font_size' => ['unit' => 'px', 'size' => 14]],
             ]
         );
@@ -175,11 +175,11 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'label_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-progress-bar__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-progress-bar__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -189,7 +189,7 @@ class ProgressBar extends WidgetBase
         $this->start_controls_section(
             'section_style_percent',
             [
-                'label' => __('Percentage', 'veloria'),
+                'label' => __('Percentage', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -198,7 +198,7 @@ class ProgressBar extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'percent_typography',
-                'selector' => '{{WRAPPER}} .veloria-progress-bar__percent',
+                'selector' => '{{WRAPPER}} .addonext-progress-bar__percent',
                 'default'  => ['font_size' => ['unit' => 'px', 'size' => 14]],
             ]
         );
@@ -206,7 +206,7 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'percent_color_override',
             [
-                'label'        => __('Use bar color for percentage', 'veloria'),
+                'label'        => __('Use bar color for percentage', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -216,11 +216,11 @@ class ProgressBar extends WidgetBase
         $this->add_control(
             'percent_color',
             [
-                'label'     => __('Color (when not bar color)', 'veloria'),
+                'label'     => __('Color (when not bar color)', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-progress-bar__percent' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-progress-bar__percent' => 'color: {{VALUE}};',
                 ],
                 'condition' => ['percent_color_override' => ''],
             ]
@@ -231,7 +231,7 @@ class ProgressBar extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/progress-bar/progress-bar.php';
+        $path = ADDONEXT_DIR . 'templates/progress-bar/progress-bar.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -244,8 +244,8 @@ class ProgressBar extends WidgetBase
         var items = settings.items || [];
         var percentUseBarColor = settings.percent_color_override === 'yes';
         #>
-        <div class="veloria-progress-bar">
-            <div class="veloria-progress-bar__list">
+        <div class="addonext-progress-bar">
+            <div class="addonext-progress-bar__list">
                 <# _.each(items, function(item) {
                     var percentVal = (item.percent && item.percent.size != null) ? item.percent.size : (typeof item.percent === 'number' ? item.percent : 0);
                     var percent = Math.max(0, Math.min(100, parseInt(percentVal, 10) || 0));
@@ -253,13 +253,13 @@ class ProgressBar extends WidgetBase
                     var percentStyle = percentUseBarColor ? ('color: ' + barColor + ';') : '';
                     var fillStyle = 'width: ' + percent + '% !important; background-color: ' + barColor + ';';
                 #>
-                    <div class="veloria-progress-bar__row">
-                        <div class="veloria-progress-bar__header">
-                            <span class="veloria-progress-bar__title">{{{ item.title }}}</span>
-                            <span class="veloria-progress-bar__percent" style="{{ percentStyle }}">{{ percent }}%</span>
+                    <div class="addonext-progress-bar__row">
+                        <div class="addonext-progress-bar__header">
+                            <span class="addonext-progress-bar__title">{{{ item.title }}}</span>
+                            <span class="addonext-progress-bar__percent" style="{{ percentStyle }}">{{ percent }}%</span>
                         </div>
-                        <div class="veloria-progress-bar__track">
-                            <div class="veloria-progress-bar__fill" style="{{ fillStyle }}"></div>
+                        <div class="addonext-progress-bar__track">
+                            <div class="addonext-progress-bar__fill" style="{{ fillStyle }}"></div>
                         </div>
                     </div>
                 <# }); #>

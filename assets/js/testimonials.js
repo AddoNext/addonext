@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var SLIDER_SEL = '.veloria-testimonials--slider.swiper';
+    var SLIDER_SEL = '.addonext-testimonials--slider.swiper';
 
     function initSlider(el) {
         if (!el) return;
@@ -106,7 +106,7 @@
 
     function bindElementor() {
         if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks || !elementorFrontend.hooks.addAction) return;
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-testimonials.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-testimonials.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
                 var slider = el.querySelector(SLIDER_SEL);

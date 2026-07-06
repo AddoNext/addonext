@@ -18,16 +18,16 @@
   }
 
   function mount() {
-    if (document.getElementById("veloria-reading-progress")) {
+    if (document.getElementById("addonext-reading-progress")) {
       return;
     }
 
     var bar = document.createElement("div");
-    bar.id = "veloria-reading-progress";
+    bar.id = "addonext-reading-progress";
     bar.setAttribute("aria-hidden", "true");
 
     var fill = document.createElement("div");
-    fill.className = "veloria-reading-progress__fill";
+    fill.className = "addonext-reading-progress__fill";
     bar.appendChild(fill);
 
     document.body.appendChild(bar);

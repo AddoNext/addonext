@@ -1,35 +1,35 @@
-.veloria-image-carousel {
+.addonext-image-carousel {
     position: relative;
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    height: var(--veloria-carousel-height, auto);
+    height: var(--addonext-carousel-height, auto);
     --swiper-pagination-bullet-inactive-color: rgba(0, 0, 0, 0.45);
     --swiper-pagination-bullet-inactive-opacity: 0.7;
     --swiper-pagination-bullet-size: 10px;
 }
 
-.veloria-image-carousel__wrapper,
-.veloria-image-carousel .swiper-wrapper {
-    height: var(--veloria-carousel-height, auto);
+.addonext-image-carousel__wrapper,
+.addonext-image-carousel .swiper-wrapper {
+    height: var(--addonext-carousel-height, auto);
 }
 
-.veloria-image-carousel[style*="--veloria-carousel-height"] .swiper-wrapper {
+.addonext-image-carousel[style*="--addonext-carousel-height"] .swiper-wrapper {
     height: 100%;
 }
 
-.veloria-image-carousel__slide,
-.veloria-image-carousel .swiper-slide {
-    height: var(--veloria-carousel-height, auto);
+.addonext-image-carousel__slide,
+.addonext-image-carousel .swiper-slide {
+    height: var(--addonext-carousel-height, auto);
     box-sizing: border-box;
 }
 
-.veloria-image-carousel[style*="--veloria-carousel-height"] .swiper-slide {
+.addonext-image-carousel[style*="--addonext-carousel-height"] .swiper-slide {
     height: 100%;
 }
 
-.veloria-image-carousel__slide img,
-.veloria-image-carousel .swiper-slide img {
+.addonext-image-carousel__slide img,
+.addonext-image-carousel .swiper-slide img {
     display: block;
     width: 100%;
     height: auto;
@@ -38,12 +38,12 @@
     border-radius: inherit;
 }
 
-.veloria-image-carousel[style*="--veloria-carousel-height"] .swiper-slide img {
+.addonext-image-carousel[style*="--addonext-carousel-height"] .swiper-slide img {
     height: 100%;
     object-fit: cover;
 }
 
-.veloria-image-carousel__arrow {
+.addonext-image-carousel__arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -61,36 +61,36 @@
     transition: opacity 0.2s, box-shadow 0.2s;
 }
 
-.veloria-image-carousel__arrow::after {
+.addonext-image-carousel__arrow::after {
     content: none !important;
 }
 
-.veloria-image-carousel__arrow:hover {
+.addonext-image-carousel__arrow:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.veloria-image-carousel__arrow--prev {
+.addonext-image-carousel__arrow--prev {
     left: 12px;
 }
 
-.veloria-image-carousel__arrow--next {
+.addonext-image-carousel__arrow--next {
     right: 12px;
 }
 
-.veloria-image-carousel__arrow svg {
+.addonext-image-carousel__arrow svg {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
 }
 
-.veloria-image-carousel .swiper-button-disabled {
+.addonext-image-carousel .swiper-button-disabled {
     opacity: 0.35;
     cursor: default;
 }
 
-.veloria-image-carousel .swiper-pagination,
-.veloria-image-carousel .swiper-pagination-bullets,
-.veloria-image-carousel .swiper-pagination-horizontal {
+.addonext-image-carousel .swiper-pagination,
+.addonext-image-carousel .swiper-pagination-bullets,
+.addonext-image-carousel .swiper-pagination-horizontal {
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -99,12 +99,12 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    gap: var(--veloria-dots-gap, 8px);
+    gap: var(--addonext-dots-gap, 8px);
     opacity: 1 !important;
     pointer-events: auto;
 }
 
-.veloria-image-carousel .swiper-pagination-bullet {
+.addonext-image-carousel .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -115,28 +115,28 @@
     cursor: pointer;
 }
 
-.veloria-image-carousel .swiper-pagination-bullet:hover {
+.addonext-image-carousel .swiper-pagination-bullet:hover {
     opacity: 0.9;
 }
 
-.veloria-image-carousel .swiper-pagination-bullet-active {
+.addonext-image-carousel .swiper-pagination-bullet-active {
     background: rgba(0, 0, 0, 0.85);
     opacity: 1;
     transform: scale(1.2);
 }
 
-.veloria-image-carousel.veloria-pagination-square .swiper-pagination-bullet {
+.addonext-image-carousel.addonext-pagination-square .swiper-pagination-bullet {
     border-radius: 0;
 }
 
-.veloria-image-carousel.veloria-pagination-bar .swiper-pagination-bullet {
-    width: var(--veloria-bar-width, 28px);
+.addonext-image-carousel.addonext-pagination-bar .swiper-pagination-bullet {
+    width: var(--addonext-bar-width, 28px);
     height: 5px;
     border-radius: 3px;
     transform: none;
 }
 
-.veloria-image-carousel.veloria-pagination-bar .swiper-pagination-bullet-active {
-    width: calc(var(--veloria-bar-width, 28px) * 1.4);
+.addonext-image-carousel.addonext-pagination-bar .swiper-pagination-bullet-active {
+    width: calc(var(--addonext-bar-width, 28px) * 1.4);
     transform: none;
 }

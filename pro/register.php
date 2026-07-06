@@ -2,34 +2,34 @@
 
 defined('ABSPATH') or exit;
 
-use Veloria\Pro\Admin\AccountController;
-use Veloria\Widgets\AnimatedCounter\AnimatedCounter;
-use Veloria\Widgets\AnimatedGradient\AnimatedGradient;
-use Veloria\Widgets\AreaChart\AreaChart;
-use Veloria\Widgets\BeforeAfterSlider\BeforeAfterSlider;
-use Veloria\Widgets\BentoGrid\BentoGrid;
-use Veloria\Widgets\CircularProgress\CircularProgress;
-use Veloria\Widgets\ComparisonTable\ComparisonTable;
-use Veloria\Widgets\CountdownTimer\CountdownTimer;
-use Veloria\Widgets\DonutChart\DonutChart;
-use Veloria\Widgets\HeroBanner\HeroBanner;
-use Veloria\Widgets\NewsTicker\NewsTicker;
-use Veloria\Widgets\NoticeBoard\NoticeBoard;
-use Veloria\Widgets\PieChart\PieChart;
-use Veloria\Widgets\ProductCarousel\ProductCarousel;
-use Veloria\Widgets\ProductFilter\ProductFilter;
-use Veloria\Widgets\RadarChart\RadarChart;
-use Veloria\Widgets\SubscribeForm\SubscribeForm;
-use Veloria\Widgets\TableOfContents\TableOfContents;
-use Veloria\Widgets\WooDashboard\WooDashboard;
-use Veloria\Extensions\ParticleEffects\ParticleEffects;
+use Addonext\Pro\Admin\AccountController;
+use Addonext\Widgets\AnimatedCounter\AnimatedCounter;
+use Addonext\Widgets\AnimatedGradient\AnimatedGradient;
+use Addonext\Widgets\AreaChart\AreaChart;
+use Addonext\Widgets\BeforeAfterSlider\BeforeAfterSlider;
+use Addonext\Widgets\BentoGrid\BentoGrid;
+use Addonext\Widgets\CircularProgress\CircularProgress;
+use Addonext\Widgets\ComparisonTable\ComparisonTable;
+use Addonext\Widgets\CountdownTimer\CountdownTimer;
+use Addonext\Widgets\DonutChart\DonutChart;
+use Addonext\Widgets\HeroBanner\HeroBanner;
+use Addonext\Widgets\NewsTicker\NewsTicker;
+use Addonext\Widgets\NoticeBoard\NoticeBoard;
+use Addonext\Widgets\PieChart\PieChart;
+use Addonext\Widgets\ProductCarousel\ProductCarousel;
+use Addonext\Widgets\ProductFilter\ProductFilter;
+use Addonext\Widgets\RadarChart\RadarChart;
+use Addonext\Widgets\SubscribeForm\SubscribeForm;
+use Addonext\Widgets\TableOfContents\TableOfContents;
+use Addonext\Widgets\WooDashboard\WooDashboard;
+use Addonext\Extensions\ParticleEffects\ParticleEffects;
 
 /**
  * Pro widget classes when premium code is available.
  *
  * @return array<int, class-string>
  */
-function veloria_get_pro_widget_classes(): array
+function addonext_get_pro_widget_classes(): array
 {
     if (emt_fs()->can_use_premium_code__premium_only()) {
         if (emt_fs()->is_plan('pro')) {
@@ -65,7 +65,7 @@ function veloria_get_pro_widget_classes(): array
  *
  * @return array<string, class-string>
  */
-function veloria_get_pro_extension_map(): array
+function addonext_get_pro_extension_map(): array
 {
     if (emt_fs()->can_use_premium_code__premium_only()) {
         if (emt_fs()->is_plan('pro')) {
@@ -83,11 +83,11 @@ function veloria_get_pro_extension_map(): array
  *
  * @return void
  */
-function veloria_bootstrap_pro(): void
+function addonext_bootstrap_pro(): void
 {
-    if (veloria_has_pro_account_api() && !defined('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED')) {
+    if (addonext_has_pro_account_api() && !defined('ADDONEXT_PRO_ACCOUNT_BOOTSTRAPPED')) {
         new AccountController();
-        define('VELORIA_PRO_ACCOUNT_BOOTSTRAPPED', true);
+        define('ADDONEXT_PRO_ACCOUNT_BOOTSTRAPPED', true);
     }
 
     if (emt_fs()->can_use_premium_code__premium_only()) {

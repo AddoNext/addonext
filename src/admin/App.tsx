@@ -15,9 +15,9 @@ import { STORE_NAME } from "../store/admin";
 import styles from "./App.module.scss";
 import { readElementorActive, readHasProAccountApi } from "./utils/adminData";
 
-const STORAGE_KEY = "veloria-theme";
+const STORAGE_KEY = "addonext-theme";
 const DEFAULT_TAB_SLUG = "widgets";
-const WPBODY_DARK_CLASS = "veloria-dark-mode";
+const WPBODY_DARK_CLASS = "addonext-dark-mode";
 
 export const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -104,7 +104,7 @@ export const App = () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = result.backup_name ?? "veloria-backup.json";
+        a.download = result.backup_name ?? "addonext-backup.json";
         a.click();
         URL.revokeObjectURL(url);
       }
@@ -133,7 +133,7 @@ export const App = () => {
                   </div>
                   <h2 className={styles.elementorRequiredTitle}>Elementor Plugin Required</h2>
                   <p className={styles.elementorRequiredText}>
-                    Veloria needs Elementor to be active before it can load widgets, extensions, and settings.
+                    AddoNext needs Elementor to be active before it can load widgets, extensions, and settings.
                     Please activate the Elementor plugin, then refresh this page.
                   </p>
                 </section>

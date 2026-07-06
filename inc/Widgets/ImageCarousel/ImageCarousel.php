@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ImageCarousel;
+namespace Addonext\Widgets\ImageCarousel;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Image_Size;
@@ -19,19 +19,19 @@ class ImageCarousel extends WidgetBase
     public function enqueue_preview_scripts(): void
     {
         wp_enqueue_style('swiper');
-        wp_enqueue_style('veloria-image-carousel');
+        wp_enqueue_style('addonext-image-carousel');
         wp_enqueue_script('swiper');
-        wp_enqueue_script('veloria-image-carousel');
+        wp_enqueue_script('addonext-image-carousel');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-slides veloria-icon';
+        return 'eicon-slides addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-image-carousel';
+        return 'addonext-image-carousel';
     }
 
     public function get_admin_category(): string
@@ -41,12 +41,12 @@ class ImageCarousel extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Image Carousel', 'veloria');
+        return __('Image Carousel', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Image slider with arrows and dots', 'veloria');
+        return __('Image slider with arrows and dots', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -56,12 +56,12 @@ class ImageCarousel extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'veloria-image-carousel'];
+        return ['swiper', 'addonext-image-carousel'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'veloria-image-carousel'];
+        return ['swiper', 'addonext-image-carousel'];
     }
 
     public function register_controls(): void
@@ -69,7 +69,7 @@ class ImageCarousel extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -78,7 +78,7 @@ class ImageCarousel extends WidgetBase
         $repeater->add_control(
             'image',
             [
-                'label'   => __('Image', 'veloria'),
+                'label'   => __('Image', 'addonext'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => ['url' => \Elementor\Utils::get_placeholder_image_src()],
             ]
@@ -86,7 +86,7 @@ class ImageCarousel extends WidgetBase
         $repeater->add_control(
             'caption',
             [
-                'label'   => __('Caption', 'veloria'),
+                'label'   => __('Caption', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -95,7 +95,7 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'slides',
             [
-                'label'       => __('Slides', 'veloria'),
+                'label'       => __('Slides', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
@@ -118,14 +118,14 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'navigation',
             [
-                'label'   => __('Navigation', 'veloria'),
+                'label'   => __('Navigation', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'both',
                 'options' => [
-                    'both'   => __('Arrows and Dots', 'veloria'),
-                    'arrows' => __('Arrows', 'veloria'),
-                    'dots'   => __('Dots', 'veloria'),
-                    'none'   => __('None', 'veloria'),
+                    'both'   => __('Arrows and Dots', 'addonext'),
+                    'arrows' => __('Arrows', 'addonext'),
+                    'dots'   => __('Dots', 'addonext'),
+                    'none'   => __('None', 'addonext'),
                 ],
             ]
         );
@@ -133,10 +133,10 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'autoplay',
             [
-                'label'        => __('Autoplay', 'veloria'),
+                'label'        => __('Autoplay', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => __('Yes', 'veloria'),
-                'label_off'    => __('No', 'veloria'),
+                'label_on'     => __('Yes', 'addonext'),
+                'label_off'    => __('No', 'addonext'),
                 'return_value' => 'yes',
                 'default'      => '',
             ]
@@ -145,7 +145,7 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'autoplay_delay',
             [
-                'label'     => __('Autoplay interval (seconds)', 'veloria'),
+                'label'     => __('Autoplay interval (seconds)', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 30,
@@ -158,10 +158,10 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'loop',
             [
-                'label'        => __('Loop', 'veloria'),
+                'label'        => __('Loop', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => __('Yes', 'veloria'),
-                'label_off'    => __('No', 'veloria'),
+                'label_on'     => __('Yes', 'addonext'),
+                'label_off'    => __('No', 'addonext'),
                 'return_value' => 'yes',
                 'default'      => 'yes',
             ]
@@ -172,7 +172,7 @@ class ImageCarousel extends WidgetBase
         $this->start_controls_section(
             'section_style_slides',
             [
-                'label' => __('Slides', 'veloria'),
+                'label' => __('Slides', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -180,7 +180,7 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'carousel_height',
             [
-                'label'      => __('Height', 'veloria'),
+                'label'      => __('Height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'vh'],
                 'range'      => [
@@ -193,7 +193,7 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -202,8 +202,8 @@ class ImageCarousel extends WidgetBase
                 ],
                 'default'    => ['unit' => 'px', 'size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-image-carousel' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
-                    '{{WRAPPER}} .veloria-image-carousel__slide img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-carousel' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .addonext-image-carousel__slide img' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -213,7 +213,7 @@ class ImageCarousel extends WidgetBase
         $this->start_controls_section(
             'section_style_arrows',
             [
-                'label'     => __('Arrows', 'veloria'),
+                'label'     => __('Arrows', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'navigation!' => 'none',
@@ -225,13 +225,13 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'arrow_size',
             [
-                'label'      => __('Button size', 'veloria'),
+                'label'      => __('Button size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 28, 'max' => 56, 'step' => 2]],
                 'default'    => ['size' => 40],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-image-carousel__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-carousel__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -239,11 +239,11 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'arrow_bg_color',
             [
-                'label'     => __('Background color', 'veloria'),
+                'label'     => __('Background color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-carousel__arrow' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-carousel__arrow' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -251,12 +251,12 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'arrow_icon_color',
             [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-carousel__arrow' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-image-carousel__arrow svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-carousel__arrow' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-carousel__arrow svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -266,7 +266,7 @@ class ImageCarousel extends WidgetBase
         $this->start_controls_section(
             'section_style_dots',
             [
-                'label'     => __('Pagination dots', 'veloria'),
+                'label'     => __('Pagination dots', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'navigation!' => 'none',
@@ -278,13 +278,13 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'pagination_type',
             [
-                'label'   => __('Type', 'veloria'),
+                'label'   => __('Type', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'bullets',
                 'options' => [
-                    'bullets'     => __('Circle', 'veloria'),
-                    'square'      => __('Square', 'veloria'),
-                    'progressbar' => __('Bar', 'veloria'),
+                    'bullets'     => __('Circle', 'addonext'),
+                    'square'      => __('Square', 'addonext'),
+                    'progressbar' => __('Bar', 'addonext'),
                 ],
             ]
         );
@@ -292,7 +292,7 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'dots_gap',
             [
-                'label'      => __('Space between', 'veloria'),
+                'label'      => __('Space between', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24, 'step' => 2]],
@@ -303,7 +303,7 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'bar_width',
             [
-                'label'      => __('Bar width', 'veloria'),
+                'label'      => __('Bar width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 14, 'max' => 56, 'step' => 2]],
@@ -317,13 +317,13 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'dot_size',
             [
-                'label'      => __('Size', 'veloria'),
+                'label'      => __('Size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 4, 'max' => 16, 'step' => 1]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-image-carousel .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-image-carousel .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition'  => [
                     'pagination_type' => ['bullets', 'square'],
@@ -334,11 +334,11 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'pagination_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0, 0, 0, 0.45)',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-carousel .swiper-pagination-bullet' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-carousel .swiper-pagination-bullet' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -346,11 +346,11 @@ class ImageCarousel extends WidgetBase
         $this->add_control(
             'pagination_color_active',
             [
-                'label'     => __('Active color', 'veloria'),
+                'label'     => __('Active color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0, 0, 0, 0.85)',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-image-carousel .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-image-carousel .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -360,7 +360,7 @@ class ImageCarousel extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/image-carousel/image-carousel.php';
+        $path = ADDONEXT_DIR . 'templates/image-carousel/image-carousel.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -382,29 +382,29 @@ class ImageCarousel extends WidgetBase
         var barWidth = (paginationType === 'progressbar' && settings.bar_width && settings.bar_width.size) ? settings.bar_width.size : 28;
         var placeholderUrl = '<?php echo esc_url(\Elementor\Utils::get_placeholder_image_src()); ?>';
         var paginationClass = '';
-        if (paginationType === 'square') paginationClass = ' veloria-pagination-square';
-        else if (paginationType === 'progressbar') paginationClass = ' veloria-pagination-bar';
-        var styleVars = '--veloria-dots-gap: ' + dotsGap + 'px;';
-        if (paginationType === 'progressbar') styleVars += ' --veloria-bar-width: ' + barWidth + 'px;';
+        if (paginationType === 'square') paginationClass = ' addonext-pagination-square';
+        else if (paginationType === 'progressbar') paginationClass = ' addonext-pagination-bar';
+        var styleVars = '--addonext-dots-gap: ' + dotsGap + 'px;';
+        if (paginationType === 'progressbar') styleVars += ' --addonext-bar-width: ' + barWidth + 'px;';
         if (settings.carousel_height && settings.carousel_height.size !== '' && settings.carousel_height.size > 0) {
-            styleVars += ' --veloria-carousel-height: ' + settings.carousel_height.size + (settings.carousel_height.unit || 'px') + ';';
+            styleVars += ' --addonext-carousel-height: ' + settings.carousel_height.size + (settings.carousel_height.unit || 'px') + ';';
         }
         #>
-        <div class="veloria-image-carousel swiper swiper-autoheight{{ paginationClass }}" data-autoplay="{{ autoplay ? '1' : '0' }}" data-autoplay-delay="{{ autoplayDelay }}" data-loop="{{ loop ? '1' : '0' }}" data-pagination-type="{{ paginationType }}" style="{{ styleVars }}">
-            <div class="veloria-image-carousel__wrapper swiper-wrapper">
+        <div class="addonext-image-carousel swiper swiper-autoheight{{ paginationClass }}" data-autoplay="{{ autoplay ? '1' : '0' }}" data-autoplay-delay="{{ autoplayDelay }}" data-loop="{{ loop ? '1' : '0' }}" data-pagination-type="{{ paginationType }}" style="{{ styleVars }}">
+            <div class="addonext-image-carousel__wrapper swiper-wrapper">
                 <# _.each(slides, function(slide) {
                     var url = (slide.image && slide.image.url) ? slide.image.url : placeholderUrl;
                 #>
-                    <div class="veloria-image-carousel__slide swiper-slide">
+                    <div class="addonext-image-carousel__slide swiper-slide">
                         <img src="{{ url }}" alt="{{ slide.caption || '' }}">
                     </div>
                 <# }); #>
             </div>
             <# if (showArrows) { #>
-                <div class="veloria-image-carousel__arrow veloria-image-carousel__arrow--prev swiper-button-prev" role="button" tabindex="0">
+                <div class="addonext-image-carousel__arrow addonext-image-carousel__arrow--prev swiper-button-prev" role="button" tabindex="0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
                 </div>
-                <div class="veloria-image-carousel__arrow veloria-image-carousel__arrow--next swiper-button-next" role="button" tabindex="0">
+                <div class="addonext-image-carousel__arrow addonext-image-carousel__arrow--next swiper-button-next" role="button" tabindex="0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                 </div>
             <# } #>

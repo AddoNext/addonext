@@ -1,5 +1,5 @@
 <?php
-namespace Veloria\Admin;
+namespace Addonext\Admin;
 
 use WP_REST_Response;
 
@@ -20,7 +20,7 @@ class FreeAccountController
      */
     public function register_endpoints(): void
     {
-        register_rest_route('veloria/v1', '/license', [
+        register_rest_route('addonext/v1', '/license', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_get_license'],
             'permission_callback' => [$this, 'check_permission'],
@@ -68,7 +68,7 @@ class FreeAccountController
                 'activation_date'    => '',
                 'sites_used'         => 0,
                 'sites_quota'        => null,
-                'version'            => defined('VELORIA_VERSION') ? 'v' . VELORIA_VERSION : '',
+                'version'            => defined('ADDONEXT_VERSION') ? 'v' . ADDONEXT_VERSION : '',
                 'email'              => '',
                 'customer_id'        => '',
                 'purchase_date'      => '',

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ProductFilter;
+namespace Addonext\Widgets\ProductFilter;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -11,11 +11,11 @@ class ProductFilter extends WidgetBase
 {
     private static bool $min_rating_hooked = false;
 
-    public function get_icon(): string { return 'eicon-filter veloria-icon'; }
-    public function get_name(): string { return 'veloria-product-filter'; }
+    public function get_icon(): string { return 'eicon-filter addonext-icon'; }
+    public function get_name(): string { return 'addonext-product-filter'; }
     public function get_admin_category(): string { return 'woocommerce'; }
-    public function get_title(): string { return __('Product Filter', 'veloria'); }
-    public function get_description(): string { return __('WooCommerce filter panel with price, taxonomies, and rating.', 'veloria'); }
+    public function get_title(): string { return __('Product Filter', 'addonext'); }
+    public function get_description(): string { return __('WooCommerce filter panel with price, taxonomies, and rating.', 'addonext'); }
     public function get_brand_color(): string { return '#7f54b3'; }
     
     public function is_preview_only(): bool
@@ -23,8 +23,8 @@ class ProductFilter extends WidgetBase
         return true;
     }
 
-    public function get_style_depends(): array { return ['veloria-product-filter']; }
-    public function get_script_depends(): array { return ['veloria-product-filter']; }
+    public function get_style_depends(): array { return ['addonext-product-filter']; }
+    public function get_script_depends(): array { return ['addonext-product-filter']; }
 
     public function enqueue_assets(): void
     {
@@ -32,17 +32,17 @@ class ProductFilter extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         wp_register_style(
-            'veloria-product-filter',
-            VELORIA_URL . 'assets/css/product-filter.css',
+            'addonext-product-filter',
+            ADDONEXT_URL . 'assets/css/product-filter.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-product-filter',
-            VELORIA_URL . 'assets/js/product-filter.js',
+            'addonext-product-filter',
+            ADDONEXT_URL . 'assets/js/product-filter.js',
             ['jquery'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
                 }
@@ -67,10 +67,10 @@ class ProductFilter extends WidgetBase
      */
     public static function disable_single_result_redirect_for_filter_form(bool $should_redirect): bool
     {
-        if (!$should_redirect || empty($_GET['veloria_pf'])) {
+        if (!$should_redirect || empty($_GET['addonext_pf'])) {
             return $should_redirect;
         }
-        $marker = sanitize_text_field(wp_unslash((string) $_GET['veloria_pf']));
+        $marker = sanitize_text_field(wp_unslash((string) $_GET['addonext_pf']));
 
         return $marker === '1' ? false : $should_redirect;
     }
@@ -88,10 +88,10 @@ class ProductFilter extends WidgetBase
         if (!function_exists('is_shop') || (!is_shop() && !is_product_taxonomy())) {
             return;
         }
-        if (!isset($_GET['veloria_min_rating']) || $_GET['veloria_min_rating'] === '') {
+        if (!isset($_GET['addonext_min_rating']) || $_GET['addonext_min_rating'] === '') {
             return;
         }
-        $min = (float) wp_unslash($_GET['veloria_min_rating']);
+        $min = (float) wp_unslash($_GET['addonext_min_rating']);
         if ($min <= 0 || $min > 5) {
             return;
         }
@@ -134,14 +134,14 @@ class ProductFilter extends WidgetBase
                 : $slug;
         }
         if (!isset($options['product_brand'])) {
-            $options['product_brand'] = __('Brands (product_brand)', 'veloria');
+            $options['product_brand'] = __('Brands (product_brand)', 'addonext');
         }
         if (!isset($options['pa_color'])) {
-            $options['pa_color'] = __('Color (pa_color)', 'veloria');
+            $options['pa_color'] = __('Color (pa_color)', 'addonext');
         }
         ksort($options);
         if ($options === []) {
-            $options['pa_brand'] = __('Brand (pa_brand)', 'veloria');
+            $options['pa_brand'] = __('Brand (pa_brand)', 'addonext');
         }
 
         return $options;
@@ -199,40 +199,40 @@ class ProductFilter extends WidgetBase
         $taxonomy_options = self::get_product_taxonomy_select_options();
 
         $this->start_controls_section('section_general', [
-            'label' => __('General', 'veloria'),
+            'label' => __('General', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('panel_title', [
-            'label' => __('Panel title', 'veloria'),
+            'label' => __('Panel title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Filter Products', 'veloria'),
+            'default' => __('Filter Products', 'addonext'),
             'render_type' => 'template',
         ]);
 
         $this->add_control('clear_all_text', [
-            'label' => __('Clear link text', 'veloria'),
+            'label' => __('Clear link text', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Clear All', 'veloria'),
+            'default' => __('Clear All', 'addonext'),
             'render_type' => 'template',
         ]);
 
         $this->add_control('apply_text', [
-            'label' => __('Apply button text', 'veloria'),
+            'label' => __('Apply button text', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Apply Filters', 'veloria'),
+            'default' => __('Apply Filters', 'addonext'),
             'render_type' => 'template',
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_product_search', [
-            'label' => __('Product search', 'veloria'),
+            'label' => __('Product search', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_product_search', [
-            'label' => __('Enable', 'veloria'),
+            'label' => __('Enable', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -240,16 +240,16 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('search_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
             'default' => '',
-            'placeholder' => __('Optional — leave empty to hide the heading', 'veloria'),
+            'placeholder' => __('Optional — leave empty to hide the heading', 'addonext'),
             'condition' => ['show_product_search' => 'yes'],
             'render_type' => 'template',
         ]);
 
         $this->add_control('show_product_search_label', [
-            'label' => __('Show label', 'veloria'),
+            'label' => __('Show label', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
@@ -257,9 +257,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('product_search_label', [
-            'label' => __('Label text', 'veloria'),
+            'label' => __('Label text', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Search products', 'veloria'),
+            'default' => __('Search products', 'addonext'),
             'condition' => [
                 'show_product_search' => 'yes',
                 'show_product_search_label' => 'yes',
@@ -268,9 +268,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('product_search_placeholder', [
-            'label' => __('Placeholder', 'veloria'),
+            'label' => __('Placeholder', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Search by name…', 'veloria'),
+            'default' => __('Search by name…', 'addonext'),
             'condition' => ['show_product_search' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -278,40 +278,40 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_price_filter', [
-            'label' => __('Price filter', 'veloria'),
+            'label' => __('Price filter', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('price_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Price Range', 'veloria'),
+            'default' => __('Price Range', 'addonext'),
             'render_type' => 'template',
         ]);
 
         $this->add_control('max_price', [
-            'label' => __('Price upper limit', 'veloria'),
+            'label' => __('Price upper limit', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'default' => 500,
             'min' => 1,
         ]);
 
         $this->add_control('min_price', [
-            'label' => __('Price lower limit', 'veloria'),
+            'label' => __('Price lower limit', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'default' => 0,
             'min' => 0,
         ]);
 
         $this->add_control('default_min_price', [
-            'label' => __('Default minimum price', 'veloria'),
+            'label' => __('Default minimum price', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'default' => 0,
             'min' => 0,
         ]);
 
         $this->add_control('default_max_price', [
-            'label' => __('Default maximum price', 'veloria'),
+            'label' => __('Default maximum price', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'default' => 500,
             'min' => 1,
@@ -320,12 +320,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_category_filter', [
-            'label' => __('Category filter', 'veloria'),
+            'label' => __('Category filter', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_category', [
-            'label' => __('Enable', 'veloria'),
+            'label' => __('Enable', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -333,9 +333,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('category_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Categories', 'veloria'),
+            'default' => __('Categories', 'addonext'),
             'condition' => ['show_category' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -343,12 +343,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_tag_filter', [
-            'label' => __('Tag filter', 'veloria'),
+            'label' => __('Tag filter', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_tag', [
-            'label' => __('Enable', 'veloria'),
+            'label' => __('Enable', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -356,9 +356,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('tag_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Tags', 'veloria'),
+            'default' => __('Tags', 'addonext'),
             'condition' => ['show_tag' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -366,12 +366,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_brand_filter', [
-            'label' => __('Brand filter', 'veloria'),
+            'label' => __('Brand filter', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_brand', [
-            'label' => __('Enable', 'veloria'),
+            'label' => __('Enable', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -379,40 +379,40 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('brand_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Brand', 'veloria'),
+            'default' => __('Brand', 'addonext'),
             'condition' => ['show_brand' => 'yes'],
             'render_type' => 'template',
         ]);
 
         $this->add_control('brand_taxonomy', [
-            'label' => __('Brand taxonomy', 'veloria'),
+            'label' => __('Brand taxonomy', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'options' => $taxonomy_options,
             'default' => self::default_brand_taxonomy_slug($taxonomy_options),
-            'description' => __('Pick the taxonomy used for brands (e.g. product_brand, pa_brand, pwb-brand).', 'veloria'),
+            'description' => __('Pick the taxonomy used for brands (e.g. product_brand, pa_brand, pwb-brand).', 'addonext'),
             'condition' => ['show_brand' => 'yes'],
         ]);
 
         $this->add_control('brand_hide_empty_terms', [
-            'label' => __('Hide brands with no products', 'veloria'),
+            'label' => __('Hide brands with no products', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'no',
-            'description' => __('Turn off to list all brand terms.', 'veloria'),
+            'description' => __('Turn off to list all brand terms.', 'addonext'),
             'condition' => ['show_brand' => 'yes'],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_rating_filter', [
-            'label' => __('Rating filter', 'veloria'),
+            'label' => __('Rating filter', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_rating', [
-            'label' => __('Enable', 'veloria'),
+            'label' => __('Enable', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -420,9 +420,9 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('rating_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Rating', 'veloria'),
+            'default' => __('Rating', 'addonext'),
             'condition' => ['show_rating' => 'yes'],
             'render_type' => 'template',
         ]);
@@ -430,12 +430,12 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_color_filter', [
-            'label' => __('Color filter', 'veloria'),
+            'label' => __('Color filter', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_color', [
-            'label' => __('Enable', 'veloria'),
+            'label' => __('Enable', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
@@ -443,24 +443,24 @@ class ProductFilter extends WidgetBase
         ]);
 
         $this->add_control('color_section_title', [
-            'label' => __('Section title', 'veloria'),
+            'label' => __('Section title', 'addonext'),
             'type' => Controls_Manager::TEXT,
-            'default' => __('Color', 'veloria'),
+            'default' => __('Color', 'addonext'),
             'condition' => ['show_color' => 'yes'],
             'render_type' => 'template',
         ]);
 
         $this->add_control('color_taxonomy', [
-            'label' => __('Color taxonomy', 'veloria'),
+            'label' => __('Color taxonomy', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'options' => $taxonomy_options,
             'default' => self::default_color_taxonomy_slug($taxonomy_options),
-            'description' => __('Pick the attribute or taxonomy used for color swatches (usually pa_color).', 'veloria'),
+            'description' => __('Pick the attribute or taxonomy used for color swatches (usually pa_color).', 'addonext'),
             'condition' => ['show_color' => 'yes'],
         ]);
 
         $this->add_control('color_hide_empty_terms', [
-            'label' => __('Hide colors with no products', 'veloria'),
+            'label' => __('Hide colors with no products', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'no',
@@ -470,30 +470,30 @@ class ProductFilter extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style', [
-            'label' => __('Card', 'veloria'),
+            'label' => __('Card', 'addonext'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('card_bg', [
-            'label' => __('Background', 'veloria'),
+            'label' => __('Background', 'addonext'),
             'type' => Controls_Manager::COLOR,
             'default' => '#f8fafc',
             'selectors' => [
-                '{{WRAPPER}} .veloria-product-filter' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-product-filter' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_border_color', [
-            'label' => __('Border color', 'veloria'),
+            'label' => __('Border color', 'addonext'),
             'type' => Controls_Manager::COLOR,
             'default' => '#e5e7eb',
             'selectors' => [
-                '{{WRAPPER}} .veloria-product-filter' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-product-filter' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_padding', [
-            'label' => __('Box padding', 'veloria'),
+            'label' => __('Box padding', 'addonext'),
             'type' => Controls_Manager::DIMENSIONS,
             'size_units' => ['px'],
             'default' => [
@@ -504,7 +504,7 @@ class ProductFilter extends WidgetBase
                 'unit' => 'px',
             ],
             'selectors' => [
-                '{{WRAPPER}} .veloria-product-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-product-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -512,7 +512,7 @@ class ProductFilter extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name' => 'heading_typography',
-                'selector' => '{{WRAPPER}} .veloria-product-filter__title, {{WRAPPER}} .veloria-product-filter__section-title',
+                'selector' => '{{WRAPPER}} .addonext-product-filter__title, {{WRAPPER}} .addonext-product-filter__section-title',
             ]
         );
 
@@ -526,7 +526,7 @@ class ProductFilter extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = VELORIA_DIR . 'pro/templates/product-filter/product-filter.php';
+        $path = ADDONEXT_DIR . 'pro/templates/product-filter/product-filter.php';
         if (is_readable($path)) include $path;
                 }
         }

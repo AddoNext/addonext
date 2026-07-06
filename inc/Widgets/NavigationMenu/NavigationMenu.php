@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\NavigationMenu;
+namespace Addonext\Widgets\NavigationMenu;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -25,18 +25,18 @@ class NavigationMenu extends WidgetBase
     public function enqueue_assets_in_preview(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('veloria-navigation-menu');
-        wp_enqueue_script('veloria-navigation-menu');
+        wp_enqueue_style('addonext-navigation-menu');
+        wp_enqueue_script('addonext-navigation-menu');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-nav-menu veloria-icon';
+        return 'eicon-nav-menu addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-navigation-menu';
+        return 'addonext-navigation-menu';
     }
 
     public function get_admin_category(): string
@@ -46,12 +46,12 @@ class NavigationMenu extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Navigation Menu', 'veloria');
+        return __('Navigation Menu', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Horizontal WordPress menu with multi-level dropdowns and selectable hover styles.', 'veloria');
+        return __('Horizontal WordPress menu with multi-level dropdowns and selectable hover styles.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -61,27 +61,27 @@ class NavigationMenu extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-navigation-menu'];
+        return ['addonext-navigation-menu'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-navigation-menu'];
+        return ['addonext-navigation-menu'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-navigation-menu',
-            VELORIA_URL . 'assets/css/navigation-menu.css',
+            'addonext-navigation-menu',
+            ADDONEXT_URL . 'assets/css/navigation-menu.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-navigation-menu',
-            VELORIA_URL . 'assets/js/navigation-menu.js',
+            'addonext-navigation-menu',
+            ADDONEXT_URL . 'assets/js/navigation-menu.js',
             ['jquery', 'elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -93,7 +93,7 @@ class NavigationMenu extends WidgetBase
      */
     public static function get_nav_menu_control_options(): array
     {
-        $choices = ['__none__' => __('— Select menu —', 'veloria')];
+        $choices = ['__none__' => __('— Select menu —', 'addonext')];
         $menus   = wp_get_nav_menus();
         if (!is_array($menus)) {
             return $choices;
@@ -126,7 +126,7 @@ class NavigationMenu extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -134,7 +134,7 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'nav_menu',
             [
-                'label'   => __('Menu', 'veloria'),
+                'label'   => __('Menu', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => self::get_nav_menu_control_options(),
                 'default' => '__none__',
@@ -144,19 +144,19 @@ class NavigationMenu extends WidgetBase
         $this->add_responsive_control(
             'layout_align',
             [
-                'label'     => __('Alignment', 'veloria'),
+                'label'     => __('Alignment', 'addonext'),
                 'type'      => Controls_Manager::CHOOSE,
                 'options'   => [
                     'flex-start' => [
-                        'title' => __('Start', 'veloria'),
+                        'title' => __('Start', 'addonext'),
                         'icon'  => 'eicon-h-align-left',
                     ],
                     'center'     => [
-                        'title' => __('Center', 'veloria'),
+                        'title' => __('Center', 'addonext'),
                         'icon'  => 'eicon-h-align-center',
                     ],
                     'flex-end'   => [
-                        'title' => __('End', 'veloria'),
+                        'title' => __('End', 'addonext'),
                         'icon'  => 'eicon-h-align-right',
                     ],
                 ],
@@ -164,7 +164,7 @@ class NavigationMenu extends WidgetBase
                 'tablet_default' => 'flex-start',
                 'mobile_default' => 'flex-start',
                 'selectors'    => [
-                    '{{WRAPPER}} .veloria-nav-menu__inner' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__inner' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -172,13 +172,13 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'submenu_trigger',
             [
-                'label'       => __('Open submenus with', 'veloria'),
-                'description' => __('Below the mobile breakpoint, submenus always open by tap.', 'veloria'),
+                'label'       => __('Open submenus with', 'addonext'),
+                'description' => __('Below the mobile breakpoint, submenus always open by tap.', 'addonext'),
                 'type'        => Controls_Manager::SELECT,
                 'default'     => 'hover',
                 'options'     => [
-                    'hover' => __('Mouse hover', 'veloria'),
-                    'click' => __('Click', 'veloria'),
+                    'hover' => __('Mouse hover', 'addonext'),
+                    'click' => __('Click', 'addonext'),
                 ],
             ]
         );
@@ -186,8 +186,8 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'mobile_breakpoint',
             [
-                'label'       => __('Mobile layout below (px)', 'veloria'),
-                'description' => __('Stacked layout and tap-to-open submenus below this width.', 'veloria'),
+                'label'       => __('Mobile layout below (px)', 'addonext'),
+                'description' => __('Stacked layout and tap-to-open submenus below this width.', 'addonext'),
                 'type'        => Controls_Manager::NUMBER,
                 'min'         => 320,
                 'max'         => 1400,
@@ -200,7 +200,7 @@ class NavigationMenu extends WidgetBase
         $this->start_controls_section(
             'section_menu_style',
             [
-                'label' => __('Menu', 'veloria'),
+                'label' => __('Menu', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -209,21 +209,21 @@ class NavigationMenu extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'menu_typography',
-                'label'    => __('Typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-nav-menu__root > .menu-item > a',
+                'label'    => __('Typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-nav-menu__root > .menu-item > a',
             ]
         );
 
         $this->add_responsive_control(
             'item_gap',
             [
-                'label'      => __('Space between items', 'veloria'),
+                'label'      => __('Space between items', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 80]],
                 'default'    => ['size' => 28, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-nav-menu__root' => 'column-gap: {{SIZE}}{{UNIT}}; row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-nav-menu__root' => 'column-gap: {{SIZE}}{{UNIT}}; row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -231,13 +231,13 @@ class NavigationMenu extends WidgetBase
         $this->add_responsive_control(
             'link_padding_vertical',
             [
-                'label'      => __('Link vertical padding', 'veloria'),
+                'label'      => __('Link vertical padding', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range'      => ['px' => ['min' => 0, 'max' => 40]],
                 'default'    => ['size' => 8, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-nav-menu__root > .menu-item > a' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-nav-menu__root > .menu-item > a' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -245,11 +245,11 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'color_default',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu__root > .menu-item > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__root > .menu-item > a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -257,11 +257,11 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'color_hover',
             [
-                'label'     => __('Hover text color', 'veloria'),
+                'label'     => __('Hover text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu__root > .menu-item > a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__root > .menu-item > a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -269,12 +269,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'color_active',
             [
-                'label'     => __('Active text color', 'veloria'),
+                'label'     => __('Active text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu__root > .menu-item.current-menu-item > a' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-nav-menu__root > .menu-item.current-menu-ancestor > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__root > .menu-item.current-menu-item > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__root > .menu-item.current-menu-ancestor > a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -284,7 +284,7 @@ class NavigationMenu extends WidgetBase
         $this->start_controls_section(
             'section_hover_style',
             [
-                'label' => __('Hover effect', 'veloria'),
+                'label' => __('Hover effect', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -292,16 +292,16 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_effect',
             [
-                'label'   => __('Effect', 'veloria'),
+                'label'   => __('Effect', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'gradient_border',
                 'options' => [
-                    'gradient_border' => __('Gradient bottom line', 'veloria'),
-                    'solid_underline' => __('Solid bottom line', 'veloria'),
-                    'pill_background' => __('Soft background', 'veloria'),
-                    'lift'            => __('Lift and shadow', 'veloria'),
-                    'glow_text'       => __('Text glow', 'veloria'),
-                    'none'            => __('None', 'veloria'),
+                    'gradient_border' => __('Gradient bottom line', 'addonext'),
+                    'solid_underline' => __('Solid bottom line', 'addonext'),
+                    'pill_background' => __('Soft background', 'addonext'),
+                    'lift'            => __('Lift and shadow', 'addonext'),
+                    'glow_text'       => __('Text glow', 'addonext'),
+                    'none'            => __('None', 'addonext'),
                 ],
             ]
         );
@@ -309,12 +309,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_line_gradient_start',
             [
-                'label'     => __('Gradient start', 'veloria'),
+                'label'     => __('Gradient start', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6366f1',
                 'condition' => ['hover_effect' => 'gradient_border'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-grad-a: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-grad-a: {{VALUE}};',
                 ],
             ]
         );
@@ -322,12 +322,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_line_gradient_end',
             [
-                'label'     => __('Gradient end', 'veloria'),
+                'label'     => __('Gradient end', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#a855f7',
                 'condition' => ['hover_effect' => 'gradient_border'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-grad-b: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-grad-b: {{VALUE}};',
                 ],
             ]
         );
@@ -335,7 +335,7 @@ class NavigationMenu extends WidgetBase
         $this->add_responsive_control(
             'hover_line_height',
             [
-                'label'      => __('Line height', 'veloria'),
+                'label'      => __('Line height', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 1, 'max' => 12]],
@@ -344,7 +344,7 @@ class NavigationMenu extends WidgetBase
                     'hover_effect' => ['gradient_border', 'solid_underline'],
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-line-h: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-line-h: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -352,12 +352,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_solid_color',
             [
-                'label'     => __('Line color', 'veloria'),
+                'label'     => __('Line color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'condition' => ['hover_effect' => 'solid_underline'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-solid-line: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-solid-line: {{VALUE}};',
                 ],
             ]
         );
@@ -365,12 +365,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_pill_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#eef2ff',
                 'condition' => ['hover_effect' => 'pill_background'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-pill-bg: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-pill-bg: {{VALUE}};',
                 ],
             ]
         );
@@ -378,12 +378,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_lift_shadow_color',
             [
-                'label'     => __('Shadow color', 'veloria'),
+                'label'     => __('Shadow color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(79, 70, 229, 0.18)',
                 'condition' => ['hover_effect' => 'lift'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-lift-shadow: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-lift-shadow: {{VALUE}};',
                 ],
             ]
         );
@@ -391,12 +391,12 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'hover_glow_color',
             [
-                'label'     => __('Glow color', 'veloria'),
+                'label'     => __('Glow color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(99, 102, 241, 0.55)',
                 'condition' => ['hover_effect' => 'glow_text'],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu' => '--nm-glow: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu' => '--nm-glow: {{VALUE}};',
                 ],
             ]
         );
@@ -406,7 +406,7 @@ class NavigationMenu extends WidgetBase
         $this->start_controls_section(
             'section_submenu_style',
             [
-                'label' => __('Submenu', 'veloria'),
+                'label' => __('Submenu', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -415,19 +415,19 @@ class NavigationMenu extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'submenu_typography',
-                'label'    => __('Typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-nav-menu__sub .menu-item > a',
+                'label'    => __('Typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-nav-menu__sub .menu-item > a',
             ]
         );
 
         $this->add_control(
             'submenu_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu__sub' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__sub' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -435,11 +435,11 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'submenu_link_color',
             [
-                'label'     => __('Link color', 'veloria'),
+                'label'     => __('Link color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu__sub .menu-item > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__sub .menu-item > a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -447,11 +447,11 @@ class NavigationMenu extends WidgetBase
         $this->add_control(
             'submenu_link_hover',
             [
-                'label'     => __('Link hover color', 'veloria'),
+                'label'     => __('Link hover color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-nav-menu__sub .menu-item > a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-nav-menu__sub .menu-item > a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -459,13 +459,13 @@ class NavigationMenu extends WidgetBase
         $this->add_responsive_control(
             'submenu_min_width',
             [
-                'label'      => __('Min width', 'veloria'),
+                'label'      => __('Min width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 120, 'max' => 400]],
                 'default'    => ['size' => 220, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-nav-menu__sub' => 'min-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-nav-menu__sub' => 'min-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -473,14 +473,14 @@ class NavigationMenu extends WidgetBase
         $this->add_responsive_control(
             'submenu_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'default'    => [
                     'top' => '10', 'right' => '0', 'bottom' => '10', 'left' => '0', 'unit' => 'px', 'isLinked' => false,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-nav-menu__sub' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-nav-menu__sub' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -488,14 +488,14 @@ class NavigationMenu extends WidgetBase
         $this->add_responsive_control(
             'submenu_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'default'    => [
                     'top' => '8', 'right' => '8', 'bottom' => '8', 'left' => '8', 'unit' => 'px', 'isLinked' => true,
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-nav-menu__sub' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-nav-menu__sub' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -504,8 +504,8 @@ class NavigationMenu extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'submenu_shadow',
-                'label'    => __('Box shadow', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-nav-menu__sub',
+                'label'    => __('Box shadow', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-nav-menu__sub',
             ]
         );
 
@@ -517,9 +517,9 @@ class NavigationMenu extends WidgetBase
         $settings = $this->get_settings_for_display();
         $raw_menu = isset($settings['nav_menu']) ? (string) $settings['nav_menu'] : '__none__';
         if ($raw_menu === '' || $raw_menu === '__none__') {
-            $veloria_menu_id = 0;
+            $addonext_menu_id = 0;
         } else {
-            $veloria_menu_id = (int) $raw_menu;
+            $addonext_menu_id = (int) $raw_menu;
         }
 
         $hover = isset($settings['hover_effect']) ? (string) $settings['hover_effect'] : 'gradient_border';
@@ -538,23 +538,23 @@ class NavigationMenu extends WidgetBase
         }
 
         $nav_classes = [
-            'veloria-nav-menu',
-            'veloria-nav-menu--hover-' . sanitize_html_class($hover),
+            'addonext-nav-menu',
+            'addonext-nav-menu--hover-' . sanitize_html_class($hover),
         ];
         if ($submenu_trigger === 'click') {
-            $nav_classes[] = 'veloria-nav-menu--sub-click';
+            $nav_classes[] = 'addonext-nav-menu--sub-click';
         }
 
         $this->add_render_attribute('nav', 'class', $nav_classes);
         $this->add_render_attribute('nav', 'data-mobile-breakpoint', (string) $bp);
         $this->add_render_attribute('nav', 'data-submenu-trigger', $submenu_trigger);
-        $this->add_render_attribute('nav', 'aria-label', esc_attr__('Primary', 'veloria'));
+        $this->add_render_attribute('nav', 'aria-label', esc_attr__('Primary', 'addonext'));
 
-        if (!class_exists(Walker_Veloria_Nav_Menu::class, false)) {
-            require_once __DIR__ . '/Walker_Veloria_Nav_Menu.php';
+        if (!class_exists(Walker_Addonext_Nav_Menu::class, false)) {
+            require_once __DIR__ . '/Walker_Addonext_Nav_Menu.php';
         }
 
-        $path = VELORIA_DIR . 'templates/navigation-menu/navigation-menu.php';
+        $path = ADDONEXT_DIR . 'templates/navigation-menu/navigation-menu.php';
         if (is_readable($path)) {
             include $path;
         }

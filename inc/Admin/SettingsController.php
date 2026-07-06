@@ -1,15 +1,15 @@
 <?php
-namespace Veloria\Admin;
+namespace Addonext\Admin;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use Veloria\Utils\OptionsHelper;
-use Veloria\Utils\AssetPerformance;
+use Addonext\Utils\OptionsHelper;
+use Addonext\Utils\AssetPerformance;
 
 defined('ABSPATH') or exit;
 
 /**
- * Settings Controller for Veloria
+ * Settings Controller for AddoNext
  */
 class SettingsController
 {
@@ -49,8 +49,8 @@ class SettingsController
                     'optionKey'   => 'css_class_prefix',
                     'label'       => 'Custom CSS Class Prefix',
                     'description' => 'Prefix for all widget CSS classes to avoid conflicts',
-                    'default'     => 'veloria-',
-                    'placeholder' => 'veloria-'
+                    'default'     => 'addonext-',
+                    'placeholder' => 'addonext-'
                 ]
             ]
         ],
@@ -162,34 +162,34 @@ class SettingsController
      */
     public function register_endpoints(): void
     {
-        register_rest_route('veloria/v1', '/settings', [
+        register_rest_route('addonext/v1', '/settings', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_get_settings'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
-        register_rest_route('veloria/v1', '/settings', [
+        register_rest_route('addonext/v1', '/settings', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_save_settings'],
             'permission_callback' => [$this, 'check_permission']
         ]);
 
-        register_rest_route('veloria/v1', '/backups', [
+        register_rest_route('addonext/v1', '/backups', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_backups_list'],
             'permission_callback' => [$this, 'check_permission']
         ]);
-        register_rest_route('veloria/v1', '/backups/export', [
+        register_rest_route('addonext/v1', '/backups/export', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_backups_export'],
             'permission_callback' => [$this, 'check_permission']
         ]);
-        register_rest_route('veloria/v1', '/backups/import', [
+        register_rest_route('addonext/v1', '/backups/import', [
             'methods'             => 'POST',
             'callback'            => [$this, 'rest_backups_import'],
             'permission_callback' => [$this, 'check_permission']
         ]);
-        register_rest_route('veloria/v1', '/backups/download', [
+        register_rest_route('addonext/v1', '/backups/download', [
             'methods'             => 'GET',
             'callback'            => [$this, 'rest_backups_download'],
             'permission_callback' => [$this, 'check_permission'],
@@ -201,7 +201,7 @@ class SettingsController
                 ]
             ]
         ]);
-        register_rest_route('veloria/v1', '/backups', [
+        register_rest_route('addonext/v1', '/backups', [
             'methods'             => 'DELETE',
             'callback'            => [$this, 'rest_backups_delete'],
             'permission_callback' => [$this, 'check_permission'],
@@ -222,7 +222,7 @@ class SettingsController
      */
     private static function get_backup_dir(): string
     {
-        $dir = trailingslashit(wp_upload_dir()['basedir']) . 'veloria/backups';
+        $dir = trailingslashit(wp_upload_dir()['basedir']) . 'addonext/backups';
         if (!is_dir($dir)) {
             wp_mkdir_p($dir);
         }
@@ -319,8 +319,8 @@ class SettingsController
             }
         }
 
-        $json     = wp_json_encode(['veloria_backup' => true, 'version' => 1, 'values' => $values], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        $filename = 'veloria-backup-' . gmdate('Y-m-d-H-i-s') . '.json';
+        $json     = wp_json_encode(['addonext_backup' => true, 'version' => 1, 'values' => $values], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $filename = 'addonext-backup-' . gmdate('Y-m-d-H-i-s') . '.json';
 
         if ($save_to_server && self::ensure_backup_dir()) {
             $dir  = self::get_backup_dir();
@@ -405,7 +405,7 @@ class SettingsController
     public function rest_backups_download(WP_REST_Request $request): WP_REST_Response
     {
         $file = $request->get_param('file');
-        if (!preg_match('/^veloria-backup-\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.json$/', $file)) {
+        if (!preg_match('/^addonext-backup-\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.json$/', $file)) {
             return new WP_REST_Response(['success' => false, 'message' => 'Invalid file name'], 400);
         }
         $path = self::get_backup_dir() . '/' . $file;
@@ -430,7 +430,7 @@ class SettingsController
     public function rest_backups_delete(WP_REST_Request $request): WP_REST_Response
     {
         $file = $request->get_param('file');
-        if (!preg_match('/^veloria-backup-\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.json$/', $file)) {
+        if (!preg_match('/^addonext-backup-\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.json$/', $file)) {
             return new WP_REST_Response(['success' => false, 'message' => 'Invalid file name'], 400);
         }
         $path = self::get_backup_dir() . '/' . $file;
@@ -474,7 +474,7 @@ class SettingsController
             case 'css_class_prefix':
                 $prefix = sanitize_key((string) $value);
 
-                return $prefix !== '' ? $prefix : 'veloria-';
+                return $prefix !== '' ? $prefix : 'addonext-';
             case 'google_maps_api_key':
             case 'instagram_access_token':
             case 'recaptcha_site_key':

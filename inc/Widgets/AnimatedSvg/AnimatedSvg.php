@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\AnimatedSvg;
+namespace Addonext\Widgets\AnimatedSvg;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -25,18 +25,18 @@ class AnimatedSvg extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('veloria-animated-svg');
-        wp_enqueue_script('veloria-animated-svg');
+        wp_enqueue_style('addonext-animated-svg');
+        wp_enqueue_script('addonext-animated-svg');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-animation veloria-icon';
+        return 'eicon-animation addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-animated-svg';
+        return 'addonext-animated-svg';
     }
 
     public function get_admin_category(): string
@@ -46,12 +46,12 @@ class AnimatedSvg extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Animated SVG', 'veloria');
+        return __('Animated SVG', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Preset or custom SVG with motion, color, size, and shadow.', 'veloria');
+        return __('Preset or custom SVG with motion, color, size, and shadow.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -61,32 +61,32 @@ class AnimatedSvg extends WidgetBase
 
     public function get_keywords(): array
     {
-        return ['veloria', 'svg', 'icon', 'animation', 'vector', 'motion'];
+        return ['addonext', 'svg', 'icon', 'animation', 'vector', 'motion'];
     }
 
     public function get_style_depends(): array
     {
-        return ['veloria-animated-svg'];
+        return ['addonext-animated-svg'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'veloria-animated-svg'];
+        return ['elementor-frontend', 'addonext-animated-svg'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-animated-svg',
-            VELORIA_URL . 'assets/css/animated-svg.css',
+            'addonext-animated-svg',
+            ADDONEXT_URL . 'assets/css/animated-svg.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-animated-svg',
-            VELORIA_URL . 'assets/js/animated-svg.js',
+            'addonext-animated-svg',
+            ADDONEXT_URL . 'assets/js/animated-svg.js',
             ['elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -113,12 +113,12 @@ class AnimatedSvg extends WidgetBase
     public static function get_preset_options(): array
     {
         return [
-            'star'     => __('Star', 'veloria'),
-            'heart'    => __('Heart', 'veloria'),
-            'bolt'     => __('Bolt', 'veloria'),
-            'check'    => __('Check', 'veloria'),
-            'rocket'   => __('Rocket', 'veloria'),
-            'sparkles' => __('Sparkles', 'veloria'),
+            'star'     => __('Star', 'addonext'),
+            'heart'    => __('Heart', 'addonext'),
+            'bolt'     => __('Bolt', 'addonext'),
+            'check'    => __('Check', 'addonext'),
+            'rocket'   => __('Rocket', 'addonext'),
+            'sparkles' => __('Sparkles', 'addonext'),
         ];
     }
 
@@ -263,23 +263,23 @@ class AnimatedSvg extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_svg', [
-            'label' => __('SVG', 'veloria'),
+            'label' => __('SVG', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('svg_source', [
-            'label'   => __('Source', 'veloria'),
+            'label'   => __('Source', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'preset',
             'options' => [
-                'preset' => __('Built-in icon', 'veloria'),
-                'media'  => __('Media library', 'veloria'),
-                'url'    => __('External URL', 'veloria'),
+                'preset' => __('Built-in icon', 'addonext'),
+                'media'  => __('Media library', 'addonext'),
+                'url'    => __('External URL', 'addonext'),
             ],
         ]);
 
         $this->add_control('svg_preset', [
-            'label'     => __('Icon', 'veloria'),
+            'label'     => __('Icon', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'star',
             'options'   => self::get_preset_options(),
@@ -287,16 +287,16 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('svg_media', [
-            'label'              => __('SVG file', 'veloria'),
+            'label'              => __('SVG file', 'addonext'),
             'type'               => Controls_Manager::MEDIA,
             'media_types'        => ['image'],
-            'description'        => __('Upload an SVG file (SVG uploads may require a plugin such as Safe SVG). Raster images display as a static image.', 'veloria'),
+            'description'        => __('Upload an SVG file (SVG uploads may require a plugin such as Safe SVG). Raster images display as a static image.', 'addonext'),
             'frontend_available' => true,
             'condition'          => ['svg_source' => 'media'],
         ]);
 
         $this->add_control('svg_url', [
-            'label'       => __('File URL', 'veloria'),
+            'label'       => __('File URL', 'addonext'),
             'type'        => Controls_Manager::URL,
             'placeholder' => 'https://example.com/icon.svg',
             'dynamic'     => ['active' => true],
@@ -304,7 +304,7 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('link', [
-            'label'       => __('Link', 'veloria'),
+            'label'       => __('Link', 'addonext'),
             'type'        => Controls_Manager::URL,
             'dynamic'     => ['active' => true],
             'separator'   => 'before',
@@ -313,31 +313,31 @@ class AnimatedSvg extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_motion', [
-            'label' => __('Animation', 'veloria'),
+            'label' => __('Animation', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('animation', [
-            'label'       => __('Effect', 'veloria'),
+            'label'       => __('Effect', 'addonext'),
             'type'        => Controls_Manager::SELECT,
             'default'     => 'pulse',
-            'description' => __('Draw reveals each shape like a hand-drawn logo: stroke outline first, then fill (similar to tools such as SVG Artista). Inline SVG only; not for raster or external image URLs.', 'veloria'),
+            'description' => __('Draw reveals each shape like a hand-drawn logo: stroke outline first, then fill (similar to tools such as SVG Artista). Inline SVG only; not for raster or external image URLs.', 'addonext'),
             'options'     => [
-                'none'      => __('None', 'veloria'),
-                'draw'      => __('Draw', 'veloria'),
-                'pulse'     => __('Pulse', 'veloria'),
-                'bounce'    => __('Bounce', 'veloria'),
-                'rotate'    => __('Rotate', 'veloria'),
-                'shake'     => __('Shake', 'veloria'),
-                'float'     => __('Float', 'veloria'),
-                'heartbeat' => __('Heartbeat', 'veloria'),
-                'spin'      => __('Spin', 'veloria'),
-                'wiggle'    => __('Wiggle', 'veloria'),
+                'none'      => __('None', 'addonext'),
+                'draw'      => __('Draw', 'addonext'),
+                'pulse'     => __('Pulse', 'addonext'),
+                'bounce'    => __('Bounce', 'addonext'),
+                'rotate'    => __('Rotate', 'addonext'),
+                'shake'     => __('Shake', 'addonext'),
+                'float'     => __('Float', 'addonext'),
+                'heartbeat' => __('Heartbeat', 'addonext'),
+                'spin'      => __('Spin', 'addonext'),
+                'wiggle'    => __('Wiggle', 'addonext'),
             ],
         ]);
 
         $this->add_control('anim_easing', [
-            'label'     => __('Easing', 'veloria'),
+            'label'     => __('Easing', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'ease-in-out',
             'options'   => [
@@ -354,7 +354,7 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('anim_duration', [
-            'label'      => __('Duration (seconds)', 'veloria'),
+            'label'      => __('Duration (seconds)', 'addonext'),
             'type'       => Controls_Manager::NUMBER,
             'min'        => 0.3,
             'max'        => 8,
@@ -367,7 +367,7 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('anim_delay', [
-            'label'      => __('Delay (seconds)', 'veloria'),
+            'label'      => __('Delay (seconds)', 'addonext'),
             'type'       => Controls_Manager::NUMBER,
             'min'        => 0,
             'max'        => 5,
@@ -380,17 +380,17 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('anim_repeat', [
-            'label'        => __('Infinite loop', 'veloria'),
+            'label'        => __('Infinite loop', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Yes', 'veloria'),
-            'label_off'    => __('No', 'veloria'),
+            'label_on'     => __('Yes', 'addonext'),
+            'label_off'    => __('No', 'addonext'),
             'return_value' => 'yes',
             'default'      => 'no',
             'condition'    => ['animation!' => 'none'],
         ]);
 
         $this->add_control('anim_iterations', [
-            'label'      => __('Repeat count', 'veloria'),
+            'label'      => __('Repeat count', 'addonext'),
             'type'       => Controls_Manager::NUMBER,
             'min'        => 1,
             'max'        => 50,
@@ -403,13 +403,13 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('draw_fill_duration', [
-            'label'       => __('Draw — fill reveal (seconds)', 'veloria'),
+            'label'       => __('Draw — fill reveal (seconds)', 'addonext'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 0,
             'max'         => 4,
             'step'        => 0.05,
             'default'     => 0.75,
-            'description' => __('Fade-in duration for each shape’s fill after its stroke finishes.', 'veloria'),
+            'description' => __('Fade-in duration for each shape’s fill after its stroke finishes.', 'addonext'),
             'selectors'   => [
                 '{{WRAPPER}}' => '--e-asvg-draw-fill-dur: {{VALUE}}s;',
             ],
@@ -417,13 +417,13 @@ class AnimatedSvg extends WidgetBase
         ]);
 
         $this->add_control('draw_stagger', [
-            'label'       => __('Draw — stagger (seconds)', 'veloria'),
+            'label'       => __('Draw — stagger (seconds)', 'addonext'),
             'type'        => Controls_Manager::NUMBER,
             'min'         => 0,
             'max'         => 2,
             'step'        => 0.02,
             'default'     => 0.12,
-            'description' => __('Delay between each shape so paths draw in sequence.', 'veloria'),
+            'description' => __('Delay between each shape so paths draw in sequence.', 'addonext'),
             'selectors'   => [
                 '{{WRAPPER}}' => '--e-asvg-draw-stagger: {{VALUE}}s;',
             ],
@@ -433,26 +433,26 @@ class AnimatedSvg extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_wrap', [
-            'label' => __('Wrapper', 'veloria'),
+            'label' => __('Wrapper', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('align', [
-            'label'     => __('Alignment', 'veloria'),
+            'label'     => __('Alignment', 'addonext'),
             'type'      => Controls_Manager::CHOOSE,
             'options'   => [
-                'flex-start' => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
-                'center'     => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
-                'flex-end'   => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
+                'flex-start' => ['title' => __('Left', 'addonext'), 'icon' => 'eicon-text-align-left'],
+                'center'     => ['title' => __('Center', 'addonext'), 'icon' => 'eicon-text-align-center'],
+                'flex-end'   => ['title' => __('Right', 'addonext'), 'icon' => 'eicon-text-align-right'],
             ],
             'default'   => 'center',
             'selectors' => [
-                '{{WRAPPER}} .veloria-asvg' => 'justify-content: {{VALUE}};',
+                '{{WRAPPER}} .addonext-asvg' => 'justify-content: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('inner_width', [
-            'label'      => __('Max width', 'veloria'),
+            'label'      => __('Max width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%', 'vw'],
             'range'      => [
@@ -460,12 +460,12 @@ class AnimatedSvg extends WidgetBase
                 '%'  => ['min' => 5, 'max' => 100],
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-asvg__inner' => 'max-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-asvg__inner' => 'max-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('icon_width', [
-            'label'      => __('Width', 'veloria'),
+            'label'      => __('Width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%', 'vw', 'em'],
             'range'      => [
@@ -474,43 +474,43 @@ class AnimatedSvg extends WidgetBase
             ],
             'default'    => ['size' => 96, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-asvg__inner svg' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
-                '{{WRAPPER}} .veloria-asvg__img'       => 'width: {{SIZE}}{{UNIT}}; height: auto;',
+                '{{WRAPPER}} .addonext-asvg__inner svg' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
+                '{{WRAPPER}} .addonext-asvg__img'       => 'width: {{SIZE}}{{UNIT}}; height: auto;',
             ],
         ]);
 
         $this->add_responsive_control('wrap_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-asvg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-asvg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('icon_color', [
-            'label'     => __('Icon color', 'veloria'),
+            'label'     => __('Icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#6366f1',
             'selectors' => [
-                '{{WRAPPER}} .veloria-asvg__inner' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-asvg__inner' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('wrap_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .veloria-asvg__inner' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-asvg__inner' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('inner_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-asvg__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-asvg__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -518,7 +518,7 @@ class AnimatedSvg extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'inner_border',
-                'selector' => '{{WRAPPER}} .veloria-asvg__inner',
+                'selector' => '{{WRAPPER}} .addonext-asvg__inner',
             ]
         );
 
@@ -526,32 +526,32 @@ class AnimatedSvg extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'inner_shadow',
-                'selector' => '{{WRAPPER}} .veloria-asvg__inner',
+                'selector' => '{{WRAPPER}} .addonext-asvg__inner',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_hover', [
-            'label' => __('Hover', 'veloria'),
+            'label' => __('Hover', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('hover_icon_color', [
-            'label'     => __('Icon color', 'veloria'),
+            'label'     => __('Icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .veloria-asvg__link:hover .veloria-asvg__inner' => 'color: {{VALUE}};',
-                '{{WRAPPER}}:hover .veloria-asvg__inner' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-asvg__link:hover .addonext-asvg__inner' => 'color: {{VALUE}};',
+                '{{WRAPPER}}:hover .addonext-asvg__inner' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('hover_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .veloria-asvg__link:hover .veloria-asvg__inner' => 'background-color: {{VALUE}};',
-                '{{WRAPPER}}:hover .veloria-asvg__inner' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-asvg__link:hover .addonext-asvg__inner' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}}:hover .addonext-asvg__inner' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -559,8 +559,8 @@ class AnimatedSvg extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'hover_shadow',
-                'label'    => __('Shadow', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-asvg__link:hover .veloria-asvg__inner, {{WRAPPER}}:hover .veloria-asvg__inner',
+                'label'    => __('Shadow', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-asvg__link:hover .addonext-asvg__inner, {{WRAPPER}}:hover .addonext-asvg__inner',
             ]
         );
 
@@ -614,37 +614,37 @@ class AnimatedSvg extends WidgetBase
 
     public function render(): void
     {
-        $veloria_settings = $this->get_settings_for_display();
-        $veloria_payload  = self::build_svg_payload($veloria_settings);
+        $addonext_settings = $this->get_settings_for_display();
+        $addonext_payload  = self::build_svg_payload($addonext_settings);
 
-        $animation = isset($veloria_settings['animation']) ? (string) $veloria_settings['animation'] : 'none';
+        $animation = isset($addonext_settings['animation']) ? (string) $addonext_settings['animation'] : 'none';
         $animation = preg_replace('/[^a-z\-]/', '', $animation);
         $allowed   = ['none', 'draw', 'pulse', 'bounce', 'rotate', 'shake', 'float', 'heartbeat', 'spin', 'wiggle'];
         if ($animation === '' || !in_array($animation, $allowed, true)) {
             $animation = 'pulse';
         }
 
-        $classes = ['veloria-asvg'];
+        $classes = ['addonext-asvg'];
         if ($animation !== 'none') {
-            $classes[] = 'veloria-asvg--anim-' . $animation;
+            $classes[] = 'addonext-asvg--anim-' . $animation;
         }
 
-        $extra_style = self::animation_css_vars($veloria_settings);
+        $extra_style = self::animation_css_vars($addonext_settings);
         $this->add_render_attribute('wrapper', 'class', $classes);
         if ($extra_style !== '') {
             $this->add_render_attribute('wrapper', 'style', $extra_style);
         }
         if ($animation === 'draw') {
-            foreach (self::get_draw_data_attributes($veloria_settings) as $attr => $value) {
+            foreach (self::get_draw_data_attributes($addonext_settings) as $attr => $value) {
                 $this->add_render_attribute('wrapper', $attr, esc_attr($value));
             }
         }
 
-        if (!empty($veloria_settings['link']['url'])) {
-            $this->add_link_attributes('svg_link', $veloria_settings['link']);
+        if (!empty($addonext_settings['link']['url'])) {
+            $this->add_link_attributes('svg_link', $addonext_settings['link']);
         }
 
-        $path = VELORIA_DIR . 'templates/animated-svg/animated-svg.php';
+        $path = ADDONEXT_DIR . 'templates/animated-svg/animated-svg.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -659,8 +659,8 @@ class AnimatedSvg extends WidgetBase
         ?>
         <#
         var anim = settings.animation && settings.animation !== 'none' ? settings.animation : 'none';
-        var cls = 'veloria-asvg';
-        if (anim !== 'none') cls += ' veloria-asvg--anim-' + anim;
+        var cls = 'addonext-asvg';
+        if (anim !== 'none') cls += ' addonext-asvg--anim-' + anim;
         var src = settings.svg_source || 'preset';
         var presetSvgs = <?php echo wp_json_encode($presetSvgs); ?>;
         var presetKey = settings.svg_preset || 'star';
@@ -683,13 +683,13 @@ class AnimatedSvg extends WidgetBase
         #>
         <div class="{{ cls }}" style="{{ extra }}"{{{ drawData }}}>
             <# if (settings.link && settings.link.url) { #>
-            <a class="veloria-asvg__link" href="{{ settings.link.url }}">
+            <a class="addonext-asvg__link" href="{{ settings.link.url }}">
             <# } #>
-            <span class="veloria-asvg__inner">
+            <span class="addonext-asvg__inner">
                 <# if (src === 'media' && settings.svg_media && settings.svg_media.url) { #>
-                <img class="veloria-asvg__img" src="{{ settings.svg_media.url }}" alt="" />
+                <img class="addonext-asvg__img" src="{{ settings.svg_media.url }}" alt="" />
                 <# } else if (src === 'url' && settings.svg_url && settings.svg_url.url) { #>
-                <img class="veloria-asvg__img" src="{{ settings.svg_url.url }}" alt="" />
+                <img class="addonext-asvg__img" src="{{ settings.svg_url.url }}" alt="" />
                 <# } else { #>
                 {{{ presetMarkup }}}
                 <# } #>

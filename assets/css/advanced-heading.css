@@ -1,26 +1,26 @@
-.veloria-advanced-heading {
+.addonext-advanced-heading {
     margin: 0;
 }
 
-.veloria-advanced-heading--align-left .veloria-advanced-heading,
-.veloria-advanced-heading--align-left .veloria-advanced-heading__title,
-.veloria-advanced-heading--align-left .veloria-advanced-heading__subtitle {
+.addonext-advanced-heading--align-left .addonext-advanced-heading,
+.addonext-advanced-heading--align-left .addonext-advanced-heading__title,
+.addonext-advanced-heading--align-left .addonext-advanced-heading__subtitle {
     text-align: left;
 }
 
-.veloria-advanced-heading--align-center .veloria-advanced-heading,
-.veloria-advanced-heading--align-center .veloria-advanced-heading__title,
-.veloria-advanced-heading--align-center .veloria-advanced-heading__subtitle {
+.addonext-advanced-heading--align-center .addonext-advanced-heading,
+.addonext-advanced-heading--align-center .addonext-advanced-heading__title,
+.addonext-advanced-heading--align-center .addonext-advanced-heading__subtitle {
     text-align: center;
 }
 
-.veloria-advanced-heading--align-right .veloria-advanced-heading,
-.veloria-advanced-heading--align-right .veloria-advanced-heading__title,
-.veloria-advanced-heading--align-right .veloria-advanced-heading__subtitle {
+.addonext-advanced-heading--align-right .addonext-advanced-heading,
+.addonext-advanced-heading--align-right .addonext-advanced-heading__title,
+.addonext-advanced-heading--align-right .addonext-advanced-heading__subtitle {
     text-align: right;
 }
 
-.veloria-advanced-heading__title {
+.addonext-advanced-heading__title {
     margin: 0;
     font-family: inherit;
     font-size: 2.25rem;
@@ -29,18 +29,18 @@
     letter-spacing: -0.025em;
 }
 
-.veloria-advanced-heading__gradient {
+.addonext-advanced-heading__gradient {
     background: linear-gradient(
         to right,
-        var(--veloria-gradient-start, #2563eb),
-        var(--veloria-gradient-end, #7c3aed)
+        var(--addonext-gradient-start, #2563eb),
+        var(--addonext-gradient-end, #7c3aed)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.veloria-advanced-heading__subtitle {
+.addonext-advanced-heading__subtitle {
     margin: 0;
     display: block;
     font-size: 0.875rem;

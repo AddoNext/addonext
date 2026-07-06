@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Dropcap;
+namespace Addonext\Widgets\Dropcap;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -11,12 +11,12 @@ class Dropcap extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-paragraph veloria-icon';
+        return 'eicon-paragraph addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-dropcap';
+        return 'addonext-dropcap';
     }
 
     public function get_admin_category(): string
@@ -26,12 +26,12 @@ class Dropcap extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Dropcap', 'veloria');
+        return __('Dropcap', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Large first letter styled as a dropcap.', 'veloria');
+        return __('Large first letter styled as a dropcap.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -41,48 +41,48 @@ class Dropcap extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-dropcap'];
+        return ['addonext-dropcap'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-dropcap',
-            VELORIA_URL . 'assets/css/dropcap.css',
+            'addonext-dropcap',
+            ADDONEXT_URL . 'assets/css/dropcap.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('text', [
-            'label'   => __('Paragraph', 'veloria'),
+            'label'   => __('Paragraph', 'addonext'),
             'type'    => Controls_Manager::TEXTAREA,
-            'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'veloria'),
+            'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'addonext'),
             'rows'    => 4,
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_paragraph', [
-            'label' => __('Paragraph', 'veloria'),
+            'label' => __('Paragraph', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('paragraph_font_size', [
-            'label'      => __('Font size', 'veloria'),
+            'label'      => __('Font size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 10, 'max' => 72]],
             'default'    => ['unit' => 'px', 'size' => 16],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-dropcap' => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-dropcap' => 'font-size: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -90,109 +90,109 @@ class Dropcap extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'paragraph_typography',
-                'selector' => '{{WRAPPER}} .veloria-dropcap',
+                'selector' => '{{WRAPPER}} .addonext-dropcap',
                 'exclude'  => ['font_size'],
             ]
         );
 
         $this->add_control('paragraph_color', [
-            'label'     => __('Text color', 'veloria'),
+            'label'     => __('Text color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .veloria-dropcap' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-dropcap' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_dropcap', [
-            'label' => __('Dropcap', 'veloria'),
+            'label' => __('Dropcap', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('dropcap_fill', [
-            'label'   => __('Fill type', 'veloria'),
+            'label'   => __('Fill type', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'solid',
             'options' => [
-                'solid'    => __('Solid color', 'veloria'),
-                'gradient' => __('Gradient', 'veloria'),
+                'solid'    => __('Solid color', 'addonext'),
+                'gradient' => __('Gradient', 'addonext'),
             ],
         ]);
 
         $this->add_control('dropcap_color', [
-            'label'     => __('Solid color', 'veloria'),
+            'label'     => __('Solid color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#2563eb',
             'condition' => ['dropcap_fill' => 'solid'],
             'selectors' => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('dropcap_gradient_start', [
-            'label'     => __('Gradient start', 'veloria'),
+            'label'     => __('Gradient start', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#2563eb',
             'condition' => ['dropcap_fill' => 'gradient'],
             'selectors' => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => '--veloria-dropcap-gradient-start: {{VALUE}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => '--addonext-dropcap-gradient-start: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('dropcap_gradient_end', [
-            'label'     => __('Gradient end', 'veloria'),
+            'label'     => __('Gradient end', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#7c3aed',
             'condition' => ['dropcap_fill' => 'gradient'],
             'selectors' => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => '--veloria-dropcap-gradient-end: {{VALUE}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => '--addonext-dropcap-gradient-end: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('dropcap_gradient_angle', [
-            'label'      => __('Gradient angle', 'veloria'),
+            'label'      => __('Gradient angle', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['deg'],
             'range'      => ['deg' => ['min' => 0, 'max' => 360]],
             'default'    => ['unit' => 'deg', 'size' => 90],
             'condition'  => ['dropcap_fill' => 'gradient'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => '--veloria-dropcap-gradient-angle: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => '--addonext-dropcap-gradient-angle: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('dropcap_size', [
-            'label'      => __('Size', 'veloria'),
+            'label'      => __('Size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 24, 'max' => 160]],
             'default'    => ['unit' => 'px', 'size' => 52],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => 'font-size: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('dropcap_offset_top', [
-            'label'      => __('Top offset', 'veloria'),
+            'label'      => __('Top offset', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => -40, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 4],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => 'margin-top: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => 'margin-top: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('dropcap_gap', [
-            'label'      => __('Gap to text', 'veloria'),
+            'label'      => __('Gap to text', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 0, 'max' => 60]],
             'default'    => ['unit' => 'px', 'size' => 10],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-dropcap__letter' => 'margin-right: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-dropcap__letter' => 'margin-right: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -201,7 +201,7 @@ class Dropcap extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/dropcap/dropcap.php';
+        $path = ADDONEXT_DIR . 'templates/dropcap/dropcap.php';
         if (is_readable($path)) include $path;
     }
 
@@ -213,12 +213,12 @@ class Dropcap extends WidgetBase
         var first = t.charAt(0);
         var rest = t.slice(1);
         var fill = settings.dropcap_fill || 'solid';
-        var cls = 'veloria-dropcap';
+        var cls = 'addonext-dropcap';
         if (fill === 'gradient') {
-            cls += ' veloria-dropcap--gradient';
+            cls += ' addonext-dropcap--gradient';
         }
         #>
-        <p class="{{ cls }}"><span class="veloria-dropcap__letter">{{{ first }}}</span><span class="veloria-dropcap__text">{{{ rest }}}</span></p>
+        <p class="{{ cls }}"><span class="addonext-dropcap__letter">{{{ first }}}</span><span class="addonext-dropcap__text">{{{ rest }}}</span></p>
         <?php
     }
 }

@@ -12,7 +12,7 @@ defined('ABSPATH') or exit;
  */
 function emty_get_img_url(string $filename = ''): string
 {
-    return VELORIA_URL . 'src/img/' . $filename;
+    return ADDONEXT_URL . 'src/img/' . $filename;
 }
 
 /**
@@ -23,7 +23,7 @@ function emty_get_img_url(string $filename = ''): string
  */
 function emty_get_img_path(string $filename = ''): string
 {
-    return VELORIA_DIR . 'src/img/' . $filename;
+    return ADDONEXT_DIR . 'src/img/' . $filename;
 }
 
 /**
@@ -50,9 +50,9 @@ function emty_container(mixed $class): object
  *
  * @return bool
  */
-function veloria_pro_is_available(): bool
+function addonext_pro_is_available(): bool
 {
-    return defined('VELORIA_DIR') && is_dir(VELORIA_DIR . 'pro/inc');
+    return defined('ADDONEXT_DIR') && is_dir(ADDONEXT_DIR . 'pro/inc');
 }
 
 /**
@@ -61,9 +61,9 @@ function veloria_pro_is_available(): bool
  * @param class-string $class
  * @return bool
  */
-function veloria_pro_class_exists(string $class): bool
+function addonext_pro_class_exists(string $class): bool
 {
-    if (!veloria_pro_is_available()) {
+    if (!addonext_pro_is_available()) {
         return false;
     }
 
@@ -75,8 +75,8 @@ function veloria_pro_class_exists(string $class): bool
  *
  * @return bool
  */
-function veloria_has_pro_account_api(): bool
+function addonext_has_pro_account_api(): bool
 {
-    return veloria_pro_is_available()
-        && is_readable(VELORIA_DIR . 'pro/inc/Pro/Admin/AccountController.php');
+    return addonext_pro_is_available()
+        && is_readable(ADDONEXT_DIR . 'pro/inc/Pro/Admin/AccountController.php');
 }

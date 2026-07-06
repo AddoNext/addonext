@@ -2,79 +2,79 @@
 /**
  * USP Items widget template.
  *
- * @var \Veloria\Widgets\UspItems\UspItems $this
+ * @var \Addonext\Widgets\UspItems\UspItems $this
  */
 
 defined('ABSPATH') || exit;
 
 use Elementor\Icons_Manager;
 
-$veloria_settings  = $this->get_settings_for_display();
-$veloria_items     = isset($veloria_settings['items']) && is_array($veloria_settings['items']) ? $veloria_settings['items'] : [];
-$veloria_title_tag = isset($veloria_settings['title_tag']) ? sanitize_key((string) $veloria_settings['title_tag']) : 'h3';
-$veloria_allowed   = ['h2', 'h3', 'h4', 'div', 'p'];
-if (!in_array($veloria_title_tag, $veloria_allowed, true)) {
-    $veloria_title_tag = 'h3';
+$addonext_settings  = $this->get_settings_for_display();
+$addonext_items     = isset($addonext_settings['items']) && is_array($addonext_settings['items']) ? $addonext_settings['items'] : [];
+$addonext_title_tag = isset($addonext_settings['title_tag']) ? sanitize_key((string) $addonext_settings['title_tag']) : 'h3';
+$addonext_allowed   = ['h2', 'h3', 'h4', 'div', 'p'];
+if (!in_array($addonext_title_tag, $addonext_allowed, true)) {
+    $addonext_title_tag = 'h3';
 }
 
-if ($veloria_items === []) {
+if ($addonext_items === []) {
     return;
 }
 
 ?>
 <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <div class="veloria-usp-items__grid">
+    <div class="addonext-usp-items__grid">
         <?php
-        foreach ($veloria_items as $veloria_index => $veloria_item) {
-            $veloria_item_id = isset($veloria_item['_id']) ? (string) $veloria_item['_id'] : (string) $veloria_index;
-            $veloria_surface_key = 'usp_surface_' . $veloria_index;
-            $this->add_render_attribute($veloria_surface_key, 'class', 'veloria-usp-item__surface');
+        foreach ($addonext_items as $addonext_index => $addonext_item) {
+            $addonext_item_id = isset($addonext_item['_id']) ? (string) $addonext_item['_id'] : (string) $addonext_index;
+            $addonext_surface_key = 'usp_surface_' . $addonext_index;
+            $this->add_render_attribute($addonext_surface_key, 'class', 'addonext-usp-item__surface');
 
-            $veloria_circle_bg  = !empty($veloria_item['circle_bg']) ? (string) $veloria_item['circle_bg'] : '#e0e7ff';
-            $veloria_icon_color = !empty($veloria_item['icon_color']) ? (string) $veloria_item['icon_color'] : '#2563eb';
-            $veloria_title      = isset($veloria_item['item_title']) ? (string) $veloria_item['item_title'] : '';
-            $veloria_subtitle   = isset($veloria_item['item_subtitle']) ? (string) $veloria_item['item_subtitle'] : '';
-            $veloria_link       = isset($veloria_item['item_link']) && is_array($veloria_item['item_link']) ? $veloria_item['item_link'] : [];
-            $veloria_has_url    = !empty($veloria_link['url']);
+            $addonext_circle_bg  = !empty($addonext_item['circle_bg']) ? (string) $addonext_item['circle_bg'] : '#e0e7ff';
+            $addonext_icon_color = !empty($addonext_item['icon_color']) ? (string) $addonext_item['icon_color'] : '#2563eb';
+            $addonext_title      = isset($addonext_item['item_title']) ? (string) $addonext_item['item_title'] : '';
+            $addonext_subtitle   = isset($addonext_item['item_subtitle']) ? (string) $addonext_item['item_subtitle'] : '';
+            $addonext_link       = isset($addonext_item['item_link']) && is_array($addonext_item['item_link']) ? $addonext_item['item_link'] : [];
+            $addonext_has_url    = !empty($addonext_link['url']);
 
-            $veloria_article_class = 'veloria-usp-item elementor-repeater-item-' . esc_attr($veloria_item_id);
+            $addonext_article_class = 'addonext-usp-item elementor-repeater-item-' . esc_attr($addonext_item_id);
             ?>
-            <article class="<?php echo esc_attr($veloria_article_class); ?>">
-                <?php if ($veloria_has_url) : ?>
+            <article class="<?php echo esc_attr($addonext_article_class); ?>">
+                <?php if ($addonext_has_url) : ?>
                     <?php
-                    $veloria_link_key = 'usp_link_' . $veloria_index;
-                    $this->add_render_attribute($veloria_link_key, 'class', 'veloria-usp-item__link');
-                    $this->add_link_attributes($veloria_link_key, $veloria_link);
+                    $addonext_link_key = 'usp_link_' . $addonext_index;
+                    $this->add_render_attribute($addonext_link_key, 'class', 'addonext-usp-item__link');
+                    $this->add_link_attributes($addonext_link_key, $addonext_link);
                     ?>
-                    <a <?php $this->print_render_attribute_string($veloria_link_key); ?>>
-                        <div <?php $this->print_render_attribute_string($veloria_surface_key); ?>>
-                            <span class="veloria-usp-item__icon-ring" style="background-color: <?php echo esc_attr($veloria_circle_bg); ?>;">
-                                <span class="veloria-usp-item__icon" style="color: <?php echo esc_attr($veloria_icon_color); ?>;">
+                    <a <?php $this->print_render_attribute_string($addonext_link_key); ?>>
+                        <div <?php $this->print_render_attribute_string($addonext_surface_key); ?>>
+                            <span class="addonext-usp-item__icon-ring" style="background-color: <?php echo esc_attr($addonext_circle_bg); ?>;">
+                                <span class="addonext-usp-item__icon" style="color: <?php echo esc_attr($addonext_icon_color); ?>;">
                                     <?php
-                                    if (!empty($veloria_item['item_icon']['value'])) {
-                                        Icons_Manager::render_icon($veloria_item['item_icon'], ['aria-hidden' => 'true']);
+                                    if (!empty($addonext_item['item_icon']['value'])) {
+                                        Icons_Manager::render_icon($addonext_item['item_icon'], ['aria-hidden' => 'true']);
                                     }
                                     ?>
                                 </span>
                             </span>
-                            <<?php echo esc_attr($veloria_title_tag); ?> class="veloria-usp-item__title"><?php echo esc_html($veloria_title); ?></<?php echo esc_attr($veloria_title_tag); ?>>
-                            <p class="veloria-usp-item__subtitle"><?php echo esc_html($veloria_subtitle); ?></p>
+                            <<?php echo esc_attr($addonext_title_tag); ?> class="addonext-usp-item__title"><?php echo esc_html($addonext_title); ?></<?php echo esc_attr($addonext_title_tag); ?>>
+                            <p class="addonext-usp-item__subtitle"><?php echo esc_html($addonext_subtitle); ?></p>
                         </div>
                     </a>
                 <?php else : ?>
-                    <div class="veloria-usp-item__link veloria-usp-item__link--static" role="group">
-                        <div <?php $this->print_render_attribute_string($veloria_surface_key); ?>>
-                            <span class="veloria-usp-item__icon-ring" style="background-color: <?php echo esc_attr($veloria_circle_bg); ?>;">
-                                <span class="veloria-usp-item__icon" style="color: <?php echo esc_attr($veloria_icon_color); ?>;">
+                    <div class="addonext-usp-item__link addonext-usp-item__link--static" role="group">
+                        <div <?php $this->print_render_attribute_string($addonext_surface_key); ?>>
+                            <span class="addonext-usp-item__icon-ring" style="background-color: <?php echo esc_attr($addonext_circle_bg); ?>;">
+                                <span class="addonext-usp-item__icon" style="color: <?php echo esc_attr($addonext_icon_color); ?>;">
                                     <?php
-                                    if (!empty($veloria_item['item_icon']['value'])) {
-                                        Icons_Manager::render_icon($veloria_item['item_icon'], ['aria-hidden' => 'true']);
+                                    if (!empty($addonext_item['item_icon']['value'])) {
+                                        Icons_Manager::render_icon($addonext_item['item_icon'], ['aria-hidden' => 'true']);
                                     }
                                     ?>
                                 </span>
                             </span>
-                            <<?php echo esc_attr($veloria_title_tag); ?> class="veloria-usp-item__title"><?php echo esc_html($veloria_title); ?></<?php echo esc_attr($veloria_title_tag); ?>>
-                            <p class="veloria-usp-item__subtitle"><?php echo esc_html($veloria_subtitle); ?></p>
+                            <<?php echo esc_attr($addonext_title_tag); ?> class="addonext-usp-item__title"><?php echo esc_html($addonext_title); ?></<?php echo esc_attr($addonext_title_tag); ?>>
+                            <p class="addonext-usp-item__subtitle"><?php echo esc_html($addonext_subtitle); ?></p>
                         </div>
                     </div>
                 <?php endif; ?>

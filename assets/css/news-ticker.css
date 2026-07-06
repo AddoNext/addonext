@@ -1,4 +1,4 @@
-.veloria-news-ticker {
+.addonext-news-ticker {
   --e-news-ticker-duration: 24s;
   --e-news-ticker-gap: 20px;
   --e-news-ticker-title-bg: #dc2626;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.veloria-news-ticker__title {
+.addonext-news-ticker__title {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
@@ -22,44 +22,44 @@
   font-weight: 600;
 }
 
-.veloria-news-ticker__viewport {
+.addonext-news-ticker__viewport {
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
 }
 
-.veloria-news-ticker__track {
+.addonext-news-ticker__track {
   display: flex;
   align-items: center;
   width: max-content;
   will-change: transform;
-  animation: veloria-news-ticker-slide var(--e-news-ticker-duration) linear infinite;
+  animation: addonext-news-ticker-slide var(--e-news-ticker-duration) linear infinite;
 }
 
-.veloria-news-ticker__group {
+.addonext-news-ticker__group {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
   white-space: nowrap;
 }
 
-.veloria-news-ticker__item {
+.addonext-news-ticker__item {
   display: inline-block;
   white-space: nowrap;
   color: #fff;
 }
 
-.veloria-news-ticker__item-link {
+.addonext-news-ticker__item-link {
   color: inherit;
   text-decoration: none;
 }
 
-.veloria-news-ticker__item-link:focus-visible,
-.veloria-news-ticker__item-link:hover {
+.addonext-news-ticker__item-link:focus-visible,
+.addonext-news-ticker__item-link:hover {
   text-decoration: underline;
 }
 
-.veloria-news-ticker__separator {
+.addonext-news-ticker__separator {
   display: inline-block;
   margin-inline: var(--e-news-ticker-gap);
   color: #ef4444;
@@ -67,11 +67,11 @@
   white-space: nowrap;
 }
 
-.veloria-news-ticker--pause-hover .veloria-news-ticker__track:hover {
+.addonext-news-ticker--pause-hover .addonext-news-ticker__track:hover {
   animation-play-state: paused;
 }
 
-@keyframes veloria-news-ticker-slide {
+@keyframes addonext-news-ticker-slide {
   from {
     transform: translateX(0);
   }
@@ -81,7 +81,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .veloria-news-ticker__track {
+  .addonext-news-ticker__track {
     animation: none;
     transform: translateX(0);
   }

@@ -1,29 +1,29 @@
-.veloria-button-wrapper {
+.addonext-button-wrapper {
   display: block;
 }
 
-.elementor-widget-veloria-button[class*="align-left"] {
+.elementor-widget-addonext-button[class*="align-left"] {
   text-align: left;
 }
 
-.elementor-widget-veloria-button[class*="align-center"] {
+.elementor-widget-addonext-button[class*="align-center"] {
   text-align: center;
 }
 
-.elementor-widget-veloria-button[class*="align-right"] {
+.elementor-widget-addonext-button[class*="align-right"] {
   text-align: right;
 }
 
-.elementor-widget-veloria-button[class*="align-justify"] .veloria-button-wrapper {
+.elementor-widget-addonext-button[class*="align-justify"] .addonext-button-wrapper {
   display: flex;
 }
 
-.elementor-widget-veloria-button[class*="align-justify"] .veloria-button {
+.elementor-widget-addonext-button[class*="align-justify"] .addonext-button {
   flex: 1;
   width: 100%;
 }
 
-.veloria-button {
+.addonext-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -38,51 +38,51 @@
   transition-property: color, background, background-color, border-color, box-shadow, transform;
 }
 
-.veloria-button.veloria-button--xs {
+.addonext-button.addonext-button--xs {
   font-size: 12px;
   padding: 6px 12px;
 }
 
-.veloria-button.veloria-button--sm {
+.addonext-button.addonext-button--sm {
   font-size: 13px;
   padding: 8px 15px;
 }
 
-.veloria-button.veloria-button--md {
+.addonext-button.addonext-button--md {
   font-size: 14px;
   padding: 10px 18px;
 }
 
-.veloria-button.veloria-button--lg {
+.addonext-button.addonext-button--lg {
   font-size: 16px;
   padding: 12px 22px;
 }
 
-.veloria-button.veloria-button--xl {
+.addonext-button.addonext-button--xl {
   font-size: 18px;
   padding: 14px 26px;
 }
 
-.veloria-button--primary {
+.addonext-button--primary {
   border: none;
 }
 
-.veloria-button--secondary {
+.addonext-button--secondary {
   background-color: transparent;
 }
 
-.veloria-button__content {
+.addonext-button__content {
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
 }
 
-.veloria-button__icon {
+.addonext-button__icon {
   display: inline-flex;
   align-items: center;
 }
 
-.veloria-button__icon svg {
+.addonext-button__icon svg {
   width: 1em;
   height: 1em;
 }

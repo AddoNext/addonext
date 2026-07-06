@@ -1,12 +1,12 @@
 (function () {
     'use strict';
 
-    var SELECTOR_WRAP = '.veloria-asvg';
-    var CLASS_DRAW = 'veloria-asvg--anim-draw';
-    var ATTR_MARK = 'data-veloria-draw';
-    var ATTR_OLD_FILL = 'data-veloria-draw-old-fill';
-    var ATTR_OLD_STROKE = 'data-veloria-draw-old-stroke';
-    var ATTR_OLD_SW = 'data-veloria-draw-old-stroke-width';
+    var SELECTOR_WRAP = '.addonext-asvg';
+    var CLASS_DRAW = 'addonext-asvg--anim-draw';
+    var ATTR_MARK = 'data-addonext-draw';
+    var ATTR_OLD_FILL = 'data-addonext-draw-old-fill';
+    var ATTR_OLD_STROKE = 'data-addonext-draw-old-stroke';
+    var ATTR_OLD_SW = 'data-addonext-draw-old-stroke-width';
     var drawObserver = null;
 
     function prefersReducedMotion() {
@@ -249,7 +249,7 @@
         if (!wrap || !wrap.classList.contains(CLASS_DRAW)) {
             return;
         }
-        var inner = wrap.querySelector('.veloria-asvg__inner');
+        var inner = wrap.querySelector('.addonext-asvg__inner');
         if (!inner) {
             return;
         }
@@ -486,8 +486,8 @@
         if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks || !elementorFrontend.hooks.addAction) {
             return;
         }
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-animated-svg.default', onWidgetReady);
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-animated-svg', onWidgetReady);
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-animated-svg.default', onWidgetReady);
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-animated-svg', onWidgetReady);
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\LottieAnimation;
+namespace Addonext\Widgets\LottieAnimation;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Css_Filter;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') or exit;
  */
 class LottieAnimation extends WidgetBase
 {
-    public const DEFAULT_JSON_URL = VELORIA_URL . 'assets/lottie/default.json';
+    public const DEFAULT_JSON_URL = ADDONEXT_URL . 'assets/lottie/default.json';
 
     public function __construct($data = [], $args = null)
     {
@@ -23,18 +23,18 @@ class LottieAnimation extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         $this->enqueue_assets();
-        wp_enqueue_style('veloria-lottie-animation');
-        wp_enqueue_script('veloria-lottie-animation');
+        wp_enqueue_style('addonext-lottie-animation');
+        wp_enqueue_script('addonext-lottie-animation');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-lottie veloria-icon';
+        return 'eicon-lottie addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-lottie-animation';
+        return 'addonext-lottie-animation';
     }
 
     public function get_admin_category(): string
@@ -44,12 +44,12 @@ class LottieAnimation extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Lottie Animation', 'veloria');
+        return __('Lottie Animation', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Lottie JSON animations with triggers, speed, and SVG or canvas render.', 'veloria');
+        return __('Lottie JSON animations with triggers, speed, and SVG or canvas render.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -59,39 +59,39 @@ class LottieAnimation extends WidgetBase
 
     public function get_keywords(): array
     {
-        return ['veloria', 'lottie', 'animation', 'json', 'svg', 'canvas', 'motion'];
+        return ['addonext', 'lottie', 'animation', 'json', 'svg', 'canvas', 'motion'];
     }
 
     public function get_style_depends(): array
     {
-        return ['veloria-lottie-animation'];
+        return ['addonext-lottie-animation'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-lottie-animation'];
+        return ['addonext-lottie-animation'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-lottie-animation',
-            VELORIA_URL . 'assets/css/lottie-animation.css',
+            'addonext-lottie-animation',
+            ADDONEXT_URL . 'assets/css/lottie-animation.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-lottie-web',
-            VELORIA_URL . 'assets/js/lib/lottie/lottie.min.js',
+            'addonext-lottie-web',
+            ADDONEXT_URL . 'assets/js/lib/lottie/lottie.min.js',
             [],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
         wp_register_script(
-            'veloria-lottie-animation',
-            VELORIA_URL . 'assets/js/lottie-animation.js',
-            ['veloria-lottie-web'],
-            VELORIA_VERSION,
+            'addonext-lottie-animation',
+            ADDONEXT_URL . 'assets/js/lottie-animation.js',
+            ['addonext-lottie-web'],
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -121,29 +121,29 @@ class LottieAnimation extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_settings', [
-            'label' => __('Settings', 'veloria'),
+            'label' => __('Settings', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('source', [
-            'label'   => __('File source', 'veloria'),
+            'label'   => __('File source', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'options' => [
-                'url'  => __('External URL', 'veloria'),
-                'file' => __('Media file', 'veloria'),
+                'url'  => __('External URL', 'addonext'),
+                'file' => __('Media file', 'addonext'),
             ],
             'default' => 'url',
         ]);
 
         $this->add_control('json_url', [
-            'label'       => __('Animation JSON URL', 'veloria'),
+            'label'       => __('Animation JSON URL', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'dynamic'     => ['active' => true],
             'default'     => self::DEFAULT_JSON_URL,
             'description' => sprintf(
                 wp_kses(
                     /* translators: %s: HTML link to LottieFiles. */
-                    __('Paste a .json URL from %s.', 'veloria'),
+                    __('Paste a .json URL from %s.', 'addonext'),
                     ['a' => ['href' => [], 'target' => []]]
                 ),
                 '<a href="https://lottiefiles.com/" target="_blank" rel="noopener noreferrer">LottieFiles</a>'
@@ -155,7 +155,7 @@ class LottieAnimation extends WidgetBase
         ]);
 
         $this->add_control('json_file', [
-            'label'              => __('Upload JSON file', 'veloria'),
+            'label'              => __('Upload JSON file', 'addonext'),
             'type'               => Controls_Manager::MEDIA,
             'media_type'         => 'application/json',
             'frontend_available' => true,
@@ -165,7 +165,7 @@ class LottieAnimation extends WidgetBase
         ]);
 
         $this->add_control('autoplay', [
-            'label'        => __('Autoplay', 'veloria'),
+            'label'        => __('Autoplay', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'default'      => 'yes',
             'return_value' => 'yes',
@@ -173,14 +173,14 @@ class LottieAnimation extends WidgetBase
         ]);
 
         $this->add_control('loop', [
-            'label'        => __('Loop', 'veloria'),
+            'label'        => __('Loop', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'default'      => 'yes',
             'return_value' => 'yes',
         ]);
 
         $this->add_control('reverse', [
-            'label'        => __('Reverse', 'veloria'),
+            'label'        => __('Reverse', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'condition'    => [
@@ -189,7 +189,7 @@ class LottieAnimation extends WidgetBase
         ]);
 
         $this->add_control('speed', [
-            'label'   => __('Animation speed', 'veloria'),
+            'label'   => __('Animation speed', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'default' => 1,
             'min'     => 0.1,
@@ -198,20 +198,20 @@ class LottieAnimation extends WidgetBase
         ]);
 
         $this->add_control('trigger', [
-            'label'              => __('Trigger', 'veloria'),
+            'label'              => __('Trigger', 'addonext'),
             'type'               => Controls_Manager::SELECT,
             'default'            => 'none',
             'options'            => [
-                'none'     => __('None', 'veloria'),
-                'viewport' => __('Viewport', 'veloria'),
-                'hover'    => __('Hover', 'veloria'),
-                'scroll'   => __('Scroll', 'veloria'),
+                'none'     => __('None', 'addonext'),
+                'viewport' => __('Viewport', 'addonext'),
+                'hover'    => __('Hover', 'addonext'),
+                'scroll'   => __('Scroll', 'addonext'),
             ],
             'frontend_available' => true,
         ]);
 
         $this->add_control('animate_view', [
-            'label'     => __('Viewport range', 'veloria'),
+            'label'     => __('Viewport range', 'addonext'),
             'type'      => Controls_Manager::SLIDER,
             'default'   => [
                 'sizes' => [
@@ -221,8 +221,8 @@ class LottieAnimation extends WidgetBase
                 'unit'  => '%',
             ],
             'labels'    => [
-                __('Bottom', 'veloria'),
-                __('Top', 'veloria'),
+                __('Bottom', 'addonext'),
+                __('Top', 'addonext'),
             ],
             'scales'    => 1,
             'handles'   => 'range',
@@ -232,7 +232,7 @@ class LottieAnimation extends WidgetBase
         ]);
 
         $this->add_responsive_control('animation_size', [
-            'label'       => __('Size', 'veloria'),
+            'label'       => __('Size', 'addonext'),
             'type'        => Controls_Manager::SLIDER,
             'size_units'  => ['px', '%'],
             'default'     => [
@@ -252,15 +252,15 @@ class LottieAnimation extends WidgetBase
             'render_type' => 'template',
             'separator'   => 'before',
             'selectors'   => [
-                '{{WRAPPER}} .veloria-lottie-animation svg' => 'width: 100% !important; height: 100% !important;',
-                '{{WRAPPER}} .veloria-lottie-animation' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                '{{WRAPPER}} .addonext-lottie-animation svg' => 'width: 100% !important; height: 100% !important;',
+                '{{WRAPPER}} .addonext-lottie-animation' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
             ],
         ]);
 
         $this->add_responsive_control('rotate', [
-            'label'       => __('Rotate (degrees)', 'veloria'),
+            'label'       => __('Rotate (degrees)', 'addonext'),
             'type'        => Controls_Manager::SLIDER,
-            'description' => __('Rotation in degrees.', 'veloria'),
+            'description' => __('Rotation in degrees.', 'addonext'),
             'range'       => [
                 'px' => [
                     'min' => -180,
@@ -271,24 +271,24 @@ class LottieAnimation extends WidgetBase
                 'size' => 0,
             ],
             'selectors'   => [
-                '{{WRAPPER}} .veloria-lottie-animation' => 'transform: rotate({{SIZE}}deg);',
+                '{{WRAPPER}} .addonext-lottie-animation' => 'transform: rotate({{SIZE}}deg);',
             ],
         ]);
 
         $this->add_responsive_control('animation_align', [
-            'label'     => __('Alignment', 'veloria'),
+            'label'     => __('Alignment', 'addonext'),
             'type'      => Controls_Manager::CHOOSE,
             'options'   => [
                 'flex-start' => [
-                    'title' => __('Left', 'veloria'),
+                    'title' => __('Left', 'addonext'),
                     'icon'  => 'eicon-text-align-left',
                 ],
                 'center'     => [
-                    'title' => __('Center', 'veloria'),
+                    'title' => __('Center', 'addonext'),
                     'icon'  => 'eicon-text-align-center',
                 ],
                 'flex-end'   => [
-                    'title' => __('Right', 'veloria'),
+                    'title' => __('Right', 'addonext'),
                     'icon'  => 'eicon-text-align-right',
                 ],
             ],
@@ -296,16 +296,16 @@ class LottieAnimation extends WidgetBase
             'toggle'    => false,
             'separator' => 'before',
             'selectors' => [
-                '{{WRAPPER}} .veloria-lottie-animation__wrapper' => 'justify-content: {{VALUE}}; align-items: center;',
+                '{{WRAPPER}} .addonext-lottie-animation__wrapper' => 'justify-content: {{VALUE}}; align-items: center;',
             ],
         ]);
 
         $this->add_control('lottie_renderer', [
-            'label'        => __('Render as', 'veloria'),
+            'label'        => __('Render as', 'addonext'),
             'type'         => Controls_Manager::SELECT,
             'options'      => [
-                'svg'    => __('SVG', 'veloria'),
-                'canvas' => __('Canvas', 'veloria'),
+                'svg'    => __('SVG', 'addonext'),
+                'canvas' => __('Canvas', 'addonext'),
             ],
             'default'      => 'svg',
             'render_type'  => 'template',
@@ -314,17 +314,17 @@ class LottieAnimation extends WidgetBase
 
         $this->add_control('render_notice', [
             'type'            => Controls_Manager::RAW_HTML,
-            'raw'             => __('Use canvas if the page feels slow with many Lottie instances.', 'veloria'),
+            'raw'             => __('Use canvas if the page feels slow with many Lottie instances.', 'addonext'),
             'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
         ]);
 
         $this->add_control('link_switcher', [
-            'label' => __('Wrapper link', 'veloria'),
+            'label' => __('Wrapper link', 'addonext'),
             'type'  => Controls_Manager::SWITCHER,
         ]);
 
         $this->add_control('link', [
-            'label'       => __('Link', 'veloria'),
+            'label'       => __('Link', 'addonext'),
             'type'        => Controls_Manager::URL,
             'dynamic'     => ['active' => true],
             'default'     => [
@@ -340,18 +340,18 @@ class LottieAnimation extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style', [
-            'label' => __('Animation', 'veloria'),
+            'label' => __('Animation', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->start_controls_tabs('tabs_lottie');
 
         $this->start_controls_tab('tab_lottie_normal', [
-            'label' => __('Normal', 'veloria'),
+            'label' => __('Normal', 'addonext'),
         ]);
 
         $this->add_control('opacity', [
-            'label'     => __('Opacity', 'veloria'),
+            'label'     => __('Opacity', 'addonext'),
             'type'      => Controls_Manager::SLIDER,
             'range'     => [
                 'px' => [
@@ -361,35 +361,35 @@ class LottieAnimation extends WidgetBase
                 ],
             ],
             'selectors' => [
-                '{{WRAPPER}} .veloria-lottie-animation' => 'opacity: {{SIZE}};',
+                '{{WRAPPER}} .addonext-lottie-animation' => 'opacity: {{SIZE}};',
             ],
         ]);
 
         $this->add_control('hover_transition', [
-            'label'     => __('Transition duration', 'veloria'),
+            'label'     => __('Transition duration', 'addonext'),
             'type'      => Controls_Manager::NUMBER,
             'default'   => 0.3,
             'min'       => 0,
             'max'       => 5,
             'step'      => 0.1,
             'selectors' => [
-                '{{WRAPPER}} .veloria-lottie-animation' => 'transition-duration: {{VALUE}}s;',
+                '{{WRAPPER}} .addonext-lottie-animation' => 'transition-duration: {{VALUE}}s;',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Css_Filter::get_type(), [
             'name'     => 'css_filters',
-            'selector' => '{{WRAPPER}} .veloria-lottie-animation',
+            'selector' => '{{WRAPPER}} .addonext-lottie-animation',
         ]);
 
         $this->end_controls_tab();
 
         $this->start_controls_tab('tab_lottie_hover', [
-            'label' => __('Hover', 'veloria'),
+            'label' => __('Hover', 'addonext'),
         ]);
 
         $this->add_control('hover_opacity', [
-            'label'     => __('Opacity', 'veloria'),
+            'label'     => __('Opacity', 'addonext'),
             'type'      => Controls_Manager::SLIDER,
             'range'     => [
                 'px' => [
@@ -399,13 +399,13 @@ class LottieAnimation extends WidgetBase
                 ],
             ],
             'selectors' => [
-                '{{WRAPPER}} .veloria-lottie-animation:hover' => 'opacity: {{SIZE}};',
+                '{{WRAPPER}} .addonext-lottie-animation:hover' => 'opacity: {{SIZE}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Css_Filter::get_type(), [
             'name'     => 'hover_css_filters',
-            'selector' => '{{WRAPPER}} .veloria-lottie-animation:hover',
+            'selector' => '{{WRAPPER}} .addonext-lottie-animation:hover',
         ]);
 
         $this->end_controls_tab();
@@ -417,7 +417,7 @@ class LottieAnimation extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/lottie-animation/lottie-animation.php';
+        $path = ADDONEXT_DIR . 'templates/lottie-animation/lottie-animation.php';
         if (is_readable($path)) {
             include $path;
         }

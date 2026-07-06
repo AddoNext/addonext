@@ -83,7 +83,7 @@
             return;
         }
         link.classList.add('is-active');
-        var group = link.closest('.veloria-toc__group');
+        var group = link.closest('.addonext-toc__group');
         if (group) {
             group.classList.add('is-active-descendant');
         }
@@ -108,14 +108,14 @@
     }
 
     function destroyNav(nav) {
-        if (!nav || !nav._veloriaToc) {
+        if (!nav || !nav._addonextToc) {
             return;
         }
-        var h = nav._veloriaToc;
+        var h = nav._addonextToc;
         window.removeEventListener('scroll', h.onScroll, false);
         window.removeEventListener('resize', h.onScroll, false);
         nav.removeEventListener('click', h.onClick);
-        delete nav._veloriaToc;
+        delete nav._addonextToc;
         nav.removeAttribute('data-toc-initialized');
     }
 
@@ -196,13 +196,13 @@
 
         window.addEventListener('scroll', onScroll, false);
         window.addEventListener('resize', onScroll, false);
-        nav._veloriaToc = { onScroll: onScroll, onClick: onClick };
+        nav._addonextToc = { onScroll: onScroll, onClick: onClick };
         onScroll();
     }
 
     function scan(root) {
         var scope = root || document;
-        var list = scope.querySelectorAll('.veloria-toc');
+        var list = scope.querySelectorAll('.addonext-toc');
         for (var i = 0; i < list.length; i += 1) {
             initNav(list[i]);
         }
@@ -221,13 +221,13 @@
             return;
         }
         elementorFrontend.hooks.addAction(
-            'frontend/element_ready/veloria-table-of-contents.default',
+            'frontend/element_ready/addonext-table-of-contents.default',
             function ($scope) {
                 var el = $scope && $scope[0] ? $scope[0] : null;
                 if (!el) {
                     return;
                 }
-                var nodes = el.querySelectorAll('.veloria-toc');
+                var nodes = el.querySelectorAll('.addonext-toc');
                 for (var i = 0; i < nodes.length; i += 1) {
                     initNav(nodes[i]);
                 }

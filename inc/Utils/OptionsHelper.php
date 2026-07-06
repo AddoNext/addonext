@@ -1,11 +1,11 @@
 <?php
-namespace Veloria\Utils;
+namespace Addonext\Utils;
 
 defined('ABSPATH') or exit;
 
 class OptionsHelper
 {
-    const option_prefix = 'veloria_';
+    const option_prefix = 'addonext_';
 
     public static function get_option(string $key, $default = null)
     {

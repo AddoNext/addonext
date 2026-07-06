@@ -1,13 +1,13 @@
-.veloria-animated-gradient {
+.addonext-animated-gradient {
     margin: 0;
 }
 
-.veloria-animated-gradient__inner {
+.addonext-animated-gradient__inner {
     box-sizing: border-box;
     margin: 0;
 }
 
-.veloria-animated-gradient__text {
+.addonext-animated-gradient__text {
     display: inline-block;
     width: 100%;
     max-width: 100%;
@@ -16,35 +16,35 @@
     white-space: pre-line;
 }
 
-.elementor-element.veloria-animated-gradient--align-left .veloria-animated-gradient__inner,
-.veloria-animated-gradient--align-left .veloria-animated-gradient__inner {
+.elementor-element.addonext-animated-gradient--align-left .addonext-animated-gradient__inner,
+.addonext-animated-gradient--align-left .addonext-animated-gradient__inner {
     text-align: left;
 }
 
-.elementor-element.veloria-animated-gradient--align-center .veloria-animated-gradient__inner,
-.veloria-animated-gradient--align-center .veloria-animated-gradient__inner {
+.elementor-element.addonext-animated-gradient--align-center .addonext-animated-gradient__inner,
+.addonext-animated-gradient--align-center .addonext-animated-gradient__inner {
     text-align: center;
 }
 
-.elementor-element.veloria-animated-gradient--align-right .veloria-animated-gradient__inner,
-.veloria-animated-gradient--align-right .veloria-animated-gradient__inner {
+.elementor-element.addonext-animated-gradient--align-right .addonext-animated-gradient__inner,
+.addonext-animated-gradient--align-right .addonext-animated-gradient__inner {
     text-align: right;
 }
 
-.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
+.addonext-animated-gradient--bg.addonext-animated-gradient__inner {
     background-color: transparent;
     background-repeat: no-repeat;
     background-image: linear-gradient(
         90deg,
-        var(--veloria-ag-start, #d65db1),
-        var(--veloria-ag-end, #845ef7),
-        var(--veloria-ag-start, #d65db1)
+        var(--addonext-ag-start, #d65db1),
+        var(--addonext-ag-end, #845ef7),
+        var(--addonext-ag-start, #d65db1)
     );
     background-size: 300% 300%;
 }
 
-.veloria-animated-gradient--text .veloria-animated-gradient__inner,
-.elementor-element.veloria-animated-gradient--text .veloria-animated-gradient__inner {
+.addonext-animated-gradient--text .addonext-animated-gradient__inner,
+.elementor-element.addonext-animated-gradient--text .addonext-animated-gradient__inner {
     background-image: none !important;
     background-color: transparent !important;
     background-size: auto !important;
@@ -52,14 +52,14 @@
     animation: none !important;
 }
 
-.veloria-animated-gradient--text .veloria-animated-gradient__text {
+.addonext-animated-gradient--text .addonext-animated-gradient__text {
     background-color: transparent;
     background-repeat: no-repeat;
     background-image: linear-gradient(
         90deg,
-        var(--veloria-ag-start, #d65db1),
-        var(--veloria-ag-end, #845ef7),
-        var(--veloria-ag-start, #d65db1)
+        var(--addonext-ag-start, #d65db1),
+        var(--addonext-ag-end, #845ef7),
+        var(--addonext-ag-start, #d65db1)
     );
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -68,31 +68,31 @@
     -webkit-text-fill-color: transparent !important;
 }
 
-.veloria-animated-gradient--dir-h.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
-    animation: veloria-ag-shift-h var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
+.addonext-animated-gradient--dir-h.addonext-animated-gradient--bg.addonext-animated-gradient__inner {
+    animation: addonext-ag-shift-h var(--addonext-ag-duration, 8s) var(--addonext-ag-ease, ease-in-out) infinite;
 }
 
-.veloria-animated-gradient--dir-h.veloria-animated-gradient--text .veloria-animated-gradient__text {
-    animation: veloria-ag-shift-h var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
+.addonext-animated-gradient--dir-h.addonext-animated-gradient--text .addonext-animated-gradient__text {
+    animation: addonext-ag-shift-h var(--addonext-ag-duration, 8s) var(--addonext-ag-ease, ease-in-out) infinite;
 }
 
-.veloria-animated-gradient--dir-v.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
-    animation: veloria-ag-shift-v var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
+.addonext-animated-gradient--dir-v.addonext-animated-gradient--bg.addonext-animated-gradient__inner {
+    animation: addonext-ag-shift-v var(--addonext-ag-duration, 8s) var(--addonext-ag-ease, ease-in-out) infinite;
 }
 
-.veloria-animated-gradient--dir-v.veloria-animated-gradient--text .veloria-animated-gradient__text {
-    animation: veloria-ag-shift-v var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
+.addonext-animated-gradient--dir-v.addonext-animated-gradient--text .addonext-animated-gradient__text {
+    animation: addonext-ag-shift-v var(--addonext-ag-duration, 8s) var(--addonext-ag-ease, ease-in-out) infinite;
 }
 
-.veloria-animated-gradient--dir-d.veloria-animated-gradient--bg.veloria-animated-gradient__inner {
-    animation: veloria-ag-shift-d var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
+.addonext-animated-gradient--dir-d.addonext-animated-gradient--bg.addonext-animated-gradient__inner {
+    animation: addonext-ag-shift-d var(--addonext-ag-duration, 8s) var(--addonext-ag-ease, ease-in-out) infinite;
 }
 
-.veloria-animated-gradient--dir-d.veloria-animated-gradient--text .veloria-animated-gradient__text {
-    animation: veloria-ag-shift-d var(--veloria-ag-duration, 8s) var(--veloria-ag-ease, ease-in-out) infinite;
+.addonext-animated-gradient--dir-d.addonext-animated-gradient--text .addonext-animated-gradient__text {
+    animation: addonext-ag-shift-d var(--addonext-ag-duration, 8s) var(--addonext-ag-ease, ease-in-out) infinite;
 }
 
-@keyframes veloria-ag-shift-h {
+@keyframes addonext-ag-shift-h {
     0%,
     100% {
         background-position: 0% 50%;
@@ -103,7 +103,7 @@
     }
 }
 
-@keyframes veloria-ag-shift-v {
+@keyframes addonext-ag-shift-v {
     0%,
     100% {
         background-position: 50% 0%;
@@ -114,7 +114,7 @@
     }
 }
 
-@keyframes veloria-ag-shift-d {
+@keyframes addonext-ag-shift-d {
     0%,
     100% {
         background-position: 0% 0%;

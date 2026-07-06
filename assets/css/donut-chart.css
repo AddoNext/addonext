@@ -1,8 +1,8 @@
-.veloria-donut-chart {
+.addonext-donut-chart {
   max-width: 100%;
 }
 
-.veloria-donut-chart__title {
+.addonext-donut-chart__title {
   margin: 0 0 1rem;
   font-size: 1.25rem;
   font-weight: 600;
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.veloria-donut-chart__wrap {
+.addonext-donut-chart__wrap {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -19,19 +19,19 @@
   gap: 0.75rem;
 }
 
-.veloria-donut-chart__canvas {
+.addonext-donut-chart__canvas {
   flex-shrink: 0;
   width: 360px;
   height: 360px;
 }
 
-.veloria-donut-chart__svg {
+.addonext-donut-chart__svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.veloria-donut-chart__slice-label {
+.addonext-donut-chart__slice-label {
   font-family: inherit;
   font-size: 11px;
   font-weight: 600;
@@ -39,25 +39,25 @@
   pointer-events: none;
 }
 
-.veloria-donut-chart__center-value,
-.veloria-donut-chart__center-label {
+.addonext-donut-chart__center-value,
+.addonext-donut-chart__center-label {
   font-family: inherit;
   pointer-events: none;
 }
 
-.veloria-donut-chart__center-value {
+.addonext-donut-chart__center-value {
   fill: #1f2937;
   font-size: 20px;
   font-weight: 600;
 }
 
-.veloria-donut-chart__center-label {
+.addonext-donut-chart__center-label {
   fill: #374151;
   font-size: 12px;
   font-weight: 500;
 }
 
-.veloria-donut-chart__legend {
+.addonext-donut-chart__legend {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -66,7 +66,7 @@
   align-self: center;
 }
 
-.veloria-donut-chart__legend-item {
+.addonext-donut-chart__legend-item {
   display: flex;
   align-items: center;
   gap: 0.65rem;
@@ -74,24 +74,24 @@
   color: #374151;
 }
 
-.veloria-donut-chart__legend-swatch {
+.addonext-donut-chart__legend-swatch {
   width: 14px;
   height: 14px;
   border-radius: 2px;
   flex-shrink: 0;
 }
 
-.veloria-donut-chart__legend-text {
+.addonext-donut-chart__legend-text {
   line-height: 1.35;
 }
 
 @media (max-width: 767px) {
-  .veloria-donut-chart__wrap {
+  .addonext-donut-chart__wrap {
     flex-direction: column;
     align-items: center;
   }
 
-  .veloria-donut-chart__legend {
+  .addonext-donut-chart__legend {
     width: 100%;
     max-width: 280px;
   }

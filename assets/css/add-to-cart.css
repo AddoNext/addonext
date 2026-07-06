@@ -1,21 +1,21 @@
-.veloria-add-to-cart-shell {
+.addonext-add-to-cart-shell {
   width: 100%;
 }
 
-.veloria-add-to-cart {
+.addonext-add-to-cart {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.veloria-add-to-cart__quantity {
+.addonext-add-to-cart__quantity {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.veloria-add-to-cart__quantity-label {
+.addonext-add-to-cart__quantity-label {
   display: block;
   font-weight: 700;
   font-size: 15px;
@@ -23,7 +23,7 @@
   color: #0f172a;
 }
 
-.veloria-add-to-cart__quantity-row {
+.addonext-add-to-cart__quantity-row {
   display: flex;
   align-items: stretch;
   width: 100%;
@@ -36,12 +36,12 @@
   box-sizing: border-box;
 }
 
-.veloria-add-to-cart__quantity-row:focus-within {
+.addonext-add-to-cart__quantity-row:focus-within {
   outline: 2px solid #2563eb;
   outline-offset: 1px;
 }
 
-.veloria-add-to-cart__qty-btn {
+.addonext-add-to-cart__qty-btn {
   flex: 0 0 44px;
   width: 44px;
   min-height: 44px;
@@ -58,23 +58,23 @@
   box-sizing: border-box;
 }
 
-.veloria-add-to-cart__qty-btn--minus {
+.addonext-add-to-cart__qty-btn--minus {
   border-right: 1px solid #e2e8f0;
 }
 
-.veloria-add-to-cart__qty-btn--plus {
+.addonext-add-to-cart__qty-btn--plus {
   border-left: 1px solid #e2e8f0;
 }
 
-.veloria-add-to-cart__qty-btn:hover {
+.addonext-add-to-cart__qty-btn:hover {
   background: #f8fafc;
 }
 
-.veloria-add-to-cart__qty-btn:focus {
+.addonext-add-to-cart__qty-btn:focus {
   outline: none;
 }
 
-.veloria-add-to-cart__qty-input {
+.addonext-add-to-cart__qty-input {
   flex: 1 1 auto;
   min-width: 0;
   min-height: 44px;
@@ -89,27 +89,27 @@
   border-radius: 0 !important;
 }
 
-.veloria-add-to-cart__qty-input:focus {
+.addonext-add-to-cart__qty-input:focus {
   outline: none;
 }
 
-.veloria-add-to-cart__qty-input::-webkit-outer-spin-button,
-.veloria-add-to-cart__qty-input::-webkit-inner-spin-button {
+.addonext-add-to-cart__qty-input::-webkit-outer-spin-button,
+.addonext-add-to-cart__qty-input::-webkit-inner-spin-button {
   margin: 0;
   appearance: none;
 }
 
-.veloria-add-to-cart__qty-input[type='number'] {
+.addonext-add-to-cart__qty-input[type='number'] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
 
-.veloria-add-to-cart__button-wrap {
+.addonext-add-to-cart__button-wrap {
   position: relative;
   width: 100%;
 }
 
-.veloria-add-to-cart__submit {
+.addonext-add-to-cart__submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -132,49 +132,49 @@
   position: relative;
 }
 
-.veloria-add-to-cart__submit:hover:not(.is-added-success):not(.loading) {
+.addonext-add-to-cart__submit:hover:not(.is-added-success):not(.loading) {
   background: #1d4ed8;
   border-color: #1d4ed8;
   color: #ffffff;
 }
 
-.veloria-add-to-cart__submit--link {
+.addonext-add-to-cart__submit--link {
   text-align: center;
 }
 
-.veloria-add-to-cart__submit--form {
+.addonext-add-to-cart__submit--form {
   font-family: inherit;
 }
 
-.veloria-add-to-cart__btn-icon {
+.addonext-add-to-cart__btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.veloria-add-to-cart__btn-icon i {
+.addonext-add-to-cart__btn-icon i {
   font-size: 16px;
   line-height: 1;
 }
 
-.veloria-add-to-cart__btn-label {
+.addonext-add-to-cart__btn-label {
   flex-shrink: 0;
   font-size: 14px;
 }
 
-.veloria-add-to-cart__submit.loading .veloria-add-to-cart__btn-icon,
-.veloria-add-to-cart__submit.veloria-add-to-cart__cart-btn--pending .veloria-add-to-cart__btn-icon {
+.addonext-add-to-cart__submit.loading .addonext-add-to-cart__btn-icon,
+.addonext-add-to-cart__submit.addonext-add-to-cart__cart-btn--pending .addonext-add-to-cart__btn-icon {
   opacity: 0;
 }
 
-.veloria-add-to-cart__submit.loading .veloria-add-to-cart__btn-label,
-.veloria-add-to-cart__submit.veloria-add-to-cart__cart-btn--pending .veloria-add-to-cart__btn-label {
+.addonext-add-to-cart__submit.loading .addonext-add-to-cart__btn-label,
+.addonext-add-to-cart__submit.addonext-add-to-cart__cart-btn--pending .addonext-add-to-cart__btn-label {
   opacity: 0;
 }
 
-.veloria-add-to-cart__submit.loading::after,
-.veloria-add-to-cart__submit.veloria-add-to-cart__cart-btn--pending::after {
+.addonext-add-to-cart__submit.loading::after,
+.addonext-add-to-cart__submit.addonext-add-to-cart__cart-btn--pending::after {
   content: '';
   position: absolute;
   width: 20px;
@@ -182,37 +182,37 @@
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: #ffffff;
   border-radius: 50%;
-  animation: veloria-atc-spin 0.7s linear infinite;
+  animation: addonext-atc-spin 0.7s linear infinite;
   box-sizing: border-box;
 }
 
-.veloria-add-to-cart__submit.is-added-success {
+.addonext-add-to-cart__submit.is-added-success {
   background: #16a34a;
   border-color: #16a34a;
 }
 
-.veloria-add-to-cart__submit.is-view-cart {
+.addonext-add-to-cart__submit.is-view-cart {
   background: #1d4ed8;
   border-color: #1d4ed8;
 }
 
-.veloria-add-to-cart__submit.is-added-success::after {
+.addonext-add-to-cart__submit.is-added-success::after {
   display: none;
 }
 
-.veloria-add-to-cart .added_to_cart {
+.addonext-add-to-cart .added_to_cart {
   display: none !important;
 }
 
-.veloria-add-to-cart__notice,
-.veloria-add-to-cart__placeholder {
+.addonext-add-to-cart__notice,
+.addonext-add-to-cart__placeholder {
   margin: 0;
   font-size: 14px;
   line-height: 1.45;
   color: #64748b;
 }
 
-@keyframes veloria-atc-spin {
+@keyframes addonext-atc-spin {
   to {
     transform: rotate(360deg);
   }

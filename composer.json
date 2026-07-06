@@ -1,5 +1,5 @@
 {
-    "name": "addonext/veloria",
+    "name": "addonext/addonext",
     "type": "wordpress-plugin",
     "description": "Wordpress elementor addons plugin",
     "keywords": [
@@ -8,7 +8,7 @@
         "builder",
         "page"
     ],
-    "homepage": "https://veloria.com/",
+    "homepage": "https://addonext.com/",
     "license": "GPL-2.0-or-later",
     "require": {
         "php": ">=7.4",
@@ -23,17 +23,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Veloria\\": "./inc",
-            "Veloria\\Widgets\\": [
+            "Addonext\\": "./inc",
+            "Addonext\\Widgets\\": [
                 "inc/Widgets",
                 "pro/inc/Widgets"
             ],
-            "Veloria\\Extensions\\": [
+            "Addonext\\Extensions\\": [
                 "inc/Extensions",
                 "pro/inc/Extensions"
             ],
-            "Veloria\\Pro\\": "./pro/inc/Pro",
-            "Veloria\\Pro\\Migrations\\": "./pro/inc/Migrations"
+            "Addonext\\Pro\\": "./pro/inc/Pro",
+            "Addonext\\Pro\\Migrations\\": "./pro/inc/Migrations"
         },
         "files": [
             "container.php",

@@ -1,10 +1,10 @@
-.veloria-dropcap {
+.addonext-dropcap {
     margin: 0 0 1em;
     font-size: 16px;
     line-height: 1.7;
 }
 
-.veloria-dropcap__letter {
+.addonext-dropcap__letter {
     float: left;
     font-weight: 700;
     font-size: 3.5em;
@@ -12,17 +12,17 @@
     margin: 0 0.25em 0 0;
 }
 
-.veloria-dropcap--gradient .veloria-dropcap__letter {
+.addonext-dropcap--gradient .addonext-dropcap__letter {
     background: linear-gradient(
-        var(--veloria-dropcap-gradient-angle, 90deg),
-        var(--veloria-dropcap-gradient-start, #2563eb),
-        var(--veloria-dropcap-gradient-end, #7c3aed)
+        var(--addonext-dropcap-gradient-angle, 90deg),
+        var(--addonext-dropcap-gradient-start, #2563eb),
+        var(--addonext-dropcap-gradient-end, #7c3aed)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.veloria-dropcap__text {
+.addonext-dropcap__text {
     display: block;
 }

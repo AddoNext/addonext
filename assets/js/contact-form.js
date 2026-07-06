@@ -1,29 +1,29 @@
 (function () {
     'use strict';
 
-    var FORM_SEL = '.veloria-contact-form';
+    var FORM_SEL = '.addonext-contact-form';
 
     function getMessageEl(form) {
-        return form.querySelector('.veloria-contact-form__message');
+        return form.querySelector('.addonext-contact-form__message');
     }
 
     function showMessage(form, text, isError) {
         var el = getMessageEl(form);
         if (!el) return;
         el.textContent = text;
-        el.classList.remove('veloria-contact-form__message--success', 'veloria-contact-form__message--error');
-        el.classList.add(isError ? 'veloria-contact-form__message--error' : 'veloria-contact-form__message--success');
+        el.classList.remove('addonext-contact-form__message--success', 'addonext-contact-form__message--error');
+        el.classList.add(isError ? 'addonext-contact-form__message--error' : 'addonext-contact-form__message--success');
         el.setAttribute('role', 'alert');
     }
 
     function setSubmitting(form, submitting) {
-        var btn = form.querySelector('.veloria-contact-form__submit');
+        var btn = form.querySelector('.addonext-contact-form__submit');
         if (btn) {
             btn.disabled = submitting;
             if (submitting) {
-                btn.classList.add('veloria-contact-form__submit--loading');
+                btn.classList.add('addonext-contact-form__submit--loading');
             } else {
-                btn.classList.remove('veloria-contact-form__submit--loading');
+                btn.classList.remove('addonext-contact-form__submit--loading');
             }
         }
     }
@@ -34,19 +34,19 @@
             return;
         }
         var script = document.createElement('script');
-        script.src = 'https://www.google.com/recaptcha/api.js?onload=veloriaRecaptchaOnload&render=explicit';
+        script.src = 'https://www.google.com/recaptcha/api.js?onload=addonextRecaptchaOnload&render=explicit';
         script.async = true;
-        window.veloriaRecaptchaQueue = window.veloriaRecaptchaQueue || [];
-        window.veloriaRecaptchaOnload = function () {
-            (window.veloriaRecaptchaQueue || []).forEach(function (fn) { fn(); });
-            window.veloriaRecaptchaQueue = [];
+        window.addonextRecaptchaQueue = window.addonextRecaptchaQueue || [];
+        window.addonextRecaptchaOnload = function () {
+            (window.addonextRecaptchaQueue || []).forEach(function (fn) { fn(); });
+            window.addonextRecaptchaQueue = [];
         };
-        window.veloriaRecaptchaQueue.push(callback);
+        window.addonextRecaptchaQueue.push(callback);
         document.head.appendChild(script);
     }
 
     function renderRecaptcha(form) {
-        var recaptchaDiv = form.querySelector('.veloria-contact-form__recaptcha');
+        var recaptchaDiv = form.querySelector('.addonext-contact-form__recaptcha');
         if (!recaptchaDiv || recaptchaDiv.getAttribute('data-rendered') === 'yes') return;
         var siteKey = form.getAttribute('data-sitekey') || recaptchaDiv.getAttribute('data-sitekey');
         if (!siteKey) return;
@@ -62,7 +62,7 @@
     }
 
     function getRecaptchaResponse(form) {
-        var recaptchaDiv = form.querySelector('.veloria-contact-form__recaptcha');
+        var recaptchaDiv = form.querySelector('.addonext-contact-form__recaptcha');
         if (!recaptchaDiv) return '';
         var widgetId = recaptchaDiv.getAttribute('data-widget-id');
         if (widgetId === null || widgetId === undefined) return '';
@@ -95,11 +95,11 @@
             } catch (err) {}
 
             var formData = new FormData(form);
-            formData.set('action', 'veloria_contact_form');
+            formData.set('action', 'addonext_contact_form');
             formData.set('post_id', form.querySelector('[name="post_id"]') ? form.querySelector('[name="post_id"]').value : '');
             formData.set('element_id', form.querySelector('[name="element_id"]') ? form.querySelector('[name="element_id"]').value : '');
 
-            var recaptchaDiv = form.querySelector('.veloria-contact-form__recaptcha');
+            var recaptchaDiv = form.querySelector('.addonext-contact-form__recaptcha');
             var widgetId = recaptchaDiv ? recaptchaDiv.getAttribute('data-widget-id') : null;
             if (useRecaptcha) {
                 var token = '';
@@ -160,7 +160,7 @@
     }
     if (typeof jQuery !== 'undefined') {
         jQuery(document).on('elementor/frontend/init', function () {
-            elementorFrontend.hooks.addAction('frontend/element_ready/veloria-contact-form.default', function ($scope) {
+            elementorFrontend.hooks.addAction('frontend/element_ready/addonext-contact-form.default', function ($scope) {
                 $scope.find(FORM_SEL).each(function () { initForm(this); });
             });
         });

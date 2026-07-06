@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ProductCategories;
+namespace Addonext\Widgets\ProductCategories;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
@@ -22,19 +22,19 @@ class ProductCategories extends WidgetBase
     public function enqueue_preview_assets(): void
     {
         wp_enqueue_style('swiper');
-        wp_enqueue_style('veloria-product-categories');
+        wp_enqueue_style('addonext-product-categories');
         wp_enqueue_script('swiper');
-        wp_enqueue_script('veloria-product-categories');
+        wp_enqueue_script('addonext-product-categories');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-products veloria-icon';
+        return 'eicon-products addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-product-categories';
+        return 'addonext-product-categories';
     }
 
     public function get_admin_category(): string
@@ -44,12 +44,12 @@ class ProductCategories extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Product Categories', 'veloria');
+        return __('Product Categories', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Product category cards with icons, images, grid or slider.', 'veloria');
+        return __('Product category cards with icons, images, grid or slider.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -59,28 +59,28 @@ class ProductCategories extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'veloria-product-categories'];
+        return ['swiper', 'addonext-product-categories'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'elementor-frontend', 'veloria-product-categories'];
+        return ['swiper', 'elementor-frontend', 'addonext-product-categories'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-product-categories',
-            VELORIA_URL . 'assets/css/product-categories.css',
+            'addonext-product-categories',
+            ADDONEXT_URL . 'assets/css/product-categories.css',
             ['swiper'],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-product-categories',
-            VELORIA_URL . 'assets/js/product-categories.js',
+            'addonext-product-categories',
+            ADDONEXT_URL . 'assets/js/product-categories.js',
             ['swiper', 'elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -102,7 +102,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         if (is_wp_error($terms) || !is_array($terms)) {
-            return ['' => __('No categories found', 'veloria')];
+            return ['' => __('No categories found', 'addonext')];
         }
 
         $options = [];
@@ -110,7 +110,7 @@ class ProductCategories extends WidgetBase
             $options[(string) (int) $term->term_id] = sprintf('%s (ID %d)', $term->name, (int) $term->term_id);
         }
 
-        return $options !== [] ? $options : ['' => __('No categories found', 'veloria')];
+        return $options !== [] ? $options : ['' => __('No categories found', 'addonext')];
     }
 
     /**
@@ -179,22 +179,22 @@ class ProductCategories extends WidgetBase
         $category_options = $this->get_product_category_select_options();
 
         $this->start_controls_section('section_layout', [
-            'label' => __('Layout', 'veloria'),
+            'label' => __('Layout', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('layout_mode', [
-            'label' => __('Layout', 'veloria'),
+            'label' => __('Layout', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'default' => 'grid',
             'options' => [
-                'grid' => __('Grid', 'veloria'),
-                'slider' => __('Slider', 'veloria'),
+                'grid' => __('Grid', 'addonext'),
+                'slider' => __('Slider', 'addonext'),
             ],
         ]);
 
         $this->add_control('grid_columns', [
-            'label' => __('Column count', 'veloria'),
+            'label' => __('Column count', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'options' => [
                 '1' => '1',
@@ -205,12 +205,12 @@ class ProductCategories extends WidgetBase
                 '6' => '6',
             ],
             'default' => '4',
-            'description' => __('Number of cards per row in grid layout (wide screens).', 'veloria'),
+            'description' => __('Number of cards per row in grid layout (wide screens).', 'addonext'),
             'condition' => ['layout_mode' => 'grid'],
         ]);
 
         $this->add_control('grid_gap', [
-            'label' => __('Gap', 'veloria'),
+            'label' => __('Gap', 'addonext'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 0, 'max' => 64]],
@@ -219,7 +219,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slides_desktop', [
-            'label' => __('Slides per view (desktop)', 'veloria'),
+            'label' => __('Slides per view (desktop)', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 6,
@@ -228,7 +228,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slides_tablet', [
-            'label' => __('Slides per view (tablet)', 'veloria'),
+            'label' => __('Slides per view (tablet)', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 4,
@@ -237,7 +237,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slides_mobile', [
-            'label' => __('Slides per view (mobile)', 'veloria'),
+            'label' => __('Slides per view (mobile)', 'addonext'),
             'type' => Controls_Manager::NUMBER,
             'min' => 1,
             'max' => 3,
@@ -246,7 +246,7 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slide_gap', [
-            'label' => __('Space between slides', 'veloria'),
+            'label' => __('Space between slides', 'addonext'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 0, 'max' => 48]],
@@ -255,20 +255,20 @@ class ProductCategories extends WidgetBase
         ]);
 
         $this->add_control('slider_nav', [
-            'label' => __('Navigation', 'veloria'),
+            'label' => __('Navigation', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'default' => 'both',
             'options' => [
-                'none' => __('None', 'veloria'),
-                'arrows' => __('Arrows', 'veloria'),
-                'dots' => __('Dots', 'veloria'),
-                'both' => __('Arrows & dots', 'veloria'),
+                'none' => __('None', 'addonext'),
+                'arrows' => __('Arrows', 'addonext'),
+                'dots' => __('Dots', 'addonext'),
+                'both' => __('Arrows & dots', 'addonext'),
             ],
             'condition' => ['layout_mode' => 'slider'],
         ]);
 
         $this->add_control('slider_loop', [
-            'label' => __('Loop', 'veloria'),
+            'label' => __('Loop', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -278,40 +278,40 @@ class ProductCategories extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_content', [
-            'label' => __('Categories', 'veloria'),
+            'label' => __('Categories', 'addonext'),
             'tab' => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('show_count', [
-            'label' => __('Product count', 'veloria'),
+            'label' => __('Product count', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
-            'label_on' => __('Show', 'veloria'),
-            'label_off' => __('Hide', 'veloria'),
-            'description' => __('Toggle the “X products” line under the category title.', 'veloria'),
+            'label_on' => __('Show', 'addonext'),
+            'label_off' => __('Hide', 'addonext'),
+            'description' => __('Toggle the “X products” line under the category title.', 'addonext'),
         ]);
 
         $this->add_control('image_hover_effect', [
-            'label' => __('Image hover effect', 'veloria'),
+            'label' => __('Image hover effect', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'default' => 'zoom-in',
             'options' => [
-                'none' => __('None', 'veloria'),
-                'zoom-in' => __('Zoom in', 'veloria'),
-                'zoom-out' => __('Zoom out', 'veloria'),
-                'jump' => __('Jump', 'veloria'),
-                'tilt' => __('Tilt', 'veloria'),
+                'none' => __('None', 'addonext'),
+                'zoom-in' => __('Zoom in', 'addonext'),
+                'zoom-out' => __('Zoom out', 'addonext'),
+                'jump' => __('Jump', 'addonext'),
+                'tilt' => __('Tilt', 'addonext'),
             ],
         ]);
 
         $repeater = new Repeater();
 
         $repeater->add_control('row_name', [
-            'label' => __('List label (editor)', 'veloria'),
+            'label' => __('List label (editor)', 'addonext'),
             'type' => Controls_Manager::TEXT,
             'default' => '',
-            'description' => __('Optional. Helps identify this row in the panel.', 'veloria'),
+            'description' => __('Optional. Helps identify this row in the panel.', 'addonext'),
         ]);
 
         $first_cat = '';
@@ -321,14 +321,14 @@ class ProductCategories extends WidgetBase
         }
 
         $repeater->add_control('category_id', [
-            'label' => __('Category', 'veloria'),
+            'label' => __('Category', 'addonext'),
             'type' => Controls_Manager::SELECT,
             'options' => $category_options,
             'default' => $first_cat,
         ]);
 
         $repeater->add_control('item_icon', [
-            'label' => __('Icon', 'veloria'),
+            'label' => __('Icon', 'addonext'),
             'type' => Controls_Manager::ICONS,
             'default' => [
                 'value' => 'fas fa-folder',
@@ -337,35 +337,35 @@ class ProductCategories extends WidgetBase
         ]);
 
         $repeater->add_control('icon_color', [
-            'label' => __('Icon color', 'veloria'),
+            'label' => __('Icon color', 'addonext'),
             'type' => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
 
         $repeater->add_control('override_image', [
-            'label' => __('Override category image', 'veloria'),
+            'label' => __('Override category image', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
-            'description' => __('When off, the category thumbnail from WooCommerce is used.', 'veloria'),
+            'description' => __('When off, the category thumbnail from WooCommerce is used.', 'addonext'),
         ]);
 
         $repeater->add_control('custom_image', [
-            'label' => __('Custom image', 'veloria'),
+            'label' => __('Custom image', 'addonext'),
             'type' => Controls_Manager::MEDIA,
             'condition' => ['override_image' => 'yes'],
         ]);
 
         $repeater->add_control('hide_image', [
-            'label' => __('Hide background image', 'veloria'),
+            'label' => __('Hide background image', 'addonext'),
             'type' => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => '',
-            'description' => __('Shows a colored underlay using the icon color instead.', 'veloria'),
+            'description' => __('Shows a colored underlay using the icon color instead.', 'addonext'),
         ]);
 
         $this->add_control('category_items', [
-            'label' => __('Category cards', 'veloria'),
+            'label' => __('Category cards', 'addonext'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
             'default' => self::get_default_category_repeater_items(),
@@ -375,72 +375,72 @@ class ProductCategories extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_card_style', [
-            'label' => __('Card', 'veloria'),
+            'label' => __('Card', 'addonext'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('card_min_height', [
-            'label' => __('Min height', 'veloria'),
+            'label' => __('Min height', 'addonext'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 120, 'max' => 400]],
             'default' => ['size' => 200, 'unit' => 'px'],
             'selectors' => [
-                '{{WRAPPER}} .veloria-pc-card' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pc-card' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('card_radius', [
-            'label' => __('Border radius', 'veloria'),
+            'label' => __('Border radius', 'addonext'),
             'type' => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range' => ['px' => ['min' => 0, 'max' => 32]],
             'default' => ['size' => 16, 'unit' => 'px'],
             'selectors' => [
-                '{{WRAPPER}} .veloria-pc-card' => 'border-radius: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .veloria-pc-card__media' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pc-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-pc-card__media' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_title_style', [
-            'label' => __('Title', 'veloria'),
+            'label' => __('Title', 'addonext'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
-            'selector' => '{{WRAPPER}} .veloria-pc-card__title',
+            'selector' => '{{WRAPPER}} .addonext-pc-card__title',
         ]);
 
         $this->add_control('title_color', [
-            'label' => __('Color', 'veloria'),
+            'label' => __('Color', 'addonext'),
             'type' => Controls_Manager::COLOR,
             'default' => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-pc-card__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-pc-card__title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_count_style', [
-            'label' => __('Count', 'veloria'),
+            'label' => __('Count', 'addonext'),
             'tab' => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'count_typography',
-            'selector' => '{{WRAPPER}} .veloria-pc-card__count',
+            'selector' => '{{WRAPPER}} .addonext-pc-card__count',
         ]);
 
         $this->add_control('count_color', [
-            'label' => __('Color', 'veloria'),
+            'label' => __('Color', 'addonext'),
             'type' => Controls_Manager::COLOR,
             'default' => 'rgba(255,255,255,0.92)',
             'selectors' => [
-                '{{WRAPPER}} .veloria-pc-card__count' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-pc-card__count' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -449,7 +449,7 @@ class ProductCategories extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/product-categories/product-categories.php';
+        $path = ADDONEXT_DIR . 'templates/product-categories/product-categories.php';
         if (is_readable($path)) {
             include $path;
         }

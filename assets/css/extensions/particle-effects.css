@@ -1,9 +1,9 @@
-.veloria-particles[data-veloria-particles="yes"] {
+.addonext-particles[data-addonext-particles="yes"] {
 	position: relative;
 	isolation: isolate;
 }
 
-.veloria-particles__host {
+.addonext-particles__host {
 	position: absolute;
 	inset: 0;
 	z-index: 0;

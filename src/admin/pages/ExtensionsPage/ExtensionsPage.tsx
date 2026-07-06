@@ -161,7 +161,7 @@ const ExtensionsPage: React.FC = () => {
   const loadExtensions = useCallback(async () => {
     setLoading(true);
     try {
-      const res = (await apiFetch({ path: "/veloria/v1/extensions" })) as ExtensionsGetResponse;
+      const res = (await apiFetch({ path: "/addonext/v1/extensions" })) as ExtensionsGetResponse;
       const list = Array.isArray(res.extensions)
         ? res.extensions.map(normalizeExtension).filter((x): x is ExtensionItem => x !== null)
         : [];
@@ -198,7 +198,7 @@ const ExtensionsPage: React.FC = () => {
     setSaving(true);
     try {
       const res = (await apiFetch({
-        path: "/veloria/v1/extensions",
+        path: "/addonext/v1/extensions",
         method: "POST",
         data: { extensions: draftActiveIds },
       })) as ExtensionsUpdateResponse;

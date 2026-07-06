@@ -1,14 +1,14 @@
 <?php
 defined('ABSPATH') || exit;
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_content  = isset($veloria_settings['content']) ? (string) $veloria_settings['content'] : '';
-$veloria_highlights = isset($veloria_settings['highlights']) && is_array($veloria_settings['highlights']) ? $veloria_settings['highlights'] : '';
-$veloria_html = \Veloria\Widgets\Highlight\Highlight::build_highlighted_content($veloria_content, $veloria_highlights);
+$addonext_settings = $this->get_settings_for_display();
+$addonext_content  = isset($addonext_settings['content']) ? (string) $addonext_settings['content'] : '';
+$addonext_highlights = isset($addonext_settings['highlights']) && is_array($addonext_settings['highlights']) ? $addonext_settings['highlights'] : '';
+$addonext_html = \Addonext\Widgets\Highlight\Highlight::build_highlighted_content($addonext_content, $addonext_highlights);
 ?>
-<p class="veloria-highlight__content"><?php
+<p class="addonext-highlight__content"><?php
 echo wp_kses(
-    $veloria_html,
+    $addonext_html,
     [
         'span' => [
             'class' => true,

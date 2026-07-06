@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Testimonials;
+namespace Addonext\Widgets\Testimonials;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -20,19 +20,19 @@ class Testimonials extends WidgetBase
     public function enqueue_preview_scripts(): void
     {
         wp_enqueue_style('swiper');
-        wp_enqueue_style('veloria-testimonials');
+        wp_enqueue_style('addonext-testimonials');
         wp_enqueue_script('swiper');
-        wp_enqueue_script('veloria-testimonials');
+        wp_enqueue_script('addonext-testimonials');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-testimonial veloria-icon';
+        return 'eicon-testimonial addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-testimonials';
+        return 'addonext-testimonials';
     }
 
     public function get_admin_category(): string
@@ -42,12 +42,12 @@ class Testimonials extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Testimonials', 'veloria');
+        return __('Testimonials', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Customer reviews displays', 'veloria');
+        return __('Customer reviews displays', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -57,12 +57,12 @@ class Testimonials extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'veloria-testimonials'];
+        return ['swiper', 'addonext-testimonials'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'veloria-testimonials'];
+        return ['swiper', 'addonext-testimonials'];
     }
 
     public function register_controls(): void
@@ -70,7 +70,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -78,12 +78,12 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'view',
             [
-                'label'   => __('View', 'veloria'),
+                'label'   => __('View', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
-                    'grid'   => __('Grid', 'veloria'),
-                    'slider' => __('Slider', 'veloria'),
+                    'grid'   => __('Grid', 'addonext'),
+                    'slider' => __('Slider', 'addonext'),
                 ],
             ]
         );
@@ -92,23 +92,23 @@ class Testimonials extends WidgetBase
         $repeater->add_control(
             'content',
             [
-                'label'   => __('Quote', 'veloria'),
+                'label'   => __('Quote', 'addonext'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Great product!', 'veloria'),
+                'default' => __('Great product!', 'addonext'),
             ]
         );
         $repeater->add_control(
             'name',
             [
-                'label'   => __('Name', 'veloria'),
+                'label'   => __('Name', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('John', 'veloria'),
+                'default' => __('John', 'addonext'),
             ]
         );
         $repeater->add_control(
             'role',
             [
-                'label'   => __('Role / Title', 'veloria'),
+                'label'   => __('Role / Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -116,7 +116,7 @@ class Testimonials extends WidgetBase
         $repeater->add_control(
             'image',
             [
-                'label'   => __('Avatar', 'veloria'),
+                'label'   => __('Avatar', 'addonext'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => ['url' => \Elementor\Utils::get_placeholder_image_src()],
             ]
@@ -124,7 +124,7 @@ class Testimonials extends WidgetBase
         $repeater->add_control(
             'rating',
             [
-                'label'   => __('Rating', 'veloria'),
+                'label'   => __('Rating', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'min'     => 0,
                 'max'     => 5,
@@ -136,17 +136,17 @@ class Testimonials extends WidgetBase
         $repeater->add_control(
             'card_accent_color',
             [
-                'label'   => __('Card accent color', 'veloria'),
+                'label'   => __('Card accent color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#e0e7ff',
-                'description' => __('Used for border and optional background tint.', 'veloria'),
+                'description' => __('Used for border and optional background tint.', 'addonext'),
             ]
         );
 
         $repeater->add_control(
             'card_use_gradient',
             [
-                'label'        => __('Subtle gradient from accent', 'veloria'),
+                'label'        => __('Subtle gradient from accent', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -157,32 +157,32 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Testimonials', 'veloria'),
+                'label'       => __('Testimonials', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
                     [
-                        'content' => __('Absolutely fantastic! The widgets are beautifully designed and incredibly easy to use. Our website looks professional now.', 'veloria'),
-                        'name' => __('Emma Davis', 'veloria'),
-                        'role' => __('Marketing Director', 'veloria'),
+                        'content' => __('Absolutely fantastic! The widgets are beautifully designed and incredibly easy to use. Our website looks professional now.', 'addonext'),
+                        'name' => __('Emma Davis', 'addonext'),
+                        'role' => __('Marketing Director', 'addonext'),
                         'image' => ['url' => $placeholder_src],
                         'rating' => 5,
                         'card_accent_color' => '#bfdbfe',
                         'card_use_gradient' => 'yes',
                     ],
                     [
-                        'content' => __('Game changer for our business. The customization options are endless and the support team is incredibly responsive.', 'veloria'),
-                        'name' => __('Michael Chen', 'veloria'),
-                        'role' => __('CEO, TechStart', 'veloria'),
+                        'content' => __('Game changer for our business. The customization options are endless and the support team is incredibly responsive.', 'addonext'),
+                        'name' => __('Michael Chen', 'addonext'),
+                        'role' => __('CEO, TechStart', 'addonext'),
                         'image' => ['url' => $placeholder_src],
                         'rating' => 5,
                         'card_accent_color' => '#fce7f3',
                         'card_use_gradient' => 'yes',
                     ],
                     [
-                        'content' => __('Perfect solution for our agency. Clients love the modern designs and we save hours on development time.', 'veloria'),
-                        'name' => __('Sarah Wilson', 'veloria'),
-                        'role' => __('Creative Director', 'veloria'),
+                        'content' => __('Perfect solution for our agency. Clients love the modern designs and we save hours on development time.', 'addonext'),
+                        'name' => __('Sarah Wilson', 'addonext'),
+                        'role' => __('Creative Director', 'addonext'),
                         'image' => ['url' => $placeholder_src],
                         'rating' => 5,
                         'card_accent_color' => '#bbf7d0',
@@ -196,7 +196,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'columns',
             [
-                'label'     => __('Columns', 'veloria'),
+                'label'     => __('Columns', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 4,
@@ -208,7 +208,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'column_gap',
             [
-                'label'      => __('Gap between cards', 'veloria'),
+                'label'      => __('Gap between cards', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48, 'step' => 4]],
@@ -220,14 +220,14 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'navigation',
             [
-                'label'     => __('Navigation', 'veloria'),
+                'label'     => __('Navigation', 'addonext'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'both',
                 'options'   => [
-                    'both'   => __('Arrows and Dots', 'veloria'),
-                    'arrows' => __('Arrows', 'veloria'),
-                    'dots'   => __('Dots', 'veloria'),
-                    'none'   => __('None', 'veloria'),
+                    'both'   => __('Arrows and Dots', 'addonext'),
+                    'arrows' => __('Arrows', 'addonext'),
+                    'dots'   => __('Dots', 'addonext'),
+                    'none'   => __('None', 'addonext'),
                 ],
                 'condition'  => ['view' => 'slider'],
             ]
@@ -236,13 +236,13 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'pagination_type',
             [
-                'label'     => __('Pagination type', 'veloria'),
+                'label'     => __('Pagination type', 'addonext'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => 'bullets',
                 'options'   => [
-                    'bullets'     => __('Circle', 'veloria'),
-                    'square'      => __('Square', 'veloria'),
-                    'progressbar' => __('Bar', 'veloria'),
+                    'bullets'     => __('Circle', 'addonext'),
+                    'square'      => __('Square', 'addonext'),
+                    'progressbar' => __('Bar', 'addonext'),
                 ],
                 'condition' => ['view' => 'slider'],
             ]
@@ -251,7 +251,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'autoplay',
             [
-                'label'        => __('Autoplay', 'veloria'),
+                'label'        => __('Autoplay', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -262,7 +262,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'autoplay_delay',
             [
-                'label'     => __('Autoplay interval (seconds)', 'veloria'),
+                'label'     => __('Autoplay interval (seconds)', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 30,
@@ -275,7 +275,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'loop',
             [
-                'label'        => __('Loop', 'veloria'),
+                'label'        => __('Loop', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -286,7 +286,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'slides_per_view',
             [
-                'label'     => __('Cards per view', 'veloria'),
+                'label'     => __('Cards per view', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 1,
                 'max'       => 5,
@@ -298,7 +298,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'slide_gap',
             [
-                'label'      => __('Gap between cards', 'veloria'),
+                'label'      => __('Gap between cards', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 48, 'step' => 4]],
@@ -312,7 +312,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_cards',
             [
-                'label' => __('Cards', 'veloria'),
+                'label' => __('Cards', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -320,7 +320,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'card_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -329,7 +329,7 @@ class Testimonials extends WidgetBase
                 ],
                 'default'    => ['unit' => 'px', 'size' => 12],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-testimonial-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-testimonial-card' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -337,11 +337,11 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'card_background',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonial-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonial-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -350,7 +350,7 @@ class Testimonials extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'card_box_shadow',
-                'selector' => '{{WRAPPER}} .veloria-testimonial-card',
+                'selector' => '{{WRAPPER}} .addonext-testimonial-card',
             ]
         );
 
@@ -359,7 +359,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_quote',
             [
-                'label' => __('Quote', 'veloria'),
+                'label' => __('Quote', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -368,18 +368,18 @@ class Testimonials extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'quote_typography',
-                'selector' => '{{WRAPPER}} .veloria-testimonial-card__quote',
+                'selector' => '{{WRAPPER}} .addonext-testimonial-card__quote',
             ]
         );
 
         $this->add_control(
             'quote_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonial-card__quote' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonial-card__quote' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -389,7 +389,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_name',
             [
-                'label' => __('Name', 'veloria'),
+                'label' => __('Name', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -398,18 +398,18 @@ class Testimonials extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'name_typography',
-                'selector' => '{{WRAPPER}} .veloria-testimonial-card__name',
+                'selector' => '{{WRAPPER}} .addonext-testimonial-card__name',
             ]
         );
 
         $this->add_control(
             'name_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonial-card__name' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonial-card__name' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -419,7 +419,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_role',
             [
-                'label' => __('Role / Title', 'veloria'),
+                'label' => __('Role / Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -428,18 +428,18 @@ class Testimonials extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'role_typography',
-                'selector' => '{{WRAPPER}} .veloria-testimonial-card__role',
+                'selector' => '{{WRAPPER}} .addonext-testimonial-card__role',
             ]
         );
 
         $this->add_control(
             'role_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonial-card__role' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonial-card__role' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -449,7 +449,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_stars',
             [
-                'label' => __('Stars', 'veloria'),
+                'label' => __('Stars', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -457,12 +457,12 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'stars_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#eab308',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonial__star-filled' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-testimonial__star-filled svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonial__star-filled' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonial__star-filled svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -472,7 +472,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_arrows',
             [
-                'label'     => __('Arrows', 'veloria'),
+                'label'     => __('Arrows', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'view'        => 'slider',
@@ -485,13 +485,13 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'arrow_size',
             [
-                'label'      => __('Button size', 'veloria'),
+                'label'      => __('Button size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 28, 'max' => 56, 'step' => 2]],
                 'default'    => ['size' => 40],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-testimonials__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-testimonials__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -499,11 +499,11 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'arrow_bg_color',
             [
-                'label'     => __('Background color', 'veloria'),
+                'label'     => __('Background color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonials__arrow' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonials__arrow' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -511,12 +511,12 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'arrow_icon_color',
             [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonials__arrow' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-testimonials__arrow svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonials__arrow' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonials__arrow svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -526,7 +526,7 @@ class Testimonials extends WidgetBase
         $this->start_controls_section(
             'section_style_dots',
             [
-                'label'     => __('Pagination dots', 'veloria'),
+                'label'     => __('Pagination dots', 'addonext'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'view'        => 'slider',
@@ -539,7 +539,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'dots_gap',
             [
-                'label'      => __('Space between', 'veloria'),
+                'label'      => __('Space between', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 0, 'max' => 24, 'step' => 2]],
@@ -550,7 +550,7 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'bar_width',
             [
-                'label'      => __('Bar width', 'veloria'),
+                'label'      => __('Bar width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 14, 'max' => 56, 'step' => 2]],
@@ -562,13 +562,13 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'dot_size',
             [
-                'label'      => __('Size', 'veloria'),
+                'label'      => __('Size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 4, 'max' => 16, 'step' => 1]],
                 'default'    => ['size' => 8],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-testimonials--slider .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-testimonials--slider .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition'  => ['pagination_type' => ['bullets', 'square']],
             ]
@@ -577,11 +577,11 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'pagination_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0, 0, 0, 0.45)',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonials--slider .swiper-pagination-bullet' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonials--slider .swiper-pagination-bullet' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -589,11 +589,11 @@ class Testimonials extends WidgetBase
         $this->add_control(
             'pagination_color_active',
             [
-                'label'     => __('Active color', 'veloria'),
+                'label'     => __('Active color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0, 0, 0, 0.85)',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-testimonials--slider .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-testimonials--slider .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -603,7 +603,7 @@ class Testimonials extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/testimonials/testimonials.php';
+        $path = ADDONEXT_DIR . 'templates/testimonials/testimonials.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -631,18 +631,18 @@ class Testimonials extends WidgetBase
         var slideGap = (view === 'slider' && settings.slide_gap && settings.slide_gap.size !== undefined) ? settings.slide_gap.size : 24;
         var placeholderUrl = '<?php echo esc_url($placeholder_url); ?>';
         var paginationClass = '';
-        if (paginationType === 'square') paginationClass = ' veloria-pagination-square';
-        else if (paginationType === 'progressbar') paginationClass = ' veloria-pagination-bar';
+        if (paginationType === 'square') paginationClass = ' addonext-pagination-square';
+        else if (paginationType === 'progressbar') paginationClass = ' addonext-pagination-bar';
         var styleVars = '';
         if (view === 'grid') {
-            styleVars = '--veloria-testimonials-columns: ' + columns + '; --veloria-testimonials-gap: ' + columnGap + 'px;';
+            styleVars = '--addonext-testimonials-columns: ' + columns + '; --addonext-testimonials-gap: ' + columnGap + 'px;';
         } else {
-            styleVars = '--veloria-dots-gap: ' + dotsGap + 'px;';
-            if (paginationType === 'progressbar') styleVars += ' --veloria-bar-width: ' + barWidth + 'px;';
+            styleVars = '--addonext-dots-gap: ' + dotsGap + 'px;';
+            if (paginationType === 'progressbar') styleVars += ' --addonext-bar-width: ' + barWidth + 'px;';
         }
         #>
         <# if (view === 'grid') { #>
-            <div class="veloria-testimonials veloria-testimonials--grid" style="{{ styleVars }}">
+            <div class="addonext-testimonials addonext-testimonials--grid" style="{{ styleVars }}">
                 <# _.each(items, function(item) {
                     var avatarUrl = (item.image && item.image.url) ? item.image.url : placeholderUrl;
                     var rating = Math.min(5, Math.max(0, parseFloat(item.rating) || 0));
@@ -659,28 +659,28 @@ class Testimonials extends WidgetBase
                         }
                     }
                 #>
-                    <div class="veloria-testimonial-card"<# if (cardStyle) { #> style="{{ cardStyle }}"<# } #>>
-                        <div class="veloria-testimonial__stars">
+                    <div class="addonext-testimonial-card"<# if (cardStyle) { #> style="{{ cardStyle }}"<# } #>>
+                        <div class="addonext-testimonial__stars">
                             <# _.each([0,1,2,3,4], function(i) {
                                 var remainder = rating - i;
                                 var fillPct = Math.round(Math.min(1, Math.max(0, remainder)) * 100);
                             #>
-                                <span class="veloria-testimonial__star"><span class="veloria-testimonial__star-empty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="veloria-testimonial__star-fill" style="width:{{ fillPct }}%"><span class="veloria-testimonial__star-filled"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></span></span>
+                                <span class="addonext-testimonial__star"><span class="addonext-testimonial__star-empty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="addonext-testimonial__star-fill" style="width:{{ fillPct }}%"><span class="addonext-testimonial__star-filled"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></span></span>
                             <# }); #>
                         </div>
-                        <blockquote class="veloria-testimonial-card__quote">"{{{ item.content }}}"</blockquote>
-                        <div class="veloria-testimonial-card__footer">
-                            <img class="veloria-testimonial-card__avatar" src="{{ avatarUrl }}" alt="{{ item.name }}">
-                            <div class="veloria-testimonial-card__meta">
-                                <span class="veloria-testimonial-card__name">{{{ item.name }}}</span>
-                                <# if (item.role) { #><span class="veloria-testimonial-card__role">{{{ item.role }}}</span><# } #>
+                        <blockquote class="addonext-testimonial-card__quote">"{{{ item.content }}}"</blockquote>
+                        <div class="addonext-testimonial-card__footer">
+                            <img class="addonext-testimonial-card__avatar" src="{{ avatarUrl }}" alt="{{ item.name }}">
+                            <div class="addonext-testimonial-card__meta">
+                                <span class="addonext-testimonial-card__name">{{{ item.name }}}</span>
+                                <# if (item.role) { #><span class="addonext-testimonial-card__role">{{{ item.role }}}</span><# } #>
                             </div>
                         </div>
                     </div>
                 <# }); #>
             </div>
         <# } else { #>
-            <div class="veloria-testimonials veloria-testimonials--slider swiper{{ paginationClass }}" data-autoplay="{{ autoplay ? '1' : '0' }}" data-autoplay-delay="{{ autoplayDelay }}" data-loop="{{ loop ? '1' : '0' }}" data-pagination-type="{{ paginationType }}" data-slides-per-view="{{ slidesPerView }}" data-space-between="{{ slideGap }}" style="{{ styleVars }}">
+            <div class="addonext-testimonials addonext-testimonials--slider swiper{{ paginationClass }}" data-autoplay="{{ autoplay ? '1' : '0' }}" data-autoplay-delay="{{ autoplayDelay }}" data-loop="{{ loop ? '1' : '0' }}" data-pagination-type="{{ paginationType }}" data-slides-per-view="{{ slidesPerView }}" data-space-between="{{ slideGap }}" style="{{ styleVars }}">
                 <div class="swiper-wrapper">
                     <# _.each(items, function(item) {
                         var avatarUrl = (item.image && item.image.url) ? item.image.url : placeholderUrl;
@@ -699,21 +699,21 @@ class Testimonials extends WidgetBase
                         }
                     #>
                         <div class="swiper-slide">
-                            <div class="veloria-testimonial-card"<# if (cardStyle) { #> style="{{ cardStyle }}"<# } #>>
-                                <div class="veloria-testimonial__stars">
+                            <div class="addonext-testimonial-card"<# if (cardStyle) { #> style="{{ cardStyle }}"<# } #>>
+                                <div class="addonext-testimonial__stars">
                                     <# _.each([0,1,2,3,4], function(k) {
                                         var rem = rating - k;
                                         var fillPct2 = Math.round(Math.min(1, Math.max(0, rem)) * 100);
                                     #>
-                                        <span class="veloria-testimonial__star"><span class="veloria-testimonial__star-empty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="veloria-testimonial__star-fill" style="width:{{ fillPct2 }}%"><span class="veloria-testimonial__star-filled"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></span></span>
+                                        <span class="addonext-testimonial__star"><span class="addonext-testimonial__star-empty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="addonext-testimonial__star-fill" style="width:{{ fillPct2 }}%"><span class="addonext-testimonial__star-filled"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></span></span>
                                     <# }); #>
                                 </div>
-                                <blockquote class="veloria-testimonial-card__quote">"{{{ item.content }}}"</blockquote>
-                                <div class="veloria-testimonial-card__footer">
-                                    <img class="veloria-testimonial-card__avatar" src="{{ avatarUrl }}" alt="{{ item.name }}">
-                                    <div class="veloria-testimonial-card__meta">
-                                        <span class="veloria-testimonial-card__name">{{{ item.name }}}</span>
-                                        <# if (item.role) { #><span class="veloria-testimonial-card__role">{{{ item.role }}}</span><# } #>
+                                <blockquote class="addonext-testimonial-card__quote">"{{{ item.content }}}"</blockquote>
+                                <div class="addonext-testimonial-card__footer">
+                                    <img class="addonext-testimonial-card__avatar" src="{{ avatarUrl }}" alt="{{ item.name }}">
+                                    <div class="addonext-testimonial-card__meta">
+                                        <span class="addonext-testimonial-card__name">{{{ item.name }}}</span>
+                                        <# if (item.role) { #><span class="addonext-testimonial-card__role">{{{ item.role }}}</span><# } #>
                                     </div>
                                 </div>
                             </div>
@@ -721,10 +721,10 @@ class Testimonials extends WidgetBase
                     <# }); #>
                 </div>
                 <# if (showArrows) { #>
-                    <div class="veloria-testimonials__arrow veloria-testimonials__arrow--prev swiper-button-prev" role="button" tabindex="0">
+                    <div class="addonext-testimonials__arrow addonext-testimonials__arrow--prev swiper-button-prev" role="button" tabindex="0">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
                     </div>
-                    <div class="veloria-testimonials__arrow veloria-testimonials__arrow--next swiper-button-next" role="button" tabindex="0">
+                    <div class="addonext-testimonials__arrow addonext-testimonials__arrow--next swiper-button-next" role="button" tabindex="0">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </div>
                 <# } #>

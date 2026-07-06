@@ -1,5 +1,5 @@
 /**
- * Floating circle backdrops for wrappers with data-veloria-moving-circles.
+ * Floating circle backdrops for wrappers with data-addonext-moving-circles.
  */
 (function ($) {
 	'use strict';
@@ -24,59 +24,59 @@
 
 	function buildFingerprint($el) {
 		return [
-			$el.attr('data-veloria-moving-circles-count') || '',
-			$el.attr('data-veloria-moving-circles-speed') || '100',
-			$el.attr('data-veloria-moving-circles-size') || '',
-			$el.attr('data-veloria-moving-circles-color') || '',
+			$el.attr('data-addonext-moving-circles-count') || '',
+			$el.attr('data-addonext-moving-circles-speed') || '100',
+			$el.attr('data-addonext-moving-circles-size') || '',
+			$el.attr('data-addonext-moving-circles-color') || '',
 		].join('|');
 	}
 
 	function buildHost(count, sizePx, color, speedPercent) {
-		var $host = $('<div class="veloria-moving-circles__host" aria-hidden="true"></div>');
+		var $host = $('<div class="addonext-moving-circles__host" aria-hidden="true"></div>');
 		var el = $host[0];
 		var baseDurSec = Math.max(8, (20 * 100) / Math.max(20, speedPercent));
-		el.style.setProperty('--veloria-mc-fill', color);
-		el.style.setProperty('--veloria-mc-dur', baseDurSec + 's');
-		el.style.setProperty('--veloria-mc-size', sizePx + 'px');
+		el.style.setProperty('--addonext-mc-fill', color);
+		el.style.setProperty('--addonext-mc-dur', baseDurSec + 's');
+		el.style.setProperty('--addonext-mc-size', sizePx + 'px');
 		var i;
 		for (i = 0; i < count; i += 1) {
-			$host.append($('<span class="veloria-moving-circles__circle"></span>'));
+			$host.append($('<span class="addonext-moving-circles__circle"></span>'));
 		}
 		return $host;
 	}
 
 	function initElement($el) {
-		if ($el.attr('data-veloria-moving-circles') !== 'yes') {
+		if ($el.attr('data-addonext-moving-circles') !== 'yes') {
 			return;
 		}
-		var count = parseInt($el.attr('data-veloria-moving-circles-count'), 10);
+		var count = parseInt($el.attr('data-addonext-moving-circles-count'), 10);
 		if (isNaN(count)) {
 			count = 10;
 		}
 		count = Math.max(3, Math.min(28, count));
-		var speedPct = parseInt($el.attr('data-veloria-moving-circles-speed'), 10);
+		var speedPct = parseInt($el.attr('data-addonext-moving-circles-speed'), 10);
 		if (isNaN(speedPct)) {
 			speedPct = 100;
 		}
 		speedPct = Math.max(20, Math.min(200, speedPct));
-		var sizePx = parseInt($el.attr('data-veloria-moving-circles-size'), 10);
+		var sizePx = parseInt($el.attr('data-addonext-moving-circles-size'), 10);
 		if (isNaN(sizePx)) {
 			sizePx = 48;
 		}
 		sizePx = Math.max(12, Math.min(140, sizePx));
-		var color = normalizeColorValue($el.attr('data-veloria-moving-circles-color')) || 'rgba(255,255,255,0.35)';
+		var color = normalizeColorValue($el.attr('data-addonext-moving-circles-color')) || 'rgba(255,255,255,0.35)';
 		var fp = buildFingerprint($el);
-		var prevFp = $el.attr('data-veloria-moving-circles-fp');
-		var hasHost = $el.find('.veloria-moving-circles__host').length > 0;
+		var prevFp = $el.attr('data-addonext-moving-circles-fp');
+		var hasHost = $el.find('.addonext-moving-circles__host').length > 0;
 		if (prevFp === fp && hasHost) {
 			return;
 		}
-		$el.find('.veloria-moving-circles__host').remove();
+		$el.find('.addonext-moving-circles__host').remove();
 		$el.prepend(buildHost(count, sizePx, color, speedPct));
-		$el.attr('data-veloria-moving-circles-fp', fp);
+		$el.attr('data-addonext-moving-circles-fp', fp);
 	}
 
-	var MC_ATTR_SEL = '[data-veloria-moving-circles="yes"]';
+	var MC_ATTR_SEL = '[data-addonext-moving-circles="yes"]';
 
 	function collectMcElements($root) {
 		if (!$root || !$root.length) {
@@ -95,7 +95,7 @@
 		});
 	}
 
-	window.veloriaMovingCirclesRescan = function (doc) {
+	window.addonextMovingCirclesRescan = function (doc) {
 		var d = doc || document;
 		if (!d.body) {
 			return;

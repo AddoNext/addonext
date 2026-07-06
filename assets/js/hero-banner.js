@@ -1,11 +1,11 @@
 'use strict';
 
-function veloriaHeroBannerRunTyping(banner) {
+function addonextHeroBannerRunTyping(banner) {
   if (!banner || !banner.querySelector) {
     return;
   }
-  var typing = banner.querySelector('.veloria-hero-banner__title-typing');
-  var wrap = banner.querySelector('.veloria-hero-banner__title-typing-wrap');
+  var typing = banner.querySelector('.addonext-hero-banner__title-typing');
+  var wrap = banner.querySelector('.addonext-hero-banner__title-typing-wrap');
   if (!typing || !wrap) {
     return;
   }
@@ -54,11 +54,11 @@ function veloriaHeroBannerRunTyping(banner) {
   tick();
 }
 
-function veloriaHeroBannerInitScope($scope) {
+function addonextHeroBannerInitScope($scope) {
   var root = $scope && $scope[0] ? $scope[0] : null;
-  var banner = root ? root.querySelector('.veloria-hero-banner') : null;
+  var banner = root ? root.querySelector('.addonext-hero-banner') : null;
   if (banner) {
-    veloriaHeroBannerRunTyping(banner);
+    addonextHeroBannerRunTyping(banner);
   }
 }
 
@@ -66,6 +66,6 @@ jQuery(window).on('elementor/frontend/init', function () {
   if (typeof elementorFrontend === 'undefined' || !elementorFrontend.hooks) {
     return;
   }
-  elementorFrontend.hooks.addAction('frontend/element_ready/veloria-hero-banner.default', veloriaHeroBannerInitScope);
-  elementorFrontend.hooks.addAction('frontend/element_ready/veloria-hero-banner', veloriaHeroBannerInitScope);
+  elementorFrontend.hooks.addAction('frontend/element_ready/addonext-hero-banner.default', addonextHeroBannerInitScope);
+  elementorFrontend.hooks.addAction('frontend/element_ready/addonext-hero-banner', addonextHeroBannerInitScope);
 });

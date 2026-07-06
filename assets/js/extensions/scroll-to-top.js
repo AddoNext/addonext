@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  var cfg = window.veloriaScrollToTop;
+  var cfg = window.addonextScrollToTop;
 
   if (!cfg || typeof cfg !== "object") {
     return;
@@ -63,7 +63,7 @@
 
   var btn = document.createElement("button");
   btn.type = "button";
-  btn.id = "veloria-scroll-top";
+  btn.id = "addonext-scroll-top";
   btn.setAttribute("data-position", cfg.position || "bottom-right");
   btn.setAttribute("aria-label", "Scroll to top");
   btn.innerHTML =

@@ -1,18 +1,18 @@
-.veloria-wc-checkout {
+.addonext-wc-checkout {
   width: 100%;
   color: #111827;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background: transparent;
 }
 
-.veloria-wc-checkout__layout {
+.addonext-wc-checkout__layout {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 40px;
 }
 
-.veloria-wc-checkout__col--main {
+.addonext-wc-checkout__col--main {
   flex: 2 1 0;
   min-width: 0;
   display: flex;
@@ -20,21 +20,21 @@
   gap: 28px;
 }
 
-.veloria-wc-checkout__col--sidebar {
+.addonext-wc-checkout__col--sidebar {
   flex: 1 1 320px;
   max-width: 100%;
   min-width: min(100%, 300px);
 }
 
-.veloria-wc-checkout__customer-root {
+.addonext-wc-checkout__customer-root {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
-.veloria-wc-checkout__card--billing,
-.veloria-wc-checkout__card--additional,
-.veloria-wc-checkout__card--summary {
+.addonext-wc-checkout__card--billing,
+.addonext-wc-checkout__card--additional,
+.addonext-wc-checkout__card--summary {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
@@ -42,13 +42,13 @@
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
-.veloria-wc-checkout__billing-payment {
+.addonext-wc-checkout__billing-payment {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid #e5e7eb;
 }
 
-.veloria-wc-checkout__section-title--payment {
+.addonext-wc-checkout__section-title--payment {
   font-size: 1.125rem;
   font-weight: 700;
   margin: 0 0 14px;
@@ -56,17 +56,17 @@
   color: #111827;
 }
 
-.veloria-wc-checkout__billing-payment #payment {
+.addonext-wc-checkout__billing-payment #payment {
   margin-bottom: 0;
 }
 
-.veloria-wc-checkout__card--summary .veloria-wc-checkout__coupon-wrap {
+.addonext-wc-checkout__card--summary .addonext-wc-checkout__coupon-wrap {
   margin: 0 0 24px;
   padding: 0 0 24px;
   border-bottom: 1px solid #e5e5e5;
 }
 
-.veloria-wc-checkout__section-title {
+.addonext-wc-checkout__section-title {
   margin: 0 0 22px;
   font-size: 1.125rem;
   font-weight: 700;
@@ -75,119 +75,119 @@
   letter-spacing: -0.01em;
 }
 
-.veloria-wc-checkout__section-title--lg {
+.addonext-wc-checkout__section-title--lg {
   font-size: 1.25rem;
   margin-bottom: 24px;
 }
 
-.veloria-wc-checkout__card--billing .woocommerce-billing-fields > h3:first-of-type {
+.addonext-wc-checkout__card--billing .woocommerce-billing-fields > h3:first-of-type {
   display: none;
 }
 
-.veloria-wc-checkout__card--additional .woocommerce-additional-fields > h3 {
+.addonext-wc-checkout__card--additional .woocommerce-additional-fields > h3 {
   display: none;
 }
 
-.veloria-wc-checkout__coupon-title {
+.addonext-wc-checkout__coupon-title {
   margin: 0 0 12px;
   font-size: 1rem;
   font-weight: 700;
 }
 
-.veloria-wc-checkout__additional-set {
+.addonext-wc-checkout__additional-set {
   width: 100%;
   float: none;
 }
 
-.veloria-co-fields-grid {
+.addonext-co-fields-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 20px;
   width: 100%;
 }
 
-.veloria-co-field.form-row-wide,
-.veloria-co-field.form-row.form-row-wide {
+.addonext-co-field.form-row-wide,
+.addonext-co-field.form-row.form-row-wide {
   grid-column: 1 / -1;
 }
 
-.veloria-co-field.form-row-first,
-.veloria-co-field.form-row-last {
+.addonext-co-field.form-row-first,
+.addonext-co-field.form-row-last {
   float: none;
   width: 100%;
   max-width: none;
   min-width: 0;
 }
 
-.veloria-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_first_name_field,
-.veloria-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_last_name_field {
+.addonext-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_first_name_field,
+.addonext-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_last_name_field {
   min-width: 0;
   width: 100%;
   max-width: none;
 }
 
-.veloria-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_first_name_field {
+.addonext-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_first_name_field {
   grid-column: 1;
 }
 
-.veloria-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_last_name_field {
+.addonext-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_last_name_field {
   grid-column: 2;
 }
 
-.veloria-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_first_name_field,
-.veloria-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_last_name_field {
+.addonext-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_first_name_field,
+.addonext-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_last_name_field {
   min-width: 0;
   width: 100%;
   max-width: none;
 }
 
-.veloria-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_first_name_field {
+.addonext-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_first_name_field {
   grid-column: 1;
 }
 
-.veloria-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_last_name_field {
+.addonext-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_last_name_field {
   grid-column: 2;
 }
 
-.veloria-co-fields-grid--order-notes {
+.addonext-co-fields-grid--order-notes {
   grid-template-columns: 1fr;
 }
 
-.veloria-wc-checkout__order-notes {
+.addonext-wc-checkout__order-notes {
   margin-top: 4px;
   width: 100%;
 }
 
-.veloria-co-field {
+.addonext-co-field {
   margin: 0 0 16px;
   width: 100%;
   max-width: none;
   min-width: 0;
 }
 
-.veloria-co-field .woocommerce-input-wrapper,
-.veloria-co-field .veloria-co-field__inner {
+.addonext-co-field .woocommerce-input-wrapper,
+.addonext-co-field .addonext-co-field__inner {
   display: block;
   width: 100%;
 }
 
-.veloria-wc-checkout__additional-set #ship-to-different-address {
+.addonext-wc-checkout__additional-set #ship-to-different-address {
   margin: 0 0 14px;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.veloria-wc-checkout__additional-set .shipping_address {
+.addonext-wc-checkout__additional-set .shipping_address {
   margin-bottom: 12px;
 }
 
-.veloria-wc-checkout .woocommerce form .form-row,
-.veloria-wc-checkout .veloria-co-field.form-row {
+.addonext-wc-checkout .woocommerce form .form-row,
+.addonext-wc-checkout .addonext-co-field.form-row {
   margin-bottom: 16px;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout .veloria-co-field label,
-.veloria-wc-checkout form.checkout.woocommerce-checkout .form-row label {
+.addonext-wc-checkout form.checkout.woocommerce-checkout .addonext-co-field label,
+.addonext-wc-checkout form.checkout.woocommerce-checkout .form-row label {
   font-weight: 600;
   font-size: 0.8125rem;
   margin-bottom: 8px;
@@ -196,16 +196,16 @@
   line-height: 1.35;
 }
 
-.veloria-wc-checkout .woocommerce form .form-row .required,
-.veloria-wc-checkout .veloria-co-field .required {
+.addonext-wc-checkout .woocommerce form .form-row .required,
+.addonext-wc-checkout .addonext-co-field .required {
   color: #dc2626;
   text-decoration: none;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout input.veloria-co-input.input-text,
-.veloria-wc-checkout form.checkout.woocommerce-checkout input.input-text.veloria-co-input,
-.veloria-wc-checkout form.checkout.woocommerce-checkout select,
-.veloria-wc-checkout form.checkout.woocommerce-checkout textarea {
+.addonext-wc-checkout form.checkout.woocommerce-checkout input.addonext-co-input.input-text,
+.addonext-wc-checkout form.checkout.woocommerce-checkout input.input-text.addonext-co-input,
+.addonext-wc-checkout form.checkout.woocommerce-checkout select,
+.addonext-wc-checkout form.checkout.woocommerce-checkout textarea {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 14px 16px;
@@ -225,7 +225,7 @@
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout select {
+.addonext-wc-checkout form.checkout.woocommerce-checkout select {
   cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'%3E%3Cpath d='M1 1.5L7 7.5L13 1.5' stroke='%236b7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -233,31 +233,31 @@
   padding-right: 40px;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout textarea {
+.addonext-wc-checkout form.checkout.woocommerce-checkout textarea {
   min-height: 120px;
   height: auto;
   line-height: 1.5;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout input.veloria-co-input:focus,
-.veloria-wc-checkout form.checkout.woocommerce-checkout select:focus,
-.veloria-wc-checkout form.checkout.woocommerce-checkout textarea:focus {
+.addonext-wc-checkout form.checkout.woocommerce-checkout input.addonext-co-input:focus,
+.addonext-wc-checkout form.checkout.woocommerce-checkout select:focus,
+.addonext-wc-checkout form.checkout.woocommerce-checkout textarea:focus {
   border-color: #2563eb;
   outline: none;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout input.veloria-co-input::placeholder,
-.veloria-wc-checkout form.checkout.woocommerce-checkout textarea::placeholder {
+.addonext-wc-checkout form.checkout.woocommerce-checkout input.addonext-co-input::placeholder,
+.addonext-wc-checkout form.checkout.woocommerce-checkout textarea::placeholder {
   color: #9ca3af;
 }
 
-.veloria-wc-checkout .select2-container {
+.addonext-wc-checkout .select2-container {
   width: 100% !important;
   max-width: 100%;
 }
 
-.veloria-wc-checkout .select2-container .select2-selection--single {
+.addonext-wc-checkout .select2-container .select2-selection--single {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   min-height: 48px;
@@ -269,26 +269,26 @@
   box-shadow: none;
 }
 
-.veloria-wc-checkout .select2-container .select2-selection--single .select2-selection__rendered {
+.addonext-wc-checkout .select2-container .select2-selection--single .select2-selection__rendered {
   padding-left: 2px;
   padding-right: 24px;
   line-height: 1.45;
   color: #111827;
 }
 
-.veloria-wc-checkout .select2-container .select2-selection--single .select2-selection__arrow {
+.addonext-wc-checkout .select2-container .select2-selection--single .select2-selection__arrow {
   height: 44px;
   right: 10px;
 }
 
-.veloria-wc-checkout .select2-container.select2-container--focus .select2-selection--single {
+.addonext-wc-checkout .select2-container.select2-container--focus .select2-selection--single {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout #payment.veloria-co-payment-root,
-.veloria-wc-checkout form.checkout.woocommerce-checkout #payment.veloria-wc-checkout__payment-outer,
-.veloria-wc-checkout form.checkout.woocommerce-checkout #payment.veloria-wc-checkout__payment-methods-slot {
+.addonext-wc-checkout form.checkout.woocommerce-checkout #payment.addonext-co-payment-root,
+.addonext-wc-checkout form.checkout.woocommerce-checkout #payment.addonext-wc-checkout__payment-outer,
+.addonext-wc-checkout form.checkout.woocommerce-checkout #payment.addonext-wc-checkout__payment-methods-slot {
   padding: 0;
   margin: 0;
   background: transparent;
@@ -298,22 +298,22 @@
   box-shadow: none;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout .woocommerce-checkout-payment::before,
-.veloria-wc-checkout form.checkout.woocommerce-checkout .woocommerce-checkout-payment::after {
+.addonext-wc-checkout form.checkout.woocommerce-checkout .woocommerce-checkout-payment::before,
+.addonext-wc-checkout form.checkout.woocommerce-checkout .woocommerce-checkout-payment::after {
   content: none;
   display: none;
 }
 
-.veloria-wc-checkout #payment ul.wc_payment_methods::before,
-.veloria-wc-checkout #payment ul.wc_payment_methods::after,
-.veloria-wc-checkout #payment ul.wc_payment_methods li.wc_payment_method::before,
-.veloria-wc-checkout #payment ul.wc_payment_methods li.wc_payment_method::after {
+.addonext-wc-checkout #payment ul.wc_payment_methods::before,
+.addonext-wc-checkout #payment ul.wc_payment_methods::after,
+.addonext-wc-checkout #payment ul.wc_payment_methods li.wc_payment_method::before,
+.addonext-wc-checkout #payment ul.wc_payment_methods li.wc_payment_method::after {
   content: none !important;
   display: none !important;
 }
 
-.veloria-wc-checkout ul.veloria-co-payment-methods.wc_payment_methods,
-.veloria-wc-checkout .veloria-co-payment-methods.wc_payment_methods {
+.addonext-wc-checkout ul.addonext-co-payment-methods.wc_payment_methods,
+.addonext-wc-checkout .addonext-co-payment-methods.wc_payment_methods {
   list-style: none;
   margin: 0;
   padding: 0 !important;
@@ -325,7 +325,7 @@
   gap: 12px;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li.veloria-co-payment-item {
+.addonext-wc-checkout .addonext-co-payment-methods > li.addonext-co-payment-item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto;
@@ -344,7 +344,7 @@
   box-sizing: border-box;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li > .input-radio {
+.addonext-wc-checkout .addonext-co-payment-methods > li > .input-radio {
   grid-column: 1;
   grid-row: 1;
   margin: 0;
@@ -364,18 +364,18 @@
   accent-color: #2563eb;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li > .input-radio:checked {
+.addonext-wc-checkout .addonext-co-payment-methods > li > .input-radio:checked {
   border-color: #2563eb;
   background-color: #fff;
   box-shadow: inset 0 0 0 5px #2563eb;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li > .input-radio:focus-visible {
+.addonext-wc-checkout .addonext-co-payment-methods > li > .input-radio:focus-visible {
   outline: 2px solid #93c5fd;
   outline-offset: 2px;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li > label {
+.addonext-wc-checkout .addonext-co-payment-methods > li > label {
   grid-column: 2;
   grid-row: 1;
   display: flex;
@@ -395,7 +395,7 @@
   align-self: center;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li > .payment_box {
+.addonext-wc-checkout .addonext-co-payment-methods > li > .payment_box {
   grid-column: 1 / -1;
   grid-row: 2;
   margin: 0;
@@ -403,30 +403,30 @@
   width: 100%;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods > li label img {
+.addonext-wc-checkout .addonext-co-payment-methods > li label img {
   max-height: 22px;
   width: auto;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods .payment_box input.veloria-co-input,
-.veloria-wc-checkout .veloria-co-payment-methods .payment_box input.input-text,
-.veloria-wc-checkout .veloria-co-payment-methods .payment_box select {
+.addonext-wc-checkout .addonext-co-payment-methods .payment_box input.addonext-co-input,
+.addonext-wc-checkout .addonext-co-payment-methods .payment_box input.input-text,
+.addonext-wc-checkout .addonext-co-payment-methods .payment_box select {
   min-height: 44px;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods .payment_box .form-row {
+.addonext-wc-checkout .addonext-co-payment-methods .payment_box .form-row {
   float: none;
   width: 100%;
   margin: 0 0 12px;
   padding: 0;
 }
 
-.veloria-wc-checkout .veloria-co-payment-methods .payment_box .form-row:last-child {
+.addonext-wc-checkout .addonext-co-payment-methods .payment_box .form-row:last-child {
   margin-bottom: 0;
 }
 
-.veloria-wc-checkout #payment div.payment_box,
-.veloria-wc-checkout #payment div.veloria-co-tpl-payment-box {
+.addonext-wc-checkout #payment div.payment_box,
+.addonext-wc-checkout #payment div.addonext-co-tpl-payment-box {
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -441,10 +441,10 @@
   box-shadow: none !important;
 }
 
-.veloria-wc-checkout #payment div.payment_box::before,
-.veloria-wc-checkout #payment div.payment_box::after,
-.veloria-wc-checkout #payment div.veloria-co-tpl-payment-box::before,
-.veloria-wc-checkout #payment div.veloria-co-tpl-payment-box::after {
+.addonext-wc-checkout #payment div.payment_box::before,
+.addonext-wc-checkout #payment div.payment_box::after,
+.addonext-wc-checkout #payment div.addonext-co-tpl-payment-box::before,
+.addonext-wc-checkout #payment div.addonext-co-tpl-payment-box::after {
   content: none !important;
   display: none !important;
   border: none !important;
@@ -456,26 +456,26 @@
   overflow: hidden !important;
 }
 
-.veloria-wc-checkout form.checkout.woocommerce-checkout #payment div.payment_box p:last-child,
-.veloria-wc-checkout #payment div.payment_box p:last-child {
+.addonext-wc-checkout form.checkout.woocommerce-checkout #payment div.payment_box p:last-child,
+.addonext-wc-checkout #payment div.payment_box p:last-child {
   margin-top: 0 !important;
 }
 
-.veloria-wc-checkout .woocommerce-checkout-review-order {
+.addonext-wc-checkout .woocommerce-checkout-review-order {
   margin: 0;
   padding: 0;
 }
 
-.veloria-wc-checkout .veloria-co-order-review {
+.addonext-wc-checkout .addonext-co-order-review {
   margin: 0 0 8px;
   font-size: 0.9375rem;
 }
 
-.veloria-wc-checkout .veloria-co-lines {
+.addonext-wc-checkout .addonext-co-lines {
   margin-bottom: 20px;
 }
 
-.veloria-wc-checkout .veloria-co-line {
+.addonext-wc-checkout .addonext-co-line {
   display: flex;
   align-items: flex-start;
   gap: 14px;
@@ -483,11 +483,11 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.veloria-wc-checkout .veloria-co-line:last-child {
+.addonext-wc-checkout .addonext-co-line:last-child {
   border-bottom: none;
 }
 
-.veloria-wc-checkout .veloria-co-line__thumb {
+.addonext-wc-checkout .addonext-co-line__thumb {
   flex-shrink: 0;
   width: 52px;
   height: 52px;
@@ -497,14 +497,14 @@
   background: #fafafa;
 }
 
-.veloria-wc-checkout .veloria-co-line__thumb img {
+.addonext-wc-checkout .addonext-co-line__thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.veloria-wc-checkout .veloria-co-line__mid {
+.addonext-wc-checkout .addonext-co-line__mid {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -512,18 +512,18 @@
   flex: 1;
 }
 
-.veloria-wc-checkout .veloria-co-line__title {
+.addonext-wc-checkout .addonext-co-line__title {
   font-weight: 600;
   color: #111827;
   font-size: 0.9375rem;
 }
 
-.veloria-wc-checkout .veloria-co-line__qty {
+.addonext-wc-checkout .addonext-co-line__qty {
   font-size: 0.8125rem;
   color: #6b7280;
 }
 
-.veloria-wc-checkout .veloria-co-line__price {
+.addonext-wc-checkout .addonext-co-line__price {
   flex-shrink: 0;
   text-align: right;
   font-weight: 700;
@@ -532,14 +532,14 @@
   padding-left: 8px;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table {
+.addonext-wc-checkout .addonext-co-totals__table {
   width: 100%;
   border-collapse: collapse;
   margin: 0;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table th,
-.veloria-wc-checkout .veloria-co-totals__table td {
+.addonext-wc-checkout .addonext-co-totals__table th,
+.addonext-wc-checkout .addonext-co-totals__table td {
   padding: 12px 0;
   border-top: 1px solid #e5e5e5;
   font-weight: 500;
@@ -547,22 +547,22 @@
   vertical-align: top;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table th {
+.addonext-wc-checkout .addonext-co-totals__table th {
   text-align: left;
   color: #374151;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table td {
+.addonext-wc-checkout .addonext-co-totals__table td {
   text-align: right;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table tr.cart-subtotal th,
-.veloria-wc-checkout .veloria-co-totals__table tr.cart-subtotal td {
+.addonext-wc-checkout .addonext-co-totals__table tr.cart-subtotal th,
+.addonext-wc-checkout .addonext-co-totals__table tr.cart-subtotal td {
   padding-top: 18px;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table tr.order-total th,
-.veloria-wc-checkout .veloria-co-totals__table tr.order-total td {
+.addonext-wc-checkout .addonext-co-totals__table tr.order-total th,
+.addonext-wc-checkout .addonext-co-totals__table tr.order-total td {
   font-size: 1.125rem;
   font-weight: 700;
   color: #111827;
@@ -570,47 +570,47 @@
   padding-bottom: 4px;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table .woocommerce-shipping-methods {
+.addonext-wc-checkout .addonext-co-totals__table .woocommerce-shipping-methods {
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: right;
 }
 
-.veloria-wc-checkout .veloria-co-totals__table ul#shipping_method {
+.addonext-wc-checkout .addonext-co-totals__table ul#shipping_method {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.veloria-wc-checkout .veloria-wc-checkout__place-order-slot {
+.addonext-wc-checkout .addonext-wc-checkout__place-order-slot {
   margin-top: 8px;
 }
 
-.veloria-wc-checkout .veloria-wc-checkout__place-order-slot .form-row.place-order {
+.addonext-wc-checkout .addonext-wc-checkout__place-order-slot .form-row.place-order {
   float: none;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.veloria-wc-checkout .woocommerce-terms-and-conditions-wrapper {
+.addonext-wc-checkout .woocommerce-terms-and-conditions-wrapper {
   margin: 16px 0 12px;
   font-size: 0.8125rem;
   line-height: 1.55;
   color: #4b5563;
 }
 
-.veloria-wc-checkout .woocommerce-terms-and-conditions-wrapper a {
+.addonext-wc-checkout .woocommerce-terms-and-conditions-wrapper a {
   color: #2563eb;
   text-decoration: underline;
 }
 
-.veloria-wc-checkout .woocommerce-terms-and-conditions-wrapper .validate-required {
+.addonext-wc-checkout .woocommerce-terms-and-conditions-wrapper .validate-required {
   margin-top: 12px;
 }
 
-.veloria-wc-checkout #place_order {
+.addonext-wc-checkout #place_order {
   width: 100%;
   margin-top: 12px;
   padding: 15px 22px;
@@ -624,11 +624,11 @@
   transition: background 0.15s ease;
 }
 
-.veloria-wc-checkout #place_order:hover {
+.addonext-wc-checkout #place_order:hover {
   background: #1d4ed8;
 }
 
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap .veloria-co-coupon-prompt {
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap .addonext-co-coupon-prompt {
   margin: 0 0 14px;
   padding: 0;
   border: none;
@@ -638,8 +638,8 @@
   color: #4b5563;
 }
 
-.veloria-wc-checkout .veloria-co-coupon-prompt .veloria-co-coupon-link,
-.veloria-wc-checkout .veloria-co-coupon-prompt a.showcoupon {
+.addonext-wc-checkout .addonext-co-coupon-prompt .addonext-co-coupon-link,
+.addonext-wc-checkout .addonext-co-coupon-prompt a.showcoupon {
   color: #2563eb;
   font-weight: 600;
   text-decoration: underline;
@@ -652,12 +652,12 @@
   font-family: inherit;
 }
 
-.veloria-wc-checkout .veloria-co-coupon-prompt .veloria-co-coupon-link:hover,
-.veloria-wc-checkout .veloria-co-coupon-prompt a.showcoupon:hover {
+.addonext-wc-checkout .addonext-co-coupon-prompt .addonext-co-coupon-link:hover,
+.addonext-wc-checkout .addonext-co-coupon-prompt a.showcoupon:hover {
   color: #1d4ed8;
 }
 
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap .checkout_coupon.veloria-co-coupon-form {
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap .checkout_coupon.addonext-co-coupon-form {
   display: block;
   margin-top: 4px;
   padding: 0;
@@ -667,7 +667,7 @@
   width: 100%;
 }
 
-.veloria-wc-checkout .veloria-co-coupon-row {
+.addonext-wc-checkout .addonext-co-coupon-row {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap;
@@ -678,27 +678,27 @@
   padding: 0;
 }
 
-.veloria-wc-checkout .veloria-co-coupon-row .veloria-co-coupon-field,
-.veloria-wc-checkout .veloria-co-coupon-row .veloria-co-coupon-submit {
+.addonext-wc-checkout .addonext-co-coupon-row .addonext-co-coupon-field,
+.addonext-wc-checkout .addonext-co-coupon-row .addonext-co-coupon-submit {
   margin: 0;
   padding: 0;
   float: none;
 }
 
-.veloria-wc-checkout .veloria-co-coupon-row .veloria-co-coupon-field {
+.addonext-wc-checkout .addonext-co-coupon-row .addonext-co-coupon-field {
   flex: 1 1 0;
   min-width: 0;
   width: auto;
 }
 
-.veloria-wc-checkout .veloria-co-coupon-row .veloria-co-coupon-submit {
+.addonext-wc-checkout .addonext-co-coupon-row .addonext-co-coupon-submit {
   flex: 0 0 auto;
   width: auto;
 }
 
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap .checkout_coupon .button,
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap button.button,
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap .checkout_coupon .button {
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap .checkout_coupon .button,
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap button.button,
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap .checkout_coupon .button {
   width: auto;
   min-width: 112px;
   margin: 0;
@@ -723,42 +723,42 @@
   white-space: nowrap;
 }
 
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap .checkout_coupon .button:hover,
-.veloria-wc-checkout .veloria-wc-checkout__coupon-wrap button.button:hover {
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap .checkout_coupon .button:hover,
+.addonext-wc-checkout .addonext-wc-checkout__coupon-wrap button.button:hover {
   background: #1d4ed8;
   color: #fff;
 }
 
-.veloria-wc-checkout.veloria-wc-checkout--no-coupon .veloria-wc-checkout__card--summary .veloria-wc-checkout__section-title--lg {
+.addonext-wc-checkout.addonext-wc-checkout--no-coupon .addonext-wc-checkout__card--summary .addonext-wc-checkout__section-title--lg {
   margin-bottom: 20px;
 }
 
 @media (max-width: 991px) {
-  .veloria-wc-checkout__layout {
+  .addonext-wc-checkout__layout {
     flex-direction: column;
     gap: 28px;
   }
 
-  .veloria-wc-checkout__col--main,
-  .veloria-wc-checkout__col--sidebar {
+  .addonext-wc-checkout__col--main,
+  .addonext-wc-checkout__col--sidebar {
     flex: 1 1 100%;
     max-width: 100%;
     min-width: 0;
   }
 
-  .veloria-co-fields-grid {
+  .addonext-co-fields-grid {
     grid-template-columns: 1fr;
   }
 
-  .veloria-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_first_name_field,
-  .veloria-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_last_name_field,
-  .veloria-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_first_name_field,
-  .veloria-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_last_name_field {
+  .addonext-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_first_name_field,
+  .addonext-wc-checkout .woocommerce-billing-fields__field-wrapper > #billing_last_name_field,
+  .addonext-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_first_name_field,
+  .addonext-wc-checkout .woocommerce-shipping-fields__field-wrapper > #shipping_last_name_field {
     grid-column: 1 / -1;
   }
 }
 
-.veloria-co-tpl-payment-msg {
+.addonext-co-tpl-payment-msg {
   margin: 0;
   padding: 14px 16px;
   font-size: 0.875rem;
@@ -769,7 +769,7 @@
   border-radius: 8px;
 }
 
-.veloria-co-tpl-payment-empty {
+.addonext-co-tpl-payment-empty {
   align-items: center;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -778,7 +778,7 @@
   box-shadow: none;
 }
 
-.veloria-wc-checkout__notice {
+.addonext-wc-checkout__notice {
   padding: 16px;
   border: 1px dashed #cbd5e1;
   border-radius: 8px;

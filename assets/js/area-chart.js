@@ -76,7 +76,7 @@
         }
         if (yTicks.indexOf(max) === -1) yTicks.push(max);
 
-        var canvas = container.querySelector('.veloria-area-chart__canvas');
+        var canvas = container.querySelector('.addonext-area-chart__canvas');
         if (!canvas) return;
 
         var paddingTop = 16;
@@ -106,7 +106,7 @@
         var ns = 'http://www.w3.org/2000/svg';
         var svg = document.createElementNS(ns, 'svg');
         svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-        svg.setAttribute('class', 'veloria-area-chart__svg');
+        svg.setAttribute('class', 'addonext-area-chart__svg');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
         var gradId = 'er-ac-' + Math.random().toString(36).slice(2, 11);
@@ -131,7 +131,7 @@
         svg.appendChild(defs);
 
         var grid = document.createElementNS(ns, 'g');
-        grid.setAttribute('class', 'veloria-area-chart__grid');
+        grid.setAttribute('class', 'addonext-area-chart__grid');
 
         var i;
         for (i = 0; i < yTicks.length; i++) {
@@ -155,7 +155,7 @@
         svg.appendChild(grid);
 
         var yLabels = document.createElementNS(ns, 'g');
-        yLabels.setAttribute('class', 'veloria-area-chart__axis-labels veloria-area-chart__axis-label');
+        yLabels.setAttribute('class', 'addonext-area-chart__axis-labels addonext-area-chart__axis-label');
         for (i = 0; i < yTicks.length; i++) {
             var text = document.createElementNS(ns, 'text');
             text.setAttribute('x', paddingLeft - 8);
@@ -167,7 +167,7 @@
         svg.appendChild(yLabels);
 
         var xLabels = document.createElementNS(ns, 'g');
-        xLabels.setAttribute('class', 'veloria-area-chart__axis-labels veloria-area-chart__axis-label');
+        xLabels.setAttribute('class', 'addonext-area-chart__axis-labels addonext-area-chart__axis-label');
         for (i = 0; i < labels.length; i++) {
             var xtext = document.createElementNS(ns, 'text');
             xtext.setAttribute('x', xScale(i));
@@ -182,14 +182,14 @@
         var xLast = xScale(values.length - 1);
         var areaD = linePathD + ' L ' + xLast + ',' + baselineY + ' L ' + xFirst + ',' + baselineY + ' Z';
         var areaPath = document.createElementNS(ns, 'path');
-        areaPath.setAttribute('class', 'veloria-area-chart__area');
+        areaPath.setAttribute('class', 'addonext-area-chart__area');
         areaPath.setAttribute('d', areaD);
         areaPath.setAttribute('fill', 'url(#' + gradId + ')');
         areaPath.setAttribute('stroke', 'none');
         svg.appendChild(areaPath);
 
         var linePath = document.createElementNS(ns, 'path');
-        linePath.setAttribute('class', 'veloria-area-chart__line');
+        linePath.setAttribute('class', 'addonext-area-chart__line');
         linePath.setAttribute('d', linePathD);
         linePath.setAttribute('fill', 'none');
         linePath.setAttribute('stroke', lineColor);
@@ -204,10 +204,10 @@
 
     function run(root) {
         root = root || document;
-        var containers = root.querySelectorAll('.veloria-area-chart');
+        var containers = root.querySelectorAll('.addonext-area-chart');
         containers.forEach(function (el) {
             if (el.getAttribute('data-chart-built') === '1') return;
-            var canvas = el.querySelector('.veloria-area-chart__canvas');
+            var canvas = el.querySelector('.addonext-area-chart__canvas');
             var valuesStr = (el.getAttribute('data-values') || '').split('|');
             var hasData = valuesStr.length > 0 && valuesStr.some(function (v) { return v !== '' && !isNaN(parseFloat(v, 10)); });
             if (canvas && hasData) {
@@ -236,16 +236,16 @@
                 mutation.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
                     var containers = [];
-                    if (node.classList && node.classList.contains('veloria-area-chart')) {
+                    if (node.classList && node.classList.contains('addonext-area-chart')) {
                         containers.push(node);
                     }
                     if (node.querySelectorAll) {
-                        var found = node.querySelectorAll('.veloria-area-chart');
+                        var found = node.querySelectorAll('.addonext-area-chart');
                         for (var i = 0; i < found.length; i++) containers.push(found[i]);
                     }
                     containers.forEach(function (container) {
-                        var canvas = container.querySelector('.veloria-area-chart__canvas');
-                        var needsBuild = canvas && !container.querySelector('.veloria-area-chart__svg');
+                        var canvas = container.querySelector('.addonext-area-chart__canvas');
+                        var needsBuild = canvas && !container.querySelector('.addonext-area-chart__svg');
                         if (needsBuild) {
                             container.removeAttribute('data-chart-built');
                             buildChart(container);
@@ -264,10 +264,10 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-area-chart.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-area-chart.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
-                var containers = el.querySelectorAll('.veloria-area-chart');
+                var containers = el.querySelectorAll('.addonext-area-chart');
                 containers.forEach(function (c) {
                     c.removeAttribute('data-chart-built');
                 });

@@ -1,44 +1,44 @@
-.veloria-before-after {
-    --veloria-ba-line-w: 2px;
-    --veloria-ba-line-color: #ffffff;
-    --veloria-ba-handle: 48px;
-    --veloria-ba-handle-bg: #ffffff;
+.addonext-before-after {
+    --addonext-ba-line-w: 2px;
+    --addonext-ba-line-color: #ffffff;
+    --addonext-ba-handle: 48px;
+    --addonext-ba-handle-bg: #ffffff;
     --ba-split: 50%;
     --ba-split-num: 50;
     width: 100%;
     max-width: 100%;
 }
 
-.veloria-before-after *,
-.veloria-before-after *::before,
-.veloria-before-after *::after {
+.addonext-before-after *,
+.addonext-before-after *::before,
+.addonext-before-after *::after {
     box-sizing: border-box;
 }
 
-.veloria-before-after__frame {
+.addonext-before-after__frame {
     position: relative;
     overflow: hidden;
     width: 100%;
     min-height: 400px;
 }
 
-.veloria-before-after__before,
-.veloria-before-after__after {
+.addonext-before-after__before,
+.addonext-before-after__after {
     position: absolute;
     inset: 0;
     margin: 0;
 }
 
-.veloria-before-after__before {
+.addonext-before-after__before {
     z-index: 1;
 }
 
-.veloria-before-after__after {
+.addonext-before-after__after {
     z-index: 2;
     will-change: clip-path;
 }
 
-.veloria-before-after__img {
+.addonext-before-after__img {
     display: block;
     width: 100%;
     height: 100%;
@@ -48,7 +48,7 @@
     -webkit-user-drag: none;
 }
 
-.veloria-before-after__label {
+.addonext-before-after__label {
     position: absolute;
     z-index: 4;
     pointer-events: none;
@@ -59,31 +59,31 @@
     white-space: nowrap;
 }
 
-.veloria-before-after__label--before {
+.addonext-before-after__label--before {
     top: 50%;
     left: calc(var(--ba-split-num, 50) * 0.5 * 1%);
     transform: translate(-50%, -50%);
 }
 
-.veloria-before-after__label--after {
+.addonext-before-after__label--after {
     top: 50%;
     left: calc((100 + var(--ba-split-num, 50)) * 0.5 * 1%);
     transform: translate(-50%, -50%);
 }
 
-.veloria-before-after--vertical .veloria-before-after__label--before {
+.addonext-before-after--vertical .addonext-before-after__label--before {
     top: calc(var(--ba-split-num, 50) * 0.5 * 1%);
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.veloria-before-after--vertical .veloria-before-after__label--after {
+.addonext-before-after--vertical .addonext-before-after__label--after {
     top: calc((100 + var(--ba-split-num, 50)) * 0.5 * 1%);
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.veloria-before-after__divider {
+.addonext-before-after__divider {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -93,7 +93,7 @@
     pointer-events: none;
 }
 
-.veloria-before-after--vertical .veloria-before-after__divider {
+.addonext-before-after--vertical .addonext-before-after__divider {
     top: 0;
     right: 0;
     bottom: auto;
@@ -103,42 +103,42 @@
     transform: translateY(-50%);
 }
 
-.veloria-before-after__line {
+.addonext-before-after__line {
     position: absolute;
     left: 50%;
     top: 0;
     bottom: 0;
-    width: var(--veloria-ba-line-w);
-    margin-left: calc(var(--veloria-ba-line-w) / -2);
-    background-color: var(--veloria-ba-line-color);
+    width: var(--addonext-ba-line-w);
+    margin-left: calc(var(--addonext-ba-line-w) / -2);
+    background-color: var(--addonext-ba-line-color);
     pointer-events: none;
 }
 
-.veloria-before-after--vertical .veloria-before-after__line {
+.addonext-before-after--vertical .addonext-before-after__line {
     left: 0;
     right: 0;
     top: 50%;
     bottom: auto;
     width: 100%;
-    height: var(--veloria-ba-line-w);
+    height: var(--addonext-ba-line-w);
     margin-left: 0;
-    margin-top: calc(var(--veloria-ba-line-w) / -2);
+    margin-top: calc(var(--addonext-ba-line-w) / -2);
 }
 
-.veloria-before-after__handle {
+.addonext-before-after__handle {
     position: absolute;
     left: 50%;
     top: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--veloria-ba-handle);
-    height: var(--veloria-ba-handle);
-    margin: calc(var(--veloria-ba-handle) / -2) 0 0 calc(var(--veloria-ba-handle) / -2);
+    width: var(--addonext-ba-handle);
+    height: var(--addonext-ba-handle);
+    margin: calc(var(--addonext-ba-handle) / -2) 0 0 calc(var(--addonext-ba-handle) / -2);
     padding: 0;
     border: none;
     border-radius: 50%;
-    background-color: var(--veloria-ba-handle-bg);
+    background-color: var(--addonext-ba-handle-bg);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
     cursor: ew-resize;
     pointer-events: auto;
@@ -146,32 +146,32 @@
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.veloria-before-after--vertical .veloria-before-after__handle {
+.addonext-before-after--vertical .addonext-before-after__handle {
     cursor: ns-resize;
 }
 
-.veloria-before-after__handle:hover {
+.addonext-before-after__handle:hover {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
-.veloria-before-after__handle:focus-visible {
+.addonext-before-after__handle:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
 }
 
-.veloria-before-after__handle-icon {
+.addonext-before-after__handle-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
 }
 
-.veloria-before-after__handle-icon svg {
+.addonext-before-after__handle-icon svg {
     width: 1em;
     height: 1em;
     fill: currentColor;
 }
 
-.veloria-before-after__frame.veloria-before-after__frame--dragging .veloria-before-after__handle {
+.addonext-before-after__frame.addonext-before-after__frame--dragging .addonext-before-after__handle {
     cursor: grabbing;
 }

@@ -1,15 +1,15 @@
 <?php
-namespace Veloria\Extensions\SmoothScroll;
+namespace Addonext\Extensions\SmoothScroll;
 
-use Veloria\Base\ExtensionBase;
-use Veloria\Utils\OptionsHelper;
+use Addonext\Base\ExtensionBase;
+use Addonext\Utils\OptionsHelper;
 
 defined('ABSPATH') or exit;
 
 /**
  * Smooth wheel scrolling for the front using Lenis.
  *
- * @package Veloria
+ * @package AddoNext
  * @since 1.0.0
  */
 class SmoothScroll extends ExtensionBase
@@ -32,7 +32,7 @@ class SmoothScroll extends ExtensionBase
      */
     public function get_title(): string
     {
-        return __('Smooth Scroll', 'veloria');
+        return __('Smooth Scroll', 'addonext');
     }
 
     /**
@@ -40,7 +40,7 @@ class SmoothScroll extends ExtensionBase
      */
     public function get_description(): string
     {
-        return __('Smooth mouse-wheel scrolling for the whole page.', 'veloria');
+        return __('Smooth mouse-wheel scrolling for the whole page.', 'addonext');
     }
 
     /**
@@ -48,7 +48,7 @@ class SmoothScroll extends ExtensionBase
      */
     public function get_icon(): string
     {
-        return 'eicon-smooth-scroll veloria-icon';
+        return 'eicon-smooth-scroll addonext-icon';
     }
 
     /**
@@ -97,10 +97,10 @@ class SmoothScroll extends ExtensionBase
             return;
         }
 
-        $base = VELORIA_URL . 'assets/';
+        $base = ADDONEXT_URL . 'assets/';
 
         wp_register_style(
-            'veloria-lenis',
+            'addonext-lenis',
             $base . 'css/extensions/lenis.css',
             [],
             self::LENIS_VERSION
@@ -109,12 +109,12 @@ class SmoothScroll extends ExtensionBase
         wp_register_style(
             $this->get_id(),
             $base . 'css/extensions/' . $this->get_id() . '.css',
-            ['veloria-lenis'],
-            VELORIA_VERSION
+            ['addonext-lenis'],
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-lenis',
+            'addonext-lenis',
             $base . 'js/extensions/lenis.min.js',
             [],
             self::LENIS_VERSION,
@@ -124,8 +124,8 @@ class SmoothScroll extends ExtensionBase
         wp_register_script(
             $this->get_id(),
             $base . 'js/extensions/' . $this->get_id() . '.js',
-            ['veloria-lenis'],
-            VELORIA_VERSION,
+            ['addonext-lenis'],
+            ADDONEXT_VERSION,
             true
         );
 

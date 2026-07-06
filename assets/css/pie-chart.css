@@ -1,8 +1,8 @@
-.veloria-pie-chart {
+.addonext-pie-chart {
     max-width: 100%;
 }
 
-.veloria-pie-chart__title {
+.addonext-pie-chart__title {
     margin: 0 0 1rem;
     font-size: 1.25rem;
     font-weight: 600;
@@ -10,7 +10,7 @@
     color: #1e293b;
 }
 
-.veloria-pie-chart__wrap {
+.addonext-pie-chart__wrap {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -18,31 +18,31 @@
     justify-content: center;
 }
 
-.veloria-pie-chart__canvas {
+.addonext-pie-chart__canvas {
     flex-shrink: 0;
     width: 280px;
     height: 280px;
 }
 
-.veloria-pie-chart__svg {
+.addonext-pie-chart__svg {
     display: block;
     width: 100%;
     height: 100%;
 }
 
-.veloria-pie-chart__slice-label {
+.addonext-pie-chart__slice-label {
     font-family: inherit;
     font-weight: 600;
     pointer-events: none;
 }
 
-.veloria-pie-chart__legend {
+.addonext-pie-chart__legend {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.veloria-pie-chart__legend-item {
+.addonext-pie-chart__legend-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -50,13 +50,13 @@
     color: #1e293b;
 }
 
-.veloria-pie-chart__legend-swatch {
+.addonext-pie-chart__legend-swatch {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
     border-radius: 2px;
 }
 
-.veloria-pie-chart__legend-text {
+.addonext-pie-chart__legend-text {
     line-height: 1.3;
 }

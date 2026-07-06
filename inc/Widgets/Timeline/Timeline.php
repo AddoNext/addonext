@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\Timeline;
+namespace Addonext\Widgets\Timeline;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class Timeline extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-time-line veloria-icon';
+        return 'eicon-time-line addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-timeline';
+        return 'addonext-timeline';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class Timeline extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Timeline', 'veloria');
+        return __('Timeline', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Vertical timeline layouts', 'veloria');
+        return __('Vertical timeline layouts', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,7 +42,7 @@ class Timeline extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-timeline'];
+        return ['addonext-timeline'];
     }
 
     public function register_controls(): void
@@ -50,7 +50,7 @@ class Timeline extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -59,7 +59,7 @@ class Timeline extends WidgetBase
         $repeater->add_control(
             'year',
             [
-                'label'   => __('Year', 'veloria'),
+                'label'   => __('Year', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '2024',
                 'dynamic' => ['active' => true],
@@ -68,16 +68,16 @@ class Timeline extends WidgetBase
         $repeater->add_control(
             'title',
             [
-                'label'   => __('Title', 'veloria'),
+                'label'   => __('Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Event title', 'veloria'),
+                'default' => __('Event title', 'addonext'),
                 'dynamic' => ['active' => true],
             ]
         );
         $repeater->add_control(
             'subtitle',
             [
-                'label'   => __('Subtitle', 'veloria'),
+                'label'   => __('Subtitle', 'addonext'),
                 'type'    => Controls_Manager::TEXTAREA,
                 'default' => '',
                 'dynamic' => ['active' => true],
@@ -86,7 +86,7 @@ class Timeline extends WidgetBase
         $repeater->add_control(
             'dot_color',
             [
-                'label'   => __('Marker color', 'veloria'),
+                'label'   => __('Marker color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#4A90E2',
             ]
@@ -95,26 +95,26 @@ class Timeline extends WidgetBase
         $this->add_control(
             'items',
             [
-                'label'       => __('Items', 'veloria'),
+                'label'       => __('Items', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => [
                     [
                         'year'      => '2024',
-                        'title'     => __('Version 3.0 Released', 'veloria'),
-                        'subtitle'  => __('Major update with 50+ new widgets', 'veloria'),
+                        'title'     => __('Version 3.0 Released', 'addonext'),
+                        'subtitle'  => __('Major update with 50+ new widgets', 'addonext'),
                         'dot_color' => '#4A90E2',
                     ],
                     [
                         'year'      => '2023',
-                        'title'     => __('100K+ Users Milestone', 'veloria'),
-                        'subtitle'  => __('Reached 100,000 active users', 'veloria'),
+                        'title'     => __('100K+ Users Milestone', 'addonext'),
+                        'subtitle'  => __('Reached 100,000 active users', 'addonext'),
                         'dot_color' => '#9B59B6',
                     ],
                     [
                         'year'      => '2022',
-                        'title'     => __('AddoNext Launch', 'veloria'),
-                        'subtitle'  => __('First version released to public', 'veloria'),
+                        'title'     => __('AddoNext Launch', 'addonext'),
+                        'subtitle'  => __('First version released to public', 'addonext'),
                         'dot_color' => '#4CAF50',
                     ],
                 ],
@@ -127,7 +127,7 @@ class Timeline extends WidgetBase
         $this->start_controls_section(
             'section_style_year',
             [
-                'label' => __('Year', 'veloria'),
+                'label' => __('Year', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -136,7 +136,7 @@ class Timeline extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'year_typography',
-                'selector'       => '{{WRAPPER}} .veloria-timeline__year',
+                'selector'       => '{{WRAPPER}} .addonext-timeline__year',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_size'   => ['default' => ['size' => 14, 'unit' => 'px']],
@@ -150,7 +150,7 @@ class Timeline extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -158,11 +158,11 @@ class Timeline extends WidgetBase
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#3C3C3C',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-timeline__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-timeline__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -171,7 +171,7 @@ class Timeline extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'title_typography',
-                'selector'       => '{{WRAPPER}} .veloria-timeline__title',
+                'selector'       => '{{WRAPPER}} .addonext-timeline__title',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_size'   => ['default' => ['size' => 16, 'unit' => 'px']],
@@ -185,7 +185,7 @@ class Timeline extends WidgetBase
         $this->start_controls_section(
             'section_style_subtitle',
             [
-                'label' => __('Subtitle', 'veloria'),
+                'label' => __('Subtitle', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -193,11 +193,11 @@ class Timeline extends WidgetBase
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#7D7D7D',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-timeline__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-timeline__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -206,7 +206,7 @@ class Timeline extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'subtitle_typography',
-                'selector'       => '{{WRAPPER}} .veloria-timeline__subtitle',
+                'selector'       => '{{WRAPPER}} .addonext-timeline__subtitle',
                 'fields_options' => [
                     'typography'  => ['default' => 'yes'],
                     'font_size'   => ['default' => ['size' => 14, 'unit' => 'px']],
@@ -220,7 +220,7 @@ class Timeline extends WidgetBase
         $this->start_controls_section(
             'section_style_marker',
             [
-                'label' => __('Marker', 'veloria'),
+                'label' => __('Marker', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -228,7 +228,7 @@ class Timeline extends WidgetBase
         $this->add_control(
             'marker_size',
             [
-                'label'      => __('Dot size', 'veloria'),
+                'label'      => __('Dot size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -236,7 +236,7 @@ class Timeline extends WidgetBase
                 ],
                 'default'    => ['size' => 12],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-timeline__dot' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; margin-left: calc(-{{SIZE}}{{UNIT}} / 2);',
+                    '{{WRAPPER}} .addonext-timeline__dot' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; margin-left: calc(-{{SIZE}}{{UNIT}} / 2);',
                 ],
             ]
         );
@@ -244,7 +244,7 @@ class Timeline extends WidgetBase
         $this->add_control(
             'line_width',
             [
-                'label'      => __('Line width', 'veloria'),
+                'label'      => __('Line width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -252,7 +252,7 @@ class Timeline extends WidgetBase
                 ],
                 'default'    => ['size' => 2],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-timeline__line' => 'width: {{SIZE}}{{UNIT}}; margin-left: calc(-{{SIZE}}{{UNIT}} / 0.5);',
+                    '{{WRAPPER}} .addonext-timeline__line' => 'width: {{SIZE}}{{UNIT}}; margin-left: calc(-{{SIZE}}{{UNIT}} / 0.5);',
                 ],
             ]
         );
@@ -260,7 +260,7 @@ class Timeline extends WidgetBase
         $this->add_control(
             'spacing',
             [
-                'label'      => __('Item spacing', 'veloria'),
+                'label'      => __('Item spacing', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -268,8 +268,8 @@ class Timeline extends WidgetBase
                 ],
                 'default'    => ['size' => 24],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-timeline__item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-timeline__item:last-child' => 'margin-bottom: 0;',
+                    '{{WRAPPER}} .addonext-timeline__item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-timeline__item:last-child' => 'margin-bottom: 0;',
                 ],
             ]
         );
@@ -277,7 +277,7 @@ class Timeline extends WidgetBase
         $this->add_control(
             'content_gap',
             [
-                'label'      => __('Gap (line to content)', 'veloria'),
+                'label'      => __('Gap (line to content)', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -285,7 +285,7 @@ class Timeline extends WidgetBase
                 ],
                 'default'    => ['size' => 20],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-timeline__track' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-timeline__track' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -295,7 +295,7 @@ class Timeline extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/timeline/timeline.php';
+        $path = ADDONEXT_DIR . 'templates/timeline/timeline.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -304,24 +304,24 @@ class Timeline extends WidgetBase
     protected function content_template(): void
     {
         ?>
-        <div class="veloria-timeline">
+        <div class="addonext-timeline">
             <# _.each(settings.items, function(item, index) { #>
-                <div class="veloria-timeline__item elementor-repeater-item-{{ item._id }}">
-                    <div class="veloria-timeline__track" style="--timeline-dot: {{ item.dot_color || '#4A90E2' }};">
-                        <span class="veloria-timeline__dot"></span>
+                <div class="addonext-timeline__item elementor-repeater-item-{{ item._id }}">
+                    <div class="addonext-timeline__track" style="--timeline-dot: {{ item.dot_color || '#4A90E2' }};">
+                        <span class="addonext-timeline__dot"></span>
                         <# if (index < settings.items.length - 1) { #>
-                            <span class="veloria-timeline__line"></span>
+                            <span class="addonext-timeline__line"></span>
                         <# } #>
                     </div>
-                    <div class="veloria-timeline__content">
+                    <div class="addonext-timeline__content">
                         <# if (item.year) { #>
-                            <span class="veloria-timeline__year" style="color: {{ item.dot_color || '#4A90E2' }};">{{{ item.year }}}</span>
+                            <span class="addonext-timeline__year" style="color: {{ item.dot_color || '#4A90E2' }};">{{{ item.year }}}</span>
                         <# } #>
                         <# if (item.title) { #>
-                            <h4 class="veloria-timeline__title">{{{ item.title }}}</h4>
+                            <h4 class="addonext-timeline__title">{{{ item.title }}}</h4>
                         <# } #>
                         <# if (item.subtitle) { #>
-                            <p class="veloria-timeline__subtitle">{{{ item.subtitle }}}</p>
+                            <p class="addonext-timeline__subtitle">{{{ item.subtitle }}}</p>
                         <# } #>
                     </div>
                 </div>

@@ -1,10 +1,10 @@
 <?php
-namespace Veloria\Widgets\WooCheckout;
+namespace Addonext\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
 /**
- * Custom order review markup (lines + totals) for Veloria checkout — no review-order template.
+ * Custom order review markup (lines + totals) for AddoNext checkout — no review-order template.
  */
 class CheckoutOrderUi
 {
@@ -16,9 +16,9 @@ class CheckoutOrderUi
 
         ob_start();
 
-        echo '<div class="veloria-co-order-review">';
+        echo '<div class="addonext-co-order-review">';
         do_action('woocommerce_review_order_before_cart_contents');
-        echo '<div class="veloria-co-lines">';
+        echo '<div class="addonext-co-lines">';
 
         foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
             $_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
@@ -27,26 +27,26 @@ class CheckoutOrderUi
                 continue;
             }
 
-            $thumb = $_product->get_image([72, 72], ['class' => 'veloria-co-line__img']);
+            $thumb = $_product->get_image([72, 72], ['class' => 'addonext-co-line__img']);
             $name = apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key);
             $subtotal = apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key);
             ?>
-<div class="<?php echo esc_attr(trim('veloria-co-line ' . apply_filters('woocommerce_cart_item_class', '', $cart_item, $cart_item_key))); ?>">
-	<div class="veloria-co-line__thumb"><?php echo $thumb; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-	<div class="veloria-co-line__mid">
-		<span class="veloria-co-line__title"><?php echo wp_kses_post($name); ?></span>
-		<span class="veloria-co-line__qty"><?php
+<div class="<?php echo esc_attr(trim('addonext-co-line ' . apply_filters('woocommerce_cart_item_class', '', $cart_item, $cart_item_key))); ?>">
+	<div class="addonext-co-line__thumb"><?php echo $thumb; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+	<div class="addonext-co-line__mid">
+		<span class="addonext-co-line__title"><?php echo wp_kses_post($name); ?></span>
+		<span class="addonext-co-line__qty"><?php
 			echo esc_html(
 				sprintf(
 					/* translators: %s: cart line quantity. */
-					__('Qty: %s', 'veloria'),
+					__('Qty: %s', 'addonext'),
 					$cart_item['quantity']
 				)
 			);
 			?></span>
 			<?php echo wc_get_formatted_cart_item_data($cart_item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div>
-	<div class="veloria-co-line__price"><?php echo $subtotal; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+	<div class="addonext-co-line__price"><?php echo $subtotal; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 </div>
 			<?php
         }
@@ -54,10 +54,10 @@ class CheckoutOrderUi
         echo '</div>';
         do_action('woocommerce_review_order_after_cart_contents');
 
-        echo '<div class="veloria-co-totals">';
-        echo '<table class="veloria-co-totals__table"><tbody>';
+        echo '<div class="addonext-co-totals">';
+        echo '<table class="addonext-co-totals__table"><tbody>';
 
-        echo '<tr class="cart-subtotal"><th>' . esc_html__('Subtotal', 'veloria') . '</th><td>';
+        echo '<tr class="cart-subtotal"><th>' . esc_html__('Subtotal', 'addonext') . '</th><td>';
         wc_cart_totals_subtotal_html();
         echo '</td></tr>';
 
@@ -95,7 +95,7 @@ class CheckoutOrderUi
 
         do_action('woocommerce_review_order_before_order_total');
 
-        echo '<tr class="order-total"><th>' . esc_html__('Total', 'veloria') . '</th><td>';
+        echo '<tr class="order-total"><th>' . esc_html__('Total', 'addonext') . '</th><td>';
         wc_cart_totals_order_total_html();
         echo '</td></tr>';
 

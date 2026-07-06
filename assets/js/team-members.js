@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var SLIDER_SEL = '.veloria-team-members--slider.swiper';
+    var SLIDER_SEL = '.addonext-team-members--slider.swiper';
 
     function initSlider(el) {
         if (!el) return;
@@ -99,7 +99,7 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-team-members.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-team-members.default', function ($scope) {
             var el = $scope && $scope[0] ? $scope[0] : $scope;
             if (el && el.querySelector) {
                 var slider = el.querySelector(SLIDER_SEL);

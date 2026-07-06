@@ -8,7 +8,7 @@ import { useScreenSaveContext } from "../../contexts/ScreenSaveContext/ScreenSav
 import logo from "../../../img/logo.svg";
 
 const Header: React.FC<HeaderProps> = ({
-  title = "Veloria",
+  title = "AddoNext",
   subtitle = "Premium Elementor Widgets Collection",
   theme = "light",
   onThemeToggle,
@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className={styles.inner}>
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <img src={logo} alt="Veloria" className={styles.logoImg} />
+            <img src={logo} alt="AddoNext" className={styles.logoImg} />
           </div>
           <div>
             <h1 className={styles.title}>{title}</h1>

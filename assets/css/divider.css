@@ -1,8 +1,8 @@
-.veloria-divider-wrapper {
+.addonext-divider-wrapper {
     width: 100%;
 }
 
-.veloria-divider__line {
+.addonext-divider__line {
     border: none;
     border-top-style: solid;
     border-top-color: #e5e7eb;
@@ -11,31 +11,31 @@
     min-height: 0;
 }
 
-.veloria-divider__line--standalone {
+.addonext-divider__line--standalone {
     display: block;
     width: 100%;
 }
 
-.veloria-divider-wrapper--align-left .veloria-divider__line--standalone {
+.addonext-divider-wrapper--align-left .addonext-divider__line--standalone {
     margin-right: auto;
 }
 
-.veloria-divider-wrapper--align-center .veloria-divider__line--standalone {
+.addonext-divider-wrapper--align-center .addonext-divider__line--standalone {
     margin-left: auto;
     margin-right: auto;
 }
 
-.veloria-divider-wrapper--align-right .veloria-divider__line--standalone {
+.addonext-divider-wrapper--align-right .addonext-divider__line--standalone {
     margin-left: auto;
 }
 
-.veloria-divider-wrapper--line-icon {
+.addonext-divider-wrapper--line-icon {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.veloria-divider-wrapper--line-icon .veloria-divider__line {
+.addonext-divider-wrapper--line-icon .addonext-divider__line {
     display: block;
     flex: 1;
     min-width: 0;
@@ -47,7 +47,7 @@
     min-height: 0;
 }
 
-.veloria-divider__icon {
+.addonext-divider__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -56,8 +56,8 @@
     font-size: 16px;
 }
 
-.veloria-divider__icon i,
-.veloria-divider__icon svg {
+.addonext-divider__icon i,
+.addonext-divider__icon svg {
     display: block;
     width: 1em;
     height: 1em;
@@ -65,15 +65,15 @@
     max-height: 100%;
 }
 
-.veloria-divider-wrapper--align-left.veloria-divider-wrapper--line-icon {
+.addonext-divider-wrapper--align-left.addonext-divider-wrapper--line-icon {
     margin-right: auto;
 }
 
-.veloria-divider-wrapper--align-center.veloria-divider-wrapper--line-icon {
+.addonext-divider-wrapper--align-center.addonext-divider-wrapper--line-icon {
     margin-left: auto;
     margin-right: auto;
 }
 
-.veloria-divider-wrapper--align-right.veloria-divider-wrapper--line-icon {
+.addonext-divider-wrapper--align-right.addonext-divider-wrapper--line-icon {
     margin-left: auto;
 }

@@ -34,7 +34,7 @@
 
     function segmentsToHtml(segments) {
         return segments.map(function (s) {
-            return '<span class="veloria-cs_' + s.type + '">' + escapeHtml(s.text) + '</span>';
+            return '<span class="addonext-cs_' + s.type + '">' + escapeHtml(s.text) + '</span>';
         }).join('');
     }
 
@@ -75,12 +75,12 @@
     }
 
     function highlight(block) {
-        var codeEl = block.querySelector('.veloria-code-snippet__code');
-        var displayEl = block.querySelector('.veloria-code-snippet__display');
+        var codeEl = block.querySelector('.addonext-code-snippet__code');
+        var displayEl = block.querySelector('.addonext-code-snippet__display');
         if (!codeEl || !displayEl) return;
         var lang = codeEl.getAttribute('data-language') || 'plain';
         var raw = codeEl.textContent || '';
-        if (raw.indexOf('veloria-cs_') !== -1 || raw.indexOf('<span') !== -1) {
+        if (raw.indexOf('addonext-cs_') !== -1 || raw.indexOf('<span') !== -1) {
             raw = stripHtmlToText(raw);
         }
         if (!raw.trim()) return;
@@ -94,15 +94,15 @@
 
     function setCopiedState(btn, copied) {
         btn.classList.toggle('copied', copied);
-        var copyIcon = btn.querySelector('.veloria-code-snippet__copy-icon');
-        var checkIcon = btn.querySelector('.veloria-code-snippet__check-icon');
+        var copyIcon = btn.querySelector('.addonext-code-snippet__copy-icon');
+        var checkIcon = btn.querySelector('.addonext-code-snippet__check-icon');
         if (copyIcon) copyIcon.style.opacity = copied ? '0' : '';
         if (checkIcon) checkIcon.style.opacity = copied ? '1' : '0';
     }
 
     function initCopy(block) {
-        var btn = block.querySelector('.veloria-code-snippet__copy');
-        var codeEl = block.querySelector('.veloria-code-snippet__code');
+        var btn = block.querySelector('.addonext-code-snippet__copy');
+        var codeEl = block.querySelector('.addonext-code-snippet__code');
         if (!btn || !codeEl) return;
         if (btn.dataset.copyInit) return;
         btn.dataset.copyInit = '1';
@@ -145,7 +145,7 @@
 
     function scan(root) {
         root = root || document;
-        var blocks = root.querySelectorAll('.veloria-code-snippet');
+        var blocks = root.querySelectorAll('.addonext-code-snippet');
         blocks.forEach(initBlock);
     }
 
@@ -156,11 +156,11 @@
                 mutations.forEach(function (m) {
                     m.addedNodes.forEach(function (node) {
                         if (node.nodeType !== 1) return;
-                        if (node.classList && node.classList.contains('veloria-code-snippet')) {
+                        if (node.classList && node.classList.contains('addonext-code-snippet')) {
                             initBlock(node);
                         }
                         if (node.querySelectorAll) {
-                            node.querySelectorAll('.veloria-code-snippet').forEach(initBlock);
+                            node.querySelectorAll('.addonext-code-snippet').forEach(initBlock);
                         }
                     });
                 });
@@ -175,11 +175,11 @@
             mutations.forEach(function (m) {
                 m.addedNodes.forEach(function (node) {
                     if (node.nodeType !== 1) return;
-                    if (node.classList && node.classList.contains('veloria-code-snippet')) {
+                    if (node.classList && node.classList.contains('addonext-code-snippet')) {
                         initBlock(node);
                     }
                     if (node.querySelectorAll) {
-                        node.querySelectorAll('.veloria-code-snippet').forEach(initBlock);
+                        node.querySelectorAll('.addonext-code-snippet').forEach(initBlock);
                     }
                 });
             });
@@ -192,7 +192,7 @@
     window.addEventListener('load', run);
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-code-snippet.default', function ($scope) {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-code-snippet.default', function ($scope) {
             var container = $scope && $scope[0] !== undefined ? $scope[0] : $scope;
             if (container && container.querySelectorAll) {
                 scan(container);

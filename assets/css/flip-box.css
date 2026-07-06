@@ -1,14 +1,14 @@
-.veloria-flip-box {
+.addonext-flip-box {
     width: 100%;
     height: 220px;
     perspective: 1000px;
 }
 
-.veloria-flip-box--trigger-click {
+.addonext-flip-box--trigger-click {
     cursor: pointer;
 }
 
-.veloria-flip-box__inner {
+.addonext-flip-box__inner {
     position: relative;
     width: 100%;
     height: 100%;
@@ -16,8 +16,8 @@
     transition: transform 0.6s ease;
 }
 
-.veloria-flip-box__front,
-.veloria-flip-box__back {
+.addonext-flip-box__front,
+.addonext-flip-box__back {
     position: absolute;
     inset: 0;
     display: flex;
@@ -30,39 +30,39 @@
     overflow: hidden;
 }
 
-.veloria-flip-box__front {
+.addonext-flip-box__front {
     background: linear-gradient(to right, #4a8efb, #8e52f7);
     z-index: 2;
 }
 
-.veloria-flip-box__back {
+.addonext-flip-box__back {
     background-color: #1e293b;
     transform: rotateY(180deg);
     z-index: 1;
 }
 
-.veloria-flip-box__front-content,
-.veloria-flip-box__back-content {
+.addonext-flip-box__front-content,
+.addonext-flip-box__back-content {
     text-align: center;
     max-width: 100%;
 }
 
-.veloria-flip-box__front-icon {
+.addonext-flip-box__front-icon {
     color: #ffffff;
     font-size: 48px;
     line-height: 1;
     margin-bottom: 12px;
 }
 
-.veloria-flip-box__front-icon i,
-.veloria-flip-box__front-icon svg {
+.addonext-flip-box__front-icon i,
+.addonext-flip-box__front-icon svg {
     width: 1em;
     height: 1em;
     display: inline-block;
     fill: currentColor;
 }
 
-.veloria-flip-box__front-title {
+.addonext-flip-box__front-title {
     margin: 0 0 6px;
     font-size: 22px;
     font-weight: 700;
@@ -70,7 +70,7 @@
     color: #ffffff;
 }
 
-.veloria-flip-box__front-desc {
+.addonext-flip-box__front-desc {
     margin: 0;
     font-size: 14px;
     font-weight: 400;
@@ -79,21 +79,21 @@
     opacity: 0.95;
 }
 
-.veloria-flip-box__back-title {
+.addonext-flip-box__back-title {
     margin: 0 0 8px;
     font-size: 20px;
     font-weight: 600;
     color: #ffffff;
 }
 
-.veloria-flip-box__back-desc {
+.addonext-flip-box__back-desc {
     margin: 0 0 16px;
     font-size: 14px;
     line-height: 1.5;
     color: #e2e8f0;
 }
 
-.veloria-flip-box__back-button {
+.addonext-flip-box__back-button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 14px;
@@ -105,192 +105,192 @@
     transition: opacity 0.2s ease;
 }
 
-.veloria-flip-box__back-button:hover {
+.addonext-flip-box__back-button:hover {
     opacity: 0.9;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--flip-horizontal:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--flip-horizontal.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--flip-horizontal:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--flip-horizontal.addonext-flip-box--active .addonext-flip-box__inner {
     transform: rotateY(180deg);
 }
 
-.veloria-flip-box--flip-vertical .veloria-flip-box__back {
+.addonext-flip-box--flip-vertical .addonext-flip-box__back {
     transform: rotateX(180deg);
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--flip-vertical:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--flip-vertical.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--flip-vertical:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--flip-vertical.addonext-flip-box--active .addonext-flip-box__inner {
     transform: rotateX(180deg);
 }
 
-.veloria-flip-box--flip-3d {
+.addonext-flip-box--flip-3d {
     perspective: 1200px;
 }
 
-.veloria-flip-box--flip-3d .veloria-flip-box__inner {
+.addonext-flip-box--flip-3d .addonext-flip-box__inner {
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--flip-3d:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--flip-3d.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--flip-3d:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--flip-3d.addonext-flip-box--active .addonext-flip-box__inner {
     transform: rotateY(180deg);
 }
 
-.veloria-flip-box--tilt-3d .veloria-flip-box__inner {
+.addonext-flip-box--tilt-3d .addonext-flip-box__inner {
     transition: transform 0.5s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--tilt-3d:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--tilt-3d.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--tilt-3d:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--tilt-3d.addonext-flip-box--active .addonext-flip-box__inner {
     transform: rotateY(180deg) rotateZ(2deg);
 }
 
-.veloria-flip-box--tilt-3d .veloria-flip-box__back {
+.addonext-flip-box--tilt-3d .addonext-flip-box__back {
     transform: rotateY(180deg);
 }
 
-.veloria-flip-box--lift .veloria-flip-box__inner {
+.addonext-flip-box--lift .addonext-flip-box__inner {
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.veloria-flip-box--lift .veloria-flip-box__front {
+.addonext-flip-box--lift .addonext-flip-box__front {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--lift:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--lift.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--lift:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--lift.addonext-flip-box--active .addonext-flip-box__inner {
     transform: translateY(-12px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-.veloria-flip-box--lift .veloria-flip-box__back {
+.addonext-flip-box--lift .addonext-flip-box__back {
     transform: none;
     z-index: 0;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--lift:hover .veloria-flip-box__front,
-.veloria-flip-box--trigger-click.veloria-flip-box--lift.veloria-flip-box--active .veloria-flip-box__front {
+.addonext-flip-box--trigger-hover.addonext-flip-box--lift:hover .addonext-flip-box__front,
+.addonext-flip-box--trigger-click.addonext-flip-box--lift.addonext-flip-box--active .addonext-flip-box__front {
     opacity: 0;
     pointer-events: none;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--lift:hover .veloria-flip-box__back,
-.veloria-flip-box--trigger-click.veloria-flip-box--lift.veloria-flip-box--active .veloria-flip-box__back {
+.addonext-flip-box--trigger-hover.addonext-flip-box--lift:hover .addonext-flip-box__back,
+.addonext-flip-box--trigger-click.addonext-flip-box--lift.addonext-flip-box--active .addonext-flip-box__back {
     z-index: 2;
     opacity: 1;
 }
 
-.veloria-flip-box--lift .veloria-flip-box__front {
+.addonext-flip-box--lift .addonext-flip-box__front {
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--zoom .veloria-flip-box__inner {
+.addonext-flip-box--zoom .addonext-flip-box__inner {
     transition: transform 0.4s ease;
 }
 
-.veloria-flip-box--zoom .veloria-flip-box__back {
+.addonext-flip-box--zoom .addonext-flip-box__back {
     transform: none;
     z-index: 0;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--zoom:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--zoom.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--zoom:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--zoom.addonext-flip-box--active .addonext-flip-box__inner {
     transform: scale(1.05);
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--zoom:hover .veloria-flip-box__front,
-.veloria-flip-box--trigger-click.veloria-flip-box--zoom.veloria-flip-box--active .veloria-flip-box__front {
+.addonext-flip-box--trigger-hover.addonext-flip-box--zoom:hover .addonext-flip-box__front,
+.addonext-flip-box--trigger-click.addonext-flip-box--zoom.addonext-flip-box--active .addonext-flip-box__front {
     opacity: 0;
     pointer-events: none;
 }
 
-.veloria-flip-box--zoom .veloria-flip-box__front {
+.addonext-flip-box--zoom .addonext-flip-box__front {
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--zoom:hover .veloria-flip-box__back,
-.veloria-flip-box--trigger-click.veloria-flip-box--zoom.veloria-flip-box--active .veloria-flip-box__back {
+.addonext-flip-box--trigger-hover.addonext-flip-box--zoom:hover .addonext-flip-box__back,
+.addonext-flip-box--trigger-click.addonext-flip-box--zoom.addonext-flip-box--active .addonext-flip-box__back {
     z-index: 2;
     opacity: 1;
 }
 
-.veloria-flip-box--zoom-out .veloria-flip-box__inner {
+.addonext-flip-box--zoom-out .addonext-flip-box__inner {
     transition: transform 0.4s ease;
 }
 
-.veloria-flip-box--zoom-out .veloria-flip-box__back {
+.addonext-flip-box--zoom-out .addonext-flip-box__back {
     transform: none;
     z-index: 0;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--zoom-out:hover .veloria-flip-box__inner,
-.veloria-flip-box--trigger-click.veloria-flip-box--zoom-out.veloria-flip-box--active .veloria-flip-box__inner {
+.addonext-flip-box--trigger-hover.addonext-flip-box--zoom-out:hover .addonext-flip-box__inner,
+.addonext-flip-box--trigger-click.addonext-flip-box--zoom-out.addonext-flip-box--active .addonext-flip-box__inner {
     transform: scale(0.92);
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--zoom-out:hover .veloria-flip-box__front,
-.veloria-flip-box--trigger-click.veloria-flip-box--zoom-out.veloria-flip-box--active .veloria-flip-box__front {
+.addonext-flip-box--trigger-hover.addonext-flip-box--zoom-out:hover .addonext-flip-box__front,
+.addonext-flip-box--trigger-click.addonext-flip-box--zoom-out.addonext-flip-box--active .addonext-flip-box__front {
     opacity: 0;
     pointer-events: none;
 }
 
-.veloria-flip-box--zoom-out .veloria-flip-box__front {
+.addonext-flip-box--zoom-out .addonext-flip-box__front {
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--zoom-out:hover .veloria-flip-box__back,
-.veloria-flip-box--trigger-click.veloria-flip-box--zoom-out.veloria-flip-box--active .veloria-flip-box__back {
+.addonext-flip-box--trigger-hover.addonext-flip-box--zoom-out:hover .addonext-flip-box__back,
+.addonext-flip-box--trigger-click.addonext-flip-box--zoom-out.addonext-flip-box--active .addonext-flip-box__back {
     z-index: 2;
     opacity: 1;
 }
 
-.veloria-flip-box--fade-in .veloria-flip-box__back {
+.addonext-flip-box--fade-in .addonext-flip-box__back {
     transform: none;
     z-index: 0;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--fade-in .veloria-flip-box__front {
+.addonext-flip-box--fade-in .addonext-flip-box__front {
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--fade-in:hover .veloria-flip-box__front,
-.veloria-flip-box--trigger-click.veloria-flip-box--fade-in.veloria-flip-box--active .veloria-flip-box__front {
+.addonext-flip-box--trigger-hover.addonext-flip-box--fade-in:hover .addonext-flip-box__front,
+.addonext-flip-box--trigger-click.addonext-flip-box--fade-in.addonext-flip-box--active .addonext-flip-box__front {
     opacity: 0;
     pointer-events: none;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--fade-in:hover .veloria-flip-box__back,
-.veloria-flip-box--trigger-click.veloria-flip-box--fade-in.veloria-flip-box--active .veloria-flip-box__back {
+.addonext-flip-box--trigger-hover.addonext-flip-box--fade-in:hover .addonext-flip-box__back,
+.addonext-flip-box--trigger-click.addonext-flip-box--fade-in.addonext-flip-box--active .addonext-flip-box__back {
     z-index: 2;
     opacity: 1;
 }
 
-.veloria-flip-box--fade-out .veloria-flip-box__back {
+.addonext-flip-box--fade-out .addonext-flip-box__back {
     transform: none;
     z-index: 0;
     opacity: 1;
 }
 
-.veloria-flip-box--fade-out .veloria-flip-box__front {
+.addonext-flip-box--fade-out .addonext-flip-box__front {
     transition: opacity 0.4s ease;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--fade-out:hover .veloria-flip-box__front,
-.veloria-flip-box--trigger-click.veloria-flip-box--fade-out.veloria-flip-box--active .veloria-flip-box__front {
+.addonext-flip-box--trigger-hover.addonext-flip-box--fade-out:hover .addonext-flip-box__front,
+.addonext-flip-box--trigger-click.addonext-flip-box--fade-out.addonext-flip-box--active .addonext-flip-box__front {
     opacity: 0;
     pointer-events: none;
 }
 
-.veloria-flip-box--trigger-hover.veloria-flip-box--fade-out:hover .veloria-flip-box__back,
-.veloria-flip-box--trigger-click.veloria-flip-box--fade-out.veloria-flip-box--active .veloria-flip-box__back {
+.addonext-flip-box--trigger-hover.addonext-flip-box--fade-out:hover .addonext-flip-box__back,
+.addonext-flip-box--trigger-click.addonext-flip-box--fade-out.addonext-flip-box--active .addonext-flip-box__back {
     z-index: 2;
 }
 

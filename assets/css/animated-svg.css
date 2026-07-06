@@ -1,16 +1,16 @@
-.veloria-asvg {
+.addonext-asvg {
   display: flex;
   width: 100%;
 }
 
-.veloria-asvg__link {
+.addonext-asvg__link {
   display: inline-flex;
   max-width: 100%;
   text-decoration: none;
   color: inherit;
 }
 
-.veloria-asvg__inner {
+.addonext-asvg__inner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
   max-width: 100%;
 }
 
-.veloria-asvg__inner svg {
+.addonext-asvg__inner svg {
   display: block;
   width: 96px;
   height: auto;
@@ -26,61 +26,61 @@
   fill: currentColor;
 }
 
-.veloria-asvg__inner svg[fill="none"] {
+.addonext-asvg__inner svg[fill="none"] {
   fill: none;
   stroke: currentColor;
 }
 
-.veloria-asvg__img {
+.addonext-asvg__img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-.veloria-asvg__placeholder {
+.addonext-asvg__placeholder {
   margin: 0;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   color: #6b7280;
 }
 
-.veloria-asvg--anim-pulse .veloria-asvg__inner {
-  animation: veloria-asvg-pulse var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-pulse .addonext-asvg__inner {
+  animation: addonext-asvg-pulse var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-bounce .veloria-asvg__inner {
-  animation: veloria-asvg-bounce var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-bounce .addonext-asvg__inner {
+  animation: addonext-asvg-bounce var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-rotate .veloria-asvg__inner {
-  animation: veloria-asvg-rotate var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-rotate .addonext-asvg__inner {
+  animation: addonext-asvg-rotate var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-shake .veloria-asvg__inner {
-  animation: veloria-asvg-shake var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-shake .addonext-asvg__inner {
+  animation: addonext-asvg-shake var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-float .veloria-asvg__inner {
-  animation: veloria-asvg-float var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-float .addonext-asvg__inner {
+  animation: addonext-asvg-float var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-heartbeat .veloria-asvg__inner {
-  animation: veloria-asvg-heartbeat var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-heartbeat .addonext-asvg__inner {
+  animation: addonext-asvg-heartbeat var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-spin .veloria-asvg__inner {
-  animation: veloria-asvg-spin var(--e-asvg-dur) linear var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-spin .addonext-asvg__inner {
+  animation: addonext-asvg-spin var(--e-asvg-dur) linear var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-wiggle .veloria-asvg__inner {
-  animation: veloria-asvg-wiggle var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
+.addonext-asvg--anim-wiggle .addonext-asvg__inner {
+  animation: addonext-asvg-wiggle var(--e-asvg-dur) var(--e-asvg-ease) var(--e-asvg-delay) var(--e-asvg-iter) both;
 }
 
-.veloria-asvg--anim-draw .veloria-asvg__inner {
+.addonext-asvg--anim-draw .addonext-asvg__inner {
   animation: none;
 }
 
-@keyframes veloria-asvg-pulse {
+@keyframes addonext-asvg-pulse {
   0%,
   100% {
     transform: scale(1);
@@ -92,7 +92,7 @@
   }
 }
 
-@keyframes veloria-asvg-bounce {
+@keyframes addonext-asvg-bounce {
   0%,
   100% {
     transform: translateY(0);
@@ -102,7 +102,7 @@
   }
 }
 
-@keyframes veloria-asvg-rotate {
+@keyframes addonext-asvg-rotate {
   0%,
   100% {
     transform: rotate(-15deg);
@@ -112,7 +112,7 @@
   }
 }
 
-@keyframes veloria-asvg-shake {
+@keyframes addonext-asvg-shake {
   0%,
   100% {
     transform: translateX(0);
@@ -131,7 +131,7 @@
   }
 }
 
-@keyframes veloria-asvg-float {
+@keyframes addonext-asvg-float {
   0%,
   100% {
     transform: translateY(0);
@@ -141,7 +141,7 @@
   }
 }
 
-@keyframes veloria-asvg-heartbeat {
+@keyframes addonext-asvg-heartbeat {
   0%,
   100% {
     transform: scale(1);
@@ -157,7 +157,7 @@
   }
 }
 
-@keyframes veloria-asvg-spin {
+@keyframes addonext-asvg-spin {
   0% {
     transform: rotate(0deg);
   }
@@ -166,7 +166,7 @@
   }
 }
 
-@keyframes veloria-asvg-wiggle {
+@keyframes addonext-asvg-wiggle {
   0%,
   100% {
     transform: rotate(0deg);
@@ -180,11 +180,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .veloria-asvg[class*="veloria-asvg--anim-"]:not(.veloria-asvg--anim-draw) .veloria-asvg__inner {
+  .addonext-asvg[class*="addonext-asvg--anim-"]:not(.addonext-asvg--anim-draw) .addonext-asvg__inner {
     animation: none;
   }
 
-  .veloria-asvg--anim-draw [data-veloria-draw='1'] {
+  .addonext-asvg--anim-draw [data-addonext-draw='1'] {
     stroke-dashoffset: 0 !important;
     fill-opacity: 1 !important;
   }

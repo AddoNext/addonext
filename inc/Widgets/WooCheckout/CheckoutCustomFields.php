@@ -1,15 +1,15 @@
 <?php
-namespace Veloria\Widgets\WooCheckout;
+namespace Addonext\Widgets\WooCheckout;
 
 defined('ABSPATH') or exit;
 
 /**
- * Outputs checkout fields as Veloria markup while preserving WooCommerce field names and classes for checkout scripts.
+ * Outputs checkout fields as AddoNext markup while preserving WooCommerce field names and classes for checkout scripts.
  */
 class CheckoutCustomFields
 {
     /**
-     * Replaces WooCommerce paragraph.form-row shells with Veloria markup; checkout.js still targets .form-row.
+     * Replaces WooCommerce paragraph.form-row shells with AddoNext markup; checkout.js still targets .form-row.
      */
     public static function wrapFieldHtml(string $html): string
     {
@@ -18,11 +18,11 @@ class CheckoutCustomFields
             return $html;
         }
 
-        $html = preg_replace('/^<p\s+class="/', '<div class="veloria-co-field veloria-co-tpl-field ', $html, 1);
+        $html = preg_replace('/^<p\s+class="/', '<div class="addonext-co-field addonext-co-tpl-field ', $html, 1);
         $html = preg_replace('/<\/p>\s*$/', '</div>', $html, 1);
         $html = preg_replace(
             '/<span class="woocommerce-input-wrapper">/',
-            '<span class="woocommerce-input-wrapper veloria-co-field__inner">',
+            '<span class="woocommerce-input-wrapper addonext-co-field__inner">',
             $html,
             1
         );
@@ -44,7 +44,7 @@ class CheckoutCustomFields
         if (!is_array($inputClass)) {
             $inputClass = [];
         }
-        $inputClass[] = 'veloria-co-input';
+        $inputClass[] = 'addonext-co-input';
         $args['input_class'] = array_values(array_unique($inputClass));
 
         $html = woocommerce_form_field($key, $args, $value);

@@ -1,17 +1,17 @@
 <?php
-namespace Veloria\Pro\Migrations;
+namespace Addonext\Pro\Migrations;
 
-use Veloria\Base\MigrationBase;
-use Veloria\Utils\OptionsHelper;
-use Veloria\Common\WidgetManager;
-use Veloria\Pro\Utils\PreviewAccess;
+use Addonext\Base\MigrationBase;
+use Addonext\Utils\OptionsHelper;
+use Addonext\Common\WidgetManager;
+use Addonext\Pro\Utils\PreviewAccess;
 
 defined('ABSPATH') or exit;
 
 /**
  * Migration to activate pro widgets
  *
- * @package Veloria\Migrations
+ * @package AddoNext\Migrations
  */
 class ActivateProWidgets extends MigrationBase
 {

@@ -6,10 +6,10 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGIN_SLUG="$(basename "${PROJECT_ROOT}")"
 BUILD_ROOT="${PROJECT_ROOT}/build"
 STAGING_DIR="${BUILD_ROOT}/${PLUGIN_SLUG}"
-MAIN_PLUGIN_FILE="${PROJECT_ROOT}/veloria.php"
+MAIN_PLUGIN_FILE="${PROJECT_ROOT}/addonext.php"
 
 if [[ ! -f "${MAIN_PLUGIN_FILE}" ]]; then
-    echo "Error: Could not find veloria.php in ${PROJECT_ROOT}"
+    echo "Error: Could not find addonext.php in ${PROJECT_ROOT}"
     exit 1
 fi
 
@@ -41,7 +41,7 @@ VERSION="$(
 )"
 
 if [[ -z "${VERSION}" ]]; then
-    echo "Error: Could not extract plugin version from veloria.php"
+    echo "Error: Could not extract plugin version from addonext.php"
     exit 1
 fi
 

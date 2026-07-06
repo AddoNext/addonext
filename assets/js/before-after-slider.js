@@ -65,10 +65,10 @@
         }
         root.setAttribute('data-ba-init', '1');
 
-        var frame = root.querySelector('.veloria-before-after__frame');
-        var afterLayer = root.querySelector('.veloria-before-after__after');
-        var divider = root.querySelector('.veloria-before-after__divider');
-        var handle = root.querySelector('.veloria-before-after__handle');
+        var frame = root.querySelector('.addonext-before-after__frame');
+        var afterLayer = root.querySelector('.addonext-before-after__after');
+        var divider = root.querySelector('.addonext-before-after__divider');
+        var handle = root.querySelector('.addonext-before-after__handle');
 
         if (!frame || !afterLayer || !divider || !handle) {
             return;
@@ -82,7 +82,7 @@
                 return;
             }
             state.dragging = true;
-            frame.classList.add('veloria-before-after__frame--dragging');
+            frame.classList.add('addonext-before-after__frame--dragging');
             try {
                 handle.setPointerCapture(ev.pointerId);
             } catch (e) {
@@ -117,7 +117,7 @@
                 return;
             }
             state.dragging = false;
-            frame.classList.remove('veloria-before-after__frame--dragging');
+            frame.classList.remove('addonext-before-after__frame--dragging');
             try {
                 handle.releasePointerCapture(ev.pointerId);
             } catch (e) {
@@ -126,7 +126,7 @@
         }
 
         function onFramePointerDown(ev) {
-            if (ev.target.closest('.veloria-before-after__handle')) {
+            if (ev.target.closest('.addonext-before-after__handle')) {
                 return;
             }
             setSplit(
@@ -183,7 +183,7 @@
 
     function scan(scope) {
         var docRoot = scope || document;
-        var nodes = docRoot.querySelectorAll('.veloria-before-after');
+        var nodes = docRoot.querySelectorAll('.addonext-before-after');
         for (var i = 0; i < nodes.length; i += 1) {
             init(nodes[i]);
         }
@@ -202,13 +202,13 @@
             return;
         }
         elementorFrontend.hooks.addAction(
-            'frontend/element_ready/veloria-before-after-slider.default',
+            'frontend/element_ready/addonext-before-after-slider.default',
             function ($scope) {
                 var el = $scope && $scope[0] ? $scope[0] : null;
                 if (!el) {
                     return;
                 }
-                var list = el.querySelectorAll('.veloria-before-after');
+                var list = el.querySelectorAll('.addonext-before-after');
                 for (var i = 0; i < list.length; i += 1) {
                     list[i].removeAttribute('data-ba-init');
                     init(list[i]);

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ImageGallery;
+namespace Addonext\Widgets\ImageGallery;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -12,12 +12,12 @@ class ImageGallery extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-gallery-grid veloria-icon';
+        return 'eicon-gallery-grid addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-image-gallery';
+        return 'addonext-image-gallery';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ImageGallery extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Image Gallery', 'veloria');
+        return __('Image Gallery', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Grid and random-style image gallery layouts', 'veloria');
+        return __('Grid and random-style image gallery layouts', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,27 +42,27 @@ class ImageGallery extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-image-gallery'];
+        return ['addonext-image-gallery'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-image-gallery'];
+        return ['addonext-image-gallery'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-image-gallery',
-            VELORIA_URL . 'assets/css/image-gallery.css',
+            'addonext-image-gallery',
+            ADDONEXT_URL . 'assets/css/image-gallery.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-image-gallery',
-            VELORIA_URL . 'assets/js/image-gallery.js',
+            'addonext-image-gallery',
+            ADDONEXT_URL . 'assets/js/image-gallery.js',
             [],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -70,44 +70,44 @@ class ImageGallery extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('view', [
-            'label'   => __('View', 'veloria'),
+            'label'   => __('View', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'grid',
             'options' => [
-                'grid'   => __('Grid', 'veloria'),
-                'random' => __('Random', 'veloria'),
+                'grid'   => __('Grid', 'addonext'),
+                'random' => __('Random', 'addonext'),
             ],
         ]);
 
         $r = new Repeater();
         $r->add_control('image', [
-            'label'   => __('Image', 'veloria'),
+            'label'   => __('Image', 'addonext'),
             'type'    => Controls_Manager::MEDIA,
             'default' => ['url' => Utils::get_placeholder_image_src()],
         ]);
         $r->add_control('caption', [
-            'label'   => __('Caption', 'veloria'),
+            'label'   => __('Caption', 'addonext'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
         $r->add_control('title', [
-            'label'   => __('Title', 'veloria'),
+            'label'   => __('Title', 'addonext'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
         $r->add_control('subtitle', [
-            'label'   => __('Subtitle', 'veloria'),
+            'label'   => __('Subtitle', 'addonext'),
             'type'    => Controls_Manager::TEXT,
             'default' => '',
         ]);
 
         $this->add_control('gallery', [
-            'label'       => __('Images', 'veloria'),
+            'label'       => __('Images', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $r->get_controls(),
             'default'     => [
@@ -122,7 +122,7 @@ class ImageGallery extends WidgetBase
         ]);
 
         $this->add_control('columns', [
-            'label'     => __('Grid columns', 'veloria'),
+            'label'     => __('Grid columns', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'default'   => '3',
             'options'   => [
@@ -136,7 +136,7 @@ class ImageGallery extends WidgetBase
         ]);
 
         $this->add_control('random_columns', [
-            'label'     => __('Random columns', 'veloria'),
+            'label'     => __('Random columns', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'default'   => '5',
             'options'   => [
@@ -150,40 +150,40 @@ class ImageGallery extends WidgetBase
         ]);
 
         $this->add_control('enable_preview', [
-            'label'        => __('Enable image preview', 'veloria'),
+            'label'        => __('Enable image preview', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
-            'label_on'     => __('Yes', 'veloria'),
-            'label_off'    => __('No', 'veloria'),
+            'label_on'     => __('Yes', 'addonext'),
+            'label_off'    => __('No', 'addonext'),
             'return_value' => 'yes',
             'default'      => '',
         ]);
 
         $this->add_control('overlay_animation', [
-            'label'     => __('Overlay animation', 'veloria'),
+            'label'     => __('Overlay animation', 'addonext'),
             'type'      => Controls_Manager::SELECT,
             'default'   => 'fade-in',
             'options'   => [
-                'fade-in'      => __('Fade in', 'veloria'),
-                'fade-out'     => __('Fade out', 'veloria'),
-                'slide-top'    => __('Slide top', 'veloria'),
-                'slide-bottom' => __('Slide bottom', 'veloria'),
+                'fade-in'      => __('Fade in', 'addonext'),
+                'fade-out'     => __('Fade out', 'addonext'),
+                'slide-top'    => __('Slide top', 'addonext'),
+                'slide-bottom' => __('Slide bottom', 'addonext'),
             ],
             'condition' => ['enable_preview' => 'yes'],
         ]);
 
         $this->add_responsive_control('gap', [
-            'label'      => __('Gap', 'veloria'),
+            'label'      => __('Gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 40]],
             'default'    => ['size' => 10, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-image-gallery' => '--veloria-image-gallery-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-image-gallery' => '--addonext-image-gallery-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('border_radius', [
-            'label'      => __('Image border radius', 'veloria'),
+            'label'      => __('Image border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => [
@@ -192,7 +192,7 @@ class ImageGallery extends WidgetBase
             ],
             'default'    => ['size' => 0, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-image-gallery__image' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-image-gallery__image' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -201,7 +201,7 @@ class ImageGallery extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/image-gallery/image-gallery.php';
+        $path = ADDONEXT_DIR . 'templates/image-gallery/image-gallery.php';
         if (is_readable($path)) include $path;
     }
 
@@ -214,15 +214,15 @@ class ImageGallery extends WidgetBase
         var randomCols = settings.random_columns || '5';
         var enablePreview = settings.enable_preview === 'yes';
         var overlayAnimation = settings.overlay_animation || 'fade-in';
-        var classes = 'veloria-image-gallery veloria-image-gallery--' + view;
+        var classes = 'addonext-image-gallery addonext-image-gallery--' + view;
         if (view === 'grid') {
-            classes += ' veloria-image-gallery--cols-' + cols;
+            classes += ' addonext-image-gallery--cols-' + cols;
         } else {
-            classes += ' veloria-image-gallery--random-cols-' + randomCols;
+            classes += ' addonext-image-gallery--random-cols-' + randomCols;
         }
         if (enablePreview) {
-            classes += ' veloria-image-gallery--preview-enabled';
-            classes += ' veloria-image-gallery--overlay-' + overlayAnimation;
+            classes += ' addonext-image-gallery--preview-enabled';
+            classes += ' addonext-image-gallery--overlay-' + overlayAnimation;
         }
         var items = settings.gallery || [];
         var placeholder = '<?php echo esc_url(Utils::get_placeholder_image_src()); ?>';
@@ -241,18 +241,18 @@ class ImageGallery extends WidgetBase
                 });
                 #>
                 <# _.each(grouped, function(column) { #>
-                    <div class="veloria-image-gallery__column">
+                    <div class="addonext-image-gallery__column">
                         <# _.each(column, function(item) { #>
                             <# var imageUrl = (item.image && item.image.url) ? item.image.url : placeholder; #>
-                            <div class="veloria-image-gallery__item">
-                                <img class="veloria-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
+                            <div class="addonext-image-gallery__item">
+                                <img class="addonext-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
                                 <# if (enablePreview) { #>
-                                    <button type="button" class="veloria-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'veloria'); ?>">
-                                        <span class="veloria-image-gallery__overlay-content">
-                                            <# if (item.title) { #><span class="veloria-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
-                                            <# if (item.subtitle) { #><span class="veloria-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
+                                    <button type="button" class="addonext-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'addonext'); ?>">
+                                        <span class="addonext-image-gallery__overlay-content">
+                                            <# if (item.title) { #><span class="addonext-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
+                                            <# if (item.subtitle) { #><span class="addonext-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
                                         </span>
-                                        <span class="veloria-image-gallery__preview-icon" aria-hidden="true">
+                                        <span class="addonext-image-gallery__preview-icon" aria-hidden="true">
                                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 12C4.3 8.4 7.8 6 12 6C16.2 6 19.7 8.4 21.5 12C19.7 15.6 16.2 18 12 18C7.8 18 4.3 15.6 2.5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"></circle></svg>
                                         </span>
                                     </button>
@@ -264,15 +264,15 @@ class ImageGallery extends WidgetBase
             <# } else { #>
                 <# _.each(items, function(item) { #>
                     <# var imageUrl = (item.image && item.image.url) ? item.image.url : placeholder; #>
-                    <div class="veloria-image-gallery__item">
-                        <img class="veloria-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
+                    <div class="addonext-image-gallery__item">
+                        <img class="addonext-image-gallery__image" src="{{ imageUrl }}" alt="{{ item.caption || '' }}">
                         <# if (enablePreview) { #>
-                            <button type="button" class="veloria-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'veloria'); ?>">
-                                <span class="veloria-image-gallery__overlay-content">
-                                    <# if (item.title) { #><span class="veloria-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
-                                    <# if (item.subtitle) { #><span class="veloria-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
+                            <button type="button" class="addonext-image-gallery__preview" data-image-url="{{ imageUrl }}" data-image-alt="{{ item.caption || '' }}" aria-label="<?php echo esc_attr__('Preview image', 'addonext'); ?>">
+                                <span class="addonext-image-gallery__overlay-content">
+                                    <# if (item.title) { #><span class="addonext-image-gallery__overlay-title">{{{ item.title }}}</span><# } #>
+                                    <# if (item.subtitle) { #><span class="addonext-image-gallery__overlay-subtitle">{{{ item.subtitle }}}</span><# } #>
                                 </span>
-                                <span class="veloria-image-gallery__preview-icon" aria-hidden="true">
+                                <span class="addonext-image-gallery__preview-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 12C4.3 8.4 7.8 6 12 6C16.2 6 19.7 8.4 21.5 12C19.7 15.6 16.2 18 12 18C7.8 18 4.3 15.6 2.5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"></circle></svg>
                                 </span>
                             </button>

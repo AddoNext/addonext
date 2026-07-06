@@ -1,15 +1,15 @@
-.veloria-advanced-google-map {
+.addonext-advanced-google-map {
     position: relative;
     width: 100%;
 }
 
-.veloria-advanced-google-map__frame {
+.addonext-advanced-google-map__frame {
     display: block;
     width: 100%;
     border: 0;
 }
 
-.veloria-advanced-google-map__placeholder {
+.addonext-advanced-google-map__placeholder {
     padding: 2rem;
     text-align: center;
     color: #6b7280;
@@ -17,25 +17,25 @@
     border-radius: 8px;
 }
 
-.veloria-advanced-google-map__address {
+.addonext-advanced-google-map__address {
     width: 100%;
 }
 
-.veloria-advanced-google-map__address-title {
+.addonext-advanced-google-map__address-title {
     font-weight: 700;
     margin: 0 0 0.5rem;
 }
 
-.veloria-advanced-google-map__address-desc {
+.addonext-advanced-google-map__address-desc {
     margin: 0;
     font-size: 0.9375rem;
     line-height: 1.6;
 }
 
-.veloria-advanced-google-map__address.is-bottom {
+.addonext-advanced-google-map__address.is-bottom {
     margin-top: 1rem;
 }
 
-.veloria-advanced-google-map__address.is-top {
+.addonext-advanced-google-map__address.is-top {
     margin-bottom: 1rem;
 }

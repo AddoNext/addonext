@@ -1,4 +1,4 @@
-.veloria-nav-menu {
+.addonext-nav-menu {
     --nm-line-h: 3px;
     --nm-grad-a: #6366f1;
     --nm-grad-b: #a855f7;
@@ -9,13 +9,13 @@
     width: 100%;
 }
 
-.veloria-nav-menu__inner {
+.addonext-nav-menu__inner {
     display: flex;
     width: 100%;
     align-items: center;
 }
 
-.veloria-nav-menu__root {
+.addonext-nav-menu__root {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -24,12 +24,12 @@
     padding: 0;
 }
 
-.veloria-nav-menu .menu-item {
+.addonext-nav-menu .menu-item {
     position: relative;
     margin: 0;
 }
 
-.veloria-nav-menu__root > .menu-item > a {
+.addonext-nav-menu__root > .menu-item > a {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -38,17 +38,17 @@
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, text-shadow 0.2s ease;
 }
 
-.veloria-nav-menu__root > .menu-item.current-menu-item > a,
-.veloria-nav-menu__root > .menu-item.current-menu-ancestor > a {
+.addonext-nav-menu__root > .menu-item.current-menu-item > a,
+.addonext-nav-menu__root > .menu-item.current-menu-ancestor > a {
     font-weight: 600;
 }
 
-.veloria-nav-menu__root > .menu-item > a:focus-visible {
+.addonext-nav-menu__root > .menu-item > a:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
 }
 
-.veloria-nav-menu__root > .menu-item-has-children > a {
+.addonext-nav-menu__root > .menu-item-has-children > a {
     padding-right: 1.15em;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23374151' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -56,13 +56,13 @@
     background-size: 8px 5px;
 }
 
-.veloria-nav-menu__root > .menu-item-has-children.current-menu-item > a,
-.veloria-nav-menu__root > .menu-item-has-children.current-menu-ancestor > a {
+.addonext-nav-menu__root > .menu-item-has-children.current-menu-item > a,
+.addonext-nav-menu__root > .menu-item-has-children.current-menu-ancestor > a {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%234f46e5' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
 }
 
-.veloria-nav-menu--hover-gradient_border .veloria-nav-menu__root > .menu-item > a::after,
-.veloria-nav-menu--hover-solid_underline .veloria-nav-menu__root > .menu-item > a::after {
+.addonext-nav-menu--hover-gradient_border .addonext-nav-menu__root > .menu-item > a::after,
+.addonext-nav-menu--hover-solid_underline .addonext-nav-menu__root > .menu-item > a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -76,59 +76,59 @@
     pointer-events: none;
 }
 
-.veloria-nav-menu--hover-gradient_border .veloria-nav-menu__root > .menu-item > a::after {
+.addonext-nav-menu--hover-gradient_border .addonext-nav-menu__root > .menu-item > a::after {
     background: linear-gradient(90deg, var(--nm-grad-a), var(--nm-grad-b));
 }
 
-.veloria-nav-menu--hover-solid_underline .veloria-nav-menu__root > .menu-item > a::after {
+.addonext-nav-menu--hover-solid_underline .addonext-nav-menu__root > .menu-item > a::after {
     background: var(--nm-solid-line, #4f46e5);
 }
 
-.veloria-nav-menu--hover-gradient_border .veloria-nav-menu__root > .menu-item > a:hover::after,
-.veloria-nav-menu--hover-gradient_border .veloria-nav-menu__root > .menu-item > a:focus-visible::after,
-.veloria-nav-menu--hover-solid_underline .veloria-nav-menu__root > .menu-item > a:hover::after,
-.veloria-nav-menu--hover-solid_underline .veloria-nav-menu__root > .menu-item > a:focus-visible::after {
+.addonext-nav-menu--hover-gradient_border .addonext-nav-menu__root > .menu-item > a:hover::after,
+.addonext-nav-menu--hover-gradient_border .addonext-nav-menu__root > .menu-item > a:focus-visible::after,
+.addonext-nav-menu--hover-solid_underline .addonext-nav-menu__root > .menu-item > a:hover::after,
+.addonext-nav-menu--hover-solid_underline .addonext-nav-menu__root > .menu-item > a:focus-visible::after {
     transform: scaleX(1);
 }
 
-.veloria-nav-menu--hover-pill_background .veloria-nav-menu__root > .menu-item > a {
+.addonext-nav-menu--hover-pill_background .addonext-nav-menu__root > .menu-item > a {
     border-radius: 999px;
     padding-left: 0.75em;
     padding-right: 0.75em;
 }
 
-.veloria-nav-menu--hover-pill_background .veloria-nav-menu__root > .menu-item-has-children > a {
+.addonext-nav-menu--hover-pill_background .addonext-nav-menu__root > .menu-item-has-children > a {
     padding-right: 1.35em;
     background-position: right 0.55em center;
 }
 
-.veloria-nav-menu--hover-pill_background .veloria-nav-menu__root > .menu-item > a:hover,
-.veloria-nav-menu--hover-pill_background .veloria-nav-menu__root > .menu-item > a:focus-visible {
+.addonext-nav-menu--hover-pill_background .addonext-nav-menu__root > .menu-item > a:hover,
+.addonext-nav-menu--hover-pill_background .addonext-nav-menu__root > .menu-item > a:focus-visible {
     background-color: var(--nm-pill-bg, #eef2ff);
 }
 
-.veloria-nav-menu--hover-lift .veloria-nav-menu__root > .menu-item > a:hover,
-.veloria-nav-menu--hover-lift .veloria-nav-menu__root > .menu-item > a:focus-visible {
+.addonext-nav-menu--hover-lift .addonext-nav-menu__root > .menu-item > a:hover,
+.addonext-nav-menu--hover-lift .addonext-nav-menu__root > .menu-item > a:focus-visible {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px var(--nm-lift-shadow, rgba(79, 70, 229, 0.18));
 }
 
-.veloria-nav-menu--hover-glow_text .veloria-nav-menu__root > .menu-item > a:hover,
-.veloria-nav-menu--hover-glow_text .veloria-nav-menu__root > .menu-item > a:focus-visible {
+.addonext-nav-menu--hover-glow_text .addonext-nav-menu__root > .menu-item > a:hover,
+.addonext-nav-menu--hover-glow_text .addonext-nav-menu__root > .menu-item > a:focus-visible {
     text-shadow: 0 0 14px var(--nm-glow, rgba(99, 102, 241, 0.55));
 }
 
-.veloria-nav-menu--hover-none .veloria-nav-menu__root > .menu-item > a::after {
+.addonext-nav-menu--hover-none .addonext-nav-menu__root > .menu-item > a::after {
     display: none;
 }
 
-.veloria-nav-menu--hover-pill_background .veloria-nav-menu__root > .menu-item > a::after,
-.veloria-nav-menu--hover-lift .veloria-nav-menu__root > .menu-item > a::after,
-.veloria-nav-menu--hover-glow_text .veloria-nav-menu__root > .menu-item > a::after {
+.addonext-nav-menu--hover-pill_background .addonext-nav-menu__root > .menu-item > a::after,
+.addonext-nav-menu--hover-lift .addonext-nav-menu__root > .menu-item > a::after,
+.addonext-nav-menu--hover-glow_text .addonext-nav-menu__root > .menu-item > a::after {
     display: none;
 }
 
-.veloria-nav-menu__sub {
+.addonext-nav-menu__sub {
     position: absolute;
     left: 0;
     top: 100%;
@@ -143,7 +143,7 @@
     transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 }
 
-.veloria-nav-menu:not(.veloria-nav-menu--layout-mobile) .menu-item > .veloria-nav-menu__sub::before {
+.addonext-nav-menu:not(.addonext-nav-menu--layout-mobile) .menu-item > .addonext-nav-menu__sub::before {
     content: "";
     position: absolute;
     left: 0;
@@ -152,11 +152,11 @@
     height: 10px;
 }
 
-.veloria-nav-menu__sub .menu-item {
+.addonext-nav-menu__sub .menu-item {
     width: 100%;
 }
 
-.veloria-nav-menu__sub .menu-item > a {
+.addonext-nav-menu__sub .menu-item > a {
     display: block;
     padding: 0.5rem 1.1rem;
     text-decoration: none;
@@ -164,31 +164,31 @@
     transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.veloria-nav-menu__sub .menu-item > a:hover,
-.veloria-nav-menu__sub .menu-item > a:focus-visible {
+.addonext-nav-menu__sub .menu-item > a:hover,
+.addonext-nav-menu__sub .menu-item > a:focus-visible {
     background-color: rgba(79, 70, 229, 0.06);
 }
 
-.veloria-nav-menu__sub--nested {
+.addonext-nav-menu__sub--nested {
     left: 100%;
     top: 0;
     margin-left: 2px;
 }
 
-.veloria-nav-menu:not(.veloria-nav-menu--layout-mobile):not(.veloria-nav-menu--sub-click) .menu-item:hover > .veloria-nav-menu__sub,
-.veloria-nav-menu:not(.veloria-nav-menu--layout-mobile):not(.veloria-nav-menu--sub-click) .menu-item:focus-within > .veloria-nav-menu__sub {
+.addonext-nav-menu:not(.addonext-nav-menu--layout-mobile):not(.addonext-nav-menu--sub-click) .menu-item:hover > .addonext-nav-menu__sub,
+.addonext-nav-menu:not(.addonext-nav-menu--layout-mobile):not(.addonext-nav-menu--sub-click) .menu-item:focus-within > .addonext-nav-menu__sub {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.veloria-nav-menu--sub-click:not(.veloria-nav-menu--layout-mobile) .menu-item.is-open > .veloria-nav-menu__sub {
+.addonext-nav-menu--sub-click:not(.addonext-nav-menu--layout-mobile) .menu-item.is-open > .addonext-nav-menu__sub {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.veloria-nav-menu__sub .menu-item-has-children > a {
+.addonext-nav-menu__sub .menu-item-has-children > a {
     padding-right: 1.75rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10'%3E%3Cpath fill='%23374151' d='M0 0l6 5-6 5V0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -196,25 +196,25 @@
     background-size: 5px 8px;
 }
 
-.veloria-nav-menu__placeholder {
+.addonext-nav-menu__placeholder {
     margin: 0;
     padding: 0.75rem 0;
     color: #6b7280;
     font-size: 0.9rem;
 }
 
-.veloria-nav-menu--layout-mobile .veloria-nav-menu__root {
+.addonext-nav-menu--layout-mobile .addonext-nav-menu__root {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
 }
 
-.veloria-nav-menu--layout-mobile .veloria-nav-menu__root > .menu-item > a {
+.addonext-nav-menu--layout-mobile .addonext-nav-menu__root > .menu-item > a {
     width: 100%;
     justify-content: flex-start;
 }
 
-.veloria-nav-menu--layout-mobile .veloria-nav-menu__sub {
+.addonext-nav-menu--layout-mobile .addonext-nav-menu__sub {
     position: static;
     opacity: 1;
     visibility: visible;
@@ -226,10 +226,10 @@
     border-radius: 0;
 }
 
-.veloria-nav-menu--layout-mobile .menu-item.is-open > .veloria-nav-menu__sub {
+.addonext-nav-menu--layout-mobile .menu-item.is-open > .addonext-nav-menu__sub {
     display: block;
 }
 
-.veloria-nav-menu--layout-mobile:not(.veloria-nav-menu--hover-none) .veloria-nav-menu__root > .menu-item > a::after {
+.addonext-nav-menu--layout-mobile:not(.addonext-nav-menu--hover-none) .addonext-nav-menu__root > .menu-item > a::after {
     display: none;
 }

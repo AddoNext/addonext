@@ -1,5 +1,5 @@
 <?php
-namespace Veloria\Admin;
+namespace Addonext\Admin;
 
 defined( 'ABSPATH' ) || die( 'No direct access allowed' );
 
@@ -21,10 +21,10 @@ class AdminController
     public function register_admin_menu(): void
     {
         add_menu_page(
-            'Veloria',
-            'Veloria',
+            'AddoNext',
+            'AddoNext',
             'manage_options',
-            'veloria',
+            'addonext',
             [ $this, 'render_admin_page' ],
             'dashicons-welcome-widgets-menus',
             100
@@ -34,7 +34,7 @@ class AdminController
     public function render_admin_page(): void
     {
         $elementor_active = AdminAssets::is_elementor_plugin_active();
-        echo '<div id="veloria-admin" data-elementor-active="' . ($elementor_active ? '1' : '0') . '"></div>';
+        echo '<div id="addonext-admin" data-elementor-active="' . ($elementor_active ? '1' : '0') . '"></div>';
     }
 
     /**
@@ -59,12 +59,12 @@ class AdminController
                 admin_url('plugins.php?action=activate&plugin=' . rawurlencode($plugin_file)),
                 'activate-plugin_' . $plugin_file
             );
-            $message    = __('Veloria is not working because you need to activate the Elementor plugin.', 'veloria');
-            $button     = __('Activate Elementor Now', 'veloria');
+            $message    = __('AddoNext is not working because you need to activate the Elementor plugin.', 'addonext');
+            $button     = __('Activate Elementor Now', 'addonext');
         } else {
             $action_url = admin_url('plugin-install.php?s=elementor&tab=search&type=term');
-            $message    = __('Veloria requires the Elementor plugin. Install Elementor from WordPress.org to continue.', 'veloria');
-            $button     = __('Install Elementor', 'veloria');
+            $message    = __('AddoNext requires the Elementor plugin. Install Elementor from WordPress.org to continue.', 'addonext');
+            $button     = __('Install Elementor', 'addonext');
         }
 
         printf(

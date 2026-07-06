@@ -1,20 +1,20 @@
 <?php
-namespace Veloria\Common;
+namespace Addonext\Common;
 
-use Veloria\Base\ExtensionBase;
-use Veloria\Utils\OptionsHelper;
-use Veloria\Extensions\Duplicator\Duplicator;
-use Veloria\Extensions\ReadingProgressBar\ReadingProgressBar;
-use Veloria\Extensions\MovingCircles\MovingCircles;
-use Veloria\Extensions\ScrollToTop\ScrollToTop;
-use Veloria\Extensions\SmoothScroll\SmoothScroll;
+use Addonext\Base\ExtensionBase;
+use Addonext\Utils\OptionsHelper;
+use Addonext\Extensions\Duplicator\Duplicator;
+use Addonext\Extensions\ReadingProgressBar\ReadingProgressBar;
+use Addonext\Extensions\MovingCircles\MovingCircles;
+use Addonext\Extensions\ScrollToTop\ScrollToTop;
+use Addonext\Extensions\SmoothScroll\SmoothScroll;
 
 defined('ABSPATH') or exit;
 
 /**
- * Veloria Extension Manager class
+ * AddoNext Extension Manager class
  *
- * @package Veloria
+ * @package AddoNext
  * @since 1.0.0
  */
 class ExtensionManager
@@ -182,8 +182,8 @@ class ExtensionManager
     {
         $extensions = self::$extensions;
 
-        if (function_exists('veloria_get_pro_extension_map')) {
-            $extensions = array_merge($extensions, veloria_get_pro_extension_map());
+        if (function_exists('addonext_get_pro_extension_map')) {
+            $extensions = array_merge($extensions, addonext_get_pro_extension_map());
         }
 
         return array_values($extensions);
@@ -196,8 +196,8 @@ class ExtensionManager
     {
         $extensions = self::$extensions;
 
-        if (function_exists('veloria_get_pro_extension_map')) {
-            $extensions = array_merge($extensions, veloria_get_pro_extension_map());
+        if (function_exists('addonext_get_pro_extension_map')) {
+            $extensions = array_merge($extensions, addonext_get_pro_extension_map());
         }
 
         return $extensions;
@@ -276,8 +276,8 @@ class ExtensionManager
             return false;
         }
 
-        if (veloria_pro_class_exists('\Veloria\Pro\Utils\PreviewAccess')) {
-            return \Veloria\Pro\Utils\PreviewAccess::is_preview_mode();
+        if (addonext_pro_class_exists('\Addonext\Pro\Utils\PreviewAccess')) {
+            return \Addonext\Pro\Utils\PreviewAccess::is_preview_mode();
         }
 
         return true;

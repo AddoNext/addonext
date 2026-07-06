@@ -1,20 +1,20 @@
 'use strict';
 
-function veloriaAccordionInit() {
+function addonextAccordionInit() {
   document.addEventListener('click', function (e) {
-    var header = e.target.closest('.veloria-accordion__header');
+    var header = e.target.closest('.addonext-accordion__header');
     if (!header) return;
     e.preventDefault();
     e.stopPropagation();
-    var item = header.closest('.veloria-accordion__item');
-    var accordion = header.closest('.veloria-accordion');
+    var item = header.closest('.addonext-accordion__item');
+    var accordion = header.closest('.addonext-accordion');
     if (!accordion || !item) return;
 
     var allowMultiple = accordion.getAttribute('data-allow-multiple') === '1';
     var isOpen = item.classList.contains('is-open');
 
     if (!allowMultiple) {
-      var others = accordion.querySelectorAll('.veloria-accordion__item');
+      var others = accordion.querySelectorAll('.addonext-accordion__item');
       others.forEach(function (el) {
         el.classList.remove('is-open');
       });
@@ -28,7 +28,7 @@ function veloriaAccordionInit() {
   });
 
   document.addEventListener('keydown', function (e) {
-    var header = e.target.closest('.veloria-accordion__header');
+    var header = e.target.closest('.addonext-accordion__header');
     if (!header) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -38,7 +38,7 @@ function veloriaAccordionInit() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', veloriaAccordionInit);
+  document.addEventListener('DOMContentLoaded', addonextAccordionInit);
 } else {
-  veloriaAccordionInit();
+  addonextAccordionInit();
 }

@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\TwitterFeed;
+namespace Addonext\Widgets\TwitterFeed;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -14,12 +14,12 @@ class TwitterFeed extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-twitter-feed veloria-icon';
+        return 'eicon-twitter-feed addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-twitter-feed';
+        return 'addonext-twitter-feed';
     }
 
     public function get_admin_category(): string
@@ -29,12 +29,12 @@ class TwitterFeed extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Twitter Feed', 'veloria');
+        return __('Twitter Feed', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Show recent posts from an X (Twitter) account using API v2.', 'veloria');
+        return __('Show recent posts from an X (Twitter) account using API v2.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -44,16 +44,16 @@ class TwitterFeed extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-twitter-feed'];
+        return ['addonext-twitter-feed'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-twitter-feed',
-            VELORIA_URL . 'assets/css/twitter-feed.css',
+            'addonext-twitter-feed',
+            ADDONEXT_URL . 'assets/css/twitter-feed.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -142,7 +142,7 @@ class TwitterFeed extends WidgetBase
 
         $limit = isset($settings['tweet_limit']) ? (int) $settings['tweet_limit'] : 5;
         $limit = max(1, min(100, $limit));
-        $cache_key = 'veloria_tf_' . $this->get_id() . '_' . md5(
+        $cache_key = 'addonext_tf_' . $this->get_id() . '_' . md5(
             $username . '|' . substr(hash('sha256', $bearer_token), 0, 16) . '|' . $limit . '|' . (string) ($settings['cache_timeout'] ?? 'hour')
         );
 
@@ -228,31 +228,31 @@ class TwitterFeed extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_api', [
-            'label' => __('API', 'veloria'),
+            'label' => __('API', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('username', [
-            'label'       => __('X username', 'veloria'),
+            'label'       => __('X username', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'default'     => '',
             'placeholder' => 'elonmusk',
-            'description' => __('Without @. Requires a Twitter Developer app with read access.', 'veloria'),
+            'description' => __('Without @. Requires a Twitter Developer app with read access.', 'addonext'),
         ]);
 
         $this->add_control('bearer_token', [
-            'label'       => __('Bearer token', 'veloria'),
+            'label'       => __('Bearer token', 'addonext'),
             'type'        => Controls_Manager::TEXTAREA,
-            'placeholder' => __('Paste OAuth 2.0 Bearer Token (App only)', 'veloria'),
+            'placeholder' => __('Paste OAuth 2.0 Bearer Token (App only)', 'addonext'),
             'description' => __(
                 'Create an app at developer.x.com, generate a Bearer Token, and ensure the project can access user tweet timelines (API v2).',
-                'veloria'
+                'addonext'
             ),
             'rows'        => 3,
         ]);
 
         $this->add_control('tweet_limit', [
-            'label'   => __('Number of posts', 'veloria'),
+            'label'   => __('Number of posts', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 1,
             'max'     => 100,
@@ -260,48 +260,48 @@ class TwitterFeed extends WidgetBase
         ]);
 
         $this->add_control('cache_timeout', [
-            'label'   => __('Cache duration', 'veloria'),
+            'label'   => __('Cache duration', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'hour',
             'options' => [
-                'none'   => __('None', 'veloria'),
-                'minute' => __('1 minute', 'veloria'),
-                'hour'   => __('1 hour', 'veloria'),
-                'day'    => __('1 day', 'veloria'),
-                'week'   => __('1 week', 'veloria'),
+                'none'   => __('None', 'addonext'),
+                'minute' => __('1 minute', 'addonext'),
+                'hour'   => __('1 hour', 'addonext'),
+                'day'    => __('1 day', 'addonext'),
+                'week'   => __('1 week', 'addonext'),
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_display', [
-            'label' => __('Display', 'veloria'),
+            'label' => __('Display', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('open_new_tab', [
-            'label'        => __('Open links in new tab', 'veloria'),
+            'label'        => __('Open links in new tab', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_date', [
-            'label'        => __('Show date', 'veloria'),
+            'label'        => __('Show date', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_metrics', [
-            'label'        => __('Show engagement counts', 'veloria'),
+            'label'        => __('Show engagement counts', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_profile_link', [
-            'label'        => __('Show profile link', 'veloria'),
+            'label'        => __('Show profile link', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -310,36 +310,36 @@ class TwitterFeed extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_box', [
-            'label' => __('Cards', 'veloria'),
+            'label' => __('Cards', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('card_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-twitter-feed__item' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-twitter-feed__item' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_border', [
-            'label'     => __('Border color', 'veloria'),
+            'label'     => __('Border color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e2e8f0',
             'selectors' => [
-                '{{WRAPPER}} .veloria-twitter-feed__item' => 'border-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-twitter-feed__item' => 'border-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('card_radius', [
-            'label'      => __('Radius', 'veloria'),
+            'label'      => __('Radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
             'default'    => ['size' => 12, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-twitter-feed__item' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-twitter-feed__item' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -347,18 +347,18 @@ class TwitterFeed extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'text_typography',
-                'label'    => __('Post text', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-twitter-feed__text',
+                'label'    => __('Post text', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-twitter-feed__text',
             ]
         );
 
         $this->add_control('link_color', [
-            'label'     => __('Link color', 'veloria'),
+            'label'     => __('Link color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#1d9bf0',
             'selectors' => [
-                '{{WRAPPER}} .veloria-twitter-feed__permalink' => 'color: {{VALUE}};',
-                '{{WRAPPER}} .veloria-twitter-feed__profile' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-twitter-feed__permalink' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-twitter-feed__profile' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -373,30 +373,30 @@ class TwitterFeed extends WidgetBase
 
         if ($token === '' || self::normalize_username($username) === '') {
             if (current_user_can('manage_options')) {
-                echo '<div class="veloria-twitter-feed veloria-twitter-feed--empty"><p class="veloria-twitter-feed__notice">';
-                echo esc_html__('Add an X username and Bearer token in the widget settings.', 'veloria');
+                echo '<div class="addonext-twitter-feed addonext-twitter-feed--empty"><p class="addonext-twitter-feed__notice">';
+                echo esc_html__('Add an X username and Bearer token in the widget settings.', 'addonext');
                 echo '</p></div>';
             }
 
             return;
         }
 
-        $veloria_tweets = $this->fetch_tweets($username, $token, $settings);
-        $veloria_tweets = apply_filters('veloria_twitter_feed_tweets', $veloria_tweets, $settings, $username);
+        $addonext_tweets = $this->fetch_tweets($username, $token, $settings);
+        $addonext_tweets = apply_filters('addonext_twitter_feed_tweets', $addonext_tweets, $settings, $username);
 
-        if ($veloria_tweets === []) {
+        if ($addonext_tweets === []) {
             if (current_user_can('manage_options')) {
-                echo '<div class="veloria-twitter-feed veloria-twitter-feed--empty"><p class="veloria-twitter-feed__notice">';
-                echo esc_html__('No posts returned. Check the username, token, and API access (v2 user timeline).', 'veloria');
+                echo '<div class="addonext-twitter-feed addonext-twitter-feed--empty"><p class="addonext-twitter-feed__notice">';
+                echo esc_html__('No posts returned. Check the username, token, and API access (v2 user timeline).', 'addonext');
                 echo '</p></div>';
             }
 
             return;
         }
 
-        $veloria_display_username = self::normalize_username($username);
-        $veloria_settings = $settings;
-        $path = VELORIA_DIR . 'templates/twitter-feed/twitter-feed.php';
+        $addonext_display_username = self::normalize_username($username);
+        $addonext_settings = $settings;
+        $path = ADDONEXT_DIR . 'templates/twitter-feed/twitter-feed.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -406,13 +406,13 @@ class TwitterFeed extends WidgetBase
     {
         ?>
         <# if (!settings.username || !settings.bearer_token) { #>
-            <div class="veloria-twitter-feed veloria-twitter-feed--empty">
-                <p class="veloria-twitter-feed__notice"><?php echo esc_html__('Add username and Bearer token to load posts in the preview.', 'veloria'); ?></p>
+            <div class="addonext-twitter-feed addonext-twitter-feed--empty">
+                <p class="addonext-twitter-feed__notice"><?php echo esc_html__('Add username and Bearer token to load posts in the preview.', 'addonext'); ?></p>
             </div>
         <# } else { #>
-            <div class="veloria-twitter-feed">
-                <p class="veloria-twitter-feed__notice"><?php echo esc_html__('Editor: posts load on the front end after saving.', 'veloria'); ?></p>
-                <p class="veloria-twitter-feed__preview-user">@{{ settings.username }}</p>
+            <div class="addonext-twitter-feed">
+                <p class="addonext-twitter-feed__notice"><?php echo esc_html__('Editor: posts load on the front end after saving.', 'addonext'); ?></p>
+                <p class="addonext-twitter-feed__preview-user">@{{ settings.username }}</p>
             </div>
         <# } #>
         <?php

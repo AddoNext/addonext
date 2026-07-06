@@ -1,4 +1,4 @@
-#veloria-scroll-top {
+#addonext-scroll-top {
   position: fixed;
   z-index: 99998;
   display: flex;
@@ -14,45 +14,45 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
 
-#veloria-scroll-top:hover {
+#addonext-scroll-top:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.22);
 }
 
-#veloria-scroll-top:focus-visible {
+#addonext-scroll-top:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 2px;
 }
 
-#veloria-scroll-top[data-position="bottom-right"] {
+#addonext-scroll-top[data-position="bottom-right"] {
   bottom: 1.25rem;
   right: 1.25rem;
   top: auto;
   left: auto;
 }
 
-#veloria-scroll-top[data-position="bottom-left"] {
+#addonext-scroll-top[data-position="bottom-left"] {
   bottom: 1.25rem;
   left: 1.25rem;
   top: auto;
   right: auto;
 }
 
-#veloria-scroll-top[data-position="top-right"] {
+#addonext-scroll-top[data-position="top-right"] {
   top: 1.25rem;
   right: 1.25rem;
   bottom: auto;
   left: auto;
 }
 
-#veloria-scroll-top[data-position="top-left"] {
+#addonext-scroll-top[data-position="top-left"] {
   top: 1.25rem;
   left: 1.25rem;
   bottom: auto;
   right: auto;
 }
 
-#veloria-scroll-top svg {
+#addonext-scroll-top svg {
   width: 55%;
   height: 55%;
   display: block;

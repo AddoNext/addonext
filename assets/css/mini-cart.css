@@ -1,15 +1,15 @@
-.veloria-mini-cart {
+.addonext-mini-cart {
   position: relative;
   display: block;
   width: 100%;
 }
 
-.veloria-mini-cart__inner {
+.addonext-mini-cart__inner {
   display: flex;
   width: 100%;
 }
 
-.veloria-mini-cart__trigger {
+.addonext-mini-cart__trigger {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -26,16 +26,16 @@
   box-sizing: border-box;
 }
 
-.veloria-mini-cart__trigger:hover {
+.addonext-mini-cart__trigger:hover {
   opacity: 0.8;
 }
 
-.veloria-mini-cart__trigger:focus-visible {
+.addonext-mini-cart__trigger:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
-.veloria-mini-cart__icon {
+.addonext-mini-cart__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,21 +43,21 @@
   line-height: 1;
 }
 
-.veloria-mini-cart__icon svg {
+.addonext-mini-cart__icon svg {
   width: 1em;
   height: 1em;
 }
 
-.veloria-mini-cart__label {
+.addonext-mini-cart__label {
   font-weight: 600;
 }
 
-.veloria-mini-cart__subtotal {
+.addonext-mini-cart__subtotal {
   font-size: 0.875rem;
   font-weight: 500;
 }
 
-.veloria-mini-cart__count {
+.addonext-mini-cart__count {
   position: absolute;
   top: -2px;
   right: -2px;
@@ -72,11 +72,11 @@
   line-height: 1;
 }
 
-.veloria-mini-cart__count--empty {
+.addonext-mini-cart__count--empty {
   opacity: 0.65;
 }
 
-.veloria-mini-cart__placeholder {
+.addonext-mini-cart__placeholder {
   margin: 0;
   padding: 1rem;
   font-size: 0.875rem;

@@ -1,15 +1,15 @@
-.veloria-product-tabs {
+.addonext-product-tabs {
   width: 100%;
 }
 
-.veloria-product-tabs__placeholder {
+.addonext-product-tabs__placeholder {
   padding: 24px;
   text-align: center;
   color: #6b7280;
   font-size: 14px;
 }
 
-.veloria-product-tabs__nav {
+.addonext-product-tabs__nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
@@ -17,7 +17,7 @@
   margin-bottom: 24px;
 }
 
-.veloria-product-tabs__tab {
+.addonext-product-tabs__tab {
   position: relative;
   margin: 0;
   padding: 12px 4px 14px;
@@ -31,15 +31,15 @@
   transition: color 0.2s ease;
 }
 
-.veloria-product-tabs__tab:hover {
+.addonext-product-tabs__tab:hover {
   color: #374151;
 }
 
-.veloria-product-tabs__tab.is-active {
+.addonext-product-tabs__tab.is-active {
   color: #2563eb;
 }
 
-.veloria-product-tabs__tab::after {
+.addonext-product-tabs__tab::after {
   content: '';
   position: absolute;
   left: 0;
@@ -51,27 +51,27 @@
   transition: background-color 0.2s ease;
 }
 
-.veloria-product-tabs__tab.is-active::after {
+.addonext-product-tabs__tab.is-active::after {
   background-color: #2563eb;
 }
 
-.veloria-product-tabs__panel[hidden] {
+.addonext-product-tabs__panel[hidden] {
   display: none;
 }
 
-.veloria-product-tabs__panel.is-active:not([hidden]) {
+.addonext-product-tabs__panel.is-active:not([hidden]) {
   display: block;
 }
 
-.veloria-product-tabs__grid-shell {
+.addonext-product-tabs__grid-shell {
   width: 100%;
 }
 
-.veloria-product-tabs__grid {
+.addonext-product-tabs__grid {
   width: 100%;
 }
 
-.veloria-product-tabs .veloria-product-grid.veloria-product-tabs__grid {
+.addonext-product-tabs .addonext-product-grid.addonext-product-tabs__grid {
   display: grid;
   grid-template-columns: repeat(var(--ept-cols-mobile, 1), minmax(0, 1fr));
   column-gap: var(--ept-col-gap, 16px);
@@ -79,23 +79,23 @@
 }
 
 @media (min-width: 768px) {
-  .veloria-product-tabs .veloria-product-grid.veloria-product-tabs__grid {
+  .addonext-product-tabs .addonext-product-grid.addonext-product-tabs__grid {
     grid-template-columns: repeat(var(--ept-cols-tablet, 2), minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1025px) {
-  .veloria-product-tabs .veloria-product-grid.veloria-product-tabs__grid {
+  .addonext-product-tabs .addonext-product-grid.addonext-product-tabs__grid {
     grid-template-columns: repeat(var(--ept-cols-desktop, 4), minmax(0, 1fr));
   }
 }
 
-.veloria-product-tabs__footer {
+.addonext-product-tabs__footer {
   margin-top: 28px;
   padding-top: 8px;
 }
 
-.veloria-product-tabs__cta {
+.addonext-product-tabs__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -112,13 +112,13 @@
   transition: opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.veloria-product-tabs__cta:hover {
+.addonext-product-tabs__cta:hover {
   opacity: 0.92;
   background-color: #e5e7eb;
   border-color: #d1d5db;
 }
 
-.veloria-product-tabs__cta--static {
+.addonext-product-tabs__cta--static {
   cursor: default;
   pointer-events: none;
 }

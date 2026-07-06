@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var TABS_ROOT = '[data-veloria-product-tabs]';
+  var TABS_ROOT = '[data-addonext-product-tabs]';
 
   function isLikelyVisible(el) {
     if (!el || typeof el.getBoundingClientRect !== 'function') return false;
@@ -52,7 +52,7 @@
     if (typeof wc_add_to_cart_params !== 'undefined' && wc_add_to_cart_params.cart_url) {
       return wc_add_to_cart_params.cart_url;
     }
-    var shell = link && link.closest ? link.closest('.veloria-product-tabs__grid-shell') : null;
+    var shell = link && link.closest ? link.closest('.addonext-product-tabs__grid-shell') : null;
     if (shell && shell.getAttribute('data-cart-url')) {
       return shell.getAttribute('data-cart-url');
     }
@@ -61,7 +61,7 @@
 
   function showTabsCartTooltip(buttonEl) {
     if (!buttonEl || !buttonEl.closest) return;
-    var actions = buttonEl.closest('.veloria-product-grid__actions');
+    var actions = buttonEl.closest('.addonext-product-grid__actions');
     if (!actions) return;
     actions.classList.add('is-cart-tooltip-visible');
     window.clearTimeout(actions.__eptTooltipTimer);
@@ -90,12 +90,12 @@
 
   function clearTabsCartLoading(btn) {
     if (!btn || !btn.classList) return;
-    btn.classList.remove('veloria-product-grid__cart-btn--pending');
+    btn.classList.remove('addonext-product-grid__cart-btn--pending');
   }
 
   function bindTabsCartTooltips(root) {
     var scope = root || document;
-    var tooltipLinks = scope.querySelectorAll(TABS_ROOT + ' .veloria-product-grid__cart-tooltip');
+    var tooltipLinks = scope.querySelectorAll(TABS_ROOT + ' .addonext-product-grid__cart-tooltip');
     tooltipLinks.forEach(function (link) {
       if (link.getAttribute('data-ept-pg-bound') === 'yes') return;
       link.setAttribute('data-ept-pg-bound', 'yes');
@@ -117,8 +117,8 @@
   }
 
   function activateTab(root, tab) {
-    var tabs = root.querySelectorAll('.veloria-product-tabs__tab[role="tab"]');
-    var panels = root.querySelectorAll('.veloria-product-tabs__panel[role="tabpanel"]');
+    var tabs = root.querySelectorAll('.addonext-product-tabs__tab[role="tab"]');
+    var panels = root.querySelectorAll('.addonext-product-tabs__panel[role="tabpanel"]');
     var controlsId = tab.getAttribute('aria-controls');
     var i;
     for (i = 0; i < tabs.length; i += 1) {
@@ -144,7 +144,7 @@
   }
 
   function onDocumentClick(ev) {
-    var tab = ev.target.closest('.veloria-product-tabs__tab[role="tab"]');
+    var tab = ev.target.closest('.addonext-product-tabs__tab[role="tab"]');
     if (!tab) return;
     var root = tab.closest(TABS_ROOT);
     if (!root) return;
@@ -159,19 +159,19 @@
   if (typeof jQuery !== 'undefined') {
     jQuery(document.body).on('adding_to_cart', function (event, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (!btn || !btn.classList || !btn.classList.contains('veloria-product-grid__cart-btn')) return;
+      if (!btn || !btn.classList || !btn.classList.contains('addonext-product-grid__cart-btn')) return;
       if (!btn.closest(TABS_ROOT)) return;
-      btn.classList.add('veloria-product-grid__cart-btn--pending');
+      btn.classList.add('addonext-product-grid__cart-btn--pending');
     });
     jQuery(document.body).on('ajax_request_not_sent.adding_to_cart', function (event, a, b, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (!btn || !btn.classList || !btn.classList.contains('veloria-product-grid__cart-btn')) return;
+      if (!btn || !btn.classList || !btn.classList.contains('addonext-product-grid__cart-btn')) return;
       if (!btn.closest(TABS_ROOT)) return;
       clearTabsCartLoading(btn);
     });
     jQuery(document.body).on('added_to_cart', function (event, fragments, cartHash, $button) {
       var btn = $button && $button[0] ? $button[0] : null;
-      if (!btn || !btn.classList || !btn.classList.contains('veloria-product-grid__cart-btn')) return;
+      if (!btn || !btn.classList || !btn.classList.contains('addonext-product-grid__cart-btn')) return;
       if (!btn.closest(TABS_ROOT)) return;
       clearTabsCartLoading(btn);
       showTabsCartTooltip(btn);
@@ -194,7 +194,7 @@
   }
 
   if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks && elementorFrontend.hooks.addAction) {
-    elementorFrontend.hooks.addAction('frontend/element_ready/veloria-product-tabs.default', function ($scope) {
+    elementorFrontend.hooks.addAction('frontend/element_ready/addonext-product-tabs.default', function ($scope) {
       var el = $scope && $scope[0] ? $scope[0] : $scope;
       initTabsWidgetScope(el);
     });

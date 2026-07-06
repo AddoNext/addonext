@@ -1,11 +1,11 @@
-.veloria-accordion {
+.addonext-accordion {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.veloria-accordion__item {
+.addonext-accordion__item {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
@@ -13,11 +13,11 @@
   overflow: hidden;
 }
 
-.veloria-accordion__item:last-child {
+.addonext-accordion__item:last-child {
   margin-bottom: 0;
 }
 
-.veloria-accordion__header {
+.addonext-accordion__header {
   display: flex;
   align-items: center;
   width: 100%;
@@ -37,23 +37,23 @@
   transition: padding-bottom 0.3s ease-in-out;
 }
 
-.veloria-accordion__header:focus {
+.addonext-accordion__header:focus {
   outline: none;
 }
 
-.veloria-accordion__item.is-open .veloria-accordion__header {
+.addonext-accordion__item.is-open .addonext-accordion__header {
   padding-bottom: 8px!important;
 }
 
-.veloria-accordion--icon-right .veloria-accordion__header {
+.addonext-accordion--icon-right .addonext-accordion__header {
   flex-direction: row;
 }
 
-.veloria-accordion--icon-left .veloria-accordion__header {
+.addonext-accordion--icon-left .addonext-accordion__header {
   flex-direction: row-reverse;
 }
 
-.veloria-accordion__title {
+.addonext-accordion__title {
   flex: 1;
   font-size: 18px;
   font-weight: 600;
@@ -62,7 +62,7 @@
   color: #111827;
 }
 
-.veloria-accordion__icon {
+.addonext-accordion__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -70,28 +70,28 @@
   color: #6b7280;
 }
 
-.veloria-accordion__icon svg {
+.addonext-accordion__icon svg {
   width: 16px;
   height: 16px;
 }
 
-.veloria-accordion__icon--open {
+.addonext-accordion__icon--open {
   display: none !important;
 }
 
-.veloria-accordion__icon--closed {
+.addonext-accordion__icon--closed {
   display: inline-flex !important;
 }
 
-.veloria-accordion__item.is-open .veloria-accordion__icon--closed {
+.addonext-accordion__item.is-open .addonext-accordion__icon--closed {
   display: none !important;
 }
 
-.veloria-accordion__item.is-open .veloria-accordion__icon--open {
+.addonext-accordion__item.is-open .addonext-accordion__icon--open {
   display: inline-flex !important;
 }
 
-.veloria-accordion__content {
+.addonext-accordion__content {
   max-height: 0;
   overflow: hidden;
   padding: 0 24px 24px;
@@ -105,20 +105,20 @@
   transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
 }
 
-.veloria-accordion__content p:first-child {
+.addonext-accordion__content p:first-child {
   margin-top: 0;
 }
 
-.veloria-accordion__content p:last-child {
+.addonext-accordion__content p:last-child {
   margin-bottom: 0;
 }
 
-.veloria-accordion__item.is-open .veloria-accordion__content {
+.addonext-accordion__item.is-open .addonext-accordion__content {
   max-height: 2000px;
   padding-top: 8px;
 }
 
-.veloria-accordion__item:not(.is-open) .veloria-accordion__content {
+.addonext-accordion__item:not(.is-open) .addonext-accordion__content {
   max-height: 0 !important;
   min-height: 0 !important;
   padding-top: 0 !important;

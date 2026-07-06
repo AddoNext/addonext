@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\ModalPopup;
+namespace Addonext\Widgets\ModalPopup;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class ModalPopup extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-lightbox veloria-icon';
+        return 'eicon-lightbox addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-modal-popup';
+        return 'addonext-modal-popup';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class ModalPopup extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Modal Popup', 'veloria');
+        return __('Modal Popup', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Button-triggered popup with title, image, content, countdown and overlay.', 'veloria');
+        return __('Button-triggered popup with title, image, content, countdown and overlay.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,27 +42,27 @@ class ModalPopup extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-modal-popup'];
+        return ['addonext-modal-popup'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-modal-popup'];
+        return ['addonext-modal-popup'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-modal-popup',
-            VELORIA_URL . 'assets/css/modal-popup.css',
+            'addonext-modal-popup',
+            ADDONEXT_URL . 'assets/css/modal-popup.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-modal-popup',
-            VELORIA_URL . 'assets/js/modal-popup.js',
+            'addonext-modal-popup',
+            ADDONEXT_URL . 'assets/js/modal-popup.js',
             [],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -72,7 +72,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_button',
             [
-                'label' => __('Button', 'veloria'),
+                'label' => __('Button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -80,21 +80,21 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'trigger_text',
             [
-                'label'   => __('Button text', 'veloria'),
+                'label'   => __('Button text', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Open popup', 'veloria'),
+                'default' => __('Open popup', 'addonext'),
             ]
         );
 
         $this->add_control(
             'button_variant',
             [
-                'label'   => __('Button variant', 'veloria'),
+                'label'   => __('Button variant', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'primary',
                 'options' => [
-                    'primary'   => __('Primary', 'veloria'),
-                    'secondary' => __('Secondary', 'veloria'),
+                    'primary'   => __('Primary', 'addonext'),
+                    'secondary' => __('Secondary', 'addonext'),
                 ],
             ]
         );
@@ -102,15 +102,15 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'button_size',
             [
-                'label'   => __('Button size', 'veloria'),
+                'label'   => __('Button size', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'md',
                 'options' => [
-                    'xs' => __('Extra Small', 'veloria'),
-                    'sm' => __('Small', 'veloria'),
-                    'md' => __('Medium', 'veloria'),
-                    'lg' => __('Large', 'veloria'),
-                    'xl' => __('Extra Large', 'veloria'),
+                    'xs' => __('Extra Small', 'addonext'),
+                    'sm' => __('Small', 'addonext'),
+                    'md' => __('Medium', 'addonext'),
+                    'lg' => __('Large', 'addonext'),
+                    'xl' => __('Extra Large', 'addonext'),
                 ],
             ]
         );
@@ -120,7 +120,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_popup_content',
             [
-                'label' => __('Popup content', 'veloria'),
+                'label' => __('Popup content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,16 +128,16 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'popup_title',
             [
-                'label'   => __('Title', 'veloria'),
+                'label'   => __('Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Popup title', 'veloria'),
+                'default' => __('Popup title', 'addonext'),
             ]
         );
 
         $this->add_control(
             'popup_image',
             [
-                'label' => __('Image', 'veloria'),
+                'label' => __('Image', 'addonext'),
                 'type'  => Controls_Manager::MEDIA,
             ]
         );
@@ -145,9 +145,9 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'popup_content',
             [
-                'label'   => __('Content', 'veloria'),
+                'label'   => __('Content', 'addonext'),
                 'type'    => Controls_Manager::TEXTAREA,
-                'default' => __('Add your paragraph or text content here.', 'veloria'),
+                'default' => __('Add your paragraph or text content here.', 'addonext'),
                 'rows'    => 5,
             ]
         );
@@ -155,7 +155,7 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'countdown_seconds',
             [
-                'label'   => __('Auto-close countdown (seconds)', 'veloria'),
+                'label'   => __('Auto-close countdown (seconds)', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
                 'min'     => 0,
@@ -167,7 +167,7 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'close_on_overlay_click',
             [
-                'label'        => __('Close on overlay click', 'veloria'),
+                'label'        => __('Close on overlay click', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -179,7 +179,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => __('Button', 'veloria'),
+                'label' => __('Button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -188,7 +188,7 @@ class ModalPopup extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '{{WRAPPER}} .veloria-modal .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-modal .addonext-button',
                 'fields_options' => [
                     'font_weight' => ['default' => '400'],
                 ],
@@ -198,9 +198,9 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'button_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
-                'selectors' => ['{{WRAPPER}} .veloria-modal .veloria-button' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal .addonext-button' => 'color: {{VALUE}};'],
             ]
         );
 
@@ -210,7 +210,7 @@ class ModalPopup extends WidgetBase
                 'name'     => 'button_background',
                 'types'    => ['classic', 'gradient'],
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .veloria-modal .veloria-button',
+                'selector' => '{{WRAPPER}} .addonext-modal .addonext-button',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#7B4397'],
@@ -224,7 +224,7 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'button_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => [
@@ -234,17 +234,17 @@ class ModalPopup extends WidgetBase
                     'bottom' => 4,
                     'left' => 4,
                 ],
-                'selectors'  => ['{{WRAPPER}} .veloria-modal .veloria-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .addonext-modal .addonext-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
         $this->add_control(
             'button_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
-                'selectors'  => ['{{WRAPPER}} .veloria-modal .veloria-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .addonext-modal .addonext-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
@@ -253,7 +253,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_overlay',
             [
-                'label' => __('Overlay', 'veloria'),
+                'label' => __('Overlay', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -261,17 +261,17 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'overlay_background',
             [
-                'label'     => __('Background color', 'veloria'),
+                'label'     => __('Background color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0.5)',
-                'selectors' => ['{{WRAPPER}} .veloria-modal__overlay' => 'background-color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__overlay' => 'background-color: {{VALUE}};'],
             ]
         );
 
         $this->add_control(
             'overlay_blur',
             [
-                'label'        => __('Blur background', 'veloria'),
+                'label'        => __('Blur background', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => 'yes',
@@ -281,12 +281,12 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'overlay_blur_amount',
             [
-                'label'     => __('Blur amount (px)', 'veloria'),
+                'label'     => __('Blur amount (px)', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 30]],
                 'default'   => ['size' => 8],
                 'condition' => ['overlay_blur' => 'yes'],
-                'selectors' => ['{{WRAPPER}} .veloria-modal__overlay.is-blur' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__overlay.is-blur' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'],
             ]
         );
 
@@ -295,7 +295,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_popup',
             [
-                'label' => __('Popup box', 'veloria'),
+                'label' => __('Popup box', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -303,43 +303,43 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'popup_background',
             [
-                'label'     => __('Background color', 'veloria'),
+                'label'     => __('Background color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
-                'selectors' => ['{{WRAPPER}} .veloria-modal__content' => 'background-color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__content' => 'background-color: {{VALUE}};'],
             ]
         );
 
         $this->add_control(
             'popup_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
-                'selectors'  => ['{{WRAPPER}} .veloria-modal__content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .addonext-modal__content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
         $this->add_control(
             'popup_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', 'rem'],
                 'default'    => ['top' => 24, 'right' => 24, 'bottom' => 24, 'left' => 24],
-                'selectors'  => ['{{WRAPPER}} .veloria-modal__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .addonext-modal__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
             ]
         );
 
         $this->add_responsive_control(
             'popup_max_width',
             [
-                'label'      => __('Max width', 'veloria'),
+                'label'      => __('Max width', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'range'      => ['px' => ['min' => 200, 'max' => 1200]],
                 'default'    => ['size' => 480, 'unit' => 'px'],
-                'selectors'  => ['{{WRAPPER}} .veloria-modal__content' => 'max-width: {{SIZE}}{{UNIT}};'],
+                'selectors'  => ['{{WRAPPER}} .addonext-modal__content' => 'max-width: {{SIZE}}{{UNIT}};'],
             ]
         );
 
@@ -348,7 +348,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_close',
             [
-                'label' => __('Close button', 'veloria'),
+                'label' => __('Close button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -356,21 +356,21 @@ class ModalPopup extends WidgetBase
         $this->add_control(
             'close_button_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
-                'selectors' => ['{{WRAPPER}} .veloria-modal__close' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__close' => 'color: {{VALUE}};'],
             ]
         );
 
         $this->add_control(
             'close_button_size',
             [
-                'label'     => __('Size (px)', 'veloria'),
+                'label'     => __('Size (px)', 'addonext'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 16, 'max' => 56]],
                 'default'   => ['size' => 32],
-                'selectors' => ['{{WRAPPER}} .veloria-modal__close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__close' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: {{SIZE}}{{UNIT}};'],
             ]
         );
 
@@ -379,7 +379,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Popup title', 'veloria'),
+                'label' => __('Popup title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -388,16 +388,16 @@ class ModalPopup extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-modal__title',
+                'selector' => '{{WRAPPER}} .addonext-modal__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
-                'selectors' => ['{{WRAPPER}} .veloria-modal__title' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__title' => 'color: {{VALUE}};'],
             ]
         );
 
@@ -406,7 +406,7 @@ class ModalPopup extends WidgetBase
         $this->start_controls_section(
             'section_style_body',
             [
-                'label' => __('Popup content', 'veloria'),
+                'label' => __('Popup content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -415,16 +415,16 @@ class ModalPopup extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'body_typography',
-                'selector' => '{{WRAPPER}} .veloria-modal__body',
+                'selector' => '{{WRAPPER}} .addonext-modal__body',
             ]
         );
 
         $this->add_control(
             'body_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
-                'selectors' => ['{{WRAPPER}} .veloria-modal__body' => 'color: {{VALUE}};'],
+                'selectors' => ['{{WRAPPER}} .addonext-modal__body' => 'color: {{VALUE}};'],
             ]
         );
 
@@ -433,7 +433,7 @@ class ModalPopup extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/modal-popup/modal-popup.php';
+        $path = ADDONEXT_DIR . 'templates/modal-popup/modal-popup.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -443,7 +443,7 @@ class ModalPopup extends WidgetBase
     {
         ?>
         <#
-        var overlayClass = 'veloria-modal__overlay';
+        var overlayClass = 'addonext-modal__overlay';
         if (settings.overlay_blur === 'yes') overlayClass += ' is-blur';
         view.addRenderAttribute('overlay', 'class', overlayClass);
         view.addRenderAttribute('overlay', 'data-countdown', settings.countdown_seconds || 0);
@@ -452,22 +452,22 @@ class ModalPopup extends WidgetBase
         <#
         var variant = settings.button_variant || 'primary';
         var size = settings.button_size || 'md';
-        var triggerClass = 'veloria-button veloria-button--' + variant + ' veloria-button--' + size + ' veloria-modal__trigger';
+        var triggerClass = 'addonext-button addonext-button--' + variant + ' addonext-button--' + size + ' addonext-modal__trigger';
         #>
-        <div class="veloria-modal">
-            <div class="veloria-button-wrapper">
+        <div class="addonext-modal">
+            <div class="addonext-button-wrapper">
                 <button type="button" class="{{ triggerClass }}" role="button">
-                    <span class="veloria-button__content">
-                        <span class="veloria-button__text">{{{ settings.trigger_text }}}</span>
+                    <span class="addonext-button__content">
+                        <span class="addonext-button__text">{{{ settings.trigger_text }}}</span>
                     </span>
                 </button>
             </div>
             <div {{{ view.getRenderAttributeString('overlay') }}}>
-                <div class="veloria-modal__content" role="dialog" aria-modal="true" aria-labelledby="veloria-modal-title-{{ view.getID() }}">
-                    <button type="button" class="veloria-modal__close" aria-label="<?php echo esc_attr__('Close', 'veloria'); ?>"><span class="veloria-modal__close-icon" aria-hidden="true">&times;</span></button>
-                    <# if (settings.popup_title) { #><h3 class="veloria-modal__title" id="veloria-modal-title-{{ view.getID() }}">{{{ settings.popup_title }}}</h3><# } #>
-                    <# if (settings.popup_image && settings.popup_image.url) { #><div class="veloria-modal__image"><img src="{{ settings.popup_image.url }}" alt=""></div><# } #>
-                    <# if (settings.popup_content) { #><div class="veloria-modal__body">{{{ settings.popup_content }}}</div><# } #>
+                <div class="addonext-modal__content" role="dialog" aria-modal="true" aria-labelledby="addonext-modal-title-{{ view.getID() }}">
+                    <button type="button" class="addonext-modal__close" aria-label="<?php echo esc_attr__('Close', 'addonext'); ?>"><span class="addonext-modal__close-icon" aria-hidden="true">&times;</span></button>
+                    <# if (settings.popup_title) { #><h3 class="addonext-modal__title" id="addonext-modal-title-{{ view.getID() }}">{{{ settings.popup_title }}}</h3><# } #>
+                    <# if (settings.popup_image && settings.popup_image.url) { #><div class="addonext-modal__image"><img src="{{ settings.popup_image.url }}" alt=""></div><# } #>
+                    <# if (settings.popup_content) { #><div class="addonext-modal__body">{{{ settings.popup_content }}}</div><# } #>
                 </div>
             </div>
         </div>

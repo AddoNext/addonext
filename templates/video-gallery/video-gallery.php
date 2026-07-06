@@ -2,76 +2,76 @@
 /**
  * Video Gallery widget template.
  *
- * @var \Veloria\Widgets\VideoGallery\VideoGallery $this
+ * @var \Addonext\Widgets\VideoGallery\VideoGallery $this
  */
 
 defined('ABSPATH') || exit;
 
-use Veloria\Widgets\VideoPlayer\VideoPlayer;
+use Addonext\Widgets\VideoPlayer\VideoPlayer;
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_items    = isset($veloria_settings['items']) && is_array($veloria_settings['items']) ? $veloria_settings['items'] : [];
+$addonext_settings = $this->get_settings_for_display();
+$addonext_items    = isset($addonext_settings['items']) && is_array($addonext_settings['items']) ? $addonext_settings['items'] : [];
 
-if ($veloria_items === []) {
+if ($addonext_items === []) {
     return;
 }
 
-$this->add_render_attribute('wrap', 'class', 'veloria-video-gallery');
+$this->add_render_attribute('wrap', 'class', 'addonext-video-gallery');
 ?>
 <div <?php $this->print_render_attribute_string('wrap'); ?>>
-    <div class="veloria-video-gallery__grid">
+    <div class="addonext-video-gallery__grid">
         <?php
-        foreach ($veloria_items as $veloria_index => $veloria_item) {
-            $veloria_video_type = isset($veloria_item['video_type']) ? (string) $veloria_item['video_type'] : 'youtube';
-            $veloria_embed_url  = '';
-            $veloria_hosted_url = '';
+        foreach ($addonext_items as $addonext_index => $addonext_item) {
+            $addonext_video_type = isset($addonext_item['video_type']) ? (string) $addonext_item['video_type'] : 'youtube';
+            $addonext_embed_url  = '';
+            $addonext_hosted_url = '';
 
-            if ($veloria_video_type === 'youtube' && !empty($veloria_item['youtube_url']['url'])) {
-                $veloria_embed_url = VideoPlayer::get_embed_url('youtube', $veloria_item['youtube_url']['url']);
-            } elseif ($veloria_video_type === 'vimeo' && !empty($veloria_item['vimeo_url']['url'])) {
-                $veloria_embed_url = VideoPlayer::get_embed_url('vimeo', $veloria_item['vimeo_url']['url']);
-            } elseif ($veloria_video_type === 'dailymotion' && !empty($veloria_item['dailymotion_url']['url'])) {
-                $veloria_embed_url = VideoPlayer::get_embed_url('dailymotion', $veloria_item['dailymotion_url']['url']);
-            } elseif ($veloria_video_type === 'hosted' && !empty($veloria_item['hosted_url']['url'])) {
-                $veloria_hosted_url = $veloria_item['hosted_url']['url'];
+            if ($addonext_video_type === 'youtube' && !empty($addonext_item['youtube_url']['url'])) {
+                $addonext_embed_url = VideoPlayer::get_embed_url('youtube', $addonext_item['youtube_url']['url']);
+            } elseif ($addonext_video_type === 'vimeo' && !empty($addonext_item['vimeo_url']['url'])) {
+                $addonext_embed_url = VideoPlayer::get_embed_url('vimeo', $addonext_item['vimeo_url']['url']);
+            } elseif ($addonext_video_type === 'dailymotion' && !empty($addonext_item['dailymotion_url']['url'])) {
+                $addonext_embed_url = VideoPlayer::get_embed_url('dailymotion', $addonext_item['dailymotion_url']['url']);
+            } elseif ($addonext_video_type === 'hosted' && !empty($addonext_item['hosted_url']['url'])) {
+                $addonext_hosted_url = $addonext_item['hosted_url']['url'];
             }
 
-            $veloria_show_title    = !empty($veloria_item['show_title']);
-            $veloria_show_subtitle = !empty($veloria_item['show_subtitle']);
-            $veloria_title         = isset($veloria_item['title']) ? (string) $veloria_item['title'] : '';
-            $veloria_subtitle      = isset($veloria_item['subtitle']) ? (string) $veloria_item['subtitle'] : '';
-            $veloria_thumbnail_url = isset($veloria_item['thumbnail']['url']) ? trim((string) $veloria_item['thumbnail']['url']) : '';
+            $addonext_show_title    = !empty($addonext_item['show_title']);
+            $addonext_show_subtitle = !empty($addonext_item['show_subtitle']);
+            $addonext_title         = isset($addonext_item['title']) ? (string) $addonext_item['title'] : '';
+            $addonext_subtitle      = isset($addonext_item['subtitle']) ? (string) $addonext_item['subtitle'] : '';
+            $addonext_thumbnail_url = isset($addonext_item['thumbnail']['url']) ? trim((string) $addonext_item['thumbnail']['url']) : '';
 
-            $veloria_inner_class = 'veloria-video-player__inner';
-            if ($veloria_thumbnail_url !== '') {
-                $veloria_inner_class .= ' veloria-video-player--has-thumbnail';
+            $addonext_inner_class = 'addonext-video-player__inner';
+            if ($addonext_thumbnail_url !== '') {
+                $addonext_inner_class .= ' addonext-video-player--has-thumbnail';
             }
 
-            $veloria_item_id = isset($veloria_item['_id']) ? (string) $veloria_item['_id'] : (string) $veloria_index;
+            $addonext_item_id = isset($addonext_item['_id']) ? (string) $addonext_item['_id'] : (string) $addonext_index;
             ?>
-            <div class="veloria-video-gallery__cell elementor-repeater-item-<?php echo esc_attr($veloria_item_id); ?>">
-                <div class="veloria-video-player veloria-video-player--gallery-tile">
+            <div class="addonext-video-gallery__cell elementor-repeater-item-<?php echo esc_attr($addonext_item_id); ?>">
+                <div class="addonext-video-player addonext-video-player--gallery-tile">
                     <div
-                        class="<?php echo esc_attr($veloria_inner_class); ?>"
-                        data-embed="<?php echo esc_attr($veloria_embed_url); ?>"
-                        data-hosted="<?php echo esc_attr($veloria_hosted_url); ?>"
-                        data-type="<?php echo esc_attr($veloria_video_type); ?>"
+                        class="<?php echo esc_attr($addonext_inner_class); ?>"
+                        data-embed="<?php echo esc_attr($addonext_embed_url); ?>"
+                        data-hosted="<?php echo esc_attr($addonext_hosted_url); ?>"
+                        data-type="<?php echo esc_attr($addonext_video_type); ?>"
                     >
-                        <div class="veloria-video-player__overlay">
-                            <?php if ($veloria_thumbnail_url !== '') : ?>
-                                <img class="veloria-video-player__thumbnail" src="<?php echo esc_url($veloria_thumbnail_url); ?>" alt="" loading="lazy" decoding="async">
-                                <span class="veloria-video-player__overlay-shade" aria-hidden="true"></span>
+                        <div class="addonext-video-player__overlay">
+                            <?php if ($addonext_thumbnail_url !== '') : ?>
+                                <img class="addonext-video-player__thumbnail" src="<?php echo esc_url($addonext_thumbnail_url); ?>" alt="" loading="lazy" decoding="async">
+                                <span class="addonext-video-player__overlay-shade" aria-hidden="true"></span>
                             <?php endif; ?>
-                            <button type="button" class="veloria-video-gallery__play" aria-label="<?php esc_attr_e('Play video', 'veloria'); ?>">
-                                <span class="veloria-video-gallery__play-icon"></span>
+                            <button type="button" class="addonext-video-gallery__play" aria-label="<?php esc_attr_e('Play video', 'addonext'); ?>">
+                                <span class="addonext-video-gallery__play-icon"></span>
                             </button>
-                            <?php if (($veloria_show_title && $veloria_title !== '') || ($veloria_show_subtitle && $veloria_subtitle !== '')) : ?>
-                                <div class="veloria-video-player__caption">
-                                    <?php if ($veloria_show_title && $veloria_title !== '') : ?>
-                                        <div class="veloria-video-player__title"><?php echo esc_html($veloria_title); ?></div>
+                            <?php if (($addonext_show_title && $addonext_title !== '') || ($addonext_show_subtitle && $addonext_subtitle !== '')) : ?>
+                                <div class="addonext-video-player__caption">
+                                    <?php if ($addonext_show_title && $addonext_title !== '') : ?>
+                                        <div class="addonext-video-player__title"><?php echo esc_html($addonext_title); ?></div>
                                     <?php endif; ?>
-                                    <?php if ($veloria_show_subtitle && $veloria_subtitle !== '') : ?>
-                                        <div class="veloria-video-player__subtitle"><?php echo esc_html($veloria_subtitle); ?></div>
+                                    <?php if ($addonext_show_subtitle && $addonext_subtitle !== '') : ?>
+                                        <div class="addonext-video-player__subtitle"><?php echo esc_html($addonext_subtitle); ?></div>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
@@ -83,14 +83,14 @@ $this->add_render_attribute('wrap', 'class', 'veloria-video-gallery');
         }
         ?>
     </div>
-    <div class="veloria-video-gallery__lightbox" hidden data-open="0">
-        <div class="veloria-video-gallery__lightbox-backdrop" tabindex="-1" aria-hidden="true"></div>
-        <div class="veloria-video-gallery__lightbox-dialog" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr__('Video', 'veloria'); ?>">
-            <button type="button" class="veloria-video-gallery__lightbox-close" aria-label="<?php esc_attr_e('Close', 'veloria'); ?>">
-                <span class="veloria-video-gallery__lightbox-close-icon" aria-hidden="true">&times;</span>
+    <div class="addonext-video-gallery__lightbox" hidden data-open="0">
+        <div class="addonext-video-gallery__lightbox-backdrop" tabindex="-1" aria-hidden="true"></div>
+        <div class="addonext-video-gallery__lightbox-dialog" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr__('Video', 'addonext'); ?>">
+            <button type="button" class="addonext-video-gallery__lightbox-close" aria-label="<?php esc_attr_e('Close', 'addonext'); ?>">
+                <span class="addonext-video-gallery__lightbox-close-icon" aria-hidden="true">&times;</span>
             </button>
-            <div class="veloria-video-gallery__lightbox-stage">
-                <div class="veloria-video-gallery__lightbox-embed"></div>
+            <div class="addonext-video-gallery__lightbox-stage">
+                <div class="addonext-video-gallery__lightbox-embed"></div>
             </div>
         </div>
     </div>

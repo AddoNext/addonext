@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\DataTable;
+namespace Addonext\Widgets\DataTable;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -12,12 +12,12 @@ class DataTable extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-table veloria-icon';
+        return 'eicon-table addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-data-table';
+        return 'addonext-data-table';
     }
 
     public function get_admin_category(): string
@@ -27,12 +27,12 @@ class DataTable extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Data Table', 'veloria');
+        return __('Data Table', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Sortable data tables with column headers and rows', 'veloria');
+        return __('Sortable data tables with column headers and rows', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -42,12 +42,12 @@ class DataTable extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-data-table'];
+        return ['addonext-data-table'];
     }
 
     public function enqueue_assets(): void
     {
-        wp_register_style('veloria-data-table', VELORIA_URL . 'assets/css/data-table.css', [], VELORIA_VERSION);
+        wp_register_style('addonext-data-table', ADDONEXT_URL . 'assets/css/data-table.css', [], ADDONEXT_VERSION);
     }
 
     public function register_controls(): void
@@ -55,7 +55,7 @@ class DataTable extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -64,22 +64,22 @@ class DataTable extends WidgetBase
         $columns_repeater->add_control(
             'header',
             [
-                'label'   => __('Column header', 'veloria'),
+                'label'   => __('Column header', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Column', 'veloria'),
+                'default' => __('Column', 'addonext'),
             ]
         );
         $columns_repeater->add_control(
             'type',
             [
-                'label'   => __('Cell type', 'veloria'),
+                'label'   => __('Cell type', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    'default' => __('Default', 'veloria'),
-                    'bold'    => __('Bold', 'veloria'),
-                    'badge'   => __('Status badge', 'veloria'),
-                    'number'  => __('Number (right-aligned)', 'veloria'),
+                    'default' => __('Default', 'addonext'),
+                    'bold'    => __('Bold', 'addonext'),
+                    'badge'   => __('Status badge', 'addonext'),
+                    'number'  => __('Number (right-aligned)', 'addonext'),
                 ],
             ]
         );
@@ -88,7 +88,7 @@ class DataTable extends WidgetBase
         $cells_repeater->add_control(
             'content',
             [
-                'label'   => __('Cell content', 'veloria'),
+                'label'   => __('Cell content', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -98,15 +98,15 @@ class DataTable extends WidgetBase
         $rows_repeater->add_control(
             'row_label',
             [
-                'label'   => __('Row label (for list)', 'veloria'),
+                'label'   => __('Row label (for list)', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Row', 'veloria'),
+                'default' => __('Row', 'addonext'),
             ]
         );
         $rows_repeater->add_control(
             'cells',
             [
-                'label'       => __('Cells', 'veloria'),
+                'label'       => __('Cells', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $cells_repeater->get_controls(),
                 'default'     => [
@@ -123,15 +123,15 @@ class DataTable extends WidgetBase
         $this->add_control(
             'columns',
             [
-                'label'       => __('Columns', 'veloria'),
+                'label'       => __('Columns', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $columns_repeater->get_controls(),
                 'default'     => [
-                    ['header' => __('ID', 'veloria'), 'type' => 'default'],
-                    ['header' => __('Name', 'veloria'), 'type' => 'bold'],
-                    ['header' => __('Email', 'veloria'), 'type' => 'default'],
-                    ['header' => __('Status', 'veloria'), 'type' => 'badge'],
-                    ['header' => __('Revenue', 'veloria'), 'type' => 'number'],
+                    ['header' => __('ID', 'addonext'), 'type' => 'default'],
+                    ['header' => __('Name', 'addonext'), 'type' => 'bold'],
+                    ['header' => __('Email', 'addonext'), 'type' => 'default'],
+                    ['header' => __('Status', 'addonext'), 'type' => 'badge'],
+                    ['header' => __('Revenue', 'addonext'), 'type' => 'number'],
                 ],
                 'title_field' => '{{{ header }}}',
             ]
@@ -140,7 +140,7 @@ class DataTable extends WidgetBase
         $this->add_control(
             'rows',
             [
-                'label'       => __('Rows', 'veloria'),
+                'label'       => __('Rows', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $rows_repeater->get_controls(),
                 'default'     => [
@@ -148,9 +148,9 @@ class DataTable extends WidgetBase
                         'row_label' => '#001',
                         'cells' => [
                             ['content' => '#001'],
-                            ['content' => __('John Smith', 'veloria')],
+                            ['content' => __('John Smith', 'addonext')],
                             ['content' => 'john@example.com'],
-                            ['content' => __('Active', 'veloria')],
+                            ['content' => __('Active', 'addonext')],
                             ['content' => '$12,450'],
                         ],
                     ],
@@ -158,9 +158,9 @@ class DataTable extends WidgetBase
                         'row_label' => '#002',
                         'cells' => [
                             ['content' => '#002'],
-                            ['content' => __('Emma Wilson', 'veloria')],
+                            ['content' => __('Emma Wilson', 'addonext')],
                             ['content' => 'emma@example.com'],
-                            ['content' => __('Pending', 'veloria')],
+                            ['content' => __('Pending', 'addonext')],
                             ['content' => '$8,200'],
                         ],
                     ],
@@ -168,9 +168,9 @@ class DataTable extends WidgetBase
                         'row_label' => '#003',
                         'cells' => [
                             ['content' => '#003'],
-                            ['content' => __('Michael Brown', 'veloria')],
+                            ['content' => __('Michael Brown', 'addonext')],
                             ['content' => 'michael@example.com'],
-                            ['content' => __('Inactive', 'veloria')],
+                            ['content' => __('Inactive', 'addonext')],
                             ['content' => '$0'],
                         ],
                     ],
@@ -178,9 +178,9 @@ class DataTable extends WidgetBase
                         'row_label' => '#004',
                         'cells' => [
                             ['content' => '#004'],
-                            ['content' => __('Sarah Davis', 'veloria')],
+                            ['content' => __('Sarah Davis', 'addonext')],
                             ['content' => 'sarah@example.com'],
-                            ['content' => __('Active', 'veloria')],
+                            ['content' => __('Active', 'addonext')],
                             ['content' => '$15,780'],
                         ],
                     ],
@@ -192,7 +192,7 @@ class DataTable extends WidgetBase
         $this->add_control(
             'sortable',
             [
-                'label'        => __('Sortable', 'veloria'),
+                'label'        => __('Sortable', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -204,7 +204,7 @@ class DataTable extends WidgetBase
         $this->start_controls_section(
             'section_style_table',
             [
-                'label' => __('Table', 'veloria'),
+                'label' => __('Table', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -212,13 +212,13 @@ class DataTable extends WidgetBase
         $this->add_control(
             'cell_border_color',
             [
-                'label'     => __('Border color', 'veloria'),
+                'label'     => __('Border color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#E5E7EB',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__table' => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-data-table__th,' .
-                    '{{WRAPPER}} .veloria-data-table__td'   => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__table' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__th,' .
+                    '{{WRAPPER}} .addonext-data-table__td'   => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -226,12 +226,12 @@ class DataTable extends WidgetBase
         $this->add_control(
             'table_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__table,' .
-                    '{{WRAPPER}} .veloria-data-table__td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__table,' .
+                    '{{WRAPPER}} .addonext-data-table__td' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -241,7 +241,7 @@ class DataTable extends WidgetBase
         $this->start_controls_section(
             'section_style_header',
             [
-                'label' => __('Header', 'veloria'),
+                'label' => __('Header', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -250,18 +250,18 @@ class DataTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'header_typography',
-                'selector' => '{{WRAPPER}} .veloria-data-table__th',
+                'selector' => '{{WRAPPER}} .addonext-data-table__th',
             ]
         );
 
         $this->add_control(
             'header_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#f5f5f5',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__th' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__th' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -269,11 +269,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'header_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__th' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__th' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -281,11 +281,11 @@ class DataTable extends WidgetBase
         $this->add_responsive_control(
             'header_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-data-table__th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-data-table__th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -295,7 +295,7 @@ class DataTable extends WidgetBase
         $this->start_controls_section(
             'section_style_cells',
             [
-                'label' => __('Cells', 'veloria'),
+                'label' => __('Cells', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -304,18 +304,18 @@ class DataTable extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'cell_typography',
-                'selector' => '{{WRAPPER}} .veloria-data-table__td',
+                'selector' => '{{WRAPPER}} .addonext-data-table__td',
             ]
         );
 
         $this->add_control(
             'cell_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__td' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -323,11 +323,11 @@ class DataTable extends WidgetBase
         $this->add_responsive_control(
             'cell_padding',
             [
-                'label'      => __('Padding', 'veloria'),
+                'label'      => __('Padding', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-data-table__td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-data-table__td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -337,7 +337,7 @@ class DataTable extends WidgetBase
         $this->start_controls_section(
             'section_style_badges',
             [
-                'label' => __('Status badges', 'veloria'),
+                'label' => __('Status badges', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -345,11 +345,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'badge_active_bg',
             [
-                'label'     => __('Active background', 'veloria'),
+                'label'     => __('Active background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#dcfce7',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__badge--active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__badge--active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -357,11 +357,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'badge_active_color',
             [
-                'label'     => __('Active text', 'veloria'),
+                'label'     => __('Active text', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4CAF50',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__badge--active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__badge--active' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -369,11 +369,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'badge_pending_bg',
             [
-                'label'     => __('Pending background', 'veloria'),
+                'label'     => __('Pending background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FFFBE0',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__badge--pending' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__badge--pending' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -381,11 +381,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'badge_pending_color',
             [
-                'label'     => __('Pending text', 'veloria'),
+                'label'     => __('Pending text', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FFA000',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__badge--pending' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__badge--pending' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -393,11 +393,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'badge_inactive_bg',
             [
-                'label'     => __('Inactive background', 'veloria'),
+                'label'     => __('Inactive background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#FFE8E8',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__badge--inactive' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__badge--inactive' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -405,11 +405,11 @@ class DataTable extends WidgetBase
         $this->add_control(
             'badge_inactive_color',
             [
-                'label'     => __('Inactive text', 'veloria'),
+                'label'     => __('Inactive text', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#F44336',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-data-table__badge--inactive' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-data-table__badge--inactive' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -419,7 +419,7 @@ class DataTable extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/data-table/data-table.php';
+        $path = ADDONEXT_DIR . 'templates/data-table/data-table.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -434,18 +434,18 @@ class DataTable extends WidgetBase
         function badgeClass(content) {
             if (!content) return '';
             var c = (content + '').toLowerCase().trim();
-            if (c === 'active') return 'veloria-data-table__badge--active';
-            if (c === 'pending') return 'veloria-data-table__badge--pending';
-            if (c === 'inactive') return 'veloria-data-table__badge--inactive';
-            return 'veloria-data-table__badge--default';
+            if (c === 'active') return 'addonext-data-table__badge--active';
+            if (c === 'pending') return 'addonext-data-table__badge--pending';
+            if (c === 'inactive') return 'addonext-data-table__badge--inactive';
+            return 'addonext-data-table__badge--default';
         }
         #>
-        <div class="veloria-data-table">
-            <table class="veloria-data-table__table">
+        <div class="addonext-data-table">
+            <table class="addonext-data-table__table">
                 <thead>
                     <tr>
                         <# _.each(columns, function(col) { #>
-                            <th class="veloria-data-table__th">{{{ col.header }}}</th>
+                            <th class="addonext-data-table__th">{{{ col.header }}}</th>
                         <# }); #>
                     </tr>
                 </thead>
@@ -458,14 +458,14 @@ class DataTable extends WidgetBase
                                 var cell = cells[colIndex] || {};
                                 var content = cell.content || '';
                                 var type = col.type || 'default';
-                                var cellClass = 'veloria-data-table__td';
-                                if (type === 'bold') cellClass += ' veloria-data-table__td--bold';
-                                if (type === 'number') cellClass += ' veloria-data-table__td--number';
-                                if (type === 'badge') cellClass += ' veloria-data-table__td--badge';
+                                var cellClass = 'addonext-data-table__td';
+                                if (type === 'bold') cellClass += ' addonext-data-table__td--bold';
+                                if (type === 'number') cellClass += ' addonext-data-table__td--number';
+                                if (type === 'badge') cellClass += ' addonext-data-table__td--badge';
                                 var badgeClassVal = type === 'badge' ? badgeClass(content) : '';
                             #>
                                 <# if (type === 'badge') { #>
-                                <td class="{{ cellClass }}"><span class="veloria-data-table__badge {{ badgeClassVal }}">{{{ content }}}</span></td>
+                                <td class="{{ cellClass }}"><span class="addonext-data-table__badge {{ badgeClassVal }}">{{{ content }}}</span></td>
                                 <# } else { #>
                                 <td class="{{ cellClass }}">{{{ content }}}</td>
                                 <# } #>

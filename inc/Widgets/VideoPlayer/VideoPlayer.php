@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\VideoPlayer;
+namespace Addonext\Widgets\VideoPlayer;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -13,12 +13,12 @@ class VideoPlayer extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-video-playlist veloria-icon';
+        return 'eicon-video-playlist addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-video-player';
+        return 'addonext-video-player';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class VideoPlayer extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Video Player', 'veloria');
+        return __('Video Player', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('YouTube, Vimeo, Dailymotion & self-hosted with overlay', 'veloria');
+        return __('YouTube, Vimeo, Dailymotion & self-hosted with overlay', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -43,12 +43,12 @@ class VideoPlayer extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-video-player'];
+        return ['addonext-video-player'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-video-player'];
+        return ['addonext-video-player'];
     }
 
     public function __construct($data = [], $args = null)
@@ -59,8 +59,8 @@ class VideoPlayer extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('veloria-video-player');
-        wp_enqueue_script('veloria-video-player');
+        wp_enqueue_style('addonext-video-player');
+        wp_enqueue_script('addonext-video-player');
     }
 
     public function register_controls(): void
@@ -68,7 +68,7 @@ class VideoPlayer extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Video', 'veloria'),
+                'label' => __('Video', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -76,14 +76,14 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'video_type',
             [
-                'label'   => __('Source', 'veloria'),
+                'label'   => __('Source', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'youtube',
                 'options' => [
-                    'youtube'     => __('YouTube', 'veloria'),
-                    'vimeo'       => __('Vimeo', 'veloria'),
-                    'dailymotion' => __('Dailymotion', 'veloria'),
-                    'hosted'      => __('Self hosted', 'veloria'),
+                    'youtube'     => __('YouTube', 'addonext'),
+                    'vimeo'       => __('Vimeo', 'addonext'),
+                    'dailymotion' => __('Dailymotion', 'addonext'),
+                    'hosted'      => __('Self hosted', 'addonext'),
                 ],
             ]
         );
@@ -91,7 +91,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'youtube_url',
             [
-                'label'     => __('YouTube URL', 'veloria'),
+                'label'     => __('YouTube URL', 'addonext'),
                 'type'      => Controls_Manager::URL,
                 'default'   => ['url' => 'https://www.youtube.com/watch?v=jNQXAC9IVRw'],
                 'condition' => ['video_type' => 'youtube'],
@@ -101,7 +101,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'vimeo_url',
             [
-                'label'     => __('Vimeo URL', 'veloria'),
+                'label'     => __('Vimeo URL', 'addonext'),
                 'type'      => Controls_Manager::URL,
                 'default'   => ['url' => 'https://vimeo.com/148751763'],
                 'condition' => ['video_type' => 'vimeo'],
@@ -111,7 +111,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'dailymotion_url',
             [
-                'label'     => __('Dailymotion URL', 'veloria'),
+                'label'     => __('Dailymotion URL', 'addonext'),
                 'type'      => Controls_Manager::URL,
                 'default'   => ['url' => 'https://www.dailymotion.com/video/x7tfyzb'],
                 'condition' => ['video_type' => 'dailymotion'],
@@ -121,7 +121,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'hosted_url',
             [
-                'label'     => __('Video file', 'veloria'),
+                'label'     => __('Video file', 'addonext'),
                 'type'      => Controls_Manager::MEDIA,
                 'media_type'=> 'video',
                 'condition' => ['video_type' => 'hosted'],
@@ -131,7 +131,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'thumbnail',
             [
-                'label'   => __('Custom thumbnail', 'veloria'),
+                'label'   => __('Custom thumbnail', 'addonext'),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => ['url' => ''],
             ]
@@ -140,7 +140,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'show_title',
             [
-                'label'        => __('Show title', 'veloria'),
+                'label'        => __('Show title', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -150,9 +150,9 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'     => __('Title', 'veloria'),
+                'label'     => __('Title', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Watch Our Introduction Video', 'veloria'),
+                'default'   => __('Watch Our Introduction Video', 'addonext'),
                 'condition' => ['show_title' => 'yes'],
             ]
         );
@@ -160,7 +160,7 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'show_subtitle',
             [
-                'label'        => __('Show subtitle', 'veloria'),
+                'label'        => __('Show subtitle', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -170,9 +170,9 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'subtitle',
             [
-                'label'     => __('Subtitle', 'veloria'),
+                'label'     => __('Subtitle', 'addonext'),
                 'type'      => Controls_Manager::TEXT,
-                'default'   => __('Learn how to use our widgets', 'veloria'),
+                'default'   => __('Learn how to use our widgets', 'addonext'),
                 'condition' => ['show_subtitle' => 'yes'],
             ]
         );
@@ -182,7 +182,7 @@ class VideoPlayer extends WidgetBase
         $this->start_controls_section(
             'section_style_container',
             [
-                'label' => __('Container', 'veloria'),
+                'label' => __('Container', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -190,7 +190,7 @@ class VideoPlayer extends WidgetBase
         $this->add_responsive_control(
             'aspect_ratio',
             [
-                'label'   => __('Aspect ratio', 'veloria'),
+                'label'   => __('Aspect ratio', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => '16/9',
                 'options' => [
@@ -199,7 +199,7 @@ class VideoPlayer extends WidgetBase
                     '21/9' => '21:9',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__inner' => 'aspect-ratio: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__inner' => 'aspect-ratio: {{VALUE}};',
                 ],
             ]
         );
@@ -207,14 +207,14 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => ['top' => 12, 'right' => 12, 'bottom' => 12, 'left' => 12, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-video-player__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-video-player__inner iframe' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-video-player__inner video' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-player__inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-player__inner iframe' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-video-player__inner video' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -223,7 +223,7 @@ class VideoPlayer extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'border',
-                'selector' => '{{WRAPPER}} .veloria-video-player__inner',
+                'selector' => '{{WRAPPER}} .addonext-video-player__inner',
             ]
         );
 
@@ -231,7 +231,7 @@ class VideoPlayer extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'box_shadow',
-                'selector' => '{{WRAPPER}} .veloria-video-player__inner',
+                'selector' => '{{WRAPPER}} .addonext-video-player__inner',
             ]
         );
 
@@ -240,7 +240,7 @@ class VideoPlayer extends WidgetBase
         $this->start_controls_section(
             'section_style_overlay',
             [
-                'label' => __('Overlay', 'veloria'),
+                'label' => __('Overlay', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -248,11 +248,11 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'overlay_gradient_start',
             [
-                'label'     => __('Gradient start', 'veloria'),
+                'label'     => __('Gradient start', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#312e81',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__overlay' => '--veloria-vp-overlay-start: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__overlay' => '--addonext-vp-overlay-start: {{VALUE}};',
                 ],
             ]
         );
@@ -260,11 +260,11 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'overlay_gradient_end',
             [
-                'label'     => __('Gradient end', 'veloria'),
+                'label'     => __('Gradient end', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#4c1d95',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__overlay' => '--veloria-vp-overlay-end: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__overlay' => '--addonext-vp-overlay-end: {{VALUE}};',
                 ],
             ]
         );
@@ -274,7 +274,7 @@ class VideoPlayer extends WidgetBase
         $this->start_controls_section(
             'section_style_play_button',
             [
-                'label' => __('Play button', 'veloria'),
+                'label' => __('Play button', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -282,11 +282,11 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'play_button_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__play' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__play' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -294,11 +294,11 @@ class VideoPlayer extends WidgetBase
         $this->add_control(
             'play_button_icon_color',
             [
-                'label'     => __('Icon color', 'veloria'),
+                'label'     => __('Icon color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__play-icon' => 'border-left-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__play-icon' => 'border-left-color: {{VALUE}};',
                 ],
             ]
         );
@@ -307,7 +307,7 @@ class VideoPlayer extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'play_button_shadow',
-                'selector' => '{{WRAPPER}} .veloria-video-player__play',
+                'selector' => '{{WRAPPER}} .addonext-video-player__play',
             ]
         );
 
@@ -316,7 +316,7 @@ class VideoPlayer extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label'     => __('Title', 'veloria'),
+                'label'     => __('Title', 'addonext'),
                 'tab'      => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_title' => 'yes'],
             ]
@@ -326,18 +326,18 @@ class VideoPlayer extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-video-player__title',
+                'selector' => '{{WRAPPER}} .addonext-video-player__title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -347,7 +347,7 @@ class VideoPlayer extends WidgetBase
         $this->start_controls_section(
             'section_style_subtitle',
             [
-                'label'     => __('Subtitle', 'veloria'),
+                'label'     => __('Subtitle', 'addonext'),
                 'tab'      => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_subtitle' => 'yes'],
             ]
@@ -357,18 +357,18 @@ class VideoPlayer extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'selector' => '{{WRAPPER}} .veloria-video-player__subtitle',
+                'selector' => '{{WRAPPER}} .addonext-video-player__subtitle',
             ]
         );
 
         $this->add_control(
             'subtitle_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-video-player__subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-video-player__subtitle' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -402,7 +402,7 @@ class VideoPlayer extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/video-player/video-player.php';
+        $path = ADDONEXT_DIR . 'templates/video-player/video-player.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -430,36 +430,36 @@ class VideoPlayer extends WidgetBase
         var hostedUrl = (videoType === 'hosted' && settings.hosted_url && settings.hosted_url.url) ? settings.hosted_url.url : '';
         var thumbUrl = (settings.thumbnail && settings.thumbnail.url) ? settings.thumbnail.url : '';
         var hasThumb = thumbUrl !== '';
-        view.addRenderAttribute('inner', 'class', 'veloria-video-player__inner');
-        if (hasThumb) view.addRenderAttribute('inner', 'class', 'veloria-video-player--has-thumbnail');
+        view.addRenderAttribute('inner', 'class', 'addonext-video-player__inner');
+        if (hasThumb) view.addRenderAttribute('inner', 'class', 'addonext-video-player--has-thumbnail');
         view.addRenderAttribute('inner', 'data-embed', embedUrl);
         view.addRenderAttribute('inner', 'data-hosted', hostedUrl);
         view.addRenderAttribute('inner', 'data-type', videoType);
         #>
-        <div class="veloria-video-player">
+        <div class="addonext-video-player">
             <div {{{ view.getRenderAttributeString('inner') }}}>
-                <div class="veloria-video-player__overlay">
+                <div class="addonext-video-player__overlay">
                     <# if (hasThumb) { #>
-                    <img class="veloria-video-player__thumbnail" src="{{ thumbUrl }}" alt="" loading="lazy" decoding="async">
-                    <span class="veloria-video-player__overlay-shade" aria-hidden="true"></span>
+                    <img class="addonext-video-player__thumbnail" src="{{ thumbUrl }}" alt="" loading="lazy" decoding="async">
+                    <span class="addonext-video-player__overlay-shade" aria-hidden="true"></span>
                     <# } #>
-                    <button type="button" class="veloria-video-player__play" aria-label="<?php echo esc_attr__('Play video', 'veloria'); ?>">
-                        <span class="veloria-video-player__play-icon"></span>
+                    <button type="button" class="addonext-video-player__play" aria-label="<?php echo esc_attr__('Play video', 'addonext'); ?>">
+                        <span class="addonext-video-player__play-icon"></span>
                     </button>
                     <# if (settings.show_title === 'yes' && settings.title) { #>
-                    <div class="veloria-video-player__caption">
-                        <div class="veloria-video-player__title">{{{ settings.title }}}</div>
+                    <div class="addonext-video-player__caption">
+                        <div class="addonext-video-player__title">{{{ settings.title }}}</div>
                         <# if (settings.show_subtitle === 'yes' && settings.subtitle) { #>
-                        <div class="veloria-video-player__subtitle">{{{ settings.subtitle }}}</div>
+                        <div class="addonext-video-player__subtitle">{{{ settings.subtitle }}}</div>
                         <# } #>
                     </div>
                     <# } else if (settings.show_subtitle === 'yes' && settings.subtitle) { #>
-                    <div class="veloria-video-player__caption">
-                        <div class="veloria-video-player__subtitle">{{{ settings.subtitle }}}</div>
+                    <div class="addonext-video-player__caption">
+                        <div class="addonext-video-player__subtitle">{{{ settings.subtitle }}}</div>
                     </div>
                     <# } #>
                 </div>
-                <div class="veloria-video-player__embed"></div>
+                <div class="addonext-video-player__embed"></div>
             </div>
         </div>
         <?php

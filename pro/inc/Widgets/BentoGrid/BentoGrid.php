@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\BentoGrid;
+namespace Addonext\Widgets\BentoGrid;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
@@ -13,12 +13,12 @@ class BentoGrid extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-gallery-grid veloria-icon';
+        return 'eicon-gallery-grid addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-bento-grid';
+        return 'addonext-bento-grid';
     }
 
     public function get_admin_category(): string
@@ -28,12 +28,12 @@ class BentoGrid extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Bento Grid', 'veloria');
+        return __('Bento Grid', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Configurable bento-style feature grid.', 'veloria');
+        return __('Configurable bento-style feature grid.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -49,16 +49,16 @@ class BentoGrid extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-bento-grid'];
+        return ['addonext-bento-grid'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-bento-grid',
-            VELORIA_URL . 'assets/css/bento-grid.css',
+            'addonext-bento-grid',
+            ADDONEXT_URL . 'assets/css/bento-grid.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
     }
 
@@ -74,7 +74,7 @@ class BentoGrid extends WidgetBase
 
         $columnRepeater = new Repeater();
         $columnRepeater->add_control('icon', [
-            'label'   => __('Icon', 'veloria'),
+            'label'   => __('Icon', 'addonext'),
             'type'    => Controls_Manager::ICONS,
             'default' => [
                 'value'   => 'fas fa-rocket',
@@ -82,32 +82,32 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('icon_color', [
-            'label'   => __('Icon color', 'veloria'),
+            'label'   => __('Icon color', 'addonext'),
             'type'    => Controls_Manager::COLOR,
             'default' => '#2563eb',
         ]);
         $columnRepeater->add_control('title', [
-            'label'   => __('Title', 'veloria'),
+            'label'   => __('Title', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Lightning Fast', 'veloria'),
+            'default' => __('Lightning Fast', 'addonext'),
         ]);
         $columnRepeater->add_control('subtitle', [
-            'label'   => __('Subtitle', 'veloria'),
+            'label'   => __('Subtitle', 'addonext'),
             'type'    => Controls_Manager::TEXTAREA,
             'rows'    => 2,
-            'default' => __('Optimized performance for the best user experience', 'veloria'),
+            'default' => __('Optimized performance for the best user experience', 'addonext'),
         ]);
         $columnRepeater->add_control('background_type', [
-            'label'   => __('Background type', 'veloria'),
+            'label'   => __('Background type', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'solid',
             'options' => [
-                'solid'    => __('Solid color', 'veloria'),
-                'gradient' => __('Gradient', 'veloria'),
+                'solid'    => __('Solid color', 'addonext'),
+                'gradient' => __('Gradient', 'addonext'),
             ],
         ]);
         $columnRepeater->add_control('background_color', [
-            'label'     => __('Background color', 'veloria'),
+            'label'     => __('Background color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#eef6ff',
             'condition' => [
@@ -115,7 +115,7 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('gradient_start', [
-            'label'     => __('Gradient start', 'veloria'),
+            'label'     => __('Gradient start', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#eef6ff',
             'condition' => [
@@ -123,7 +123,7 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('gradient_end', [
-            'label'     => __('Gradient end', 'veloria'),
+            'label'     => __('Gradient end', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#e8f7ff',
             'condition' => [
@@ -131,7 +131,7 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('gradient_angle', [
-            'label'      => __('Gradient angle', 'veloria'),
+            'label'      => __('Gradient angle', 'addonext'),
             'type'       => Controls_Manager::NUMBER,
             'default'    => 135,
             'min'        => 0,
@@ -142,19 +142,19 @@ class BentoGrid extends WidgetBase
             ],
         ]);
         $columnRepeater->add_control('span_desktop', [
-            'label'   => __('Desktop span (12 cols)', 'veloria'),
+            'label'   => __('Desktop span (12 cols)', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => '6',
             'options' => $spanOptions,
         ]);
         $columnRepeater->add_control('span_tablet', [
-            'label'   => __('Tablet span (12 cols)', 'veloria'),
+            'label'   => __('Tablet span (12 cols)', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => '6',
             'options' => $spanOptions,
         ]);
         $columnRepeater->add_control('span_mobile', [
-            'label'   => __('Mobile span (12 cols)', 'veloria'),
+            'label'   => __('Mobile span (12 cols)', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => '12',
             'options' => $spanOptions,
@@ -162,12 +162,12 @@ class BentoGrid extends WidgetBase
 
         $rowRepeater = new Repeater();
         $rowRepeater->add_control('row_label', [
-            'label'   => __('Row label', 'veloria'),
+            'label'   => __('Row label', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Row', 'veloria'),
+            'default' => __('Row', 'addonext'),
         ]);
         $rowRepeater->add_control('columns', [
-            'label'       => __('Tiles', 'veloria'),
+            'label'       => __('Tiles', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $columnRepeater->get_controls(),
             'default'     => [],
@@ -175,22 +175,22 @@ class BentoGrid extends WidgetBase
         ]);
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('rows', [
-            'label'       => __('Rows', 'veloria'),
+            'label'       => __('Rows', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $rowRepeater->get_controls(),
             'title_field' => '{{{ row_label }}}',
             'default'     => [
                 [
-                    'row_label' => __('Top row', 'veloria'),
+                    'row_label' => __('Top row', 'addonext'),
                     'columns'   => [
                         [
-                            'title'            => __('Lightning Fast', 'veloria'),
-                            'subtitle'         => __('Optimized performance for the best user experience', 'veloria'),
+                            'title'            => __('Lightning Fast', 'addonext'),
+                            'subtitle'         => __('Optimized performance for the best user experience', 'addonext'),
                             'icon'             => ['value' => 'fas fa-rocket', 'library' => 'fa-solid'],
                             'icon_color'       => '#2563eb',
                             'background_type'  => 'solid',
@@ -200,8 +200,8 @@ class BentoGrid extends WidgetBase
                             'span_mobile'      => '12',
                         ],
                         [
-                            'title'            => __('Secure', 'veloria'),
-                            'subtitle'         => __('Enterprise-grade security for your peace of mind', 'veloria'),
+                            'title'            => __('Secure', 'addonext'),
+                            'subtitle'         => __('Enterprise-grade security for your peace of mind', 'addonext'),
                             'icon'             => ['value' => 'fas fa-shield-alt', 'library' => 'fa-solid'],
                             'icon_color'       => '#9333ea',
                             'background_type'  => 'solid',
@@ -213,10 +213,10 @@ class BentoGrid extends WidgetBase
                     ],
                 ],
                 [
-                    'row_label' => __('Bottom row', 'veloria'),
+                    'row_label' => __('Bottom row', 'addonext'),
                     'columns'   => [
                         [
-                            'title'            => __('Mobile Ready', 'veloria'),
+                            'title'            => __('Mobile Ready', 'addonext'),
                             'subtitle'         => '',
                             'icon'             => ['value' => 'fas fa-mobile-alt', 'library' => 'fa-solid'],
                             'icon_color'       => '#16a34a',
@@ -227,7 +227,7 @@ class BentoGrid extends WidgetBase
                             'span_mobile'      => '12',
                         ],
                         [
-                            'title'            => __('Customizable', 'veloria'),
+                            'title'            => __('Customizable', 'addonext'),
                             'subtitle'         => '',
                             'icon'             => ['value' => 'fas fa-palette', 'library' => 'fa-solid'],
                             'icon_color'       => '#ea580c',
@@ -238,8 +238,8 @@ class BentoGrid extends WidgetBase
                             'span_mobile'      => '12',
                         ],
                         [
-                            'title'            => __('24/7 Support', 'veloria'),
-                            'subtitle'         => __('Always here to help', 'veloria'),
+                            'title'            => __('24/7 Support', 'addonext'),
+                            'subtitle'         => __('Always here to help', 'addonext'),
                             'icon'             => ['value' => 'fas fa-headset', 'library' => 'fa-solid'],
                             'icon_color'       => '#dc2626',
                             'background_type'  => 'solid',
@@ -256,34 +256,34 @@ class BentoGrid extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style', [
-            'label' => __('Style', 'veloria'),
+            'label' => __('Style', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('row_gap', [
-            'label'      => __('Row gap', 'veloria'),
+            'label'      => __('Row gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 14],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-bento-grid' => '--veloria-bento-row-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid' => '--addonext-bento-row-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('column_gap', [
-            'label'      => __('Column gap', 'veloria'),
+            'label'      => __('Column gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 14],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-bento-grid' => '--veloria-bento-column-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid' => '--addonext-bento-column-gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('card_padding', [
-            'label'      => __('Tile padding', 'veloria'),
+            'label'      => __('Tile padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
@@ -295,29 +295,29 @@ class BentoGrid extends WidgetBase
                 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-bento-grid__tile' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid__tile' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('card_radius', [
-            'label'      => __('Tile border radius', 'veloria'),
+            'label'      => __('Tile border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 60]],
             'default'    => ['unit' => 'px', 'size' => 12],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-bento-grid__tile' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid__tile' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('tile_min_height', [
-            'label'      => __('Tile min height', 'veloria'),
+            'label'      => __('Tile min height', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 80, 'max' => 420]],
             'default'    => ['unit' => 'px', 'size' => 160],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-bento-grid__tile' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid__tile' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -325,8 +325,8 @@ class BentoGrid extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'label'    => __('Title typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-bento-grid__title',
+                'label'    => __('Title typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-bento-grid__title',
                 'global'   => [
                     'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
                 ],
@@ -342,11 +342,11 @@ class BentoGrid extends WidgetBase
         );
 
         $this->add_control('title_color', [
-            'label'     => __('Title color', 'veloria'),
+            'label'     => __('Title color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#111827',
             'selectors' => [
-                '{{WRAPPER}} .veloria-bento-grid__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-bento-grid__title' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -354,8 +354,8 @@ class BentoGrid extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'subtitle_typography',
-                'label'    => __('Subtitle typography', 'veloria'),
-                'selector' => '{{WRAPPER}} .veloria-bento-grid__subtitle',
+                'label'    => __('Subtitle typography', 'addonext'),
+                'selector' => '{{WRAPPER}} .addonext-bento-grid__subtitle',
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_size' => ['default' => ['size' => 14, 'unit' => 'px']],
@@ -364,23 +364,23 @@ class BentoGrid extends WidgetBase
         );
 
         $this->add_control('subtitle_color', [
-            'label'     => __('Subtitle color', 'veloria'),
+            'label'     => __('Subtitle color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#4b5563',
             'selectors' => [
-                '{{WRAPPER}} .veloria-bento-grid__subtitle' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-bento-grid__subtitle' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('icon_size', [
-            'label'      => __('Icon size', 'veloria'),
+            'label'      => __('Icon size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 12, 'max' => 80]],
             'default'    => ['unit' => 'px', 'size' => 28],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-bento-grid__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .veloria-bento-grid__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-bento-grid__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -394,7 +394,7 @@ class BentoGrid extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = VELORIA_DIR . 'pro/templates/bento-grid/bento-grid.php';
+        $path = ADDONEXT_DIR . 'pro/templates/bento-grid/bento-grid.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -411,9 +411,9 @@ class BentoGrid extends WidgetBase
         <#
         var rows = settings.rows || [];
         #>
-        <div class="veloria-bento-grid">
+        <div class="addonext-bento-grid">
             <# _.each(rows, function(row) { #>
-                <div class="veloria-bento-grid__row">
+                <div class="addonext-bento-grid__row">
                     <#
                     var columns = row.columns || [];
                     _.each(columns, function(col, colIndex) {
@@ -427,16 +427,16 @@ class BentoGrid extends WidgetBase
                         var iconColor = col.icon_color || '#2563eb';
                         var tileStyle = '--er-bento-span-d:' + dSpan + ';--er-bento-span-t:' + tSpan + ';--er-bento-span-m:' + mSpan + ';--er-bento-icon-color:' + iconColor + ';background:' + bg + ';';
                         var tileKey = 'tile_' + colIndex;
-                        view.addRenderAttribute(tileKey, 'class', 'veloria-bento-grid__tile');
+                        view.addRenderAttribute(tileKey, 'class', 'addonext-bento-grid__tile');
                         view.addRenderAttribute(tileKey, 'style', tileStyle);
                     #>
                         <div {{{ view.getRenderAttributeString(tileKey) }}}>
                             <# if (col.icon && col.icon.value) { #>
-                                <div class="veloria-bento-grid__icon"><i class="<# print(col.icon.value); #>"></i></div>
+                                <div class="addonext-bento-grid__icon"><i class="<# print(col.icon.value); #>"></i></div>
                             <# } #>
-                            <h4 class="veloria-bento-grid__title"><# print(col.title || ''); #></h4>
+                            <h4 class="addonext-bento-grid__title"><# print(col.title || ''); #></h4>
                             <# if (col.subtitle) { #>
-                                <p class="veloria-bento-grid__subtitle"><# print(col.subtitle); #></p>
+                                <p class="addonext-bento-grid__subtitle"><# print(col.subtitle); #></p>
                             <# } #>
                         </div>
                     <# }); #>

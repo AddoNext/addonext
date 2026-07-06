@@ -1,6 +1,6 @@
 (function () {
     function initTilt3d() {
-        document.querySelectorAll('.veloria-image-box--hover-tilt-3d .veloria-image-box__image').forEach(function (el) {
+        document.querySelectorAll('.addonext-image-box--hover-tilt-3d .addonext-image-box__image').forEach(function (el) {
             if (el.dataset.tilt3dInit) return;
             el.dataset.tilt3dInit = '1';
             var img = el.querySelector('img');
@@ -32,13 +32,13 @@
     }
 
     if (typeof elementorFrontend !== 'undefined' && elementorFrontend.hooks) {
-        elementorFrontend.hooks.addAction('frontend/element_ready/veloria-image-box.default', function () {
+        elementorFrontend.hooks.addAction('frontend/element_ready/addonext-image-box.default', function () {
             setTimeout(initTilt3d, 100);
         });
     }
 
     var observer = new MutationObserver(function (mutations) {
-        var hasTilt = document.querySelector('.veloria-image-box--hover-tilt-3d .veloria-image-box__image:not([data-tilt3d-init])');
+        var hasTilt = document.querySelector('.addonext-image-box--hover-tilt-3d .addonext-image-box__image:not([data-tilt3d-init])');
         if (hasTilt) setTimeout(initTilt3d, 50);
     });
     if (document.body) {

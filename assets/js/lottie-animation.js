@@ -117,13 +117,13 @@
                 window.removeEventListener('resize', scrollHandler, true);
                 scrollHandler = null;
             }
-            if (container._veloriaLottieHoverEnter) {
-                container.removeEventListener('mouseenter', container._veloriaLottieHoverEnter);
-                delete container._veloriaLottieHoverEnter;
+            if (container._addonextLottieHoverEnter) {
+                container.removeEventListener('mouseenter', container._addonextLottieHoverEnter);
+                delete container._addonextLottieHoverEnter;
             }
-            if (container._veloriaLottieHoverLeave) {
-                container.removeEventListener('mouseleave', container._veloriaLottieHoverLeave);
-                delete container._veloriaLottieHoverLeave;
+            if (container._addonextLottieHoverLeave) {
+                container.removeEventListener('mouseleave', container._addonextLottieHoverLeave);
+                delete container._addonextLottieHoverLeave;
             }
             if (anim && typeof anim.destroy === 'function') {
                 anim.destroy();
@@ -131,7 +131,7 @@
             container.removeAttribute('data-lottie-init');
         }
 
-        container._veloriaLottieTeardown = teardown;
+        container._addonextLottieTeardown = teardown;
 
         anim.addEventListener('DOMLoaded', function () {
             if (trigger === 'hover') {
@@ -142,8 +142,8 @@
                 var onLeave = function () {
                     anim.pause();
                 };
-                container._veloriaLottieHoverEnter = onEnter;
-                container._veloriaLottieHoverLeave = onLeave;
+                container._addonextLottieHoverEnter = onEnter;
+                container._addonextLottieHoverLeave = onLeave;
                 container.addEventListener('mouseenter', onEnter);
                 container.addEventListener('mouseleave', onLeave);
                 return;
@@ -164,22 +164,22 @@
     }
 
     function destroyContainer(container) {
-        if (container && typeof container._veloriaLottieTeardown === 'function') {
-            container._veloriaLottieTeardown();
-            delete container._veloriaLottieTeardown;
+        if (container && typeof container._addonextLottieTeardown === 'function') {
+            container._addonextLottieTeardown();
+            delete container._addonextLottieTeardown;
         }
     }
 
     function scan(scope) {
         var root = scope || document;
-        var nodes = root.querySelectorAll('.veloria-lottie-animation');
+        var nodes = root.querySelectorAll('.addonext-lottie-animation');
         for (var i = 0; i < nodes.length; i += 1) {
             initContainer(nodes[i]);
         }
     }
 
     function prepareScope(scope) {
-        var nodes = scope.querySelectorAll('.veloria-lottie-animation');
+        var nodes = scope.querySelectorAll('.addonext-lottie-animation');
         for (var i = 0; i < nodes.length; i += 1) {
             destroyContainer(nodes[i]);
         }
@@ -202,7 +202,7 @@
             return;
         }
         elementorFrontend.hooks.addAction(
-            'frontend/element_ready/veloria-lottie-animation.default',
+            'frontend/element_ready/addonext-lottie-animation.default',
             function ($scope) {
                 var el = $scope && $scope[0] ? $scope[0] : null;
                 if (!el) {

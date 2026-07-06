@@ -1,32 +1,32 @@
 <?php
 defined('ABSPATH') || exit;
 
-$veloria_settings = $this->get_settings_for_display();
-$veloria_items    = isset($veloria_settings['items']) && is_array($veloria_settings['items']) ? $veloria_settings['items'] : [];
-$this->add_render_attribute('wrapper', 'class', 'veloria-icon-list');
+$addonext_settings = $this->get_settings_for_display();
+$addonext_items    = isset($addonext_settings['items']) && is_array($addonext_settings['items']) ? $addonext_settings['items'] : [];
+$this->add_render_attribute('wrapper', 'class', 'addonext-icon-list');
 ?>
 <ul <?php $this->print_render_attribute_string('wrapper'); ?>>
-    <?php foreach ($veloria_items as $veloria_index => $veloria_item) : ?>
-        <li class="veloria-icon-list__item">
+    <?php foreach ($addonext_items as $addonext_index => $addonext_item) : ?>
+        <li class="addonext-icon-list__item">
             <?php
-            $veloria_icon_data = $veloria_item['selected_icon'] ?? $veloria_item['icon'] ?? [];
-            if (!empty($veloria_icon_data['value'])) :
+            $addonext_icon_data = $addonext_item['selected_icon'] ?? $addonext_item['icon'] ?? [];
+            if (!empty($addonext_icon_data['value'])) :
             ?>
-                <span class="veloria-icon-list__icon"><?php \Elementor\Icons_Manager::render_icon($veloria_icon_data, ['aria-hidden' => 'true']); ?></span>
+                <span class="addonext-icon-list__icon"><?php \Elementor\Icons_Manager::render_icon($addonext_icon_data, ['aria-hidden' => 'true']); ?></span>
             <?php endif; ?>
             <?php
-            $veloria_has_link = !empty($veloria_item['link']['url']);
-            $veloria_link_key = 'item-link-' . $veloria_index;
-            if ($veloria_has_link) {
-                $this->add_link_attributes($veloria_link_key, $veloria_item['link']);
+            $addonext_has_link = !empty($addonext_item['link']['url']);
+            $addonext_link_key = 'item-link-' . $addonext_index;
+            if ($addonext_has_link) {
+                $this->add_link_attributes($addonext_link_key, $addonext_item['link']);
             }
             ?>
-            <?php if ($veloria_has_link) : ?>
-                <a <?php $this->print_render_attribute_string($veloria_link_key); ?> class="veloria-icon-list__link">
-                    <span class="veloria-icon-list__text"><?php echo esc_html($veloria_item['text'] ?? ''); ?></span>
+            <?php if ($addonext_has_link) : ?>
+                <a <?php $this->print_render_attribute_string($addonext_link_key); ?> class="addonext-icon-list__link">
+                    <span class="addonext-icon-list__text"><?php echo esc_html($addonext_item['text'] ?? ''); ?></span>
                 </a>
             <?php else : ?>
-                <span class="veloria-icon-list__text"><?php echo esc_html($veloria_item['text'] ?? ''); ?></span>
+                <span class="addonext-icon-list__text"><?php echo esc_html($addonext_item['text'] ?? ''); ?></span>
             <?php endif; ?>
         </li>
     <?php endforeach; ?>

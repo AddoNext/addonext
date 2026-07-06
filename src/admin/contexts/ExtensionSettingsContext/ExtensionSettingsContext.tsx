@@ -59,7 +59,7 @@ export function ExtensionSettingsProvider({
     setModalSaving(true);
     try {
       const res = (await apiFetch({
-        path: `/veloria/v1/extensions/${encodeURIComponent(modalExtensionId)}/settings`,
+        path: `/addonext/v1/extensions/${encodeURIComponent(modalExtensionId)}/settings`,
         method: "POST",
         data: { settings: modalDraft },
       })) as ExtensionSettingsSaveResponse;

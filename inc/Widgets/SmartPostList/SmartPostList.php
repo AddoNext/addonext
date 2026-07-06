@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\SmartPostList;
+namespace Addonext\Widgets\SmartPostList;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -11,12 +11,12 @@ class SmartPostList extends WidgetBase
 {
     public function get_icon(): string
     {
-        return 'eicon-post-list veloria-icon';
+        return 'eicon-post-list addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-smart-post-list';
+        return 'addonext-smart-post-list';
     }
 
     public function get_admin_category(): string
@@ -26,12 +26,12 @@ class SmartPostList extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Smart Post List', 'veloria');
+        return __('Smart Post List', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Display posts in a card grid with image, category, excerpt and author', 'veloria');
+        return __('Display posts in a card grid with image, category, excerpt and author', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -41,7 +41,7 @@ class SmartPostList extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-smart-post-list'];
+        return ['addonext-smart-post-list'];
     }
 
     public function register_controls(): void
@@ -49,7 +49,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_header',
             [
-                'label' => __('Header', 'veloria'),
+                'label' => __('Header', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -57,23 +57,23 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'section_title',
             [
-                'label'   => __('Title', 'veloria'),
+                'label'   => __('Title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Latest Articles', 'veloria'),
+                'default' => __('Latest Articles', 'addonext'),
             ]
         );
 
         $this->add_control(
             'sort_by',
             [
-                'label'   => __('Sort by', 'veloria'),
+                'label'   => __('Sort by', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'date_desc',
                 'options' => [
-                    'date_desc' => __('Most Recent', 'veloria'),
-                    'date_asc'  => __('Oldest First', 'veloria'),
-                    'title_asc' => __('Title A–Z', 'veloria'),
-                    'title_desc'=> __('Title Z–A', 'veloria'),
+                    'date_desc' => __('Most Recent', 'addonext'),
+                    'date_asc'  => __('Oldest First', 'addonext'),
+                    'title_asc' => __('Title A–Z', 'addonext'),
+                    'title_desc'=> __('Title Z–A', 'addonext'),
                 ],
             ]
         );
@@ -83,7 +83,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_query',
             [
-                'label' => __('Query', 'veloria'),
+                'label' => __('Query', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -91,12 +91,12 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'post_type',
             [
-                'label'   => __('Post type', 'veloria'),
+                'label'   => __('Post type', 'addonext'),
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'post',
                 'options' => [
-                    'post' => __('Posts', 'veloria'),
-                    'page' => __('Pages', 'veloria'),
+                    'post' => __('Posts', 'addonext'),
+                    'page' => __('Pages', 'addonext'),
                 ],
             ]
         );
@@ -104,7 +104,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'posts_per_page',
             [
-                'label'   => __('Posts per page', 'veloria'),
+                'label'   => __('Posts per page', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'min'     => 1,
                 'max'     => 50,
@@ -115,7 +115,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'category_ids',
             [
-                'label'    => __('Categories', 'veloria'),
+                'label'    => __('Categories', 'addonext'),
                 'type'     => Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options'  => $this->get_post_categories(),
@@ -128,7 +128,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __('Layout', 'veloria'),
+                'label' => __('Layout', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -136,7 +136,7 @@ class SmartPostList extends WidgetBase
         $this->add_responsive_control(
             'columns',
             [
-                'label'          => __('Columns', 'veloria'),
+                'label'          => __('Columns', 'addonext'),
                 'type'           => Controls_Manager::SELECT,
                 'default'        => '3',
                 'tablet_default' => '2',
@@ -148,7 +148,7 @@ class SmartPostList extends WidgetBase
                     '4' => '4',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .addonext-smart-post-list__grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
                 ],
             ]
         );
@@ -156,10 +156,10 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_pagination',
             [
-                'label'        => __('Show pagination', 'veloria'),
+                'label'        => __('Show pagination', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => __('Yes', 'veloria'),
-                'label_off'    => __('No', 'veloria'),
+                'label_on'     => __('Yes', 'addonext'),
+                'label_off'    => __('No', 'addonext'),
                 'return_value' => 'yes',
                 'default'     => 'yes',
             ]
@@ -170,7 +170,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_card',
             [
-                'label' => __('Card', 'veloria'),
+                'label' => __('Card', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -178,7 +178,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_image',
             [
-                'label'        => __('Show image', 'veloria'),
+                'label'        => __('Show image', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -188,7 +188,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_category',
             [
-                'label'        => __('Show category', 'veloria'),
+                'label'        => __('Show category', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -198,7 +198,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_date',
             [
-                'label'        => __('Show date', 'veloria'),
+                'label'        => __('Show date', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -208,7 +208,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_excerpt',
             [
-                'label'        => __('Show excerpt', 'veloria'),
+                'label'        => __('Show excerpt', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -218,7 +218,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'excerpt_length',
             [
-                'label'     => __('Excerpt length', 'veloria'),
+                'label'     => __('Excerpt length', 'addonext'),
                 'type'      => Controls_Manager::NUMBER,
                 'min'       => 10,
                 'max'       => 200,
@@ -230,7 +230,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_author',
             [
-                'label'        => __('Show author', 'veloria'),
+                'label'        => __('Show author', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -240,7 +240,7 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'show_read_time',
             [
-                'label'        => __('Show read time', 'veloria'),
+                'label'        => __('Show read time', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'     => 'yes',
@@ -252,7 +252,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_style_header',
             [
-                'label' => __('Header', 'veloria'),
+                'label' => __('Header', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -260,11 +260,11 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'header_title_color',
             [
-                'label'     => __('Title color', 'veloria'),
+                'label'     => __('Title color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -273,18 +273,18 @@ class SmartPostList extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'header_title_typography',
-                'selector' => '{{WRAPPER}} .veloria-smart-post-list__title',
+                'selector' => '{{WRAPPER}} .addonext-smart-post-list__title',
             ]
         );
 
         $this->add_control(
             'sort_select_color',
             [
-                'label'     => __('Sort dropdown color', 'veloria'),
+                'label'     => __('Sort dropdown color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__sort-select' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__sort-select' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -294,7 +294,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_style_cards',
             [
-                'label' => __('Cards', 'veloria'),
+                'label' => __('Cards', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -302,11 +302,11 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'card_bg',
             [
-                'label'     => __('Background', 'veloria'),
+                'label'     => __('Background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -314,13 +314,13 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'card_border_radius',
             [
-                'label'      => __('Border radius', 'veloria'),
+                'label'      => __('Border radius', 'addonext'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default'    => ['top' => 8, 'right' => 8, 'bottom' => 8, 'left' => 8, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-smart-post-list__card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .veloria-smart-post-list__image-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} 0 0;',
+                    '{{WRAPPER}} .addonext-smart-post-list__card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__image-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} 0 0;',
                 ],
             ]
         );
@@ -328,11 +328,11 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'card_title_color',
             [
-                'label'     => __('Title color', 'veloria'),
+                'label'     => __('Title color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#111827',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__card-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__card-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -341,18 +341,18 @@ class SmartPostList extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'card_title_typography',
-                'selector' => '{{WRAPPER}} .veloria-smart-post-list__card-title',
+                'selector' => '{{WRAPPER}} .addonext-smart-post-list__card-title',
             ]
         );
 
         $this->add_control(
             'card_excerpt_color',
             [
-                'label'     => __('Excerpt color', 'veloria'),
+                'label'     => __('Excerpt color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__excerpt' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__excerpt' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -361,20 +361,20 @@ class SmartPostList extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'card_excerpt_typography',
-                'selector' => '{{WRAPPER}} .veloria-smart-post-list__excerpt',
+                'selector' => '{{WRAPPER}} .addonext-smart-post-list__excerpt',
             ]
         );
 
         $this->add_control(
             'card_meta_color',
             [
-                'label'     => __('Meta color', 'veloria'),
+                'label'     => __('Meta color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__meta-date' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-smart-post-list__author-name' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-smart-post-list__read-time' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__meta-date' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__author-name' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__read-time' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -384,7 +384,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_style_category',
             [
-                'label' => __('Category tag', 'veloria'),
+                'label' => __('Category tag', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -392,11 +392,11 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'category_text_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__category' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__category' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -405,7 +405,7 @@ class SmartPostList extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'category_typography',
-                'selector' => '{{WRAPPER}} .veloria-smart-post-list__category',
+                'selector' => '{{WRAPPER}} .addonext-smart-post-list__category',
             ]
         );
 
@@ -414,7 +414,7 @@ class SmartPostList extends WidgetBase
         $this->start_controls_section(
             'section_style_pagination',
             [
-                'label'     => __('Pagination', 'veloria'),
+                'label'     => __('Pagination', 'addonext'),
                 'tab'      => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_pagination' => 'yes'],
             ]
@@ -423,11 +423,11 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'pagination_active_bg',
             [
-                'label'     => __('Active background', 'veloria'),
+                'label'     => __('Active background', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#2563eb',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__page-link.is-active' => 'background-color: {{VALUE}}; color: #fff; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__page-link.is-active' => 'background-color: {{VALUE}}; color: #fff; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -435,13 +435,13 @@ class SmartPostList extends WidgetBase
         $this->add_control(
             'pagination_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-smart-post-list__page-link' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .veloria-smart-post-list__page-prev,' .
-                    '{{WRAPPER}} .veloria-smart-post-list__page-next' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__page-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-smart-post-list__page-prev,' .
+                    '{{WRAPPER}} .addonext-smart-post-list__page-next' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -464,7 +464,7 @@ class SmartPostList extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/smart-post-list/smart-post-list.php';
+        $path = ADDONEXT_DIR . 'templates/smart-post-list/smart-post-list.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -473,23 +473,23 @@ class SmartPostList extends WidgetBase
     protected function content_template(): void
     {
         ?>
-        <div class="veloria-smart-post-list">
-            <div class="veloria-smart-post-list__header">
-                <h2 class="veloria-smart-post-list__title">{{{ settings.section_title }}}</h2>
-                <select class="veloria-smart-post-list__sort-select" disabled>
-                    <option><# if (settings.sort_by === 'date_desc') { #><?php echo esc_attr(__('Most Recent', 'veloria')); ?><# } #></option>
+        <div class="addonext-smart-post-list">
+            <div class="addonext-smart-post-list__header">
+                <h2 class="addonext-smart-post-list__title">{{{ settings.section_title }}}</h2>
+                <select class="addonext-smart-post-list__sort-select" disabled>
+                    <option><# if (settings.sort_by === 'date_desc') { #><?php echo esc_attr(__('Most Recent', 'addonext')); ?><# } #></option>
                 </select>
             </div>
-            <div class="veloria-smart-post-list__grid">
-                <div class="veloria-smart-post-list__card">
-                    <div class="veloria-smart-post-list__image-wrap"></div>
-                    <div class="veloria-smart-post-list__card-body">
-                        <span class="veloria-smart-post-list__category"><?php echo esc_html__('Sample', 'veloria'); ?></span>
-                        <h3 class="veloria-smart-post-list__card-title"><?php echo esc_html__('Article title placeholder', 'veloria'); ?></h3>
-                        <p class="veloria-smart-post-list__excerpt"><?php echo esc_html__('Excerpt text...', 'veloria'); ?></p>
-                        <div class="veloria-smart-post-list__footer">
-                            <span class="veloria-smart-post-list__author-name"><?php echo esc_html__('Author', 'veloria'); ?></span>
-                            <span class="veloria-smart-post-list__read-time"><?php echo esc_html__('5 min read', 'veloria'); ?></span>
+            <div class="addonext-smart-post-list__grid">
+                <div class="addonext-smart-post-list__card">
+                    <div class="addonext-smart-post-list__image-wrap"></div>
+                    <div class="addonext-smart-post-list__card-body">
+                        <span class="addonext-smart-post-list__category"><?php echo esc_html__('Sample', 'addonext'); ?></span>
+                        <h3 class="addonext-smart-post-list__card-title"><?php echo esc_html__('Article title placeholder', 'addonext'); ?></h3>
+                        <p class="addonext-smart-post-list__excerpt"><?php echo esc_html__('Excerpt text...', 'addonext'); ?></p>
+                        <div class="addonext-smart-post-list__footer">
+                            <span class="addonext-smart-post-list__author-name"><?php echo esc_html__('Author', 'addonext'); ?></span>
+                            <span class="addonext-smart-post-list__read-time"><?php echo esc_html__('5 min read', 'addonext'); ?></span>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 <?php
-namespace Veloria\Migrations;
+namespace Addonext\Migrations;
 
-use Veloria\Base\MigrationBase;
-use Veloria\Utils\OptionsHelper;
-use Veloria\Common\WidgetManager;
+use Addonext\Base\MigrationBase;
+use Addonext\Utils\OptionsHelper;
+use Addonext\Common\WidgetManager;
 
 defined('ABSPATH') or exit;
 

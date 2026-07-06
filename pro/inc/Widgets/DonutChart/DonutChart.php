@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\DonutChart;
+namespace Addonext\Widgets\DonutChart;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -18,18 +18,18 @@ class DonutChart extends WidgetBase
 
     public function enqueue_preview_scripts(): void
     {
-        wp_enqueue_style('veloria-donut-chart');
-        wp_enqueue_script('veloria-donut-chart');
+        wp_enqueue_style('addonext-donut-chart');
+        wp_enqueue_script('addonext-donut-chart');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-circle-o veloria-icon';
+        return 'eicon-circle-o addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-donut-chart';
+        return 'addonext-donut-chart';
     }
 
     public function get_admin_category(): string
@@ -39,12 +39,12 @@ class DonutChart extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Donut Chart', 'veloria');
+        return __('Donut Chart', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Donut chart visualization', 'veloria');
+        return __('Donut chart visualization', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -60,28 +60,28 @@ class DonutChart extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-donut-chart'];
+        return ['addonext-donut-chart'];
     }
 
     public function get_script_depends(): array
     {
-        return ['elementor-frontend', 'veloria-donut-chart'];
+        return ['elementor-frontend', 'addonext-donut-chart'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-donut-chart',
-            VELORIA_URL . 'assets/css/donut-chart.css',
+            'addonext-donut-chart',
+            ADDONEXT_URL . 'assets/css/donut-chart.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
 
         wp_register_script(
-            'veloria-donut-chart',
-            VELORIA_URL . 'assets/js/donut-chart.js',
+            'addonext-donut-chart',
+            ADDONEXT_URL . 'assets/js/donut-chart.js',
             ['elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -94,7 +94,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_content',
             [
-                'label' => __('Content', 'veloria'),
+                'label' => __('Content', 'addonext'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -102,9 +102,9 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'title',
             [
-                'label'   => __('Chart title', 'veloria'),
+                'label'   => __('Chart title', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Department Budget Distribution', 'veloria'),
+                'default' => __('Department Budget Distribution', 'addonext'),
             ]
         );
 
@@ -112,7 +112,7 @@ class DonutChart extends WidgetBase
         $repeater->add_control(
             'label',
             [
-                'label'   => __('Label', 'veloria'),
+                'label'   => __('Label', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -120,7 +120,7 @@ class DonutChart extends WidgetBase
         $repeater->add_control(
             'value',
             [
-                'label'   => __('Value', 'veloria'),
+                'label'   => __('Value', 'addonext'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
                 'min'     => 0,
@@ -129,7 +129,7 @@ class DonutChart extends WidgetBase
         $repeater->add_control(
             'color',
             [
-                'label'   => __('Color', 'veloria'),
+                'label'   => __('Color', 'addonext'),
                 'type'    => Controls_Manager::COLOR,
                 'default' => '#4285F4',
             ]
@@ -146,7 +146,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'data',
             [
-                'label'       => __('Data', 'veloria'),
+                'label'       => __('Data', 'addonext'),
                 'type'        => Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'default'     => $default_data,
@@ -157,7 +157,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'center_prefix',
             [
-                'label'   => __('Center value prefix', 'veloria'),
+                'label'   => __('Center value prefix', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => '$',
             ]
@@ -165,7 +165,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'center_suffix',
             [
-                'label'   => __('Center value suffix', 'veloria'),
+                'label'   => __('Center value suffix', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
                 'default' => 'K',
             ]
@@ -173,15 +173,15 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'center_label',
             [
-                'label'   => __('Center label', 'veloria'),
+                'label'   => __('Center label', 'addonext'),
                 'type'    => Controls_Manager::TEXT,
-                'default' => __('Total Budget', 'veloria'),
+                'default' => __('Total Budget', 'addonext'),
             ]
         );
         $this->add_control(
             'show_slice_labels',
             [
-                'label'        => __('Show slice labels', 'veloria'),
+                'label'        => __('Show slice labels', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => 'yes',
                 'return_value' => 'yes',
@@ -190,7 +190,7 @@ class DonutChart extends WidgetBase
         $this->add_control(
             'show_legend',
             [
-                'label'        => __('Show legend', 'veloria'),
+                'label'        => __('Show legend', 'addonext'),
                 'type'         => Controls_Manager::SWITCHER,
                 'default'      => 'yes',
                 'return_value' => 'yes',
@@ -201,27 +201,27 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_chart',
             [
-                'label' => __('Chart', 'veloria'),
+                'label' => __('Chart', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
             'chart_size',
             [
-                'label'      => __('Chart size', 'veloria'),
+                'label'      => __('Chart size', 'addonext'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => ['px' => ['min' => 180, 'max' => 520]],
                 'default'    => ['size' => 360, 'unit' => 'px'],
                 'selectors'  => [
-                    '{{WRAPPER}} .veloria-donut-chart__canvas' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .addonext-donut-chart__canvas' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
         $this->add_control(
             'inner_cutout',
             [
-                'label' => __('Inner cutout (%)', 'veloria'),
+                'label' => __('Inner cutout (%)', 'addonext'),
                 'type'  => Controls_Manager::SLIDER,
                 'range' => ['px' => ['min' => 35, 'max' => 80]],
                 'default' => ['size' => 50],
@@ -232,7 +232,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => __('Title', 'veloria'),
+                'label' => __('Title', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -240,33 +240,33 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'selector' => '{{WRAPPER}} .veloria-donut-chart__title',
+                'selector' => '{{WRAPPER}} .addonext-donut-chart__title',
             ]
         );
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Color', 'veloria'),
+                'label'     => __('Color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-donut-chart__title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-donut-chart__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
         $this->add_control(
             'title_align',
             [
-                'label'   => __('Alignment', 'veloria'),
+                'label'   => __('Alignment', 'addonext'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => ['title' => __('Left', 'veloria'), 'icon' => 'eicon-text-align-left'],
-                    'center' => ['title' => __('Center', 'veloria'), 'icon' => 'eicon-text-align-center'],
-                    'right'  => ['title' => __('Right', 'veloria'), 'icon' => 'eicon-text-align-right'],
+                    'left'   => ['title' => __('Left', 'addonext'), 'icon' => 'eicon-text-align-left'],
+                    'center' => ['title' => __('Center', 'addonext'), 'icon' => 'eicon-text-align-center'],
+                    'right'  => ['title' => __('Right', 'addonext'), 'icon' => 'eicon-text-align-right'],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-donut-chart__title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-donut-chart__title' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -275,7 +275,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_center',
             [
-                'label' => __('Center text', 'veloria'),
+                'label' => __('Center text', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -283,17 +283,17 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'center_value_typography',
-                'selector' => '{{WRAPPER}} .veloria-donut-chart__center-value',
+                'selector' => '{{WRAPPER}} .addonext-donut-chart__center-value',
             ]
         );
         $this->add_control(
             'center_value_color',
             [
-                'label'     => __('Value color', 'veloria'),
+                'label'     => __('Value color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-donut-chart__center-value' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-donut-chart__center-value' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -301,17 +301,17 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'center_label_typography',
-                'selector' => '{{WRAPPER}} .veloria-donut-chart__center-label',
+                'selector' => '{{WRAPPER}} .addonext-donut-chart__center-label',
             ]
         );
         $this->add_control(
             'center_label_color',
             [
-                'label'     => __('Label color', 'veloria'),
+                'label'     => __('Label color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-donut-chart__center-label' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-donut-chart__center-label' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -320,7 +320,7 @@ class DonutChart extends WidgetBase
         $this->start_controls_section(
             'section_style_legend',
             [
-                'label' => __('Legend', 'veloria'),
+                'label' => __('Legend', 'addonext'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -328,17 +328,17 @@ class DonutChart extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'legend_typography',
-                'selector' => '{{WRAPPER}} .veloria-donut-chart__legend-item',
+                'selector' => '{{WRAPPER}} .addonext-donut-chart__legend-item',
             ]
         );
         $this->add_control(
             'legend_color',
             [
-                'label'     => __('Text color', 'veloria'),
+                'label'     => __('Text color', 'addonext'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .veloria-donut-chart__legend-item' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .addonext-donut-chart__legend-item' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -352,7 +352,7 @@ class DonutChart extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = VELORIA_DIR . 'pro/templates/donut-chart/donut-chart.php';
+        $path = ADDONEXT_DIR . 'pro/templates/donut-chart/donut-chart.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -384,7 +384,7 @@ class DonutChart extends WidgetBase
         var showLegend = settings.show_legend === 'yes' ? 'yes' : 'no';
         var innerCutout = settings.inner_cutout && settings.inner_cutout.size ? settings.inner_cutout.size : 50;
         #>
-        <div class="veloria-donut-chart"
+        <div class="addonext-donut-chart"
             data-labels="{{ labels.join('|') }}"
             data-values="{{ values.join('|') }}"
             data-colors="{{ colors.join('|') }}"
@@ -394,10 +394,10 @@ class DonutChart extends WidgetBase
             data-show-labels="{{ showLabels }}"
             data-show-legend="{{ showLegend }}"
             data-inner-cutout="{{ innerCutout }}">
-            <# if (title) { #><h3 class="veloria-donut-chart__title">{{{ title }}}</h3><# } #>
-            <div class="veloria-donut-chart__wrap">
-                <div class="veloria-donut-chart__canvas" role="img" aria-label="{{ title }}"></div>
-                <div class="veloria-donut-chart__legend"></div>
+            <# if (title) { #><h3 class="addonext-donut-chart__title">{{{ title }}}</h3><# } #>
+            <div class="addonext-donut-chart__wrap">
+                <div class="addonext-donut-chart__canvas" role="img" aria-label="{{ title }}"></div>
+                <div class="addonext-donut-chart__legend"></div>
             </div>
         </div>
         <?php

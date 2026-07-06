@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\HeroBanner;
+namespace Addonext\Widgets\HeroBanner;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -53,20 +53,20 @@ class HeroBanner extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->enqueue_assets();
-        wp_enqueue_style('veloria-hero-banner');
-        wp_enqueue_script('veloria-hero-banner');
+        wp_enqueue_style('addonext-hero-banner');
+        wp_enqueue_script('addonext-hero-banner');
                 }
         }
 }
 
     public function get_icon(): string
     {
-        return 'eicon-slider-push veloria-icon';
+        return 'eicon-slider-push addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-hero-banner';
+        return 'addonext-hero-banner';
     }
 
     public function get_admin_category(): string
@@ -76,12 +76,12 @@ class HeroBanner extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Hero Banner', 'veloria');
+        return __('Hero Banner', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Hero section with tagline, headline, background media, and buttons.', 'veloria');
+        return __('Hero section with tagline, headline, background media, and buttons.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -97,27 +97,27 @@ class HeroBanner extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['veloria-hero-banner'];
+        return ['addonext-hero-banner'];
     }
 
     public function get_script_depends(): array
     {
-        return ['veloria-hero-banner'];
+        return ['addonext-hero-banner'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-hero-banner',
-            VELORIA_URL . 'assets/css/hero-banner.css',
+            'addonext-hero-banner',
+            ADDONEXT_URL . 'assets/css/hero-banner.css',
             [],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-hero-banner',
-            VELORIA_URL . 'assets/js/hero-banner.js',
+            'addonext-hero-banner',
+            ADDONEXT_URL . 'assets/js/hero-banner.js',
             ['jquery', 'elementor-frontend'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -128,12 +128,12 @@ class HeroBanner extends WidgetBase
             if (emt_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_layout', [
-            'label' => __('Layout', 'veloria'),
+            'label' => __('Layout', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_responsive_control('min_height', [
-            'label'      => __('Min height', 'veloria'),
+            'label'      => __('Min height', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh'],
             'range'      => [
@@ -142,75 +142,75 @@ class HeroBanner extends WidgetBase
             ],
             'default'    => ['size' => 100, 'unit' => 'vh'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('content_max_width', [
-            'label'      => __('Content max width', 'veloria'),
+            'label'      => __('Content max width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => ['px' => ['min' => 280, 'max' => 900]],
             'default'    => ['size' => 520, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__content' => 'max-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__content' => 'max-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('content_align_vertical', [
-            'label'     => __('Vertical align', 'veloria'),
+            'label'     => __('Vertical align', 'addonext'),
             'type'      => Controls_Manager::CHOOSE,
             'options'   => [
-                'flex-start' => ['title' => __('Top', 'veloria'), 'icon' => 'eicon-v-align-top'],
-                'center'     => ['title' => __('Middle', 'veloria'), 'icon' => 'eicon-v-align-middle'],
-                'flex-end'   => ['title' => __('Bottom', 'veloria'), 'icon' => 'eicon-v-align-bottom'],
+                'flex-start' => ['title' => __('Top', 'addonext'), 'icon' => 'eicon-v-align-top'],
+                'center'     => ['title' => __('Middle', 'addonext'), 'icon' => 'eicon-v-align-middle'],
+                'flex-end'   => ['title' => __('Bottom', 'addonext'), 'icon' => 'eicon-v-align-bottom'],
             ],
             'default'   => 'center',
             'toggle'    => false,
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__inner' => 'justify-content: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__inner' => 'justify-content: {{VALUE}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_content', [
-            'label' => __('Content', 'veloria'),
+            'label' => __('Content', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $site_title = get_bloginfo('name', 'display');
         if (!is_string($site_title) || trim($site_title) === '') {
-            $site_title = 'Veloria';
+            $site_title = 'AddoNext';
         }
 
         $this->add_control('tagline_prefix', [
-            'label'       => __('Tagline (first part)', 'veloria'),
+            'label'       => __('Tagline (first part)', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => __('Built for', 'veloria'),
+            'default'     => __('Built for', 'addonext'),
             'label_block' => true,
             'dynamic'     => ['active' => true],
         ]);
 
         $this->add_control('tagline_accent', [
-            'label'       => __('Tagline (accent)', 'veloria'),
+            'label'       => __('Tagline (accent)', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'default'     => $site_title,
             'label_block' => true,
-            'description' => __('Uses your WordPress site title by default. Shown with the brand gradient.', 'veloria'),
+            'description' => __('Uses your WordPress site title by default. Shown with the brand gradient.', 'addonext'),
             'dynamic'     => ['active' => true],
         ]);
 
         $this->add_control('title', [
-            'label'       => __('Title', 'veloria'),
+            'label'       => __('Title', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => __('Create pages that convert faster', 'veloria'),
-            'description' => __('The last two words use a typing animation and gradient.', 'veloria'),
+            'default'     => __('Create pages that convert faster', 'addonext'),
+            'description' => __('The last two words use a typing animation and gradient.', 'addonext'),
             'dynamic'     => ['active' => true],
         ]);
 
         $this->add_control('title_typing_speed', [
-            'label'   => __('Typing speed (ms)', 'veloria'),
+            'label'   => __('Typing speed (ms)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 20,
             'max'     => 200,
@@ -219,14 +219,14 @@ class HeroBanner extends WidgetBase
         ]);
 
         $this->add_control('title_typing_loop', [
-            'label'        => __('Loop typing animation', 'veloria'),
+            'label'        => __('Loop typing animation', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('title_tag', [
-            'label'   => __('Title HTML tag', 'veloria'),
+            'label'   => __('Title HTML tag', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'h1',
             'options' => [
@@ -238,15 +238,15 @@ class HeroBanner extends WidgetBase
         ]);
 
         $this->add_control('subtitle', [
-            'label'   => __('Subtitle', 'veloria'),
+            'label'   => __('Subtitle', 'addonext'),
             'type'    => Controls_Manager::TEXTAREA,
-            'default' => __('Premium Elementor widgets and patterns to ship polished layouts without slowing down your team.', 'veloria'),
+            'default' => __('Premium Elementor widgets and patterns to ship polished layouts without slowing down your team.', 'addonext'),
             'rows'    => 4,
             'dynamic' => ['active' => true],
         ]);
 
         $this->add_control('show_accent_line', [
-            'label'        => __('Accent line beside subtitle', 'veloria'),
+            'label'        => __('Accent line beside subtitle', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -254,13 +254,13 @@ class HeroBanner extends WidgetBase
 
         $repeater = new Repeater();
         $repeater->add_control('button_text', [
-            'label'   => __('Text', 'veloria'),
+            'label'   => __('Text', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Browse widgets', 'veloria'),
+            'default' => __('Browse widgets', 'addonext'),
             'dynamic' => ['active' => true],
         ]);
         $repeater->add_control('button_link', [
-            'label'   => __('Link', 'veloria'),
+            'label'   => __('Link', 'addonext'),
             'type'    => Controls_Manager::URL,
             'default' => [
                 'url' => '#', 'is_external' => '', 'nofollow' => '',
@@ -268,16 +268,16 @@ class HeroBanner extends WidgetBase
             'dynamic' => ['active' => true],
         ]);
         $repeater->add_control('button_type', [
-            'label'   => __('Type', 'veloria'),
+            'label'   => __('Type', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'solid',
             'options' => [
-                'solid'    => __('Solid', 'veloria'),
-                'outlined' => __('Outlined', 'veloria'),
+                'solid'    => __('Solid', 'addonext'),
+                'outlined' => __('Outlined', 'addonext'),
             ],
         ]);
         $repeater->add_control('selected_icon', [
-            'label'            => __('Icon', 'veloria'),
+            'label'            => __('Icon', 'addonext'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'icon',
             'default'          => [
@@ -286,19 +286,19 @@ class HeroBanner extends WidgetBase
             ],
         ]);
         $repeater->add_control('show_icon', [
-            'label'        => __('Show icon', 'veloria'),
+            'label'        => __('Show icon', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('buttons', [
-            'label'       => __('Buttons', 'veloria'),
+            'label'       => __('Buttons', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $repeater->get_controls(),
             'default'     => [
                 [
-                    'button_text'  => __('Browse widgets', 'veloria'),
+                    'button_text'  => __('Browse widgets', 'addonext'),
                     'button_link'  => ['url' => '#', 'is_external' => '', 'nofollow' => ''],
                     'button_type'  => 'solid',
                     'show_icon'    => 'yes',
@@ -310,9 +310,9 @@ class HeroBanner extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_background', [
-            'label'       => __('Background', 'veloria'),
+            'label'       => __('Background', 'addonext'),
             'tab'         => Controls_Manager::TAB_STYLE,
-            'description' => __('Video: YouTube, Vimeo, or direct .mp4 / .webm / .ogg link.', 'veloria'),
+            'description' => __('Video: YouTube, Vimeo, or direct .mp4 / .webm / .ogg link.', 'addonext'),
         ]);
 
         $this->add_group_control(
@@ -320,13 +320,13 @@ class HeroBanner extends WidgetBase
             [
                 'name'           => 'hb_panel_bg',
                 'types'          => ['classic', 'gradient', 'video'],
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__bg',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__bg',
                 'fields_options' => [
                     'background' => ['default' => 'classic'],
                     'color'        => ['default' => '#1e293b'],
                     'image'        => [
                         'default' => [
-                            'url' => VELORIA_URL . 'assets/images/demo/hero-slide-1.jpg',
+                            'url' => ADDONEXT_URL . 'assets/images/demo/hero-slide-1.jpg',
                             'id'  => '',
                         ],
                     ],
@@ -335,31 +335,31 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('overlay_color', [
-            'label'     => __('Overlay', 'veloria'),
+            'label'     => __('Overlay', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(15, 23, 42, 0.55)',
             'alpha'     => true,
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__overlay' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__overlay' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('inner_padding', [
-            'label'      => __('Inner padding', 'veloria'),
+            'label'      => __('Inner padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em'],
             'default'    => [
                 'top' => '48', 'right' => '40', 'bottom' => '48', 'left' => '40', 'unit' => 'px', 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_tagline', [
-            'label' => __('Tagline', 'veloria'),
+            'label' => __('Tagline', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -367,8 +367,8 @@ class HeroBanner extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'tagline_prefix_typography',
-                'label'          => __('First part', 'veloria'),
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__tagline-prefix',
+                'label'          => __('First part', 'addonext'),
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__tagline-prefix',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '600'],
@@ -380,11 +380,11 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('tagline_prefix_color', [
-            'label'     => __('First part color', 'veloria'),
+            'label'     => __('First part color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__tagline-prefix' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__tagline-prefix' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -392,8 +392,8 @@ class HeroBanner extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'tagline_accent_typography',
-                'label'          => __('Accent part', 'veloria'),
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__tagline-accent-text',
+                'label'          => __('Accent part', 'addonext'),
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__tagline-accent-text',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -405,20 +405,20 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('tagline_spacing', [
-            'label'      => __('Spacing below tagline', 'veloria'),
+            'label'      => __('Spacing below tagline', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__tagline' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__tagline' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_title', [
-            'label' => __('Title', 'veloria'),
+            'label' => __('Title', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -426,7 +426,7 @@ class HeroBanner extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'title_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__title',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__title',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -437,61 +437,61 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('title_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('title_spacing', [
-            'label'      => __('Spacing below title', 'veloria'),
+            'label'      => __('Spacing below title', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 20, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_accent_line', [
-            'label'     => __('Accent line', 'veloria'),
+            'label'     => __('Accent line', 'addonext'),
             'tab'       => Controls_Manager::TAB_STYLE,
             'condition' => ['show_accent_line' => 'yes'],
         ]);
 
         $this->add_control('accent_line_width', [
-            'label'      => __('Width', 'veloria'),
+            'label'      => __('Width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 2, 'max' => 16]],
             'default'    => ['size' => 4, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__accent-line' => 'width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__accent-line' => 'width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('accent_line_min_height', [
-            'label'      => __('Min height', 'veloria'),
+            'label'      => __('Min height', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 24, 'max' => 200]],
             'default'    => ['size' => 72, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__accent-line' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__accent-line' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('accent_line_radius', [
-            'label'      => __('Radius', 'veloria'),
+            'label'      => __('Radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 2, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__accent-line' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__accent-line' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -501,7 +501,7 @@ class HeroBanner extends WidgetBase
                 'name'           => 'accent_line_bg',
                 'types'          => ['classic', 'gradient'],
                 'exclude'        => ['image'],
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__accent-line',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__accent-line',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#5E42DA'],
@@ -515,17 +515,17 @@ class HeroBanner extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_subtitle', [
-            'label' => __('Subtitle', 'veloria'),
+            'label' => __('Subtitle', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('subrow_gap', [
-            'label'      => __('Gap beside accent line', 'veloria'),
+            'label'      => __('Gap beside accent line', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__subrow' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__subrow' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -533,7 +533,7 @@ class HeroBanner extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'subtitle_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__subtitle',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__subtitle',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '400'],
@@ -544,55 +544,55 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('subtitle_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(255,255,255,0.92)',
                 'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__subtitle' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__subtitle' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('subtitle_spacing', [
-            'label'      => __('Spacing below subtitle', 'veloria'),
+            'label'      => __('Spacing below subtitle', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 28, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__subrow-wrap' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__subrow-wrap' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_buttons_row', [
-            'label' => __('Buttons row', 'veloria'),
+            'label' => __('Buttons row', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('buttons_gap', [
-            'label'      => __('Gap', 'veloria'),
+            'label'      => __('Gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 14, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__actions' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__actions' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('icon_gap', [
-            'label'      => __('Icon gap', 'veloria'),
+            'label'      => __('Icon gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 8, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__btn-inner' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn-inner' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_button_solid', [
-            'label' => __('Solid button', 'veloria'),
+            'label' => __('Solid button', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -600,7 +600,7 @@ class HeroBanner extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'btn_solid_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__btn--solid',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__btn--solid',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '600'],
@@ -610,11 +610,11 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('btn_solid_text', [
-            'label'     => __('Text & icon color', 'veloria'),
+            'label'     => __('Text & icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--solid' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--solid' => 'color: {{VALUE}}; fill: {{VALUE}};',
             ],
         ]);
 
@@ -624,7 +624,7 @@ class HeroBanner extends WidgetBase
                 'name'           => 'btn_solid_bg',
                 'types'          => ['classic', 'gradient'],
                 'exclude'        => ['image'],
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__btn--solid',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__btn--solid',
                 'fields_options' => [
                     'background' => ['default' => 'gradient'],
                     'color'      => ['default' => '#5E42DA'],
@@ -639,29 +639,29 @@ class HeroBanner extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'btn_solid_border',
-                'selector' => '{{WRAPPER}} .veloria-hero-banner__btn--solid',
+                'selector' => '{{WRAPPER}} .addonext-hero-banner__btn--solid',
             ]
         );
 
         $this->add_control('btn_solid_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 6, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--solid' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--solid' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('btn_solid_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
                 'top' => '14', 'right' => '22', 'bottom' => '14', 'left' => '22', 'unit' => 'px', 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--solid' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--solid' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -669,14 +669,14 @@ class HeroBanner extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'btn_solid_shadow',
-                'selector' => '{{WRAPPER}} .veloria-hero-banner__btn--solid',
+                'selector' => '{{WRAPPER}} .addonext-hero-banner__btn--solid',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_button_outlined', [
-            'label' => __('Outlined button', 'veloria'),
+            'label' => __('Outlined button', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -684,7 +684,7 @@ class HeroBanner extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'btn_outlined_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-banner__btn--outlined',
+                'selector'       => '{{WRAPPER}} .addonext-hero-banner__btn--outlined',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '600'],
@@ -694,20 +694,20 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('btn_outlined_text', [
-            'label'     => __('Text & icon color', 'veloria'),
+            'label'     => __('Text & icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--outlined' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--outlined' => 'color: {{VALUE}}; fill: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('btn_outlined_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(255,255,255,0)',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--outlined' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--outlined' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -715,7 +715,7 @@ class HeroBanner extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'btn_outlined_border',
-                'selector' => '{{WRAPPER}} .veloria-hero-banner__btn--outlined',
+                'selector' => '{{WRAPPER}} .addonext-hero-banner__btn--outlined',
                 'fields_options' => [
                     'border' => ['default' => 'solid'],
                     'width'  => [
@@ -729,24 +729,24 @@ class HeroBanner extends WidgetBase
         );
 
         $this->add_control('btn_outlined_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 6, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--outlined' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--outlined' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('btn_outlined_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
                 'top' => '12', 'right' => '20', 'bottom' => '12', 'left' => '20', 'unit' => 'px', 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-banner__btn--outlined' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-banner__btn--outlined' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -754,7 +754,7 @@ class HeroBanner extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'btn_outlined_shadow',
-                'selector' => '{{WRAPPER}} .veloria-hero-banner__btn--outlined',
+                'selector' => '{{WRAPPER}} .addonext-hero-banner__btn--outlined',
             ]
         );
 
@@ -768,7 +768,7 @@ class HeroBanner extends WidgetBase
         if (emt_fs()->can_use_premium_code__premium_only()) {
             if (emt_fs()->is_plan('pro')) {
 
-        $path = VELORIA_DIR . 'pro/templates/hero-banner/hero-banner.php';
+        $path = ADDONEXT_DIR . 'pro/templates/hero-banner/hero-banner.php';
         if (is_readable($path)) {
             include $path;
         }
@@ -790,56 +790,56 @@ class HeroBanner extends WidgetBase
         if (isNaN(typingMs) || typingMs < 20) { typingMs = 20; }
         if (typingMs > 200) { typingMs = 200; }
         var typingLoop = settings.title_typing_loop === 'yes' ? '1' : '0';
-        function veloriaHeroSplitTitle(t) {
+        function addonextHeroSplitTitle(t) {
             t = ((t || '') + '').trim().replace(/\s+/g, ' ');
             if (!t) { return { s: '', ty: '' }; }
             var w = t.split(' ');
             if (w.length <= 2) { return { s: '', ty: t }; }
             return { s: w.slice(0, -2).join(' '), ty: w.slice(-2).join(' ') };
         }
-        var titleParts = veloriaHeroSplitTitle(settings.title);
+        var titleParts = addonextHeroSplitTitle(settings.title);
         #>
-        <div class="veloria-hero-banner" data-typing-ms="{{ typingMs }}" data-typing-loop="{{ typingLoop }}">
-            <div class="veloria-hero-banner__bg"></div>
-            <div class="veloria-hero-banner__overlay"></div>
-            <div class="veloria-hero-banner__inner">
-                <div class="veloria-hero-banner__content">
-                    <p class="veloria-hero-banner__tagline">
-                        <# if (settings.tagline_prefix) { #><span class="veloria-hero-banner__tagline-prefix">{{{ settings.tagline_prefix }}}</span> <# } #>
-                        <# if (settings.tagline_accent) { #><span class="veloria-hero-banner__tagline-accent"><span class="veloria-hero-banner__tagline-accent-text">{{{ settings.tagline_accent }}}</span></span><# } #>
+        <div class="addonext-hero-banner" data-typing-ms="{{ typingMs }}" data-typing-loop="{{ typingLoop }}">
+            <div class="addonext-hero-banner__bg"></div>
+            <div class="addonext-hero-banner__overlay"></div>
+            <div class="addonext-hero-banner__inner">
+                <div class="addonext-hero-banner__content">
+                    <p class="addonext-hero-banner__tagline">
+                        <# if (settings.tagline_prefix) { #><span class="addonext-hero-banner__tagline-prefix">{{{ settings.tagline_prefix }}}</span> <# } #>
+                        <# if (settings.tagline_accent) { #><span class="addonext-hero-banner__tagline-accent"><span class="addonext-hero-banner__tagline-accent-text">{{{ settings.tagline_accent }}}</span></span><# } #>
                     </p>
                     <# if (settings.title) { #>
-                        <{{{ titleTag }}} class="veloria-hero-banner__title" aria-label="{{ settings.title }}">
-                            <# if (titleParts.s) { #><span class="veloria-hero-banner__title-static">{{{ titleParts.s }}} </span><# } #>
+                        <{{{ titleTag }}} class="addonext-hero-banner__title" aria-label="{{ settings.title }}">
+                            <# if (titleParts.s) { #><span class="addonext-hero-banner__title-static">{{{ titleParts.s }}} </span><# } #>
                             <# if (titleParts.ty) { #>
-                                <span class="veloria-hero-banner__title-typing-wrap">
-                                    <span class="veloria-hero-banner__title-typing" data-text="{{ titleParts.ty }}"></span><span class="veloria-hero-banner__title-cursor" aria-hidden="true"></span>
+                                <span class="addonext-hero-banner__title-typing-wrap">
+                                    <span class="addonext-hero-banner__title-typing" data-text="{{ titleParts.ty }}"></span><span class="addonext-hero-banner__title-cursor" aria-hidden="true"></span>
                                 </span>
                             <# } #>
                         </{{{ titleTag }}}>
                     <# } #>
-                    <div class="veloria-hero-banner__subrow-wrap">
-                        <div class="veloria-hero-banner__subrow">
-                            <# if (showLine) { #><span class="veloria-hero-banner__accent-line" aria-hidden="true"></span><# } #>
-                            <# if (settings.subtitle) { #><p class="veloria-hero-banner__subtitle">{{{ settings.subtitle }}}</p><# } #>
+                    <div class="addonext-hero-banner__subrow-wrap">
+                        <div class="addonext-hero-banner__subrow">
+                            <# if (showLine) { #><span class="addonext-hero-banner__accent-line" aria-hidden="true"></span><# } #>
+                            <# if (settings.subtitle) { #><p class="addonext-hero-banner__subtitle">{{{ settings.subtitle }}}</p><# } #>
                         </div>
                     </div>
                     <# if (buttons.length) { #>
-                        <div class="veloria-hero-banner__actions">
+                        <div class="addonext-hero-banner__actions">
                         <# _.each(buttons, function(btn, i) {
                             var href = btn.button_link && btn.button_link.url ? btn.button_link.url : '#';
                             var type = btn.button_type || 'solid';
-                            var cls = 'veloria-hero-banner__btn veloria-hero-banner__btn--' + type;
+                            var cls = 'addonext-hero-banner__btn addonext-hero-banner__btn--' + type;
                             var attrs = '';
                             if (btn.button_link && btn.button_link.is_external) { attrs += ' target="_blank"'; }
                             if (btn.button_link && btn.button_link.nofollow) { attrs += ' rel="nofollow"'; }
                             var showIcon = btn.show_icon === 'yes' && btn.selected_icon && btn.selected_icon.value;
                         #>
                             <a href="{{ href }}" class="{{ cls }}"<# print(attrs); #>>
-                                <span class="veloria-hero-banner__btn-inner">
-                                    <span class="veloria-hero-banner__btn-text">{{{ btn.button_text }}}</span>
+                                <span class="addonext-hero-banner__btn-inner">
+                                    <span class="addonext-hero-banner__btn-text">{{{ btn.button_text }}}</span>
                                     <# if (showIcon) { #>
-                                        <span class="veloria-hero-banner__btn-icon" aria-hidden="true">{{{ elementor.helpers.renderIcon(view, btn.selected_icon, {}, 'i', 'object').value }}}</span>
+                                        <span class="addonext-hero-banner__btn-icon" aria-hidden="true">{{{ elementor.helpers.renderIcon(view, btn.selected_icon, {}, 'i', 'object').value }}}</span>
                                     <# } #>
                                 </span>
                             </a>

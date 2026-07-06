@@ -1,4 +1,4 @@
-.veloria-content-toggle {
+.addonext-content-toggle {
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
@@ -6,7 +6,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.veloria-content-toggle__toggle-row {
+.addonext-content-toggle__toggle-row {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@
     flex-wrap: wrap;
 }
 
-.veloria-content-toggle__labels {
+.addonext-content-toggle__labels {
     display: inline-flex;
     align-items: center;
     background: #f3f4f6;
@@ -24,7 +24,7 @@
     gap: 0;
 }
 
-.veloria-content-toggle__label {
+.addonext-content-toggle__label {
     padding: 10px 24px;
     cursor: pointer;
     font-size: 15px;
@@ -36,16 +36,16 @@
     transition: color 0.2s, background 0.2s;
 }
 
-.veloria-content-toggle__label:hover {
+.addonext-content-toggle__label:hover {
     color: #374151;
 }
 
-.veloria-content-toggle__label.is-active {
+.addonext-content-toggle__label.is-active {
     color: #fff;
     background: #2563eb;
 }
 
-.veloria-content-toggle__badge {
+.addonext-content-toggle__badge {
     display: inline-block;
     padding: 6px 12px;
     font-size: 12px;
@@ -55,11 +55,11 @@
     border-radius: 6px;
 }
 
-.veloria-content-toggle__panels {
+.addonext-content-toggle__panels {
     padding: 0 24px 24px;
 }
 
-.veloria-content-toggle__panel {
+.addonext-content-toggle__panel {
     display: none;
     font-size: 0.9375rem;
     line-height: 1.6;
@@ -67,19 +67,19 @@
     text-align: center;
 }
 
-.veloria-content-toggle__panel.is-active {
+.addonext-content-toggle__panel.is-active {
     display: block;
 }
 
-.veloria-content-toggle__panel :first-child {
+.addonext-content-toggle__panel :first-child {
     margin-top: 0;
 }
 
-.veloria-content-toggle__panel :last-child {
+.addonext-content-toggle__panel :last-child {
     margin-bottom: 0;
 }
 
-.veloria-content-toggle__panel .veloria-content-toggle__price {
+.addonext-content-toggle__panel .addonext-content-toggle__price {
     font-size: 2.5rem;
     font-weight: 700;
     color: #111827;
@@ -87,20 +87,20 @@
     line-height: 1.2;
 }
 
-.veloria-content-toggle__panel .veloria-content-toggle__sub {
+.addonext-content-toggle__panel .addonext-content-toggle__sub {
     font-size: 0.875rem;
     color: #6b7280;
     margin: 0 0 24px;
 }
 
-.veloria-content-toggle__panel ul {
+.addonext-content-toggle__panel ul {
     list-style: none;
     padding: 0;
     margin: 0 0 24px;
     text-align: left;
 }
 
-.veloria-content-toggle__panel ul li {
+.addonext-content-toggle__panel ul li {
     position: relative;
     padding: 12px 0 12px 28px;
     margin: 0;
@@ -109,11 +109,11 @@
     border-bottom: 1px solid #f3f4f6;
 }
 
-.veloria-content-toggle__panel ul li:last-child {
+.addonext-content-toggle__panel ul li:last-child {
     border-bottom: none;
 }
 
-.veloria-content-toggle__panel ul li::before {
+.addonext-content-toggle__panel ul li::before {
     content: "";
     position: absolute;
     left: 0;
@@ -125,7 +125,7 @@
     background-size: contain;
 }
 
-.veloria-content-toggle__panel .veloria-content-toggle__cta {
+.addonext-content-toggle__panel .addonext-content-toggle__cta {
     display: inline-block;
     padding: 14px 32px;
     font-size: 14px;
@@ -140,21 +140,21 @@
     transition: opacity 0.2s;
 }
 
-.veloria-content-toggle__panel .veloria-content-toggle__cta:hover {
+.addonext-content-toggle__panel .addonext-content-toggle__cta:hover {
     opacity: 0.95;
 }
 
-.veloria-content-toggle__panel h1,
-.veloria-content-toggle__panel h2,
-.veloria-content-toggle__panel h3,
-.veloria-content-toggle__panel h4 {
+.addonext-content-toggle__panel h1,
+.addonext-content-toggle__panel h2,
+.addonext-content-toggle__panel h3,
+.addonext-content-toggle__panel h4 {
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
     margin: 0 0 12px;
 }
 
-.veloria-content-toggle__panel p {
+.addonext-content-toggle__panel p {
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #374151;

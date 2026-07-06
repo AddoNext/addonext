@@ -114,37 +114,37 @@
 		if (!el) {
 			return;
 		}
-		var host = el.querySelector('.veloria-particles__host');
+		var host = el.querySelector('.addonext-particles__host');
 		if (host) {
 			host.remove();
 		}
-		el.classList.remove('veloria-particles');
-		el.removeAttribute('data-veloria-particles');
-		el.removeAttribute('data-veloria-particles-host-id');
-		el.removeAttribute('data-veloria-particles-preset');
-		el.removeAttribute('data-veloria-particles-density');
-		el.removeAttribute('data-veloria-particles-speed');
-		el.removeAttribute('data-veloria-particles-node');
-		el.removeAttribute('data-veloria-particles-line');
-		el.removeAttribute('data-veloria-particles-fp');
+		el.classList.remove('addonext-particles');
+		el.removeAttribute('data-addonext-particles');
+		el.removeAttribute('data-addonext-particles-host-id');
+		el.removeAttribute('data-addonext-particles-preset');
+		el.removeAttribute('data-addonext-particles-density');
+		el.removeAttribute('data-addonext-particles-speed');
+		el.removeAttribute('data-addonext-particles-node');
+		el.removeAttribute('data-addonext-particles-line');
+		el.removeAttribute('data-addonext-particles-fp');
 	}
 
 	function applyParticleMarkupFromPlainSettings(el, id, plain) {
 		if (!el || !plain || typeof plain !== 'object') {
 			return;
 		}
-		var enabled = plain.veloria_particles_enable;
+		var enabled = plain.addonext_particles_enable;
 		if (enabled !== 'yes') {
 			clearParticleMarkup(el);
 			return;
 		}
-		var preset = plain.veloria_particles_preset || 'default';
-		var density = plain.veloria_particles_density;
+		var preset = plain.addonext_particles_preset || 'default';
+		var density = plain.addonext_particles_density;
 		var densitySize = 80;
 		if (density && typeof density === 'object' && density.size !== undefined && density.size !== null) {
 			densitySize = density.size;
 		}
-		var speed = plain.veloria_particles_speed;
+		var speed = plain.addonext_particles_speed;
 		var speedSize = 100;
 		if (speed && typeof speed === 'object' && speed.size !== undefined && speed.size !== null) {
 			speedSize = speed.size;
@@ -153,25 +153,25 @@
 		}
 		speedSize = Math.max(10, Math.min(300, parseInt(speedSize, 10) || 100));
 
-		var nodeRaw = plain.veloria_particles_node_color;
+		var nodeRaw = plain.addonext_particles_node_color;
 		if (nodeRaw === undefined || nodeRaw === null || nodeRaw === '') {
-			nodeRaw = plain.veloria_particles_color;
+			nodeRaw = plain.addonext_particles_color;
 		}
 		var nodeColor = normalizeElementorColor(nodeRaw) || '#ffffff';
-		var lineColor = normalizeElementorColor(plain.veloria_particles_line_color);
+		var lineColor = normalizeElementorColor(plain.addonext_particles_line_color);
 
-		el.classList.add('veloria-particles');
-		el.setAttribute('data-veloria-particles', 'yes');
-		el.setAttribute('data-veloria-particles-host-id', id);
-		el.setAttribute('data-veloria-particles-preset', String(preset));
-		el.setAttribute('data-veloria-particles-density', String(densitySize));
-		el.setAttribute('data-veloria-particles-speed', String(speedSize));
-		el.setAttribute('data-veloria-particles-node', nodeColor);
-		el.removeAttribute('data-veloria-particles-fp');
+		el.classList.add('addonext-particles');
+		el.setAttribute('data-addonext-particles', 'yes');
+		el.setAttribute('data-addonext-particles-host-id', id);
+		el.setAttribute('data-addonext-particles-preset', String(preset));
+		el.setAttribute('data-addonext-particles-density', String(densitySize));
+		el.setAttribute('data-addonext-particles-speed', String(speedSize));
+		el.setAttribute('data-addonext-particles-node', nodeColor);
+		el.removeAttribute('data-addonext-particles-fp');
 		if (lineColor) {
-			el.setAttribute('data-veloria-particles-line', lineColor);
+			el.setAttribute('data-addonext-particles-line', lineColor);
 		} else {
-			el.removeAttribute('data-veloria-particles-line');
+			el.removeAttribute('data-addonext-particles-line');
 		}
 	}
 
@@ -212,13 +212,13 @@
 		}
 		if (typeof settings.get === 'function') {
 			[
-				'veloria_particles_enable',
-				'veloria_particles_preset',
-				'veloria_particles_density',
-				'veloria_particles_speed',
-				'veloria_particles_node_color',
-				'veloria_particles_line_color',
-				'veloria_particles_color',
+				'addonext_particles_enable',
+				'addonext_particles_preset',
+				'addonext_particles_density',
+				'addonext_particles_speed',
+				'addonext_particles_node_color',
+				'addonext_particles_line_color',
+				'addonext_particles_color',
 			].forEach(function (key) {
 				var live = settings.get(key);
 				if (live !== undefined) {
@@ -319,11 +319,11 @@
 			return;
 		}
 		var win = frame.contentWindow;
-		if (typeof win.veloriaParticlesRescan !== 'function') {
+		if (typeof win.addonextParticlesRescan !== 'function') {
 			return;
 		}
 		try {
-			win.veloriaParticlesRescan(frame.contentDocument);
+			win.addonextParticlesRescan(frame.contentDocument);
 		} catch (e) {
 			/* ignore cross-origin or incomplete load */
 		}

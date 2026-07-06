@@ -1,11 +1,11 @@
-.veloria-advanced-tabs {
+.addonext-advanced-tabs {
     background: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 6px;
     overflow: hidden;
 }
 
-.veloria-advanced-tabs__headers {
+.addonext-advanced-tabs__headers {
     display: flex;
     border-bottom: 1px solid #e6e6e6;
     background: #fff;
@@ -13,7 +13,7 @@
     margin: 0;
 }
 
-.veloria-advanced-tabs__header {
+.addonext-advanced-tabs__header {
     flex: 1;
     padding: 12px 20px;
     cursor: pointer;
@@ -29,64 +29,64 @@
     text-align: center;
 }
 
-.veloria-advanced-tabs__header:hover {
+.addonext-advanced-tabs__header:hover {
     color: #1d4ed8;
 }
 
-.veloria-advanced-tabs__header.is-active {
+.addonext-advanced-tabs__header.is-active {
     color: #2563eb;
     background: #e6f0fa;
     border-bottom-color: #2563eb;
 }
 
-.veloria-advanced-tabs__panels {
+.addonext-advanced-tabs__panels {
     padding: 24px;
     border-top: 1px solid #e6e6e6;
 }
 
-.veloria-advanced-tabs__panel {
+.addonext-advanced-tabs__panel {
     display: none;
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #374151;
 }
 
-.veloria-advanced-tabs__panel.is-active {
+.addonext-advanced-tabs__panel.is-active {
     display: block;
 }
 
-.veloria-advanced-tabs__panel :first-child {
+.addonext-advanced-tabs__panel :first-child {
     margin-top: 0;
 }
 
-.veloria-advanced-tabs__panel :last-child {
+.addonext-advanced-tabs__panel :last-child {
     margin-bottom: 0;
 }
 
-.veloria-advanced-tabs__panel h1,
-.veloria-advanced-tabs__panel h2,
-.veloria-advanced-tabs__panel h3,
-.veloria-advanced-tabs__panel h4 {
+.addonext-advanced-tabs__panel h1,
+.addonext-advanced-tabs__panel h2,
+.addonext-advanced-tabs__panel h3,
+.addonext-advanced-tabs__panel h4 {
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
     margin: 0 0 12px;
 }
 
-.veloria-advanced-tabs__panel p {
+.addonext-advanced-tabs__panel p {
     font-size: 0.9375rem;
     line-height: 1.6;
     color: #374151;
     margin: 0 0 16px;
 }
 
-.veloria-advanced-tabs__panel ul {
+.addonext-advanced-tabs__panel ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.veloria-advanced-tabs__panel ul li {
+.addonext-advanced-tabs__panel ul li {
     position: relative;
     padding-left: 24px;
     margin-bottom: 8px;
@@ -94,7 +94,7 @@
     color: #374151;
 }
 
-.veloria-advanced-tabs__panel ul li::before {
+.addonext-advanced-tabs__panel ul li::before {
     content: "";
     position: absolute;
     left: 0;

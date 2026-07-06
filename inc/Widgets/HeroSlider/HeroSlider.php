@@ -1,7 +1,7 @@
 <?php
-namespace Veloria\Widgets\HeroSlider;
+namespace Addonext\Widgets\HeroSlider;
 
-use Veloria\Base\WidgetBase;
+use Addonext\Base\WidgetBase;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
@@ -28,8 +28,8 @@ class HeroSlider extends WidgetBase
     {
         $list = self::DEMO_BG_IMAGE_FILES;
         $file = $list[$index % count($list)];
-        $path = VELORIA_DIR . 'assets/images/demo/' . $file;
-        $url  = is_readable($path) ? VELORIA_URL . 'assets/images/demo/' . $file : '';
+        $path = ADDONEXT_DIR . 'assets/images/demo/' . $file;
+        $url  = is_readable($path) ? ADDONEXT_URL . 'assets/images/demo/' . $file : '';
 
         return [
             'url'  => $url,
@@ -57,19 +57,19 @@ class HeroSlider extends WidgetBase
     public function enqueue_preview_scripts(): void
     {
         wp_enqueue_style('swiper');
-        wp_enqueue_style('veloria-hero-slider');
+        wp_enqueue_style('addonext-hero-slider');
         wp_enqueue_script('swiper');
-        wp_enqueue_script('veloria-hero-slider');
+        wp_enqueue_script('addonext-hero-slider');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-slider-push veloria-icon';
+        return 'eicon-slider-push addonext-icon';
     }
 
     public function get_name(): string
     {
-        return 'veloria-hero-slider';
+        return 'addonext-hero-slider';
     }
 
     public function get_admin_category(): string
@@ -79,12 +79,12 @@ class HeroSlider extends WidgetBase
 
     public function get_title(): string
     {
-        return __('Hero Slider', 'veloria');
+        return __('Hero Slider', 'addonext');
     }
 
     public function get_description(): string
     {
-        return __('Hero with sliding backgrounds, sliding copy and CTAs, or synchronized slides.', 'veloria');
+        return __('Hero with sliding backgrounds, sliding copy and CTAs, or synchronized slides.', 'addonext');
     }
 
     public function get_brand_color(): string
@@ -94,27 +94,27 @@ class HeroSlider extends WidgetBase
 
     public function get_style_depends(): array
     {
-        return ['swiper', 'veloria-hero-slider'];
+        return ['swiper', 'addonext-hero-slider'];
     }
 
     public function get_script_depends(): array
     {
-        return ['swiper', 'veloria-hero-slider'];
+        return ['swiper', 'addonext-hero-slider'];
     }
 
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'veloria-hero-slider',
-            VELORIA_URL . 'assets/css/hero-slider.css',
+            'addonext-hero-slider',
+            ADDONEXT_URL . 'assets/css/hero-slider.css',
             ['swiper'],
-            VELORIA_VERSION
+            ADDONEXT_VERSION
         );
         wp_register_script(
-            'veloria-hero-slider',
-            VELORIA_URL . 'assets/js/hero-slider.js',
+            'addonext-hero-slider',
+            ADDONEXT_URL . 'assets/js/hero-slider.js',
             ['jquery', 'elementor-frontend', 'swiper'],
-            VELORIA_VERSION,
+            ADDONEXT_VERSION,
             true
         );
     }
@@ -167,28 +167,28 @@ class HeroSlider extends WidgetBase
     {
         $r = new Repeater();
         $r->add_control('button_text', [
-            'label'   => __('Text', 'veloria'),
+            'label'   => __('Text', 'addonext'),
             'type'    => Controls_Manager::TEXT,
-            'default' => __('Browse widgets', 'veloria'),
+            'default' => __('Browse widgets', 'addonext'),
             'dynamic' => ['active' => true],
         ]);
         $r->add_control('button_link', [
-            'label'   => __('Link', 'veloria'),
+            'label'   => __('Link', 'addonext'),
             'type'    => Controls_Manager::URL,
             'default' => ['url' => '#', 'is_external' => '', 'nofollow' => ''],
             'dynamic' => ['active' => true],
         ]);
         $r->add_control('button_type', [
-            'label'   => __('Type', 'veloria'),
+            'label'   => __('Type', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'solid',
             'options' => [
-                'solid'    => __('Solid', 'veloria'),
-                'outlined' => __('Outlined', 'veloria'),
+                'solid'    => __('Solid', 'addonext'),
+                'outlined' => __('Outlined', 'addonext'),
             ],
         ]);
         $r->add_control('selected_icon', [
-            'label'            => __('Icon', 'veloria'),
+            'label'            => __('Icon', 'addonext'),
             'type'             => Controls_Manager::ICONS,
             'fa4compatibility' => 'icon',
             'default'          => [
@@ -197,7 +197,7 @@ class HeroSlider extends WidgetBase
             ],
         ]);
         $r->add_control('show_icon', [
-            'label'        => __('Show icon', 'veloria'),
+            'label'        => __('Show icon', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
@@ -213,32 +213,32 @@ class HeroSlider extends WidgetBase
     {
         $site_title = get_bloginfo('name', 'display');
         if (!is_string($site_title) || trim($site_title) === '') {
-            $site_title = 'Veloria';
+            $site_title = 'AddoNext';
         }
 
         $slide_rep->add_control('tagline_prefix', [
-            'label'       => __('Tagline (first part)', 'veloria'),
+            'label'       => __('Tagline (first part)', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => $defaults['tagline_prefix'] ?? __('Built for', 'veloria'),
+            'default'     => $defaults['tagline_prefix'] ?? __('Built for', 'addonext'),
             'label_block' => true,
             'dynamic'     => ['active' => true],
         ]);
         $slide_rep->add_control('tagline_accent', [
-            'label'       => __('Tagline (accent)', 'veloria'),
+            'label'       => __('Tagline (accent)', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'default'     => $defaults['tagline_accent'] ?? $site_title,
             'label_block' => true,
             'dynamic'     => ['active' => true],
         ]);
         $slide_rep->add_control('title', [
-            'label'       => __('Title', 'veloria'),
+            'label'       => __('Title', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => $defaults['title'] ?? __('Create pages that convert faster', 'veloria'),
-            'description' => __('The last two words use a typing animation and gradient.', 'veloria'),
+            'default'     => $defaults['title'] ?? __('Create pages that convert faster', 'addonext'),
+            'description' => __('The last two words use a typing animation and gradient.', 'addonext'),
             'dynamic'     => ['active' => true],
         ]);
         $slide_rep->add_control('title_typing_speed', [
-            'label'   => __('Typing speed (ms)', 'veloria'),
+            'label'   => __('Typing speed (ms)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 20,
             'max'     => 200,
@@ -246,13 +246,13 @@ class HeroSlider extends WidgetBase
             'default' => 55,
         ]);
         $slide_rep->add_control('title_typing_loop', [
-            'label'        => __('Loop typing animation', 'veloria'),
+            'label'        => __('Loop typing animation', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $slide_rep->add_control('title_tag', [
-            'label'   => __('Title HTML tag', 'veloria'),
+            'label'   => __('Title HTML tag', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'h1',
             'options' => [
@@ -263,25 +263,25 @@ class HeroSlider extends WidgetBase
             ],
         ]);
         $slide_rep->add_control('subtitle', [
-            'label'   => __('Subtitle', 'veloria'),
+            'label'   => __('Subtitle', 'addonext'),
             'type'    => Controls_Manager::TEXTAREA,
-            'default' => $defaults['subtitle'] ?? __('Premium Elementor widgets and patterns to ship polished layouts without slowing down your team.', 'veloria'),
+            'default' => $defaults['subtitle'] ?? __('Premium Elementor widgets and patterns to ship polished layouts without slowing down your team.', 'addonext'),
             'rows'    => 4,
             'dynamic' => ['active' => true],
         ]);
         $slide_rep->add_control('show_accent_line', [
-            'label'        => __('Accent line beside subtitle', 'veloria'),
+            'label'        => __('Accent line beside subtitle', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $slide_rep->add_control('buttons', [
-            'label'       => __('Buttons', 'veloria'),
+            'label'       => __('Buttons', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $this->getButtonsFieldDefinitions(),
             'default'     => [
                 [
-                    'button_text' => __('Browse widgets', 'veloria'),
+                    'button_text' => __('Browse widgets', 'addonext'),
                     'button_link' => ['url' => '#', 'is_external' => '', 'nofollow' => ''],
                     'button_type' => 'solid',
                     'show_icon'   => 'yes',
@@ -298,7 +298,7 @@ class HeroSlider extends WidgetBase
             [
                 'name'           => 'combo_bg_panel',
                 'types'          => ['classic', 'gradient', 'video'],
-                'selector'       => '{{WRAPPER}} {{CURRENT_ITEM}} .veloria-hero-slider__combo-slide-bg',
+                'selector'       => '{{WRAPPER}} {{CURRENT_ITEM}} .addonext-hero-slider__combo-slide-bg',
                 'fields_options' => [
                     'background' => ['default' => 'classic'],
                     'color'      => ['default' => '#1e293b'],
@@ -313,42 +313,42 @@ class HeroSlider extends WidgetBase
     public function register_controls(): void
     {
         $this->start_controls_section('section_slider', [
-            'label' => __('Slider', 'veloria'),
+            'label' => __('Slider', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('slider_mode', [
-            'label'   => __('Slide mode', 'veloria'),
+            'label'   => __('Slide mode', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'both',
             'options' => [
-                'background' => __('Background only', 'veloria'),
-                'content'    => __('Content only', 'veloria'),
-                'both'       => __('Background and content', 'veloria'),
+                'background' => __('Background only', 'addonext'),
+                'content'    => __('Content only', 'addonext'),
+                'both'       => __('Background and content', 'addonext'),
             ],
         ]);
 
         $this->add_control('navigation', [
-            'label'   => __('Navigation', 'veloria'),
+            'label'   => __('Navigation', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'none',
             'options' => [
-                'both'   => __('Arrows and dots', 'veloria'),
-                'arrows' => __('Arrows', 'veloria'),
-                'dots'   => __('Dots', 'veloria'),
-                'none'   => __('None', 'veloria'),
+                'both'   => __('Arrows and dots', 'addonext'),
+                'arrows' => __('Arrows', 'addonext'),
+                'dots'   => __('Dots', 'addonext'),
+                'none'   => __('None', 'addonext'),
             ],
         ]);
 
         $this->add_control('autoplay', [
-            'label'        => __('Autoplay', 'veloria'),
+            'label'        => __('Autoplay', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('autoplay_delay', [
-            'label'     => __('Autoplay interval (seconds)', 'veloria'),
+            'label'     => __('Autoplay interval (seconds)', 'addonext'),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 1,
             'max'       => 30,
@@ -358,14 +358,14 @@ class HeroSlider extends WidgetBase
         ]);
 
         $this->add_control('loop', [
-            'label'        => __('Loop', 'veloria'),
+            'label'        => __('Loop', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('slider_speed', [
-            'label'   => __('Transition duration (ms)', 'veloria'),
+            'label'   => __('Transition duration (ms)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 200,
             'max'     => 2000,
@@ -376,12 +376,12 @@ class HeroSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_layout', [
-            'label' => __('Layout', 'veloria'),
+            'label' => __('Layout', 'addonext'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_responsive_control('min_height', [
-            'label'      => __('Min height', 'veloria'),
+            'label'      => __('Min height', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh'],
             'range'      => [
@@ -390,33 +390,33 @@ class HeroSlider extends WidgetBase
             ],
             'default'    => ['size' => 100, 'unit' => 'vh'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('content_max_width', [
-            'label'      => __('Content max width', 'veloria'),
+            'label'      => __('Content max width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => ['px' => ['min' => 280, 'max' => 900]],
             'default'    => ['size' => 520, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__content' => 'max-width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__content' => 'max-width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('content_align_vertical', [
-            'label'     => __('Vertical align', 'veloria'),
+            'label'     => __('Vertical align', 'addonext'),
             'type'      => Controls_Manager::CHOOSE,
             'options'   => [
-                'flex-start' => ['title' => __('Top', 'veloria'), 'icon' => 'eicon-v-align-top'],
-                'center'     => ['title' => __('Middle', 'veloria'), 'icon' => 'eicon-v-align-middle'],
-                'flex-end'   => ['title' => __('Bottom', 'veloria'), 'icon' => 'eicon-v-align-bottom'],
+                'flex-start' => ['title' => __('Top', 'addonext'), 'icon' => 'eicon-v-align-top'],
+                'center'     => ['title' => __('Middle', 'addonext'), 'icon' => 'eicon-v-align-middle'],
+                'flex-end'   => ['title' => __('Bottom', 'addonext'), 'icon' => 'eicon-v-align-bottom'],
             ],
             'default'   => 'center',
             'toggle'    => false,
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__inner' => 'justify-content: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__inner' => 'justify-content: {{VALUE}};',
             ],
         ]);
 
@@ -424,38 +424,38 @@ class HeroSlider extends WidgetBase
 
         $site_title = get_bloginfo('name', 'display');
         if (!is_string($site_title) || trim($site_title) === '') {
-            $site_title = 'Veloria';
+            $site_title = 'AddoNext';
         }
 
         $this->start_controls_section('section_static_content', [
-            'label'     => __('Content', 'veloria'),
+            'label'     => __('Content', 'addonext'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['slider_mode' => 'background'],
         ]);
 
         $this->add_control('tagline_prefix', [
-            'label'       => __('Tagline (first part)', 'veloria'),
+            'label'       => __('Tagline (first part)', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => __('Built for', 'veloria'),
+            'default'     => __('Built for', 'addonext'),
             'label_block' => true,
             'dynamic'     => ['active' => true],
         ]);
         $this->add_control('tagline_accent', [
-            'label'       => __('Tagline (accent)', 'veloria'),
+            'label'       => __('Tagline (accent)', 'addonext'),
             'type'        => Controls_Manager::TEXT,
             'default'     => $site_title,
             'label_block' => true,
             'dynamic'     => ['active' => true],
         ]);
         $this->add_control('title', [
-            'label'       => __('Title', 'veloria'),
+            'label'       => __('Title', 'addonext'),
             'type'        => Controls_Manager::TEXT,
-            'default'     => __('Create pages that convert faster', 'veloria'),
-            'description' => __('The last two words use a typing animation and gradient.', 'veloria'),
+            'default'     => __('Create pages that convert faster', 'addonext'),
+            'description' => __('The last two words use a typing animation and gradient.', 'addonext'),
             'dynamic'     => ['active' => true],
         ]);
         $this->add_control('title_typing_speed', [
-            'label'   => __('Typing speed (ms)', 'veloria'),
+            'label'   => __('Typing speed (ms)', 'addonext'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 20,
             'max'     => 200,
@@ -463,13 +463,13 @@ class HeroSlider extends WidgetBase
             'default' => 55,
         ]);
         $this->add_control('title_typing_loop', [
-            'label'        => __('Loop typing animation', 'veloria'),
+            'label'        => __('Loop typing animation', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('title_tag', [
-            'label'   => __('Title HTML tag', 'veloria'),
+            'label'   => __('Title HTML tag', 'addonext'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'h1',
             'options' => [
@@ -480,25 +480,25 @@ class HeroSlider extends WidgetBase
             ],
         ]);
         $this->add_control('subtitle', [
-            'label'   => __('Subtitle', 'veloria'),
+            'label'   => __('Subtitle', 'addonext'),
             'type'    => Controls_Manager::TEXTAREA,
-            'default' => __('Premium Elementor widgets and patterns to ship polished layouts without slowing down your team.', 'veloria'),
+            'default' => __('Premium Elementor widgets and patterns to ship polished layouts without slowing down your team.', 'addonext'),
             'rows'    => 4,
             'dynamic' => ['active' => true],
         ]);
         $this->add_control('show_accent_line', [
-            'label'        => __('Accent line beside subtitle', 'veloria'),
+            'label'        => __('Accent line beside subtitle', 'addonext'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
         $this->add_control('buttons', [
-            'label'       => __('Buttons', 'veloria'),
+            'label'       => __('Buttons', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $this->getButtonsFieldDefinitions(),
             'default'     => [
                 [
-                    'button_text' => __('Browse widgets', 'veloria'),
+                    'button_text' => __('Browse widgets', 'addonext'),
                     'button_link' => ['url' => '#', 'is_external' => '', 'nofollow' => ''],
                     'button_type' => 'solid',
                     'show_icon'   => 'yes',
@@ -510,7 +510,7 @@ class HeroSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_bg_slides', [
-            'label'     => __('Background slides', 'veloria'),
+            'label'     => __('Background slides', 'addonext'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['slider_mode' => 'background'],
         ]);
@@ -521,7 +521,7 @@ class HeroSlider extends WidgetBase
             [
                 'name'           => 'bg_only_panel',
                 'types'          => ['classic', 'gradient', 'video'],
-                'selector'       => '{{WRAPPER}} {{CURRENT_ITEM}} .veloria-hero-slider__bg-slide-inner',
+                'selector'       => '{{WRAPPER}} {{CURRENT_ITEM}} .addonext-hero-slider__bg-slide-inner',
                 'fields_options' => [
                     'background' => ['default' => 'classic'],
                     'color'      => ['default' => '#1e293b'],
@@ -533,7 +533,7 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('bg_slides', [
-            'label'       => __('Slides', 'veloria'),
+            'label'       => __('Slides', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $bg_rep->get_controls(),
             'default'     => [
@@ -550,15 +550,15 @@ class HeroSlider extends WidgetBase
                     'bg_only_panel_image'      => self::demoBgImageField(2),
                 ],
             ],
-            'title_field' => __('Slide', 'veloria') . ' {{{ _id }}}',
+            'title_field' => __('Slide', 'addonext') . ' {{{ _id }}}',
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_sticky_bg', [
-            'label'       => __('Background', 'veloria'),
+            'label'       => __('Background', 'addonext'),
             'tab'         => Controls_Manager::TAB_CONTENT,
-            'description' => __('Video: YouTube, Vimeo, or direct .mp4 / .webm / .ogg link.', 'veloria'),
+            'description' => __('Video: YouTube, Vimeo, or direct .mp4 / .webm / .ogg link.', 'addonext'),
             'condition'   => ['slider_mode' => 'content'],
         ]);
 
@@ -567,7 +567,7 @@ class HeroSlider extends WidgetBase
             [
                 'name'           => 'sticky_panel_bg',
                 'types'          => ['classic', 'gradient', 'video'],
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__sticky-bg',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__sticky-bg',
                 'fields_options' => [
                     'background' => ['default' => 'classic'],
                     'color'      => ['default' => '#1e293b'],
@@ -581,28 +581,28 @@ class HeroSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_content_slides', [
-            'label'     => __('Content slides', 'veloria'),
+            'label'     => __('Content slides', 'addonext'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['slider_mode' => 'content'],
         ]);
 
         $content_rep = new Repeater();
         $this->addSlideTextAndButtons($content_rep, [
-            'title'    => __('First headline for your hero', 'veloria'),
-            'subtitle' => __('Swap slides to tell a short story while the background stays fixed.', 'veloria'),
+            'title'    => __('First headline for your hero', 'addonext'),
+            'subtitle' => __('Swap slides to tell a short story while the background stays fixed.', 'addonext'),
         ]);
         $this->add_control('content_slides', [
-            'label'       => __('Slides', 'veloria'),
+            'label'       => __('Slides', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $content_rep->get_controls(),
             'default'     => [
                 [
-                    'title'    => __('First headline for your hero', 'veloria'),
-                    'subtitle' => __('Swap slides to tell a short story while the background stays fixed.', 'veloria'),
+                    'title'    => __('First headline for your hero', 'addonext'),
+                    'subtitle' => __('Swap slides to tell a short story while the background stays fixed.', 'addonext'),
                 ],
                 [
-                    'title'    => __('Second slide, same backdrop', 'veloria'),
-                    'subtitle' => __('Use the repeater to add tagline, title, subtitle, and buttons per slide.', 'veloria'),
+                    'title'    => __('Second slide, same backdrop', 'addonext'),
+                    'subtitle' => __('Use the repeater to add tagline, title, subtitle, and buttons per slide.', 'addonext'),
                 ],
             ],
             'title_field' => '{{{ title }}}',
@@ -611,7 +611,7 @@ class HeroSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_hero_slides', [
-            'label'     => __('Slides', 'veloria'),
+            'label'     => __('Slides', 'addonext'),
             'tab'       => Controls_Manager::TAB_CONTENT,
             'condition' => ['slider_mode' => 'both'],
         ]);
@@ -620,17 +620,17 @@ class HeroSlider extends WidgetBase
         $this->addComboBackgroundToRepeater($combo_rep);
         $this->addSlideTextAndButtons($combo_rep);
         $this->add_control('hero_slides', [
-            'label'       => __('Slides', 'veloria'),
+            'label'       => __('Slides', 'addonext'),
             'type'        => Controls_Manager::REPEATER,
             'fields'      => $combo_rep->get_controls(),
             'default'     => [
                 [
-                    'title'                     => __('Slide one headline', 'veloria'),
+                    'title'                     => __('Slide one headline', 'addonext'),
                     'combo_bg_panel_background' => 'classic',
                     'combo_bg_panel_image'      => self::demoBgImageField(0),
                 ],
                 [
-                    'title'                     => __('Slide two headline', 'veloria'),
+                    'title'                     => __('Slide two headline', 'addonext'),
                     'combo_bg_panel_background' => 'classic',
                     'combo_bg_panel_image'      => self::demoBgImageField(1),
                 ],
@@ -641,37 +641,37 @@ class HeroSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_background', [
-            'label' => __('Background overlay', 'veloria'),
+            'label' => __('Background overlay', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('overlay_color', [
-            'label'     => __('Overlay', 'veloria'),
+            'label'     => __('Overlay', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(15, 23, 42, 0.55)',
             'alpha'     => true,
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__overlay' => 'background-color: {{VALUE}};',
-                '{{WRAPPER}} .veloria-hero-slider__slide-overlay' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__overlay' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__slide-overlay' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_responsive_control('inner_padding', [
-            'label'      => __('Inner padding', 'veloria'),
+            'label'      => __('Inner padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em'],
             'default'    => [
                 'top' => '48', 'right' => '40', 'bottom' => '48', 'left' => '40', 'unit' => 'px', 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_tagline', [
-            'label' => __('Tagline', 'veloria'),
+            'label' => __('Tagline', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -679,8 +679,8 @@ class HeroSlider extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'tagline_prefix_typography',
-                'label'          => __('First part', 'veloria'),
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__tagline-prefix',
+                'label'          => __('First part', 'addonext'),
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__tagline-prefix',
                 'fields_options' => [
                     'typography'     => ['default' => 'custom'],
                     'font_weight'    => ['default' => '600'],
@@ -692,11 +692,11 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('tagline_prefix_color', [
-            'label'     => __('First part color', 'veloria'),
+            'label'     => __('First part color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__tagline-prefix' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__tagline-prefix' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -704,8 +704,8 @@ class HeroSlider extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'tagline_accent_typography',
-                'label'          => __('Accent part', 'veloria'),
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__tagline-accent-text',
+                'label'          => __('Accent part', 'addonext'),
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__tagline-accent-text',
                 'fields_options' => [
                     'typography'     => ['default' => 'custom'],
                     'font_weight'    => ['default' => '700'],
@@ -717,20 +717,20 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('tagline_spacing', [
-            'label'      => __('Spacing below tagline', 'veloria'),
+            'label'      => __('Spacing below tagline', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 48]],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__tagline' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__tagline' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_title', [
-            'label' => __('Title', 'veloria'),
+            'label' => __('Title', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -738,7 +738,7 @@ class HeroSlider extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'title_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__title',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__title',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '700'],
@@ -749,60 +749,60 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('title_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__title' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__title' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('title_spacing', [
-            'label'      => __('Spacing below title', 'veloria'),
+            'label'      => __('Spacing below title', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 20, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_accent_line', [
-            'label' => __('Accent line', 'veloria'),
+            'label' => __('Accent line', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('accent_line_width', [
-            'label'      => __('Width', 'veloria'),
+            'label'      => __('Width', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 2, 'max' => 16]],
             'default'    => ['size' => 4, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__accent-line' => 'width: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__accent-line' => 'width: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('accent_line_min_height', [
-            'label'      => __('Min height', 'veloria'),
+            'label'      => __('Min height', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'em'],
             'range'      => ['px' => ['min' => 24, 'max' => 200]],
             'default'    => ['size' => 72, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__accent-line' => 'min-height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__accent-line' => 'min-height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('accent_line_radius', [
-            'label'      => __('Radius', 'veloria'),
+            'label'      => __('Radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 2, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__accent-line' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__accent-line' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -812,7 +812,7 @@ class HeroSlider extends WidgetBase
                 'name'           => 'accent_line_bg',
                 'types'          => ['classic', 'gradient'],
                 'exclude'        => ['image'],
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__accent-line',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__accent-line',
                 'fields_options' => [
                     'background'     => ['default' => 'gradient'],
                     'color'          => ['default' => '#5E42DA'],
@@ -826,17 +826,17 @@ class HeroSlider extends WidgetBase
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_subtitle', [
-            'label' => __('Subtitle', 'veloria'),
+            'label' => __('Subtitle', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('subrow_gap', [
-            'label'      => __('Gap beside accent line', 'veloria'),
+            'label'      => __('Gap beside accent line', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 16, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__subrow' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__subrow' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -844,7 +844,7 @@ class HeroSlider extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'subtitle_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__subtitle',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__subtitle',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '400'],
@@ -855,55 +855,55 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('subtitle_color', [
-            'label'     => __('Color', 'veloria'),
+            'label'     => __('Color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(255,255,255,0.92)',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__subtitle' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__subtitle' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('subtitle_spacing', [
-            'label'      => __('Spacing below subtitle', 'veloria'),
+            'label'      => __('Spacing below subtitle', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 28, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__subrow-wrap' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__subrow-wrap' => 'margin-bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_buttons_row', [
-            'label' => __('Buttons row', 'veloria'),
+            'label' => __('Buttons row', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('buttons_gap', [
-            'label'      => __('Gap', 'veloria'),
+            'label'      => __('Gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 14, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__actions' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__actions' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_responsive_control('icon_gap', [
-            'label'      => __('Icon gap', 'veloria'),
+            'label'      => __('Icon gap', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 8, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__btn-inner' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn-inner' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_button_solid', [
-            'label' => __('Solid button', 'veloria'),
+            'label' => __('Solid button', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -911,7 +911,7 @@ class HeroSlider extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'btn_solid_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__btn--solid',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__btn--solid',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '600'],
@@ -921,11 +921,11 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('btn_solid_text', [
-            'label'     => __('Text & icon color', 'veloria'),
+            'label'     => __('Text & icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--solid' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--solid' => 'color: {{VALUE}}; fill: {{VALUE}};',
             ],
         ]);
 
@@ -935,7 +935,7 @@ class HeroSlider extends WidgetBase
                 'name'           => 'btn_solid_bg',
                 'types'          => ['classic', 'gradient'],
                 'exclude'        => ['image'],
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__btn--solid',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__btn--solid',
                 'fields_options' => [
                     'background'     => ['default' => 'gradient'],
                     'color'          => ['default' => '#5E42DA'],
@@ -950,29 +950,29 @@ class HeroSlider extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'     => 'btn_solid_border',
-                'selector' => '{{WRAPPER}} .veloria-hero-slider__btn--solid',
+                'selector' => '{{WRAPPER}} .addonext-hero-slider__btn--solid',
             ]
         );
 
         $this->add_control('btn_solid_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 6, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--solid' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--solid' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('btn_solid_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
                 'top' => '14', 'right' => '22', 'bottom' => '14', 'left' => '22', 'unit' => 'px', 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--solid' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--solid' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -980,14 +980,14 @@ class HeroSlider extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'btn_solid_shadow',
-                'selector' => '{{WRAPPER}} .veloria-hero-slider__btn--solid',
+                'selector' => '{{WRAPPER}} .addonext-hero-slider__btn--solid',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_button_outlined', [
-            'label' => __('Outlined button', 'veloria'),
+            'label' => __('Outlined button', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -995,7 +995,7 @@ class HeroSlider extends WidgetBase
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'btn_outlined_typography',
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__btn--outlined',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__btn--outlined',
                 'fields_options' => [
                     'typography'  => ['default' => 'custom'],
                     'font_weight' => ['default' => '600'],
@@ -1005,20 +1005,20 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('btn_outlined_text', [
-            'label'     => __('Text & icon color', 'veloria'),
+            'label'     => __('Text & icon color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--outlined' => 'color: {{VALUE}}; fill: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--outlined' => 'color: {{VALUE}}; fill: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('btn_outlined_bg', [
-            'label'     => __('Background', 'veloria'),
+            'label'     => __('Background', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(255,255,255,0)',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--outlined' => 'background-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--outlined' => 'background-color: {{VALUE}};',
             ],
         ]);
 
@@ -1026,7 +1026,7 @@ class HeroSlider extends WidgetBase
             Group_Control_Border::get_type(),
             [
                 'name'           => 'btn_outlined_border',
-                'selector'       => '{{WRAPPER}} .veloria-hero-slider__btn--outlined',
+                'selector'       => '{{WRAPPER}} .addonext-hero-slider__btn--outlined',
                 'fields_options' => [
                     'border' => ['default' => 'solid'],
                     'width'  => [
@@ -1040,24 +1040,24 @@ class HeroSlider extends WidgetBase
         );
 
         $this->add_control('btn_outlined_radius', [
-            'label'      => __('Border radius', 'veloria'),
+            'label'      => __('Border radius', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'default'    => ['size' => 6, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--outlined' => 'border-radius: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--outlined' => 'border-radius: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('btn_outlined_padding', [
-            'label'      => __('Padding', 'veloria'),
+            'label'      => __('Padding', 'addonext'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', 'em'],
             'default'    => [
                 'top' => '12', 'right' => '20', 'bottom' => '12', 'left' => '20', 'unit' => 'px', 'isLinked' => false,
             ],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__btn--outlined' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__btn--outlined' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -1065,14 +1065,14 @@ class HeroSlider extends WidgetBase
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'btn_outlined_shadow',
-                'selector' => '{{WRAPPER}} .veloria-hero-slider__btn--outlined',
+                'selector' => '{{WRAPPER}} .addonext-hero-slider__btn--outlined',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section('section_style_nav', [
-            'label' => __('Slider navigation', 'veloria'),
+            'label' => __('Slider navigation', 'addonext'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
@@ -1080,104 +1080,104 @@ class HeroSlider extends WidgetBase
         $nav_dots_visibility  = ['navigation' => ['both', 'dots']];
 
         $this->add_control('nav_heading_arrows', [
-            'label'     => __('Arrows', 'veloria'),
+            'label'     => __('Arrows', 'addonext'),
             'type'      => Controls_Manager::HEADING,
             'condition' => $nav_arrow_visibility,
         ]);
 
         $this->add_responsive_control('nav_arrow_size', [
-            'label'      => __('Arrow size', 'veloria'),
+            'label'      => __('Arrow size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 18, 'max' => 80]],
             'default'    => ['size' => 24, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider' => '--swiper-navigation-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider' => '--swiper-navigation-size: {{SIZE}}{{UNIT}};',
             ],
             'condition'  => $nav_arrow_visibility,
         ]);
 
         $this->add_control('nav_arrow_color', [
-            'label'     => __('Arrow color', 'veloria'),
+            'label'     => __('Arrow color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider' => '--swiper-navigation-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider' => '--swiper-navigation-color: {{VALUE}};',
             ],
             'condition' => $nav_arrow_visibility,
         ]);
 
         $this->add_control('nav_heading_dots', [
-            'label'     => __('Dots', 'veloria'),
+            'label'     => __('Dots', 'addonext'),
             'type'      => Controls_Manager::HEADING,
             'separator' => 'before',
             'condition' => $nav_dots_visibility,
         ]);
 
         $this->add_responsive_control('nav_dot_size', [
-            'label'      => __('Dot size', 'veloria'),
+            'label'      => __('Dot size', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 4, 'max' => 28]],
             'default'    => ['size' => 8, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider' => '--swiper-pagination-bullet-size: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider' => '--swiper-pagination-bullet-size: {{SIZE}}{{UNIT}};',
             ],
             'condition'  => $nav_dots_visibility,
         ]);
 
         $this->add_control('nav_dot_color_active', [
-            'label'     => __('Active dot color', 'veloria'),
+            'label'     => __('Active dot color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => '#ffffff',
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider' => '--swiper-pagination-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider' => '--swiper-pagination-color: {{VALUE}};',
             ],
             'condition' => $nav_dots_visibility,
         ]);
 
         $this->add_control('nav_dot_color_inactive', [
-            'label'     => __('Inactive dot color', 'veloria'),
+            'label'     => __('Inactive dot color', 'addonext'),
             'type'      => Controls_Manager::COLOR,
             'default'   => 'rgba(255, 255, 255, 0.45)',
             'alpha'     => true,
             'selectors' => [
-                '{{WRAPPER}} .veloria-hero-slider' => '--swiper-pagination-bullet-inactive-color: {{VALUE}};',
+                '{{WRAPPER}} .addonext-hero-slider' => '--swiper-pagination-bullet-inactive-color: {{VALUE}};',
             ],
             'condition' => $nav_dots_visibility,
         ]);
 
         $this->add_responsive_control('nav_dot_gap', [
-            'label'      => __('Dot spacing', 'veloria'),
+            'label'      => __('Dot spacing', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 24]],
             'default'    => ['size' => 4, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider' => '--swiper-pagination-bullet-horizontal-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider' => '--swiper-pagination-bullet-horizontal-gap: {{SIZE}}{{UNIT}};',
             ],
             'condition'  => $nav_dots_visibility,
         ]);
 
         $this->add_control('nav_dots_offset', [
-            'label'      => __('Dots offset from bottom', 'veloria'),
+            'label'      => __('Dots offset from bottom', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 0, 'max' => 80]],
             'default'    => ['size' => 20, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__pagination-wrap' => 'bottom: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__pagination-wrap' => 'bottom: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
         $this->add_control('nav_arrow_offset', [
-            'label'      => __('Arrows inset from sides', 'veloria'),
+            'label'      => __('Arrows inset from sides', 'addonext'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px'],
             'range'      => ['px' => ['min' => 4, 'max' => 48]],
             'selectors'  => [
-                '{{WRAPPER}} .veloria-hero-slider__arrow--prev' => 'left: {{SIZE}}{{UNIT}};',
-                '{{WRAPPER}} .veloria-hero-slider__arrow--next' => 'right: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__arrow--prev' => 'left: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .addonext-hero-slider__arrow--next' => 'right: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -1186,7 +1186,7 @@ class HeroSlider extends WidgetBase
 
     public function render(): void
     {
-        $path = VELORIA_DIR . 'templates/hero-slider/hero-slider.php';
+        $path = ADDONEXT_DIR . 'templates/hero-slider/hero-slider.php';
         if (is_readable($path)) {
             include $path;
         }

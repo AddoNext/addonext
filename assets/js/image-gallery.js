@@ -14,17 +14,17 @@
             return;
         }
         lightbox = document.createElement('div');
-        lightbox.className = 'veloria-image-gallery-lightbox';
+        lightbox.className = 'addonext-image-gallery-lightbox';
         lightbox.innerHTML =
-            '<button type="button" class="veloria-image-gallery-lightbox__nav veloria-image-gallery-lightbox__nav--prev" aria-label="Previous image">&#8249;</button>' +
-            '<button type="button" class="veloria-image-gallery-lightbox__nav veloria-image-gallery-lightbox__nav--next" aria-label="Next image">&#8250;</button>' +
-            '<button type="button" class="veloria-image-gallery-lightbox__close" aria-label="Close preview">&times;</button>' +
-            '<img class="veloria-image-gallery-lightbox__image" alt="">';
+            '<button type="button" class="addonext-image-gallery-lightbox__nav addonext-image-gallery-lightbox__nav--prev" aria-label="Previous image">&#8249;</button>' +
+            '<button type="button" class="addonext-image-gallery-lightbox__nav addonext-image-gallery-lightbox__nav--next" aria-label="Next image">&#8250;</button>' +
+            '<button type="button" class="addonext-image-gallery-lightbox__close" aria-label="Close preview">&times;</button>' +
+            '<img class="addonext-image-gallery-lightbox__image" alt="">';
         document.body.appendChild(lightbox);
-        imageEl = lightbox.querySelector('.veloria-image-gallery-lightbox__image');
-        closeEl = lightbox.querySelector('.veloria-image-gallery-lightbox__close');
-        prevEl = lightbox.querySelector('.veloria-image-gallery-lightbox__nav--prev');
-        nextEl = lightbox.querySelector('.veloria-image-gallery-lightbox__nav--next');
+        imageEl = lightbox.querySelector('.addonext-image-gallery-lightbox__image');
+        closeEl = lightbox.querySelector('.addonext-image-gallery-lightbox__close');
+        prevEl = lightbox.querySelector('.addonext-image-gallery-lightbox__nav--prev');
+        nextEl = lightbox.querySelector('.addonext-image-gallery-lightbox__nav--next');
 
         closeEl.addEventListener('click', closeLightbox);
         prevEl.addEventListener('click', function (event) {
@@ -93,16 +93,16 @@
     }
 
     document.addEventListener('click', function (event) {
-        var button = event.target.closest('.veloria-image-gallery__preview');
+        var button = event.target.closest('.addonext-image-gallery__preview');
         if (!button) {
             return;
         }
         event.preventDefault();
-        var gallery = button.closest('.veloria-image-gallery');
+        var gallery = button.closest('.addonext-image-gallery');
         if (!gallery) {
             return;
         }
-        var buttons = Array.prototype.slice.call(gallery.querySelectorAll('.veloria-image-gallery__preview'));
+        var buttons = Array.prototype.slice.call(gallery.querySelectorAll('.addonext-image-gallery__preview'));
         var items = buttons.map(function (btn) {
             return {
                 url: btn.getAttribute('data-image-url') || '',

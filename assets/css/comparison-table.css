@@ -1,9 +1,9 @@
-.veloria-comparison-table {
+.addonext-comparison-table {
     width: 100%;
     overflow-x: auto;
 }
 
-.veloria-comparison-table__table {
+.addonext-comparison-table__table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -13,28 +13,28 @@
     background-color: #ffffff;
 }
 
-.veloria-comparison-table__table thead tr:first-child th:first-child {
+.addonext-comparison-table__table thead tr:first-child th:first-child {
     border-top-left-radius: 7px;
 }
 
-.veloria-comparison-table__table thead tr:first-child th:last-child {
+.addonext-comparison-table__table thead tr:first-child th:last-child {
     border-top-right-radius: 7px;
 }
 
-.veloria-comparison-table__table tbody tr:last-child .veloria-comparison-table__td {
+.addonext-comparison-table__table tbody tr:last-child .addonext-comparison-table__td {
     border-bottom: none;
 }
 
-.veloria-comparison-table__table tbody tr:last-child td:first-child {
+.addonext-comparison-table__table tbody tr:last-child td:first-child {
     border-bottom-left-radius: 7px;
 }
 
-.veloria-comparison-table__table tbody tr:last-child td:last-child {
+.addonext-comparison-table__table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 7px;
 }
 
-.veloria-comparison-table__th,
-.veloria-comparison-table__td {
+.addonext-comparison-table__th,
+.addonext-comparison-table__td {
     border-bottom: 1px solid #e9ecef;
     border-right: 1px solid #e9ecef;
     padding: 14px 18px;
@@ -43,71 +43,71 @@
     color: #343a40;
 }
 
-.veloria-comparison-table__th:last-child,
-.veloria-comparison-table__td:last-child {
+.addonext-comparison-table__th:last-child,
+.addonext-comparison-table__td:last-child {
     border-right: none;
 }
 
-.veloria-comparison-table__table thead .veloria-comparison-table__th {
+.addonext-comparison-table__table thead .addonext-comparison-table__th {
     background-color: #f8fafc;
 }
 
-.veloria-comparison-table__th {
+.addonext-comparison-table__th {
     font-weight: 700;
     text-align: center;
 }
 
-.veloria-comparison-table__th.veloria-comparison-table__cell--feature {
+.addonext-comparison-table__th.addonext-comparison-table__cell--feature {
     text-align: left;
     background-color: #f8fafc;
 }
 
-.veloria-comparison-table__th.veloria-comparison-table__cell--default {
+.addonext-comparison-table__th.addonext-comparison-table__cell--default {
     background-color: #f8fafc;
 }
 
-.veloria-comparison-table__th.veloria-comparison-table__cell--highlighted {
+.addonext-comparison-table__th.addonext-comparison-table__cell--highlighted {
     background-color: #f6f7ff;
 }
 
-.veloria-comparison-table__td.veloria-comparison-table__cell--feature {
+.addonext-comparison-table__td.addonext-comparison-table__cell--feature {
     text-align: left;
     background-color: #ffffff;
 }
 
-.veloria-comparison-table__td.veloria-comparison-table__cell--default {
+.addonext-comparison-table__td.addonext-comparison-table__cell--default {
     text-align: center;
     background-color: #ffffff;
 }
 
-.veloria-comparison-table__td.veloria-comparison-table__cell--highlighted {
+.addonext-comparison-table__td.addonext-comparison-table__cell--highlighted {
     text-align: center;
     background-color: #f6f7ff;
 }
 
-.veloria-comparison-table__cell-text {
+.addonext-comparison-table__cell-text {
     display: inline-block;
 }
 
-.veloria-comparison-table__cell-text--bold {
+.addonext-comparison-table__cell-text--bold {
     font-weight: 700;
 }
 
-.veloria-comparison-table__icon {
+.addonext-comparison-table__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-.veloria-comparison-table__icon svg {
+.addonext-comparison-table__icon svg {
     width: 20px;
     height: 20px;
 }
 
-.veloria-comparison-table__icon--check {
+.addonext-comparison-table__icon--check {
     color: #28a745;
 }
 
-.veloria-comparison-table__icon--cross {
+.addonext-comparison-table__icon--cross {
     color: #adb5bd;
 }
