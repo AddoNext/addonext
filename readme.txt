@@ -1,5 +1,5 @@
 === AddoNext Widgets for Elementor ===
-Contributors: elementrify
+Contributors: addonext
 Tags: elementor, page builder, widgets, woocommerce, charts
 Requires at least: 6.0
 Tested up to: 7.0
@@ -44,7 +44,7 @@ Optional features such as smooth scrolling, layout duplication, a reading progre
 * PHP 7.4 or newer
 * Elementor (free or Pro) must be installed and active
 
-WooCommerce-related widgets are available when WooCommerce is installed. Some Contact Form 7 styling options need Contact Form 7. Additional Pro widgets and templates are available separately at https://elementrify.com/.
+WooCommerce-related widgets are available when WooCommerce is installed. Some Contact Form 7 styling options need Contact Form 7. Additional Pro widgets and templates are available separately at https://addonext.com/.
 
 == Installation ==
 

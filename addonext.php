@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: AddoNext Widgets for Elementor
- * Plugin URI: https://elementrify.com/
+ * Plugin URI: https://addonext.com/
  * Description: Elementor widgets and extensions for WordPress: content blocks, maps, charts, marketing tools, and WooCommerce checkout components.
  * Version: 1.0.0
- * Author: Elementrify
+ * Author: AddoNext
  * Text Domain: addonext
  * Domain Path: /languages
  * License: GPL-2.0-or-later
