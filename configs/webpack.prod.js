@@ -47,6 +47,7 @@ module.exports = mergeWithCustomize({
         new webpack.BannerPlugin({
             banner: bannerText,
             raw: false,
+            test: /\.js$/,
             // Run after Terser (OPTIMIZE_SIZE) so the comment is not stripped
             stage: webpack.Compilation.PROCESS_ASSETS_STAGE_REPORT,
         }),

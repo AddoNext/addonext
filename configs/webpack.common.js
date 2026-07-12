@@ -1,6 +1,7 @@
 const defaultConfig = require("@wordpress/scripts/config/webpack.config");
 const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
+const ProtectAssetPhpPlugin = require("./protect-asset-php-plugin");
 
 // console.log(defaultConfig.entry())
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
     },
     plugins: [
         ...defaultConfig.plugins,
+        new ProtectAssetPhpPlugin(),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
