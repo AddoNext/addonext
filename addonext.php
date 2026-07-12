@@ -12,7 +12,6 @@
  * Requires PHP: 7.4
  * Requires at least: 6.0
  * Requires WP: 6.0
- * Requires Plugins: elementor
  */
 
 defined('ABSPATH') || exit;
