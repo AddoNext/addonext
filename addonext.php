@@ -3,7 +3,7 @@
  * Plugin Name: AddoNext Widgets for Elementor
  * Plugin URI: https://addonext.com/
  * Description: Elementor widgets and extensions for WordPress: content blocks, maps, charts, marketing tools, and WooCommerce checkout components.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: AddoNext
  * Text Domain: addonext
  * Domain Path: /languages
@@ -85,7 +85,7 @@ class Addonext
     public function define_constants(): void
     {
         if (!defined('ADDONEXT_VERSION')) {
-            define('ADDONEXT_VERSION', '1.0.0');
+            define('ADDONEXT_VERSION', '1.0.1');
         }
         if (!defined('ADDONEXT_DIR')) {
             define('ADDONEXT_DIR', plugin_dir_path(__FILE__));
