@@ -103,3 +103,25 @@ This plugin can connect to third-party services when the related widget or featu
 **Freemius** — Optional SDK used for plugin updates and upgrade links after the administrator accepts the Freemius connection prompt. Sends site URL, plugin version, and related account data when connected. Terms: https://freemius.com/terms/ — Privacy: https://freemius.com/privacy/
 
 **Asset cache endpoint** — When asset caching is enabled, minified CSS and JavaScript may be served through a public read-only REST endpoint on your site (`/wp-json/addonext/v1/asset/{hash}.css` or `.js`). Only plugin-generated cache files are served; no user data is exposed.
+
+== Source Code ==
+The full source code including build files is available at:
+https://github.com/AddoNext/addonext
+
+== Development ==
+
+This plugin uses npm and webpack to compile and minify assets.
+
+Source code including all uncompiled files is available at:
+https://github.com/addonext/addonext
+
+To rebuild the assets from source:
+
+1. Install dependencies:
+   npm install
+
+2. Build for production:
+   npm run build
+
+The source files are located in the /src directory.
+Compiled assets are output to /dist.
