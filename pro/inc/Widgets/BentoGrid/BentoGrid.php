@@ -64,8 +64,8 @@ class BentoGrid extends WidgetBase
 
     public function register_controls(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $spanOptions = [];
         for ($i = 1; $i <= 12; $i++) {
@@ -391,8 +391,8 @@ class BentoGrid extends WidgetBase
 
     public function render(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $path = ADDONEXT_DIR . 'pro/templates/bento-grid/bento-grid.php';
         if (is_readable($path)) {
@@ -404,8 +404,8 @@ class BentoGrid extends WidgetBase
 
     protected function content_template(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         ?>
         <#

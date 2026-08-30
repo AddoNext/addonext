@@ -4,8 +4,8 @@ defined('ABSPATH') || exit;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
 
-if (emt_fs()->can_use_premium_code__premium_only()) {
-    if (emt_fs()->is_plan('pro')) {
+if (addonext_fs()->can_use_premium_code__premium_only()) {
+    if (addonext_fs()->is_plan('pro')) {
 
 $addonext_s        = $this->get_settings_for_display();
 $addonext_split    = isset($addonext_s['initial_position']['size']) ? (float) $addonext_s['initial_position']['size'] : 50.0;

@@ -42,7 +42,7 @@ class MigrationController
         }
 
         foreach ($migrations as $migration) {
-            $migration = emty_container($migration);
+            $migration = addonext_container($migration);
 
             if (!$migration->is_completed() && $migration->validate()) {
                 try {

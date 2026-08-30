@@ -25,9 +25,9 @@ class ActivateProWidgets extends MigrationBase
         $pro_widgets   = [];
         $saved_widgets = OptionsHelper::get_option('active_widgets', []);
 
-        $manager = emty_container(WidgetManager::class);
+        $manager = addonext_container(WidgetManager::class);
         foreach ($manager->get_widgets() as $widget_class) {
-            $instance = emty_container($widget_class);
+            $instance = addonext_container($widget_class);
             if ($instance->is_preview_only()) {
                 $pro_widgets[] = $instance->get_name();
             }
@@ -45,9 +45,9 @@ class ActivateProWidgets extends MigrationBase
     {
         $saved_widgets = OptionsHelper::get_option('active_widgets', []);
         $pro_widgets   = [];
-        $manager       = emty_container(WidgetManager::class);
+        $manager       = addonext_container(WidgetManager::class);
         foreach ($manager->get_widgets() as $widget_class) {
-            $instance = emty_container($widget_class);
+            $instance = addonext_container($widget_class);
             if ($instance->is_preview_only()) {
                 $pro_widgets[] = $instance->get_name();
             }

@@ -86,7 +86,7 @@ class ExtensionsController
      */
     public function rest_get_extensions(): WP_REST_Response
     {
-        $extensions = emty_container(ExtensionManager::class)->get_extensions_catalog();
+        $extensions = addonext_container(ExtensionManager::class)->get_extensions_catalog();
 
         return new WP_REST_Response([
             'success'    => true,
@@ -114,7 +114,7 @@ class ExtensionsController
             );
         }
 
-        $manager = emty_container(ExtensionManager::class);
+        $manager = addonext_container(ExtensionManager::class);
         $clean   = $manager->sanitize_active_extension_ids($extensions);
 
         OptionsHelper::set_option('active_extensions', $clean);
@@ -135,14 +135,14 @@ class ExtensionsController
     public function rest_get_extension_settings(WP_REST_Request $request): WP_REST_Response
     {
         $id      = (string) $request->get_param('id');
-        $manager = emty_container(ExtensionManager::class);
+        $manager = addonext_container(ExtensionManager::class);
         $class   = $manager->get_extension_class_for_id($id);
 
         if ($class === null) {
             return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'addonext')], 404);
         }
 
-        $instance = emty_container($class);
+        $instance = addonext_container($class);
 
         if (!$instance->has_settings()) {
             return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'addonext')], 400);
@@ -165,14 +165,14 @@ class ExtensionsController
     public function rest_update_extension_settings(WP_REST_Request $request): WP_REST_Response
     {
         $id      = (string) $request->get_param('id');
-        $manager = emty_container(ExtensionManager::class);
+        $manager = addonext_container(ExtensionManager::class);
         $class   = $manager->get_extension_class_for_id($id);
 
         if ($class === null) {
             return new WP_REST_Response(['success' => false, 'message' => __('Unknown extension', 'addonext')], 404);
         }
 
-        $instance = emty_container($class);
+        $instance = addonext_container($class);
 
         if (!$instance->has_settings()) {
             return new WP_REST_Response(['success' => false, 'message' => __('This extension has no settings', 'addonext')], 400);

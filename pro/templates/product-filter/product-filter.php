@@ -1,8 +1,8 @@
 <?php
 defined('ABSPATH') || exit;
 
-if (emt_fs()->can_use_premium_code__premium_only()) {
-    if (emt_fs()->is_plan('pro')) {
+if (addonext_fs()->can_use_premium_code__premium_only()) {
+    if (addonext_fs()->is_plan('pro')) {
 
 if (!class_exists('WooCommerce')) {
     echo '<div class="addonext-product-filter"><p class="addonext-product-filter__placeholder">' . esc_html__('WooCommerce is required for this widget.', 'addonext') . '</p></div>';

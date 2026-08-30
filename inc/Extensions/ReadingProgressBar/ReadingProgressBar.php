@@ -134,7 +134,7 @@ class ReadingProgressBar extends ExtensionBase
             return;
         }
 
-        $settings = emty_container(ExtensionManager::class)->get_extension_settings_payload($this->get_id());
+        $settings = addonext_container(ExtensionManager::class)->get_extension_settings_payload($this->get_id());
 
         $progress = sanitize_hex_color((string) ($settings['progress_color'] ?? '#4f46e5')) ?: '#4f46e5';
         $track    = sanitize_hex_color((string) ($settings['track_color'] ?? '#e5e7eb')) ?: '#e5e7eb';

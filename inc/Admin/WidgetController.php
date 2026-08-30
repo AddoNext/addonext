@@ -18,11 +18,11 @@ class WidgetController
      */
     public static function sanitize_active_widget_ids(array $widget_ids): array
     {
-        $manager = emty_container(WidgetManager::class);
+        $manager = addonext_container(WidgetManager::class);
         $allowed = [];
 
         foreach ($manager->get_widgets() as $widget_class) {
-            $instance = emty_container($widget_class);
+            $instance = addonext_container($widget_class);
             if ($instance->is_preview_only() && self::widget_is_preview_gated($instance)) {
                 continue;
             }
@@ -66,7 +66,7 @@ class WidgetController
 
     public function rest_get_widgets(): WP_REST_Response
     {
-        $widgets        = emty_container(WidgetManager::class)->get_widgets();
+        $widgets        = addonext_container(WidgetManager::class)->get_widgets();
         $data           = [];
         $active_widgets = OptionsHelper::get_option('active_widgets', []);
         $active_widgets = is_array($active_widgets) ? $active_widgets : [];
@@ -78,7 +78,7 @@ class WidgetController
         }
 
         foreach ($widgets as $widget) {
-            $widget_instance = emty_container($widget);
+            $widget_instance = addonext_container($widget);
             $preview_only    = $widget_instance->is_preview_only() && self::widget_is_preview_gated($widget_instance);
             $name            = $widget_instance->get_name();
             $stored_active   = in_array($name, $active_widgets, true);
@@ -135,7 +135,7 @@ class WidgetController
 
     public function rest_get_categories(): WP_REST_Response
     {
-        $categories = emty_container(WidgetManager::class)->get_categories();
+        $categories = addonext_container(WidgetManager::class)->get_categories();
 
         return new WP_REST_Response([
             'success'    => true,

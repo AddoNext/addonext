@@ -271,7 +271,7 @@ class WidgetManager
         $active_names = is_array($active_names) ? $active_names : [];
 
         return array_filter(self::get_all_widget_classes(), function ($widget) use ($active_names) {
-            $instance = emty_container($widget);
+            $instance = addonext_container($widget);
             if (!in_array($instance->get_name(), $active_names, true)) {
                 return false;
             }

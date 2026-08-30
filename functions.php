@@ -10,7 +10,7 @@ defined('ABSPATH') or exit;
  * @param string $filename
  * @return string
  */
-function emty_get_img_url(string $filename = ''): string
+function addonext_get_img_url(string $filename = ''): string
 {
     return ADDONEXT_URL . 'src/img/' . $filename;
 }
@@ -21,7 +21,7 @@ function emty_get_img_url(string $filename = ''): string
  * @param string $filename
  * @return string
  */
-function emty_get_img_path(string $filename = ''): string
+function addonext_get_img_path(string $filename = ''): string
 {
     return ADDONEXT_DIR . 'src/img/' . $filename;
 }
@@ -32,7 +32,7 @@ function emty_get_img_path(string $filename = ''): string
  * @param mixed $class
  * @return object
  */
-function emty_container(mixed $class): object
+function addonext_container(mixed $class): object
 {
     static $container = false;
 

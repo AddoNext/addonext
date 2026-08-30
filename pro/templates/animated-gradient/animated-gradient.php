@@ -1,8 +1,8 @@
 <?php
 defined('ABSPATH') || exit;
 
-if (emt_fs()->can_use_premium_code__premium_only()) {
-    if (emt_fs()->is_plan('pro')) {
+if (addonext_fs()->can_use_premium_code__premium_only()) {
+    if (addonext_fs()->is_plan('pro')) {
 
 $addonext_settings = $this->get_settings_for_display();
 $addonext_raw      = isset($addonext_settings['text']) && $addonext_settings['text'] !== ''

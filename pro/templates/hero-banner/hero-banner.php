@@ -5,8 +5,8 @@ use Elementor\Icons_Manager;
 use Elementor\Utils;
 use Addonext\Widgets\HeroBanner\HeroBanner;
 
-if (emt_fs()->can_use_premium_code__premium_only()) {
-    if (emt_fs()->is_plan('pro')) {
+if (addonext_fs()->can_use_premium_code__premium_only()) {
+    if (addonext_fs()->is_plan('pro')) {
 
 $addonext_settings = $this->get_settings_for_display();
 

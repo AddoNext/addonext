@@ -218,7 +218,7 @@ class ScrollToTop extends ExtensionBase
             return;
         }
 
-        $manager  = emty_container(ExtensionManager::class);
+        $manager  = addonext_container(ExtensionManager::class);
         $settings = $manager->get_extension_settings_payload($this->get_id());
 
         $base = ADDONEXT_URL . 'assets/';

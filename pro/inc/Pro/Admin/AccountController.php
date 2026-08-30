@@ -88,11 +88,11 @@ class AccountController
      */
     private function build_license_payload(): array
     {
-        if (!function_exists('emt_fs')) {
+        if (!function_exists('addonext_fs')) {
             return $this->default_payload(false, 'Not activated');
         }
 
-        $fs = emt_fs();
+        $fs = addonext_fs();
         if (!$fs->is_registered()) {
             return $this->default_payload(false, 'Not activated');
         }
@@ -225,13 +225,13 @@ class AccountController
         $upgrade_url = '';
         $account_url = '';
         $support_url = '';
-        if (function_exists('emt_fs')) {
-            $fs          = emt_fs();
+        if (function_exists('addonext_fs')) {
+            $fs          = addonext_fs();
             $upgrade_url = $fs->get_upgrade_url();
             $account_url = $fs->get_account_url();
             $support_url = $fs->get_support_forum_url();
         }
-        $version = function_exists('emt_fs') ? 'v' . emt_fs()->get_plugin_version() : '';
+        $version = function_exists('addonext_fs') ? 'v' . addonext_fs()->get_plugin_version() : '';
 
         return [
             'is_active'          => $is_active,
@@ -282,10 +282,10 @@ class AccountController
      */
     private function get_fs_internal_license()
     {
-        if (!function_exists('emt_fs')) {
+        if (!function_exists('addonext_fs')) {
             return;
         }
-        $fs = emt_fs();
+        $fs = addonext_fs();
         try {
             $prop = new \ReflectionProperty($fs, '_license');
             $prop->setAccessible(true);
@@ -304,10 +304,10 @@ class AccountController
      */
     private function get_fs_internal_user()
     {
-        if (!function_exists('emt_fs')) {
+        if (!function_exists('addonext_fs')) {
             return;
         }
-        $fs = emt_fs();
+        $fs = addonext_fs();
         try {
             $prop = new \ReflectionProperty($fs, '_user');
             $prop->setAccessible(true);
@@ -328,10 +328,10 @@ class AccountController
      */
     private function get_license_owner_user($license)
     {
-        if (!function_exists('emt_fs') || !$license || empty($license->user_id)) {
+        if (!function_exists('addonext_fs') || !$license || empty($license->user_id)) {
             return;
         }
-        $fs = emt_fs();
+        $fs = addonext_fs();
         try {
             $method = new \ReflectionMethod($fs, '_get_user_by_id');
             $method->setAccessible(true);
@@ -375,14 +375,14 @@ class AccountController
             ], 400);
         }
 
-        if (!function_exists('emt_fs')) {
+        if (!function_exists('addonext_fs')) {
             return new WP_REST_Response([
                 'success' => false,
                 'message' => 'License service is not available.'
             ], 503);
         }
 
-        $fs = emt_fs();
+        $fs = addonext_fs();
         try {
             $ref = new \ReflectionMethod($fs, 'activate_license');
             $ref->setAccessible(true);
@@ -426,14 +426,14 @@ class AccountController
      */
     public function rest_deactivate_license(): WP_REST_Response
     {
-        if (!function_exists('emt_fs')) {
+        if (!function_exists('addonext_fs')) {
             return new WP_REST_Response([
                 'success' => false,
                 'message' => 'License service is not available.'
             ], 503);
         }
 
-        $fs = emt_fs();
+        $fs = addonext_fs();
         if (!$fs->is_registered()) {
             return new WP_REST_Response([
                 'success' => true,
@@ -476,8 +476,8 @@ class AccountController
      */
     public function rest_check_license(): WP_REST_Response
     {
-        if (function_exists('emt_fs')) {
-            $fs = emt_fs();
+        if (function_exists('addonext_fs')) {
+            $fs = addonext_fs();
             if (method_exists($fs, '_sync_plugin_license')) {
                 $ref = new \ReflectionMethod($fs, '_sync_plugin_license');
                 $ref->setAccessible(true);

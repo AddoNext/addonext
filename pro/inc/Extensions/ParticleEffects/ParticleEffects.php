@@ -87,8 +87,8 @@ class ParticleEffects extends ExtensionBase
      */
     public function register_hooks(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
                 add_action('elementor/element/after_section_end', [$this, 'register_style_tab_section'], 15, 3);
                 add_action('elementor/frontend/before_render', [$this, 'prepare_particle_wrapper'], 10, 1);
             }
@@ -100,8 +100,8 @@ class ParticleEffects extends ExtensionBase
      */
     public function enqueue_assets(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
                 $this->register_particle_handles();
                 wp_enqueue_style('particle-effects');
                 wp_enqueue_script('particle-effects');
@@ -116,8 +116,8 @@ class ParticleEffects extends ExtensionBase
      */
     public function enqueue_for_elementor_preview(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
                 $this->register_particle_handles();
                 wp_enqueue_style('particle-effects');
                 wp_enqueue_script('particle-effects');
@@ -169,8 +169,8 @@ class ParticleEffects extends ExtensionBase
      */
     public function register_style_tab_section($element, string $section_id, array $args = []): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
                 if (!$this->is_supported_element($element)) {
                     return;
                 }
@@ -319,8 +319,8 @@ class ParticleEffects extends ExtensionBase
      */
     public function prepare_particle_wrapper($element): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
                 if (!$this->is_supported_element($element)) {
                     return;
                 }

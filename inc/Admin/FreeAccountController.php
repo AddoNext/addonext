@@ -43,8 +43,8 @@ class FreeAccountController
         $upgrade_url = '';
         $account_url = '';
 
-        if (function_exists('emt_fs')) {
-            $fs          = emt_fs();
+        if (function_exists('addonext_fs')) {
+            $fs          = addonext_fs();
             $upgrade_url = $fs->get_upgrade_url();
             $account_url = $fs->get_account_url();
         }

@@ -15,7 +15,7 @@ class AdminController
 
     public function init(): void
     {
-        emty_container(AdminAssets::class);
+        addonext_container(AdminAssets::class);
     }
 
     public function register_admin_menu(): void

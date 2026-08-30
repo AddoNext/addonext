@@ -17,8 +17,8 @@ final class PreviewAccess
     {
         $preview_only = true;
 
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
                 $preview_only = false;
             }
         }

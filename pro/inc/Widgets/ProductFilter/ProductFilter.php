@@ -28,8 +28,8 @@ class ProductFilter extends WidgetBase
 
     public function enqueue_assets(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         wp_register_style(
             'addonext-product-filter',
@@ -193,8 +193,8 @@ class ProductFilter extends WidgetBase
 
     public function register_controls(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $taxonomy_options = self::get_product_taxonomy_select_options();
 
@@ -523,8 +523,8 @@ class ProductFilter extends WidgetBase
 
     public function render(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $path = ADDONEXT_DIR . 'pro/templates/product-filter/product-filter.php';
         if (is_readable($path)) include $path;

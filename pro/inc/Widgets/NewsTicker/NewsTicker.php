@@ -201,8 +201,8 @@ class NewsTicker extends WidgetBase
      */
     public function register_controls(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_content', [
             'label' => __('Content', 'addonext'),
@@ -417,8 +417,8 @@ class NewsTicker extends WidgetBase
      */
     public function render(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $settings = $this->get_settings_for_display();
         $pause_on_hover = isset($settings['pause_on_hover']) && $settings['pause_on_hover'] === 'yes';
@@ -446,8 +446,8 @@ class NewsTicker extends WidgetBase
      */
     protected function content_template(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         ?>
         <#

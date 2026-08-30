@@ -51,7 +51,7 @@ class ExtensionManager
     public function enqueue_preview_capable_extension_assets(): void
     {
         foreach ($this->get_active_extensions() as $class) {
-            $instance = emty_container($class);
+            $instance = addonext_container($class);
 
             if (!method_exists($instance, 'enqueue_for_elementor_preview')) {
                 continue;
@@ -79,7 +79,7 @@ class ExtensionManager
         }
 
         foreach ($this->get_active_extensions() as $class) {
-            $instance = emty_container($class);
+            $instance = addonext_container($class);
 
             if (!method_exists($instance, 'enqueue_for_elementor_preview')) {
                 continue;
@@ -97,7 +97,7 @@ class ExtensionManager
     public function bootstrap_active_extension_instances(): void
     {
         foreach ($this->get_active_extensions() as $class) {
-            $instance = emty_container($class);
+            $instance = addonext_container($class);
             $instance->register_hooks();
 
             if (!$instance->should_enqueue_frontend_assets()) {
@@ -137,7 +137,7 @@ class ExtensionManager
             return [];
         }
 
-        $instance = emty_container($class);
+        $instance = addonext_container($class);
         $saved    = $this->get_raw_extension_settings($id);
 
         return $instance->merge_settings_defaults($saved);
@@ -215,7 +215,7 @@ class ExtensionManager
         $items  = [];
 
         foreach ($this->get_extension_registry() as $slug => $class) {
-            $instance = emty_container($class);
+            $instance = addonext_container($class);
             $items[]  = $this->serialize_extension($instance, $active);
         }
 
@@ -244,7 +244,7 @@ class ExtensionManager
         $allowed = [];
 
         foreach ($this->get_extension_registry() as $slug => $class) {
-            $instance = emty_container($class);
+            $instance = addonext_container($class);
             if ($this->user_may_enable_extension($instance)) {
                 $allowed[] = $slug;
             }

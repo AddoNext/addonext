@@ -28,12 +28,12 @@ use Addonext\Admin\WidgetsAssetController;
 
 require_once 'vendor/autoload.php';
 
-if ( ! function_exists( 'emt_fs' ) ) {
+if ( ! function_exists( 'addonext_fs' ) ) {
     // Create a helper function for easy SDK access.
-    function emt_fs() {
-        global $emt_fs;
+    function addonext_fs() {
+        global $addonext_fs;
 
-        if ( ! isset( $emt_fs ) ) {
+        if ( ! isset( $addonext_fs ) ) {
             // Activate multisite network integration.
             if ( ! defined( 'WP_FS__PRODUCT_19063_MULTISITE' ) ) {
                 define( 'WP_FS__PRODUCT_19063_MULTISITE', true );
@@ -42,7 +42,7 @@ if ( ! function_exists( 'emt_fs' ) ) {
             // Include Freemius SDK.
             // SDK is auto-loaded through Composer
 
-            $emt_fs = fs_dynamic_init( array(
+            $addonext_fs = fs_dynamic_init( array(
                 'id'                  => '19063',
                 'slug'                => 'addonext',
                 'premium_slug'        => 'addonext-pro',
@@ -65,13 +65,13 @@ if ( ! function_exists( 'emt_fs' ) ) {
             ) );
         }
 
-        return $emt_fs;
+        return $addonext_fs;
     }
 
     // Init Freemius.
-    emt_fs();
+    addonext_fs();
     // Signal that SDK was initiated.
-    do_action( 'emt_fs_loaded' );
+    do_action( 'addonext_fs_loaded' );
 }
 
 class Addonext
@@ -118,18 +118,18 @@ class Addonext
     public function initialize_classes(): void
     {
         $this->define_constants();
-        emty_container(AdminController::class);
-        emty_container(AssetPerformance::class);
+        addonext_container(AdminController::class);
+        addonext_container(AssetPerformance::class);
         if (class_exists('\Elementor\Plugin')) {
-            emty_container(WidgetManager::class);
-            emty_container(WidgetController::class);
-            emty_container(WidgetsAssetController::class);
-            emty_container(ExtensionManager::class);
-            emty_container(ExtensionsController::class);
+            addonext_container(WidgetManager::class);
+            addonext_container(WidgetController::class);
+            addonext_container(WidgetsAssetController::class);
+            addonext_container(ExtensionManager::class);
+            addonext_container(ExtensionsController::class);
         }
 
-        emty_container(SettingsController::class);
-        emty_container(MigrationController::class);
+        addonext_container(SettingsController::class);
+        addonext_container(MigrationController::class);
 
         if (file_exists(ADDONEXT_DIR . 'pro/register.php')) {
             require_once ADDONEXT_DIR . 'pro/register.php';
@@ -139,7 +139,7 @@ class Addonext
         }
 
         if (!defined('ADDONEXT_PRO_ACCOUNT_BOOTSTRAPPED') && addonext_has_pro_account_api()) {
-            emty_container(\Addonext\Admin\FreeAccountController::class);
+            addonext_container(\Addonext\Admin\FreeAccountController::class);
         }
     }
 }

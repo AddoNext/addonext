@@ -76,8 +76,8 @@ class ProductCarousel extends WidgetBase
 
     public function enqueue_assets(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         wp_register_style(
             'addonext-product-carousel',
@@ -122,8 +122,8 @@ class ProductCarousel extends WidgetBase
 
     public function register_controls(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $this->start_controls_section('section_query', [
             'label' => __('Query', 'addonext'),
@@ -386,8 +386,8 @@ class ProductCarousel extends WidgetBase
 
     public function render(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $path = ADDONEXT_DIR . 'pro/templates/product-carousel/product-carousel.php';
         if (is_readable($path)) include $path;

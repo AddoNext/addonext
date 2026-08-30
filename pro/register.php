@@ -31,8 +31,8 @@ use Addonext\Extensions\ParticleEffects\ParticleEffects;
  */
 function addonext_get_pro_widget_classes(): array
 {
-    if (emt_fs()->can_use_premium_code__premium_only()) {
-        if (emt_fs()->is_plan('pro')) {
+    if (addonext_fs()->can_use_premium_code__premium_only()) {
+        if (addonext_fs()->is_plan('pro')) {
             return [
                 AnimatedCounter::class,
                 AnimatedGradient::class,
@@ -67,8 +67,8 @@ function addonext_get_pro_widget_classes(): array
  */
 function addonext_get_pro_extension_map(): array
 {
-    if (emt_fs()->can_use_premium_code__premium_only()) {
-        if (emt_fs()->is_plan('pro')) {
+    if (addonext_fs()->can_use_premium_code__premium_only()) {
+        if (addonext_fs()->is_plan('pro')) {
             return [
                 'particle-effects' => ParticleEffects::class,
             ];
@@ -90,8 +90,8 @@ function addonext_bootstrap_pro(): void
         define('ADDONEXT_PRO_ACCOUNT_BOOTSTRAPPED', true);
     }
 
-    if (emt_fs()->can_use_premium_code__premium_only()) {
-        if (emt_fs()->is_plan('pro')) {
+    if (addonext_fs()->can_use_premium_code__premium_only()) {
+        if (addonext_fs()->is_plan('pro')) {
             add_action('init', [SubscribeForm::class, 'register_ajax_handlers'], 5);
             add_action('init', [WooDashboard::class, 'register_ajax_handlers'], 5);
         }

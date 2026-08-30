@@ -87,8 +87,8 @@ class WooDashboard extends WidgetBase
 
     public function enqueue_assets(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         wp_register_style(
             'addonext-woo-dashboard',
@@ -628,8 +628,8 @@ class WooDashboard extends WidgetBase
 
     public function register_controls(): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $downloadsDefault = function_exists('wc_get_account_endpoint_url')
             ? wc_get_account_endpoint_url('downloads')
@@ -1254,8 +1254,8 @@ class WooDashboard extends WidgetBase
      */
     public function render_dashboard_icon(array $icon, string $fallbackClass = 'fas fa-circle'): void
     {
-        if (emt_fs()->can_use_premium_code__premium_only()) {
-            if (emt_fs()->is_plan('pro')) {
+        if (addonext_fs()->can_use_premium_code__premium_only()) {
+            if (addonext_fs()->is_plan('pro')) {
 
         $icon = self::normalize_elementor_icon($icon);
         $value = isset($icon['value']) ? trim((string) $icon['value']) : '';
