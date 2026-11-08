@@ -42,7 +42,7 @@ services:
         volumes:
             - ./:/var/www/html:rw
         working_dir: /var/www/html
-        command: sh -c "rm -f composer.lock && composer install"
+        command: sh -c "composer install"
         networks:
             - addonext
         labels:

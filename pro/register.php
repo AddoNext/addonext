@@ -91,7 +91,7 @@ function addonext_bootstrap_pro(): void
     }
 
     if (addonext_fs()->can_use_premium_code__premium_only()) {
-        if (addonext_fs()->is_plan('pro')) {
+        if (addonext_fs()->is_plan('pro') && class_exists('\Elementor\Plugin')) {
             add_action('init', [SubscribeForm::class, 'register_ajax_handlers'], 5);
             add_action('init', [WooDashboard::class, 'register_ajax_handlers'], 5);
         }
